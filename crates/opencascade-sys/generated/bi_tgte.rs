@@ -60,7 +60,11 @@ unsafe impl crate::CppDeletable for Blend {
 impl Blend {
     /// **Source:** `BiTgte_Blend.hxx`:50 - `BiTgte_Blend::BiTgte_Blend()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_Blend_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:57 - `BiTgte_Blend::BiTgte_Blend()`
@@ -75,41 +79,57 @@ impl Blend {
         Tol: f64,
         NUBS: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_ctor_shape_real2_bool(
-                S, Radius, Tol, NUBS,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_ctor_shape_real2_bool(S, Radius, Tol, NUBS) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:62 - `BiTgte_Blend::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape, Radius: f64, Tol: f64, NUBS: bool) {
-        unsafe { crate::ffi::BiTgte_Blend_init(self as *mut Self, S, Radius, Tol, NUBS) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_init(self as *mut Self, S, Radius, Tol, NUBS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:68 - `BiTgte_Blend::Clear()`
     /// Clear all the Fields.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BiTgte_Blend_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:72 - `BiTgte_Blend::SetFaces()`
     /// Set two faces   of <myShape> on which the  Sphere
     /// must roll.
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BiTgte_Blend_set_faces(self as *mut Self, F1, F2) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_set_faces(self as *mut Self, F1, F2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:75 - `BiTgte_Blend::SetEdge()`
     /// Set an edge of <myShape> to be rounded.
     pub fn set_edge(&mut self, Edge: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::BiTgte_Blend_set_edge(self as *mut Self, Edge) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_set_edge(self as *mut Self, Edge) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:78 - `BiTgte_Blend::SetStoppingFace()`
     /// Set a face on which the fillet must stop.
     pub fn set_stopping_face(&mut self, Face: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BiTgte_Blend_set_stopping_face(self as *mut Self, Face) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_set_stopping_face(self as *mut Self, Face) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:83 - `BiTgte_Blend::Perform()`
@@ -117,47 +137,69 @@ impl Blend {
     /// If <BuildShape> is true, compute the resulting Shape.
     /// If false, only the blending surfaces are computed.
     pub fn perform(&mut self, BuildShape: bool) {
-        unsafe { crate::ffi::BiTgte_Blend_perform(self as *mut Self, BuildShape) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_perform(self as *mut Self, BuildShape) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:85 - `BiTgte_Blend::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_Blend_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_Blend_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:88 - `BiTgte_Blend::Shape()`
     /// returns the result
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BiTgte_Blend_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_Blend_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:91 - `BiTgte_Blend::NbSurfaces()`
     /// returns the Number of generated surfaces.
     pub fn nb_surfaces(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_Blend_nb_surfaces(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_Blend_nb_surfaces(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:94 - `BiTgte_Blend::Surface()`
     /// returns the surface of range Index
     pub fn surface_int(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_surface_int(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_surface_int(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:97 - `BiTgte_Blend::Face()`
     /// returns the surface of range Index
     pub fn face_int(&self, Index: i32) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::BiTgte_Blend_face_int(self as *const Self, Index)) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_Blend_face_int(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:100 - `BiTgte_Blend::CenterLines()`
     /// set in <LC> all the center lines
     pub fn center_lines(&self, LC: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::BiTgte_Blend_center_lines(self as *const Self, LC) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_center_lines(self as *const Self, LC) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:108 - `BiTgte_Blend::Surface()`
@@ -171,11 +213,11 @@ impl Blend {
         &self,
         CenterLine: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_surface_shape(
-                self as *const Self,
-                CenterLine,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_surface_shape(self as *const Self, CenterLine) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -193,18 +235,22 @@ impl Blend {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn face_shape(&self, CenterLine: &crate::topo_ds::Shape) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::BiTgte_Blend_face_shape(self as *const Self, CenterLine)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_face_shape(self as *const Self, CenterLine) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:119 - `BiTgte_Blend::ContactType()`
     /// returns the type of contact
     pub fn contact_type(&self, Index: i32) -> crate::bi_tgte::ContactType {
-        unsafe {
-            crate::bi_tgte::ContactType::try_from(crate::ffi::BiTgte_Blend_contact_type(
-                self as *const Self,
-                Index,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_contact_type(self as *const Self, Index) };
+            crate::check_exception();
+            crate::bi_tgte::ContactType::try_from(__result).unwrap()
         }
     }
 
@@ -212,25 +258,35 @@ impl Blend {
     /// gives the first support shape relative to
     /// SurfaceFillet(Index);
     pub fn support_shape1(&self, Index: i32) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BiTgte_Blend_support_shape1(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_support_shape1(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:127 - `BiTgte_Blend::SupportShape2()`
     /// gives the second support shape relative to
     /// SurfaceFillet(Index);
     pub fn support_shape2(&self, Index: i32) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BiTgte_Blend_support_shape2(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_support_shape2(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:131 - `BiTgte_Blend::CurveOnShape1()`
     /// gives the 3d curve of SurfaceFillet(Index)
     /// on SupportShape1(Index)
     pub fn curve_on_shape1(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_curve_on_shape1(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_curve_on_shape1(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -238,11 +294,11 @@ impl Blend {
     /// gives the 3d curve of SurfaceFillet(Index)
     /// on SupportShape2(Index)
     pub fn curve_on_shape2(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_curve_on_shape2(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_curve_on_shape2(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -251,11 +307,11 @@ impl Blend {
     /// on the support face
     /// Warning: returns a Null Handle if SupportShape1 is not a Face
     pub fn p_curve_on_face1(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_p_curve_on_face1(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_p_curve_on_face1(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -263,11 +319,11 @@ impl Blend {
     /// gives the PCurve associated to CurveOnShape1(Index)
     /// on the Fillet
     pub fn p_curve1_on_fillet(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_p_curve1_on_fillet(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_p_curve1_on_fillet(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -276,11 +332,11 @@ impl Blend {
     /// on the  support face
     /// Warning: returns a Null Handle if SupportShape2 is not a Face
     pub fn p_curve_on_face2(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_p_curve_on_face2(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_p_curve_on_face2(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -288,17 +344,21 @@ impl Blend {
     /// gives the PCurve associated to CurveOnShape2(Index)
     /// on the fillet
     pub fn p_curve2_on_fillet(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_p_curve2_on_fillet(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_Blend_p_curve2_on_fillet(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:155 - `BiTgte_Blend::NbBranches()`
     pub fn nb_branches(&mut self) -> i32 {
-        unsafe { crate::ffi::BiTgte_Blend_nb_branches(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_Blend_nb_branches(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:161 - `BiTgte_Blend::IndicesOfBranche()`
@@ -307,13 +367,21 @@ impl Blend {
     ///
     /// i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
     pub fn indices_of_branche(&self, Index: i32, From: &mut i32, To: &mut i32) {
-        unsafe { crate::ffi::BiTgte_Blend_indices_of_branche(self as *const Self, Index, From, To) }
+        {
+            unsafe {
+                crate::ffi::BiTgte_Blend_indices_of_branche(self as *const Self, Index, From, To)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:166 - `BiTgte_Blend::ComputeCenters()`
     /// Computes the center lines
     pub fn compute_centers(&mut self) {
-        unsafe { crate::ffi::BiTgte_Blend_compute_centers(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BiTgte_Blend_compute_centers(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -335,7 +403,11 @@ unsafe impl crate::CppDeletable for CurveOnEdge {
 impl CurveOnEdge {
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:49 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:51 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
@@ -343,46 +415,69 @@ impl CurveOnEdge {
         EonF: &crate::topo_ds::Edge,
         Edge: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_ctor_edge2(EonF, Edge)) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_ctor_edge2(EonF, Edge) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnEdge_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:54 - `BiTgte_CurveOnEdge::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_shallow_copy(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_shallow_copy(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::Init()`
     pub fn init(&mut self, EonF: &crate::topo_ds::Edge, Edge: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_init(self as *mut Self, EonF, Edge) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_init(self as *mut Self, EonF, Edge) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:58 - `BiTgte_CurveOnEdge::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_first_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_first_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:60 - `BiTgte_CurveOnEdge::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_last_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_last_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:62 - `BiTgte_CurveOnEdge::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::BiTgte_CurveOnEdge_continuity(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_continuity(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
@@ -390,7 +485,13 @@ impl CurveOnEdge {
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_intervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_nb_intervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:73 - `BiTgte_CurveOnEdge::Intervals()`
@@ -400,7 +501,10 @@ impl CurveOnEdge {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_intervals(self as *const Self, T, S.into()) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_intervals(self as *const Self, T, S.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:80 - `BiTgte_CurveOnEdge::Trim()`
@@ -414,43 +518,60 @@ impl CurveOnEdge {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_trim(self as *const Self, First, Last, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:84 - `BiTgte_CurveOnEdge::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_is_closed(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_is_closed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:86 - `BiTgte_CurveOnEdge::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_is_periodic(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_is_periodic(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:88 - `BiTgte_CurveOnEdge::Period()`
     pub fn period(&self) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_period(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_period(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:91 - `BiTgte_CurveOnEdge::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_value(self as *const Self, U))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_value(self as *const Self, U) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:94 - `BiTgte_CurveOnEdge::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_d0(self as *const Self, U, P) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_d0(self as *const Self, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:100 - `BiTgte_CurveOnEdge::D1()`
@@ -459,7 +580,10 @@ impl CurveOnEdge {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:106 - `BiTgte_CurveOnEdge::D2()`
@@ -474,7 +598,10 @@ impl CurveOnEdge {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:115 - `BiTgte_CurveOnEdge::D3()`
@@ -490,7 +617,10 @@ impl CurveOnEdge {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:126 - `BiTgte_CurveOnEdge::DN()`
@@ -500,8 +630,10 @@ impl CurveOnEdge {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_dn(self as *const Self, U, N))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_dn(self as *const Self, U, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -509,7 +641,12 @@ impl CurveOnEdge {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_resolution(self as *const Self, R3d) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_resolution(self as *const Self, R3d) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:136 - `BiTgte_CurveOnEdge::GetType()`
@@ -517,116 +654,170 @@ impl CurveOnEdge {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::BiTgte_CurveOnEdge_get_type(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_get_type(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:138 - `BiTgte_CurveOnEdge::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:140 - `BiTgte_CurveOnEdge::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_circle(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:142 - `BiTgte_CurveOnEdge::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_ellipse(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:144 - `BiTgte_CurveOnEdge::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_hyperbola(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:146 - `BiTgte_CurveOnEdge::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_parabola(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:148 - `BiTgte_CurveOnEdge::Degree()`
     pub fn degree(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_degree(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_degree(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:150 - `BiTgte_CurveOnEdge::IsRational()`
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_is_rational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_is_rational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:152 - `BiTgte_CurveOnEdge::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_poles(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_poles(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:154 - `BiTgte_CurveOnEdge::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_knots(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_knots(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:156 - `BiTgte_CurveOnEdge::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_bezier(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_bezier(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:158 - `BiTgte_CurveOnEdge::BSpline()`
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_b_spline(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_b_spline(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BiTgte_CurveOnEdge_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnEdge_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        unsafe { &mut *(crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -634,60 +825,98 @@ impl CurveOnEdge {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnEdge> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_inherited_OffsetCurve(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_inherited_OffsetCurve(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -702,29 +931,42 @@ unsafe impl crate::CppDeletable for HandleBiTgteCurveOnEdge {
 impl HandleBiTgteCurveOnEdge {
     /// Dereference this Handle to access the underlying BiTgte_CurveOnEdge
     pub fn get(&self) -> &crate::ffi::BiTgte_CurveOnEdge {
-        unsafe { &*(crate::ffi::HandleBiTgteCurveOnEdge_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBiTgteCurveOnEdge_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi::BiTgte_CurveOnEdge {
-        unsafe { &mut *(crate::ffi::HandleBiTgteCurveOnEdge_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBiTgteCurveOnEdge_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBiTgteCurveOnEdge_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBiTgteCurveOnEdge_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -747,7 +989,11 @@ unsafe impl crate::CppDeletable for CurveOnVertex {
 impl CurveOnVertex {
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:49 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:51 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
@@ -755,38 +1001,58 @@ impl CurveOnVertex {
         EonF: &crate::topo_ds::Edge,
         V: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_ctor_edge_vertex(EonF, V))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_ctor_edge_vertex(EonF, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnVertex_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:53 - `BiTgte_CurveOnVertex::Init()`
     pub fn init(&mut self, EonF: &crate::topo_ds::Edge, V: &crate::topo_ds::Vertex) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_init(self as *mut Self, EonF, V) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_init(self as *mut Self, EonF, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:55 - `BiTgte_CurveOnVertex::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_first_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_first_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:57 - `BiTgte_CurveOnVertex::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_last_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_last_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:59 - `BiTgte_CurveOnVertex::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::BiTgte_CurveOnVertex_continuity(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_continuity(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
@@ -794,7 +1060,13 @@ impl CurveOnVertex {
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_intervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_nb_intervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:70 - `BiTgte_CurveOnVertex::Intervals()`
@@ -804,7 +1076,10 @@ impl CurveOnVertex {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_intervals(self as *const Self, T, S.into()) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_intervals(self as *const Self, T, S.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:77 - `BiTgte_CurveOnVertex::Trim()`
@@ -818,46 +1093,62 @@ impl CurveOnVertex {
         Last: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_trim(self as *const Self, First, Last, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:81 - `BiTgte_CurveOnVertex::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_is_closed(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_is_closed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:83 - `BiTgte_CurveOnVertex::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_is_periodic(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_is_periodic(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:85 - `BiTgte_CurveOnVertex::Period()`
     pub fn period(&self) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_period(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_period(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:88 - `BiTgte_CurveOnVertex::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_value(
-                self as *const Self,
-                U,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_value(self as *const Self, U) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:91 - `BiTgte_CurveOnVertex::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_d0(self as *const Self, U, P) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_d0(self as *const Self, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:97 - `BiTgte_CurveOnVertex::D1()`
@@ -866,7 +1157,10 @@ impl CurveOnVertex {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:103 - `BiTgte_CurveOnVertex::D2()`
@@ -881,7 +1175,10 @@ impl CurveOnVertex {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:112 - `BiTgte_CurveOnVertex::D3()`
@@ -897,7 +1194,10 @@ impl CurveOnVertex {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_d3(self as *const Self, U, P, V1, V2, V3) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_d3(self as *const Self, U, P, V1, V2, V3) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:123 - `BiTgte_CurveOnVertex::DN()`
@@ -907,12 +1207,11 @@ impl CurveOnVertex {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_dn(
-                self as *const Self,
-                U,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_dn(self as *const Self, U, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -920,7 +1219,12 @@ impl CurveOnVertex {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_resolution(self as *const Self, R3d) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_resolution(self as *const Self, R3d) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:133 - `BiTgte_CurveOnVertex::GetType()`
@@ -928,124 +1232,177 @@ impl CurveOnVertex {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::BiTgte_CurveOnVertex_get_type(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_get_type(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:135 - `BiTgte_CurveOnVertex::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:137 - `BiTgte_CurveOnVertex::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_circle(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:139 - `BiTgte_CurveOnVertex::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_ellipse(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:141 - `BiTgte_CurveOnVertex::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_hyperbola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:143 - `BiTgte_CurveOnVertex::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_parabola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:145 - `BiTgte_CurveOnVertex::Degree()`
     pub fn degree(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_degree(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_degree(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:147 - `BiTgte_CurveOnVertex::IsRational()`
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_is_rational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_is_rational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:149 - `BiTgte_CurveOnVertex::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_poles(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_poles(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:151 - `BiTgte_CurveOnVertex::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_knots(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_knots(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:153 - `BiTgte_CurveOnVertex::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_bezier(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_bezier(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:155 - `BiTgte_CurveOnVertex::BSpline()`
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_b_spline(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_b_spline(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BiTgte_CurveOnVertex_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnVertex_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        unsafe {
-            &mut *(crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1053,72 +1410,109 @@ impl CurveOnVertex {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnVertex> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:57 - `Adaptor3d_Curve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_inherited_ShallowCopy(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_ShallowCopy(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_inherited_OffsetCurve(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_OffsetCurve(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BiTgte_CurveOnVertex_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1133,31 +1527,45 @@ unsafe impl crate::CppDeletable for HandleBiTgteCurveOnVertex {
 impl HandleBiTgteCurveOnVertex {
     /// Dereference this Handle to access the underlying BiTgte_CurveOnVertex
     pub fn get(&self) -> &crate::ffi::BiTgte_CurveOnVertex {
-        unsafe { &*(crate::ffi::HandleBiTgteCurveOnVertex_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBiTgteCurveOnVertex_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnVertex
     pub fn get_mut(&mut self) -> &mut crate::ffi::BiTgte_CurveOnVertex {
-        unsafe { &mut *(crate::ffi::HandleBiTgteCurveOnVertex_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBiTgteCurveOnVertex_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBiTgteCurveOnVertex_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

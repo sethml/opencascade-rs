@@ -9,7 +9,11 @@
 /// **Source:** `IntTools.hxx`:34 - `IntTools::Length`
 /// returns the length of the edge;
 pub fn length(E: &crate::topo_ds::Edge) -> f64 {
-    unsafe { crate::ffi::IntTools_length(E) }
+    {
+        let __result = unsafe { crate::ffi::IntTools_length(E) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `IntTools.hxx`:48 - `IntTools::Parameter`
 pub fn parameter_pnt_handlegeomcurve_real(
@@ -17,11 +21,20 @@ pub fn parameter_pnt_handlegeomcurve_real(
     Curve: &crate::ffi::HandleGeomCurve,
     aParm: &mut f64,
 ) -> i32 {
-    unsafe { crate::ffi::IntTools_parameter_pnt_handlegeomcurve_real(P, Curve, aParm) }
+    {
+        let __result =
+            unsafe { crate::ffi::IntTools_parameter_pnt_handlegeomcurve_real(P, Curve, aParm) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `IntTools.hxx`:52 - `IntTools::GetRadius`
 pub fn get_radius(C: &crate::b_rep_adaptor::Curve, t1: f64, t3: f64, R: &mut f64) -> i32 {
-    unsafe { crate::ffi::IntTools_get_radius(C, t1, t3, R) }
+    {
+        let __result = unsafe { crate::ffi::IntTools_get_radius(C, t1, t3, R) };
+        crate::check_exception();
+        __result
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -44,24 +57,38 @@ unsafe impl crate::CppDeletable for BaseRangeSample {
 impl BaseRangeSample {
     /// **Source:** `IntTools_BaseRangeSample.hxx`:29 - `IntTools_BaseRangeSample::IntTools_BaseRangeSample()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_BaseRangeSample_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_BaseRangeSample_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_BaseRangeSample.hxx`:31 - `IntTools_BaseRangeSample::IntTools_BaseRangeSample()`
     pub fn new_int(theDepth: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_BaseRangeSample_ctor_int(theDepth))
+        {
+            let __result = unsafe { crate::ffi::IntTools_BaseRangeSample_ctor_int(theDepth) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_BaseRangeSample.hxx`:33 - `IntTools_BaseRangeSample::SetDepth()`
     pub fn set_depth(&mut self, theDepth: i32) {
-        unsafe { crate::ffi::IntTools_BaseRangeSample_set_depth(self as *mut Self, theDepth) }
+        {
+            unsafe { crate::ffi::IntTools_BaseRangeSample_set_depth(self as *mut Self, theDepth) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_BaseRangeSample.hxx`:35 - `IntTools_BaseRangeSample::GetDepth()`
     pub fn get_depth(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_BaseRangeSample_get_depth(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_BaseRangeSample_get_depth(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -88,7 +115,11 @@ unsafe impl crate::CppDeletable for BeanFaceIntersector {
 impl BeanFaceIntersector {
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:55 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_BeanFaceIntersector_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_BeanFaceIntersector_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:64 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
@@ -103,10 +134,12 @@ impl BeanFaceIntersector {
         theEdge: &crate::topo_ds::Edge,
         theFace: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_BeanFaceIntersector_ctor_edge_face(
-                theEdge, theFace,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_ctor_edge_face(theEdge, theFace)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -118,15 +151,17 @@ impl BeanFaceIntersector {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntTools_BeanFaceIntersector_ctor_curve_surface_real2(
                     theCurve,
                     theSurface,
                     theBeanTolerance,
                     theFaceTolerance,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -146,8 +181,8 @@ impl BeanFaceIntersector {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntTools_BeanFaceIntersector_ctor_curve_surface_real8(
                     theCurve,
                     theSurface,
@@ -159,8 +194,10 @@ impl BeanFaceIntersector {
                     theVMaxParameter,
                     theBeanTolerance,
                     theFaceTolerance,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -177,12 +214,15 @@ impl BeanFaceIntersector {
         theEdge: &crate::topo_ds::Edge,
         theFace: &crate::topo_ds::Face,
     ) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_init_edge_face(
-                self as *mut Self,
-                theEdge,
-                theFace,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_init_edge_face(
+                    self as *mut Self,
+                    theEdge,
+                    theFace,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -195,14 +235,17 @@ impl BeanFaceIntersector {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_init_curve_surface_real2(
-                self as *mut Self,
-                theCurve,
-                theSurface,
-                theBeanTolerance,
-                theFaceTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_init_curve_surface_real2(
+                    self as *mut Self,
+                    theCurve,
+                    theSurface,
+                    theBeanTolerance,
+                    theFaceTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -223,46 +266,60 @@ impl BeanFaceIntersector {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_init_curve_surface_real8(
-                self as *mut Self,
-                theCurve,
-                theSurface,
-                theFirstParOnCurve,
-                theLastParOnCurve,
-                theUMinParameter,
-                theUMaxParameter,
-                theVMinParameter,
-                theVMaxParameter,
-                theBeanTolerance,
-                theFaceTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_init_curve_surface_real8(
+                    self as *mut Self,
+                    theCurve,
+                    theSurface,
+                    theFirstParOnCurve,
+                    theLastParOnCurve,
+                    theUMinParameter,
+                    theUMaxParameter,
+                    theVMinParameter,
+                    theVMaxParameter,
+                    theBeanTolerance,
+                    theFaceTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:117 - `IntTools_BeanFaceIntersector::SetContext()`
     /// Sets the intersection context
     pub fn set_context(&mut self, theContext: &crate::ffi::HandleIntToolsContext) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_set_context(self as *mut Self, theContext)
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_set_context(self as *mut Self, theContext)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:120 - `IntTools_BeanFaceIntersector::Context()`
     /// Gets the intersection context
     pub fn context(&self) -> &crate::ffi::HandleIntToolsContext {
-        unsafe { &*(crate::ffi::IntTools_BeanFaceIntersector_context(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_BeanFaceIntersector_context(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:123 - `IntTools_BeanFaceIntersector::SetBeanParameters()`
     /// Set restrictions for curve
     pub fn set_bean_parameters(&mut self, theFirstParOnCurve: f64, theLastParOnCurve: f64) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_set_bean_parameters(
-                self as *mut Self,
-                theFirstParOnCurve,
-                theLastParOnCurve,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_set_bean_parameters(
+                    self as *mut Self,
+                    theFirstParOnCurve,
+                    theLastParOnCurve,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -275,49 +332,74 @@ impl BeanFaceIntersector {
         theVMinParameter: f64,
         theVMaxParameter: f64,
     ) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_set_surface_parameters(
-                self as *mut Self,
-                theUMinParameter,
-                theUMaxParameter,
-                theVMinParameter,
-                theVMaxParameter,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_set_surface_parameters(
+                    self as *mut Self,
+                    theUMinParameter,
+                    theUMaxParameter,
+                    theVMinParameter,
+                    theVMaxParameter,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:133 - `IntTools_BeanFaceIntersector::Perform()`
     /// Launches the algorithm
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::IntTools_BeanFaceIntersector_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_BeanFaceIntersector_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:136 - `IntTools_BeanFaceIntersector::IsDone()`
     /// Returns Done/NotDone state of the algorithm.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntTools_BeanFaceIntersector_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_BeanFaceIntersector_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:138 - `IntTools_BeanFaceIntersector::Result()`
     pub fn result(&self) -> &crate::ffi::IntTools_SequenceOfRanges {
-        unsafe { &*(crate::ffi::IntTools_BeanFaceIntersector_result(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_BeanFaceIntersector_result(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:140 - `IntTools_BeanFaceIntersector::Result()`
     pub fn result_sequenceofranges(&self, theResults: &mut crate::ffi::IntTools_SequenceOfRanges) {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_result_sequenceofranges(
-                self as *const Self,
-                theResults,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_result_sequenceofranges(
+                    self as *const Self,
+                    theResults,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:143 - `IntTools_BeanFaceIntersector::MinimalSquareDistance()`
     /// Returns the minimal distance found between edge and face
     pub fn minimal_square_distance(&self) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_BeanFaceIntersector_minimal_square_distance(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_BeanFaceIntersector_minimal_square_distance(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -341,7 +423,11 @@ impl CommonPrt {
     /// **Source:** `IntTools_CommonPrt.hxx`:37 - `IntTools_CommonPrt::IntTools_CommonPrt()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_CommonPrt_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:42 - `IntTools_CommonPrt::Assign()`
@@ -352,157 +438,247 @@ impl CommonPrt {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &CommonPrt) -> &mut CommonPrt {
-        unsafe { &mut *(crate::ffi::IntTools_CommonPrt_assign(self as *mut Self, Other)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_CommonPrt_assign(self as *mut Self, Other) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:47 - `IntTools_CommonPrt::SetEdge1()`
     /// Sets the first edge.
     pub fn set_edge1(&mut self, anE: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_edge1(self as *mut Self, anE) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_edge1(self as *mut Self, anE) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:50 - `IntTools_CommonPrt::SetEdge2()`
     /// Sets the second edge.
     pub fn set_edge2(&mut self, anE: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_edge2(self as *mut Self, anE) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_edge2(self as *mut Self, anE) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:54 - `IntTools_CommonPrt::SetType()`
     /// Sets the type of  the common  part
     /// Vertex  or  Edge
     pub fn set_type(&mut self, aType: crate::top_abs::ShapeEnum) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_type(self as *mut Self, aType.into()) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_type(self as *mut Self, aType.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:57 - `IntTools_CommonPrt::SetRange1()`
     /// Sets the range of first edge.
     pub fn set_range1_range(&mut self, aR: &Range) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_range1_range(self as *mut Self, aR) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_range1_range(self as *mut Self, aR) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:60 - `IntTools_CommonPrt::SetRange1()`
     /// Sets the range of first edge.
     pub fn set_range1_real2(&mut self, tf: f64, tl: f64) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_range1_real2(self as *mut Self, tf, tl) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_range1_real2(self as *mut Self, tf, tl) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:63 - `IntTools_CommonPrt::AppendRange2()`
     /// Appends the range of second edge.
     pub fn append_range2_range(&mut self, aR: &Range) {
-        unsafe { crate::ffi::IntTools_CommonPrt_append_range2_range(self as *mut Self, aR) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_append_range2_range(self as *mut Self, aR) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:66 - `IntTools_CommonPrt::AppendRange2()`
     /// Appends the range of second edge.
     pub fn append_range2_real2(&mut self, tf: f64, tl: f64) {
-        unsafe { crate::ffi::IntTools_CommonPrt_append_range2_real2(self as *mut Self, tf, tl) }
+        {
+            unsafe {
+                crate::ffi::IntTools_CommonPrt_append_range2_real2(self as *mut Self, tf, tl)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:69 - `IntTools_CommonPrt::SetVertexParameter1()`
     /// Sets a parameter of first vertex
     pub fn set_vertex_parameter1(&mut self, tV: f64) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_vertex_parameter1(self as *mut Self, tV) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_vertex_parameter1(self as *mut Self, tV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:72 - `IntTools_CommonPrt::SetVertexParameter2()`
     /// Sets a parameter of second vertex
     pub fn set_vertex_parameter2(&mut self, tV: f64) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_vertex_parameter2(self as *mut Self, tV) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_vertex_parameter2(self as *mut Self, tV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:75 - `IntTools_CommonPrt::Edge1()`
     /// Returns the first edge.
     pub fn edge1(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::IntTools_CommonPrt_edge1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_edge1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:78 - `IntTools_CommonPrt::Edge2()`
     /// Returns the second edge
     pub fn edge2(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::IntTools_CommonPrt_edge2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_edge2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:81 - `IntTools_CommonPrt::Type()`
     /// Returns the type of  the common  part
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
-        unsafe {
-            crate::top_abs::ShapeEnum::try_from(crate::ffi::IntTools_CommonPrt_type_(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_type_(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:84 - `IntTools_CommonPrt::Range1()`
     /// Returns the range of first edge
     pub fn range1(&self) -> &Range {
-        unsafe { &*(crate::ffi::IntTools_CommonPrt_range1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_range1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:87 - `IntTools_CommonPrt::Range1()`
     /// Returns the range of first edge.
     pub fn range1_real2(&self, tf: &mut f64, tl: &mut f64) {
-        unsafe { crate::ffi::IntTools_CommonPrt_range1_real2(self as *const Self, tf, tl) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_range1_real2(self as *const Self, tf, tl) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:90 - `IntTools_CommonPrt::Ranges2()`
     /// Returns the  ranges of second edge.
     pub fn ranges2(&self) -> &crate::ffi::IntTools_SequenceOfRanges {
-        unsafe { &*(crate::ffi::IntTools_CommonPrt_ranges2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_ranges2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:93 - `IntTools_CommonPrt::ChangeRanges2()`
     /// Returns the  ranges of second edge.
     pub fn change_ranges2(&mut self) -> &mut crate::ffi::IntTools_SequenceOfRanges {
-        unsafe { &mut *(crate::ffi::IntTools_CommonPrt_change_ranges2(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_CommonPrt_change_ranges2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:96 - `IntTools_CommonPrt::VertexParameter1()`
     /// Returns parameter of first vertex
     pub fn vertex_parameter1(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_CommonPrt_vertex_parameter1(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_CommonPrt_vertex_parameter1(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:99 - `IntTools_CommonPrt::VertexParameter2()`
     /// Returns parameter of second vertex
     pub fn vertex_parameter2(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_CommonPrt_vertex_parameter2(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_CommonPrt_vertex_parameter2(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:102 - `IntTools_CommonPrt::Copy()`
     /// Copies me to anOther
     pub fn copy(&self, anOther: &mut CommonPrt) {
-        unsafe { crate::ffi::IntTools_CommonPrt_copy(self as *const Self, anOther) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_copy(self as *const Self, anOther) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:105 - `IntTools_CommonPrt::AllNullFlag()`
     /// Modifier
     pub fn all_null_flag(&self) -> bool {
-        unsafe { crate::ffi::IntTools_CommonPrt_all_null_flag(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_CommonPrt_all_null_flag(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:108 - `IntTools_CommonPrt::SetAllNullFlag()`
     /// Selector
     pub fn set_all_null_flag(&mut self, aFlag: bool) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_all_null_flag(self as *mut Self, aFlag) }
+        {
+            unsafe { crate::ffi::IntTools_CommonPrt_set_all_null_flag(self as *mut Self, aFlag) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:111 - `IntTools_CommonPrt::SetBoundingPoints()`
     /// Modifier
     pub fn set_bounding_points(&mut self, aP1: &crate::gp::Pnt, aP2: &crate::gp::Pnt) {
-        unsafe { crate::ffi::IntTools_CommonPrt_set_bounding_points(self as *mut Self, aP1, aP2) }
+        {
+            unsafe {
+                crate::ffi::IntTools_CommonPrt_set_bounding_points(self as *mut Self, aP1, aP2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:114 - `IntTools_CommonPrt::BoundingPoints()`
     /// Selector
     pub fn bounding_points(&self, aP1: &mut crate::gp::Pnt, aP2: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::IntTools_CommonPrt_bounding_points(self as *const Self, aP1, aP2) }
+        {
+            unsafe {
+                crate::ffi::IntTools_CommonPrt_bounding_points(self as *const Self, aP1, aP2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_CommonPrt_to_owned(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IntTools_CommonPrt_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -527,17 +703,23 @@ unsafe impl crate::CppDeletable for Context {
 impl Context {
     /// **Source:** `IntTools_Context.hxx`:53 - `IntTools_Context::IntTools_Context()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Context_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:56 - `IntTools_Context::IntTools_Context()`
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntTools_Context_ctor_handlencollectionbaseallocator(theAllocator),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_ctor_handlencollectionbaseallocator(theAllocator)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -551,7 +733,11 @@ impl Context {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn f_class2d(&mut self, aF: &crate::topo_ds::Face) -> &mut FClass2d {
-        unsafe { &mut *(crate::ffi::IntTools_Context_f_class2d(self as *mut Self, aF)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_f_class2d(self as *mut Self, aF) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:64 - `IntTools_Context::ProjPS()`
@@ -567,7 +753,11 @@ impl Context {
         &mut self,
         aF: &crate::topo_ds::Face,
     ) -> &mut crate::geom_api::ProjectPointOnSurf {
-        unsafe { &mut *(crate::ffi::IntTools_Context_proj_ps(self as *mut Self, aF)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_proj_ps(self as *mut Self, aF) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:68 - `IntTools_Context::ProjPC()`
@@ -583,7 +773,11 @@ impl Context {
         &mut self,
         aE: &crate::topo_ds::Edge,
     ) -> &mut crate::geom_api::ProjectPointOnCurve {
-        unsafe { &mut *(crate::ffi::IntTools_Context_proj_pc(self as *mut Self, aE)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_proj_pc(self as *mut Self, aE) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:72 - `IntTools_Context::ProjPT()`
@@ -599,7 +793,11 @@ impl Context {
         &mut self,
         aC: &crate::ffi::HandleGeomCurve,
     ) -> &mut crate::geom_api::ProjectPointOnCurve {
-        unsafe { &mut *(crate::ffi::IntTools_Context_proj_pt(self as *mut Self, aC)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_proj_pt(self as *mut Self, aC) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:76 - `IntTools_Context::SurfaceData()`
@@ -615,7 +813,12 @@ impl Context {
         &mut self,
         aF: &crate::topo_ds::Face,
     ) -> &mut SurfaceRangeLocalizeData {
-        unsafe { &mut *(crate::ffi::IntTools_Context_surface_data(self as *mut Self, aF)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_surface_data(self as *mut Self, aF) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:80 - `IntTools_Context::SolidClassifier()`
@@ -631,7 +834,12 @@ impl Context {
         &mut self,
         aSolid: &crate::topo_ds::Solid,
     ) -> &mut crate::b_rep_class3d::SolidClassifier {
-        unsafe { &mut *(crate::ffi::IntTools_Context_solid_classifier(self as *mut Self, aSolid)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_solid_classifier(self as *mut Self, aSolid) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:84 - `IntTools_Context::Hatcher()`
@@ -647,7 +855,11 @@ impl Context {
         &mut self,
         aF: &crate::topo_ds::Face,
     ) -> &mut crate::geom2d_hatch::Hatcher {
-        unsafe { &mut *(crate::ffi::IntTools_Context_hatcher(self as *mut Self, aF)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_hatcher(self as *mut Self, aF) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:87 - `IntTools_Context::SurfaceAdaptor()`
@@ -662,7 +874,12 @@ impl Context {
         &mut self,
         theFace: &crate::topo_ds::Face,
     ) -> &mut crate::b_rep_adaptor::Surface {
-        unsafe { &mut *(crate::ffi::IntTools_Context_surface_adaptor(self as *mut Self, theFace)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_surface_adaptor(self as *mut Self, theFace) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:91 - `IntTools_Context::OBB()`
@@ -679,8 +896,12 @@ impl Context {
         theShape: &crate::topo_ds::Shape,
         theFuzzyValue: f64,
     ) -> &mut crate::bnd::OBB {
-        unsafe {
-            &mut *(crate::ffi::IntTools_Context_obb(self as *mut Self, theShape, theFuzzyValue))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_obb(self as *mut Self, theShape, theFuzzyValue)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -694,15 +915,18 @@ impl Context {
         VMin: &mut f64,
         VMax: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::IntTools_Context_uv_bounds(
-                self as *mut Self,
-                theFace,
-                UMin,
-                UMax,
-                VMin,
-                VMax,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_Context_uv_bounds(
+                    self as *mut Self,
+                    theFace,
+                    UMin,
+                    UMax,
+                    VMin,
+                    VMax,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -724,15 +948,19 @@ impl Context {
         theT: &mut f64,
         theDist: &mut f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_Context_compute_pe(
-                self as *mut Self,
-                theP,
-                theTolP,
-                theE,
-                theT,
-                theDist,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_compute_pe(
+                    self as *mut Self,
+                    theP,
+                    theTolP,
+                    theE,
+                    theT,
+                    theDist,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -755,15 +983,19 @@ impl Context {
         theTol: &mut f64,
         theFuzz: f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_Context_compute_ve(
-                self as *mut Self,
-                theV,
-                theE,
-                theT,
-                theTol,
-                theFuzz,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_compute_ve(
+                    self as *mut Self,
+                    theV,
+                    theE,
+                    theT,
+                    theTol,
+                    theFuzz,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -786,16 +1018,20 @@ impl Context {
         theTol: &mut f64,
         theFuzz: f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_Context_compute_vf(
-                self as *mut Self,
-                theVertex,
-                theFace,
-                theU,
-                theV,
-                theTol,
-                theFuzz,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_compute_vf(
+                    self as *mut Self,
+                    theVertex,
+                    theFace,
+                    theU,
+                    theV,
+                    theTol,
+                    theFuzz,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -807,13 +1043,12 @@ impl Context {
         aF: &crate::topo_ds::Face,
         aP2D: &crate::gp::Pnt2d,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_Context_state_point_face(
-                self as *mut Self,
-                aF,
-                aP2D,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_state_point_face(self as *mut Self, aF, aP2D)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -826,8 +1061,16 @@ impl Context {
         aF: &crate::topo_ds::Face,
         aP2D: &crate::gp::Pnt2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_point_in_face_face_pnt2d(self as *mut Self, aF, aP2D)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_point_in_face_face_pnt2d(
+                    self as *mut Self,
+                    aF,
+                    aP2D,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -841,13 +1084,17 @@ impl Context {
         aF: &crate::topo_ds::Face,
         aTol: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_point_in_face_pnt_face_real(
-                self as *mut Self,
-                aP3D,
-                aF,
-                aTol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_point_in_face_pnt_face_real(
+                    self as *mut Self,
+                    aP3D,
+                    aF,
+                    aTol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -859,7 +1106,13 @@ impl Context {
         aF: &crate::topo_ds::Face,
         aP2D: &crate::gp::Pnt2d,
     ) -> bool {
-        unsafe { crate::ffi::IntTools_Context_is_point_in_on_face(self as *mut Self, aF, aP2D) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_point_in_on_face(self as *mut Self, aF, aP2D)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:172 - `IntTools_Context::IsValidPointForFace()`
@@ -873,8 +1126,17 @@ impl Context {
         aF: &crate::topo_ds::Face,
         aTol: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_valid_point_for_face(self as *mut Self, aP3D, aF, aTol)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_valid_point_for_face(
+                    self as *mut Self,
+                    aP3D,
+                    aF,
+                    aTol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -888,14 +1150,18 @@ impl Context {
         aF2: &crate::topo_ds::Face,
         aTol: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_valid_point_for_faces(
-                self as *mut Self,
-                aP3D,
-                aF1,
-                aF2,
-                aTol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_valid_point_for_faces(
+                    self as *mut Self,
+                    aP3D,
+                    aF1,
+                    aF2,
+                    aTol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -911,15 +1177,19 @@ impl Context {
         aF: &crate::topo_ds::Face,
         aTol: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_valid_block_for_face(
-                self as *mut Self,
-                aT1,
-                aT2,
-                aIC,
-                aF,
-                aTol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_valid_block_for_face(
+                    self as *mut Self,
+                    aT1,
+                    aT2,
+                    aIC,
+                    aF,
+                    aTol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -935,16 +1205,20 @@ impl Context {
         aF2: &crate::topo_ds::Face,
         aTol: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_valid_block_for_faces(
-                self as *mut Self,
-                aT1,
-                aT2,
-                aIC,
-                aF1,
-                aF2,
-                aTol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_valid_block_for_faces(
+                    self as *mut Self,
+                    aT1,
+                    aT2,
+                    aIC,
+                    aF1,
+                    aF2,
+                    aTol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -962,14 +1236,18 @@ impl Context {
         aTolC: f64,
         aT: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_vertex_on_line_vertex_curve_real2(
-                self as *mut Self,
-                aV,
-                aIC,
-                aTolC,
-                aT,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_vertex_on_line_vertex_curve_real2(
+                    self as *mut Self,
+                    aV,
+                    aIC,
+                    aTolC,
+                    aT,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -988,15 +1266,19 @@ impl Context {
         aTolC: f64,
         aT: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Context_is_vertex_on_line_vertex_real_curve_real2(
-                self as *mut Self,
-                aV,
-                aTolV,
-                aIC,
-                aTolC,
-                aT,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_vertex_on_line_vertex_real_curve_real2(
+                    self as *mut Self,
+                    aV,
+                    aTolV,
+                    aIC,
+                    aTolC,
+                    aT,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1011,7 +1293,13 @@ impl Context {
         aE: &crate::topo_ds::Edge,
         aT: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::IntTools_Context_project_point_on_edge(self as *mut Self, aP, aE, aT) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_project_point_on_edge(self as *mut Self, aP, aE, aT)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::BndBox()`
@@ -1022,14 +1310,24 @@ impl Context {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn bnd_box(&mut self, theS: &crate::topo_ds::Shape) -> &mut crate::bnd::Box {
-        unsafe { &mut *(crate::ffi::IntTools_Context_bnd_box(self as *mut Self, theS)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_bnd_box(self as *mut Self, theS) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:236 - `IntTools_Context::IsInfiniteFace()`
     /// Returns true if the solid <theFace> has
     /// infinite bounds
     pub fn is_infinite_face(&mut self, theFace: &crate::topo_ds::Face) -> bool {
-        unsafe { crate::ffi::IntTools_Context_is_infinite_face(self as *mut Self, theFace) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_is_infinite_face(self as *mut Self, theFace)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:241 - `IntTools_Context::SetPOnSProjectionTolerance()`
@@ -1037,90 +1335,150 @@ impl Context {
     /// Clears map of already cached projectors in order to maintain
     /// correct value for all projectors
     pub fn set_p_on_s_projection_tolerance(&mut self, theValue: f64) {
-        unsafe {
-            crate::ffi::IntTools_Context_set_p_on_s_projection_tolerance(
-                self as *mut Self,
-                theValue,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_Context_set_p_on_s_projection_tolerance(
+                    self as *mut Self,
+                    theValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntTools_Context_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IntTools_Context_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntTools_Context_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IntTools_Context_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IntTools_Context_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Context_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Context_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IntTools_Context_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IntTools_Context_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IntTools_Context_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_Context_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Context_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IntTools_Context_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::IntTools_Context_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IntTools_Context_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Context_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IntTools_Context_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IntTools_Context_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1135,20 +1493,30 @@ unsafe impl crate::CppDeletable for HandleIntToolsContext {
 impl HandleIntToolsContext {
     /// Dereference this Handle to access the underlying IntTools_Context
     pub fn get(&self) -> &crate::ffi::IntTools_Context {
-        unsafe { &*(crate::ffi::HandleIntToolsContext_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIntToolsContext_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IntTools_Context
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntTools_Context {
-        unsafe { &mut *(crate::ffi::HandleIntToolsContext_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIntToolsContext_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IntTools_Context> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIntToolsContext_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIntToolsContext_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1180,7 +1548,11 @@ impl Curve {
     /// **Source:** `IntTools_Curve.hxx`:46 - `IntTools_Curve::IntTools_Curve()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Curve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Curve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:49 - `IntTools_Curve::IntTools_Curve()`
@@ -1192,16 +1564,18 @@ impl Curve {
         theTolerance: f64,
         theTangentialTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntTools_Curve_ctor_handlegeomcurve_handlegeom2dcurve2_real2(
                     the3dCurve3d,
                     the2dCurve1,
                     the2dCurve2,
                     theTolerance,
                     theTangentialTolerance,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1246,85 +1620,131 @@ impl Curve {
         the2dCurve1: &crate::ffi::HandleGeom2dCurve,
         the2dCurve2: &crate::ffi::HandleGeom2dCurve,
     ) {
-        unsafe {
-            crate::ffi::IntTools_Curve_set_curves(
-                self as *mut Self,
-                the3dCurve,
-                the2dCurve1,
-                the2dCurve2,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_Curve_set_curves(
+                    self as *mut Self,
+                    the3dCurve,
+                    the2dCurve1,
+                    the2dCurve2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:66 - `IntTools_Curve::SetCurve()`
     /// Sets the 3d curve
     pub fn set_curve(&mut self, the3dCurve: &crate::ffi::HandleGeomCurve) {
-        unsafe { crate::ffi::IntTools_Curve_set_curve(self as *mut Self, the3dCurve) }
+        {
+            unsafe { crate::ffi::IntTools_Curve_set_curve(self as *mut Self, the3dCurve) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:69 - `IntTools_Curve::SetFirstCurve2d()`
     /// Sets the first 2d curve
     pub fn set_first_curve2d(&mut self, the2dCurve1: &crate::ffi::HandleGeom2dCurve) {
-        unsafe { crate::ffi::IntTools_Curve_set_first_curve2d(self as *mut Self, the2dCurve1) }
+        {
+            unsafe { crate::ffi::IntTools_Curve_set_first_curve2d(self as *mut Self, the2dCurve1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:72 - `IntTools_Curve::SetSecondCurve2d()`
     /// Sets the second 2d curve
     pub fn set_second_curve2d(&mut self, the2dCurve2: &crate::ffi::HandleGeom2dCurve) {
-        unsafe { crate::ffi::IntTools_Curve_set_second_curve2d(self as *mut Self, the2dCurve2) }
+        {
+            unsafe {
+                crate::ffi::IntTools_Curve_set_second_curve2d(self as *mut Self, the2dCurve2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:75 - `IntTools_Curve::SetTolerance()`
     /// Sets the tolerance for the curve
     pub fn set_tolerance(&mut self, theTolerance: f64) {
-        unsafe { crate::ffi::IntTools_Curve_set_tolerance(self as *mut Self, theTolerance) }
+        {
+            unsafe { crate::ffi::IntTools_Curve_set_tolerance(self as *mut Self, theTolerance) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:78 - `IntTools_Curve::SetTangentialTolerance()`
     /// Sets the tangential tolerance
     pub fn set_tangential_tolerance(&mut self, theTangentialTolerance: f64) {
-        unsafe {
-            crate::ffi::IntTools_Curve_set_tangential_tolerance(
-                self as *mut Self,
-                theTangentialTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_Curve_set_tangential_tolerance(
+                    self as *mut Self,
+                    theTangentialTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:84 - `IntTools_Curve::Curve()`
     /// Returns 3d curve
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
-        unsafe { &*(crate::ffi::IntTools_Curve_curve(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Curve_curve(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:87 - `IntTools_Curve::FirstCurve2d()`
     /// Returns first 2d curve
     pub fn first_curve2d(&self) -> &crate::ffi::HandleGeom2dCurve {
-        unsafe { &*(crate::ffi::IntTools_Curve_first_curve2d(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Curve_first_curve2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:90 - `IntTools_Curve::SecondCurve2d()`
     /// Returns second 2d curve
     pub fn second_curve2d(&self) -> &crate::ffi::HandleGeom2dCurve {
-        unsafe { &*(crate::ffi::IntTools_Curve_second_curve2d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Curve_second_curve2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:93 - `IntTools_Curve::Tolerance()`
     /// Returns the tolerance
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_Curve_tolerance(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Curve_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:96 - `IntTools_Curve::TangentialTolerance()`
     /// Returns the tangential tolerance
     pub fn tangential_tolerance(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_Curve_tangential_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Curve_tangential_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:99 - `IntTools_Curve::HasBounds()`
     /// Returns TRUE if 3d curve is BoundedCurve
     pub fn has_bounds(&self) -> bool {
-        unsafe { crate::ffi::IntTools_Curve_has_bounds(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Curve_has_bounds(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:106 - `IntTools_Curve::Bounds()`
@@ -1340,14 +1760,18 @@ impl Curve {
         theFirstPnt: &mut crate::gp::Pnt,
         theLastPnt: &mut crate::gp::Pnt,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Curve_bounds(
-                self as *const Self,
-                theFirst,
-                theLast,
-                theFirstPnt,
-                theLastPnt,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Curve_bounds(
+                    self as *const Self,
+                    theFirst,
+                    theLast,
+                    theFirstPnt,
+                    theLastPnt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1357,17 +1781,21 @@ impl Curve {
     /// Returns TRUE in this case. <br>
     /// Otherwise, the point will not be computed and the method will return FALSE.
     pub fn d0(&self, thePar: &f64, thePnt: &mut crate::gp::Pnt) -> bool {
-        unsafe { crate::ffi::IntTools_Curve_d0(self as *const Self, thePar, thePnt) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Curve_d0(self as *const Self, thePar, thePnt) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Curve.hxx`:118 - `IntTools_Curve::Type()`
     /// Returns the type of the 3d curve
     pub fn type_(&self) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::IntTools_Curve_type_(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntTools_Curve_type_(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 }
@@ -1388,60 +1816,103 @@ unsafe impl crate::CppDeletable for CurveRangeLocalizeData {
 impl CurveRangeLocalizeData {
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:34 - `IntTools_CurveRangeLocalizeData::IntTools_CurveRangeLocalizeData()`
     pub fn new_int_real(theNbSample: i32, theMinRange: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_CurveRangeLocalizeData_ctor_int_real(
-                theNbSample,
-                theMinRange,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_ctor_int_real(theNbSample, theMinRange)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:37 - `IntTools_CurveRangeLocalizeData::GetNbSample()`
     pub fn get_nb_sample(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_CurveRangeLocalizeData_get_nb_sample(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_get_nb_sample(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:39 - `IntTools_CurveRangeLocalizeData::GetMinRange()`
     pub fn get_min_range(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_CurveRangeLocalizeData_get_min_range(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_get_min_range(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:41 - `IntTools_CurveRangeLocalizeData::AddOutRange()`
     pub fn add_out_range(&mut self, theRange: &CurveRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeLocalizeData_add_out_range(self as *mut Self, theRange)
+        {
+            unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_add_out_range(
+                    self as *mut Self,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:43 - `IntTools_CurveRangeLocalizeData::AddBox()`
     pub fn add_box(&mut self, theRange: &CurveRangeSample, theBox: &crate::bnd::Box) {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeLocalizeData_add_box(self as *mut Self, theRange, theBox)
+        {
+            unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_add_box(
+                    self as *mut Self,
+                    theRange,
+                    theBox,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:45 - `IntTools_CurveRangeLocalizeData::FindBox()`
     pub fn find_box(&self, theRange: &CurveRangeSample, theBox: &mut crate::bnd::Box) -> bool {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeLocalizeData_find_box(
-                self as *const Self,
-                theRange,
-                theBox,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_find_box(
+                    self as *const Self,
+                    theRange,
+                    theBox,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:48 - `IntTools_CurveRangeLocalizeData::IsRangeOut()`
     pub fn is_range_out(&self, theRange: &CurveRangeSample) -> bool {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeLocalizeData_is_range_out(self as *const Self, theRange)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_is_range_out(
+                    self as *const Self,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:50 - `IntTools_CurveRangeLocalizeData::ListRangeOut()`
     pub fn list_range_out(&self, theList: &mut crate::ffi::IntTools_ListOfCurveRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeLocalizeData_list_range_out(self as *const Self, theList)
+        {
+            unsafe {
+                crate::ffi::IntTools_CurveRangeLocalizeData_list_range_out(
+                    self as *const Self,
+                    theList,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1463,31 +1934,52 @@ unsafe impl crate::CppDeletable for CurveRangeSample {
 impl CurveRangeSample {
     /// **Source:** `IntTools_CurveRangeSample.hxx`:36 - `IntTools_CurveRangeSample::IntTools_CurveRangeSample()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_CurveRangeSample_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_CurveRangeSample_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_CurveRangeSample.hxx`:38 - `IntTools_CurveRangeSample::IntTools_CurveRangeSample()`
     pub fn new_int(theIndex: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_CurveRangeSample_ctor_int(theIndex))
+        {
+            let __result = unsafe { crate::ffi::IntTools_CurveRangeSample_ctor_int(theIndex) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_CurveRangeSample.hxx`:40 - `IntTools_CurveRangeSample::SetRangeIndex()`
     pub fn set_range_index(&mut self, theIndex: i32) {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeSample_set_range_index(self as *mut Self, theIndex)
+        {
+            unsafe {
+                crate::ffi::IntTools_CurveRangeSample_set_range_index(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_CurveRangeSample.hxx`:42 - `IntTools_CurveRangeSample::GetRangeIndex()`
     pub fn get_range_index(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_CurveRangeSample_get_range_index(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_get_range_index(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CurveRangeSample.hxx`:44 - `IntTools_CurveRangeSample::IsEqual()`
     pub fn is_equal(&self, Other: &CurveRangeSample) -> bool {
-        unsafe { crate::ffi::IntTools_CurveRangeSample_is_equal(self as *const Self, Other) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_is_equal(self as *const Self, Other)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_CurveRangeSample.hxx`:51 - `IntTools_CurveRangeSample::GetRange()`
@@ -1497,54 +1989,82 @@ impl CurveRangeSample {
         theLast: f64,
         theNbSample: i32,
     ) -> crate::OwnedPtr<Range> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_CurveRangeSample_get_range(
-                self as *const Self,
-                theFirst,
-                theLast,
-                theNbSample,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_get_range(
+                    self as *const Self,
+                    theFirst,
+                    theLast,
+                    theNbSample,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_CurveRangeSample.hxx`:55 - `IntTools_CurveRangeSample::GetRangeIndexDeeper()`
     pub fn get_range_index_deeper(&self, theNbSample: i32) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeSample_get_range_index_deeper(
-                self as *const Self,
-                theNbSample,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_get_range_index_deeper(
+                    self as *const Self,
+                    theNbSample,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to IntTools_BaseRangeSample
     pub fn as_base_range_sample(&self) -> &BaseRangeSample {
-        unsafe {
-            &*(crate::ffi::IntTools_CurveRangeSample_as_IntTools_BaseRangeSample(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_as_IntTools_BaseRangeSample(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IntTools_BaseRangeSample (mutable)
     pub fn as_base_range_sample_mut(&mut self) -> &mut BaseRangeSample {
-        unsafe {
-            &mut *(crate::ffi::IntTools_CurveRangeSample_as_IntTools_BaseRangeSample_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_as_IntTools_BaseRangeSample_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IntTools_BaseRangeSample.hxx`:33 - `IntTools_BaseRangeSample::SetDepth()`
     pub fn set_depth(&mut self, theDepth: i32) {
-        unsafe {
-            crate::ffi::IntTools_CurveRangeSample_inherited_SetDepth(self as *mut Self, theDepth)
+        {
+            unsafe {
+                crate::ffi::IntTools_CurveRangeSample_inherited_SetDepth(
+                    self as *mut Self,
+                    theDepth,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IntTools_BaseRangeSample.hxx`:35 - `IntTools_BaseRangeSample::GetDepth()`
     pub fn get_depth(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_CurveRangeSample_inherited_GetDepth(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_CurveRangeSample_inherited_GetDepth(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1567,7 +2087,11 @@ impl EdgeEdge {
     /// **Source:** `IntTools_EdgeEdge.hxx`:38 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_EdgeEdge_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeEdge_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:44 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
@@ -1576,8 +2100,10 @@ impl EdgeEdge {
         theEdge1: &crate::topo_ds::Edge,
         theEdge2: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_EdgeEdge_ctor_edge2(theEdge1, theEdge2))
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeEdge_ctor_edge2(theEdge1, theEdge2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1591,107 +2117,174 @@ impl EdgeEdge {
         aT21: f64,
         aT22: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_EdgeEdge_ctor_edge_real2_edge_real2(
-                theEdge1, aT11, aT12, theEdge2, aT21, aT22,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_EdgeEdge_ctor_edge_real2_edge_real2(
+                    theEdge1, aT11, aT12, theEdge2, aT21, aT22,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:55 - `IntTools_EdgeEdge::SetEdge1()`
     /// Sets the first edge
     pub fn set_edge1_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_edge1_edge(self as *mut Self, theEdge) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_edge1_edge(self as *mut Self, theEdge) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:58 - `IntTools_EdgeEdge::SetEdge1()`
     /// Sets the first edge and its range
     pub fn set_edge1_edge_real2(&mut self, theEdge: &crate::topo_ds::Edge, aT1: f64, aT2: f64) {
-        unsafe {
-            crate::ffi::IntTools_EdgeEdge_set_edge1_edge_real2(self as *mut Self, theEdge, aT1, aT2)
+        {
+            unsafe {
+                crate::ffi::IntTools_EdgeEdge_set_edge1_edge_real2(
+                    self as *mut Self,
+                    theEdge,
+                    aT1,
+                    aT2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:61 - `IntTools_EdgeEdge::SetRange1()`
     /// Sets the range for the first edge
     pub fn set_range1_range(&mut self, theRange1: &Range) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_range1_range(self as *mut Self, theRange1) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_range1_range(self as *mut Self, theRange1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:64 - `IntTools_EdgeEdge::SetRange1()`
     /// Sets the range for the first edge
     pub fn set_range1_real2(&mut self, aT1: f64, aT2: f64) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_range1_real2(self as *mut Self, aT1, aT2) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_range1_real2(self as *mut Self, aT1, aT2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:67 - `IntTools_EdgeEdge::SetEdge2()`
     /// Sets the second edge
     pub fn set_edge2_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_edge2_edge(self as *mut Self, theEdge) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_edge2_edge(self as *mut Self, theEdge) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:70 - `IntTools_EdgeEdge::SetEdge2()`
     /// Sets the first edge and its range
     pub fn set_edge2_edge_real2(&mut self, theEdge: &crate::topo_ds::Edge, aT1: f64, aT2: f64) {
-        unsafe {
-            crate::ffi::IntTools_EdgeEdge_set_edge2_edge_real2(self as *mut Self, theEdge, aT1, aT2)
+        {
+            unsafe {
+                crate::ffi::IntTools_EdgeEdge_set_edge2_edge_real2(
+                    self as *mut Self,
+                    theEdge,
+                    aT1,
+                    aT2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:73 - `IntTools_EdgeEdge::SetRange2()`
     /// Sets the range for the second edge
     pub fn set_range2_range(&mut self, theRange: &Range) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_range2_range(self as *mut Self, theRange) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_range2_range(self as *mut Self, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:76 - `IntTools_EdgeEdge::SetRange2()`
     /// Sets the range for the second edge
     pub fn set_range2_real2(&mut self, aT1: f64, aT2: f64) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_range2_real2(self as *mut Self, aT1, aT2) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_range2_real2(self as *mut Self, aT1, aT2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:79 - `IntTools_EdgeEdge::SetFuzzyValue()`
     /// Sets the Fuzzy value
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_set_fuzzy_value(self as *mut Self, theFuzz) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_set_fuzzy_value(self as *mut Self, theFuzz) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:82 - `IntTools_EdgeEdge::Perform()`
     /// Performs the intersection between edges
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::IntTools_EdgeEdge_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeEdge_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:85 - `IntTools_EdgeEdge::IsDone()`
     /// Returns TRUE if common part(s) is(are) found
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntTools_EdgeEdge_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeEdge_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:88 - `IntTools_EdgeEdge::FuzzyValue()`
     /// Returns Fuzzy value
     pub fn fuzzy_value(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_EdgeEdge_fuzzy_value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_EdgeEdge_fuzzy_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:91 - `IntTools_EdgeEdge::CommonParts()`
     /// Returns common parts
     pub fn common_parts(&self) -> &crate::ffi::IntTools_SequenceOfCommonPrts {
-        unsafe { &*(crate::ffi::IntTools_EdgeEdge_common_parts(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_EdgeEdge_common_parts(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:94 - `IntTools_EdgeEdge::UseQuickCoincidenceCheck()`
     /// Sets the flag myQuickCoincidenceCheck
     pub fn use_quick_coincidence_check(&mut self, bFlag: bool) {
-        unsafe {
-            crate::ffi::IntTools_EdgeEdge_use_quick_coincidence_check(self as *mut Self, bFlag)
+        {
+            unsafe {
+                crate::ffi::IntTools_EdgeEdge_use_quick_coincidence_check(self as *mut Self, bFlag)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_EdgeEdge.hxx`:97 - `IntTools_EdgeEdge::IsCoincidenceCheckedQuickly()`
     /// Returns the flag myQuickCoincidenceCheck
     pub fn is_coincidence_checked_quickly(&mut self) -> bool {
-        unsafe { crate::ffi::IntTools_EdgeEdge_is_coincidence_checked_quickly(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_EdgeEdge_is_coincidence_checked_quickly(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1718,78 +2311,121 @@ impl EdgeFace {
     /// @name Constructors
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_EdgeFace_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeFace_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:51 - `IntTools_EdgeFace::SetEdge()`
     /// @name Setters/Getters
     /// Sets the edge for intersection
     pub fn set_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::IntTools_EdgeFace_set_edge(self as *mut Self, theEdge) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeFace_set_edge(self as *mut Self, theEdge) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:54 - `IntTools_EdgeFace::Edge()`
     /// Returns the edge
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::IntTools_EdgeFace_edge(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeFace_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:57 - `IntTools_EdgeFace::SetFace()`
     /// Sets the face for intersection
     pub fn set_face(&mut self, theFace: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::IntTools_EdgeFace_set_face(self as *mut Self, theFace) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeFace_set_face(self as *mut Self, theFace) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:60 - `IntTools_EdgeFace::Face()`
     /// Returns the face
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IntTools_EdgeFace_face(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeFace_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:64 - `IntTools_EdgeFace::SetRange()`
     /// Sets the boundaries for the edge.
     /// The algorithm processes edge inside these boundaries.
     pub fn set_range_range(&mut self, theRange: &Range) {
-        unsafe { crate::ffi::IntTools_EdgeFace_set_range_range(self as *mut Self, theRange) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeFace_set_range_range(self as *mut Self, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:68 - `IntTools_EdgeFace::SetRange()`
     /// Sets the boundaries for the edge.
     /// The algorithm processes edge inside these boundaries.
     pub fn set_range_real2(&mut self, theFirst: f64, theLast: f64) {
-        unsafe {
-            crate::ffi::IntTools_EdgeFace_set_range_real2(self as *mut Self, theFirst, theLast)
+        {
+            unsafe {
+                crate::ffi::IntTools_EdgeFace_set_range_real2(self as *mut Self, theFirst, theLast)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:75 - `IntTools_EdgeFace::Range()`
     /// Returns intersection range of the edge
     pub fn range(&self) -> &Range {
-        unsafe { &*(crate::ffi::IntTools_EdgeFace_range(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeFace_range(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:78 - `IntTools_EdgeFace::SetContext()`
     /// Sets the intersection context
     pub fn set_context(&mut self, theContext: &crate::ffi::HandleIntToolsContext) {
-        unsafe { crate::ffi::IntTools_EdgeFace_set_context(self as *mut Self, theContext) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeFace_set_context(self as *mut Self, theContext) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:81 - `IntTools_EdgeFace::Context()`
     /// Returns the intersection context
     pub fn context(&self) -> &crate::ffi::HandleIntToolsContext {
-        unsafe { &*(crate::ffi::IntTools_EdgeFace_context(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeFace_context(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:84 - `IntTools_EdgeFace::SetFuzzyValue()`
     /// Sets the Fuzzy value
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
-        unsafe { crate::ffi::IntTools_EdgeFace_set_fuzzy_value(self as *mut Self, theFuzz) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeFace_set_fuzzy_value(self as *mut Self, theFuzz) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:90 - `IntTools_EdgeFace::FuzzyValue()`
     /// Returns the Fuzzy value
     pub fn fuzzy_value(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_EdgeFace_fuzzy_value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_EdgeFace_fuzzy_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:97 - `IntTools_EdgeFace::UseQuickCoincidenceCheck()`
@@ -1799,22 +2435,37 @@ impl EdgeFace {
     /// - The vertices of edge are lying on the face;
     /// - The edge does not intersect the boundaries of the face on the given range.
     pub fn use_quick_coincidence_check(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::IntTools_EdgeFace_use_quick_coincidence_check(self as *mut Self, theFlag)
+        {
+            unsafe {
+                crate::ffi::IntTools_EdgeFace_use_quick_coincidence_check(
+                    self as *mut Self,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:103 - `IntTools_EdgeFace::IsCoincidenceCheckedQuickly()`
     /// Returns the flag myQuickCoincidenceCheck
     pub fn is_coincidence_checked_quickly(&mut self) -> bool {
-        unsafe { crate::ffi::IntTools_EdgeFace_is_coincidence_checked_quickly(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_EdgeFace_is_coincidence_checked_quickly(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:107 - `IntTools_EdgeFace::Perform()`
     /// @name Performing the operation
     /// Launches the process
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::IntTools_EdgeFace_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_EdgeFace_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:112 - `IntTools_EdgeFace::IsDone()`
@@ -1822,7 +2473,11 @@ impl EdgeFace {
     /// Returns TRUE if computation was successful.
     /// Otherwise returns FALSE.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntTools_EdgeFace_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_EdgeFace_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:119 - `IntTools_EdgeFace::ErrorStatus()`
@@ -1832,20 +2487,35 @@ impl EdgeFace {
     /// 2,3 - invalid source data for the algorithm;
     /// 4 - projection failed.
     pub fn error_status(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_EdgeFace_error_status(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_EdgeFace_error_status(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:123 - `IntTools_EdgeFace::CommonParts()`
     /// @name Obtaining results
     /// Returns resulting common parts
     pub fn common_parts(&self) -> &crate::ffi::IntTools_SequenceOfCommonPrts {
-        unsafe { &*(crate::ffi::IntTools_EdgeFace_common_parts(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_EdgeFace_common_parts(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:126 - `IntTools_EdgeFace::MinimalDistance()`
     /// Returns the minimal distance found between edge and face
     pub fn minimal_distance(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_EdgeFace_minimal_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_EdgeFace_minimal_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1868,31 +2538,43 @@ impl FClass2d {
     /// **Source:** `IntTools_FClass2d.hxx`:41 - `IntTools_FClass2d::IntTools_FClass2d()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_FClass2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FClass2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FClass2d.hxx`:45 - `IntTools_FClass2d::IntTools_FClass2d()`
     /// Initializes algorithm by the face F
     /// and tolerance Tol
     pub fn new_face_real(F: &crate::topo_ds::Face, Tol: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_FClass2d_ctor_face_real(F, Tol)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FClass2d_ctor_face_real(F, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FClass2d.hxx`:49 - `IntTools_FClass2d::Init()`
     /// Initializes algorithm by the face F
     /// and tolerance Tol
     pub fn init(&mut self, F: &crate::topo_ds::Face, Tol: f64) {
-        unsafe { crate::ffi::IntTools_FClass2d_init(self as *mut Self, F, Tol) }
+        {
+            unsafe { crate::ffi::IntTools_FClass2d_init(self as *mut Self, F, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_FClass2d.hxx`:52 - `IntTools_FClass2d::PerformInfinitePoint()`
     /// Returns state of infinite 2d point relatively to (0, 0)
     pub fn perform_infinite_point(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_FClass2d_perform_infinite_point(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_FClass2d_perform_infinite_point(self as *const Self)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1906,13 +2588,12 @@ impl FClass2d {
         Puv: &crate::gp::Pnt2d,
         RecadreOnPeriodic: bool,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_FClass2d_perform(
-                self as *const Self,
-                Puv,
-                RecadreOnPeriodic,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_FClass2d_perform(self as *const Self, Puv, RecadreOnPeriodic)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1926,20 +2607,27 @@ impl FClass2d {
         Tol: f64,
         RecadreOnPeriodic: bool,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_FClass2d_test_on_restriction(
-                self as *const Self,
-                Puv,
-                Tol,
-                RecadreOnPeriodic,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_FClass2d_test_on_restriction(
+                    self as *const Self,
+                    Puv,
+                    Tol,
+                    RecadreOnPeriodic,
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntTools_FClass2d.hxx`:72 - `IntTools_FClass2d::IsHole()`
     pub fn is_hole(&self) -> bool {
-        unsafe { crate::ffi::IntTools_FClass2d_is_hole(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FClass2d_is_hole(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1962,7 +2650,11 @@ impl FaceFace {
     /// **Source:** `IntTools_FaceFace.hxx`:38 - `IntTools_FaceFace::IntTools_FaceFace()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_FaceFace_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:41 - `IntTools_FaceFace::SetParameters()`
@@ -1974,14 +2666,17 @@ impl FaceFace {
         ComputeCurveOnS2: bool,
         ApproximationTolerance: f64,
     ) {
-        unsafe {
-            crate::ffi::IntTools_FaceFace_set_parameters(
-                self as *mut Self,
-                ApproxCurves,
-                ComputeCurveOnS1,
-                ComputeCurveOnS2,
-                ApproximationTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_FaceFace_set_parameters(
+                    self as *mut Self,
+                    ApproxCurves,
+                    ComputeCurveOnS1,
+                    ComputeCurveOnS2,
+                    ApproximationTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1995,45 +2690,73 @@ impl FaceFace {
         F2: &crate::topo_ds::Face,
         theToRunParallel: bool,
     ) {
-        unsafe {
-            crate::ffi::IntTools_FaceFace_perform(self as *mut Self, F1, F2, theToRunParallel)
+        {
+            unsafe {
+                crate::ffi::IntTools_FaceFace_perform(self as *mut Self, F1, F2, theToRunParallel)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:54 - `IntTools_FaceFace::IsDone()`
     /// Returns True if the intersection was successful
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntTools_FaceFace_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:57 - `IntTools_FaceFace::Lines()`
     /// Returns sequence of 3d curves as result of intersection
     pub fn lines(&self) -> &crate::ffi::IntTools_SequenceOfCurves {
-        unsafe { &*(crate::ffi::IntTools_FaceFace_lines(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_lines(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:60 - `IntTools_FaceFace::Points()`
     /// Returns sequence of 3d curves as result of intersection
     pub fn points(&self) -> &crate::ffi::IntTools_SequenceOfPntOn2Faces {
-        unsafe { &*(crate::ffi::IntTools_FaceFace_points(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_points(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:63 - `IntTools_FaceFace::Face1()`
     /// Returns first of processed faces
     pub fn face1(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IntTools_FaceFace_face1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_face1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:66 - `IntTools_FaceFace::Face2()`
     /// Returns second of processed faces
     pub fn face2(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IntTools_FaceFace_face2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_face2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:69 - `IntTools_FaceFace::TangentFaces()`
     /// Returns True if faces are tangent
     pub fn tangent_faces(&self) -> bool {
-        unsafe { crate::ffi::IntTools_FaceFace_tangent_faces(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_FaceFace_tangent_faces(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:74 - `IntTools_FaceFace::PrepareLines3D()`
@@ -2041,36 +2764,57 @@ impl FaceFace {
     /// @param[in] bToSplit  split the closed 3D-curves on parts when TRUE,
     /// remain untouched otherwise
     pub fn prepare_lines3_d(&mut self, bToSplit: bool) {
-        unsafe { crate::ffi::IntTools_FaceFace_prepare_lines3_d(self as *mut Self, bToSplit) }
+        {
+            unsafe { crate::ffi::IntTools_FaceFace_prepare_lines3_d(self as *mut Self, bToSplit) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:76 - `IntTools_FaceFace::SetList()`
     pub fn set_list(&mut self, ListOfPnts: &mut crate::ffi::IntSurf_ListOfPntOn2S) {
-        unsafe { crate::ffi::IntTools_FaceFace_set_list(self as *mut Self, ListOfPnts) }
+        {
+            unsafe { crate::ffi::IntTools_FaceFace_set_list(self as *mut Self, ListOfPnts) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:79 - `IntTools_FaceFace::SetContext()`
     /// Sets the intersection context
     pub fn set_context(&mut self, aContext: &crate::ffi::HandleIntToolsContext) {
-        unsafe { crate::ffi::IntTools_FaceFace_set_context(self as *mut Self, aContext) }
+        {
+            unsafe { crate::ffi::IntTools_FaceFace_set_context(self as *mut Self, aContext) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:82 - `IntTools_FaceFace::SetFuzzyValue()`
     /// Sets the Fuzzy value
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
-        unsafe { crate::ffi::IntTools_FaceFace_set_fuzzy_value(self as *mut Self, theFuzz) }
+        {
+            unsafe { crate::ffi::IntTools_FaceFace_set_fuzzy_value(self as *mut Self, theFuzz) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:85 - `IntTools_FaceFace::FuzzyValue()`
     /// Returns Fuzzy value
     pub fn fuzzy_value(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_FaceFace_fuzzy_value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_FaceFace_fuzzy_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:88 - `IntTools_FaceFace::Context()`
     /// Gets the intersection context
     pub fn context(&self) -> &crate::ffi::HandleIntToolsContext {
-        unsafe { &*(crate::ffi::IntTools_FaceFace_context(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_FaceFace_context(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2092,7 +2836,11 @@ impl MarkedRangeSet {
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:32 - `IntTools_MarkedRangeSet::IntTools_MarkedRangeSet()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_MarkedRangeSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_MarkedRangeSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:36 - `IntTools_MarkedRangeSet::IntTools_MarkedRangeSet()`
@@ -2103,12 +2851,16 @@ impl MarkedRangeSet {
         theLastBoundary: f64,
         theInitFlag: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_MarkedRangeSet_ctor_real2_int(
-                theFirstBoundary,
-                theLastBoundary,
-                theInitFlag,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_ctor_real2_int(
+                    theFirstBoundary,
+                    theLastBoundary,
+                    theInitFlag,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2122,11 +2874,15 @@ impl MarkedRangeSet {
         theSortedArray: &crate::ffi::TColStd_Array1OfReal,
         theInitFlag: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_MarkedRangeSet_ctor_array1ofreal_int(
-                theSortedArray,
-                theInitFlag,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_ctor_array1ofreal_int(
+                    theSortedArray,
+                    theInitFlag,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2139,13 +2895,16 @@ impl MarkedRangeSet {
         theLastBoundary: f64,
         theInitFlag: i32,
     ) {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_set_boundaries(
-                self as *mut Self,
-                theFirstBoundary,
-                theLastBoundary,
-                theInitFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_set_boundaries(
+                    self as *mut Self,
+                    theFirstBoundary,
+                    theLastBoundary,
+                    theInitFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2160,12 +2919,15 @@ impl MarkedRangeSet {
         theSortedArray: &crate::ffi::TColStd_Array1OfReal,
         theInitFlag: i32,
     ) {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_set_ranges(
-                self as *mut Self,
-                theSortedArray,
-                theInitFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_set_ranges(
+                    self as *mut Self,
+                    theSortedArray,
+                    theInitFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2181,13 +2943,17 @@ impl MarkedRangeSet {
         theLastBoundary: f64,
         theFlag: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_insert_range_real2_int(
-                self as *mut Self,
-                theFirstBoundary,
-                theLastBoundary,
-                theFlag,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_insert_range_real2_int(
+                    self as *mut Self,
+                    theFirstBoundary,
+                    theLastBoundary,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2198,12 +2964,16 @@ impl MarkedRangeSet {
     /// Returns True if the range is inside the initial boundaries,
     /// otherwise or in case of some error returns False
     pub fn insert_range_range_int(&mut self, theRange: &Range, theFlag: i32) -> bool {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_insert_range_range_int(
-                self as *mut Self,
-                theRange,
-                theFlag,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_insert_range_range_int(
+                    self as *mut Self,
+                    theRange,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2221,14 +2991,18 @@ impl MarkedRangeSet {
         theFlag: i32,
         theIndex: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_insert_range_real2_int2(
-                self as *mut Self,
-                theFirstBoundary,
-                theLastBoundary,
-                theFlag,
-                theIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_insert_range_real2_int2(
+                    self as *mut Self,
+                    theFirstBoundary,
+                    theLastBoundary,
+                    theFlag,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2245,40 +3019,64 @@ impl MarkedRangeSet {
         theFlag: i32,
         theIndex: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_insert_range_range_int2(
-                self as *mut Self,
-                theRange,
-                theFlag,
-                theIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_insert_range_range_int2(
+                    self as *mut Self,
+                    theRange,
+                    theFlag,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:101 - `IntTools_MarkedRangeSet::SetFlag()`
     /// Set flag theFlag for range with index theIndex
     pub fn set_flag(&mut self, theIndex: i32, theFlag: i32) {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_set_flag(self as *mut Self, theIndex, theFlag)
+        {
+            unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_set_flag(self as *mut Self, theIndex, theFlag)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:104 - `IntTools_MarkedRangeSet::Flag()`
     /// Returns flag of the range with index theIndex
     pub fn flag(&self, theIndex: i32) -> i32 {
-        unsafe { crate::ffi::IntTools_MarkedRangeSet_flag(self as *const Self, theIndex) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_MarkedRangeSet_flag(self as *const Self, theIndex) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:108 - `IntTools_MarkedRangeSet::GetIndex()`
     /// Returns index of range which contains theValue.
     /// If theValue do not belong any range returns 0.
     pub fn get_index_real(&self, theValue: f64) -> i32 {
-        unsafe { crate::ffi::IntTools_MarkedRangeSet_get_index_real(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_get_index_real(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:110 - `IntTools_MarkedRangeSet::GetIndices()`
     pub fn get_indices(&mut self, theValue: f64) -> &crate::ffi::TColStd_SequenceOfInteger {
-        unsafe { &*(crate::ffi::IntTools_MarkedRangeSet_get_indices(self as *mut Self, theValue)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_get_indices(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:117 - `IntTools_MarkedRangeSet::GetIndex()`
@@ -2288,30 +3086,39 @@ impl MarkedRangeSet {
     /// can be equal to theValue, otherwise upper boundary of the range
     /// can be equal to theValue.
     pub fn get_index_real_bool(&self, theValue: f64, UseLower: bool) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_MarkedRangeSet_get_index_real_bool(
-                self as *const Self,
-                theValue,
-                UseLower,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_MarkedRangeSet_get_index_real_bool(
+                    self as *const Self,
+                    theValue,
+                    UseLower,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:121 - `IntTools_MarkedRangeSet::Length()`
     /// Returns number of ranges
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_MarkedRangeSet_length(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_MarkedRangeSet_length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:125 - `IntTools_MarkedRangeSet::Range()`
     /// Returns the range with index theIndex.
     /// the Index can be from 1 to Length()
     pub fn range(&self, theIndex: i32) -> crate::OwnedPtr<Range> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_MarkedRangeSet_range(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_MarkedRangeSet_range(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2334,51 +3141,79 @@ impl PntOn2Faces {
     /// **Source:** `IntTools_PntOn2Faces.hxx`:33 - `IntTools_PntOn2Faces::IntTools_PntOn2Faces()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_PntOn2Faces_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOn2Faces_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:36 - `IntTools_PntOn2Faces::IntTools_PntOn2Faces()`
     /// Initializes me by two points aP1 and aP2
     pub fn new_pntonface2(aP1: &PntOnFace, aP2: &PntOnFace) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_PntOn2Faces_ctor_pntonface2(aP1, aP2))
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOn2Faces_ctor_pntonface2(aP1, aP2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:40 - `IntTools_PntOn2Faces::SetP1()`
     /// Modifier
     pub fn set_p1(&mut self, aP1: &PntOnFace) {
-        unsafe { crate::ffi::IntTools_PntOn2Faces_set_p1(self as *mut Self, aP1) }
+        {
+            unsafe { crate::ffi::IntTools_PntOn2Faces_set_p1(self as *mut Self, aP1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:43 - `IntTools_PntOn2Faces::SetP2()`
     /// Modifier
     pub fn set_p2(&mut self, aP2: &PntOnFace) {
-        unsafe { crate::ffi::IntTools_PntOn2Faces_set_p2(self as *mut Self, aP2) }
+        {
+            unsafe { crate::ffi::IntTools_PntOn2Faces_set_p2(self as *mut Self, aP2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:46 - `IntTools_PntOn2Faces::SetValid()`
     /// Modifier
     pub fn set_valid(&mut self, bF: bool) {
-        unsafe { crate::ffi::IntTools_PntOn2Faces_set_valid(self as *mut Self, bF) }
+        {
+            unsafe { crate::ffi::IntTools_PntOn2Faces_set_valid(self as *mut Self, bF) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:49 - `IntTools_PntOn2Faces::P1()`
     /// Selector
     pub fn p1(&self) -> &PntOnFace {
-        unsafe { &*(crate::ffi::IntTools_PntOn2Faces_p1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOn2Faces_p1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:52 - `IntTools_PntOn2Faces::P2()`
     /// Selector
     pub fn p2(&self) -> &PntOnFace {
-        unsafe { &*(crate::ffi::IntTools_PntOn2Faces_p2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOn2Faces_p2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_PntOn2Faces.hxx`:55 - `IntTools_PntOn2Faces::IsValid()`
     /// Selector
     pub fn is_valid(&self) -> bool {
-        unsafe { crate::ffi::IntTools_PntOn2Faces_is_valid(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_PntOn2Faces_is_valid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2400,68 +3235,106 @@ impl PntOnFace {
     /// **Source:** `IntTools_PntOnFace.hxx`:34 - `IntTools_PntOnFace::IntTools_PntOnFace()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_PntOnFace_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOnFace_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:38 - `IntTools_PntOnFace::Init()`
     /// Initializes me by aFace, a 3d point
     /// and it's UV parameters on face
     pub fn init(&mut self, aF: &crate::topo_ds::Face, aP: &crate::gp::Pnt, U: f64, V: f64) {
-        unsafe { crate::ffi::IntTools_PntOnFace_init(self as *mut Self, aF, aP, U, V) }
+        {
+            unsafe { crate::ffi::IntTools_PntOnFace_init(self as *mut Self, aF, aP, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:44 - `IntTools_PntOnFace::SetFace()`
     /// Modifier
     pub fn set_face(&mut self, aF: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::IntTools_PntOnFace_set_face(self as *mut Self, aF) }
+        {
+            unsafe { crate::ffi::IntTools_PntOnFace_set_face(self as *mut Self, aF) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:47 - `IntTools_PntOnFace::SetPnt()`
     /// Modifier
     pub fn set_pnt(&mut self, aP: &crate::gp::Pnt) {
-        unsafe { crate::ffi::IntTools_PntOnFace_set_pnt(self as *mut Self, aP) }
+        {
+            unsafe { crate::ffi::IntTools_PntOnFace_set_pnt(self as *mut Self, aP) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:50 - `IntTools_PntOnFace::SetParameters()`
     /// Modifier
     pub fn set_parameters(&mut self, U: f64, V: f64) {
-        unsafe { crate::ffi::IntTools_PntOnFace_set_parameters(self as *mut Self, U, V) }
+        {
+            unsafe { crate::ffi::IntTools_PntOnFace_set_parameters(self as *mut Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:53 - `IntTools_PntOnFace::SetValid()`
     /// Modifier
     pub fn set_valid(&mut self, bF: bool) {
-        unsafe { crate::ffi::IntTools_PntOnFace_set_valid(self as *mut Self, bF) }
+        {
+            unsafe { crate::ffi::IntTools_PntOnFace_set_valid(self as *mut Self, bF) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:56 - `IntTools_PntOnFace::Valid()`
     /// Selector
     pub fn valid(&self) -> bool {
-        unsafe { crate::ffi::IntTools_PntOnFace_valid(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOnFace_valid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:59 - `IntTools_PntOnFace::Face()`
     /// Selector
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IntTools_PntOnFace_face(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOnFace_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:62 - `IntTools_PntOnFace::Pnt()`
     /// Selector
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::IntTools_PntOnFace_pnt(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOnFace_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:65 - `IntTools_PntOnFace::Parameters()`
     /// Selector
     pub fn parameters(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntTools_PntOnFace_parameters(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::IntTools_PntOnFace_parameters(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_PntOnFace.hxx`:68 - `IntTools_PntOnFace::IsValid()`
     /// Selector
     pub fn is_valid(&self) -> bool {
-        unsafe { crate::ffi::IntTools_PntOnFace_is_valid(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_PntOnFace_is_valid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2484,43 +3357,68 @@ impl Range {
     /// **Source:** `IntTools_Range.hxx`:33 - `IntTools_Range::IntTools_Range()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Range_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Range_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Range.hxx`:36 - `IntTools_Range::IntTools_Range()`
     /// Initialize me by range boundaries
     pub fn new_real2(aFirst: f64, aLast: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Range_ctor_real2(aFirst, aLast)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Range_ctor_real2(aFirst, aLast) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Range.hxx`:39 - `IntTools_Range::SetFirst()`
     /// Modifier
     pub fn set_first(&mut self, aFirst: f64) {
-        unsafe { crate::ffi::IntTools_Range_set_first(self as *mut Self, aFirst) }
+        {
+            unsafe { crate::ffi::IntTools_Range_set_first(self as *mut Self, aFirst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Range.hxx`:42 - `IntTools_Range::SetLast()`
     /// Modifier
     pub fn set_last(&mut self, aLast: f64) {
-        unsafe { crate::ffi::IntTools_Range_set_last(self as *mut Self, aLast) }
+        {
+            unsafe { crate::ffi::IntTools_Range_set_last(self as *mut Self, aLast) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Range.hxx`:45 - `IntTools_Range::First()`
     /// Selector
     pub fn first(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_Range_first(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Range_first(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Range.hxx`:48 - `IntTools_Range::Last()`
     /// Selector
     pub fn last(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_Range_last(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Range_last(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Range.hxx`:51 - `IntTools_Range::Range()`
     /// Selector
     pub fn range(&self, aFirst: &mut f64, aLast: &mut f64) {
-        unsafe { crate::ffi::IntTools_Range_range(self as *const Self, aFirst, aLast) }
+        {
+            unsafe { crate::ffi::IntTools_Range_range(self as *const Self, aFirst, aLast) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2544,46 +3442,69 @@ impl Root {
     /// **Source:** `IntTools_Root.hxx`:36 - `IntTools_Root::IntTools_Root()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Root_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:40 - `IntTools_Root::IntTools_Root()`
     /// Initializes my by range of parameters
     /// and type of root
     pub fn new_real_int(aRoot: f64, aType: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Root_ctor_real_int(aRoot, aType)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_ctor_real_int(aRoot, aType) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:43 - `IntTools_Root::SetRoot()`
     /// Sets the Root's value
     pub fn set_root(&mut self, aRoot: f64) {
-        unsafe { crate::ffi::IntTools_Root_set_root(self as *mut Self, aRoot) }
+        {
+            unsafe { crate::ffi::IntTools_Root_set_root(self as *mut Self, aRoot) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:46 - `IntTools_Root::SetType()`
     /// Sets the Root's Type
     pub fn set_type(&mut self, aType: i32) {
-        unsafe { crate::ffi::IntTools_Root_set_type(self as *mut Self, aType) }
+        {
+            unsafe { crate::ffi::IntTools_Root_set_type(self as *mut Self, aType) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:50 - `IntTools_Root::SetStateBefore()`
     /// Set  the  value of the state before the root
     /// (at  t=Root-dt)
     pub fn set_state_before(&mut self, aState: crate::top_abs::State) {
-        unsafe { crate::ffi::IntTools_Root_set_state_before(self as *mut Self, aState.into()) }
+        {
+            unsafe { crate::ffi::IntTools_Root_set_state_before(self as *mut Self, aState.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:54 - `IntTools_Root::SetStateAfter()`
     /// Set  the  value of the state after the root
     /// (at  t=Root-dt)
     pub fn set_state_after(&mut self, aState: crate::top_abs::State) {
-        unsafe { crate::ffi::IntTools_Root_set_state_after(self as *mut Self, aState.into()) }
+        {
+            unsafe { crate::ffi::IntTools_Root_set_state_after(self as *mut Self, aState.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:57 - `IntTools_Root::SetLayerHeight()`
     /// Not  used  in  Edge/Edge  algorithm
     pub fn set_layer_height(&mut self, aHeight: f64) {
-        unsafe { crate::ffi::IntTools_Root_set_layer_height(self as *mut Self, aHeight) }
+        {
+            unsafe { crate::ffi::IntTools_Root_set_layer_height(self as *mut Self, aHeight) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:62 - `IntTools_Root::SetInterval()`
@@ -2591,13 +3512,20 @@ impl Root {
     /// found [t1,t2] and the  corresponding  values
     /// of  the  function  on  the  bounds f(t1), f(t2).
     pub fn set_interval(&mut self, t1: f64, t2: f64, f1: f64, f2: f64) {
-        unsafe { crate::ffi::IntTools_Root_set_interval(self as *mut Self, t1, t2, f1, f2) }
+        {
+            unsafe { crate::ffi::IntTools_Root_set_interval(self as *mut Self, t1, t2, f1, f2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:68 - `IntTools_Root::Root()`
     /// Returns the Root  value
     pub fn root(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_Root_root(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_root(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:75 - `IntTools_Root::Type()`
@@ -2607,35 +3535,41 @@ impl Root {
     /// (was  found  by  Fibbonacci method);
     /// =1  -  Pure   (pure  zero  for all t [t1,t2] );
     pub fn type_(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_Root_type_(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_type_(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:78 - `IntTools_Root::StateBefore()`
     /// Returns the state before the root
     pub fn state_before(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_Root_state_before(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_state_before(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntTools_Root.hxx`:81 - `IntTools_Root::StateAfter()`
     /// Returns the state after the root
     pub fn state_after(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_Root_state_after(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_state_after(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntTools_Root.hxx`:84 - `IntTools_Root::LayerHeight()`
     /// Not  used  in  Edge/Edge  algorithm
     pub fn layer_height(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_Root_layer_height(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_layer_height(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:93 - `IntTools_Root::IsValid()`
@@ -2647,7 +3581,11 @@ impl Root {
     /// myStateBefore==TopAbs_IN  && myStateAfter==TopAbs_OUT  .
     /// For  other  cases it  returns  False.
     pub fn is_valid(&self) -> bool {
-        unsafe { crate::ffi::IntTools_Root_is_valid(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Root_is_valid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Root.hxx`:98 - `IntTools_Root::Interval()`
@@ -2655,7 +3593,10 @@ impl Root {
     /// found [t1,t2] and the  corresponding  values
     /// of  the  function  on  the  bounds f(t1), f(t2).
     pub fn interval(&self, t1: &mut f64, t2: &mut f64, f1: &mut f64, f2: &mut f64) {
-        unsafe { crate::ffi::IntTools_Root_interval(self as *const Self, t1, t2, f1, f2) }
+        {
+            unsafe { crate::ffi::IntTools_Root_interval(self as *const Self, t1, t2, f1, f2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2678,7 +3619,11 @@ unsafe impl crate::CppDeletable for ShrunkRange {
 impl ShrunkRange {
     /// **Source:** `IntTools_ShrunkRange.hxx`:36 - `IntTools_ShrunkRange::IntTools_ShrunkRange()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_ShrunkRange_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_ShrunkRange_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:39 - `IntTools_ShrunkRange::SetData()`
@@ -2690,50 +3635,83 @@ impl ShrunkRange {
         aV1: &crate::topo_ds::Vertex,
         aV2: &crate::topo_ds::Vertex,
     ) {
-        unsafe {
-            crate::ffi::IntTools_ShrunkRange_set_data(self as *mut Self, aE, aT1, aT2, aV1, aV2)
+        {
+            unsafe {
+                crate::ffi::IntTools_ShrunkRange_set_data(self as *mut Self, aE, aT1, aT2, aV1, aV2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:45 - `IntTools_ShrunkRange::SetContext()`
     pub fn set_context(&mut self, aCtx: &crate::ffi::HandleIntToolsContext) {
-        unsafe { crate::ffi::IntTools_ShrunkRange_set_context(self as *mut Self, aCtx) }
+        {
+            unsafe { crate::ffi::IntTools_ShrunkRange_set_context(self as *mut Self, aCtx) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:47 - `IntTools_ShrunkRange::Context()`
     pub fn context(&self) -> &crate::ffi::HandleIntToolsContext {
-        unsafe { &*(crate::ffi::IntTools_ShrunkRange_context(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_ShrunkRange_context(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:49 - `IntTools_ShrunkRange::SetShrunkRange()`
     pub fn set_shrunk_range(&mut self, aT1: f64, aT2: f64) {
-        unsafe { crate::ffi::IntTools_ShrunkRange_set_shrunk_range(self as *mut Self, aT1, aT2) }
+        {
+            unsafe {
+                crate::ffi::IntTools_ShrunkRange_set_shrunk_range(self as *mut Self, aT1, aT2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:51 - `IntTools_ShrunkRange::ShrunkRange()`
     pub fn shrunk_range(&self, aT1: &mut f64, aT2: &mut f64) {
-        unsafe { crate::ffi::IntTools_ShrunkRange_shrunk_range(self as *const Self, aT1, aT2) }
+        {
+            unsafe { crate::ffi::IntTools_ShrunkRange_shrunk_range(self as *const Self, aT1, aT2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:53 - `IntTools_ShrunkRange::BndBox()`
     pub fn bnd_box(&self) -> &crate::bnd::Box {
-        unsafe { &*(crate::ffi::IntTools_ShrunkRange_bnd_box(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_ShrunkRange_bnd_box(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:55 - `IntTools_ShrunkRange::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::IntTools_ShrunkRange_edge(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_ShrunkRange_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:57 - `IntTools_ShrunkRange::Perform()`
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::IntTools_ShrunkRange_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_ShrunkRange_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:60 - `IntTools_ShrunkRange::IsDone()`
     /// Returns TRUE in case the shrunk range is computed
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntTools_ShrunkRange_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_ShrunkRange_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:65 - `IntTools_ShrunkRange::IsSplittable()`
@@ -2741,13 +3719,22 @@ impl ShrunkRange {
     /// too short and the edge cannot be split,
     /// otherwise returns TRUE
     pub fn is_splittable(&self) -> bool {
-        unsafe { crate::ffi::IntTools_ShrunkRange_is_splittable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_ShrunkRange_is_splittable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:68 - `IntTools_ShrunkRange::Length()`
     /// Returns the length of the edge if computed.
     pub fn length(&self) -> f64 {
-        unsafe { crate::ffi::IntTools_ShrunkRange_length(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_ShrunkRange_length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2767,7 +3754,11 @@ unsafe impl crate::CppDeletable for SurfaceRangeLocalizeData {
 impl SurfaceRangeLocalizeData {
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:38 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeLocalizeData_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_SurfaceRangeLocalizeData_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:40 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
@@ -2777,15 +3768,17 @@ impl SurfaceRangeLocalizeData {
         theMinRangeU: f64,
         theMinRangeV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntTools_SurfaceRangeLocalizeData_ctor_int2_real2(
                     theNbSampleU,
                     theNbSampleV,
                     theMinRangeU,
                     theMinRangeV,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2800,260 +3793,370 @@ impl SurfaceRangeLocalizeData {
         &mut self,
         Other: &SurfaceRangeLocalizeData,
     ) -> &mut SurfaceRangeLocalizeData {
-        unsafe {
-            &mut *(crate::ffi::IntTools_SurfaceRangeLocalizeData_assign(self as *mut Self, Other))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_assign(self as *mut Self, Other)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:55 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
     pub fn get_nb_sample_u(&self) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nb_sample_u(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nb_sample_u(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:57 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleV()`
     pub fn get_nb_sample_v(&self) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nb_sample_v(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nb_sample_v(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:59 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeU()`
     pub fn get_min_range_u(&self) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_min_range_u(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_min_range_u(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:61 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeV()`
     pub fn get_min_range_v(&self) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_min_range_v(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_min_range_v(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:63 - `IntTools_SurfaceRangeLocalizeData::AddOutRange()`
     pub fn add_out_range(&mut self, theRange: &SurfaceRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_add_out_range(self as *mut Self, theRange)
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_add_out_range(
+                    self as *mut Self,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:65 - `IntTools_SurfaceRangeLocalizeData::AddBox()`
     pub fn add_box(&mut self, theRange: &SurfaceRangeSample, theBox: &crate::bnd::Box) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_add_box(
-                self as *mut Self,
-                theRange,
-                theBox,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_add_box(
+                    self as *mut Self,
+                    theRange,
+                    theBox,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:67 - `IntTools_SurfaceRangeLocalizeData::FindBox()`
     pub fn find_box(&self, theRange: &SurfaceRangeSample, theBox: &mut crate::bnd::Box) -> bool {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_find_box(
-                self as *const Self,
-                theRange,
-                theBox,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_find_box(
+                    self as *const Self,
+                    theRange,
+                    theBox,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:70 - `IntTools_SurfaceRangeLocalizeData::IsRangeOut()`
     pub fn is_range_out(&self, theRange: &SurfaceRangeSample) -> bool {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_is_range_out(
-                self as *const Self,
-                theRange,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_is_range_out(
+                    self as *const Self,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:72 - `IntTools_SurfaceRangeLocalizeData::ListRangeOut()`
     pub fn list_range_out(&self, theList: &mut crate::ffi::IntTools_ListOfSurfaceRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_list_range_out(
-                self as *const Self,
-                theList,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_list_range_out(
+                    self as *const Self,
+                    theList,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:74 - `IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll()`
     pub fn remove_range_out_all(&mut self) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_remove_range_out_all(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_remove_range_out_all(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:77 - `IntTools_SurfaceRangeLocalizeData::SetGridDeflection()`
     /// Set the grid deflection.
     pub fn set_grid_deflection(&mut self, theDeflection: f64) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_grid_deflection(
-                self as *mut Self,
-                theDeflection,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_grid_deflection(
+                    self as *mut Self,
+                    theDeflection,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:80 - `IntTools_SurfaceRangeLocalizeData::GetGridDeflection()`
     /// Query the grid deflection.
     pub fn get_grid_deflection(&self) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_grid_deflection(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_grid_deflection(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:83 - `IntTools_SurfaceRangeLocalizeData::SetRangeUGrid()`
     /// Set the range U of the grid of points.
     pub fn set_range_u_grid(&mut self, theNbUGrid: i32) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_range_u_grid(
-                self as *mut Self,
-                theNbUGrid,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_range_u_grid(
+                    self as *mut Self,
+                    theNbUGrid,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:86 - `IntTools_SurfaceRangeLocalizeData::GetRangeUGrid()`
     /// Query the range U of the grid of points.
     pub fn get_range_u_grid(&self) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_range_u_grid(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_range_u_grid(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:89 - `IntTools_SurfaceRangeLocalizeData::SetUParam()`
     /// Set the U parameter of the grid points at that index.
     pub fn set_u_param(&mut self, theIndex: i32, theUParam: f64) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_u_param(
-                self as *mut Self,
-                theIndex,
-                theUParam,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_u_param(
+                    self as *mut Self,
+                    theIndex,
+                    theUParam,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:92 - `IntTools_SurfaceRangeLocalizeData::GetUParam()`
     /// Query the U parameter of the grid points at that index.
     pub fn get_u_param(&self, theIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_u_param(self as *const Self, theIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_u_param(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:95 - `IntTools_SurfaceRangeLocalizeData::SetRangeVGrid()`
     /// Set the range V of the grid of points.
     pub fn set_range_v_grid(&mut self, theNbVGrid: i32) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_range_v_grid(
-                self as *mut Self,
-                theNbVGrid,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_range_v_grid(
+                    self as *mut Self,
+                    theNbVGrid,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:98 - `IntTools_SurfaceRangeLocalizeData::GetRangeVGrid()`
     /// Query the range V of the grid of points.
     pub fn get_range_v_grid(&self) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_range_v_grid(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_range_v_grid(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:101 - `IntTools_SurfaceRangeLocalizeData::SetVParam()`
     /// Set the V parameter of the grid points at that index.
     pub fn set_v_param(&mut self, theIndex: i32, theVParam: f64) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_v_param(
-                self as *mut Self,
-                theIndex,
-                theVParam,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_v_param(
+                    self as *mut Self,
+                    theIndex,
+                    theVParam,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:104 - `IntTools_SurfaceRangeLocalizeData::GetVParam()`
     /// Query the V parameter of the grid points at that index.
     pub fn get_v_param(&self, theIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_v_param(self as *const Self, theIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_v_param(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:107 - `IntTools_SurfaceRangeLocalizeData::SetGridPoint()`
     /// Set the grid point.
     pub fn set_grid_point(&mut self, theUIndex: i32, theVIndex: i32, thePoint: &crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_grid_point(
-                self as *mut Self,
-                theUIndex,
-                theVIndex,
-                thePoint,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_grid_point(
+                    self as *mut Self,
+                    theUIndex,
+                    theVIndex,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:112 - `IntTools_SurfaceRangeLocalizeData::GetGridPoint()`
     /// Set the grid point.
     pub fn get_grid_point(&self, theUIndex: i32, theVIndex: i32) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::IntTools_SurfaceRangeLocalizeData_get_grid_point(
-                self as *const Self,
-                theUIndex,
-                theVIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_grid_point(
+                    self as *const Self,
+                    theUIndex,
+                    theVIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:116 - `IntTools_SurfaceRangeLocalizeData::SetFrame()`
     /// Sets the frame area. Used to work with grid points.
     pub fn set_frame(&mut self, theUMin: f64, theUMax: f64, theVMin: f64, theVMax: f64) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_set_frame(
-                self as *mut Self,
-                theUMin,
-                theUMax,
-                theVMin,
-                theVMax,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_set_frame(
+                    self as *mut Self,
+                    theUMin,
+                    theUMax,
+                    theVMin,
+                    theVMax,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:122 - `IntTools_SurfaceRangeLocalizeData::GetNBUPointsInFrame()`
     /// Returns the number of grid points on U direction in frame.
     pub fn get_nbu_points_in_frame(&self) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nbu_points_in_frame(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nbu_points_in_frame(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:125 - `IntTools_SurfaceRangeLocalizeData::GetNBVPointsInFrame()`
     /// Returns the number of grid points on V direction in frame.
     pub fn get_nbv_points_in_frame(&self) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nbv_points_in_frame(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_nbv_points_in_frame(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:128 - `IntTools_SurfaceRangeLocalizeData::GetPointInFrame()`
     /// Returns the grid point in frame.
     pub fn get_point_in_frame(&self, theUIndex: i32, theVIndex: i32) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::IntTools_SurfaceRangeLocalizeData_get_point_in_frame(
-                self as *const Self,
-                theUIndex,
-                theVIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_point_in_frame(
+                    self as *const Self,
+                    theUIndex,
+                    theVIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -3061,11 +4164,15 @@ impl SurfaceRangeLocalizeData {
     /// Query the U parameter of the grid points
     /// at that index in frame.
     pub fn get_u_param_in_frame(&self, theIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_u_param_in_frame(
-                self as *const Self,
-                theIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_u_param_in_frame(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3073,26 +4180,35 @@ impl SurfaceRangeLocalizeData {
     /// Query the V parameter of the grid points
     /// at that index in frame.
     pub fn get_v_param_in_frame(&self, theIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeLocalizeData_get_v_param_in_frame(
-                self as *const Self,
-                theIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_get_v_param_in_frame(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:140 - `IntTools_SurfaceRangeLocalizeData::ClearGrid()`
     /// Clears the grid of points.
     pub fn clear_grid(&mut self) {
-        unsafe { crate::ffi::IntTools_SurfaceRangeLocalizeData_clear_grid(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_SurfaceRangeLocalizeData_clear_grid(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeLocalizeData_to_owned(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeLocalizeData_to_owned(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3114,7 +4230,11 @@ unsafe impl crate::CppDeletable for SurfaceRangeSample {
 impl SurfaceRangeSample {
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:32 - `IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeSample_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_SurfaceRangeSample_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:34 - `IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample()`
@@ -3124,10 +4244,14 @@ impl SurfaceRangeSample {
         theIndexV: i32,
         theDepthV: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeSample_ctor_int4(
-                theIndexU, theDepthU, theIndexV, theDepthV,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_ctor_int4(
+                    theIndexU, theDepthU, theIndexV, theDepthV,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3136,12 +4260,12 @@ impl SurfaceRangeSample {
         theRangeU: &CurveRangeSample,
         theRangeV: &CurveRangeSample,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntTools_SurfaceRangeSample_ctor_curverangesample2(
-                    theRangeU, theRangeV,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_ctor_curverangesample2(theRangeU, theRangeV)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3153,136 +4277,210 @@ impl SurfaceRangeSample {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &SurfaceRangeSample) -> &mut SurfaceRangeSample {
-        unsafe { &mut *(crate::ffi::IntTools_SurfaceRangeSample_assign(self as *mut Self, Other)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_SurfaceRangeSample_assign(self as *mut Self, Other) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:51 - `IntTools_SurfaceRangeSample::SetRanges()`
     pub fn set_ranges(&mut self, theRangeU: &CurveRangeSample, theRangeV: &CurveRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_set_ranges(
-                self as *mut Self,
-                theRangeU,
-                theRangeV,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_ranges(
+                    self as *mut Self,
+                    theRangeU,
+                    theRangeV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:54 - `IntTools_SurfaceRangeSample::GetRanges()`
     pub fn get_ranges(&self, theRangeU: &mut CurveRangeSample, theRangeV: &mut CurveRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_get_ranges(
-                self as *const Self,
-                theRangeU,
-                theRangeV,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_ranges(
+                    self as *const Self,
+                    theRangeU,
+                    theRangeV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:56 - `IntTools_SurfaceRangeSample::SetIndexes()`
     pub fn set_indexes(&mut self, theIndexU: i32, theIndexV: i32) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_set_indexes(
-                self as *mut Self,
-                theIndexU,
-                theIndexV,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_indexes(
+                    self as *mut Self,
+                    theIndexU,
+                    theIndexV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:58 - `IntTools_SurfaceRangeSample::GetIndexes()`
     pub fn get_indexes(&self, theIndexU: &mut i32, theIndexV: &mut i32) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_get_indexes(
-                self as *const Self,
-                theIndexU,
-                theIndexV,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_indexes(
+                    self as *const Self,
+                    theIndexU,
+                    theIndexV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:60 - `IntTools_SurfaceRangeSample::GetDepths()`
     pub fn get_depths(&self, theDepthU: &mut i32, theDepthV: &mut i32) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_get_depths(
-                self as *const Self,
-                theDepthU,
-                theDepthV,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_depths(
+                    self as *const Self,
+                    theDepthU,
+                    theDepthV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:62 - `IntTools_SurfaceRangeSample::SetSampleRangeU()`
     pub fn set_sample_range_u(&mut self, theRangeSampleU: &CurveRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_set_sample_range_u(
-                self as *mut Self,
-                theRangeSampleU,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_sample_range_u(
+                    self as *mut Self,
+                    theRangeSampleU,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:64 - `IntTools_SurfaceRangeSample::GetSampleRangeU()`
     pub fn get_sample_range_u(&self) -> &CurveRangeSample {
-        unsafe {
-            &*(crate::ffi::IntTools_SurfaceRangeSample_get_sample_range_u(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_sample_range_u(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:66 - `IntTools_SurfaceRangeSample::SetSampleRangeV()`
     pub fn set_sample_range_v(&mut self, theRangeSampleV: &CurveRangeSample) {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_set_sample_range_v(
-                self as *mut Self,
-                theRangeSampleV,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_sample_range_v(
+                    self as *mut Self,
+                    theRangeSampleV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:68 - `IntTools_SurfaceRangeSample::GetSampleRangeV()`
     pub fn get_sample_range_v(&self) -> &CurveRangeSample {
-        unsafe {
-            &*(crate::ffi::IntTools_SurfaceRangeSample_get_sample_range_v(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_sample_range_v(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:70 - `IntTools_SurfaceRangeSample::SetIndexU()`
     pub fn set_index_u(&mut self, theIndexU: i32) {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_set_index_u(self as *mut Self, theIndexU) }
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_index_u(self as *mut Self, theIndexU)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:72 - `IntTools_SurfaceRangeSample::GetIndexU()`
     pub fn get_index_u(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_index_u(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_index_u(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:74 - `IntTools_SurfaceRangeSample::SetIndexV()`
     pub fn set_index_v(&mut self, theIndexV: i32) {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_set_index_v(self as *mut Self, theIndexV) }
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_index_v(self as *mut Self, theIndexV)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:76 - `IntTools_SurfaceRangeSample::GetIndexV()`
     pub fn get_index_v(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_index_v(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_index_v(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:78 - `IntTools_SurfaceRangeSample::SetDepthU()`
     pub fn set_depth_u(&mut self, theDepthU: i32) {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_set_depth_u(self as *mut Self, theDepthU) }
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_depth_u(self as *mut Self, theDepthU)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:80 - `IntTools_SurfaceRangeSample::GetDepthU()`
     pub fn get_depth_u(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_depth_u(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_depth_u(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:82 - `IntTools_SurfaceRangeSample::SetDepthV()`
     pub fn set_depth_v(&mut self, theDepthV: i32) {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_set_depth_v(self as *mut Self, theDepthV) }
+        {
+            unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_set_depth_v(self as *mut Self, theDepthV)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:84 - `IntTools_SurfaceRangeSample::GetDepthV()`
     pub fn get_depth_v(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_depth_v(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_SurfaceRangeSample_get_depth_v(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:86 - `IntTools_SurfaceRangeSample::GetRangeU()`
@@ -3292,13 +4490,17 @@ impl SurfaceRangeSample {
         theLastU: f64,
         theNbSampleU: i32,
     ) -> crate::OwnedPtr<Range> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeSample_get_range_u(
-                self as *const Self,
-                theFirstU,
-                theLastU,
-                theNbSampleU,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_range_u(
+                    self as *const Self,
+                    theFirstU,
+                    theLastU,
+                    theNbSampleU,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3309,47 +4511,66 @@ impl SurfaceRangeSample {
         theLastV: f64,
         theNbSampleV: i32,
     ) -> crate::OwnedPtr<Range> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeSample_get_range_v(
-                self as *const Self,
-                theFirstV,
-                theLastV,
-                theNbSampleV,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_range_v(
+                    self as *const Self,
+                    theFirstV,
+                    theLastV,
+                    theNbSampleV,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:94 - `IntTools_SurfaceRangeSample::IsEqual()`
     pub fn is_equal(&self, Other: &SurfaceRangeSample) -> bool {
-        unsafe { crate::ffi::IntTools_SurfaceRangeSample_is_equal(self as *const Self, Other) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_is_equal(self as *const Self, Other)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:96 - `IntTools_SurfaceRangeSample::GetRangeIndexUDeeper()`
     pub fn get_range_index_u_deeper(&self, theNbSampleU: i32) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_get_range_index_u_deeper(
-                self as *const Self,
-                theNbSampleU,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_range_index_u_deeper(
+                    self as *const Self,
+                    theNbSampleU,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:98 - `IntTools_SurfaceRangeSample::GetRangeIndexVDeeper()`
     pub fn get_range_index_v_deeper(&self, theNbSampleV: i32) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_SurfaceRangeSample_get_range_index_v_deeper(
-                self as *const Self,
-                theNbSampleV,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_SurfaceRangeSample_get_range_index_v_deeper(
+                    self as *const Self,
+                    theNbSampleV,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_SurfaceRangeSample_to_owned(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_SurfaceRangeSample_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3373,7 +4594,11 @@ impl Tools {
     /// **Source:** `IntTools_Tools.hxx` - `IntTools_Tools::IntTools_Tools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_Tools_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:55 - `IntTools_Tools::ComputeVV()`
@@ -3382,14 +4607,22 @@ impl Tools {
     /// returns zero,
     /// otherwise returns negative value
     pub fn compute_vv(V1: &crate::topo_ds::Vertex, V2: &crate::topo_ds::Vertex) -> i32 {
-        unsafe { crate::ffi::IntTools_Tools_compute_vv(V1, V2) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_compute_vv(V1, V2) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:60 - `IntTools_Tools::HasInternalEdge()`
     /// Returns True if wire aW contains edges
     /// with INTERNAL orientation
     pub fn has_internal_edge(aW: &crate::topo_ds::Wire) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_has_internal_edge(aW) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_has_internal_edge(aW) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:64 - `IntTools_Tools::MakeFaceFromWireAndFace()`
@@ -3400,7 +4633,10 @@ impl Tools {
         aF: &crate::topo_ds::Face,
         aFNew: &mut crate::topo_ds::Face,
     ) {
-        unsafe { crate::ffi::IntTools_Tools_make_face_from_wire_and_face(aW, aF, aFNew) }
+        {
+            unsafe { crate::ffi::IntTools_Tools_make_face_from_wire_and_face(aW, aF, aFNew) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:68 - `IntTools_Tools::ClassifyPointByFace()`
@@ -3408,11 +4644,10 @@ impl Tools {
         aF: &crate::topo_ds::Face,
         P: &crate::gp::Pnt2d,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_Tools_classify_point_by_face(
-                aF, P,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_classify_point_by_face(aF, P) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -3422,7 +4657,11 @@ impl Tools {
     /// Returns True if this distance is less than square
     /// tolerance of vertex, otherwise returns false.
     pub fn is_vertex_edge_real(E: &crate::topo_ds::Edge, t: f64) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_vertex_edge_real(E, t) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_vertex_edge_real(E, t) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:79 - `IntTools_Tools::IsVertex()`
@@ -3434,7 +4673,12 @@ impl Tools {
         V: &crate::topo_ds::Vertex,
         t: f64,
     ) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_vertex_edge_vertex_real(E, V, t) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Tools_is_vertex_edge_vertex_real(E, V, t) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:88 - `IntTools_Tools::IsVertex()`
@@ -3444,7 +4688,11 @@ impl Tools {
     /// second range returns True,
     /// otherwise returns False
     pub fn is_vertex_commonprt(aCmnPrt: &CommonPrt) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_vertex_commonprt(aCmnPrt) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_vertex_commonprt(aCmnPrt) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:94 - `IntTools_Tools::IsMiddlePointsEqual()`
@@ -3453,7 +4701,11 @@ impl Tools {
     /// Returns True if distance between computed points is less than
     /// sum of edge tolerance, otherwise returns False.
     pub fn is_middle_points_equal(E1: &crate::topo_ds::Edge, E2: &crate::topo_ds::Edge) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_middle_points_equal(E1, E2) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_middle_points_equal(E1, E2) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:100 - `IntTools_Tools::IsVertex()`
@@ -3465,13 +4717,22 @@ impl Tools {
         aTolPV: f64,
         aV: &crate::topo_ds::Vertex,
     ) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_vertex_pnt_real_vertex(aP, aTolPV, aV) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Tools_is_vertex_pnt_real_vertex(aP, aTolPV, aV) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:105 - `IntTools_Tools::IntermediatePoint()`
     /// Returns some value between aFirst and aLast
     pub fn intermediate_point(aFirst: f64, aLast: f64) -> f64 {
-        unsafe { crate::ffi::IntTools_Tools_intermediate_point(aFirst, aLast) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_intermediate_point(aFirst, aLast) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:111 - `IntTools_Tools::SplitCurve()`
@@ -3479,7 +4740,11 @@ impl Tools {
     /// Returns positive value if splitting has been done,
     /// otherwise returns zero.
     pub fn split_curve(aC: &Curve, aS: &mut crate::ffi::IntTools_SequenceOfCurves) -> i32 {
-        unsafe { crate::ffi::IntTools_Tools_split_curve(aC, aS) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_split_curve(aC, aS) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:116 - `IntTools_Tools::RejectLines()`
@@ -3489,19 +4754,31 @@ impl Tools {
         aSIn: &crate::ffi::IntTools_SequenceOfCurves,
         aSOut: &mut crate::ffi::IntTools_SequenceOfCurves,
     ) {
-        unsafe { crate::ffi::IntTools_Tools_reject_lines(aSIn, aSOut) }
+        {
+            unsafe { crate::ffi::IntTools_Tools_reject_lines(aSIn, aSOut) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:120 - `IntTools_Tools::IsDirsCoinside()`
     /// Returns True if D1 and D2 coincide
     pub fn is_dirs_coinside_dir2(D1: &crate::gp::Dir, D2: &crate::gp::Dir) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_dirs_coinside_dir2(D1, D2) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_dirs_coinside_dir2(D1, D2) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:123 - `IntTools_Tools::IsDirsCoinside()`
     /// Returns True if D1 and D2 coincide with given tolerance
     pub fn is_dirs_coinside_dir2_real(D1: &crate::gp::Dir, D2: &crate::gp::Dir, aTol: f64) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_dirs_coinside_dir2_real(D1, D2, aTol) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Tools_is_dirs_coinside_dir2_real(D1, D2, aTol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:131 - `IntTools_Tools::IsClosed()`
@@ -3510,7 +4787,11 @@ impl Tools {
     /// of the curve aC and last point
     /// is less than 1.e-12
     pub fn is_closed(aC: &crate::ffi::HandleGeomCurve) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_closed(aC) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_closed(aC) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:136 - `IntTools_Tools::CurveTolerance()`
@@ -3518,40 +4799,67 @@ impl Tools {
     /// if aC is trimmed curve and basis curve is parabola,
     /// otherwise returns value of aTolBase
     pub fn curve_tolerance(aC: &crate::ffi::HandleGeomCurve, aTolBase: f64) -> f64 {
-        unsafe { crate::ffi::IntTools_Tools_curve_tolerance(aC, aTolBase) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_curve_tolerance(aC, aTolBase) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:141 - `IntTools_Tools::CheckCurve()`
     /// Checks if the curve is not covered by the default tolerance (confusion).<br>
     /// Builds bounding box for the curve and stores it into <theBox>.
     pub fn check_curve(theCurve: &Curve, theBox: &mut crate::bnd::Box) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_check_curve(theCurve, theBox) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_check_curve(theCurve, theBox) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:144 - `IntTools_Tools::IsOnPave()`
     pub fn is_on_pave(theT: f64, theRange: &Range, theTol: f64) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_on_pave(theT, theRange, theTol) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_on_pave(theT, theRange, theTol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:148 - `IntTools_Tools::VertexParameters()`
     pub fn vertex_parameters(theCP: &CommonPrt, theT1: &mut f64, theT2: &mut f64) {
-        unsafe { crate::ffi::IntTools_Tools_vertex_parameters(theCP, theT1, theT2) }
+        {
+            unsafe { crate::ffi::IntTools_Tools_vertex_parameters(theCP, theT1, theT2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:152 - `IntTools_Tools::VertexParameter()`
     pub fn vertex_parameter(theCP: &CommonPrt, theT: &mut f64) {
-        unsafe { crate::ffi::IntTools_Tools_vertex_parameter(theCP, theT) }
+        {
+            unsafe { crate::ffi::IntTools_Tools_vertex_parameter(theCP, theT) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:154 - `IntTools_Tools::IsOnPave1()`
     pub fn is_on_pave1(theT: f64, theRange: &Range, theTol: f64) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_on_pave1(theT, theRange, theTol) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Tools_is_on_pave1(theT, theRange, theTol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:159 - `IntTools_Tools::IsInRange()`
     /// Checks if the range <theR> interfere with the range <theRRef>
     pub fn is_in_range(theRRef: &Range, theR: &Range, theTol: f64) -> bool {
-        unsafe { crate::ffi::IntTools_Tools_is_in_range(theRRef, theR, theTol) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_Tools_is_in_range(theRRef, theR, theTol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_Tools.hxx`:163 - `IntTools_Tools::SegPln()`
@@ -3568,11 +4876,15 @@ impl Tools {
         theTmin: &mut f64,
         theTmax: &mut f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::IntTools_Tools_seg_pln(
-                theLin, theTLin1, theTLin2, theTolLin, thePln, theTolPln, theP, theT, theTolP,
-                theTmin, theTmax,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Tools_seg_pln(
+                    theLin, theTLin1, theTLin2, theTolLin, thePln, theTolPln, theP, theT, theTolP,
+                    theTmin, theTmax,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3590,18 +4902,22 @@ impl Tools {
         theTolRange: f64,
         theToRunParallel: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_Tools_compute_tolerance(
-                theCurve3D,
-                theCurve2D,
-                theSurf,
-                theFirst,
-                theLast,
-                theMaxDist,
-                theMaxPar,
-                theTolRange,
-                theToRunParallel,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_Tools_compute_tolerance(
+                    theCurve3D,
+                    theCurve2D,
+                    theSurf,
+                    theFirst,
+                    theLast,
+                    theMaxDist,
+                    theMaxPar,
+                    theTolRange,
+                    theToRunParallel,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3609,7 +4925,12 @@ impl Tools {
     /// Computes the correct Intersection range for
     /// Line/Line, Line/Plane and Plane/Plane intersections
     pub fn compute_int_range(theTol1: f64, theTol2: f64, theAngle: f64) -> f64 {
-        unsafe { crate::ffi::IntTools_Tools_compute_int_range(theTol1, theTol2, theAngle) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_Tools_compute_int_range(theTol1, theTol2, theAngle) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -3632,7 +4953,11 @@ impl TopolTool {
     /// **Source:** `IntTools_TopolTool.hxx`:35 - `IntTools_TopolTool::IntTools_TopolTool()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_TopolTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:38 - `IntTools_TopolTool::IntTools_TopolTool()`
@@ -3640,10 +4965,11 @@ impl TopolTool {
     pub fn new_handleadaptor3dsurface(
         theSurface: &crate::ffi::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_ctor_handleadaptor3dsurface(
-                theSurface,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_ctor_handleadaptor3dsurface(theSurface) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3653,7 +4979,10 @@ impl TopolTool {
     /// Warning:
     /// Raises the exception NotImplemented
     pub fn initialize(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_initialize(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_TopolTool_initialize(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:47 - `IntTools_TopolTool::Initialize()`
@@ -3662,35 +4991,55 @@ impl TopolTool {
         &mut self,
         theSurface: &crate::ffi::HandleAdaptor3dSurface,
     ) {
-        unsafe {
-            crate::ffi::IntTools_TopolTool_initialize_handleadaptor3dsurface(
-                self as *mut Self,
-                theSurface,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_initialize_handleadaptor3dsurface(
+                    self as *mut Self,
+                    theSurface,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:50 - `IntTools_TopolTool::ComputeSamplePoints()`
     pub fn compute_sample_points(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_compute_sample_points(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_TopolTool_compute_sample_points(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:53 - `IntTools_TopolTool::NbSamplesU()`
     /// Computes the sample-points for the intersections algorithms
     pub fn nb_samples_u(&mut self) -> i32 {
-        unsafe { crate::ffi::IntTools_TopolTool_nb_samples_u(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_nb_samples_u(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:56 - `IntTools_TopolTool::NbSamplesV()`
     /// Computes the sample-points for the intersections algorithms
     pub fn nb_samples_v(&mut self) -> i32 {
-        unsafe { crate::ffi::IntTools_TopolTool_nb_samples_v(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_nb_samples_v(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:59 - `IntTools_TopolTool::NbSamples()`
     /// Computes the sample-points for the intersections algorithms
     pub fn nb_samples(&mut self) -> i32 {
-        unsafe { crate::ffi::IntTools_TopolTool_nb_samples(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_TopolTool_nb_samples(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:65 - `IntTools_TopolTool::SamplePoint()`
@@ -3704,7 +5053,12 @@ impl TopolTool {
         P2d: &mut crate::gp::Pnt2d,
         P3d: &mut crate::gp::Pnt,
     ) {
-        unsafe { crate::ffi::IntTools_TopolTool_sample_point(self as *mut Self, Index, P2d, P3d) }
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_sample_point(self as *mut Self, Index, P2d, P3d)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:75 - `IntTools_TopolTool::SamplePnts()`
@@ -3715,56 +5069,88 @@ impl TopolTool {
     /// theDefl is a required deflection
     /// theNUmin, theNVmin are minimal nb points for U and V.
     pub fn sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
-        unsafe {
-            crate::ffi::IntTools_TopolTool_sample_pnts(
-                self as *mut Self,
-                theDefl,
-                theNUmin,
-                theNVmin,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_sample_pnts(
+                    self as *mut Self,
+                    theDefl,
+                    theNUmin,
+                    theNVmin,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntTools_TopolTool_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IntTools_TopolTool_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IntTools_TopolTool_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntTools_TopolTool_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_TopolTool_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Adaptor3d_TopolTool
     pub fn as_adaptor3d_topol_tool(&self) -> &crate::adaptor3d::TopolTool {
-        unsafe { &*(crate::ffi::IntTools_TopolTool_as_Adaptor3d_TopolTool(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_as_Adaptor3d_TopolTool(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Adaptor3d_TopolTool (mutable)
     pub fn as_adaptor3d_topol_tool_mut(&mut self) -> &mut crate::adaptor3d::TopolTool {
-        unsafe {
-            &mut *(crate::ffi::IntTools_TopolTool_as_Adaptor3d_TopolTool_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_as_Adaptor3d_TopolTool_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IntTools_TopolTool_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::IntTools_TopolTool_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3772,57 +5158,85 @@ impl TopolTool {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIntToolsTopolTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::IntTools_TopolTool_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::Init()`
     pub fn init(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_Init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_TopolTool_inherited_Init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:52 - `Adaptor3d_TopolTool::More()`
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_More(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_More(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:54 - `Adaptor3d_TopolTool::Value()`
     pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_inherited_Value(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_Value(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:56 - `Adaptor3d_TopolTool::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_Next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_TopolTool_inherited_Next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:58 - `Adaptor3d_TopolTool::InitVertexIterator()`
     pub fn init_vertex_iterator(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_InitVertexIterator(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_InitVertexIterator(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:60 - `Adaptor3d_TopolTool::MoreVertex()`
     pub fn more_vertex(&mut self) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_MoreVertex(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_MoreVertex(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:62 - `Adaptor3d_TopolTool::Vertex()`
     pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dHVertex> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_inherited_Vertex(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_Vertex(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:64 - `Adaptor3d_TopolTool::NextVertex()`
     pub fn next_vertex(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_NextVertex(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntTools_TopolTool_inherited_NextVertex(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:66 - `Adaptor3d_TopolTool::Classify()`
@@ -3832,14 +5246,17 @@ impl TopolTool {
         Tol: f64,
         ReacdreOnPeriodic: bool,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntTools_TopolTool_inherited_Classify(
-                self as *mut Self,
-                P,
-                Tol,
-                ReacdreOnPeriodic,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_Classify(
+                    self as *mut Self,
+                    P,
+                    Tol,
+                    ReacdreOnPeriodic,
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -3850,13 +5267,17 @@ impl TopolTool {
         Tol: f64,
         ReacdreOnPeriodic: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_TopolTool_inherited_IsThePointOn(
-                self as *mut Self,
-                P,
-                Tol,
-                ReacdreOnPeriodic,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_IsThePointOn(
+                    self as *mut Self,
+                    P,
+                    Tol,
+                    ReacdreOnPeriodic,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3865,11 +5286,12 @@ impl TopolTool {
         &mut self,
         C: &crate::ffi::HandleAdaptor2dCurve2d,
     ) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(
-                crate::ffi::IntTools_TopolTool_inherited_Orientation(self as *mut Self, C),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_Orientation(self as *mut Self, C)
+            };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
@@ -3879,105 +5301,176 @@ impl TopolTool {
         V1: &crate::ffi::HandleAdaptor3dHVertex,
         V2: &crate::ffi::HandleAdaptor3dHVertex,
     ) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_Identical(self as *mut Self, V1, V2) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_Identical(self as *mut Self, V1, V2)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:97 - `Adaptor3d_TopolTool::Has3d()`
     pub fn has3d(&self) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_Has3d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_Has3d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:100 - `Adaptor3d_TopolTool::Tol3d()`
     pub fn tol3d(&self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_Tol3d(self as *const Self, C) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_Tol3d(self as *const Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:106 - `Adaptor3d_TopolTool::Pnt()`
     pub fn pnt(&self, V: &crate::ffi::HandleAdaptor3dHVertex) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_inherited_Pnt(
-                self as *const Self,
-                V,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_Pnt(self as *const Self, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
     pub fn u_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::IntTools_TopolTool_inherited_UParameters(self as *const Self, theArray)
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_UParameters(self as *const Self, theArray)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
     pub fn v_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::IntTools_TopolTool_inherited_VParameters(self as *const Self, theArray)
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_VParameters(self as *const Self, theArray)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:131 - `Adaptor3d_TopolTool::DomainIsInfinite()`
     pub fn domain_is_infinite(&mut self) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_DomainIsInfinite(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_DomainIsInfinite(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:150 - `Adaptor3d_TopolTool::BSplSamplePnts()`
     pub fn b_spl_sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
-        unsafe {
-            crate::ffi::IntTools_TopolTool_inherited_BSplSamplePnts(
-                self as *mut Self,
-                theDefl,
-                theNUmin,
-                theNVmin,
-            )
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_BSplSamplePnts(
+                    self as *mut Self,
+                    theDefl,
+                    theNUmin,
+                    theNVmin,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:155 - `Adaptor3d_TopolTool::IsUniformSampling()`
     pub fn is_uniform_sampling(&self) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_IsUniformSampling(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_IsUniformSampling(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IntTools_TopolTool_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IntTools_TopolTool_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_TopolTool_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IntTools_TopolTool_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IntTools_TopolTool_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3992,31 +5485,42 @@ unsafe impl crate::CppDeletable for HandleIntToolsTopolTool {
 impl HandleIntToolsTopolTool {
     /// Dereference this Handle to access the underlying IntTools_TopolTool
     pub fn get(&self) -> &crate::ffi::IntTools_TopolTool {
-        unsafe { &*(crate::ffi::HandleIntToolsTopolTool_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIntToolsTopolTool_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IntTools_TopolTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntTools_TopolTool {
-        unsafe { &mut *(crate::ffi::HandleIntToolsTopolTool_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIntToolsTopolTool_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IntTools_TopolTool> to Handle<Adaptor3d_TopolTool>
     pub fn to_handle_topol_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dTopolTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleIntToolsTopolTool_to_HandleAdaptor3dTopolTool(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIntToolsTopolTool_to_HandleAdaptor3dTopolTool(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IntTools_TopolTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleIntToolsTopolTool_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIntToolsTopolTool_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4039,7 +5543,11 @@ impl WLineTool {
     /// **Source:** `IntTools_WLineTool.hxx` - `IntTools_WLineTool::IntTools_WLineTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_WLineTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntTools_WLineTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntTools_WLineTool.hxx`:31 - `IntTools_WLineTool::NotUseSurfacesForApprox()`
@@ -4050,8 +5558,14 @@ impl WLineTool {
         ifprm: i32,
         ilprm: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_WLineTool_not_use_surfaces_for_approx(aF1, aF2, WL, ifprm, ilprm)
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_WLineTool_not_use_surfaces_for_approx(
+                    aF1, aF2, WL, ifprm, ilprm,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4068,19 +5582,23 @@ impl WLineTool {
         theNewLines: &mut crate::ffi::IntPatch_SequenceOfLine,
         arg9: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntTools_WLineTool_decomposition_of_w_line(
-                theWLine,
-                theSurface1,
-                theSurface2,
-                theFace1,
-                theFace2,
-                theLConstructor,
-                theAvoidLConstructor,
-                theTol,
-                theNewLines,
-                arg9,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntTools_WLineTool_decomposition_of_w_line(
+                    theWLine,
+                    theSurface1,
+                    theSurface2,
+                    theFace1,
+                    theFace2,
+                    theLConstructor,
+                    theAvoidLConstructor,
+                    theTol,
+                    theNewLines,
+                    arg9,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }

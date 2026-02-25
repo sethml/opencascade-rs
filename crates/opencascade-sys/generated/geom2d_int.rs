@@ -26,8 +26,12 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
         C2: &crate::adaptor2d::Curve2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_ctor_curve2d2_real(C1, C2, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_ctor_curve2d2_real(C1, C2, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -41,50 +45,59 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
         ParamOnSeg1: &mut f64,
         ParamOnSeg2: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_perform_thepolygon2doftheintpcurvepcurveofginter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_perform_thepolygon2doftheintpcurvepcurveofginter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter.hxx`:51 - `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter::Perform()`
     pub fn perform_real6(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
-        unsafe {
-            crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_perform_real6(
-                self as *mut Self,
-                Uo,
-                Vo,
-                UInf,
-                VInf,
-                USup,
-                VSup,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_perform_real6(self as *mut Self, Uo, Vo, UInf, VInf, USup, VSup)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter.hxx`:58 - `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_nb_roots(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_nb_roots(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter.hxx`:60 - `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter::Roots()`
     pub fn roots(&mut self, U: &mut f64, V: &mut f64) {
-        unsafe {
-            crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_roots(
-                self as *mut Self,
-                U,
-                V,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_roots(
+                    self as *mut Self,
+                    U,
+                    V,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter.hxx`:62 - `Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter::AnErrorOccurred()`
     pub fn an_error_occurred(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_an_error_occurred(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_an_error_occurred(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -106,7 +119,11 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:50 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_GInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_GInter.hxx`:53 - `Geom2dInt_GInter::Geom2dInt_GInter()`
@@ -116,10 +133,11 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_ctor_curve2d_real2(
-                C, TolConf, Tol,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_ctor_curve2d_real2(C, TolConf, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -131,10 +149,12 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_ctor_curve2d_domain_real2(
-                C, D, TolConf, Tol,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_GInter_ctor_curve2d_domain_real2(C, D, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -146,10 +166,11 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_ctor_curve2d2_real2(
-                C1, C2, TolConf, Tol,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_ctor_curve2d2_real2(C1, C2, TolConf, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -162,12 +183,14 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_GInter_ctor_curve2d_domain_curve2d_real2(
                     C1, D1, C2, TolConf, Tol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -180,10 +203,12 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_ctor_curve2d2_domain_real2(
-                C1, C2, D2, TolConf, Tol,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_GInter_ctor_curve2d2_domain_real2(C1, C2, D2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -197,12 +222,14 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_GInter_ctor_curve2d_domain_curve2d_domain_real2(
                     C1, D1, C2, D2, TolConf, Tol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -217,16 +244,19 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_perform_curve2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                C1,
-                D1,
-                C2,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_perform_curve2d_domain_curve2d_domain_real2(
+                    self as *mut Self,
+                    C1,
+                    D1,
+                    C2,
+                    D2,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -239,14 +269,17 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_perform_curve2d2_real2(
-                self as *mut Self,
-                C1,
-                C2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_perform_curve2d2_real2(
+                    self as *mut Self,
+                    C1,
+                    C2,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -259,14 +292,17 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_perform_curve2d_domain_real2(
-                self as *mut Self,
-                C1,
-                D1,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_perform_curve2d_domain_real2(
+                    self as *mut Self,
+                    C1,
+                    D1,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -278,8 +314,16 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_perform_curve2d_real2(self as *mut Self, C1, TolConf, Tol)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_perform_curve2d_real2(
+                    self as *mut Self,
+                    C1,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -293,15 +337,18 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_perform_curve2d_domain_curve2d_real2(
-                self as *mut Self,
-                C1,
-                D1,
-                C2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_perform_curve2d_domain_curve2d_real2(
+                    self as *mut Self,
+                    C1,
+                    D1,
+                    C2,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -315,15 +362,18 @@ impl GInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_perform_curve2d2_domain_real2(
-                self as *mut Self,
-                C1,
-                C2,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_perform_curve2d2_domain_real2(
+                    self as *mut Self,
+                    C1,
+                    C2,
+                    D2,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -334,77 +384,128 @@ impl GInter {
         C1: &crate::adaptor2d::Curve2d,
         TolDomain: f64,
     ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_compute_domain(
-                self as *const Self,
-                C1,
-                TolDomain,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_GInter_compute_domain(self as *const Self, C1, TolDomain)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Geom2dInt_GInter.hxx`:135 - `Geom2dInt_GInter::SetMinNbSamples()`
     /// Set / get minimum number of points in polygon intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_set_min_nb_samples(self as *mut Self, theMinNbSamples)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_set_min_nb_samples(self as *mut Self, theMinNbSamples)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_GInter.hxx`:136 - `Geom2dInt_GInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_GInter_get_min_nb_samples(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_get_min_nb_samples(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        unsafe { &*(crate::ffi::Geom2dInt_GInter_as_IntRes2d_Intersection(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_GInter_as_IntRes2d_Intersection(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_GInter_as_IntRes2d_Intersection_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_GInter_as_IntRes2d_Intersection_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Geom2dInt_GInter_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::Geom2dInt_GInter_inherited_IsEmpty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_inherited_IsEmpty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_GInter_inherited_NbPoints(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_inherited_NbPoints(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        unsafe { &*(crate::ffi::Geom2dInt_GInter_inherited_Point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_inherited_Point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_GInter_inherited_NbSegments(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_inherited_NbSegments(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        unsafe { &*(crate::ffi::Geom2dInt_GInter_inherited_Segment(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_GInter_inherited_Segment(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        unsafe {
-            crate::ffi::Geom2dInt_GInter_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_GInter_inherited_SetReversedParameters(
+                    self as *mut Self,
+                    Reverseflag,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -428,20 +529,29 @@ impl Geom2dCurveTool {
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx` - `Geom2dInt_Geom2dCurveTool::Geom2dInt_Geom2dCurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:44 - `Geom2dInt_Geom2dCurveTool::GetType()`
     pub fn get_type(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::Geom2dInt_Geom2dCurveTool_get_type(C))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_get_type(C) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:46 - `Geom2dInt_Geom2dCurveTool::IsComposite()`
     pub fn is_composite(C: &crate::adaptor2d::Curve2d) -> bool {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_is_composite(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_is_composite(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:51 - `Geom2dInt_Geom2dCurveTool::Line()`
@@ -449,7 +559,11 @@ impl Geom2dCurveTool {
     /// This method is called only when TheType returns
     /// GeomAbs_Line.
     pub fn line(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_line(C)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_line(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:56 - `Geom2dInt_Geom2dCurveTool::Circle()`
@@ -457,7 +571,11 @@ impl Geom2dCurveTool {
     /// This method is called only when TheType returns
     /// GeomAbs_Circle.
     pub fn circle(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_circle(C)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_circle(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:61 - `Geom2dInt_Geom2dCurveTool::Ellipse()`
@@ -465,7 +583,11 @@ impl Geom2dCurveTool {
     /// This method is called only when TheType returns
     /// GeomAbs_Ellipse.
     pub fn ellipse(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_ellipse(C)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_ellipse(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:66 - `Geom2dInt_Geom2dCurveTool::Parabola()`
@@ -473,7 +595,11 @@ impl Geom2dCurveTool {
     /// This method is called only when TheType returns
     /// GeomAbs_Parabola.
     pub fn parabola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_parabola(C)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_parabola(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:71 - `Geom2dInt_Geom2dCurveTool::Hyperbola()`
@@ -481,47 +607,85 @@ impl Geom2dCurveTool {
     /// This method is called only when TheType returns
     /// GeomAbs_Hyperbola.
     pub fn hyperbola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_hyperbola(C)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_hyperbola(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:73 - `Geom2dInt_Geom2dCurveTool::EpsX()`
     pub fn eps_x_curve2d(C: &crate::adaptor2d::Curve2d) -> f64 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_eps_x_curve2d(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_eps_x_curve2d(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:75 - `Geom2dInt_Geom2dCurveTool::EpsX()`
     pub fn eps_x_curve2d_real(C: &crate::adaptor2d::Curve2d, Eps_XYZ: f64) -> f64 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_eps_x_curve2d_real(C, Eps_XYZ) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_eps_x_curve2d_real(C, Eps_XYZ) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:77 - `Geom2dInt_Geom2dCurveTool::NbSamples()`
     pub fn nb_samples_curve2d(C: &crate::adaptor2d::Curve2d) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_nb_samples_curve2d(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_nb_samples_curve2d(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:79 - `Geom2dInt_Geom2dCurveTool::NbSamples()`
     pub fn nb_samples_curve2d_real2(C: &crate::adaptor2d::Curve2d, U0: f64, U1: f64) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_nb_samples_curve2d_real2(C, U0, U1) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_Geom2dCurveTool_nb_samples_curve2d_real2(C, U0, U1)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:83 - `Geom2dInt_Geom2dCurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_first_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_first_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:85 - `Geom2dInt_Geom2dCurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_last_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_last_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:87 - `Geom2dInt_Geom2dCurveTool::Value()`
     pub fn value(C: &crate::adaptor2d::Curve2d, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_value(C, X)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_value(C, X) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:89 - `Geom2dInt_Geom2dCurveTool::D0()`
     pub fn d0(C: &crate::adaptor2d::Curve2d, U: f64, P: &mut crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d0(C, U, P) }
+        {
+            unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d0(C, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:91 - `Geom2dInt_Geom2dCurveTool::D1()`
@@ -531,7 +695,10 @@ impl Geom2dCurveTool {
         P: &mut crate::gp::Pnt2d,
         T: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d1(C, U, P, T) }
+        {
+            unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d1(C, U, P, T) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:93 - `Geom2dInt_Geom2dCurveTool::D2()`
@@ -542,7 +709,10 @@ impl Geom2dCurveTool {
         T: &mut crate::gp::Vec2d,
         N: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d2(C, U, P, T, N) }
+        {
+            unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d2(C, U, P, T, N) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:99 - `Geom2dInt_Geom2dCurveTool::D3()`
@@ -554,25 +724,39 @@ impl Geom2dCurveTool {
         N: &mut crate::gp::Vec2d,
         V: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d3(C, U, P, T, N, V) }
+        {
+            unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_d3(C, U, P, T, N, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:106 - `Geom2dInt_Geom2dCurveTool::DN()`
     pub fn dn(C: &crate::adaptor2d::Curve2d, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_Geom2dCurveTool_dn(C, U, N)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_dn(C, U, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:110 - `Geom2dInt_Geom2dCurveTool::NbIntervals()`
     /// output the number of interval of continuity C2 of
     /// the curve
     pub fn nb_intervals(C: &crate::adaptor2d::Curve2d) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_nb_intervals(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_nb_intervals(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:113 - `Geom2dInt_Geom2dCurveTool::Intervals()`
     /// compute Tab.
     pub fn intervals(C: &crate::adaptor2d::Curve2d, Tab: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_intervals(C, Tab) }
+        {
+            unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_intervals(C, Tab) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:117 - `Geom2dInt_Geom2dCurveTool::GetInterval()`
@@ -585,12 +769,19 @@ impl Geom2dCurveTool {
         U1: &mut f64,
         U2: &mut f64,
     ) {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_get_interval(C, Index, Tab, U1, U2) }
+        {
+            unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_get_interval(C, Index, Tab, U1, U2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dInt_Geom2dCurveTool.hxx`:123 - `Geom2dInt_Geom2dCurveTool::Degree()`
     pub fn degree(C: &crate::adaptor2d::Curve2d) -> i32 {
-        unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_degree(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_Geom2dCurveTool_degree(C) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -611,7 +802,11 @@ impl IntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_IntConicCurveOfGInter.hxx`:44 - `Geom2dInt_IntConicCurveOfGInter::Geom2dInt_IntConicCurveOfGInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_IntConicCurveOfGInter.hxx`:47 - `Geom2dInt_IntConicCurveOfGInter::Geom2dInt_IntConicCurveOfGInter()`
@@ -624,12 +819,14 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_lin2d_domain_curve2d_domain_real2(
                     L, D1, PCurve, D2, TolConf, Tol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -643,12 +840,14 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_circ2d_domain_curve2d_domain_real2(
                     C, D1, PCurve, D2, TolConf, Tol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -662,8 +861,14 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_elips2d_domain_curve2d_domain_real2(E, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_elips2d_domain_curve2d_domain_real2(
+                    E, D1, PCurve, D2, TolConf, Tol,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -677,8 +882,14 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_parab2d_domain_curve2d_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_parab2d_domain_curve2d_domain_real2(
+                    Prb, D1, PCurve, D2, TolConf, Tol,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -693,12 +904,14 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_IntConicCurveOfGInter_ctor_hypr2d_domain_curve2d_domain_real2(
                     H, D1, PCurve, D2, TolConf, Tol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -713,16 +926,11 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_lin2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                L,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_lin2d_domain_curve2d_domain_real2(self as *mut Self, L, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -737,16 +945,11 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_circ2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                C,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_circ2d_domain_curve2d_domain_real2(self as *mut Self, C, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -761,16 +964,11 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_elips2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                E,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_elips2d_domain_curve2d_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -785,16 +983,11 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_parab2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                Prb,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_parab2d_domain_curve2d_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -810,87 +1003,121 @@ impl IntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_hypr2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                H,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_perform_hypr2d_domain_curve2d_domain_real2(self as *mut Self, H, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_IntConicCurveOfGInter_as_IntRes2d_Intersection(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_as_IntRes2d_Intersection(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_IntConicCurveOfGInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_IsDone(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_IsDone(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_IsEmpty(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_IsEmpty(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_NbPoints(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_NbPoints(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_Point(self as *const Self, N))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_Point(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_NbSegments(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_NbSegments(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_Segment(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_Segment(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        unsafe {
-            crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_SetReversedParameters(
+                    self as *mut Self,
+                    Reverseflag,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -917,8 +1144,12 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
         IT: &crate::int_curve::IConicTool,
         PC: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_ctor_iconictool_curve2d(IT, PC))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_ctor_iconictool_curve2d(IT, PC)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -927,12 +1158,16 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
     /// the implicit curve and the point at parameter Param
     /// on the parametrised curve.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_value(
-                self as *mut Self,
-                Param,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_value(
+                    self as *mut Self,
+                    Param,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -940,32 +1175,40 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
     /// Computes the derivative of the previous function at
     /// parameter Param.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_derivative(
-                self as *mut Self,
-                Param,
-                D,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_derivative(self as *mut Self, Param, D)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter.hxx`:54 - `Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter::Values()`
     /// Computes the value and the derivative of the function.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_values(
-                self as *mut Self,
-                Param,
-                F,
-                D,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_values(
+                    self as *mut Self,
+                    Param,
+                    F,
+                    D,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_FunctionWithDerivative(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_FunctionWithDerivative(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -973,29 +1216,45 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_FunctionWithDerivative_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_Function(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_Function(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_Function_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_as_math_Function_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1016,10 +1275,11 @@ unsafe impl crate::CppDeletable for PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter 
 impl PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:43 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1028,128 +1288,175 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
         P: &crate::gp::Pnt2d,
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d(P, C))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d(
+                    P, C,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:49 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_initialize(
-                self as *mut Self,
-                C,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_initialize(
+                    self as *mut Self,
+                    C,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:52 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_set_point(
-                self as *mut Self,
-                P,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_set_point(
+                    self as *mut Self,
+                    P,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:55 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_value(
-                self as *mut Self,
-                U,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_value(
+                    self as *mut Self,
+                    U,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:58 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_derivative(
+                    self as *mut Self,
+                    U,
+                    DF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:62 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_values(
+                    self as *mut Self,
+                    U,
+                    F,
+                    DF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:67 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_get_state_number(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_get_state_number(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:70 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_nb_ext(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_nb_ext(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:73 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_square_distance(
-                self as *const Self,
-                N,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_square_distance(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:76 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_is_min(
-                self as *const Self,
-                N,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_is_min(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:79 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &crate::extrema::POnCurv2d {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_point(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_point(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx`:82 - `Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1157,17 +1464,23 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_search_of_tolerance(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_search_of_tolerance(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_FunctionWithDerivative(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_FunctionWithDerivative(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -1175,24 +1488,36 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_FunctionWithDerivative_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_Function(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_Function(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_Function_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_Function_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -1214,10 +1539,11 @@ impl TheCurveLocatorOfTheProjPCurOfGInter {
     /// **Source:** `Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter.hxx` - `Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1231,8 +1557,11 @@ impl TheCurveLocatorOfTheProjPCurOfGInter {
         NbU: i32,
         Papp: &mut crate::extrema::POnCurv2d,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_pnt2d_curve2d_int_poncurv2d(P, C, NbU, Papp)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_pnt2d_curve2d_int_poncurv2d(P, C, NbU, Papp)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1249,8 +1578,11 @@ impl TheCurveLocatorOfTheProjPCurOfGInter {
         Usup: f64,
         Papp: &mut crate::extrema::POnCurv2d,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_pnt2d_curve2d_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_pnt2d_curve2d_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1267,8 +1599,11 @@ impl TheCurveLocatorOfTheProjPCurOfGInter {
         Papp1: &mut crate::extrema::POnCurv2d,
         Papp2: &mut crate::extrema::POnCurv2d,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_curve2d2_int2_poncurv2d2(C1, C2, NbU, NbV, Papp1, Papp2)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_curve2d2_int2_poncurv2d2(C1, C2, NbU, NbV, Papp1, Papp2)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1292,28 +1627,40 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
         curve1: &crate::adaptor2d::Curve2d,
         curve2: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_ctor_curve2d2(curve1, curve2))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_ctor_curve2d2(curve1, curve2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:42 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::NbVariables()`
     /// returns 2.
     pub fn nb_variables(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_nb_variables(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_nb_variables(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx`:45 - `Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter::NbEquations()`
     /// returns 2.
     pub fn nb_equations(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_nb_equations(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_nb_equations(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1323,12 +1670,16 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
     /// returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_value(
+                    self as *mut Self,
+                    X,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1342,12 +1693,16 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_derivatives(
-                self as *mut Self,
-                X,
-                D,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_derivatives(
+                    self as *mut Self,
+                    X,
+                    D,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1362,13 +1717,17 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_values(
-                self as *mut Self,
-                X,
-                F,
-                D,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_values(
+                    self as *mut Self,
+                    X,
+                    F,
+                    D,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1376,8 +1735,12 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSetWithDerivatives(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSetWithDerivatives(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -1385,29 +1748,45 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSet(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1429,7 +1808,11 @@ impl TheIntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntConicCurveOfGInter.hxx`:43 - `Geom2dInt_TheIntConicCurveOfGInter::Geom2dInt_TheIntConicCurveOfGInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_TheIntConicCurveOfGInter.hxx`:46 - `Geom2dInt_TheIntConicCurveOfGInter::Geom2dInt_TheIntConicCurveOfGInter()`
@@ -1442,8 +1825,12 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_lin2d_domain_curve2d_domain_real2(L, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_lin2d_domain_curve2d_domain_real2(L, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1457,8 +1844,12 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_circ2d_domain_curve2d_domain_real2(C, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_circ2d_domain_curve2d_domain_real2(C, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1472,8 +1863,12 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_elips2d_domain_curve2d_domain_real2(E, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_elips2d_domain_curve2d_domain_real2(E, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1487,8 +1882,12 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_parab2d_domain_curve2d_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_parab2d_domain_curve2d_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1503,8 +1902,12 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_hypr2d_domain_curve2d_domain_real2(H, D1, PCurve, D2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_ctor_hypr2d_domain_curve2d_domain_real2(H, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1519,16 +1922,11 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_lin2d_domain_curve2d_domain_real2(
-                self as *mut Self,
-                L,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_lin2d_domain_curve2d_domain_real2(self as *mut Self, L, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1543,8 +1941,11 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_circ2d_domain_curve2d_domain_real2(self as *mut Self, C, D1, PCurve, D2, TolConf, Tol)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_circ2d_domain_curve2d_domain_real2(self as *mut Self, C, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1559,8 +1960,11 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_elips2d_domain_curve2d_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_elips2d_domain_curve2d_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1575,8 +1979,11 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_parab2d_domain_curve2d_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_parab2d_domain_curve2d_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1592,84 +1999,128 @@ impl TheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_hypr2d_domain_curve2d_domain_real2(self as *mut Self, H, D1, PCurve, D2, TolConf, Tol)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_perform_hypr2d_domain_curve2d_domain_real2(self as *mut Self, H, D1, PCurve, D2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_as_IntRes2d_Intersection(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_as_IntRes2d_Intersection(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_IsDone(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_IsDone(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_IsEmpty(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_IsEmpty(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_NbPoints(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_NbPoints(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_Point(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_Point(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_NbSegments(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_NbSegments(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_Segment(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_Segment(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_SetReversedParameters(
+                    self as *mut Self,
+                    Reverseflag,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1690,8 +2141,10 @@ unsafe impl crate::CppDeletable for TheIntPCurvePCurveOfGInter {
 impl TheIntPCurvePCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntPCurvePCurveOfGInter.hxx`:39 - `Geom2dInt_TheIntPCurvePCurveOfGInter::Geom2dInt_TheIntPCurvePCurveOfGInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_ctor())
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1705,8 +2158,11 @@ impl TheIntPCurvePCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_perform_curve2d_domain_curve2d_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_perform_curve2d_domain_curve2d_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1718,110 +2174,163 @@ impl TheIntPCurvePCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_perform_curve2d_domain_real2(
-                self as *mut Self,
-                Curve1,
-                Domain1,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_perform_curve2d_domain_real2(
+                    self as *mut Self,
+                    Curve1,
+                    Domain1,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_TheIntPCurvePCurveOfGInter.hxx`:54 - `Geom2dInt_TheIntPCurvePCurveOfGInter::SetMinNbSamples()`
     /// Set / get minimum number of points in polygon for intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_set_min_nb_samples(
-                self as *mut Self,
-                theMinNbSamples,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_set_min_nb_samples(
+                    self as *mut Self,
+                    theMinNbSamples,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_TheIntPCurvePCurveOfGInter.hxx`:55 - `Geom2dInt_TheIntPCurvePCurveOfGInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_get_min_nb_samples(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_get_min_nb_samples(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_as_IntRes2d_Intersection(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_as_IntRes2d_Intersection(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_IsDone(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_IsDone(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_IsEmpty(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_IsEmpty(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_NbPoints(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_NbPoints(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_Point(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_Point(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_NbSegments(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_NbSegments(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_Segment(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_Segment(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_SetReversedParameters(
+                    self as *mut Self,
+                    Reverseflag,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1843,10 +2352,11 @@ impl TheIntersectorOfTheIntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter.hxx`:40 - `Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1864,8 +2374,12 @@ impl TheIntersectorOfTheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_ctor_iconictool_domain_curve2d_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_ctor_iconictool_domain_curve2d_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1884,16 +2398,19 @@ impl TheIntersectorOfTheIntConicCurveOfGInter {
         TolConf: f64,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_perform(
-                self as *mut Self,
-                ITool,
-                Dom1,
-                PCurve,
-                Dom2,
-                TolConf,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_perform(
+                    self as *mut Self,
+                    ITool,
+                    Dom1,
+                    PCurve,
+                    Dom2,
+                    TolConf,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1905,14 +2422,18 @@ impl TheIntersectorOfTheIntConicCurveOfGInter {
         TheParCurev: &crate::adaptor2d::Curve2d,
         IntCurve_IConicTool: &crate::int_curve::IConicTool,
     ) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_find_u(
-                self as *const Self,
-                parameter,
-                point,
-                TheParCurev,
-                IntCurve_IConicTool,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_find_u(
+                    self as *const Self,
+                    parameter,
+                    point,
+                    TheParCurev,
+                    IntCurve_IConicTool,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1928,18 +2449,22 @@ impl TheIntersectorOfTheIntConicCurveOfGInter {
         V1: f64,
         Tolerance: f64,
     ) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_find_v(
-                self as *const Self,
-                parameter,
-                point,
-                IntCurve_IConicTool,
-                ParCurve,
-                TheParCurveDomain,
-                V0,
-                V1,
-                Tolerance,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_find_v(
+                    self as *const Self,
+                    parameter,
+                    point,
+                    IntCurve_IConicTool,
+                    ParCurve,
+                    TheParCurveDomain,
+                    V0,
+                    V1,
+                    Tolerance,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1957,85 +2482,123 @@ impl TheIntersectorOfTheIntConicCurveOfGInter {
         Resultat2: &mut crate::ffi::TColStd_Array1OfReal,
         EpsNul: f64,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_as_IntRes2d_Intersection(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_as_IntRes2d_Intersection(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_as_IntRes2d_Intersection_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_as_IntRes2d_Intersection_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_IsDone(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_IsDone(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_IsEmpty(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_IsEmpty(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_NbPoints(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_NbPoints(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_Point(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_Point(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_NbSegments(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_NbSegments(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_Segment(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_Segment(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -2056,10 +2619,11 @@ unsafe impl crate::CppDeletable for TheLocateExtPCOfTheProjPCurOfGInter {
 impl TheLocateExtPCOfTheProjPCurOfGInter {
     /// **Source:** `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx`:40 - `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2079,12 +2643,14 @@ impl TheLocateExtPCOfTheProjPCurOfGInter {
         U0: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d_real2(
                     P, C, U0, TolU,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2107,26 +2673,31 @@ impl TheLocateExtPCOfTheProjPCurOfGInter {
         Usup: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d_real4(
                     P, C, U0, Umin, Usup, TolU,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx`:74 - `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolU: f64) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolU,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_initialize(
+                    self as *mut Self,
+                    C,
+                    Umin,
+                    Usup,
+                    TolU,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2135,46 +2706,69 @@ impl TheLocateExtPCOfTheProjPCurOfGInter {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
-        unsafe {
-            crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_perform(
-                self as *mut Self,
-                P,
-                U0,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_perform(
+                    self as *mut Self,
+                    P,
+                    U0,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx`:85 - `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_is_done(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_is_done(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx`:88 - `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_square_distance(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_square_distance(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx`:91 - `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::IsMin()`
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_is_min(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_is_min(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx`:94 - `Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &crate::extrema::POnCurv2d {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_point(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_point(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -2201,8 +2795,12 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfGInter {
         Domain: &crate::int_res2d::Domain,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_ctor_curve2d_int_domain_real(Curve, NbPnt, Domain, Tol))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_ctor_curve2d_int_domain_real(Curve, NbPnt, Domain, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2217,56 +2815,77 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfGInter {
         Curve: &crate::adaptor2d::Curve2d,
         OtherBox: &crate::bnd::Box2d,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_compute_with_box(
-                self as *mut Self,
-                Curve,
-                OtherBox,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_compute_with_box(
+                    self as *mut Self,
+                    Curve,
+                    OtherBox,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:54 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_deflection_over_estimation(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_deflection_over_estimation(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:56 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::SetDeflectionOverEstimation()`
     pub fn set_deflection_over_estimation(&mut self, x: f64) {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_set_deflection_over_estimation(self as *mut Self, x)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_set_deflection_over_estimation(self as *mut Self, x)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:58 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::Closed()`
     pub fn closed_bool(&mut self, clos: bool) {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_closed_bool(
-                self as *mut Self,
-                clos,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_closed_bool(
+                    self as *mut Self,
+                    clos,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:61 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::Closed()`
     /// Returns True if the polyline is closed.
     pub fn closed(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_closed(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_closed(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:64 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::NbSegments()`
     /// Give the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_nb_segments(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_nb_segments(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2278,13 +2897,16 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfGInter {
         theBegin: &mut crate::gp::Pnt2d,
         theEnd: &mut crate::gp::Pnt2d,
     ) {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_segment(
-                self as *const Self,
-                theIndex,
-                theBegin,
-                theEnd,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_segment(
+                    self as *const Self,
+                    theIndex,
+                    theBegin,
+                    theEnd,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2292,10 +2914,14 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfGInter {
     /// Returns the parameter (On the curve)
     /// of the first point of the Polygon
     pub fn inf_parameter(&self) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_inf_parameter(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_inf_parameter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2303,17 +2929,25 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfGInter {
     /// Returns the parameter (On the curve)
     /// of the last point of the Polygon
     pub fn sup_parameter(&self) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_sup_parameter(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_sup_parameter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:79 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::AutoIntersectionIsPossible()`
     pub fn auto_intersection_is_possible(&self) -> bool {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_auto_intersection_is_possible(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_auto_intersection_is_possible(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2321,59 +2955,86 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfGInter {
     /// Give an approximation of the parameter on the curve
     /// according to the discretization of the Curve.
     pub fn approx_param_on_curve(&self, Index: i32, ParamOnLine: f64) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_approx_param_on_curve(
-                self as *const Self,
-                Index,
-                ParamOnLine,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_approx_param_on_curve(
+                    self as *const Self,
+                    Index,
+                    ParamOnLine,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:86 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::CalculRegion()`
     pub fn calcul_region(&self, x: f64, y: f64, x1: f64, x2: f64, y1: f64, y2: f64) -> i32 {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_calcul_region(
-                self as *const Self,
-                x,
-                y,
-                x1,
-                x2,
-                y1,
-                y2,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_calcul_region(
+                    self as *const Self,
+                    x,
+                    y,
+                    x1,
+                    x2,
+                    y1,
+                    y2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx`:93 - `Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter::Dump()`
     pub fn dump(&self) {
-        unsafe {
-            crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_dump(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_dump(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to Intf_Polygon2d
     pub fn as_intf_polygon2d(&self) -> &crate::intf::Polygon2d {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_as_Intf_Polygon2d(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_as_Intf_Polygon2d(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Intf_Polygon2d (mutable)
     pub fn as_intf_polygon2d_mut(&mut self) -> &mut crate::intf::Polygon2d {
-        unsafe {
-            &mut *(crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_as_Intf_Polygon2d_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_as_Intf_Polygon2d_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
     pub fn bounding(&self) -> &crate::bnd::Box2d {
-        unsafe {
-            &*(crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_inherited_Bounding(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_inherited_Bounding(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -2395,7 +3056,11 @@ impl TheProjPCurOfGInter {
     /// **Source:** `Geom2dInt_TheProjPCurOfGInter.hxx` - `Geom2dInt_TheProjPCurOfGInter::Geom2dInt_TheProjPCurOfGInter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_TheProjPCurOfGInter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dInt_TheProjPCurOfGInter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dInt_TheProjPCurOfGInter.hxx`:46 - `Geom2dInt_TheProjPCurOfGInter::FindParameter()`
@@ -2415,8 +3080,14 @@ impl TheProjPCurOfGInter {
         Pnt: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheProjPCurOfGInter_find_parameter_curve2d_pnt2d_real(C, Pnt, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheProjPCurOfGInter_find_parameter_curve2d_pnt2d_real(
+                    C, Pnt, Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2442,14 +3113,18 @@ impl TheProjPCurOfGInter {
         HighParameter: f64,
         Tol: f64,
     ) -> f64 {
-        unsafe {
-            crate::ffi::Geom2dInt_TheProjPCurOfGInter_find_parameter_curve2d_pnt2d_real3(
-                C,
-                Pnt,
-                LowParameter,
-                HighParameter,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dInt_TheProjPCurOfGInter_find_parameter_curve2d_pnt2d_real3(
+                    C,
+                    Pnt,
+                    LowParameter,
+                    HighParameter,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }

@@ -13,7 +13,10 @@ pub fn dump_handlegeomsurface_ostream(
     S: &crate::ffi::HandleGeomSurface,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    unsafe { crate::ffi::GeomTools_dump_handlegeomsurface_ostream(S, OS) }
+    {
+        unsafe { crate::ffi::GeomTools_dump_handlegeomsurface_ostream(S, OS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:48 - `GeomTools::Write`
 /// Writes the surface on the stream.
@@ -21,7 +24,10 @@ pub fn write_handlegeomsurface_ostream(
     S: &crate::ffi::HandleGeomSurface,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    unsafe { crate::ffi::GeomTools_write_handlegeomsurface_ostream(S, OS) }
+    {
+        unsafe { crate::ffi::GeomTools_write_handlegeomsurface_ostream(S, OS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:51 - `GeomTools::Read`
 /// Reads the surface from the stream.
@@ -29,7 +35,10 @@ pub fn read_handlegeomsurface_istream(
     S: &mut crate::ffi::HandleGeomSurface,
     IS: &mut crate::ffi::Standard_IStream,
 ) {
-    unsafe { crate::ffi::GeomTools_read_handlegeomsurface_istream(S, IS) }
+    {
+        unsafe { crate::ffi::GeomTools_read_handlegeomsurface_istream(S, IS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:54 - `GeomTools::Dump`
 /// Dumps the Curve on the stream.
@@ -37,7 +46,10 @@ pub fn dump_handlegeomcurve_ostream(
     C: &crate::ffi::HandleGeomCurve,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    unsafe { crate::ffi::GeomTools_dump_handlegeomcurve_ostream(C, OS) }
+    {
+        unsafe { crate::ffi::GeomTools_dump_handlegeomcurve_ostream(C, OS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:57 - `GeomTools::Write`
 /// Writes the Curve on the stream.
@@ -45,7 +57,10 @@ pub fn write_handlegeomcurve_ostream(
     C: &crate::ffi::HandleGeomCurve,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    unsafe { crate::ffi::GeomTools_write_handlegeomcurve_ostream(C, OS) }
+    {
+        unsafe { crate::ffi::GeomTools_write_handlegeomcurve_ostream(C, OS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:60 - `GeomTools::Read`
 /// Reads the Curve from the stream.
@@ -53,7 +68,10 @@ pub fn read_handlegeomcurve_istream(
     C: &mut crate::ffi::HandleGeomCurve,
     IS: &mut crate::ffi::Standard_IStream,
 ) {
-    unsafe { crate::ffi::GeomTools_read_handlegeomcurve_istream(C, IS) }
+    {
+        unsafe { crate::ffi::GeomTools_read_handlegeomcurve_istream(C, IS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:63 - `GeomTools::Dump`
 /// Dumps the Curve on the stream.
@@ -61,7 +79,10 @@ pub fn dump_handlegeom2dcurve_ostream(
     C: &crate::ffi::HandleGeom2dCurve,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    unsafe { crate::ffi::GeomTools_dump_handlegeom2dcurve_ostream(C, OS) }
+    {
+        unsafe { crate::ffi::GeomTools_dump_handlegeom2dcurve_ostream(C, OS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:66 - `GeomTools::Write`
 /// Writes the Curve on the stream.
@@ -69,7 +90,10 @@ pub fn write_handlegeom2dcurve_ostream(
     C: &crate::ffi::HandleGeom2dCurve,
     OS: &mut crate::ffi::Standard_OStream,
 ) {
-    unsafe { crate::ffi::GeomTools_write_handlegeom2dcurve_ostream(C, OS) }
+    {
+        unsafe { crate::ffi::GeomTools_write_handlegeom2dcurve_ostream(C, OS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:69 - `GeomTools::Read`
 /// Reads the Curve from the stream.
@@ -77,22 +101,35 @@ pub fn read_handlegeom2dcurve_istream(
     C: &mut crate::ffi::HandleGeom2dCurve,
     IS: &mut crate::ffi::Standard_IStream,
 ) {
-    unsafe { crate::ffi::GeomTools_read_handlegeom2dcurve_istream(C, IS) }
+    {
+        unsafe { crate::ffi::GeomTools_read_handlegeom2dcurve_istream(C, IS) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:71 - `GeomTools::SetUndefinedTypeHandler`
 pub fn set_undefined_type_handler(aHandler: &crate::ffi::HandleGeomToolsUndefinedTypeHandler) {
-    unsafe { crate::ffi::GeomTools_set_undefined_type_handler(aHandler) }
+    {
+        unsafe { crate::ffi::GeomTools_set_undefined_type_handler(aHandler) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `GeomTools.hxx`:74 - `GeomTools::GetUndefinedTypeHandler`
 pub fn get_undefined_type_handler(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomToolsUndefinedTypeHandler> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_get_undefined_type_handler()) }
+    {
+        let __result = unsafe { crate::ffi::GeomTools_get_undefined_type_handler() };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `GeomTools.hxx`:78 - `GeomTools::GetReal`
 /// Reads the Standard_Real value from the stream. Zero is read
 /// in case of error
 pub fn get_real_mut(IS: &mut crate::ffi::Standard_IStream, theValue: &mut f64) {
-    unsafe { crate::ffi::GeomTools_get_real_mut(IS, theValue) }
+    {
+        unsafe { crate::ffi::GeomTools_get_real_mut(IS, theValue) };
+        crate::check_exception();
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -116,43 +153,62 @@ impl Curve2dSet {
     /// **Source:** `GeomTools_Curve2dSet.hxx`:39 - `GeomTools_Curve2dSet::GeomTools_Curve2dSet()`
     /// Returns an empty set of Curves.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_Curve2dSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_Curve2dSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:42 - `GeomTools_Curve2dSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GeomTools_Curve2dSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:46 - `GeomTools_Curve2dSet::Add()`
     /// Incorporate a new Curve in the  set and returns
     /// its index.
     pub fn add(&mut self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_add(self as *mut Self, C) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_Curve2dSet_add(self as *mut Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:49 - `GeomTools_Curve2dSet::Curve2d()`
     /// Returns the Curve of index <I>.
     pub fn curve2d(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomTools_Curve2dSet_curve2d(
-                self as *const Self,
-                I,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomTools_Curve2dSet_curve2d(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:52 - `GeomTools_Curve2dSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_index(self as *const Self, C) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomTools_Curve2dSet_index(self as *const Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:55 - `GeomTools_Curve2dSet::Dump()`
     /// Dumps the content of me on the stream <OS>.
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_dump(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::GeomTools_Curve2dSet_dump(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:59 - `GeomTools_Curve2dSet::Write()`
@@ -163,7 +219,10 @@ impl Curve2dSet {
         OS: &mut crate::ffi::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_write(self as *const Self, OS, theProgress) }
+        {
+            unsafe { crate::ffi::GeomTools_Curve2dSet_write(self as *const Self, OS, theProgress) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:65 - `GeomTools_Curve2dSet::Read()`
@@ -174,7 +233,10 @@ impl Curve2dSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_read(self as *mut Self, IS, theProgress) }
+        {
+            unsafe { crate::ffi::GeomTools_Curve2dSet_read(self as *mut Self, IS, theProgress) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:70 - `GeomTools_Curve2dSet::PrintCurve2d()`
@@ -185,7 +247,10 @@ impl Curve2dSet {
         OS: &mut crate::ffi::Standard_OStream,
         compact: bool,
     ) {
-        unsafe { crate::ffi::GeomTools_Curve2dSet_print_curve2d(C, OS, compact) }
+        {
+            unsafe { crate::ffi::GeomTools_Curve2dSet_print_curve2d(C, OS, compact) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_Curve2dSet.hxx`:77 - `GeomTools_Curve2dSet::ReadCurve2d()`
@@ -195,7 +260,11 @@ impl Curve2dSet {
     pub fn read_curve2d(
         IS: &mut crate::ffi::Standard_IStream,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_Curve2dSet_read_curve2d(IS)) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_Curve2dSet_read_curve2d(IS) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -217,40 +286,60 @@ impl CurveSet {
     /// **Source:** `GeomTools_CurveSet.hxx`:39 - `GeomTools_CurveSet::GeomTools_CurveSet()`
     /// Returns an empty set of Curves.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_CurveSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_CurveSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:42 - `GeomTools_CurveSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::GeomTools_CurveSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GeomTools_CurveSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:46 - `GeomTools_CurveSet::Add()`
     /// Incorporate a new Curve in the  set and returns
     /// its index.
     pub fn add(&mut self, C: &crate::ffi::HandleGeomCurve) -> i32 {
-        unsafe { crate::ffi::GeomTools_CurveSet_add(self as *mut Self, C) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_CurveSet_add(self as *mut Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:49 - `GeomTools_CurveSet::Curve()`
     /// Returns the Curve of index <I>.
     pub fn curve(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomTools_CurveSet_curve(self as *const Self, I))
+        {
+            let __result = unsafe { crate::ffi::GeomTools_CurveSet_curve(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:52 - `GeomTools_CurveSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, C: &crate::ffi::HandleGeomCurve) -> i32 {
-        unsafe { crate::ffi::GeomTools_CurveSet_index(self as *const Self, C) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_CurveSet_index(self as *const Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:55 - `GeomTools_CurveSet::Dump()`
     /// Dumps the content of me on the stream <OS>.
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::GeomTools_CurveSet_dump(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::GeomTools_CurveSet_dump(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:59 - `GeomTools_CurveSet::Write()`
@@ -261,7 +350,10 @@ impl CurveSet {
         OS: &mut crate::ffi::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::GeomTools_CurveSet_write(self as *const Self, OS, theProgress) }
+        {
+            unsafe { crate::ffi::GeomTools_CurveSet_write(self as *const Self, OS, theProgress) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:65 - `GeomTools_CurveSet::Read()`
@@ -272,7 +364,10 @@ impl CurveSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::GeomTools_CurveSet_read(self as *mut Self, IS, theProgress) }
+        {
+            unsafe { crate::ffi::GeomTools_CurveSet_read(self as *mut Self, IS, theProgress) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:70 - `GeomTools_CurveSet::PrintCurve()`
@@ -283,7 +378,10 @@ impl CurveSet {
         OS: &mut crate::ffi::Standard_OStream,
         compact: bool,
     ) {
-        unsafe { crate::ffi::GeomTools_CurveSet_print_curve(C, OS, compact) }
+        {
+            unsafe { crate::ffi::GeomTools_CurveSet_print_curve(C, OS, compact) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_CurveSet.hxx`:77 - `GeomTools_CurveSet::ReadCurve()`
@@ -293,7 +391,11 @@ impl CurveSet {
     pub fn read_curve(
         IS: &mut crate::ffi::Standard_IStream,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_CurveSet_read_curve(IS)) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_CurveSet_read_curve(IS) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -315,43 +417,62 @@ impl SurfaceSet {
     /// **Source:** `GeomTools_SurfaceSet.hxx`:39 - `GeomTools_SurfaceSet::GeomTools_SurfaceSet()`
     /// Returns an empty set of Surfaces.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_SurfaceSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_SurfaceSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:42 - `GeomTools_SurfaceSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GeomTools_SurfaceSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:46 - `GeomTools_SurfaceSet::Add()`
     /// Incorporate a new Surface in the  set and returns
     /// its index.
     pub fn add(&mut self, S: &crate::ffi::HandleGeomSurface) -> i32 {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_add(self as *mut Self, S) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_SurfaceSet_add(self as *mut Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:49 - `GeomTools_SurfaceSet::Surface()`
     /// Returns the Surface of index <I>.
     pub fn surface(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomTools_SurfaceSet_surface(
-                self as *const Self,
-                I,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomTools_SurfaceSet_surface(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:52 - `GeomTools_SurfaceSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, S: &crate::ffi::HandleGeomSurface) -> i32 {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_index(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomTools_SurfaceSet_index(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:55 - `GeomTools_SurfaceSet::Dump()`
     /// Dumps the content of me on the stream <OS>.
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_dump(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::GeomTools_SurfaceSet_dump(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:59 - `GeomTools_SurfaceSet::Write()`
@@ -362,7 +483,10 @@ impl SurfaceSet {
         OS: &mut crate::ffi::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_write(self as *const Self, OS, theProgress) }
+        {
+            unsafe { crate::ffi::GeomTools_SurfaceSet_write(self as *const Self, OS, theProgress) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:65 - `GeomTools_SurfaceSet::Read()`
@@ -373,7 +497,10 @@ impl SurfaceSet {
         IS: &mut crate::ffi::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_read(self as *mut Self, IS, theProgress) }
+        {
+            unsafe { crate::ffi::GeomTools_SurfaceSet_read(self as *mut Self, IS, theProgress) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:70 - `GeomTools_SurfaceSet::PrintSurface()`
@@ -384,7 +511,10 @@ impl SurfaceSet {
         OS: &mut crate::ffi::Standard_OStream,
         compact: bool,
     ) {
-        unsafe { crate::ffi::GeomTools_SurfaceSet_print_surface(S, OS, compact) }
+        {
+            unsafe { crate::ffi::GeomTools_SurfaceSet_print_surface(S, OS, compact) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomTools_SurfaceSet.hxx`:77 - `GeomTools_SurfaceSet::ReadSurface()`
@@ -394,7 +524,11 @@ impl SurfaceSet {
     pub fn read_surface(
         IS: &mut crate::ffi::Standard_IStream,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_SurfaceSet_read_surface(IS)) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_SurfaceSet_read_surface(IS) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -414,7 +548,11 @@ unsafe impl crate::CppDeletable for UndefinedTypeHandler {
 impl UndefinedTypeHandler {
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:38 - `GeomTools_UndefinedTypeHandler::GeomTools_UndefinedTypeHandler()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_UndefinedTypeHandler_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomTools_UndefinedTypeHandler_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:40 - `GeomTools_UndefinedTypeHandler::PrintCurve()`
@@ -424,13 +562,16 @@ impl UndefinedTypeHandler {
         OS: &mut crate::ffi::Standard_OStream,
         compact: bool,
     ) {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_print_curve(
-                self as *const Self,
-                C,
-                OS,
-                compact,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_print_curve(
+                    self as *const Self,
+                    C,
+                    OS,
+                    compact,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -447,13 +588,17 @@ impl UndefinedTypeHandler {
         IS: &mut crate::ffi::Standard_IStream,
         C: &mut crate::ffi::HandleGeomCurve,
     ) -> &mut crate::ffi::Standard_IStream {
-        unsafe {
-            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_read_curve(
-                self as *mut Self,
-                ctype,
-                IS,
-                C,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_read_curve(
+                    self as *mut Self,
+                    ctype,
+                    IS,
+                    C,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -464,13 +609,16 @@ impl UndefinedTypeHandler {
         OS: &mut crate::ffi::Standard_OStream,
         compact: bool,
     ) {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_print_curve2d(
-                self as *const Self,
-                C,
-                OS,
-                compact,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_print_curve2d(
+                    self as *const Self,
+                    C,
+                    OS,
+                    compact,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -487,13 +635,17 @@ impl UndefinedTypeHandler {
         IS: &mut crate::ffi::Standard_IStream,
         C: &mut crate::ffi::HandleGeom2dCurve,
     ) -> &mut crate::ffi::Standard_IStream {
-        unsafe {
-            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_read_curve2d(
-                self as *mut Self,
-                ctype,
-                IS,
-                C,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_read_curve2d(
+                    self as *mut Self,
+                    ctype,
+                    IS,
+                    C,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -504,13 +656,16 @@ impl UndefinedTypeHandler {
         OS: &mut crate::ffi::Standard_OStream,
         compact: bool,
     ) {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_print_surface(
-                self as *const Self,
-                S,
-                OS,
-                compact,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_print_surface(
+                    self as *const Self,
+                    S,
+                    OS,
+                    compact,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -527,50 +682,73 @@ impl UndefinedTypeHandler {
         IS: &mut crate::ffi::Standard_IStream,
         S: &mut crate::ffi::HandleGeomSurface,
     ) -> &mut crate::ffi::Standard_IStream {
-        unsafe {
-            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_read_surface(
-                self as *mut Self,
-                ctype,
-                IS,
-                S,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_read_surface(
+                    self as *mut Self,
+                    ctype,
+                    IS,
+                    S,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomTools_UndefinedTypeHandler_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GeomTools_UndefinedTypeHandler_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GeomTools_UndefinedTypeHandler_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomTools_UndefinedTypeHandler_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomTools_UndefinedTypeHandler_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::GeomTools_UndefinedTypeHandler_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::GeomTools_UndefinedTypeHandler_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -578,75 +756,103 @@ impl UndefinedTypeHandler {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomToolsUndefinedTypeHandler> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomTools_UndefinedTypeHandler_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomTools_UndefinedTypeHandler_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::GeomTools_UndefinedTypeHandler_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::GeomTools_UndefinedTypeHandler_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GeomTools_UndefinedTypeHandler_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::GeomTools_UndefinedTypeHandler_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -661,24 +867,35 @@ unsafe impl crate::CppDeletable for HandleGeomToolsUndefinedTypeHandler {
 impl HandleGeomToolsUndefinedTypeHandler {
     /// Dereference this Handle to access the underlying GeomTools_UndefinedTypeHandler
     pub fn get(&self) -> &crate::ffi::GeomTools_UndefinedTypeHandler {
-        unsafe { &*(crate::ffi::HandleGeomToolsUndefinedTypeHandler_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGeomToolsUndefinedTypeHandler_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomTools_UndefinedTypeHandler
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomTools_UndefinedTypeHandler {
-        unsafe {
-            &mut *(crate::ffi::HandleGeomToolsUndefinedTypeHandler_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGeomToolsUndefinedTypeHandler_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<GeomTools_UndefinedTypeHandler> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleGeomToolsUndefinedTypeHandler_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

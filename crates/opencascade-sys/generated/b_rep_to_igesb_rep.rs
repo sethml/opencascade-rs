@@ -24,44 +24,75 @@ impl Entity {
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:55 - `BRepToIGESBRep_Entity::BRepToIGESBRep_Entity()`
     /// Creates a tool Entity
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepToIGESBRep_Entity_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:58 - `BRepToIGESBRep_Entity::Clear()`
     /// Clears the contents of the fields
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepToIGESBRep_Entity_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:61 - `BRepToIGESBRep_Entity::TransferVertexList()`
     /// Create the VertexList entity
     pub fn transfer_vertex_list(&mut self) {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_vertex_list(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_vertex_list(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:64 - `BRepToIGESBRep_Entity::IndexVertex()`
     /// Returns the index of <myvertex> in "myVertices"
     pub fn index_vertex(&self, myvertex: &crate::topo_ds::Vertex) -> i32 {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_index_vertex(self as *const Self, myvertex) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_index_vertex(self as *const Self, myvertex)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:68 - `BRepToIGESBRep_Entity::AddVertex()`
     /// Stores <myvertex> in "myVertices"
     /// Returns the index of <myvertex>.
     pub fn add_vertex(&mut self, myvertex: &crate::topo_ds::Vertex) -> i32 {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_add_vertex(self as *mut Self, myvertex) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_add_vertex(self as *mut Self, myvertex)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:71 - `BRepToIGESBRep_Entity::TransferEdgeList()`
     /// Transfert an Edge entity from TopoDS to IGES
     pub fn transfer_edge_list(&mut self) {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_edge_list(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_edge_list(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:74 - `BRepToIGESBRep_Entity::IndexEdge()`
     /// Returns the index of <myedge> in "myEdges"
     pub fn index_edge(&self, myedge: &crate::topo_ds::Edge) -> i32 {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_index_edge(self as *const Self, myedge) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_index_edge(self as *const Self, myedge)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:78 - `BRepToIGESBRep_Entity::AddEdge()`
@@ -72,7 +103,13 @@ impl Entity {
         myedge: &crate::topo_ds::Edge,
         mycurve3d: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> i32 {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_add_edge(self as *mut Self, myedge, mycurve3d) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_add_edge(self as *mut Self, myedge, mycurve3d)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:83 - `BRepToIGESBRep_Entity::TransferShape()`
@@ -83,12 +120,16 @@ impl Entity {
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_shape(
-                self as *mut Self,
-                start,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_shape(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -99,11 +140,12 @@ impl Entity {
         &mut self,
         myedge: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_edge_edge(
-                self as *mut Self,
-                myedge,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_edge_edge(self as *mut Self, myedge)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -116,15 +158,17 @@ impl Entity {
         myface: &crate::topo_ds::Face,
         length: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_transfer_edge_edge_face_real(
                     self as *mut Self,
                     myedge,
                     myface,
                     length,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -138,13 +182,17 @@ impl Entity {
         myface: &crate::topo_ds::Face,
         length: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidLoop> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_wire(
-                self as *mut Self,
-                mywire,
-                myface,
-                length,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_wire(
+                    self as *mut Self,
+                    mywire,
+                    myface,
+                    length,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -155,11 +203,12 @@ impl Entity {
         &mut self,
         start: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidFace> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_face(
-                self as *mut Self,
-                start,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_face(self as *mut Self, start)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -171,12 +220,16 @@ impl Entity {
         start: &crate::topo_ds::Shell,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidShell> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_shell(
-                self as *mut Self,
-                start,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_shell(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -188,12 +241,16 @@ impl Entity {
         start: &crate::topo_ds::Solid,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSolidManifoldSolid> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_solid(
-                self as *mut Self,
-                start,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_solid(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -205,12 +262,16 @@ impl Entity {
         start: &crate::topo_ds::CompSolid,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_comp_solid(
-                self as *mut Self,
-                start,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_comp_solid(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -222,71 +283,115 @@ impl Entity {
         start: &crate::topo_ds::Compound,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_compound(
-                self as *mut Self,
-                start,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_compound(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to BRepToIGES_BREntity
     pub fn as_b_rep_to_iges_br_entity(&self) -> &crate::b_rep_to_iges::BREntity {
-        unsafe { &*(crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to BRepToIGES_BREntity (mutable)
     pub fn as_b_rep_to_iges_br_entity_mut(&mut self) -> &mut crate::b_rep_to_iges::BREntity {
-        unsafe {
-            &mut *(crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_Init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_Init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_SetModel(self as *mut Self, model) }
+        {
+            unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_SetModel(self as *mut Self, model)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
     pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_inherited_GetModel(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_GetModel(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetUnit(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetUnit(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
-        unsafe {
-            crate::ffi::BRepToIGESBRep_Entity_inherited_SetTransferProcess(self as *mut Self, TP)
+        {
+            unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_SetTransferProcess(
+                    self as *mut Self,
+                    TP,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
     pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepToIGESBRep_Entity_inherited_GetTransferProcess(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_GetTransferProcess(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
-        unsafe {
-            crate::ffi::BRepToIGESBRep_Entity_inherited_HasShapeResult(self as *const Self, start)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_HasShapeResult(
+                    self as *const Self,
+                    start,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -295,11 +400,15 @@ impl Entity {
         &self,
         start: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_inherited_GetShapeResult(
-                self as *const Self,
-                start,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_GetShapeResult(
+                    self as *const Self,
+                    start,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -309,24 +418,39 @@ impl Entity {
         start: &crate::topo_ds::Shape,
         result: &crate::ffi::HandleStandardTransient,
     ) {
-        unsafe {
-            crate::ffi::BRepToIGESBRep_Entity_inherited_SetShapeResult(
-                self as *mut Self,
-                start,
-                result,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_SetShapeResult(
+                    self as *mut Self,
+                    start,
+                    result,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:109 - `BRepToIGES_BREntity::GetConvertSurfaceMode()`
     pub fn get_convert_surface_mode(&self) -> bool {
-        unsafe {
-            crate::ffi::BRepToIGESBRep_Entity_inherited_GetConvertSurfaceMode(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_GetConvertSurfaceMode(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:113 - `BRepToIGES_BREntity::GetPCurveMode()`
     pub fn get_p_curve_mode(&self) -> bool {
-        unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetPCurveMode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_inherited_GetPCurveMode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }

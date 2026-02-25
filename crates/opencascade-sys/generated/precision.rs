@@ -27,7 +27,11 @@
 /// If ( Abs( D1.D2 ) < Precision::Angular() ) ...
 /// (although the function IsNormal does exist).
 pub fn angular() -> f64 {
-    unsafe { crate::ffi::Precision_angular() }
+    {
+        let __result = unsafe { crate::ffi::Precision_angular() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:165 - `Precision::Confusion`
 /// Returns the recommended precision value when
@@ -71,13 +75,21 @@ pub fn angular() -> f64 {
 /// becomes easily measurable, but only within a restricted
 /// space which contains some small objects of the complete scene.
 pub fn confusion() -> f64 {
-    unsafe { crate::ffi::Precision_confusion() }
+    {
+        let __result = unsafe { crate::ffi::Precision_confusion() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:169 - `Precision::SquareConfusion`
 /// Returns square of Confusion.
 /// Created for speed and convenience.
 pub fn square_confusion() -> f64 {
-    unsafe { crate::ffi::Precision_square_confusion() }
+    {
+        let __result = unsafe { crate::ffi::Precision_square_confusion() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:193 - `Precision::Intersection`
 /// Returns the precision value in real space, frequently
@@ -103,7 +115,11 @@ pub fn square_confusion() -> f64 {
 /// Precision::Confusion() / 100.
 /// (that is, 1.e-9).
 pub fn intersection() -> f64 {
-    unsafe { crate::ffi::Precision_intersection() }
+    {
+        let __result = unsafe { crate::ffi::Precision_intersection() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:208 - `Precision::Approximation`
 /// Returns the precision value in real space, frequently used
@@ -120,7 +136,11 @@ pub fn intersection() -> f64 {
 /// You may use a smaller tolerance in an approximation
 /// algorithm, but this option might be costly.
 pub fn approximation() -> f64 {
-    unsafe { crate::ffi::Precision_approximation() }
+    {
+        let __result = unsafe { crate::ffi::Precision_approximation() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:215 - `Precision::Parametric`
 /// Convert a real  space precision  to  a  parametric
@@ -129,7 +149,11 @@ pub fn approximation() -> f64 {
 ///
 /// Value is P / T
 pub fn parametric_real2(P: f64, T: f64) -> f64 {
-    unsafe { crate::ffi::Precision_parametric_real2(P, T) }
+    {
+        let __result = unsafe { crate::ffi::Precision_parametric_real2(P, T) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:264 - `Precision::PConfusion`
 /// Returns a precision value in parametric space, which may be used :
@@ -177,13 +201,21 @@ pub fn parametric_real2(P: f64, T: f64) -> f64 {
 /// Therefore, take great care when adjusting a parametric
 /// tolerance to your own algorithm.
 pub fn p_confusion_real(T: f64) -> f64 {
-    unsafe { crate::ffi::Precision_p_confusion_real(T) }
+    {
+        let __result = unsafe { crate::ffi::Precision_p_confusion_real(T) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:271 - `Precision::SquarePConfusion`
 /// Returns square of PConfusion.
 /// Created for speed and convenience.
 pub fn square_p_confusion() -> f64 {
-    unsafe { crate::ffi::Precision_square_p_confusion() }
+    {
+        let __result = unsafe { crate::ffi::Precision_square_p_confusion() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:286 - `Precision::PIntersection`
 /// Returns a precision value in parametric space, which
@@ -200,7 +232,11 @@ pub fn square_p_confusion() -> f64 {
 /// The parametric tolerance of intersection is equal to :
 /// -   Precision::Intersection() / 100., or Precision::Intersection() / T.
 pub fn p_intersection_real(T: f64) -> f64 {
-    unsafe { crate::ffi::Precision_p_intersection_real(T) }
+    {
+        let __result = unsafe { crate::ffi::Precision_p_intersection_real(T) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:304 - `Precision::PApproximation`
 /// Returns a precision value in parametric space, which may
@@ -217,7 +253,11 @@ pub fn p_intersection_real(T: f64) -> f64 {
 /// The parametric tolerance of intersection is equal to :
 /// -   Precision::Approximation() / 100., or Precision::Approximation() / T.
 pub fn p_approximation_real(T: f64) -> f64 {
-    unsafe { crate::ffi::Precision_p_approximation_real(T) }
+    {
+        let __result = unsafe { crate::ffi::Precision_p_approximation_real(T) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:313 - `Precision::Parametric`
 /// Convert a real  space precision  to  a  parametric
@@ -225,7 +265,11 @@ pub fn p_approximation_real(T: f64) -> f64 {
 ///
 /// Value is Parametric(P,1.e+2)
 pub fn parametric_real(P: f64) -> f64 {
-    unsafe { crate::ffi::Precision_parametric_real(P) }
+    {
+        let __result = unsafe { crate::ffi::Precision_parametric_real(P) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:319 - `Precision::PConfusion`
 /// Used  to test distances  in parametric  space on a
@@ -233,7 +277,11 @@ pub fn parametric_real(P: f64) -> f64 {
 ///
 /// This is Precision::Parametric(Precision::Confusion())
 pub fn p_confusion() -> f64 {
-    unsafe { crate::ffi::Precision_p_confusion() }
+    {
+        let __result = unsafe { crate::ffi::Precision_p_confusion() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:325 - `Precision::PIntersection`
 /// Used for Intersections  in parametric  space  on a
@@ -241,7 +289,11 @@ pub fn p_confusion() -> f64 {
 ///
 /// This is Precision::Parametric(Precision::Intersection())
 pub fn p_intersection() -> f64 {
-    unsafe { crate::ffi::Precision_p_intersection() }
+    {
+        let __result = unsafe { crate::ffi::Precision_p_intersection() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:331 - `Precision::PApproximation`
 /// Used for  Approximations  in parametric space on a
@@ -249,29 +301,49 @@ pub fn p_intersection() -> f64 {
 ///
 /// This is Precision::Parametric(Precision::Approximation())
 pub fn p_approximation() -> f64 {
-    unsafe { crate::ffi::Precision_p_approximation() }
+    {
+        let __result = unsafe { crate::ffi::Precision_p_approximation() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:335 - `Precision::IsInfinite`
 /// Returns True if R may be considered as an infinite
 /// number. Currently Abs(R) > 1e100
 pub fn is_infinite(R: f64) -> bool {
-    unsafe { crate::ffi::Precision_is_infinite(R) }
+    {
+        let __result = unsafe { crate::ffi::Precision_is_infinite(R) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:342 - `Precision::IsPositiveInfinite`
 /// Returns True if R may be considered as  a positive
 /// infinite number. Currently R > 1e100
 pub fn is_positive_infinite(R: f64) -> bool {
-    unsafe { crate::ffi::Precision_is_positive_infinite(R) }
+    {
+        let __result = unsafe { crate::ffi::Precision_is_positive_infinite(R) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:349 - `Precision::IsNegativeInfinite`
 /// Returns True if R may  be considered as a negative
 /// infinite number. Currently R < -1e100
 pub fn is_negative_infinite(R: f64) -> bool {
-    unsafe { crate::ffi::Precision_is_negative_infinite(R) }
+    {
+        let __result = unsafe { crate::ffi::Precision_is_negative_infinite(R) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Precision.hxx`:356 - `Precision::Infinite`
 /// Returns a  big number that  can  be  considered as
 /// infinite. Use -Infinite() for a negative big number.
 pub fn infinite() -> f64 {
-    unsafe { crate::ffi::Precision_infinite() }
+    {
+        let __result = unsafe { crate::ffi::Precision_infinite() };
+        crate::check_exception();
+        __result
+    }
 }

@@ -23,7 +23,11 @@ impl ReadData {
     /// **Source:** `StepFile_ReadData.hxx`:123 - `StepFile_ReadData::StepFile_ReadData()`
     /// Constructs an uninitialized tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepFile_ReadData_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::StepFile_ReadData_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:131 - `StepFile_ReadData::CreateNewText()`
@@ -32,37 +36,52 @@ impl ReadData {
     /// If characters page is full, allocates a new page.
     pub fn create_new_text(&mut self, theNewText: &str, theLenText: i32) {
         let c_theNewText = std::ffi::CString::new(theNewText).unwrap();
-        unsafe {
-            crate::ffi::StepFile_ReadData_create_new_text(
-                self as *mut Self,
-                c_theNewText.as_ptr(),
-                theLenText,
-            )
+        {
+            unsafe {
+                crate::ffi::StepFile_ReadData_create_new_text(
+                    self as *mut Self,
+                    c_theNewText.as_ptr(),
+                    theLenText,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:134 - `StepFile_ReadData::RecordNewEntity()`
     /// Adds the current record to the list
     pub fn record_new_entity(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_record_new_entity(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_record_new_entity(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:137 - `StepFile_ReadData::RecordIdent()`
     /// Creates a new record and sets Ident from myResText
     pub fn record_ident(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_record_ident(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_record_ident(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:140 - `StepFile_ReadData::RecordType()`
     /// Starts reading of the type (entity)
     pub fn record_type(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_record_type(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_record_type(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:143 - `StepFile_ReadData::RecordListStart()`
     /// Prepares and saves a record or sub-record
     pub fn record_list_start(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_record_list_start(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_record_list_start(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:148 - `StepFile_ReadData::CreateNewArg()`
@@ -70,7 +89,10 @@ impl ReadData {
     /// Type and value already known.
     /// If arguments page is full, allocates a new page
     pub fn create_new_arg(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_create_new_arg(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_create_new_arg(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:153 - `StepFile_ReadData::CreateErrorArg()`
@@ -78,19 +100,28 @@ impl ReadData {
     /// If bison handles a sequence of error types,
     /// creates only one argument and updates text value
     pub fn create_error_arg(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_create_error_arg(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_create_error_arg(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:156 - `StepFile_ReadData::AddNewScope()`
     /// Creates a new scope, containing the current record
     pub fn add_new_scope(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_add_new_scope(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_add_new_scope(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:159 - `StepFile_ReadData::FinalOfScope()`
     /// Ends the scope
     pub fn final_of_scope(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_final_of_scope(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_final_of_scope(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:166 - `StepFile_ReadData::ClearRecorder()`
@@ -100,7 +131,10 @@ impl ReadData {
     /// * 2 - clear pages of characters
     /// * 3 - clear all data
     pub fn clear_recorder(&mut self, theMode: i32) {
-        unsafe { crate::ffi::StepFile_ReadData_clear_recorder(self as *mut Self, theMode) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_clear_recorder(self as *mut Self, theMode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:172 - `StepFile_ReadData::GetFileNbR()`
@@ -111,13 +145,16 @@ impl ReadData {
         theNbRec: *mut i32,
         theNbPage: *mut i32,
     ) {
-        unsafe {
-            crate::ffi::StepFile_ReadData_get_file_nb_r(
-                self as *mut Self,
-                theNbHead,
-                theNbRec,
-                theNbPage,
-            )
+        {
+            unsafe {
+                crate::ffi::StepFile_ReadData_get_file_nb_r(
+                    self as *mut Self,
+                    theNbHead,
+                    theNbRec,
+                    theNbPage,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -129,51 +166,75 @@ impl ReadData {
         theType: *mut *mut std::ffi::c_char,
         theNbArg: *mut i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::StepFile_ReadData_get_record_description(
-                self as *mut Self,
-                theIdent,
-                theType,
-                theNbArg,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::StepFile_ReadData_get_record_description(
+                    self as *mut Self,
+                    theIdent,
+                    theType,
+                    theNbArg,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:180 - `StepFile_ReadData::RecordTypeText()`
     /// Initializes the record type with myResText
     pub fn record_type_text(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_record_type_text(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_record_type_text(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:183 - `StepFile_ReadData::NextRecord()`
     /// Skips to next record
     pub fn next_record(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_next_record(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_next_record(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:186 - `StepFile_ReadData::PrintCurrentRecord()`
     /// Prints data of current record according to the modeprint
     pub fn print_current_record(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_print_current_record(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_print_current_record(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:190 - `StepFile_ReadData::PrepareNewArg()`
     /// Controls the correct argument count for the record.
     /// Resets error argyment mode
     pub fn prepare_new_arg(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_prepare_new_arg(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_prepare_new_arg(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:193 - `StepFile_ReadData::FinalOfHead()`
     /// Prepares the end of the head section
     pub fn final_of_head(&mut self) {
-        unsafe { crate::ffi::StepFile_ReadData_final_of_head(self as *mut Self) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_final_of_head(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:196 - `StepFile_ReadData::SetTypeArg()`
     /// Sets type of the current argument
     pub fn set_type_arg(&mut self, theArgType: crate::interface::ParamType) {
-        unsafe { crate::ffi::StepFile_ReadData_set_type_arg(self as *mut Self, theArgType.into()) }
+        {
+            unsafe {
+                crate::ffi::StepFile_ReadData_set_type_arg(self as *mut Self, theArgType.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:202 - `StepFile_ReadData::SetModePrint()`
@@ -182,45 +243,69 @@ impl ReadData {
     /// 1 - print only descriptions  of record
     /// 2 - print descriptions of records and its arguments
     pub fn set_mode_print(&mut self, theMode: i32) {
-        unsafe { crate::ffi::StepFile_ReadData_set_mode_print(self as *mut Self, theMode) }
+        {
+            unsafe { crate::ffi::StepFile_ReadData_set_mode_print(self as *mut Self, theMode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:205 - `StepFile_ReadData::GetModePrint()`
     /// Returns mode print
     pub fn get_mode_print(&self) -> i32 {
-        unsafe { crate::ffi::StepFile_ReadData_get_mode_print(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::StepFile_ReadData_get_mode_print(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:208 - `StepFile_ReadData::GetNbRecord()`
     /// Returns number of records
     pub fn get_nb_record(&self) -> i32 {
-        unsafe { crate::ffi::StepFile_ReadData_get_nb_record(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::StepFile_ReadData_get_nb_record(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:211 - `StepFile_ReadData::AddError()`
     /// Adds an error message
     pub fn add_error(&mut self, theErrorMessage: &str) {
         let c_theErrorMessage = std::ffi::CString::new(theErrorMessage).unwrap();
-        unsafe {
-            crate::ffi::StepFile_ReadData_add_error(self as *mut Self, c_theErrorMessage.as_ptr())
+        {
+            unsafe {
+                crate::ffi::StepFile_ReadData_add_error(
+                    self as *mut Self,
+                    c_theErrorMessage.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:214 - `StepFile_ReadData::ErrorHandle()`
     /// Transfers error messages to checker
     pub fn error_handle(&self, theCheck: &crate::ffi::HandleInterfaceCheck) -> bool {
-        unsafe { crate::ffi::StepFile_ReadData_error_handle(self as *const Self, theCheck) }
+        {
+            let __result = unsafe {
+                crate::ffi::StepFile_ReadData_error_handle(self as *const Self, theCheck)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `StepFile_ReadData.hxx`:217 - `StepFile_ReadData::GetLastError()`
     /// Returns the message of the last error
     pub fn get_last_error(&self) -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::StepFile_ReadData_get_last_error(
-                self as *const Self,
-            ))
-            .to_string_lossy()
-            .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::StepFile_ReadData_get_last_error(self as *const Self) };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 }

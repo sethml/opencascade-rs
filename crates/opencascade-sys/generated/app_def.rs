@@ -32,8 +32,12 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -60,27 +64,38 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         &self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_is_solution_reached(self as *const Self, F)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        unsafe {
-            &mut *(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -90,8 +105,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         theLeftBorder: &crate::ffi::math_Vector,
         theRightBorder: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+            };
+            crate::check_exception();
         }
     }
 
@@ -101,61 +119,81 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
         StartingPoint: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Perform(self as *mut Self, F, StartingPoint)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_IsDone(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_IsDone(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
     pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Location(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Location(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Minimum(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Minimum(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Gradient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Gradient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_NbIterations(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_NbIterations(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Dump(
-                self as *const Self,
-                o,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Dump(
+                    self as *const Self,
+                    o,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -187,8 +225,12 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         Mults: &crate::ffi::TColStd_Array1OfInteger,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -196,10 +238,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_nb_variables(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_nb_variables(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -209,12 +255,16 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_value(
+                    self as *mut Self,
+                    X,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -226,12 +276,16 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_gradient(
-                self as *mut Self,
-                X,
-                G,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_gradient(
+                    self as *mut Self,
+                    X,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -244,23 +298,31 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_values(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_values(
+                    self as *mut Self,
+                    X,
+                    F,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:78 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NewParameters()`
     /// returns the new parameters of the MultiLine.
     pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_new_parameters(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_new_parameters(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -268,12 +330,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the MultiBSpCurve approximating the set after
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_curve_value(
                     self as *mut Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -281,12 +345,16 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the distance between the MultiPoint of range
     /// IPoint and the curve CurveIndex.
     pub fn error(&mut self, IPoint: i32, CurveIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_error(
-                self as *mut Self,
-                IPoint,
-                CurveIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_error(
+                    self as *mut Self,
+                    IPoint,
+                    CurveIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -294,10 +362,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the maximum distance between the points
     /// and the MultiBSpCurve.
     pub fn max_error3d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error3d(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error3d(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -305,10 +377,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the maximum distance between the points
     /// and the MultiBSpCurve.
     pub fn max_error2d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error2d(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error2d(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -316,10 +392,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the function matrix used to approximate the
     /// multiline.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_function_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_function_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -327,8 +407,12 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the derivative function matrix used to approximate the
     /// multiline.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -338,10 +422,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
     pub fn index(&self) -> &crate::ffi::math_IntegerVector {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_index(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_index(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -351,15 +439,16 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_first_constraint(
                     self as *const Self,
                     TheConstraints,
                     FirstPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -369,35 +458,42 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_last_constraint(
                     self as *const Self,
                     TheConstraints,
                     LastPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:119 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::SetFirstLambda()`
     pub fn set_first_lambda(&mut self, l1: f64) {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_first_lambda(
-                self as *mut Self,
-                l1,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_first_lambda(
+                    self as *mut Self,
+                    l1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:121 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::SetLastLambda()`
     pub fn set_last_lambda(&mut self, l2: f64) {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_last_lambda(
-                self as *mut Self,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_last_lambda(
+                    self as *mut Self,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -405,8 +501,12 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -414,29 +514,45 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -481,8 +597,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -496,8 +616,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -528,8 +652,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -545,8 +673,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -554,19 +686,25 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector(
-                self as *mut Self,
-                Parameters,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector(
+                    self as *mut Self,
+                    Parameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:125 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+            };
+            crate::check_exception();
         }
     }
 
@@ -582,8 +720,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+            };
+            crate::check_exception();
         }
     }
 
@@ -603,18 +744,25 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:152 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_is_done(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_is_done(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -623,12 +771,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_bezier_value(
                     self as *mut Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -637,10 +787,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_b_spline_value(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_b_spline_value(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -648,10 +802,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the function matrix used to approximate the
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_function_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_function_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -659,8 +817,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the derivative function matrix used
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -676,14 +838,17 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error_gradient(
+                    self as *mut Self,
+                    Grad,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -691,10 +856,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_distance(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_distance(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -703,13 +872,16 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// and the approximation curves. F is the sum of the square
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error(
+                    self as *mut Self,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -717,10 +889,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the value (P2 - P1)/ V1 if the first point
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_first_lambda(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_first_lambda(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -728,30 +904,42 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the value (PN - PN-1)/ VN if the last point
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_last_lambda(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_last_lambda(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:199 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Points()`
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_points(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_points(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:202 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Poles()`
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_poles(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_poles(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -761,10 +949,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
     pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
-        unsafe {
-            &*(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_k_index(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_k_index(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -804,8 +996,12 @@ impl BSplineCompute {
         parametrization: crate::approx::ParametrizationType,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_BSplineCompute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSplineCompute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -827,8 +1023,8 @@ impl BSplineCompute {
         cutting: bool,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSplineCompute_ctor_multiline_vector_int2_real2_int_bool2(
                     Line,
                     Parameters,
@@ -839,8 +1035,10 @@ impl BSplineCompute {
                     NbIterations,
                     cutting,
                     Squares,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -856,8 +1054,8 @@ impl BSplineCompute {
         cutting: bool,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSplineCompute_ctor_vector_int2_real2_int_bool2(
                     Parameters,
                     degreemin,
@@ -867,8 +1065,10 @@ impl BSplineCompute {
                     NbIterations,
                     cutting,
                     Squares,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -884,8 +1084,8 @@ impl BSplineCompute {
         parametrization: crate::approx::ParametrizationType,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_BSplineCompute_ctor_int2_real2_int_bool_parametrizationtype_bool(
                     degreemin,
                     degreemax,
@@ -895,8 +1095,10 @@ impl BSplineCompute {
                     cutting,
                     parametrization.into(),
                     Squares,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1240,7 +1442,10 @@ impl BSplineCompute {
     /// Constructs an interpolation of the MultiLine <Line>
     /// The result will be a C2 curve of degree 3.
     pub fn interpol(&mut self, Line: &MultiLine) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_interpol(self as *mut Self, Line) }
+        {
+            unsafe { crate::ffi::AppDef_BSplineCompute_interpol(self as *mut Self, Line) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:116 - `AppDef_BSplineCompute::Init()`
@@ -1256,32 +1461,41 @@ impl BSplineCompute {
         parametrization: crate::approx::ParametrizationType,
         Squares: bool,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSplineCompute_init(
-                self as *mut Self,
-                degreemin,
-                degreemax,
-                Tolerance3d,
-                Tolerance2d,
-                NbIterations,
-                cutting,
-                parametrization.into(),
-                Squares,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSplineCompute_init(
+                    self as *mut Self,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    parametrization.into(),
+                    Squares,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:126 - `AppDef_BSplineCompute::Perform()`
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_perform(self as *mut Self, Line) }
+        {
+            unsafe { crate::ffi::AppDef_BSplineCompute_perform(self as *mut Self, Line) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:130 - `AppDef_BSplineCompute::SetParameters()`
     /// The approximation will begin with the
     /// set of  parameters <ThePar>.
     pub fn set_parameters(&mut self, ThePar: &crate::ffi::math_Vector) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_set_parameters(self as *mut Self, ThePar) }
+        {
+            unsafe { crate::ffi::AppDef_BSplineCompute_set_parameters(self as *mut Self, ThePar) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:135 - `AppDef_BSplineCompute::SetKnots()`
@@ -1289,7 +1503,10 @@ impl BSplineCompute {
     /// set of knots <Knots>. The multiplicities will be set
     /// with the degree and the desired continuity.
     pub fn set_knots(&mut self, Knots: &crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_set_knots(self as *mut Self, Knots) }
+        {
+            unsafe { crate::ffi::AppDef_BSplineCompute_set_knots(self as *mut Self, Knots) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:139 - `AppDef_BSplineCompute::SetKnotsAndMultiplicities()`
@@ -1300,32 +1517,45 @@ impl BSplineCompute {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Mults: &crate::ffi::TColStd_Array1OfInteger,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_knots_and_multiplicities(
-                self as *mut Self,
-                Knots,
-                Mults,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSplineCompute_set_knots_and_multiplicities(
+                    self as *mut Self,
+                    Knots,
+                    Mults,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:143 - `AppDef_BSplineCompute::SetDegrees()`
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
-        unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_degrees(self as *mut Self, degreemin, degreemax)
+        {
+            unsafe {
+                crate::ffi::AppDef_BSplineCompute_set_degrees(
+                    self as *mut Self,
+                    degreemin,
+                    degreemax,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:147 - `AppDef_BSplineCompute::SetTolerances()`
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
-        unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_tolerances(
-                self as *mut Self,
-                Tolerance3d,
-                Tolerance2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSplineCompute_set_tolerances(
+                    self as *mut Self,
+                    Tolerance3d,
+                    Tolerance2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1333,7 +1563,10 @@ impl BSplineCompute {
     /// sets the continuity of the spline.
     /// if C = 2, the spline will be C2.
     pub fn set_continuity(&mut self, C: i32) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_set_continuity(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::AppDef_BSplineCompute_set_continuity(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:155 - `AppDef_BSplineCompute::SetConstraints()`
@@ -1343,12 +1576,15 @@ impl BSplineCompute {
         firstC: crate::app_par_curves::Constraint,
         lastC: crate::app_par_curves::Constraint,
     ) {
-        unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_constraints(
-                self as *mut Self,
-                firstC.into(),
-                lastC.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_BSplineCompute_set_constraints(
+                    self as *mut Self,
+                    firstC.into(),
+                    lastC.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1358,7 +1594,12 @@ impl BSplineCompute {
     /// multicurve using corresponding C1 boundary condition for first and last multipoints.
     /// Multiline must be closed.
     pub fn set_periodic(&mut self, thePeriodic: bool) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_set_periodic(self as *mut Self, thePeriodic) }
+        {
+            unsafe {
+                crate::ffi::AppDef_BSplineCompute_set_periodic(self as *mut Self, thePeriodic)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:167 - `AppDef_BSplineCompute::IsAllApproximated()`
@@ -1366,38 +1607,67 @@ impl BSplineCompute {
     /// the status NoApproximation has been sent by the user
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
-        unsafe { crate::ffi::AppDef_BSplineCompute_is_all_approximated(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSplineCompute_is_all_approximated(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:170 - `AppDef_BSplineCompute::IsToleranceReached()`
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
-        unsafe { crate::ffi::AppDef_BSplineCompute_is_tolerance_reached(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_BSplineCompute_is_tolerance_reached(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:173 - `AppDef_BSplineCompute::Error()`
     /// returns the tolerances 2d and 3d of the MultiBSpCurve.
     pub fn error(&self, tol3d: &mut f64, tol2d: &mut f64) {
-        unsafe { crate::ffi::AppDef_BSplineCompute_error(self as *const Self, tol3d, tol2d) }
+        {
+            unsafe { crate::ffi::AppDef_BSplineCompute_error(self as *const Self, tol3d, tol2d) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:176 - `AppDef_BSplineCompute::Value()`
     /// returns the result of the approximation.
     pub fn value(&self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe { &*(crate::ffi::AppDef_BSplineCompute_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_BSplineCompute_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:179 - `AppDef_BSplineCompute::ChangeValue()`
     /// returns the result of the approximation.
     pub fn change_value(&mut self) -> &mut crate::app_par_curves::MultiBSpCurve {
-        unsafe { &mut *(crate::ffi::AppDef_BSplineCompute_change_value(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_BSplineCompute_change_value(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:183 - `AppDef_BSplineCompute::Parameters()`
     /// returns the new parameters of the approximation
     /// corresponding to the points of the MultiBSpCurve.
     pub fn parameters(&self) -> &crate::ffi::TColStd_Array1OfReal {
-        unsafe { &*(crate::ffi::AppDef_BSplineCompute_parameters(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_BSplineCompute_parameters(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1433,8 +1703,12 @@ impl Compute {
         parametrization: crate::approx::ParametrizationType,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Compute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Compute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1456,8 +1730,8 @@ impl Compute {
         cutting: bool,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_Compute_ctor_multiline_vector_int2_real2_int_bool2(
                     Line,
                     Parameters,
@@ -1468,8 +1742,10 @@ impl Compute {
                     NbIterations,
                     cutting,
                     Squares,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1485,17 +1761,21 @@ impl Compute {
         cutting: bool,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Compute_ctor_vector_int2_real2_int_bool2(
-                Parameters,
-                degreemin,
-                degreemax,
-                Tolerance3d,
-                Tolerance2d,
-                NbIterations,
-                cutting,
-                Squares,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Compute_ctor_vector_int2_real2_int_bool2(
+                    Parameters,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    Squares,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1511,8 +1791,8 @@ impl Compute {
         parametrization: crate::approx::ParametrizationType,
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_Compute_ctor_int2_real2_int_bool_parametrizationtype_bool(
                     degreemin,
                     degreemax,
@@ -1522,8 +1802,10 @@ impl Compute {
                     cutting,
                     parametrization.into(),
                     Squares,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1873,38 +2155,56 @@ impl Compute {
         parametrization: crate::approx::ParametrizationType,
         Squares: bool,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Compute_init(
-                self as *mut Self,
-                degreemin,
-                degreemax,
-                Tolerance3d,
-                Tolerance2d,
-                NbIterations,
-                cutting,
-                parametrization.into(),
-                Squares,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Compute_init(
+                    self as *mut Self,
+                    degreemin,
+                    degreemax,
+                    Tolerance3d,
+                    Tolerance2d,
+                    NbIterations,
+                    cutting,
+                    parametrization.into(),
+                    Squares,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:116 - `AppDef_Compute::Perform()`
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
-        unsafe { crate::ffi::AppDef_Compute_perform(self as *mut Self, Line) }
+        {
+            unsafe { crate::ffi::AppDef_Compute_perform(self as *mut Self, Line) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:119 - `AppDef_Compute::SetDegrees()`
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
-        unsafe { crate::ffi::AppDef_Compute_set_degrees(self as *mut Self, degreemin, degreemax) }
+        {
+            unsafe {
+                crate::ffi::AppDef_Compute_set_degrees(self as *mut Self, degreemin, degreemax)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:123 - `AppDef_Compute::SetTolerances()`
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
-        unsafe {
-            crate::ffi::AppDef_Compute_set_tolerances(self as *mut Self, Tolerance3d, Tolerance2d)
+        {
+            unsafe {
+                crate::ffi::AppDef_Compute_set_tolerances(
+                    self as *mut Self,
+                    Tolerance3d,
+                    Tolerance2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1915,12 +2215,15 @@ impl Compute {
         firstC: crate::app_par_curves::Constraint,
         lastC: crate::app_par_curves::Constraint,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Compute_set_constraints(
-                self as *mut Self,
-                firstC.into(),
-                lastC.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Compute_set_constraints(
+                    self as *mut Self,
+                    firstC.into(),
+                    lastC.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1929,54 +2232,85 @@ impl Compute {
     /// the status NoApproximation has been sent by the user
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Compute_is_all_approximated(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Compute_is_all_approximated(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:136 - `AppDef_Compute::IsToleranceReached()`
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Compute_is_tolerance_reached(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Compute_is_tolerance_reached(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:139 - `AppDef_Compute::Error()`
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
-        unsafe { crate::ffi::AppDef_Compute_error(self as *const Self, Index, tol3d, tol2d) }
+        {
+            unsafe { crate::ffi::AppDef_Compute_error(self as *const Self, Index, tol3d, tol2d) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:145 - `AppDef_Compute::NbMultiCurves()`
     /// Returns the number of MultiCurve doing the approximation
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_Compute_nb_multi_curves(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Compute_nb_multi_curves(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:148 - `AppDef_Compute::Value()`
     /// returns the result of the approximation.
     pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiCurve {
-        unsafe { &*(crate::ffi::AppDef_Compute_value(self as *const Self, Index)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_Compute_value(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:151 - `AppDef_Compute::ChangeValue()`
     /// returns the result of the approximation.
     pub fn change_value(&mut self, Index: i32) -> &mut crate::app_par_curves::MultiCurve {
-        unsafe { &mut *(crate::ffi::AppDef_Compute_change_value(self as *mut Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Compute_change_value(self as *mut Self, Index) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:154 - `AppDef_Compute::SplineValue()`
     /// returns the result of the approximation.
     pub fn spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe { &*(crate::ffi::AppDef_Compute_spline_value(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_Compute_spline_value(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:157 - `AppDef_Compute::Parametrization()`
     /// returns the type  of  parametrization
     pub fn parametrization(&self) -> crate::approx::ParametrizationType {
-        unsafe {
-            crate::approx::ParametrizationType::try_from(
-                crate::ffi::AppDef_Compute_parametrization(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Compute_parametrization(self as *const Self) };
+            crate::check_exception();
+            crate::approx::ParametrizationType::try_from(__result).unwrap()
         }
     }
 
@@ -1984,7 +2318,12 @@ impl Compute {
     /// returns the new parameters of the approximation
     /// corresponding to the points of the multicurve <Index>.
     pub fn parameters(&self, Index: i32) -> &crate::ffi::TColStd_Array1OfReal {
-        unsafe { &*(crate::ffi::AppDef_Compute_parameters(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Compute_parameters(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2011,8 +2350,12 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2039,29 +2382,41 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         &self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_is_solution_reached(
+                    self as *const Self,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        unsafe {
-            &mut *(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2071,12 +2426,15 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         theLeftBorder: &crate::ffi::math_Vector,
         theRightBorder: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_SetBoundary(
-                self as *mut Self,
-                theLeftBorder,
-                theRightBorder,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_SetBoundary(
+                    self as *mut Self,
+                    theLeftBorder,
+                    theRightBorder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2086,67 +2444,93 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
         StartingPoint: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Perform(
+                    self as *mut Self,
+                    F,
+                    StartingPoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_IsDone(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_IsDone(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
     pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Location(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Location(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Minimum(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Minimum(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Gradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Gradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_NbIterations(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_NbIterations(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Dump(
-                self as *const Self,
-                o,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Dump(
+                    self as *const Self,
+                    o,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -2174,8 +2558,12 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2202,29 +2590,41 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         &self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_is_solution_reached(
+                    self as *const Self,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        unsafe {
-            &mut *(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2234,12 +2634,11 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         theLeftBorder: &crate::ffi::math_Vector,
         theRightBorder: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_SetBoundary(
-                self as *mut Self,
-                theLeftBorder,
-                theRightBorder,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2249,67 +2648,91 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
         StartingPoint: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Perform(
+                    self as *mut Self,
+                    F,
+                    StartingPoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_IsDone(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_IsDone(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
     pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Location(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Location(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Minimum(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Minimum(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Gradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Gradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_NbIterations(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_NbIterations(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Dump(
-                self as *const Self,
-                o,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Dump(
+                    self as *const Self,
+                    o,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -2337,8 +2760,12 @@ impl Gradient_BFGSOfTheGradient {
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2365,27 +2792,37 @@ impl Gradient_BFGSOfTheGradient {
         &self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_is_solution_reached(
+                    self as *const Self,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        unsafe {
-            &mut *(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2395,12 +2832,15 @@ impl Gradient_BFGSOfTheGradient {
         theLeftBorder: &crate::ffi::math_Vector,
         theRightBorder: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_SetBoundary(
-                self as *mut Self,
-                theLeftBorder,
-                theRightBorder,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_SetBoundary(
+                    self as *mut Self,
+                    theLeftBorder,
+                    theRightBorder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2410,60 +2850,86 @@ impl Gradient_BFGSOfTheGradient {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
         StartingPoint: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Perform(
+                    self as *mut Self,
+                    F,
+                    StartingPoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_IsDone(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_IsDone(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
     pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Location(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Location(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Minimum(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Minimum(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Gradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Gradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_NbIterations(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_NbIterations(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Dump(self as *const Self, o)
+        {
+            unsafe {
+                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Dump(self as *const Self, o)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -2484,17 +2950,21 @@ unsafe impl crate::CppDeletable for HArray1OfMultiPointConstraint {
 impl HArray1OfMultiPointConstraint {
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::AppDef_HArray1OfMultiPointConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor())
+        {
+            let __result = unsafe { crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::AppDef_HArray1OfMultiPointConstraint()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2504,12 +2974,14 @@ impl HArray1OfMultiPointConstraint {
         theUpper: i32,
         theValue: &MultiPointConstraint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_int2_multipointconstraint(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2520,8 +2992,14 @@ impl HArray1OfMultiPointConstraint {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_multipointconstraint_int2_bool(theBegin, theLower, theUpper, arg3))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_multipointconstraint_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2529,67 +3007,93 @@ impl HArray1OfMultiPointConstraint {
     pub fn new_array1ofmultipointconstraint(
         theOther: &crate::ffi::AppDef_Array1OfMultiPointConstraint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_array1ofmultipointconstraint(
                     theOther,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::Array1()`
     pub fn array1(&self) -> &crate::ffi::AppDef_Array1OfMultiPointConstraint {
-        unsafe { &*(crate::ffi::AppDef_HArray1OfMultiPointConstraint_array1(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_array1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::AppDef_Array1OfMultiPointConstraint {
-        unsafe {
-            &mut *(crate::ffi::AppDef_HArray1OfMultiPointConstraint_change_array1(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::AppDef_HArray1OfMultiPointConstraint_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_name(),
-            )
-            .to_string_lossy()
-            .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2597,78 +3101,105 @@ impl HArray1OfMultiPointConstraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppDefHArray1OfMultiPointConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_HArray1OfMultiPointConstraint_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_to_handle(obj.into_raw())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_Delete(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -2684,26 +3215,36 @@ unsafe impl crate::CppDeletable for HandleAppDefHArray1OfMultiPointConstraint {
 impl HandleAppDefHArray1OfMultiPointConstraint {
     /// Dereference this Handle to access the underlying AppDef_HArray1OfMultiPointConstraint
     pub fn get(&self) -> &crate::ffi::AppDef_HArray1OfMultiPointConstraint {
-        unsafe {
-            &*(crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_get(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppDef_HArray1OfMultiPointConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppDef_HArray1OfMultiPointConstraint {
-        unsafe {
-            &mut *(crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<AppDef_HArray1OfMultiPointConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2730,58 +3271,88 @@ impl LinearCriteria {
         FirstPoint: i32,
         LastPoint: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_LinearCriteria_ctor_multiline_int2(
-                SSP, FirstPoint, LastPoint,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_ctor_multiline_int2(SSP, FirstPoint, LastPoint)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:46 - `AppDef_LinearCriteria::SetParameters()`
     pub fn set_parameters(&mut self, Parameters: &crate::ffi::HandleTColStdHArray1OfReal) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_set_parameters(self as *mut Self, Parameters) }
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_set_parameters(self as *mut Self, Parameters)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:49 - `AppDef_LinearCriteria::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleFEmToolCurve) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_set_curve(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::AppDef_LinearCriteria_set_curve(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:51 - `AppDef_LinearCriteria::GetCurve()`
     pub fn get_curve(&self, C: &mut crate::ffi::HandleFEmToolCurve) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_get_curve(self as *const Self, C) }
+        {
+            unsafe { crate::ffi::AppDef_LinearCriteria_get_curve(self as *const Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:53 - `AppDef_LinearCriteria::SetEstimation()`
     pub fn set_estimation(&mut self, E1: f64, E2: f64, E3: f64) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_set_estimation(self as *mut Self, E1, E2, E3) }
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_set_estimation(self as *mut Self, E1, E2, E3)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:57 - `AppDef_LinearCriteria::EstLength()`
     pub fn est_length(&mut self) -> &mut f64 {
-        unsafe { &mut *(crate::ffi::AppDef_LinearCriteria_est_length(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_LinearCriteria_est_length(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:59 - `AppDef_LinearCriteria::GetEstimation()`
     pub fn get_estimation(&self, E1: &mut f64, E2: &mut f64, E3: &mut f64) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_get_estimation(self as *const Self, E1, E2, E3) }
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_get_estimation(self as *const Self, E1, E2, E3)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:63 - `AppDef_LinearCriteria::AssemblyTable()`
     pub fn assembly_table(&self) -> crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_LinearCriteria_assembly_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_LinearCriteria_assembly_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:65 - `AppDef_LinearCriteria::DependenceTable()`
     pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_LinearCriteria_dependence_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_LinearCriteria_dependence_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2795,16 +3366,20 @@ impl LinearCriteria {
         J2: &mut f64,
         J3: &mut f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_quality_values(
-                self as *mut Self,
-                J1min,
-                J2min,
-                J3min,
-                J1,
-                J2,
-                J3,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_quality_values(
+                    self as *mut Self,
+                    J1min,
+                    J2min,
+                    J3min,
+                    J1,
+                    J2,
+                    J3,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2815,13 +3390,16 @@ impl LinearCriteria {
         QuadraticError: &mut f64,
         AverageError: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_error_values(
-                self as *mut Self,
-                MaxError,
-                QuadraticError,
-                AverageError,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_error_values(
+                    self as *mut Self,
+                    MaxError,
+                    QuadraticError,
+                    AverageError,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2833,21 +3411,27 @@ impl LinearCriteria {
         Dimension2: i32,
         H: &mut crate::math::Matrix,
     ) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_hessian(
-                self as *mut Self,
-                Element,
-                Dimension1,
-                Dimension2,
-                H,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_hessian(
+                    self as *mut Self,
+                    Element,
+                    Dimension1,
+                    Dimension2,
+                    H,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:83 - `AppDef_LinearCriteria::Gradient()`
     pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_gradient(self as *mut Self, Element, Dimension, G)
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_gradient(self as *mut Self, Element, Dimension, G)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2858,7 +3442,12 @@ impl LinearCriteria {
         X: &crate::ffi::math_Vector,
         AssTable: &crate::ffi::HandleFEmToolHAssemblyTable,
     ) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_input_vector(self as *mut Self, X, AssTable) }
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_input_vector(self as *mut Self, X, AssTable)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:92 - `AppDef_LinearCriteria::SetWeight()`
@@ -2870,80 +3459,114 @@ impl LinearCriteria {
         percentJ2: f64,
         percentJ3: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_weight_real5(
-                self as *mut Self,
-                QuadraticWeight,
-                QualityWeight,
-                percentJ1,
-                percentJ2,
-                percentJ3,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_set_weight_real5(
+                    self as *mut Self,
+                    QuadraticWeight,
+                    QualityWeight,
+                    percentJ1,
+                    percentJ2,
+                    percentJ3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:98 - `AppDef_LinearCriteria::GetWeight()`
     pub fn get_weight(&self, QuadraticWeight: &mut f64, QualityWeight: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_get_weight(
-                self as *const Self,
-                QuadraticWeight,
-                QualityWeight,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_get_weight(
+                    self as *const Self,
+                    QuadraticWeight,
+                    QualityWeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:101 - `AppDef_LinearCriteria::SetWeight()`
     pub fn set_weight_array1ofreal(&mut self, Weight: &crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_weight_array1ofreal(self as *mut Self, Weight)
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_set_weight_array1ofreal(self as *mut Self, Weight)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:103 - `AppDef_LinearCriteria::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppDef_LinearCriteria_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_LinearCriteria_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:103 - `AppDef_LinearCriteria::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::AppDef_LinearCriteria_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::AppDef_LinearCriteria_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:103 - `AppDef_LinearCriteria::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppDef_LinearCriteria_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_LinearCriteria_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to AppDef_SmoothCriterion
     pub fn as_smooth_criterion(&self) -> &SmoothCriterion {
-        unsafe {
-            &*(crate::ffi::AppDef_LinearCriteria_as_AppDef_SmoothCriterion(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_as_AppDef_SmoothCriterion(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to AppDef_SmoothCriterion (mutable)
     pub fn as_smooth_criterion_mut(&mut self) -> &mut SmoothCriterion {
-        unsafe {
-            &mut *(crate::ffi::AppDef_LinearCriteria_as_AppDef_SmoothCriterion_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_as_AppDef_SmoothCriterion_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::AppDef_LinearCriteria_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_LinearCriteria_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2951,58 +3574,87 @@ impl LinearCriteria {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppDefLinearCriteria> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_LinearCriteria_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::AppDef_LinearCriteria_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::AppDef_LinearCriteria_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::AppDef_LinearCriteria_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_LinearCriteria_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::AppDef_LinearCriteria_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_LinearCriteria_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::AppDef_LinearCriteria_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::AppDef_LinearCriteria_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3017,35 +3669,49 @@ unsafe impl crate::CppDeletable for HandleAppDefLinearCriteria {
 impl HandleAppDefLinearCriteria {
     /// Dereference this Handle to access the underlying AppDef_LinearCriteria
     pub fn get(&self) -> &crate::ffi::AppDef_LinearCriteria {
-        unsafe { &*(crate::ffi::HandleAppDefLinearCriteria_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleAppDefLinearCriteria_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AppDef_LinearCriteria
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppDef_LinearCriteria {
-        unsafe { &mut *(crate::ffi::HandleAppDefLinearCriteria_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleAppDefLinearCriteria_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<AppDef_LinearCriteria> to Handle<AppDef_SmoothCriterion>
     pub fn to_handle_smooth_criterion(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppDefSmoothCriterion> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppDefLinearCriteria_to_HandleAppDefSmoothCriterion(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<AppDef_LinearCriteria> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppDefLinearCriteria_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3088,7 +3754,11 @@ impl MultiLine {
     /// **Source:** `AppDef_MultiLine.hxx`:59 - `AppDef_MultiLine::AppDef_MultiLine()`
     /// creates an undefined MultiLine.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiLine_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MultiLine_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:66 - `AppDef_MultiLine::AppDef_MultiLine()`
@@ -3098,7 +3768,11 @@ impl MultiLine {
     /// constraint to be taken into account.
     /// An exception is raised if NbMult < 0.
     pub fn new_int(NbMult: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiLine_ctor_int(NbMult)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MultiLine_ctor_int(NbMult) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:69 - `AppDef_MultiLine::AppDef_MultiLine()`
@@ -3106,10 +3780,12 @@ impl MultiLine {
     pub fn new_array1ofmultipointconstraint(
         tabMultiP: &crate::ffi::AppDef_Array1OfMultiPointConstraint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppDef_MultiLine_ctor_array1ofmultipointconstraint(tabMultiP),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiLine_ctor_array1ofmultipointconstraint(tabMultiP)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3117,15 +3793,21 @@ impl MultiLine {
     /// The MultiLine constructed will have one line of
     /// 3d points without their tangencies.
     pub fn new_array1ofpnt(tabP3d: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiLine_ctor_array1ofpnt(tabP3d)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MultiLine_ctor_array1ofpnt(tabP3d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:77 - `AppDef_MultiLine::AppDef_MultiLine()`
     /// The MultiLine constructed will have one line of
     /// 2d points without their tangencies.
     pub fn new_array1ofpnt2d(tabP2d: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiLine_ctor_array1ofpnt2d(tabP2d))
+        {
+            let __result = unsafe { crate::ffi::AppDef_MultiLine_ctor_array1ofpnt2d(tabP2d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3133,14 +3815,23 @@ impl MultiLine {
     /// returns the number of MultiPointConstraints of the
     /// MultiLine.
     pub fn nb_multi_points(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_MultiLine_nb_multi_points(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiLine_nb_multi_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:85 - `AppDef_MultiLine::NbPoints()`
     /// returns the number of Points from MultiPoints composing
     /// the MultiLine.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_MultiLine_nb_points(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MultiLine_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:93 - `AppDef_MultiLine::SetParameter()`
@@ -3151,7 +3842,10 @@ impl MultiLine {
     /// than 0 or Index is greater than the number
     /// of Multipoint constraints in the MultiLine.
     pub fn set_parameter(&mut self, Index: i32, U: f64) {
-        unsafe { crate::ffi::AppDef_MultiLine_set_parameter(self as *mut Self, Index, U) }
+        {
+            unsafe { crate::ffi::AppDef_MultiLine_set_parameter(self as *mut Self, Index, U) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:100 - `AppDef_MultiLine::SetValue()`
@@ -3161,18 +3855,21 @@ impl MultiLine {
     /// An exception is raised if the dimensions of the
     /// MultiPoints are different.
     pub fn set_value(&mut self, Index: i32, MPoint: &MultiPointConstraint) {
-        unsafe { crate::ffi::AppDef_MultiLine_set_value(self as *mut Self, Index, MPoint) }
+        {
+            unsafe { crate::ffi::AppDef_MultiLine_set_value(self as *mut Self, Index, MPoint) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:105 - `AppDef_MultiLine::Value()`
     /// returns the MultiPointConstraint of range Index
     /// An exception is raised if Index<0 or Index>MPoint.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<MultiPointConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiLine_value(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiLine_value(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3181,7 +3878,10 @@ impl MultiLine {
     /// state of the object.
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::AppDef_MultiLine_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::AppDef_MultiLine_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3216,7 +3916,11 @@ impl MultiPointConstraint {
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:53 - `AppDef_MultiPointConstraint::AppDef_MultiPointConstraint()`
     /// creates an undefined MultiPointConstraint.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MultiPointConstraint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:58 - `AppDef_MultiPointConstraint::AppDef_MultiPointConstraint()`
@@ -3224,30 +3928,33 @@ impl MultiPointConstraint {
     /// These Points can be of 2 or 3 dimensions.
     /// Points will be initialized with SetPoint and SetPoint2d.
     pub fn new_int2(NbPoints: i32, NbPoints2d: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_ctor_int2(
-                NbPoints, NbPoints2d,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiPointConstraint_ctor_int2(NbPoints, NbPoints2d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:62 - `AppDef_MultiPointConstraint::AppDef_MultiPointConstraint()`
     /// creates a MultiPoint only composed of 3D points.
     pub fn new_array1ofpnt(tabP: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt(
-                tabP,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt(tabP) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:65 - `AppDef_MultiPointConstraint::AppDef_MultiPointConstraint()`
     /// creates a MultiPoint only composed of 2D points.
     pub fn new_array1ofpnt2d(tabP: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d(
-                tabP,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d(tabP) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3259,12 +3966,12 @@ impl MultiPointConstraint {
         tabP: &crate::ffi::TColgp_Array1OfPnt,
         tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d(
-                    tabP, tabP2d,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d(tabP, tabP2d)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3283,8 +3990,12 @@ impl MultiPointConstraint {
         tabCur: &crate::ffi::TColgp_Array1OfVec,
         tabCur2d: &crate::ffi::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d, tabCur, tabCur2d))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d, tabCur, tabCur2d)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3300,8 +4011,12 @@ impl MultiPointConstraint {
         tabVec: &crate::ffi::TColgp_Array1OfVec,
         tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3315,12 +4030,14 @@ impl MultiPointConstraint {
         tabVec: &crate::ffi::TColgp_Array1OfVec,
         tabCur: &crate::ffi::TColgp_Array1OfVec,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec2(
                     tabP, tabVec, tabCur,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3333,10 +4050,12 @@ impl MultiPointConstraint {
         tabP: &crate::ffi::TColgp_Array1OfPnt,
         tabVec: &crate::ffi::TColgp_Array1OfVec,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec(tabP, tabVec),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec(tabP, tabVec)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3349,12 +4068,14 @@ impl MultiPointConstraint {
         tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
         tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d_array1ofvec2d(
                     tabP2d, tabVec2d,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3368,12 +4089,14 @@ impl MultiPointConstraint {
         tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
         tabCur2d: &crate::ffi::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d_array1ofvec2d2(
                     tabP2d, tabVec2d, tabCur2d,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3385,7 +4108,12 @@ impl MultiPointConstraint {
     /// An exception is raised if Tang has an incorrect number of
     /// dimensions.
     pub fn set_tang(&mut self, Index: i32, Tang: &crate::gp::Vec) {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_set_tang(self as *mut Self, Index, Tang) }
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_set_tang(self as *mut Self, Index, Tang)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:137 - `AppDef_MultiPointConstraint::Tang()`
@@ -3393,11 +4121,11 @@ impl MultiPointConstraint {
     /// An exception is raised if Index < 0 or if Index > number
     /// of 3d points.
     pub fn tang(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_tang(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiPointConstraint_tang(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3409,8 +4137,11 @@ impl MultiPointConstraint {
     /// An exception is raised if Tang has an incorrect number of
     /// dimensions.
     pub fn set_tang2d(&mut self, Index: i32, Tang2d: &crate::gp::Vec2d) {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_set_tang2d(self as *mut Self, Index, Tang2d)
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_set_tang2d(self as *mut Self, Index, Tang2d)
+            };
+            crate::check_exception();
         }
     }
 
@@ -3419,11 +4150,12 @@ impl MultiPointConstraint {
     /// An exception is raised if Index < number  of 3d points or
     /// if Index > total number of points.
     pub fn tang2d(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_tang2d(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_tang2d(self as *const Self, Index)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3436,7 +4168,12 @@ impl MultiPointConstraint {
     /// An exception is raised if Curv has an incorrect number of
     /// dimensions.
     pub fn set_curv(&mut self, Index: i32, Curv: &crate::gp::Vec) {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_set_curv(self as *mut Self, Index, Curv) }
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_set_curv(self as *mut Self, Index, Curv)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:164 - `AppDef_MultiPointConstraint::Curv()`
@@ -3444,11 +4181,11 @@ impl MultiPointConstraint {
     /// An exception is raised if Index < 0 or if Index > number
     /// of 3d points.
     pub fn curv(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_curv(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MultiPointConstraint_curv(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3461,8 +4198,11 @@ impl MultiPointConstraint {
     /// An exception is raised if Curv has an incorrect number of
     /// dimensions.
     pub fn set_curv2d(&mut self, Index: i32, Curv2d: &crate::gp::Vec2d) {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_set_curv2d(self as *mut Self, Index, Curv2d)
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_set_curv2d(self as *mut Self, Index, Curv2d)
+            };
+            crate::check_exception();
         }
     }
 
@@ -3471,24 +4211,37 @@ impl MultiPointConstraint {
     /// An exception is raised if Index < 0 or if Index > number
     /// of 3d points.
     pub fn curv2d(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MultiPointConstraint_curv2d(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_curv2d(self as *const Self, Index)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:181 - `AppDef_MultiPointConstraint::IsTangencyPoint()`
     /// returns True if the MultiPoint has a tangency value.
     pub fn is_tangency_point(&self) -> bool {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_is_tangency_point(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_is_tangency_point(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:184 - `AppDef_MultiPointConstraint::IsCurvaturePoint()`
     /// returns True if the MultiPoint has a curvature value.
     pub fn is_curvature_point(&self) -> bool {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_is_curvature_point(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_is_curvature_point(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:189 - `AppDef_MultiPointConstraint::Dump()`
@@ -3496,110 +4249,160 @@ impl MultiPointConstraint {
     /// state of the object.
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::AppDef_MultiPointConstraint_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to AppParCurves_MultiPoint
     pub fn as_app_par_curves_multi_point(&self) -> &crate::app_par_curves::MultiPoint {
-        unsafe {
-            &*(crate::ffi::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to AppParCurves_MultiPoint (mutable)
     pub fn as_app_par_curves_multi_point_mut(&mut self) -> &mut crate::app_par_curves::MultiPoint {
-        unsafe {
-            &mut *(crate::ffi::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:75 - `AppParCurves_MultiPoint::SetPoint()`
     pub fn set_point(&mut self, Index: i32, Point: &crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_SetPoint(
-                self as *mut Self,
-                Index,
-                Point,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_SetPoint(
+                    self as *mut Self,
+                    Index,
+                    Point,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:80 - `AppParCurves_MultiPoint::Point()`
     pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::AppDef_MultiPointConstraint_inherited_Point(self as *const Self, Index))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_Point(self as *const Self, Index)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:85 - `AppParCurves_MultiPoint::SetPoint2d()`
     pub fn set_point2d(&mut self, Index: i32, Point: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_SetPoint2d(
-                self as *mut Self,
-                Index,
-                Point,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_SetPoint2d(
+                    self as *mut Self,
+                    Index,
+                    Point,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:90 - `AppParCurves_MultiPoint::Point2d()`
     pub fn point2d(&self, Index: i32) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::AppDef_MultiPointConstraint_inherited_Point2d(
-                self as *const Self,
-                Index,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_Point2d(
+                    self as *const Self,
+                    Index,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:94 - `AppParCurves_MultiPoint::Dimension()`
     pub fn dimension(&self, Index: i32) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_Dimension(self as *const Self, Index)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_Dimension(
+                    self as *const Self,
+                    Index,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:97 - `AppParCurves_MultiPoint::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_inherited_NbPoints(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_NbPoints(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:100 - `AppParCurves_MultiPoint::NbPoints2d()`
     pub fn nb_points2d(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_MultiPointConstraint_inherited_NbPoints2d(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_NbPoints2d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:107 - `AppParCurves_MultiPoint::Transform()`
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_Transform(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-                z,
-                dz,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_Transform(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                    z,
+                    dz,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:119 - `AppParCurves_MultiPoint::Transform2d()`
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
-        unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_Transform2d(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_MultiPointConstraint_inherited_Transform2d(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -3638,8 +4441,12 @@ impl MyBSplGradientOfBSplineCompute {
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3665,8 +4472,12 @@ impl MyBSplGradientOfBSplineCompute {
         lambda1: f64,
         lambda2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3695,17 +4506,25 @@ impl MyBSplGradientOfBSplineCompute {
     /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:86 - `AppDef_MyBSplGradientOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_is_done(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:90 - `AppDef_MyBSplGradientOfBSplineCompute::Value()`
     /// returns all the BSpline curves approximating the
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_value(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_value(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3715,8 +4534,12 @@ impl MyBSplGradientOfBSplineCompute {
     /// An exception is raised if NotDone.
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_error(self as *const Self, Index)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_error(self as *const Self, Index)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3724,8 +4547,12 @@ impl MyBSplGradientOfBSplineCompute {
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_max_error3d(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_max_error3d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3733,8 +4560,12 @@ impl MyBSplGradientOfBSplineCompute {
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_max_error2d(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_max_error2d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3742,8 +4573,12 @@ impl MyBSplGradientOfBSplineCompute {
     /// returns the average error between the old and the
     /// new approximation.
     pub fn average_error(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_average_error(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_average_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -3780,8 +4615,12 @@ impl MyGradientOfCompute {
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3818,17 +4657,23 @@ impl MyGradientOfCompute {
     /// **Source:** `AppDef_MyGradientOfCompute.hxx`:62 - `AppDef_MyGradientOfCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_MyGradientOfCompute_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MyGradientOfCompute_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientOfCompute.hxx`:66 - `AppDef_MyGradientOfCompute::Value()`
     /// returns all the Bezier curves approximating the
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyGradientOfCompute_value(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MyGradientOfCompute_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3838,28 +4683,49 @@ impl MyGradientOfCompute {
     /// An exception is raised if NotDone.
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
-        unsafe { crate::ffi::AppDef_MyGradientOfCompute_error(self as *const Self, Index) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MyGradientOfCompute_error(self as *const Self, Index) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientOfCompute.hxx`:76 - `AppDef_MyGradientOfCompute::MaxError3d()`
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_MyGradientOfCompute_max_error3d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MyGradientOfCompute_max_error3d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientOfCompute.hxx`:80 - `AppDef_MyGradientOfCompute::MaxError2d()`
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_MyGradientOfCompute_max_error2d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MyGradientOfCompute_max_error2d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientOfCompute.hxx`:84 - `AppDef_MyGradientOfCompute::AverageError()`
     /// returns the average error between the old and the
     /// new approximation.
     pub fn average_error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_MyGradientOfCompute_average_error(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientOfCompute_average_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -3895,8 +4761,12 @@ impl MyGradientbisOfBSplineCompute {
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3933,17 +4803,25 @@ impl MyGradientbisOfBSplineCompute {
     /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:62 - `AppDef_MyGradientbisOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_MyGradientbisOfBSplineCompute_is_done(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:66 - `AppDef_MyGradientbisOfBSplineCompute::Value()`
     /// returns all the Bezier curves approximating the
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyGradientbisOfBSplineCompute_value(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_value(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3953,8 +4831,12 @@ impl MyGradientbisOfBSplineCompute {
     /// An exception is raised if NotDone.
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_error(self as *const Self, Index)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_error(self as *const Self, Index)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3962,22 +4844,38 @@ impl MyGradientbisOfBSplineCompute {
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_MyGradientbisOfBSplineCompute_max_error3d(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_max_error3d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:80 - `AppDef_MyGradientbisOfBSplineCompute::MaxError2d()`
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_MyGradientbisOfBSplineCompute_max_error2d(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_max_error2d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:84 - `AppDef_MyGradientbisOfBSplineCompute::AverageError()`
     /// returns the average error between the old and the
     /// new approximation.
     pub fn average_error(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_average_error(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_average_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -4001,31 +4899,51 @@ impl MyLineTool {
     /// **Source:** `AppDef_MyLineTool.hxx` - `AppDef_MyLineTool::AppDef_MyLineTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyLineTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MyLineTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:39 - `AppDef_MyLineTool::FirstPoint()`
     /// Returns the first index of multipoints of the MultiLine.
     pub fn first_point(ML: &MultiLine) -> i32 {
-        unsafe { crate::ffi::AppDef_MyLineTool_first_point(ML) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MyLineTool_first_point(ML) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:42 - `AppDef_MyLineTool::LastPoint()`
     /// Returns the last index of multipoints of the MultiLine.
     pub fn last_point(ML: &MultiLine) -> i32 {
-        unsafe { crate::ffi::AppDef_MyLineTool_last_point(ML) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MyLineTool_last_point(ML) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:45 - `AppDef_MyLineTool::NbP2d()`
     /// Returns the number of 2d points of a MultiLine.
     pub fn nb_p2d(ML: &MultiLine) -> i32 {
-        unsafe { crate::ffi::AppDef_MyLineTool_nb_p2d(ML) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MyLineTool_nb_p2d(ML) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:48 - `AppDef_MyLineTool::NbP3d()`
     /// Returns the number of 3d points of a MultiLine.
     pub fn nb_p3d(ML: &MultiLine) -> i32 {
-        unsafe { crate::ffi::AppDef_MyLineTool_nb_p3d(ML) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_MyLineTool_nb_p3d(ML) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:52 - `AppDef_MyLineTool::Value()`
@@ -4036,8 +4954,15 @@ impl MyLineTool {
         MPointIndex: i32,
         tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
     ) {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt(ML, MPointIndex, tabPt)
+        {
+            unsafe {
+                crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt(
+                    ML,
+                    MPointIndex,
+                    tabPt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4049,12 +4974,15 @@ impl MyLineTool {
         MPointIndex: i32,
         tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt2d(
-                ML,
-                MPointIndex,
-                tabPt2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt2d(
+                    ML,
+                    MPointIndex,
+                    tabPt2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4067,13 +4995,16 @@ impl MyLineTool {
         tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
         tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt_array1ofpnt2d(
-                ML,
-                MPointIndex,
-                tabPt,
-                tabPt2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt_array1ofpnt2d(
+                    ML,
+                    MPointIndex,
+                    tabPt,
+                    tabPt2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4085,8 +5016,16 @@ impl MyLineTool {
         MPointIndex: i32,
         tabV: &mut crate::ffi::TColgp_Array1OfVec,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec(ML, MPointIndex, tabV)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec(
+                    ML,
+                    MPointIndex,
+                    tabV,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4098,12 +5037,16 @@ impl MyLineTool {
         MPointIndex: i32,
         tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec2d(
-                ML,
-                MPointIndex,
-                tabV2d,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec2d(
+                    ML,
+                    MPointIndex,
+                    tabV2d,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4116,13 +5059,17 @@ impl MyLineTool {
         tabV: &mut crate::ffi::TColgp_Array1OfVec,
         tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec_array1ofvec2d(
-                ML,
-                MPointIndex,
-                tabV,
-                tabV2d,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec_array1ofvec2d(
+                    ML,
+                    MPointIndex,
+                    tabV,
+                    tabV2d,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4134,8 +5081,16 @@ impl MyLineTool {
         MPointIndex: i32,
         tabV: &mut crate::ffi::TColgp_Array1OfVec,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec(ML, MPointIndex, tabV)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec(
+                    ML,
+                    MPointIndex,
+                    tabV,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4147,12 +5102,16 @@ impl MyLineTool {
         MPointIndex: i32,
         tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec2d(
-                ML,
-                MPointIndex,
-                tabV2d,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec2d(
+                    ML,
+                    MPointIndex,
+                    tabV2d,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4165,22 +5124,27 @@ impl MyLineTool {
         tabV: &mut crate::ffi::TColgp_Array1OfVec,
         tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec_array1ofvec2d(
-                ML,
-                MPointIndex,
-                tabV,
-                tabV2d,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec_array1ofvec2d(
+                    ML,
+                    MPointIndex,
+                    tabV,
+                    tabV2d,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:108 - `AppDef_MyLineTool::WhatStatus()`
     /// returns NoPointsAdded
     pub fn what_status(ML: &MultiLine, I1: i32, I2: i32) -> crate::approx::Status {
-        unsafe {
-            crate::approx::Status::try_from(crate::ffi::AppDef_MyLineTool_what_status(ML, I1, I2))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::AppDef_MyLineTool_what_status(ML, I1, I2) };
+            crate::check_exception();
+            crate::approx::Status::try_from(__result).unwrap()
         }
     }
 
@@ -4193,10 +5157,11 @@ impl MyLineTool {
         I2: i32,
         NbPMin: i32,
     ) -> crate::OwnedPtr<MultiLine> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_MyLineTool_make_ml_between(
-                ML, I1, I2, NbPMin,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_MyLineTool_make_ml_between(ML, I1, I2, NbPMin) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4210,8 +5175,12 @@ impl MyLineTool {
         indbad: i32,
         OtherLine: &mut MultiLine,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_MyLineTool_make_ml_one_more_point(ML, I1, I2, indbad, OtherLine)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_MyLineTool_make_ml_one_more_point(ML, I1, I2, indbad, OtherLine)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -4241,8 +5210,12 @@ impl ParFunctionOfMyGradientOfCompute {
         Parameters: &crate::ffi::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4250,8 +5223,14 @@ impl ParFunctionOfMyGradientOfCompute {
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_nb_variables(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_nb_variables(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4261,8 +5240,12 @@ impl ParFunctionOfMyGradientOfCompute {
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_value(self as *mut Self, X, F)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_value(self as *mut Self, X, F)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4274,8 +5257,16 @@ impl ParFunctionOfMyGradientOfCompute {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_gradient(self as *mut Self, X, G)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_gradient(
+                    self as *mut Self,
+                    X,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4288,18 +5279,31 @@ impl ParFunctionOfMyGradientOfCompute {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_values(self as *mut Self, X, F, G)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_values(
+                    self as *mut Self,
+                    X,
+                    F,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:72 - `AppDef_ParFunctionOfMyGradientOfCompute::NewParameters()`
     /// returns the new parameters of the MultiLine.
     pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_new_parameters(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_new_parameters(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -4307,8 +5311,12 @@ impl ParFunctionOfMyGradientOfCompute {
     /// returns the MultiCurve approximating the set after
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_curve_value(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_curve_value(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -4316,12 +5324,16 @@ impl ParFunctionOfMyGradientOfCompute {
     /// returns the distance between the MultiPoint of range
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_error(
-                self as *const Self,
-                IPoint,
-                CurveIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_error(
+                    self as *const Self,
+                    IPoint,
+                    CurveIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4329,8 +5341,12 @@ impl ParFunctionOfMyGradientOfCompute {
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_max_error3d(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_max_error3d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4338,8 +5354,12 @@ impl ParFunctionOfMyGradientOfCompute {
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_max_error2d(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_max_error2d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4349,15 +5369,16 @@ impl ParFunctionOfMyGradientOfCompute {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_first_constraint(
                     self as *const Self,
                     TheConstraints,
                     FirstPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -4367,15 +5388,16 @@ impl ParFunctionOfMyGradientOfCompute {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_last_constraint(
                     self as *const Self,
                     TheConstraints,
                     LastPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -4383,8 +5405,12 @@ impl ParFunctionOfMyGradientOfCompute {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -4392,33 +5418,51 @@ impl ParFunctionOfMyGradientOfCompute {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_inherited_GetStateNumber(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_inherited_GetStateNumber(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -4448,8 +5492,12 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         Parameters: &crate::ffi::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4457,10 +5505,14 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_nb_variables(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_nb_variables(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4470,12 +5522,16 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_value(
+                    self as *mut Self,
+                    X,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4487,12 +5543,16 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_gradient(
-                self as *mut Self,
-                X,
-                G,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_gradient(
+                    self as *mut Self,
+                    X,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4505,23 +5565,31 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_values(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_values(
+                    self as *mut Self,
+                    X,
+                    F,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:73 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NewParameters()`
     /// returns the new parameters of the MultiLine.
     pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_new_parameters(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_new_parameters(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -4529,10 +5597,14 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// returns the MultiCurve approximating the set after
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_curve_value(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_curve_value(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -4540,12 +5612,16 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// returns the distance between the MultiPoint of range
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_error(
-                self as *const Self,
-                IPoint,
-                CurveIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_error(
+                    self as *const Self,
+                    IPoint,
+                    CurveIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4553,10 +5629,14 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error3d(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error3d(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4564,10 +5644,14 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error2d(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error2d(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4577,15 +5661,16 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_first_constraint(
                     self as *const Self,
                     TheConstraints,
                     FirstPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -4595,15 +5680,16 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_last_constraint(
                     self as *const Self,
                     TheConstraints,
                     LastPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -4611,8 +5697,12 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -4620,31 +5710,45 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_inherited_GetStateNumber(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -4674,8 +5778,12 @@ impl ParFunctionOfTheGradient {
         Parameters: &crate::ffi::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParFunctionOfTheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4683,7 +5791,13 @@ impl ParFunctionOfTheGradient {
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_nb_variables(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:61 - `AppDef_ParFunctionOfTheGradient::Value()`
@@ -4692,7 +5806,13 @@ impl ParFunctionOfTheGradient {
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_value(self as *mut Self, X, F)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:65 - `AppDef_ParFunctionOfTheGradient::Gradient()`
@@ -4703,7 +5823,13 @@ impl ParFunctionOfTheGradient {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_gradient(self as *mut Self, X, G) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_gradient(self as *mut Self, X, G)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:69 - `AppDef_ParFunctionOfTheGradient::Values()`
@@ -4715,14 +5841,24 @@ impl ParFunctionOfTheGradient {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_values(self as *mut Self, X, F, G) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_values(self as *mut Self, X, F, G)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:72 - `AppDef_ParFunctionOfTheGradient::NewParameters()`
     /// returns the new parameters of the MultiLine.
     pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfTheGradient_new_parameters(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_new_parameters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -4730,19 +5866,29 @@ impl ParFunctionOfTheGradient {
     /// returns the MultiCurve approximating the set after
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
-        unsafe { &*(crate::ffi::AppDef_ParFunctionOfTheGradient_curve_value(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_curve_value(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:80 - `AppDef_ParFunctionOfTheGradient::Error()`
     /// returns the distance between the MultiPoint of range
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_error(
-                self as *const Self,
-                IPoint,
-                CurveIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_error(
+                    self as *const Self,
+                    IPoint,
+                    CurveIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4750,14 +5896,26 @@ impl ParFunctionOfTheGradient {
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_max_error3d(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_max_error3d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:89 - `AppDef_ParFunctionOfTheGradient::MaxError2d()`
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_ParFunctionOfTheGradient_max_error2d(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_max_error2d(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:92 - `AppDef_ParFunctionOfTheGradient::FirstConstraint()`
@@ -4766,15 +5924,16 @@ impl ParFunctionOfTheGradient {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParFunctionOfTheGradient_first_constraint(
                     self as *const Self,
                     TheConstraints,
                     FirstPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -4784,15 +5943,16 @@ impl ParFunctionOfTheGradient {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParFunctionOfTheGradient_last_constraint(
                     self as *const Self,
                     TheConstraints,
                     LastPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -4800,10 +5960,14 @@ impl ParFunctionOfTheGradient {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -4811,33 +5975,51 @@ impl ParFunctionOfTheGradient {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParFunctionOfTheGradient_inherited_GetStateNumber(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -4882,8 +6064,12 @@ impl ParLeastSquareOfMyGradientOfCompute {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4897,8 +6083,12 @@ impl ParLeastSquareOfMyGradientOfCompute {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4929,8 +6119,12 @@ impl ParLeastSquareOfMyGradientOfCompute {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4946,8 +6140,12 @@ impl ParLeastSquareOfMyGradientOfCompute {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4955,24 +6153,30 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector(
-                self as *mut Self,
-                Parameters,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector(
+                    self as *mut Self,
+                    Parameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector_real2(
-                self as *mut Self,
-                Parameters,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector_real2(
+                    self as *mut Self,
+                    Parameters,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4988,15 +6192,18 @@ impl ParLeastSquareOfMyGradientOfCompute {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector3_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector3_real2(
+                    self as *mut Self,
+                    Parameters,
+                    V1t,
+                    V2t,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5016,25 +6223,32 @@ impl ParLeastSquareOfMyGradientOfCompute {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector5_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                V1c,
-                V2c,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector5_real2(
+                    self as *mut Self,
+                    Parameters,
+                    V1t,
+                    V2t,
+                    V1c,
+                    V2c,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:153 - `AppDef_ParLeastSquareOfMyGradientOfCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_is_done(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5043,12 +6257,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_bezier_value(
                     self as *mut Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5057,10 +6273,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_b_spline_value(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_b_spline_value(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5068,10 +6288,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the function matrix used to approximate the
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_function_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_function_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5079,10 +6303,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the derivative function matrix used
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_derivative_function_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_derivative_function_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5098,14 +6326,17 @@ impl ParLeastSquareOfMyGradientOfCompute {
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error_gradient(
+                    self as *mut Self,
+                    Grad,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5113,8 +6344,12 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_distance(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_distance(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5123,13 +6358,16 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// and the approximation curves. F is the sum of the square
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error(
+                    self as *mut Self,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5137,8 +6375,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the value (P2 - P1)/ V1 if the first point
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_first_lambda(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_first_lambda(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5146,24 +6390,38 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the value (PN - PN-1)/ VN if the last point
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_last_lambda(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_last_lambda(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:200 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Points()`
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_points(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_points(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:203 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Poles()`
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_poles(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_poles(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5173,8 +6431,12 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
     pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_k_index(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_k_index(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -5219,8 +6481,12 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5234,8 +6500,12 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5266,8 +6536,12 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5283,8 +6557,12 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5292,24 +6570,25 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector(
-                self as *mut Self,
-                Parameters,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector(
+                    self as *mut Self,
+                    Parameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector_real2(
-                self as *mut Self,
-                Parameters,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5325,15 +6604,11 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector3_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5353,27 +6628,25 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector5_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                V1c,
-                V2c,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:153 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_is_done(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_is_done(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5382,12 +6655,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_bezier_value(
                     self as *mut Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5396,10 +6671,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_b_spline_value(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_b_spline_value(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5407,10 +6686,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the function matrix used to approximate the
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_function_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_function_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5418,8 +6701,12 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the derivative function matrix used
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_derivative_function_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_derivative_function_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5435,14 +6722,17 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error_gradient(
+                    self as *mut Self,
+                    Grad,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5450,10 +6740,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_distance(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_distance(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5462,13 +6756,16 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// and the approximation curves. F is the sum of the square
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error(
+                    self as *mut Self,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5476,10 +6773,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the value (P2 - P1)/ V1 if the first point
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_first_lambda(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_first_lambda(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5487,30 +6788,42 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the value (PN - PN-1)/ VN if the last point
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_last_lambda(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_last_lambda(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:200 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Points()`
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_points(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_points(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:203 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Poles()`
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_poles(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_poles(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5520,10 +6833,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
     pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_k_index(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_k_index(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -5568,8 +6885,12 @@ impl ParLeastSquareOfTheGradient {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5583,8 +6904,8 @@ impl ParLeastSquareOfTheGradient {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_int(
                     SSP,
                     FirstPoint,
@@ -5592,8 +6913,10 @@ impl ParLeastSquareOfTheGradient {
                     FirstCons.into(),
                     LastCons.into(),
                     NbPol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5624,8 +6947,12 @@ impl ParLeastSquareOfTheGradient {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5641,8 +6968,12 @@ impl ParLeastSquareOfTheGradient {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5650,24 +6981,30 @@ impl ParLeastSquareOfTheGradient {
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector(
-                self as *mut Self,
-                Parameters,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector(
+                    self as *mut Self,
+                    Parameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:122 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector_real2(
-                self as *mut Self,
-                Parameters,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector_real2(
+                    self as *mut Self,
+                    Parameters,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5683,15 +7020,18 @@ impl ParLeastSquareOfTheGradient {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector3_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector3_real2(
+                    self as *mut Self,
+                    Parameters,
+                    V1t,
+                    V2t,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5711,24 +7051,33 @@ impl ParLeastSquareOfTheGradient {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector5_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                V1c,
-                V2c,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector5_real2(
+                    self as *mut Self,
+                    Parameters,
+                    V1t,
+                    V2t,
+                    V1c,
+                    V2c,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:149 - `AppDef_ParLeastSquareOfTheGradient::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_ParLeastSquareOfTheGradient_is_done(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:154 - `AppDef_ParLeastSquareOfTheGradient::BezierValue()`
@@ -5736,10 +7085,12 @@ impl ParLeastSquareOfTheGradient {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ParLeastSquareOfTheGradient_bezier_value(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_bezier_value(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5748,8 +7099,12 @@ impl ParLeastSquareOfTheGradient {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_b_spline_value(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_b_spline_value(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5757,8 +7112,12 @@ impl ParLeastSquareOfTheGradient {
     /// returns the function matrix used to approximate the
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_function_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_function_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5766,10 +7125,14 @@ impl ParLeastSquareOfTheGradient {
     /// returns the derivative function matrix used
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_derivative_function_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_derivative_function_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5785,14 +7148,17 @@ impl ParLeastSquareOfTheGradient {
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_error_gradient(
+                    self as *mut Self,
+                    Grad,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5800,7 +7166,13 @@ impl ParLeastSquareOfTheGradient {
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_distance(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_distance(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:185 - `AppDef_ParLeastSquareOfTheGradient::Error()`
@@ -5808,13 +7180,16 @@ impl ParLeastSquareOfTheGradient {
     /// and the approximation curves. F is the sum of the square
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_error(
+                    self as *mut Self,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5822,26 +7197,50 @@ impl ParLeastSquareOfTheGradient {
     /// returns the value (P2 - P1)/ V1 if the first point
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_ParLeastSquareOfTheGradient_first_lambda(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_first_lambda(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:193 - `AppDef_ParLeastSquareOfTheGradient::LastLambda()`
     /// returns the value (PN - PN-1)/ VN if the last point
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_ParLeastSquareOfTheGradient_last_lambda(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_last_lambda(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:196 - `AppDef_ParLeastSquareOfTheGradient::Points()`
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_points(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_points(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:199 - `AppDef_ParLeastSquareOfTheGradient::Poles()`
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_poles(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_poles(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:205 - `AppDef_ParLeastSquareOfTheGradient::KIndex()`
@@ -5850,7 +7249,13 @@ impl ParLeastSquareOfTheGradient {
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
     pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
-        unsafe { &*(crate::ffi::AppDef_ParLeastSquareOfTheGradient_k_index(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ParLeastSquareOfTheGradient_k_index(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -5889,8 +7294,12 @@ impl ResConstraintOfMyGradientOfCompute {
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5929,8 +7338,12 @@ impl ResConstraintOfMyGradientOfCompute {
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:62 - `AppDef_ResConstraintOfMyGradientOfCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_is_done(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5938,23 +7351,37 @@ impl ResConstraintOfMyGradientOfCompute {
     /// returns the maximum difference value between the curve
     /// and the given points.
     pub fn error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_error(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:68 - `AppDef_ResConstraintOfMyGradientOfCompute::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientOfCompute::Duale()`
     /// returns the duale variables of the system.
     pub fn duale(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_duale(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_duale(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5973,14 +7400,18 @@ impl ResConstraintOfMyGradientOfCompute {
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_derivative(
-                self as *mut Self,
-                SSP,
-                Parameters,
-                Deg,
-                DA,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_derivative(
+                    self as *mut Self,
+                    SSP,
+                    Parameters,
+                    Deg,
+                    DA,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5988,10 +7419,14 @@ impl ResConstraintOfMyGradientOfCompute {
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_inverse_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_inverse_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -6031,8 +7466,12 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6071,10 +7510,14 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:62 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_is_done(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_is_done(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6082,29 +7525,41 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// returns the maximum difference value between the curve
     /// and the given points.
     pub fn error(&self) -> f64 {
-        unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_error(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_error(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:68 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::Duale()`
     /// returns the duale variables of the system.
     pub fn duale(&self) -> &crate::ffi::math_Vector {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_duale(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_duale(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -6123,8 +7578,12 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -6132,10 +7591,14 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_inverse_matrix(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_inverse_matrix(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -6175,8 +7638,12 @@ impl ResConstraintOfTheGradient {
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_ResConstraintOfTheGradient_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfTheGradient_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6215,27 +7682,47 @@ impl ResConstraintOfTheGradient {
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:62 - `AppDef_ResConstraintOfTheGradient::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_ResConstraintOfTheGradient_is_done(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfTheGradient_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:66 - `AppDef_ResConstraintOfTheGradient::Error()`
     /// returns the maximum difference value between the curve
     /// and the given points.
     pub fn error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_ResConstraintOfTheGradient_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_ResConstraintOfTheGradient_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:68 - `AppDef_ResConstraintOfTheGradient::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:71 - `AppDef_ResConstraintOfTheGradient::Duale()`
     /// returns the duale variables of the system.
     pub fn duale(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::ffi::AppDef_ResConstraintOfTheGradient_duale(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_ResConstraintOfTheGradient_duale(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:74 - `AppDef_ResConstraintOfTheGradient::ConstraintDerivative()`
@@ -6253,14 +7740,18 @@ impl ResConstraintOfTheGradient {
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_derivative(
-                self as *mut Self,
-                SSP,
-                Parameters,
-                Deg,
-                DA,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_derivative(
+                    self as *mut Self,
+                    SSP,
+                    Parameters,
+                    Deg,
+                    DA,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -6268,8 +7759,12 @@ impl ResConstraintOfTheGradient {
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_ResConstraintOfTheGradient_inverse_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_ResConstraintOfTheGradient_inverse_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -6291,51 +7786,77 @@ unsafe impl crate::CppDeletable for SmoothCriterion {
 impl SmoothCriterion {
     /// **Source:** `AppDef_SmoothCriterion.hxx`:41 - `AppDef_SmoothCriterion::SetParameters()`
     pub fn set_parameters(&mut self, Parameters: &crate::ffi::HandleTColStdHArray1OfReal) {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_set_parameters(self as *mut Self, Parameters) }
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_set_parameters(self as *mut Self, Parameters)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:43 - `AppDef_SmoothCriterion::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleFEmToolCurve) {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_set_curve(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::AppDef_SmoothCriterion_set_curve(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:45 - `AppDef_SmoothCriterion::GetCurve()`
     pub fn get_curve(&self, C: &mut crate::ffi::HandleFEmToolCurve) {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_get_curve(self as *const Self, C) }
+        {
+            unsafe { crate::ffi::AppDef_SmoothCriterion_get_curve(self as *const Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:47 - `AppDef_SmoothCriterion::SetEstimation()`
     pub fn set_estimation(&mut self, E1: f64, E2: f64, E3: f64) {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_set_estimation(self as *mut Self, E1, E2, E3) }
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_set_estimation(self as *mut Self, E1, E2, E3)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:51 - `AppDef_SmoothCriterion::EstLength()`
     pub fn est_length(&mut self) -> &mut f64 {
-        unsafe { &mut *(crate::ffi::AppDef_SmoothCriterion_est_length(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_SmoothCriterion_est_length(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:53 - `AppDef_SmoothCriterion::GetEstimation()`
     pub fn get_estimation(&self, E1: &mut f64, E2: &mut f64, E3: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_get_estimation(self as *const Self, E1, E2, E3)
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_get_estimation(self as *const Self, E1, E2, E3)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:57 - `AppDef_SmoothCriterion::AssemblyTable()`
     pub fn assembly_table(&self) -> crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_SmoothCriterion_assembly_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_SmoothCriterion_assembly_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:59 - `AppDef_SmoothCriterion::DependenceTable()`
     pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_SmoothCriterion_dependence_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_SmoothCriterion_dependence_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6349,16 +7870,20 @@ impl SmoothCriterion {
         J2: &mut f64,
         J3: &mut f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_quality_values(
-                self as *mut Self,
-                J1min,
-                J2min,
-                J3min,
-                J1,
-                J2,
-                J3,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_quality_values(
+                    self as *mut Self,
+                    J1min,
+                    J2min,
+                    J3min,
+                    J1,
+                    J2,
+                    J3,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6369,13 +7894,16 @@ impl SmoothCriterion {
         QuadraticError: &mut f64,
         AverageError: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_error_values(
-                self as *mut Self,
-                MaxError,
-                QuadraticError,
-                AverageError,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_error_values(
+                    self as *mut Self,
+                    MaxError,
+                    QuadraticError,
+                    AverageError,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6387,21 +7915,32 @@ impl SmoothCriterion {
         Dimension2: i32,
         H: &mut crate::math::Matrix,
     ) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_hessian(
-                self as *mut Self,
-                Element,
-                Dimension1,
-                Dimension2,
-                H,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_hessian(
+                    self as *mut Self,
+                    Element,
+                    Dimension1,
+                    Dimension2,
+                    H,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:77 - `AppDef_SmoothCriterion::Gradient()`
     pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_gradient(self as *mut Self, Element, Dimension, G)
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_gradient(
+                    self as *mut Self,
+                    Element,
+                    Dimension,
+                    G,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6412,7 +7951,12 @@ impl SmoothCriterion {
         X: &crate::ffi::math_Vector,
         AssTable: &crate::ffi::HandleFEmToolHAssemblyTable,
     ) {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_input_vector(self as *mut Self, X, AssTable) }
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_input_vector(self as *mut Self, X, AssTable)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:85 - `AppDef_SmoothCriterion::SetWeight()`
@@ -6424,114 +7968,175 @@ impl SmoothCriterion {
         percentJ2: f64,
         percentJ3: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_weight_real5(
-                self as *mut Self,
-                QuadraticWeight,
-                QualityWeight,
-                percentJ1,
-                percentJ2,
-                percentJ3,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_set_weight_real5(
+                    self as *mut Self,
+                    QuadraticWeight,
+                    QualityWeight,
+                    percentJ1,
+                    percentJ2,
+                    percentJ3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:91 - `AppDef_SmoothCriterion::GetWeight()`
     pub fn get_weight(&self, QuadraticWeight: &mut f64, QualityWeight: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_get_weight(
-                self as *const Self,
-                QuadraticWeight,
-                QualityWeight,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_get_weight(
+                    self as *const Self,
+                    QuadraticWeight,
+                    QualityWeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:94 - `AppDef_SmoothCriterion::SetWeight()`
     pub fn set_weight_array1ofreal(&mut self, Weight: &crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_weight_array1ofreal(self as *mut Self, Weight)
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_set_weight_array1ofreal(
+                    self as *mut Self,
+                    Weight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:96 - `AppDef_SmoothCriterion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppDef_SmoothCriterion_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_SmoothCriterion_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:96 - `AppDef_SmoothCriterion::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::AppDef_SmoothCriterion_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::AppDef_SmoothCriterion_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:96 - `AppDef_SmoothCriterion::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppDef_SmoothCriterion_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_SmoothCriterion_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::AppDef_SmoothCriterion_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_SmoothCriterion_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::AppDef_SmoothCriterion_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::AppDef_SmoothCriterion_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_SmoothCriterion_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::AppDef_SmoothCriterion_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::AppDef_SmoothCriterion_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6546,22 +8151,34 @@ unsafe impl crate::CppDeletable for HandleAppDefSmoothCriterion {
 impl HandleAppDefSmoothCriterion {
     /// Dereference this Handle to access the underlying AppDef_SmoothCriterion
     pub fn get(&self) -> &crate::ffi::AppDef_SmoothCriterion {
-        unsafe { &*(crate::ffi::HandleAppDefSmoothCriterion_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleAppDefSmoothCriterion_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AppDef_SmoothCriterion
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppDef_SmoothCriterion {
-        unsafe { &mut *(crate::ffi::HandleAppDefSmoothCriterion_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleAppDefSmoothCriterion_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<AppDef_SmoothCriterion> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppDefSmoothCriterion_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6576,6 +8193,7 @@ impl HandleAppDefSmoothCriterion {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6609,8 +8227,12 @@ impl TheFunction {
         Parameters: &crate::ffi::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheFunction_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6618,7 +8240,12 @@ impl TheFunction {
     /// returns the number of variables of the function. It
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_TheFunction_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheFunction_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:61 - `AppDef_TheFunction::Value()`
@@ -6627,7 +8254,11 @@ impl TheFunction {
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::AppDef_TheFunction_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheFunction_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:65 - `AppDef_TheFunction::Gradient()`
@@ -6638,7 +8269,12 @@ impl TheFunction {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::AppDef_TheFunction_gradient(self as *mut Self, X, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheFunction_gradient(self as *mut Self, X, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:69 - `AppDef_TheFunction::Values()`
@@ -6650,41 +8286,71 @@ impl TheFunction {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::AppDef_TheFunction_values(self as *mut Self, X, F, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheFunction_values(self as *mut Self, X, F, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:72 - `AppDef_TheFunction::NewParameters()`
     /// returns the new parameters of the MultiLine.
     pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::ffi::AppDef_TheFunction_new_parameters(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheFunction_new_parameters(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:76 - `AppDef_TheFunction::CurveValue()`
     /// returns the MultiCurve approximating the set after
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
-        unsafe { &*(crate::ffi::AppDef_TheFunction_curve_value(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheFunction_curve_value(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:80 - `AppDef_TheFunction::Error()`
     /// returns the distance between the MultiPoint of range
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
-        unsafe { crate::ffi::AppDef_TheFunction_error(self as *const Self, IPoint, CurveIndex) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_error(self as *const Self, IPoint, CurveIndex)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:85 - `AppDef_TheFunction::MaxError3d()`
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheFunction_max_error3d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheFunction_max_error3d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:89 - `AppDef_TheFunction::MaxError2d()`
     /// returns the maximum distance between the points
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheFunction_max_error2d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheFunction_max_error2d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:92 - `AppDef_TheFunction::FirstConstraint()`
@@ -6693,15 +8359,16 @@ impl TheFunction {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_TheFunction_first_constraint(
                     self as *const Self,
                     TheConstraints,
                     FirstPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -6711,15 +8378,16 @@ impl TheFunction {
         TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_TheFunction_last_constraint(
                     self as *const Self,
                     TheConstraints,
                     LastPoint,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
@@ -6727,10 +8395,14 @@ impl TheFunction {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -6738,32 +8410,48 @@ impl TheFunction {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::AppDef_TheFunction_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheFunction_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -6799,8 +8487,12 @@ impl TheGradient {
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6837,15 +8529,21 @@ impl TheGradient {
     /// **Source:** `AppDef_TheGradient.hxx`:62 - `AppDef_TheGradient::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_TheGradient_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheGradient_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheGradient.hxx`:66 - `AppDef_TheGradient::Value()`
     /// returns all the Bezier curves approximating the
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheGradient_value(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheGradient_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6855,28 +8553,48 @@ impl TheGradient {
     /// An exception is raised if NotDone.
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
-        unsafe { crate::ffi::AppDef_TheGradient_error(self as *const Self, Index) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheGradient_error(self as *const Self, Index) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheGradient.hxx`:76 - `AppDef_TheGradient::MaxError3d()`
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheGradient_max_error3d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheGradient_max_error3d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheGradient.hxx`:80 - `AppDef_TheGradient::MaxError2d()`
     /// returns the maximum difference between the old and the
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheGradient_max_error2d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheGradient_max_error2d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheGradient.hxx`:84 - `AppDef_TheGradient::AverageError()`
     /// returns the average error between the old and the
     /// new approximation.
     pub fn average_error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheGradient_average_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheGradient_average_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -6920,8 +8638,8 @@ impl TheLeastSquares {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_vector_int(
                     SSP,
                     FirstPoint,
@@ -6930,8 +8648,10 @@ impl TheLeastSquares {
                     LastCons.into(),
                     Parameters,
                     NbPol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6945,8 +8665,8 @@ impl TheLeastSquares {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_int(
                     SSP,
                     FirstPoint,
@@ -6954,8 +8674,10 @@ impl TheLeastSquares {
                     FirstCons.into(),
                     LastCons.into(),
                     NbPol,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6986,8 +8708,12 @@ impl TheLeastSquares {
         Parameters: &crate::ffi::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7003,8 +8729,12 @@ impl TheLeastSquares {
         LastCons: crate::app_par_curves::Constraint,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7012,19 +8742,27 @@ impl TheLeastSquares {
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
-        unsafe { crate::ffi::AppDef_TheLeastSquares_perform_vector(self as *mut Self, Parameters) }
+        {
+            unsafe {
+                crate::ffi::AppDef_TheLeastSquares_perform_vector(self as *mut Self, Parameters)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:122 - `AppDef_TheLeastSquares::Perform()`
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
-        unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector_real2(
-                self as *mut Self,
-                Parameters,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_TheLeastSquares_perform_vector_real2(
+                    self as *mut Self,
+                    Parameters,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7040,15 +8778,18 @@ impl TheLeastSquares {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector3_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_TheLeastSquares_perform_vector3_real2(
+                    self as *mut Self,
+                    Parameters,
+                    V1t,
+                    V2t,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7068,24 +8809,32 @@ impl TheLeastSquares {
         l1: f64,
         l2: f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector5_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                V1c,
-                V2c,
-                l1,
-                l2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_TheLeastSquares_perform_vector5_real2(
+                    self as *mut Self,
+                    Parameters,
+                    V1t,
+                    V2t,
+                    V1c,
+                    V2c,
+                    l1,
+                    l2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:149 - `AppDef_TheLeastSquares::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_TheLeastSquares_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:154 - `AppDef_TheLeastSquares::BezierValue()`
@@ -7093,10 +8842,11 @@ impl TheLeastSquares {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheLeastSquares_bezier_value(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_bezier_value(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7105,22 +8855,36 @@ impl TheLeastSquares {
     /// Curves.
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
-        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_b_spline_value(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_b_spline_value(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:163 - `AppDef_TheLeastSquares::FunctionMatrix()`
     /// returns the function matrix used to approximate the
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_function_matrix(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_function_matrix(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:167 - `AppDef_TheLeastSquares::DerivativeFunctionMatrix()`
     /// returns the derivative function matrix used
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_TheLeastSquares_derivative_function_matrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheLeastSquares_derivative_function_matrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -7136,14 +8900,17 @@ impl TheLeastSquares {
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::AppDef_TheLeastSquares_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_TheLeastSquares_error_gradient(
+                    self as *mut Self,
+                    Grad,
+                    F,
+                    MaxE3d,
+                    MaxE2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7151,7 +8918,12 @@ impl TheLeastSquares {
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_distance(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_distance(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:185 - `AppDef_TheLeastSquares::Error()`
@@ -7159,33 +8931,57 @@ impl TheLeastSquares {
     /// and the approximation curves. F is the sum of the square
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
-        unsafe { crate::ffi::AppDef_TheLeastSquares_error(self as *mut Self, F, MaxE3d, MaxE2d) }
+        {
+            unsafe {
+                crate::ffi::AppDef_TheLeastSquares_error(self as *mut Self, F, MaxE3d, MaxE2d)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:189 - `AppDef_TheLeastSquares::FirstLambda()`
     /// returns the value (P2 - P1)/ V1 if the first point
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheLeastSquares_first_lambda(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_first_lambda(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:193 - `AppDef_TheLeastSquares::LastLambda()`
     /// returns the value (PN - PN-1)/ VN if the last point
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheLeastSquares_last_lambda(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_last_lambda(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:196 - `AppDef_TheLeastSquares::Points()`
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_points(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_points(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:199 - `AppDef_TheLeastSquares::Poles()`
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_poles(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheLeastSquares_poles(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:205 - `AppDef_TheLeastSquares::KIndex()`
@@ -7194,7 +8990,12 @@ impl TheLeastSquares {
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
     pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
-        unsafe { &*(crate::ffi::AppDef_TheLeastSquares_k_index(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheLeastSquares_k_index(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -7233,8 +9034,12 @@ impl TheResol {
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_TheResol_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheResol_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7273,25 +9078,42 @@ impl TheResol {
     /// **Source:** `AppDef_TheResol.hxx`:61 - `AppDef_TheResol::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_TheResol_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheResol_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:65 - `AppDef_TheResol::Error()`
     /// returns the maximum difference value between the curve
     /// and the given points.
     pub fn error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_TheResol_error(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheResol_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:67 - `AppDef_TheResol::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_TheResol_constraint_matrix(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheResol_constraint_matrix(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:70 - `AppDef_TheResol::Duale()`
     /// returns the duale variables of the system.
     pub fn duale(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::ffi::AppDef_TheResol_duale(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_TheResol_duale(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:73 - `AppDef_TheResol::ConstraintDerivative()`
@@ -7309,14 +9131,18 @@ impl TheResol {
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
-        unsafe {
-            &*(crate::ffi::AppDef_TheResol_constraint_derivative(
-                self as *mut Self,
-                SSP,
-                Parameters,
-                Deg,
-                DA,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_TheResol_constraint_derivative(
+                    self as *mut Self,
+                    SSP,
+                    Parameters,
+                    Deg,
+                    DA,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -7324,7 +9150,12 @@ impl TheResol {
     /// returns the Inverse of Cont*Transposed(Cont), where
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
-        unsafe { &*(crate::ffi::AppDef_TheResol_inverse_matrix(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_TheResol_inverse_matrix(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -7374,8 +9205,12 @@ impl Variational {
         Tolerance: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Variational_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_int2_shape_bool2_real_int(SSP, FirstPoint, LastPoint, TheConstraints, MaxDegree, MaxSegment, Continuity.into(), WithMinMax, WithCutting, Tolerance, NbIterations))
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Variational_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_int2_shape_bool2_real_int(SSP, FirstPoint, LastPoint, TheConstraints, MaxDegree, MaxSegment, Continuity.into(), WithMinMax, WithCutting, Tolerance, NbIterations)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7492,36 +9327,55 @@ impl Variational {
     /// **Source:** `AppDef_Variational.hxx`:76 - `AppDef_Variational::Approximate()`
     /// Makes the approximation with the current fields.
     pub fn approximate(&mut self) {
-        unsafe { crate::ffi::AppDef_Variational_approximate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_approximate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:80 - `AppDef_Variational::IsCreated()`
     /// returns True if the creation is done
     /// and correspond  to the current fields.
     pub fn is_created(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_is_created(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_is_created(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:84 - `AppDef_Variational::IsDone()`
     /// returns True if the  approximation is ok
     /// and correspond  to the current fields.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_Variational_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:88 - `AppDef_Variational::IsOverConstrained()`
     /// returns True if the problem is overconstrained
     /// in this case, approximation cannot be done.
     pub fn is_over_constrained(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_is_over_constrained(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_is_over_constrained(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:92 - `AppDef_Variational::Value()`
     /// returns all the BSpline curves approximating the
     /// MultiLine from AppDef SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppDef_Variational_value(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::AppDef_Variational_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7530,13 +9384,22 @@ impl Variational {
     /// the points of the multiline and the approximation
     /// curves.
     pub fn max_error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_Variational_max_error(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_Variational_max_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:100 - `AppDef_Variational::MaxErrorIndex()`
     /// returns the index of the MultiPoint of ErrorMax
     pub fn max_error_index(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_Variational_max_error_index(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_max_error_index(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:105 - `AppDef_Variational::QuadraticError()`
@@ -7544,45 +9407,70 @@ impl Variational {
     /// the points of the multiline and the approximation
     /// curves.
     pub fn quadratic_error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_Variational_quadratic_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_quadratic_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:109 - `AppDef_Variational::Distance()`
     /// returns the distances between the points of the
     /// multiline and the approximation curves.
     pub fn distance(&mut self, mat: &mut crate::math::Matrix) {
-        unsafe { crate::ffi::AppDef_Variational_distance(self as *mut Self, mat) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_distance(self as *mut Self, mat) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:113 - `AppDef_Variational::AverageError()`
     /// returns the average error between
     /// the MultiLine from AppDef and the approximation.
     pub fn average_error(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_Variational_average_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_average_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:116 - `AppDef_Variational::Parameters()`
     /// returns the parameters uses to the approximations
     pub fn parameters(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
-        unsafe { &*(crate::ffi::AppDef_Variational_parameters(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_parameters(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:119 - `AppDef_Variational::Knots()`
     /// returns the knots uses to the approximations
     pub fn knots(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
-        unsafe { &*(crate::ffi::AppDef_Variational_knots(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_Variational_knots(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:122 - `AppDef_Variational::Criterium()`
     /// returns the values of the quality criterium.
     pub fn criterium(&self, VFirstOrder: &mut f64, VSecondOrder: &mut f64, VThirdOrder: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_Variational_criterium(
-                self as *const Self,
-                VFirstOrder,
-                VSecondOrder,
-                VThirdOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Variational_criterium(
+                    self as *const Self,
+                    VFirstOrder,
+                    VSecondOrder,
+                    VThirdOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7590,36 +9478,49 @@ impl Variational {
     /// returns the Weights (as percent) associed  to the criterium used in
     /// the  optimization.
     pub fn criterium_weight(&self, Percent1: &mut f64, Percent2: &mut f64, Percent3: &mut f64) {
-        unsafe {
-            crate::ffi::AppDef_Variational_criterium_weight(
-                self as *const Self,
-                Percent1,
-                Percent2,
-                Percent3,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Variational_criterium_weight(
+                    self as *const Self,
+                    Percent1,
+                    Percent2,
+                    Percent3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:133 - `AppDef_Variational::MaxDegree()`
     /// returns the Maximum Degree used in the approximation
     pub fn max_degree(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_Variational_max_degree(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_max_degree(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:136 - `AppDef_Variational::MaxSegment()`
     /// returns the Maximum of segment used in the approximation
     pub fn max_segment(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_Variational_max_segment(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_max_segment(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:139 - `AppDef_Variational::Continuity()`
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::AppDef_Variational_continuity(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_continuity(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
@@ -7627,25 +9528,44 @@ impl Variational {
     /// returns if the  approximation  search to  minimize the
     /// maximum Error or not.
     pub fn with_min_max(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_with_min_max(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_with_min_max(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:146 - `AppDef_Variational::WithCutting()`
     /// returns if the  approximation can insert new Knots or not.
     pub fn with_cutting(&self) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_with_cutting(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_with_cutting(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:149 - `AppDef_Variational::Tolerance()`
     /// returns the tolerance used in the approximation.
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::AppDef_Variational_tolerance(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::AppDef_Variational_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:152 - `AppDef_Variational::NbIterations()`
     /// returns the number of iterations used in the approximation.
     pub fn nb_iterations(&self) -> i32 {
-        unsafe { crate::ffi::AppDef_Variational_nb_iterations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_nb_iterations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:158 - `AppDef_Variational::Dump()`
@@ -7654,7 +9574,10 @@ impl Variational {
     /// MaxError,MaxErrorIndex,AverageError,QuadraticError,Criterium
     /// Distances,Degre,Nombre de poles, parametres, noeuds
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::AppDef_Variational_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:164 - `AppDef_Variational::SetConstraints()`
@@ -7665,13 +9588,22 @@ impl Variational {
         &mut self,
         aConstrainst: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
     ) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_set_constraints(self as *mut Self, aConstrainst) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Variational_set_constraints(self as *mut Self, aConstrainst)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:167 - `AppDef_Variational::SetParameters()`
     /// Defines the parameters used by the approximations.
     pub fn set_parameters(&mut self, param: &crate::ffi::HandleTColStdHArray1OfReal) {
-        unsafe { crate::ffi::AppDef_Variational_set_parameters(self as *mut Self, param) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_set_parameters(self as *mut Self, param) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:172 - `AppDef_Variational::SetKnots()`
@@ -7679,7 +9611,12 @@ impl Variational {
     /// If this value is incompatible with the others fields
     /// this method modify nothing and returns false
     pub fn set_knots(&mut self, knots: &crate::ffi::HandleTColStdHArray1OfReal) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_set_knots(self as *mut Self, knots) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_set_knots(self as *mut Self, knots) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:177 - `AppDef_Variational::SetMaxDegree()`
@@ -7687,7 +9624,12 @@ impl Variational {
     /// If this value is incompatible with the others fields
     /// this method modify nothing and returns false
     pub fn set_max_degree(&mut self, Degree: i32) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_set_max_degree(self as *mut Self, Degree) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppDef_Variational_set_max_degree(self as *mut Self, Degree) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:182 - `AppDef_Variational::SetMaxSegment()`
@@ -7695,7 +9637,13 @@ impl Variational {
     /// If this value is incompatible with the others fields
     /// this method modify nothing and returns false
     pub fn set_max_segment(&mut self, NbSegment: i32) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_set_max_segment(self as *mut Self, NbSegment) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Variational_set_max_segment(self as *mut Self, NbSegment)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:187 - `AppDef_Variational::SetContinuity()`
@@ -7703,14 +9651,23 @@ impl Variational {
     /// If this value is incompatible with the others fields
     /// this method modify nothing and returns false
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_set_continuity(self as *mut Self, C.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Variational_set_continuity(self as *mut Self, C.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:191 - `AppDef_Variational::SetWithMinMax()`
     /// Define if the  approximation  search to  minimize the
     /// maximum Error or not.
     pub fn set_with_min_max(&mut self, MinMax: bool) {
-        unsafe { crate::ffi::AppDef_Variational_set_with_min_max(self as *mut Self, MinMax) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_set_with_min_max(self as *mut Self, MinMax) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:196 - `AppDef_Variational::SetWithCutting()`
@@ -7718,7 +9675,13 @@ impl Variational {
     /// If this value is incompatible with the others fields
     /// this method modify nothing and returns false
     pub fn set_with_cutting(&mut self, Cutting: bool) -> bool {
-        unsafe { crate::ffi::AppDef_Variational_set_with_cutting(self as *mut Self, Cutting) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppDef_Variational_set_with_cutting(self as *mut Self, Cutting)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:202 - `AppDef_Variational::SetCriteriumWeight()`
@@ -7727,13 +9690,16 @@ impl Variational {
     ///
     /// if Percent <= 0
     pub fn set_criterium_weight_real3(&mut self, Percent1: f64, Percent2: f64, Percent3: f64) {
-        unsafe {
-            crate::ffi::AppDef_Variational_set_criterium_weight_real3(
-                self as *mut Self,
-                Percent1,
-                Percent2,
-                Percent3,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Variational_set_criterium_weight_real3(
+                    self as *mut Self,
+                    Percent1,
+                    Percent2,
+                    Percent3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7744,26 +9710,35 @@ impl Variational {
     /// if Percent < 0
     /// if Order < 1 or Order > 3
     pub fn set_criterium_weight_int_real(&mut self, Order: i32, Percent: f64) {
-        unsafe {
-            crate::ffi::AppDef_Variational_set_criterium_weight_int_real(
-                self as *mut Self,
-                Order,
-                Percent,
-            )
+        {
+            unsafe {
+                crate::ffi::AppDef_Variational_set_criterium_weight_int_real(
+                    self as *mut Self,
+                    Order,
+                    Percent,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:215 - `AppDef_Variational::SetTolerance()`
     /// define the tolerance used in the approximation.
     pub fn set_tolerance(&mut self, Tol: f64) {
-        unsafe { crate::ffi::AppDef_Variational_set_tolerance(self as *mut Self, Tol) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_set_tolerance(self as *mut Self, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:219 - `AppDef_Variational::SetNbIterations()`
     /// define the number of iterations used in the approximation.
     /// if Iter < 1
     pub fn set_nb_iterations(&mut self, Iter: i32) {
-        unsafe { crate::ffi::AppDef_Variational_set_nb_iterations(self as *mut Self, Iter) }
+        {
+            unsafe { crate::ffi::AppDef_Variational_set_nb_iterations(self as *mut Self, Iter) };
+            crate::check_exception();
+        }
     }
 }
 

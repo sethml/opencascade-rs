@@ -17,8 +17,8 @@ pub fn convert_curve_to_b_spline_handlegeomcurve_real3_shape_int2(
     MaxSegments: i32,
     MaxDegree: i32,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::ShapeConstruct_convert_curve_to_b_spline_handlegeomcurve_real3_shape_int2(
                 C3D,
                 First,
@@ -27,8 +27,10 @@ pub fn convert_curve_to_b_spline_handlegeomcurve_real3_shape_int2(
                 Continuity.into(),
                 MaxSegments,
                 MaxDegree,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ShapeConstruct.hxx`:60 - `ShapeConstruct::ConvertCurveToBSpline`
@@ -41,8 +43,8 @@ pub fn convert_curve_to_b_spline_handlegeom2dcurve_real3_shape_int2(
     MaxSegments: i32,
     MaxDegree: i32,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::ShapeConstruct_convert_curve_to_b_spline_handlegeom2dcurve_real3_shape_int2(
                 C2D,
                 First,
@@ -51,8 +53,10 @@ pub fn convert_curve_to_b_spline_handlegeom2dcurve_real3_shape_int2(
                 Continuity.into(),
                 MaxSegments,
                 MaxDegree,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ShapeConstruct.hxx`:69 - `ShapeConstruct::ConvertSurfaceToBSpline`
@@ -67,18 +71,22 @@ pub fn convert_surface_to_b_spline(
     MaxSegments: i32,
     MaxDegree: i32,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ShapeConstruct_convert_surface_to_b_spline(
-            surf,
-            UF,
-            UL,
-            VF,
-            VL,
-            Tol3d,
-            Continuity.into(),
-            MaxSegments,
-            MaxDegree,
-        ))
+    {
+        let __result = unsafe {
+            crate::ffi::ShapeConstruct_convert_surface_to_b_spline(
+                surf,
+                UF,
+                UL,
+                VF,
+                VL,
+                Tol3d,
+                Continuity.into(),
+                MaxSegments,
+                MaxDegree,
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ShapeConstruct.hxx`:83 - `ShapeConstruct::JoinPCurves`
@@ -90,7 +98,12 @@ pub fn join_p_curves(
     theFace: &crate::topo_ds::Face,
     theEdge: &mut crate::topo_ds::Edge,
 ) -> bool {
-    unsafe { crate::ffi::ShapeConstruct_join_p_curves(theEdges, theFace, theEdge) }
+    {
+        let __result =
+            unsafe { crate::ffi::ShapeConstruct_join_p_curves(theEdges, theFace, theEdge) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `ShapeConstruct.hxx`:97 - `ShapeConstruct::JoinCurves`
 /// Method for joininig curves 3D.
@@ -115,8 +128,12 @@ pub fn join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(
     isRev1: &mut bool,
     isRev2: &mut bool,
 ) -> bool {
-    unsafe {
-        crate::ffi::ShapeConstruct_join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(c3d1, ac3d2, Orient1.into(), Orient2.into(), first1, last1, first2, last2, c3dOut, isRev1, isRev2)
+    {
+        let __result = unsafe {
+            crate::ffi::ShapeConstruct_join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(c3d1, ac3d2, Orient1.into(), Orient2.into(), first1, last1, first2, last2, c3dOut, isRev1, isRev2)
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `ShapeConstruct.hxx`:118 - `ShapeConstruct::JoinCurves`
@@ -143,8 +160,12 @@ pub fn join_curves_handlegeom2dcurve2_orientation2_real4_handlegeom2dcurve_bool3
     isRev2: &mut bool,
     isError: bool,
 ) -> bool {
-    unsafe {
-        crate::ffi::ShapeConstruct_join_curves_handlegeom2dcurve2_orientation2_real4_handlegeom2dcurve_bool3(c2d1, ac2d2, Orient1.into(), Orient2.into(), first1, last1, first2, last2, c2dOut, isRev1, isRev2, isError)
+    {
+        let __result = unsafe {
+            crate::ffi::ShapeConstruct_join_curves_handlegeom2dcurve2_orientation2_real4_handlegeom2dcurve_bool3(c2d1, ac2d2, Orient1.into(), Orient2.into(), first1, last1, first2, last2, c2dOut, isRev1, isRev2, isError)
+        };
+        crate::check_exception();
+        __result
     }
 }
 
@@ -170,7 +191,11 @@ impl Curve {
     /// **Source:** `ShapeConstruct_Curve.hxx` - `ShapeConstruct_Curve::ShapeConstruct_Curve()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeConstruct_Curve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeConstruct_Curve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeConstruct_Curve.hxx`:48 - `ShapeConstruct_Curve::AdjustCurve()`
@@ -190,15 +215,19 @@ impl Curve {
         take1: bool,
         take2: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_Curve_adjust_curve(
-                self as *const Self,
-                C3D,
-                P1,
-                P2,
-                take1,
-                take2,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_Curve_adjust_curve(
+                    self as *const Self,
+                    C3D,
+                    P1,
+                    P2,
+                    take1,
+                    take2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -217,15 +246,19 @@ impl Curve {
         U1: f64,
         U2: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_Curve_adjust_curve_segment(
-                self as *const Self,
-                C3D,
-                P1,
-                P2,
-                U1,
-                U2,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_Curve_adjust_curve_segment(
+                    self as *const Self,
+                    C3D,
+                    P1,
+                    P2,
+                    U1,
+                    U2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -247,15 +280,19 @@ impl Curve {
         take1: bool,
         take2: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_Curve_adjust_curve2d(
-                self as *const Self,
-                C2D,
-                P1,
-                P2,
-                take1,
-                take2,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_Curve_adjust_curve2d(
+                    self as *const Self,
+                    C2D,
+                    P1,
+                    P2,
+                    take1,
+                    take2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -273,16 +310,18 @@ impl Curve {
         last: f64,
         prec: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeConstruct_Curve_convert_to_b_spline_handlegeomcurve_real3(
                     self as *const Self,
                     C,
                     first,
                     last,
                     prec,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -300,16 +339,18 @@ impl Curve {
         last: f64,
         prec: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeConstruct_Curve_convert_to_b_spline_handlegeom2dcurve_real3(
                     self as *const Self,
                     C,
                     first,
                     last,
                     prec,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -317,7 +358,13 @@ impl Curve {
     pub fn fix_knots_handletcolstdharray1ofreal(
         knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) -> bool {
-        unsafe { crate::ffi::ShapeConstruct_Curve_fix_knots_handletcolstdharray1ofreal(knots) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_Curve_fix_knots_handletcolstdharray1ofreal(knots)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeConstruct_Curve.hxx`:109 - `ShapeConstruct_Curve::FixKnots()`
@@ -325,7 +372,12 @@ impl Curve {
     /// gap between neighbouring values
     /// Returns True if something fixed (by shifting knot)
     pub fn fix_knots_array1ofreal(knots: &mut crate::ffi::TColStd_Array1OfReal) -> bool {
-        unsafe { crate::ffi::ShapeConstruct_Curve_fix_knots_array1ofreal(knots) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeConstruct_Curve_fix_knots_array1ofreal(knots) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -348,19 +400,22 @@ impl MakeTriangulation {
         pnts: &crate::ffi::TColgp_Array1OfPnt,
         prec: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeConstruct_MakeTriangulation_ctor_array1ofpnt_real(pnts, prec),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_ctor_array1ofpnt_real(pnts, prec)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:35 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
     pub fn new_wire_real(wire: &crate::topo_ds::Wire, prec: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeConstruct_MakeTriangulation_ctor_wire_real(
-                wire, prec,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_ctor_wire_real(wire, prec) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -376,20 +431,35 @@ impl MakeTriangulation {
 
     /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:38 - `ShapeConstruct_MakeTriangulation::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
-        unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_build(self as *mut Self, theRange) }
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_build(self as *mut Self, theRange)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:41 - `ShapeConstruct_MakeTriangulation::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_is_done(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        unsafe {
-            &*(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -397,48 +467,76 @@ impl MakeTriangulation {
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_MakeShape_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_MakeShape_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Shape(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Shape(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_MakeTriangulation_inherited_IsDeleted(self as *mut Self, S)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_inherited_IsDeleted(
+                    self as *mut Self,
+                    S,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
-        unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Check(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Check(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -469,8 +567,10 @@ impl ProjectCurveOnSurface {
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:63 - `ShapeConstruct_ProjectCurveOnSurface::ShapeConstruct_ProjectCurveOnSurface()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_ctor())
+        {
+            let __result = unsafe { crate::ffi::ShapeConstruct_ProjectCurveOnSurface_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -482,12 +582,15 @@ impl ProjectCurveOnSurface {
         surf: &crate::ffi::HandleGeomSurface,
         preci: f64,
     ) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_init_handlegeomsurface_real(
-                self as *mut Self,
-                surf,
-                preci,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_init_handlegeomsurface_real(
+                    self as *mut Self,
+                    surf,
+                    preci,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -499,23 +602,25 @@ impl ProjectCurveOnSurface {
         surf: &crate::ffi::HandleShapeAnalysisSurface,
         preci: f64,
     ) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_init_handleshapeanalysissurface_real(
-                self as *mut Self,
-                surf,
-                preci,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_init_handleshapeanalysissurface_real(self as *mut Self, surf, preci)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:75 - `ShapeConstruct_ProjectCurveOnSurface::SetSurface()`
     /// Loads a surface (in the form of Geom_Surface) to project on
     pub fn set_surface_handlegeomsurface(&mut self, surf: &crate::ffi::HandleGeomSurface) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_set_surface_handlegeomsurface(
-                self as *mut Self,
-                surf,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_set_surface_handlegeomsurface(
+                    self as *mut Self,
+                    surf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -525,19 +630,25 @@ impl ProjectCurveOnSurface {
         &mut self,
         surf: &crate::ffi::HandleShapeAnalysisSurface,
     ) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_set_surface_handleshapeanalysissurface(
-                self as *mut Self,
-                surf,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_set_surface_handleshapeanalysissurface(self as *mut Self, surf)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:81 - `ShapeConstruct_ProjectCurveOnSurface::SetPrecision()`
     /// Sets value for current precision
     pub fn set_precision(&mut self, preci: f64) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_set_precision(self as *mut Self, preci)
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_set_precision(
+                    self as *mut Self,
+                    preci,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -546,10 +657,12 @@ impl ProjectCurveOnSurface {
     /// If True, if the projected curve has been recomputed by
     /// interpolation, the 3d curve is also rebuild by interpolation
     pub fn build_curve_mode(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_build_curve_mode(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_build_curve_mode(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -566,21 +679,29 @@ impl ProjectCurveOnSurface {
     /// else to the right side (on sphere U=2*PI)
     /// Default value is True
     pub fn adjust_over_degen_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_adjust_over_degen_mode(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_adjust_over_degen_mode(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:102 - `ShapeConstruct_ProjectCurveOnSurface::Status()`
     /// Returns the status of last Perform
     pub fn status(&self, theStatus: crate::shape_extend::Status) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_status(
-                self as *const Self,
-                theStatus.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_status(
+                    self as *const Self,
+                    theStatus.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -602,16 +723,20 @@ impl ProjectCurveOnSurface {
         TolFirst: f64,
         TolLast: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_perform(
-                self as *mut Self,
-                c3d,
-                First,
-                Last,
-                c2d,
-                TolFirst,
-                TolLast,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_perform(
+                    self as *mut Self,
+                    c3d,
+                    First,
+                    Last,
+                    c2d,
+                    TolFirst,
+                    TolLast,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -635,58 +760,78 @@ impl ProjectCurveOnSurface {
         maxdeg: i32,
         nbinterval: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_perform_by_proj_lib(
-                self as *mut Self,
-                c3d,
-                First,
-                Last,
-                c2d,
-                continuity.into(),
-                maxdeg,
-                nbinterval,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_perform_by_proj_lib(
+                    self as *mut Self,
+                    c3d,
+                    First,
+                    Last,
+                    c2d,
+                    continuity.into(),
+                    maxdeg,
+                    nbinterval,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_get_type_name(),
-            )
-            .to_string_lossy()
-            .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeConstruct_ProjectCurveOnSurface_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeConstruct_ProjectCurveOnSurface_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -694,78 +839,105 @@ impl ProjectCurveOnSurface {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeConstructProjectCurveOnSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_to_handle(obj.into_raw())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::ShapeConstruct_ProjectCurveOnSurface_inherited_Delete(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -781,26 +953,36 @@ unsafe impl crate::CppDeletable for HandleShapeConstructProjectCurveOnSurface {
 impl HandleShapeConstructProjectCurveOnSurface {
     /// Dereference this Handle to access the underlying ShapeConstruct_ProjectCurveOnSurface
     pub fn get(&self) -> &crate::ffi::ShapeConstruct_ProjectCurveOnSurface {
-        unsafe {
-            &*(crate::ffi::HandleShapeConstructProjectCurveOnSurface_get(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeConstructProjectCurveOnSurface_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeConstruct_ProjectCurveOnSurface
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeConstruct_ProjectCurveOnSurface {
-        unsafe {
-            &mut *(crate::ffi::HandleShapeConstructProjectCurveOnSurface_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeConstructProjectCurveOnSurface_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<ShapeConstruct_ProjectCurveOnSurface> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeConstructProjectCurveOnSurface_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

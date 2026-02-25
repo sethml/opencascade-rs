@@ -43,7 +43,11 @@ impl Inter {
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:60 - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
     /// Empty constructor;
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepIntCurveSurface_Inter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:64 - `BRepIntCurveSurface_Inter::Init()`
@@ -55,13 +59,16 @@ impl Inter {
         theCurve: &crate::geom_adaptor::Curve,
         theTol: f64,
     ) {
-        unsafe {
-            crate::ffi::BRepIntCurveSurface_Inter_init_shape_curve_real(
-                self as *mut Self,
-                theShape,
-                theCurve,
-                theTol,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepIntCurveSurface_Inter_init_shape_curve_real(
+                    self as *mut Self,
+                    theShape,
+                    theCurve,
+                    theTol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -74,13 +81,16 @@ impl Inter {
         theLine: &crate::gp::Lin,
         theTol: f64,
     ) {
-        unsafe {
-            crate::ffi::BRepIntCurveSurface_Inter_init_shape_lin_real(
-                self as *mut Self,
-                theShape,
-                theLine,
-                theTol,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepIntCurveSurface_Inter_init_shape_lin_real(
+                    self as *mut Self,
+                    theShape,
+                    theLine,
+                    theTol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -88,89 +98,130 @@ impl Inter {
     /// Load the Shape, and initialize the
     /// tolerance used for the classification.
     pub fn load(&mut self, theShape: &crate::topo_ds::Shape, theTol: f64) {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_load(self as *mut Self, theShape, theTol) }
+        {
+            unsafe {
+                crate::ffi::BRepIntCurveSurface_Inter_load(self as *mut Self, theShape, theTol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:79 - `BRepIntCurveSurface_Inter::Init()`
     /// Method to find intersections of specified curve with loaded shape.
     pub fn init_curve(&mut self, theCurve: &crate::geom_adaptor::Curve) {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_init_curve(self as *mut Self, theCurve) }
+        {
+            unsafe {
+                crate::ffi::BRepIntCurveSurface_Inter_init_curve(self as *mut Self, theCurve)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:82 - `BRepIntCurveSurface_Inter::More()`
     /// returns True if there is a current face.
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_more(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepIntCurveSurface_Inter_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:85 - `BRepIntCurveSurface_Inter::Next()`
     /// Sets the next intersection point to check.
     pub fn next(&mut self) {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepIntCurveSurface_Inter_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:88 - `BRepIntCurveSurface_Inter::Point()`
     /// returns the current Intersection point.
     pub fn point(&self) -> crate::OwnedPtr<crate::int_curve_surface::IntersectionPoint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepIntCurveSurface_Inter_point(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepIntCurveSurface_Inter_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:91 - `BRepIntCurveSurface_Inter::Pnt()`
     /// returns the current geometric Point
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::BRepIntCurveSurface_Inter_pnt(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepIntCurveSurface_Inter_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:95 - `BRepIntCurveSurface_Inter::U()`
     /// returns the U parameter of the current point
     /// on the current face.
     pub fn u(&self) -> f64 {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_u(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_u(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:99 - `BRepIntCurveSurface_Inter::V()`
     /// returns the V parameter of the current point
     /// on the current face.
     pub fn v(&self) -> f64 {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_v(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_v(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:103 - `BRepIntCurveSurface_Inter::W()`
     /// returns the parameter of the current point
     /// on the curve.
     pub fn w(&self) -> f64 {
-        unsafe { crate::ffi::BRepIntCurveSurface_Inter_w(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_w(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:106 - `BRepIntCurveSurface_Inter::State()`
     /// returns the current state (IN or ON)
     pub fn state(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BRepIntCurveSurface_Inter_state(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepIntCurveSurface_Inter_state(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:109 - `BRepIntCurveSurface_Inter::Transition()`
     /// returns the transition of the line on the surface (IN or OUT or UNKNOWN)
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
-        unsafe {
-            crate::int_curve_surface::TransitionOnCurve::try_from(
-                crate::ffi::BRepIntCurveSurface_Inter_transition(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepIntCurveSurface_Inter_transition(self as *const Self) };
+            crate::check_exception();
+            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:112 - `BRepIntCurveSurface_Inter::Face()`
     /// returns the current face.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::BRepIntCurveSurface_Inter_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepIntCurveSurface_Inter_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }

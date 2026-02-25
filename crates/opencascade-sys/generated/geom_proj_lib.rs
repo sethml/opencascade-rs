@@ -27,12 +27,14 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
     VLast: f64,
     Tolerance: &mut f64,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
                 C, First, Last, S, UFirst, ULast, VFirst, VLast, Tolerance,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:66 - `GeomProjLib::Curve2d`
@@ -52,12 +54,14 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real(
     S: &crate::ffi::HandleGeomSurface,
     Tolerance: &mut f64,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real(
                 C, First, Last, S, Tolerance,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:80 - `GeomProjLib::Curve2d`
@@ -75,12 +79,14 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface(
     Last: f64,
     S: &crate::ffi::HandleGeomSurface,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface(
                 C, First, Last, S,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:91 - `GeomProjLib::Curve2d`
@@ -94,10 +100,11 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface(
     C: &crate::ffi::HandleGeomCurve,
     S: &crate::ffi::HandleGeomSurface,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface(C, S),
-        )
+    {
+        let __result =
+            unsafe { crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface(C, S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:101 - `GeomProjLib::Curve2d`
@@ -116,12 +123,14 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface_real4(
     VDeb: f64,
     VFin: f64,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real4(
                 C, S, UDeb, UFin, VDeb, VFin,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:115 - `GeomProjLib::Curve2d`
@@ -141,12 +150,14 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface_real5(
     VFin: f64,
     Tolerance: &mut f64,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real5(
                 C, S, UDeb, UFin, VDeb, VFin, Tolerance,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:127 - `GeomProjLib::Project`
@@ -158,10 +169,11 @@ pub fn project_handlegeomcurve_handlegeomsurface(
     C: &crate::ffi::HandleGeomCurve,
     S: &crate::ffi::HandleGeomSurface,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
-            crate::ffi::GeomProjLib_project_handlegeomcurve_handlegeomsurface(C, S),
-        )
+    {
+        let __result =
+            unsafe { crate::ffi::GeomProjLib_project_handlegeomcurve_handlegeomsurface(C, S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:138 - `GeomProjLib::ProjectOnPlane`
@@ -179,12 +191,11 @@ pub fn project_on_plane(
     Dir: &crate::gp::Dir,
     KeepParametrization: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::GeomProjLib_project_on_plane(
-            Curve,
-            Plane,
-            Dir,
-            KeepParametrization,
-        ))
+    {
+        let __result = unsafe {
+            crate::ffi::GeomProjLib_project_on_plane(Curve, Plane, Dir, KeepParametrization)
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }

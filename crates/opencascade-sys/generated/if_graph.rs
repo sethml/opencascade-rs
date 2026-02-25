@@ -25,7 +25,11 @@ impl AllConnected {
     /// **Source:** `IFGraph_AllConnected.hxx`:36 - `IFGraph_AllConnected::IFGraph_AllConnected()`
     /// creates an AllConnected from a graph, empty ready to be filled
     pub fn new_graph(agraph: &crate::interface::Graph) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllConnected_ctor_graph(agraph)) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_AllConnected_ctor_graph(agraph) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IFGraph_AllConnected.hxx`:43 - `IFGraph_AllConnected::IFGraph_AllConnected()`
@@ -38,10 +42,12 @@ impl AllConnected {
         agraph: &crate::interface::Graph,
         ent: &crate::ffi::HandleStandardTransient,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IFGraph_AllConnected_ctor_graph_handlestandardtransient(agraph, ent),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_ctor_graph_handlestandardtransient(agraph, ent)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -52,106 +58,164 @@ impl AllConnected {
     /// will be added, but if "ent" is not already in the list, a new
     /// Connected Component will be cumulated
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_AllConnected_get_from_entity(self as *mut Self, ent) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_get_from_entity(self as *mut Self, ent) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_AllConnected.hxx`:54 - `IFGraph_AllConnected::ResetData()`
     /// Allows to restart on a new data set
     pub fn reset_data(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllConnected_reset_data(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_reset_data(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_AllConnected.hxx`:57 - `IFGraph_AllConnected::Evaluate()`
     /// does the specific evaluation (Connected entities atall levels)
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllConnected_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to Interface_GraphContent
     pub fn as_interface_graph_content(&self) -> &crate::interface::GraphContent {
-        unsafe {
-            &*(crate::ffi::IFGraph_AllConnected_as_Interface_GraphContent(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_as_Interface_GraphContent(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_GraphContent (mutable)
     pub fn as_interface_graph_content_mut(&mut self) -> &mut crate::interface::GraphContent {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_AllConnected_as_Interface_GraphContent_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_as_Interface_GraphContent_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator
     pub fn as_interface_entity_iterator(&self) -> &crate::interface::EntityIterator {
-        unsafe {
-            &*(crate::ffi::IFGraph_AllConnected_as_Interface_EntityIterator(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_as_Interface_EntityIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator (mutable)
     pub fn as_interface_entity_iterator_mut(&mut self) -> &mut crate::interface::EntityIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_AllConnected_as_Interface_EntityIterator_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_as_Interface_EntityIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
     pub fn get_from_graph(&mut self, agraph: &crate::interface::Graph) {
-        unsafe {
-            crate::ffi::IFGraph_AllConnected_inherited_GetFromGraph(self as *mut Self, agraph)
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_GetFromGraph(self as *mut Self, agraph)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
     pub fn result(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllConnected_inherited_Result(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllConnected_inherited_Result(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
     pub fn begin(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_Begin(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_inherited_Begin(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_AddList(self as *mut Self, list) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_inherited_AddList(self as *mut Self, list) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
     pub fn add_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_AddItem(self as *mut Self, anentity) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_AddItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
     pub fn get_one_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe {
-            crate::ffi::IFGraph_AllConnected_inherited_GetOneItem(self as *mut Self, anentity)
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_GetOneItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
     pub fn select_type(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
-        unsafe {
-            crate::ffi::IFGraph_AllConnected_inherited_SelectType(self as *mut Self, atype, keep)
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_SelectType(
+                    self as *mut Self,
+                    atype,
+                    keep,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_NbEntities(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_NbEntities(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
     pub fn nb_typed(&self, type_: &crate::ffi::HandleStandardType) -> i32 {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_NbTyped(self as *const Self, type_) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_NbTyped(self as *const Self, type_)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
@@ -159,46 +223,67 @@ impl AllConnected {
         &self,
         type_: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllConnected_inherited_Typed(
-                self as *const Self,
-                type_,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllConnected_inherited_Typed(self as *const Self, type_)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_Start(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_inherited_Start(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_More(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllConnected_inherited_More(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_Next(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_inherited_Next(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
-        unsafe { &*(crate::ffi::IFGraph_AllConnected_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllConnected_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
     pub fn content(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllConnected_inherited_Content(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllConnected_inherited_Content(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllConnected_inherited_Destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllConnected_inherited_Destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -222,7 +307,11 @@ impl AllShared {
     /// **Source:** `IFGraph_AllShared.hxx`:38 - `IFGraph_AllShared::IFGraph_AllShared()`
     /// creates an AllShared from a graph, empty ready to be filled
     pub fn new_graph(agraph: &crate::interface::Graph) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllShared_ctor_graph(agraph)) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_AllShared_ctor_graph(agraph) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IFGraph_AllShared.hxx`:42 - `IFGraph_AllShared::IFGraph_AllShared()`
@@ -232,10 +321,12 @@ impl AllShared {
         agraph: &crate::interface::Graph,
         ent: &crate::ffi::HandleStandardTransient,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IFGraph_AllShared_ctor_graph_handlestandardtransient(agraph, ent),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_ctor_graph_handlestandardtransient(agraph, ent)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -243,103 +334,167 @@ impl AllShared {
     /// adds an entity and its shared ones to the list (allows to
     /// cumulate all Entities shared by some ones)
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_AllShared_get_from_entity(self as *mut Self, ent) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_get_from_entity(self as *mut Self, ent) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_AllShared.hxx`:51 - `IFGraph_AllShared::GetFromIter()`
     /// Adds Entities from an EntityIterator and all their shared
     /// ones at any level
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_AllShared_get_from_iter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_get_from_iter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_AllShared.hxx`:54 - `IFGraph_AllShared::ResetData()`
     /// Allows to restart on a new data set
     pub fn reset_data(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllShared_reset_data(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_reset_data(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_AllShared.hxx`:57 - `IFGraph_AllShared::Evaluate()`
     /// does the specific evaluation (shared entities atall levels)
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllShared_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to Interface_GraphContent
     pub fn as_interface_graph_content(&self) -> &crate::interface::GraphContent {
-        unsafe { &*(crate::ffi::IFGraph_AllShared_as_Interface_GraphContent(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_as_Interface_GraphContent(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Interface_GraphContent (mutable)
     pub fn as_interface_graph_content_mut(&mut self) -> &mut crate::interface::GraphContent {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_AllShared_as_Interface_GraphContent_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_as_Interface_GraphContent_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator
     pub fn as_interface_entity_iterator(&self) -> &crate::interface::EntityIterator {
-        unsafe {
-            &*(crate::ffi::IFGraph_AllShared_as_Interface_EntityIterator(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_as_Interface_EntityIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator (mutable)
     pub fn as_interface_entity_iterator_mut(&mut self) -> &mut crate::interface::EntityIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_AllShared_as_Interface_EntityIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_as_Interface_EntityIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
     pub fn get_from_graph(&mut self, agraph: &crate::interface::Graph) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_GetFromGraph(self as *mut Self, agraph) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllShared_inherited_GetFromGraph(self as *mut Self, agraph)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
     pub fn result(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllShared_inherited_Result(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllShared_inherited_Result(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
     pub fn begin(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_Begin(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_inherited_Begin(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_AddList(self as *mut Self, list) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_inherited_AddList(self as *mut Self, list) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
     pub fn add_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_AddItem(self as *mut Self, anentity) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_inherited_AddItem(self as *mut Self, anentity) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
     pub fn get_one_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_GetOneItem(self as *mut Self, anentity) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllShared_inherited_GetOneItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
     pub fn select_type(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
-        unsafe {
-            crate::ffi::IFGraph_AllShared_inherited_SelectType(self as *mut Self, atype, keep)
+        {
+            unsafe {
+                crate::ffi::IFGraph_AllShared_inherited_SelectType(self as *mut Self, atype, keep)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_NbEntities(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllShared_inherited_NbEntities(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
     pub fn nb_typed(&self, type_: &crate::ffi::HandleStandardType) -> i32 {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_NbTyped(self as *const Self, type_) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_inherited_NbTyped(self as *const Self, type_)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
@@ -347,46 +502,67 @@ impl AllShared {
         &self,
         type_: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllShared_inherited_Typed(
-                self as *const Self,
-                type_,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_AllShared_inherited_Typed(self as *const Self, type_)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_Start(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_inherited_Start(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_More(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllShared_inherited_More(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_Next(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_inherited_Next(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
-        unsafe { &*(crate::ffi::IFGraph_AllShared_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllShared_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
     pub fn content(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_AllShared_inherited_Content(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_AllShared_inherited_Content(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::IFGraph_AllShared_inherited_Destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_AllShared_inherited_Destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -415,122 +591,184 @@ impl Articulations {
     /// whole True : works on the whole Model
     /// whole False : remains empty, ready to work on a sub-part
     pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Articulations_ctor_graph_bool(
-                agraph, whole,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Articulations_ctor_graph_bool(agraph, whole) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_Articulations.hxx`:50 - `IFGraph_Articulations::GetFromEntity()`
     /// adds an entity and its shared ones to the list
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Articulations_get_from_entity(self as *mut Self, ent) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_get_from_entity(self as *mut Self, ent) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Articulations.hxx`:53 - `IFGraph_Articulations::GetFromIter()`
     /// adds a list of entities (as an iterator)
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_Articulations_get_from_iter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_get_from_iter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Articulations.hxx`:56 - `IFGraph_Articulations::ResetData()`
     /// Allows to restart on a new data set
     pub fn reset_data(&mut self) {
-        unsafe { crate::ffi::IFGraph_Articulations_reset_data(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_reset_data(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Articulations.hxx`:59 - `IFGraph_Articulations::Evaluate()`
     /// Evaluates the list of Articulation points
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_Articulations_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to Interface_GraphContent
     pub fn as_interface_graph_content(&self) -> &crate::interface::GraphContent {
-        unsafe {
-            &*(crate::ffi::IFGraph_Articulations_as_Interface_GraphContent(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_as_Interface_GraphContent(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_GraphContent (mutable)
     pub fn as_interface_graph_content_mut(&mut self) -> &mut crate::interface::GraphContent {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Articulations_as_Interface_GraphContent_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_as_Interface_GraphContent_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator
     pub fn as_interface_entity_iterator(&self) -> &crate::interface::EntityIterator {
-        unsafe {
-            &*(crate::ffi::IFGraph_Articulations_as_Interface_EntityIterator(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_as_Interface_EntityIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator (mutable)
     pub fn as_interface_entity_iterator_mut(&mut self) -> &mut crate::interface::EntityIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Articulations_as_Interface_EntityIterator_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_as_Interface_EntityIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
     pub fn get_from_graph(&mut self, agraph: &crate::interface::Graph) {
-        unsafe {
-            crate::ffi::IFGraph_Articulations_inherited_GetFromGraph(self as *mut Self, agraph)
+        {
+            unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_GetFromGraph(self as *mut Self, agraph)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
     pub fn result(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Articulations_inherited_Result(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Articulations_inherited_Result(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
     pub fn begin(&mut self) {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_Begin(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_inherited_Begin(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_AddList(self as *mut Self, list) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_inherited_AddList(self as *mut Self, list) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
     pub fn add_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_AddItem(self as *mut Self, anentity) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_AddItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
     pub fn get_one_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe {
-            crate::ffi::IFGraph_Articulations_inherited_GetOneItem(self as *mut Self, anentity)
+        {
+            unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_GetOneItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
     pub fn select_type(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
-        unsafe {
-            crate::ffi::IFGraph_Articulations_inherited_SelectType(self as *mut Self, atype, keep)
+        {
+            unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_SelectType(
+                    self as *mut Self,
+                    atype,
+                    keep,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_NbEntities(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_NbEntities(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
     pub fn nb_typed(&self, type_: &crate::ffi::HandleStandardType) -> i32 {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_NbTyped(self as *const Self, type_) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_NbTyped(self as *const Self, type_)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
@@ -538,46 +776,67 @@ impl Articulations {
         &self,
         type_: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Articulations_inherited_Typed(
-                self as *const Self,
-                type_,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Articulations_inherited_Typed(self as *const Self, type_)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_Start(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_inherited_Start(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_More(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Articulations_inherited_More(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_Next(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_inherited_Next(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
-        unsafe { &*(crate::ffi::IFGraph_Articulations_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Articulations_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
     pub fn content(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Articulations_inherited_Content(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Articulations_inherited_Content(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::IFGraph_Articulations_inherited_Destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Articulations_inherited_Destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -603,14 +862,21 @@ impl Compare {
     /// **Source:** `IFGraph_Compare.hxx`:40 - `IFGraph_Compare::IFGraph_Compare()`
     /// creates empty Compare, ready to work
     pub fn new_graph(agraph: &crate::interface::Graph) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_ctor_graph(agraph)) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Compare_ctor_graph(agraph) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:44 - `IFGraph_Compare::GetFromEntity()`
     /// adds an entity and its shared ones to the list :
     /// first True means adds to the first sub-list, else to the 2nd
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, first: bool) {
-        unsafe { crate::ffi::IFGraph_Compare_get_from_entity(self as *mut Self, ent, first) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_get_from_entity(self as *mut Self, ent, first) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:51 - `IFGraph_Compare::GetFromIter()`
@@ -619,136 +885,216 @@ impl Compare {
     /// have them)
     /// first True means adds to the first sub-list, else to the 2nd
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator, first: bool) {
-        unsafe { crate::ffi::IFGraph_Compare_get_from_iter(self as *mut Self, iter, first) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_get_from_iter(self as *mut Self, iter, first) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:56 - `IFGraph_Compare::Merge()`
     /// merges the second list into the first one, hence the second
     /// list is empty
     pub fn merge(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_merge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_merge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:59 - `IFGraph_Compare::RemoveSecond()`
     /// Removes the contents of second list
     pub fn remove_second(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_remove_second(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_remove_second(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:63 - `IFGraph_Compare::KeepCommon()`
     /// Keeps only Common part, sets it as First list and clears
     /// second list
     pub fn keep_common(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_keep_common(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_keep_common(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:66 - `IFGraph_Compare::ResetData()`
     /// Allows to restart on a new data set
     pub fn reset_data(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_reset_data(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_reset_data(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:69 - `IFGraph_Compare::Evaluate()`
     /// Recomputes result of comparing to sub-parts
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:72 - `IFGraph_Compare::Common()`
     /// returns entities common to the both parts
     pub fn common(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_common(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Compare_common(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:75 - `IFGraph_Compare::FirstOnly()`
     /// returns entities which are exclusively in the first list
     pub fn first_only(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_first_only(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Compare_first_only(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_Compare.hxx`:78 - `IFGraph_Compare::SecondOnly()`
     /// returns entities which are exclusively in the second part
     pub fn second_only(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_second_only(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Compare_second_only(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to Interface_GraphContent
     pub fn as_interface_graph_content(&self) -> &crate::interface::GraphContent {
-        unsafe { &*(crate::ffi::IFGraph_Compare_as_Interface_GraphContent(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Compare_as_Interface_GraphContent(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Interface_GraphContent (mutable)
     pub fn as_interface_graph_content_mut(&mut self) -> &mut crate::interface::GraphContent {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Compare_as_Interface_GraphContent_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Compare_as_Interface_GraphContent_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator
     pub fn as_interface_entity_iterator(&self) -> &crate::interface::EntityIterator {
-        unsafe { &*(crate::ffi::IFGraph_Compare_as_Interface_EntityIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Compare_as_Interface_EntityIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Interface_EntityIterator (mutable)
     pub fn as_interface_entity_iterator_mut(&mut self) -> &mut crate::interface::EntityIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Compare_as_Interface_EntityIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Compare_as_Interface_EntityIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
     pub fn get_from_graph(&mut self, agraph: &crate::interface::Graph) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_GetFromGraph(self as *mut Self, agraph) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Compare_inherited_GetFromGraph(self as *mut Self, agraph)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
     pub fn result(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_inherited_Result(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Compare_inherited_Result(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
     pub fn begin(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_Begin(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_inherited_Begin(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_AddList(self as *mut Self, list) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_inherited_AddList(self as *mut Self, list) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
     pub fn add_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_AddItem(self as *mut Self, anentity) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_inherited_AddItem(self as *mut Self, anentity) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
     pub fn get_one_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_GetOneItem(self as *mut Self, anentity) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Compare_inherited_GetOneItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
     pub fn select_type(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_SelectType(self as *mut Self, atype, keep) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Compare_inherited_SelectType(self as *mut Self, atype, keep)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_NbEntities(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Compare_inherited_NbEntities(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
     pub fn nb_typed(&self, type_: &crate::ffi::HandleStandardType) -> i32 {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_NbTyped(self as *const Self, type_) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Compare_inherited_NbTyped(self as *const Self, type_)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
@@ -756,46 +1102,66 @@ impl Compare {
         &self,
         type_: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_inherited_Typed(
-                self as *const Self,
-                type_,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Compare_inherited_Typed(self as *const Self, type_) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_Start(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_inherited_Start(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_More(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Compare_inherited_More(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_Next(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_inherited_Next(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
-        unsafe { &*(crate::ffi::IFGraph_Compare_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Compare_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
     pub fn content(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Compare_inherited_Content(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Compare_inherited_Content(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::IFGraph_Compare_inherited_Destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Compare_inherited_Destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -820,180 +1186,268 @@ impl ConnectedComponants {
     /// whole True  : all the contents of the Model
     /// whole False : sub-parts which will be given later
     pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ConnectedComponants_ctor_graph_bool(
-                agraph, whole,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_ConnectedComponants_ctor_graph_bool(agraph, whole) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_ConnectedComponants.hxx`:40 - `IFGraph_ConnectedComponants::Evaluate()`
     /// does the computation
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ConnectedComponants_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to IFGraph_SubPartsIterator
     pub fn as_sub_parts_iterator(&self) -> &SubPartsIterator {
-        unsafe {
-            &*(crate::ffi::IFGraph_ConnectedComponants_as_IFGraph_SubPartsIterator(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_as_IFGraph_SubPartsIterator(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IFGraph_SubPartsIterator (mutable)
     pub fn as_sub_parts_iterator_mut(&mut self) -> &mut SubPartsIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_ConnectedComponants_as_IFGraph_SubPartsIterator_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_as_IFGraph_SubPartsIterator_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:64 - `IFGraph_SubPartsIterator::GetParts()`
     pub fn get_parts(&mut self, other: &mut SubPartsIterator) {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_GetParts(self as *mut Self, other)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_GetParts(self as *mut Self, other)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:67 - `IFGraph_SubPartsIterator::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ConnectedComponants_inherited_Model(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_Model(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:70 - `IFGraph_SubPartsIterator::AddPart()`
     pub fn add_part(&mut self) {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_AddPart(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_AddPart(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:73 - `IFGraph_SubPartsIterator::NbParts()`
     pub fn nb_parts(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_NbParts(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_NbParts(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:77 - `IFGraph_SubPartsIterator::PartNum()`
     pub fn part_num(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_PartNum(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_PartNum(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:81 - `IFGraph_SubPartsIterator::SetLoad()`
     pub fn set_load(&mut self) {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_SetLoad(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_SetLoad(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:85 - `IFGraph_SubPartsIterator::SetPartNum()`
     pub fn set_part_num(&mut self, num: i32) {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_SetPartNum(self as *mut Self, num)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_SetPartNum(self as *mut Self, num)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity()`
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, shared: bool) {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_GetFromEntity(
-                self as *mut Self,
-                ent,
-                shared,
-            )
+        {
+            unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_GetFromEntity(
+                    self as *mut Self,
+                    ent,
+                    shared,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter()`
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_GetFromIter(self as *mut Self, iter)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_GetFromIter(
+                    self as *mut Self,
+                    iter,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     pub fn reset(&mut self) {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_Reset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_Reset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded()`
     pub fn loaded(&self) -> crate::OwnedPtr<crate::interface::GraphContent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ConnectedComponants_inherited_Loaded(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_Loaded(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
     pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::interface::Graph> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IFGraph_ConnectedComponants_inherited_LoadedGraph(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_LoadedGraph(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:114 - `IFGraph_SubPartsIterator::IsLoaded()`
     pub fn is_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_IsLoaded(self as *const Self, ent)
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_IsLoaded(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart()`
     pub fn is_in_part(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_IsInPart(self as *const Self, ent)
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_IsInPart(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum()`
     pub fn entity_part_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
-        unsafe {
-            crate::ffi::IFGraph_ConnectedComponants_inherited_EntityPartNum(
-                self as *const Self,
-                ent,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_EntityPartNum(
+                    self as *const Self,
+                    ent,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:124 - `IFGraph_SubPartsIterator::Start()`
     pub fn start(&mut self) {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_Start(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_Start(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:128 - `IFGraph_SubPartsIterator::More()`
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_More(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_More(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:132 - `IFGraph_SubPartsIterator::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_Next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_Next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:136 - `IFGraph_SubPartsIterator::IsSingle()`
     pub fn is_single(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_ConnectedComponants_inherited_IsSingle(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_IsSingle(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity()`
     pub fn first_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IFGraph_ConnectedComponants_inherited_FirstEntity(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_FirstEntity(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities()`
     pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ConnectedComponants_inherited_Entities(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ConnectedComponants_inherited_Entities(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1019,47 +1473,67 @@ impl Cumulate {
     /// **Source:** `IFGraph_Cumulate.hxx`:40 - `IFGraph_Cumulate::IFGraph_Cumulate()`
     /// creates empty Cumulate, ready to work
     pub fn new_graph(agraph: &crate::interface::Graph) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_ctor_graph(agraph)) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Cumulate_ctor_graph(agraph) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:43 - `IFGraph_Cumulate::GetFromEntity()`
     /// adds an entity and its shared ones to the list
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Cumulate_get_from_entity(self as *mut Self, ent) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_get_from_entity(self as *mut Self, ent) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:47 - `IFGraph_Cumulate::GetFromIter()`
     /// adds a list of entities (as an iterator) as such, that is,
     /// without their shared entities (use AllShared to have them)
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_Cumulate_get_from_iter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_get_from_iter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:50 - `IFGraph_Cumulate::ResetData()`
     /// Allows to restart on a new data set
     pub fn reset_data(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cumulate_reset_data(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_reset_data(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:53 - `IFGraph_Cumulate::Evaluate()`
     /// Evaluates the result of cumulation
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cumulate_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:56 - `IFGraph_Cumulate::Overlapped()`
     /// returns entities which are taken several times
     pub fn overlapped(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_overlapped(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Cumulate_overlapped(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:59 - `IFGraph_Cumulate::Forgotten()`
     /// returns entities which are not taken
     pub fn forgotten(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_forgotten(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Cumulate_forgotten(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1067,11 +1541,11 @@ impl Cumulate {
     /// Returns entities taken a given count of times
     /// (0 : same as Forgotten, 1 : same as no Overlap : default)
     pub fn per_count(&self, count: i32) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_per_count(
-                self as *const Self,
-                count,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_per_count(self as *const Self, count) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1079,87 +1553,153 @@ impl Cumulate {
     /// returns number of times an Entity has been counted
     /// (0 means forgotten, more than 1 means overlap, 1 is normal)
     pub fn nb_times(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cumulate_nb_times(self as *const Self, ent) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_nb_times(self as *const Self, ent) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_Cumulate.hxx`:71 - `IFGraph_Cumulate::HighestNbTimes()`
     /// Returns the highest number of times recorded for every Entity
     /// (0 means empty, 1 means no overlap)
     pub fn highest_nb_times(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cumulate_highest_nb_times(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_highest_nb_times(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to Interface_GraphContent
     pub fn as_interface_graph_content(&self) -> &crate::interface::GraphContent {
-        unsafe { &*(crate::ffi::IFGraph_Cumulate_as_Interface_GraphContent(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cumulate_as_Interface_GraphContent(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Interface_GraphContent (mutable)
     pub fn as_interface_graph_content_mut(&mut self) -> &mut crate::interface::GraphContent {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Cumulate_as_Interface_GraphContent_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cumulate_as_Interface_GraphContent_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator
     pub fn as_interface_entity_iterator(&self) -> &crate::interface::EntityIterator {
-        unsafe { &*(crate::ffi::IFGraph_Cumulate_as_Interface_EntityIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cumulate_as_Interface_EntityIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Interface_EntityIterator (mutable)
     pub fn as_interface_entity_iterator_mut(&mut self) -> &mut crate::interface::EntityIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Cumulate_as_Interface_EntityIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cumulate_as_Interface_EntityIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
     pub fn get_from_graph(&mut self, agraph: &crate::interface::Graph) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_GetFromGraph(self as *mut Self, agraph) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Cumulate_inherited_GetFromGraph(self as *mut Self, agraph)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
     pub fn result(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_inherited_Result(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_inherited_Result(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
     pub fn begin(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_Begin(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_inherited_Begin(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_AddList(self as *mut Self, list) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_inherited_AddList(self as *mut Self, list) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
     pub fn add_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_AddItem(self as *mut Self, anentity) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_inherited_AddItem(self as *mut Self, anentity) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
     pub fn get_one_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_GetOneItem(self as *mut Self, anentity) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Cumulate_inherited_GetOneItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
     pub fn select_type(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_SelectType(self as *mut Self, atype, keep) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_Cumulate_inherited_SelectType(self as *mut Self, atype, keep)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_NbEntities(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_inherited_NbEntities(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
     pub fn nb_typed(&self, type_: &crate::ffi::HandleStandardType) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_NbTyped(self as *const Self, type_) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cumulate_inherited_NbTyped(self as *const Self, type_)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
@@ -1167,46 +1707,66 @@ impl Cumulate {
         &self,
         type_: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_inherited_Typed(
-                self as *const Self,
-                type_,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_inherited_Typed(self as *const Self, type_) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_Start(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_inherited_Start(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_More(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_inherited_More(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_Next(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_inherited_Next(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
-        unsafe { &*(crate::ffi::IFGraph_Cumulate_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
     pub fn content(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cumulate_inherited_Content(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cumulate_inherited_Content(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cumulate_inherited_Destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cumulate_inherited_Destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1230,16 +1790,20 @@ impl Cycles {
     /// whole True  : all the contents of the Model
     /// whole False : sub-parts which will be given later
     pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_ctor_graph_bool(agraph, whole))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Cycles_ctor_graph_bool(agraph, whole) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_Cycles.hxx`:41 - `IFGraph_Cycles::IFGraph_Cycles()`
     /// creates from a StrongComponants which was already computed
     pub fn new_strongcomponants(subparts: &mut StrongComponants) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_ctor_strongcomponants(subparts))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Cycles_ctor_strongcomponants(subparts) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1247,145 +1811,225 @@ impl Cycles {
     /// does the computation. Cycles are StrongComponants which are
     /// not Single
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cycles_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to IFGraph_SubPartsIterator
     pub fn as_sub_parts_iterator(&self) -> &SubPartsIterator {
-        unsafe { &*(crate::ffi::IFGraph_Cycles_as_IFGraph_SubPartsIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cycles_as_IFGraph_SubPartsIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IFGraph_SubPartsIterator (mutable)
     pub fn as_sub_parts_iterator_mut(&mut self) -> &mut SubPartsIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_Cycles_as_IFGraph_SubPartsIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cycles_as_IFGraph_SubPartsIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:64 - `IFGraph_SubPartsIterator::GetParts()`
     pub fn get_parts(&mut self, other: &mut SubPartsIterator) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_GetParts(self as *mut Self, other) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_GetParts(self as *mut Self, other) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:67 - `IFGraph_SubPartsIterator::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_inherited_Model(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_Model(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:70 - `IFGraph_SubPartsIterator::AddPart()`
     pub fn add_part(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_AddPart(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_AddPart(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:73 - `IFGraph_SubPartsIterator::NbParts()`
     pub fn nb_parts(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_NbParts(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_NbParts(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:77 - `IFGraph_SubPartsIterator::PartNum()`
     pub fn part_num(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_PartNum(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_PartNum(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:81 - `IFGraph_SubPartsIterator::SetLoad()`
     pub fn set_load(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_SetLoad(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_SetLoad(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:85 - `IFGraph_SubPartsIterator::SetPartNum()`
     pub fn set_part_num(&mut self, num: i32) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_SetPartNum(self as *mut Self, num) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_SetPartNum(self as *mut Self, num) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity()`
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, shared: bool) {
-        unsafe {
-            crate::ffi::IFGraph_Cycles_inherited_GetFromEntity(self as *mut Self, ent, shared)
+        {
+            unsafe {
+                crate::ffi::IFGraph_Cycles_inherited_GetFromEntity(self as *mut Self, ent, shared)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter()`
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_GetFromIter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_GetFromIter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     pub fn reset(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_Reset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_Reset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded()`
     pub fn loaded(&self) -> crate::OwnedPtr<crate::interface::GraphContent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_inherited_Loaded(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_Loaded(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
     pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::interface::Graph> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_inherited_LoadedGraph(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_LoadedGraph(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:114 - `IFGraph_SubPartsIterator::IsLoaded()`
     pub fn is_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_IsLoaded(self as *const Self, ent) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_IsLoaded(self as *const Self, ent) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart()`
     pub fn is_in_part(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_IsInPart(self as *const Self, ent) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_IsInPart(self as *const Self, ent) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum()`
     pub fn entity_part_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_EntityPartNum(self as *const Self, ent) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_Cycles_inherited_EntityPartNum(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:124 - `IFGraph_SubPartsIterator::Start()`
     pub fn start(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_Start(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_Start(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:128 - `IFGraph_SubPartsIterator::More()`
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_More(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_Cycles_inherited_More(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:132 - `IFGraph_SubPartsIterator::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_Next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_Cycles_inherited_Next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:136 - `IFGraph_SubPartsIterator::IsSingle()`
     pub fn is_single(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_Cycles_inherited_IsSingle(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_IsSingle(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity()`
     pub fn first_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_inherited_FirstEntity(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_FirstEntity(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities()`
     pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_Cycles_inherited_Entities(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_Cycles_inherited_Entities(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1409,31 +2053,47 @@ impl ExternalSources {
     /// **Source:** `IFGraph_ExternalSources.hxx`:38 - `IFGraph_ExternalSources::IFGraph_ExternalSources()`
     /// creates empty ExternalSources, ready to work
     pub fn new_graph(agraph: &crate::interface::Graph) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ExternalSources_ctor_graph(agraph)) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_ExternalSources_ctor_graph(agraph) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IFGraph_ExternalSources.hxx`:41 - `IFGraph_ExternalSources::GetFromEntity()`
     /// adds an entity and its shared ones to the list
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_get_from_entity(self as *mut Self, ent) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_get_from_entity(self as *mut Self, ent) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_ExternalSources.hxx`:44 - `IFGraph_ExternalSources::GetFromIter()`
     /// adds a list of entities (as an iterator) with shared ones
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_get_from_iter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_get_from_iter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_ExternalSources.hxx`:47 - `IFGraph_ExternalSources::ResetData()`
     /// Allows to restart on a new data set
     pub fn reset_data(&mut self) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_reset_data(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_reset_data(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_ExternalSources.hxx`:50 - `IFGraph_ExternalSources::Evaluate()`
     /// Evaluates external sources of a set of entities
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_ExternalSources.hxx`:55 - `IFGraph_ExternalSources::IsEmpty()`
@@ -1441,96 +2101,158 @@ impl ExternalSources {
     /// It means that we have a "root" set
     /// (performs an Evaluation as necessary)
     pub fn is_empty(&mut self) -> bool {
-        unsafe { crate::ffi::IFGraph_ExternalSources_is_empty(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_ExternalSources_is_empty(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to Interface_GraphContent
     pub fn as_interface_graph_content(&self) -> &crate::interface::GraphContent {
-        unsafe {
-            &*(crate::ffi::IFGraph_ExternalSources_as_Interface_GraphContent(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_as_Interface_GraphContent(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_GraphContent (mutable)
     pub fn as_interface_graph_content_mut(&mut self) -> &mut crate::interface::GraphContent {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_ExternalSources_as_Interface_GraphContent_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_as_Interface_GraphContent_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator
     pub fn as_interface_entity_iterator(&self) -> &crate::interface::EntityIterator {
-        unsafe {
-            &*(crate::ffi::IFGraph_ExternalSources_as_Interface_EntityIterator(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_as_Interface_EntityIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Interface_EntityIterator (mutable)
     pub fn as_interface_entity_iterator_mut(&mut self) -> &mut crate::interface::EntityIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_ExternalSources_as_Interface_EntityIterator_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_as_Interface_EntityIterator_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
     pub fn get_from_graph(&mut self, agraph: &crate::interface::Graph) {
-        unsafe {
-            crate::ffi::IFGraph_ExternalSources_inherited_GetFromGraph(self as *mut Self, agraph)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_GetFromGraph(
+                    self as *mut Self,
+                    agraph,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
     pub fn result(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ExternalSources_inherited_Result(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Result(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
     pub fn begin(&mut self) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Begin(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Begin(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_AddList(self as *mut Self, list) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_AddList(self as *mut Self, list)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
     pub fn add_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe {
-            crate::ffi::IFGraph_ExternalSources_inherited_AddItem(self as *mut Self, anentity)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_AddItem(self as *mut Self, anentity)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
     pub fn get_one_item(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
-        unsafe {
-            crate::ffi::IFGraph_ExternalSources_inherited_GetOneItem(self as *mut Self, anentity)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_GetOneItem(
+                    self as *mut Self,
+                    anentity,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
     pub fn select_type(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
-        unsafe {
-            crate::ffi::IFGraph_ExternalSources_inherited_SelectType(self as *mut Self, atype, keep)
+        {
+            unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_SelectType(
+                    self as *mut Self,
+                    atype,
+                    keep,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_NbEntities(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_NbEntities(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
     pub fn nb_typed(&self, type_: &crate::ffi::HandleStandardType) -> i32 {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_NbTyped(self as *const Self, type_) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_NbTyped(self as *const Self, type_)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
@@ -1538,46 +2260,68 @@ impl ExternalSources {
         &self,
         type_: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ExternalSources_inherited_Typed(
-                self as *const Self,
-                type_,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_Typed(self as *const Self, type_)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Start(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Start(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_More(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_ExternalSources_inherited_More(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Next(self as *const Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Next(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
-        unsafe { &*(crate::ffi::IFGraph_ExternalSources_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
     pub fn content(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_ExternalSources_inherited_Content(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_ExternalSources_inherited_Content(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_ExternalSources_inherited_Destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1601,173 +2345,267 @@ impl SCRoots {
     /// whole True  : all the contents of the Model
     /// whole False : sub-parts which will be given later
     pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_ctor_graph_bool(agraph, whole))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_SCRoots_ctor_graph_bool(agraph, whole) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_SCRoots.hxx`:38 - `IFGraph_SCRoots::IFGraph_SCRoots()`
     /// creates from a StrongComponants which was already computed
     pub fn new_strongcomponants(subparts: &mut StrongComponants) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_ctor_strongcomponants(subparts))
+        {
+            let __result = unsafe { crate::ffi::IFGraph_SCRoots_ctor_strongcomponants(subparts) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_SCRoots.hxx`:41 - `IFGraph_SCRoots::Evaluate()`
     /// does the computation
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_SCRoots_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to IFGraph_StrongComponants
     pub fn as_strong_componants(&self) -> &StrongComponants {
-        unsafe { &*(crate::ffi::IFGraph_SCRoots_as_IFGraph_StrongComponants(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SCRoots_as_IFGraph_StrongComponants(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IFGraph_StrongComponants (mutable)
     pub fn as_strong_componants_mut(&mut self) -> &mut StrongComponants {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_SCRoots_as_IFGraph_StrongComponants_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SCRoots_as_IFGraph_StrongComponants_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IFGraph_SubPartsIterator
     pub fn as_sub_parts_iterator(&self) -> &SubPartsIterator {
-        unsafe { &*(crate::ffi::IFGraph_SCRoots_as_IFGraph_SubPartsIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SCRoots_as_IFGraph_SubPartsIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IFGraph_SubPartsIterator (mutable)
     pub fn as_sub_parts_iterator_mut(&mut self) -> &mut SubPartsIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_SCRoots_as_IFGraph_SubPartsIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SCRoots_as_IFGraph_SubPartsIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:64 - `IFGraph_SubPartsIterator::GetParts()`
     pub fn get_parts(&mut self, other: &mut SubPartsIterator) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_GetParts(self as *mut Self, other) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_GetParts(self as *mut Self, other) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:67 - `IFGraph_SubPartsIterator::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_inherited_Model(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_Model(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:70 - `IFGraph_SubPartsIterator::AddPart()`
     pub fn add_part(&mut self) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_AddPart(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_AddPart(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:73 - `IFGraph_SubPartsIterator::NbParts()`
     pub fn nb_parts(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_NbParts(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_NbParts(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:77 - `IFGraph_SubPartsIterator::PartNum()`
     pub fn part_num(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_PartNum(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_PartNum(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:81 - `IFGraph_SubPartsIterator::SetLoad()`
     pub fn set_load(&mut self) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_SetLoad(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_SetLoad(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:85 - `IFGraph_SubPartsIterator::SetPartNum()`
     pub fn set_part_num(&mut self, num: i32) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_SetPartNum(self as *mut Self, num) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_SetPartNum(self as *mut Self, num) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity()`
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, shared: bool) {
-        unsafe {
-            crate::ffi::IFGraph_SCRoots_inherited_GetFromEntity(self as *mut Self, ent, shared)
+        {
+            unsafe {
+                crate::ffi::IFGraph_SCRoots_inherited_GetFromEntity(self as *mut Self, ent, shared)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter()`
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_GetFromIter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_GetFromIter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     pub fn reset(&mut self) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_Reset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_Reset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded()`
     pub fn loaded(&self) -> crate::OwnedPtr<crate::interface::GraphContent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_inherited_Loaded(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_Loaded(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
     pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::interface::Graph> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_inherited_LoadedGraph(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_LoadedGraph(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:114 - `IFGraph_SubPartsIterator::IsLoaded()`
     pub fn is_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_IsLoaded(self as *const Self, ent) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_IsLoaded(self as *const Self, ent) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart()`
     pub fn is_in_part(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_IsInPart(self as *const Self, ent) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_IsInPart(self as *const Self, ent) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum()`
     pub fn entity_part_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_EntityPartNum(self as *const Self, ent) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SCRoots_inherited_EntityPartNum(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:124 - `IFGraph_SubPartsIterator::Start()`
     pub fn start(&mut self) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_Start(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_Start(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:128 - `IFGraph_SubPartsIterator::More()`
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_More(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_SCRoots_inherited_More(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:132 - `IFGraph_SubPartsIterator::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_Next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SCRoots_inherited_Next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:136 - `IFGraph_SubPartsIterator::IsSingle()`
     pub fn is_single(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_SCRoots_inherited_IsSingle(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_IsSingle(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity()`
     pub fn first_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_inherited_FirstEntity(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_FirstEntity(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities()`
     pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SCRoots_inherited_Entities(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SCRoots_inherited_Entities(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1793,169 +2631,264 @@ impl StrongComponants {
     /// whole True  : all the contents of the Model
     /// whole False : sub-parts which will be given later
     pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_StrongComponants_ctor_graph_bool(
-                agraph, whole,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_StrongComponants_ctor_graph_bool(agraph, whole) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_StrongComponants.hxx`:42 - `IFGraph_StrongComponants::Evaluate()`
     /// does the computation
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_StrongComponants_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to IFGraph_SubPartsIterator
     pub fn as_sub_parts_iterator(&self) -> &SubPartsIterator {
-        unsafe {
-            &*(crate::ffi::IFGraph_StrongComponants_as_IFGraph_SubPartsIterator(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_as_IFGraph_SubPartsIterator(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IFGraph_SubPartsIterator (mutable)
     pub fn as_sub_parts_iterator_mut(&mut self) -> &mut SubPartsIterator {
-        unsafe {
-            &mut *(crate::ffi::IFGraph_StrongComponants_as_IFGraph_SubPartsIterator_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_as_IFGraph_SubPartsIterator_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:64 - `IFGraph_SubPartsIterator::GetParts()`
     pub fn get_parts(&mut self, other: &mut SubPartsIterator) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_GetParts(self as *mut Self, other) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_GetParts(self as *mut Self, other)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:67 - `IFGraph_SubPartsIterator::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_StrongComponants_inherited_Model(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_Model(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:70 - `IFGraph_SubPartsIterator::AddPart()`
     pub fn add_part(&mut self) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_AddPart(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_StrongComponants_inherited_AddPart(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:73 - `IFGraph_SubPartsIterator::NbParts()`
     pub fn nb_parts(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_NbParts(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_NbParts(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:77 - `IFGraph_SubPartsIterator::PartNum()`
     pub fn part_num(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_PartNum(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_PartNum(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:81 - `IFGraph_SubPartsIterator::SetLoad()`
     pub fn set_load(&mut self) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_SetLoad(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_StrongComponants_inherited_SetLoad(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:85 - `IFGraph_SubPartsIterator::SetPartNum()`
     pub fn set_part_num(&mut self, num: i32) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_SetPartNum(self as *mut Self, num) }
+        {
+            unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_SetPartNum(self as *mut Self, num)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity()`
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, shared: bool) {
-        unsafe {
-            crate::ffi::IFGraph_StrongComponants_inherited_GetFromEntity(
-                self as *mut Self,
-                ent,
-                shared,
-            )
+        {
+            unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_GetFromEntity(
+                    self as *mut Self,
+                    ent,
+                    shared,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter()`
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe {
-            crate::ffi::IFGraph_StrongComponants_inherited_GetFromIter(self as *mut Self, iter)
+        {
+            unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_GetFromIter(self as *mut Self, iter)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     pub fn reset(&mut self) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_Reset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_StrongComponants_inherited_Reset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded()`
     pub fn loaded(&self) -> crate::OwnedPtr<crate::interface::GraphContent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_StrongComponants_inherited_Loaded(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_Loaded(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
     pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::interface::Graph> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_StrongComponants_inherited_LoadedGraph(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_LoadedGraph(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:114 - `IFGraph_SubPartsIterator::IsLoaded()`
     pub fn is_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_IsLoaded(self as *const Self, ent) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_IsLoaded(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart()`
     pub fn is_in_part(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_IsInPart(self as *const Self, ent) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_IsInPart(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum()`
     pub fn entity_part_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
-        unsafe {
-            crate::ffi::IFGraph_StrongComponants_inherited_EntityPartNum(self as *const Self, ent)
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_EntityPartNum(
+                    self as *const Self,
+                    ent,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:124 - `IFGraph_SubPartsIterator::Start()`
     pub fn start(&mut self) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_Start(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_StrongComponants_inherited_Start(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:128 - `IFGraph_SubPartsIterator::More()`
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_More(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_StrongComponants_inherited_More(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:132 - `IFGraph_SubPartsIterator::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_Next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_StrongComponants_inherited_Next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:136 - `IFGraph_SubPartsIterator::IsSingle()`
     pub fn is_single(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_StrongComponants_inherited_IsSingle(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_IsSingle(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity()`
     pub fn first_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_StrongComponants_inherited_FirstEntity(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_FirstEntity(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities()`
     pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_StrongComponants_inherited_Entities(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_StrongComponants_inherited_Entities(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1991,10 +2924,11 @@ impl SubPartsIterator {
     /// whole False : empty, ready to be filled
     /// SubPartIterator is set to load entities
     pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_ctor_graph_bool(
-                agraph, whole,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_ctor_graph_bool(agraph, whole) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2003,50 +2937,73 @@ impl SubPartsIterator {
     /// ones already recorded)
     /// Error if both SubPartsIterators are not based on the same Model
     pub fn get_parts(&mut self, other: &mut SubPartsIterator) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_get_parts(self as *mut Self, other) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_get_parts(self as *mut Self, other) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:67 - `IFGraph_SubPartsIterator::Model()`
     /// Returns the Model with which this Iterator was created
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_model(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_model(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:70 - `IFGraph_SubPartsIterator::AddPart()`
     /// Adds an empty part and sets it to receive entities
     pub fn add_part(&mut self) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_add_part(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_add_part(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:73 - `IFGraph_SubPartsIterator::NbParts()`
     /// Returns count of registered parts
     pub fn nb_parts(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_nb_parts(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_nb_parts(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:77 - `IFGraph_SubPartsIterator::PartNum()`
     /// Returns numero of part which currently receives entities
     /// (0 at load time)
     pub fn part_num(&self) -> i32 {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_part_num(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_part_num(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:81 - `IFGraph_SubPartsIterator::SetLoad()`
     /// Sets SubPartIterator to get Entities (by GetFromEntity &
     /// GetFromIter) into load status, to be analysed later
     pub fn set_load(&mut self) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_set_load(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_set_load(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:85 - `IFGraph_SubPartsIterator::SetPartNum()`
     /// Sets numero of receiving part to a new value
     /// Error if not in range (1-NbParts)
     pub fn set_part_num(&mut self, num: i32) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_set_part_num(self as *mut Self, num) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_set_part_num(self as *mut Self, num) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity()`
@@ -2054,8 +3011,11 @@ impl SubPartsIterator {
     /// current part if there is one. If shared is True, adds
     /// also its shared ones (shared at all levels)
     pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, shared: bool) {
-        unsafe {
-            crate::ffi::IFGraph_SubPartsIterator_get_from_entity(self as *mut Self, ent, shared)
+        {
+            unsafe {
+                crate::ffi::IFGraph_SubPartsIterator_get_from_entity(self as *mut Self, ent, shared)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2063,14 +3023,20 @@ impl SubPartsIterator {
     /// Adds a list of Entities (into Load mode or to a Part),
     /// given as an Iterator
     pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_get_from_iter(self as *mut Self, iter) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_get_from_iter(self as *mut Self, iter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     /// Erases data (parts, entities) : "me" becomes empty and in
     /// load status
     pub fn reset(&mut self) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_reset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_reset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:104 - `IFGraph_SubPartsIterator::Evaluate()`
@@ -2078,26 +3044,31 @@ impl SubPartsIterator {
     /// iteration; its default is doing nothing, it is designed to
     /// be redefined
     pub fn evaluate(&mut self) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_evaluate(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_evaluate(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded()`
     /// Returns entities which where loaded (not set into a sub-part)
     pub fn loaded(&self) -> crate::OwnedPtr<crate::interface::GraphContent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_loaded(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_loaded(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
     /// Same as above, but under the form of a Graph
     pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::interface::Graph> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_loaded_graph(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_loaded_graph(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2105,47 +3076,79 @@ impl SubPartsIterator {
     /// Returns True if an Entity is loaded (either set into a
     /// sub-part or not)
     pub fn is_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_is_loaded(self as *const Self, ent) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_is_loaded(self as *const Self, ent) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart()`
     /// Returns True if an Entity is Present in a sub-part
     pub fn is_in_part(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_is_in_part(self as *const Self, ent) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SubPartsIterator_is_in_part(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum()`
     /// Returns number of the sub-part in which an Entity has been set
     /// if it is not in a sub-part (or not loaded at all), Returns 0
     pub fn entity_part_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_entity_part_num(self as *const Self, ent) }
+        {
+            let __result = unsafe {
+                crate::ffi::IFGraph_SubPartsIterator_entity_part_num(self as *const Self, ent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:124 - `IFGraph_SubPartsIterator::Start()`
     /// Sets iteration to its beginning; calls Evaluate
     pub fn start(&mut self) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_start(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_start(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:128 - `IFGraph_SubPartsIterator::More()`
     /// Returns True if there are more sub-parts to iterate on
     /// Note : an empty sub-part is not taken in account by Iteration
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_more(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::IFGraph_SubPartsIterator_more(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:132 - `IFGraph_SubPartsIterator::Next()`
     /// Sets iteration to the next sub-part
     /// if there is not, IsSingle-Entities will raises an exception
     pub fn next(&mut self) {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IFGraph_SubPartsIterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:136 - `IFGraph_SubPartsIterator::IsSingle()`
     /// Returns True if current sub-part is single (has only one Entity)
     /// Error if there is no sub-part to iterate now
     pub fn is_single(&self) -> bool {
-        unsafe { crate::ffi::IFGraph_SubPartsIterator_is_single(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_is_single(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity()`
@@ -2153,10 +3156,11 @@ impl SubPartsIterator {
     /// Single one, the only one it contains
     /// Error : same as above (end of iteration)
     pub fn first_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_first_entity(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_first_entity(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2165,10 +3169,11 @@ impl SubPartsIterator {
     /// on Entities it contains
     /// Error : same as above (end of iteration)
     pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_entities(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IFGraph_SubPartsIterator_entities(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

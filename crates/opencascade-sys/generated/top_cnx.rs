@@ -26,27 +26,37 @@ impl EdgeFaceTransition {
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:37 - `TopCnx_EdgeFaceTransition::TopCnx_EdgeFaceTransition()`
     /// Creates an empty algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopCnx_EdgeFaceTransition_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopCnx_EdgeFaceTransition_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:41 - `TopCnx_EdgeFaceTransition::Reset()`
     /// Initialize  the     algorithm    with the    local
     /// description of the edge.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
-        unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_reset_dir2_real(
-                self as *mut Self,
-                Tgt,
-                Norm,
-                Curv,
-            )
+        {
+            unsafe {
+                crate::ffi::TopCnx_EdgeFaceTransition_reset_dir2_real(
+                    self as *mut Self,
+                    Tgt,
+                    Norm,
+                    Curv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:44 - `TopCnx_EdgeFaceTransition::Reset()`
     /// Initialize the algorithm with a linear Edge.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
-        unsafe { crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt) }
+        {
+            unsafe { crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:51 - `TopCnx_EdgeFaceTransition::AddInterference()`
@@ -65,39 +75,43 @@ impl EdgeFaceTransition {
         Tr: crate::top_abs::Orientation,
         BTr: crate::top_abs::Orientation,
     ) {
-        unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_add_interference(
-                self as *mut Self,
-                Tole,
-                Tang,
-                Norm,
-                Curv,
-                Or.into(),
-                Tr.into(),
-                BTr.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopCnx_EdgeFaceTransition_add_interference(
+                    self as *mut Self,
+                    Tole,
+                    Tang,
+                    Norm,
+                    Curv,
+                    Or.into(),
+                    Tr.into(),
+                    BTr.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:60 - `TopCnx_EdgeFaceTransition::Transition()`
     /// Returns the current cumulated transition.
     pub fn transition(&self) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(crate::ffi::TopCnx_EdgeFaceTransition_transition(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopCnx_EdgeFaceTransition_transition(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:63 - `TopCnx_EdgeFaceTransition::BoundaryTransition()`
     /// Returns the current cumulated BoundaryTransition.
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(
-                crate::ffi::TopCnx_EdgeFaceTransition_boundary_transition(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopCnx_EdgeFaceTransition_boundary_transition(self as *const Self)
+            };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 }

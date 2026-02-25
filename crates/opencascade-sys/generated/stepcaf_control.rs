@@ -31,7 +31,11 @@ unsafe impl crate::CppDeletable for ActorWrite {
 impl ActorWrite {
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:35 - `STEPCAFControl_ActorWrite::STEPCAFControl_ActorWrite()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_ActorWrite_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:39 - `STEPCAFControl_ActorWrite::IsAssembly()`
@@ -42,8 +46,12 @@ impl ActorWrite {
         theModel: &crate::ffi::HandleStepDataStepModel,
         S: &mut crate::topo_ds::Shape,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_is_assembly(self as *const Self, theModel, S)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_is_assembly(self as *const Self, theModel, S)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -52,63 +60,97 @@ impl ActorWrite {
     /// In standard mode Actor (default) behaves exactly as its
     /// ancestor, also map is cleared
     pub fn set_std_mode(&mut self, stdmode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_set_std_mode(self as *mut Self, stdmode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_set_std_mode(self as *mut Self, stdmode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:48 - `STEPCAFControl_ActorWrite::ClearMap()`
     /// Clears map of shapes registered as assemblies
     pub fn clear_map(&mut self) {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_clear_map(self as *mut Self) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_ActorWrite_clear_map(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:52 - `STEPCAFControl_ActorWrite::RegisterAssembly()`
     /// Registers shape to be written as assembly
     /// The shape should be TopoDS_Compound (else does nothing)
     pub fn register_assembly(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_register_assembly(self as *mut Self, S) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_register_assembly(self as *mut Self, S)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::STEPCAFControl_ActorWrite_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ActorWrite_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_ActorWrite_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_ActorWrite_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::STEPCAFControl_ActorWrite_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_ActorWrite_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to STEPControl_ActorWrite
     pub fn as_step_control_actor_write(&self) -> &crate::step_control::ActorWrite {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ActorWrite_as_STEPControl_ActorWrite(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_STEPControl_ActorWrite(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to STEPControl_ActorWrite (mutable)
     pub fn as_step_control_actor_write_mut(&mut self) -> &mut crate::step_control::ActorWrite {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_STEPControl_ActorWrite_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_STEPControl_ActorWrite_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess
     pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -116,10 +158,14 @@ impl ActorWrite {
     pub fn as_transfer_actor_of_finder_process_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfFinderProcess {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -127,10 +173,14 @@ impl ActorWrite {
     pub fn as_transfer_actor_of_process_for_finder(
         &self,
     ) -> &crate::transfer::ActorOfProcessForFinder {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -138,26 +188,36 @@ impl ActorWrite {
     pub fn as_transfer_actor_of_process_for_finder_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForFinder {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ActorWrite_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -165,17 +225,22 @@ impl ActorWrite {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ActorWrite_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:47 - `STEPControl_ActorWrite::Recognize()`
     pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_Recognize(self as *mut Self, start)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_Recognize(self as *mut Self, start)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -186,13 +251,17 @@ impl ActorWrite {
         FP: &crate::ffi::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_Transfer(
-                self as *mut Self,
-                start,
-                FP,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_Transfer(
+                    self as *mut Self,
+                    start,
+                    FP,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -208,8 +277,8 @@ impl ActorWrite {
         isManifold: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferSubShape(
                     self as *mut Self,
                     start,
@@ -220,8 +289,10 @@ impl ActorWrite {
                     shapeGroup,
                     isManifold,
                     theProgress,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -236,8 +307,8 @@ impl ActorWrite {
         isManifold: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferShape(
                     self as *mut Self,
                     start,
@@ -247,8 +318,10 @@ impl ActorWrite {
                     shapeGroup,
                     isManifold,
                     theProgress,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -261,8 +334,8 @@ impl ActorWrite {
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferCompound(
                     self as *mut Self,
                     start,
@@ -270,51 +343,76 @@ impl ActorWrite {
                     FP,
                     theLocalFactors,
                     theProgress,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
     pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetMode(self as *mut Self, M.into())
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetMode(self as *mut Self, M.into())
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:83 - `STEPControl_ActorWrite::Mode()`
     pub fn mode(&self) -> crate::step_control::StepModelType {
-        unsafe {
-            crate::step_control::StepModelType::try_from(
-                crate::ffi::STEPCAFControl_ActorWrite_inherited_Mode(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_Mode(self as *const Self)
+            };
+            crate::check_exception();
+            crate::step_control::StepModelType::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:85 - `STEPControl_ActorWrite::SetGroupMode()`
     pub fn set_group_mode(&mut self, mode: i32) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetGroupMode(self as *mut Self, mode)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetGroupMode(
+                    self as *mut Self,
+                    mode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:87 - `STEPControl_ActorWrite::GroupMode()`
     pub fn group_mode(&self) -> i32 {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_GroupMode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_GroupMode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:89 - `STEPControl_ActorWrite::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetTolerance(self as *mut Self, Tol)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetTolerance(self as *mut Self, Tol)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
     pub fn mode_trans(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_ActorWrite_inherited_ModeTrans(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_ModeTrans(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -325,13 +423,17 @@ impl ActorWrite {
         TP: &crate::ffi::HandleTransferProcessForFinder,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_Transferring(
-                self as *mut Self,
-                start,
-                TP,
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_Transferring(
+                    self as *mut Self,
+                    start,
+                    TP,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -342,15 +444,17 @@ impl ActorWrite {
         TP: &crate::ffi::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferTransient(
                     self as *mut Self,
                     start,
                     TP,
                     theProgress,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -359,39 +463,53 @@ impl ActorWrite {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetShapeFixParameters(
-                self as *mut Self,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetShapeFixParameters(
+                    self as *mut Self,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters()`
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ActorWrite_inherited_GetShapeFixParameters(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_GetShapeFixParameters(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetShapeProcessFlags(
-                self as *mut Self,
-                theFlags,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetShapeProcessFlags(
+                    self as *mut Self,
+                    theFlags,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ActorWrite_inherited_GetShapeProcessFlags(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_GetShapeProcessFlags(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -400,99 +518,153 @@ impl ActorWrite {
         &self,
         res: &crate::ffi::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ActorWrite_inherited_TransientResult(
                     self as *const Self,
                     res,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_NullResult(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_NullResult(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_SetLast(self as *mut Self, mode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetLast(self as *mut Self, mode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
     pub fn is_last(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_IsLast(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_IsLast(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_SetNext(self as *mut Self, next) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_SetNext(self as *mut Self, next)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_Next(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_Next(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ActorWrite_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::STEPCAFControl_ActorWrite_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -507,24 +679,36 @@ unsafe impl crate::CppDeletable for HandleSTEPCAFControlActorWrite {
 impl HandleSTEPCAFControlActorWrite {
     /// Dereference this Handle to access the underlying STEPCAFControl_ActorWrite
     pub fn get(&self) -> &crate::ffi::STEPCAFControl_ActorWrite {
-        unsafe { &*(crate::ffi::HandleSTEPCAFControlActorWrite_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSTEPCAFControlActorWrite_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPCAFControl_ActorWrite
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPCAFControl_ActorWrite {
-        unsafe { &mut *(crate::ffi::HandleSTEPCAFControlActorWrite_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSTEPCAFControlActorWrite_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<STEPCAFControl_ActorWrite> to Handle<STEPControl_ActorWrite>
     pub fn to_handle_actor_write(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleSTEPControlActorWrite(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -532,12 +716,14 @@ impl HandleSTEPCAFControlActorWrite {
     pub fn to_handle_actor_of_finder_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleTransferActorOfFinderProcess(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -545,23 +731,27 @@ impl HandleSTEPCAFControlActorWrite {
     pub fn to_handle_actor_of_process_for_finder(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleTransferActorOfProcessForFinder(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<STEPCAFControl_ActorWrite> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -587,12 +777,21 @@ impl Controller {
     /// **Source:** `STEPCAFControl_Controller.hxx`:36 - `STEPCAFControl_Controller::STEPCAFControl_Controller()`
     /// Initializes the use of STEP Norm (the first time)
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Controller_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::STEPCAFControl_Controller_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Controller_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Controller.hxx`:41 - `STEPCAFControl_Controller::Init()`
@@ -600,68 +799,96 @@ impl Controller {
     /// and records it to various names, available to select it later
     /// Returns True when done, False if could not be done
     pub fn init() -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Controller_init() }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Controller_init() };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_Controller_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Controller_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::STEPCAFControl_Controller_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Controller_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to STEPControl_Controller
     pub fn as_step_control_controller(&self) -> &crate::step_control::Controller {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Controller_as_STEPControl_Controller(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_as_STEPControl_Controller(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to STEPControl_Controller (mutable)
     pub fn as_step_control_controller_mut(&mut self) -> &mut crate::step_control::Controller {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_Controller_as_STEPControl_Controller_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_as_STEPControl_Controller_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to XSControl_Controller
     pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Controller_as_XSControl_Controller(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_as_XSControl_Controller(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to XSControl_Controller (mutable)
     pub fn as_xs_control_controller_mut(&mut self) -> &mut crate::xs_control::Controller {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_Controller_as_XSControl_Controller_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_as_XSControl_Controller_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Controller_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_Controller_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -669,19 +896,22 @@ impl Controller {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Controller_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `STEPControl_Controller.hxx`:45 - `STEPControl_Controller::NewModel()`
     pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_NewModel(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_NewModel(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -690,17 +920,26 @@ impl Controller {
         &self,
         theModel: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_ActorRead(
-                self as *const Self,
-                theModel,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_ActorRead(
+                    self as *const Self,
+                    theModel,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise()`
     pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
-        unsafe { crate::ffi::STEPCAFControl_Controller_inherited_Customise(self as *mut Self, WS) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_Customise(self as *mut Self, WS)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `STEPControl_Controller.hxx`:59 - `STEPControl_Controller::TransferWriteShape()`
@@ -712,8 +951,8 @@ impl Controller {
         modetrans: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_Controller_inherited_TransferWriteShape(
                     self as *const Self,
                     shape,
@@ -721,70 +960,99 @@ impl Controller {
                     model,
                     modetrans,
                     theProgress,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
-        unsafe { crate::ffi::STEPCAFControl_Controller_inherited_AutoRecord(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_AutoRecord(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol()`
     pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
-        unsafe { &*(crate::ffi::STEPCAFControl_Controller_inherited_Protocol(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_Protocol(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Controller_inherited_WorkLibrary(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_WorkLibrary(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite()`
     pub fn actor_write(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_ActorWrite(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_ActorWrite(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
     pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_SetModeWrite(
-                self as *mut Self,
-                modemin,
-                modemax,
-                shape,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_SetModeWrite(
+                    self as *mut Self,
+                    modemin,
+                    modemax,
+                    shape,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
     pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_ModeWriteBounds(
-                self as *const Self,
-                modemin,
-                modemax,
-                shape,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_ModeWriteBounds(
+                    self as *const Self,
+                    modemin,
+                    modemax,
+                    shape,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_IsModeWrite(
-                self as *const Self,
-                modetrans,
-                shape,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_IsModeWrite(
+                    self as *const Self,
+                    modetrans,
+                    shape,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -794,12 +1062,16 @@ impl Controller {
         obj: &crate::ffi::HandleStandardTransient,
         modetrans: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteTransient(
-                self as *const Self,
-                obj,
-                modetrans,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteTransient(
+                    self as *const Self,
+                    obj,
+                    modetrans,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -812,8 +1084,8 @@ impl Controller {
         modetrans: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_Controller_inherited_TransferWriteTransient(
                     self as *const Self,
                     obj,
@@ -821,80 +1093,121 @@ impl Controller {
                     model,
                     modetrans,
                     theProgress,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteShape(
-                self as *const Self,
-                shape,
-                modetrans,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteShape(
+                    self as *const Self,
+                    shape,
+                    modetrans,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
     pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Controller_inherited_AdaptorSession(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_AdaptorSession(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_Controller_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::STEPCAFControl_Controller_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::STEPCAFControl_Controller_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Controller_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::STEPCAFControl_Controller_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Controller_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -909,24 +1222,36 @@ unsafe impl crate::CppDeletable for HandleSTEPCAFControlController {
 impl HandleSTEPCAFControlController {
     /// Dereference this Handle to access the underlying STEPCAFControl_Controller
     pub fn get(&self) -> &crate::ffi::STEPCAFControl_Controller {
-        unsafe { &*(crate::ffi::HandleSTEPCAFControlController_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSTEPCAFControlController_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPCAFControl_Controller
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPCAFControl_Controller {
-        unsafe { &mut *(crate::ffi::HandleSTEPCAFControlController_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSTEPCAFControlController_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<STEPCAFControl_Controller> to Handle<STEPControl_Controller>
     pub fn to_handle_step_control_controller(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlController> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlController_to_HandleSTEPControlController(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -934,23 +1259,27 @@ impl HandleSTEPCAFControlController {
     pub fn to_handle_xs_control_controller(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlController_to_HandleXSControlController(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<STEPCAFControl_Controller> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlController_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -974,129 +1303,183 @@ impl ExternFile {
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:38 - `STEPCAFControl_ExternFile::STEPCAFControl_ExternFile()`
     /// Creates an empty structure
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_ExternFile_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:40 - `STEPCAFControl_ExternFile::SetWS()`
     pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) {
-        unsafe { crate::ffi::STEPCAFControl_ExternFile_set_ws(self as *mut Self, WS) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_ExternFile_set_ws(self as *mut Self, WS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:42 - `STEPCAFControl_ExternFile::GetWS()`
     pub fn get_ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_get_ws(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ExternFile_get_ws(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:44 - `STEPCAFControl_ExternFile::SetLoadStatus()`
     pub fn set_load_status(&mut self, stat: crate::if_select::ReturnStatus) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_set_load_status(self as *mut Self, stat.into())
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_set_load_status(
+                    self as *mut Self,
+                    stat.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:46 - `STEPCAFControl_ExternFile::GetLoadStatus()`
     pub fn get_load_status(&self) -> crate::if_select::ReturnStatus {
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
-                crate::ffi::STEPCAFControl_ExternFile_get_load_status(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_get_load_status(self as *const Self)
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:48 - `STEPCAFControl_ExternFile::SetTransferStatus()`
     pub fn set_transfer_status(&mut self, isok: bool) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_set_transfer_status(self as *mut Self, isok)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_set_transfer_status(self as *mut Self, isok)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:50 - `STEPCAFControl_ExternFile::GetTransferStatus()`
     pub fn get_transfer_status(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_ExternFile_get_transfer_status(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_get_transfer_status(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:52 - `STEPCAFControl_ExternFile::SetWriteStatus()`
     pub fn set_write_status(&mut self, stat: crate::if_select::ReturnStatus) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_set_write_status(self as *mut Self, stat.into())
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_set_write_status(
+                    self as *mut Self,
+                    stat.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:54 - `STEPCAFControl_ExternFile::GetWriteStatus()`
     pub fn get_write_status(&self) -> crate::if_select::ReturnStatus {
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
-                crate::ffi::STEPCAFControl_ExternFile_get_write_status(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_get_write_status(self as *const Self)
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:56 - `STEPCAFControl_ExternFile::SetName()`
     pub fn set_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
-        unsafe { crate::ffi::STEPCAFControl_ExternFile_set_name(self as *mut Self, name) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_ExternFile_set_name(self as *mut Self, name) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:58 - `STEPCAFControl_ExternFile::GetName()`
     pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_get_name(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ExternFile_get_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:60 - `STEPCAFControl_ExternFile::SetLabel()`
     pub fn set_label(&mut self, L: &crate::tdf::Label) {
-        unsafe { crate::ffi::STEPCAFControl_ExternFile_set_label(self as *mut Self, L) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_ExternFile_set_label(self as *mut Self, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:62 - `STEPCAFControl_ExternFile::GetLabel()`
     pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_get_label(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ExternFile_get_label(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:64 - `STEPCAFControl_ExternFile::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::STEPCAFControl_ExternFile_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ExternFile_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:64 - `STEPCAFControl_ExternFile::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_ExternFile_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_ExternFile_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:64 - `STEPCAFControl_ExternFile::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::STEPCAFControl_ExternFile_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_ExternFile_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_ExternFile_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::STEPCAFControl_ExternFile_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1104,63 +1487,96 @@ impl ExternFile {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlExternFile> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_ExternFile_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_ExternFile_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::STEPCAFControl_ExternFile_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::STEPCAFControl_ExternFile_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_ExternFile_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::STEPCAFControl_ExternFile_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_ExternFile_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1175,22 +1591,34 @@ unsafe impl crate::CppDeletable for HandleSTEPCAFControlExternFile {
 impl HandleSTEPCAFControlExternFile {
     /// Dereference this Handle to access the underlying STEPCAFControl_ExternFile
     pub fn get(&self) -> &crate::ffi::STEPCAFControl_ExternFile {
-        unsafe { &*(crate::ffi::HandleSTEPCAFControlExternFile_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSTEPCAFControlExternFile_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPCAFControl_ExternFile
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPCAFControl_ExternFile {
-        unsafe { &mut *(crate::ffi::HandleSTEPCAFControlExternFile_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSTEPCAFControlExternFile_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<STEPCAFControl_ExternFile> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSTEPCAFControlExternFile_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1213,7 +1641,11 @@ unsafe impl crate::CppDeletable for GDTProperty {
 impl GDTProperty {
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:51 - `STEPCAFControl_GDTProperty::STEPCAFControl_GDTProperty()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_GDTProperty_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:52 - `STEPCAFControl_GDTProperty::GetDimModifiers()`
@@ -1221,7 +1653,12 @@ impl GDTProperty {
         theCRI: &crate::ffi::HandleStepReprCompoundRepresentationItem,
         theModifiers: &mut crate::ffi::XCAFDimTolObjects_DimensionModifiersSequence,
     ) {
-        unsafe { crate::ffi::STEPCAFControl_GDTProperty_get_dim_modifiers(theCRI, theModifiers) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_dim_modifiers(theCRI, theModifiers)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:56 - `STEPCAFControl_GDTProperty::GetDimClassOfTolerance()`
@@ -1233,13 +1670,16 @@ impl GDTProperty {
     ) {
         let mut theFV_i32_: i32 = (*theFV).into();
         let mut theG_i32_: i32 = (*theG).into();
-        unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_dim_class_of_tolerance(
-                theLAF,
-                theHolle,
-                &mut theFV_i32_,
-                &mut theG_i32_,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_dim_class_of_tolerance(
+                    theLAF,
+                    theHolle,
+                    &mut theFV_i32_,
+                    &mut theG_i32_,
+                )
+            };
+            crate::check_exception();
         };
         *theFV = crate::xcaf_dim_tol_objects::DimensionFormVariance::try_from(theFV_i32_).unwrap();
         *theG = crate::xcaf_dim_tol_objects::DimensionGrade::try_from(theG_i32_).unwrap();
@@ -1251,8 +1691,12 @@ impl GDTProperty {
         theType: &mut crate::xcaf_dim_tol_objects::DimensionType,
     ) -> bool {
         let mut theType_i32_: i32 = (*theType).into();
-        let result_ = unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_dim_type(theName, &mut theType_i32_)
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_dim_type(theName, &mut theType_i32_)
+            };
+            crate::check_exception();
+            __result
         };
         *theType = crate::xcaf_dim_tol_objects::DimensionType::try_from(theType_i32_).unwrap();
         result_
@@ -1264,11 +1708,15 @@ impl GDTProperty {
         theType: &mut crate::xcaf_dim_tol_objects::DatumTargetType,
     ) -> bool {
         let mut theType_i32_: i32 = (*theType).into();
-        let result_ = unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_datum_target_type(
-                theDescription,
-                &mut theType_i32_,
-            )
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_datum_target_type(
+                    theDescription,
+                    &mut theType_i32_,
+                )
+            };
+            crate::check_exception();
+            __result
         };
         *theType = crate::xcaf_dim_tol_objects::DatumTargetType::try_from(theType_i32_).unwrap();
         result_
@@ -1280,11 +1728,15 @@ impl GDTProperty {
         theType: &mut crate::xcaf_dim_tol_objects::DimensionQualifier,
     ) -> bool {
         let mut theType_i32_: i32 = (*theType).into();
-        let result_ = unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_dim_qualifier_type(
-                theDescription,
-                &mut theType_i32_,
-            )
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_dim_qualifier_type(
+                    theDescription,
+                    &mut theType_i32_,
+                )
+            };
+            crate::check_exception();
+            __result
         };
         *theType = crate::xcaf_dim_tol_objects::DimensionQualifier::try_from(theType_i32_).unwrap();
         result_
@@ -1296,8 +1748,12 @@ impl GDTProperty {
         theType: &mut crate::xcaf_dim_tol_objects::GeomToleranceTypeValue,
     ) -> bool {
         let mut theType_i32_: i32 = (*theType).into();
-        let result_ = unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_tol_value_type_handletcollectionhasciistring_geomtolerancetypevalue(theDescription, &mut theType_i32_)
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_tol_value_type_handletcollectionhasciistring_geomtolerancetypevalue(theDescription, &mut theType_i32_)
+            };
+            crate::check_exception();
+            __result
         };
         *theType =
             crate::xcaf_dim_tol_objects::GeomToleranceTypeValue::try_from(theType_i32_).unwrap();
@@ -1308,12 +1764,14 @@ impl GDTProperty {
     pub fn get_tol_value_type_geomtolerancetypevalue(
         theType: crate::xcaf_dim_tol_objects::GeomToleranceTypeValue,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_GDTProperty_get_tol_value_type_geomtolerancetypevalue(
                     theType.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1321,10 +1779,11 @@ impl GDTProperty {
     pub fn get_dim_type_name(
         theType: crate::xcaf_dim_tol_objects::DimensionType,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_dim_type_name(
-                theType.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_GDTProperty_get_dim_type_name(theType.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1332,10 +1791,12 @@ impl GDTProperty {
     pub fn get_dim_qualifier_name(
         theQualifier: crate::xcaf_dim_tol_objects::DimensionQualifier,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::STEPCAFControl_GDTProperty_get_dim_qualifier_name(theQualifier.into()),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_dim_qualifier_name(theQualifier.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1343,10 +1804,12 @@ impl GDTProperty {
     pub fn get_dim_modifier_name(
         theModifier: crate::xcaf_dim_tol_objects::DimensionModif,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_dim_modifier_name(
-                theModifier.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_dim_modifier_name(theModifier.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1356,12 +1819,16 @@ impl GDTProperty {
         theFormVariance: crate::xcaf_dim_tol_objects::DimensionFormVariance,
         theGrade: crate::xcaf_dim_tol_objects::DimensionGrade,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeLimitsAndFits> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_limits_and_fits(
-                theHole,
-                theFormVariance.into(),
-                theGrade.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_limits_and_fits(
+                    theHole,
+                    theFormVariance.into(),
+                    theGrade.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1369,34 +1836,49 @@ impl GDTProperty {
     pub fn get_datum_target_name(
         theDatumType: crate::xcaf_dim_tol_objects::DatumTargetType,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_datum_target_name(
-                theDatumType.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_datum_target_name(theDatumType.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:97 - `STEPCAFControl_GDTProperty::IsDimensionalLocation()`
     pub fn is_dimensional_location(theType: crate::xcaf_dim_tol_objects::DimensionType) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_GDTProperty_is_dimensional_location(theType.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_is_dimensional_location(theType.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:100 - `STEPCAFControl_GDTProperty::IsDimensionalSize()`
     pub fn is_dimensional_size(theType: crate::xcaf_dim_tol_objects::DimensionType) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_GDTProperty_is_dimensional_size(theType.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_is_dimensional_size(theType.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:103 - `STEPCAFControl_GDTProperty::GetGeomToleranceType()`
     pub fn get_geom_tolerance_type_geomtolerancetype(
         theType: crate::xcaf_dim_tol_objects::GeomToleranceType,
     ) -> crate::step_dim_tol::GeometricToleranceType {
-        unsafe {
-            crate::step_dim_tol::GeometricToleranceType::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_GDTProperty_get_geom_tolerance_type_geomtolerancetype(
                     theType.into(),
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::step_dim_tol::GeometricToleranceType::try_from(__result).unwrap()
         }
     }
 
@@ -1404,8 +1886,12 @@ impl GDTProperty {
     pub fn get_geom_tolerance_type_geometrictolerancetype(
         theType: crate::step_dim_tol::GeometricToleranceType,
     ) -> crate::xcaf_dim_tol_objects::GeomToleranceType {
-        unsafe {
-            crate::xcaf_dim_tol_objects::GeomToleranceType::try_from(crate::ffi::STEPCAFControl_GDTProperty_get_geom_tolerance_type_geometrictolerancetype(theType.into())).unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_geom_tolerance_type_geometrictolerancetype(theType.into())
+            };
+            crate::check_exception();
+            crate::xcaf_dim_tol_objects::GeomToleranceType::try_from(__result).unwrap()
         }
     }
 
@@ -1413,10 +1899,12 @@ impl GDTProperty {
     pub fn get_geom_tolerance(
         theType: crate::xcaf_dim_tol_objects::GeomToleranceType,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolGeometricTolerance> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_geom_tolerance(
-                theType.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_GDTProperty_get_geom_tolerance(theType.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1424,13 +1912,14 @@ impl GDTProperty {
     pub fn get_geom_tolerance_modifier(
         theModifier: crate::xcaf_dim_tol_objects::GeomToleranceModif,
     ) -> crate::step_dim_tol::GeometricToleranceModifier {
-        unsafe {
-            crate::step_dim_tol::GeometricToleranceModifier::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_GDTProperty_get_geom_tolerance_modifier(
                     theModifier.into(),
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::step_dim_tol::GeometricToleranceModifier::try_from(__result).unwrap()
         }
     }
 
@@ -1441,15 +1930,17 @@ impl GDTProperty {
         theValue: f64,
         theUnit: &crate::step_basic::Unit,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_GDTProperty_get_datum_ref_modifiers(
                     theModifiers,
                     theModifWithVal.into(),
                     theValue,
                     theUnit,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1457,10 +1948,11 @@ impl GDTProperty {
     pub fn get_tessellation(
         theShape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedGeometricSet> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_tessellation(
-                theShape,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_GDTProperty_get_tessellation(theShape) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1495,7 +1987,11 @@ impl Reader {
     /// STEP model and sets ColorMode, LayerMode, NameMode and
     /// PropsMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Reader_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Reader_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:73 - `STEPCAFControl_Reader::STEPCAFControl_Reader()`
@@ -1505,10 +2001,12 @@ impl Reader {
         WS: &crate::ffi::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::STEPCAFControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1525,7 +2023,10 @@ impl Reader {
     /// Clears the internal data structures and attaches to a new session
     /// Clears the session if it was not yet set for STEP
     pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_init(self as *mut Self, WS, scratch) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Reader_init(self as *mut Self, WS, scratch) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:88 - `STEPCAFControl_Reader::ReadFile()`
@@ -1535,14 +2036,15 @@ impl Reader {
     /// @return read status
     pub fn read_file_charptr(&mut self, theFileName: &str) -> crate::if_select::ReturnStatus {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_Reader_read_file_charptr(
                     self as *mut Self,
                     c_theFileName.as_ptr(),
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
@@ -1558,15 +2060,16 @@ impl Reader {
         theParams: &crate::destep::Parameters,
     ) -> crate::if_select::ReturnStatus {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_Reader_read_file_charptr_parameters(
                     self as *mut Self,
                     c_theFileName.as_ptr(),
                     theParams,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
@@ -1581,13 +2084,16 @@ impl Reader {
         theIStream: &mut crate::ffi::Standard_IStream,
     ) -> crate::if_select::ReturnStatus {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPCAFControl_Reader_read_stream(
-                self as *mut Self,
-                c_theName.as_ptr(),
-                theIStream,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_read_stream(
+                    self as *mut Self,
+                    c_theName.as_ptr(),
+                    theIStream,
+                )
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
@@ -1595,7 +2101,13 @@ impl Reader {
     /// Returns number of roots recognized for transfer
     /// Shortcut for Reader().NbRootsForTransfer()
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
-        unsafe { crate::ffi::STEPCAFControl_Reader_nb_roots_for_transfer(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_nb_roots_for_transfer(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot()`
@@ -1608,13 +2120,17 @@ impl Reader {
         doc: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_transfer_one_root(
-                self as *mut Self,
-                num,
-                doc,
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_transfer_one_root(
+                    self as *mut Self,
+                    num,
+                    doc,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1627,7 +2143,13 @@ impl Reader {
         doc: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_transfer(self as *mut Self, doc, theProgress) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_transfer(self as *mut Self, doc, theProgress)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:125 - `STEPCAFControl_Reader::Perform()`
@@ -1637,8 +2159,12 @@ impl Reader {
         doc: &crate::ffi::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, filename, doc, theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, filename, doc, theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1650,8 +2176,12 @@ impl Reader {
         theParams: &crate::destep::Parameters,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_parameters_progressrange(self as *mut Self, filename, doc, theParams, theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_parameters_progressrange(self as *mut Self, filename, doc, theParams, theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1665,13 +2195,12 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_filename = std::ffi::CString::new(filename).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(
-                self as *mut Self,
-                c_filename.as_ptr(),
-                doc,
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(self as *mut Self, c_filename.as_ptr(), doc, theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1686,8 +2215,12 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_filename = std::ffi::CString::new(filename).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_parameters_progressrange(self as *mut Self, c_filename.as_ptr(), doc, theParams, theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_parameters_progressrange(self as *mut Self, c_filename.as_ptr(), doc, theParams, theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1695,7 +2228,12 @@ impl Reader {
     /// Returns data on external files
     /// Returns Null handle if no external files are read
     pub fn extern_files(&self) -> &crate::ffi::NCollection_DataMap_TCollection_AsciiString_opencascade_handle_STEPCAFControl_ExternFile{
-        unsafe { &*(crate::ffi::STEPCAFControl_Reader_extern_files(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_extern_files(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:158 - `STEPCAFControl_Reader::ExternFile()`
@@ -1707,142 +2245,254 @@ impl Reader {
         ef: &mut crate::ffi::HandleSTEPCAFControlExternFile,
     ) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_extern_file(self as *const Self, c_name.as_ptr(), ef)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_extern_file(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                    ef,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:162 - `STEPCAFControl_Reader::ChangeReader()`
     /// Returns basic reader
     pub fn change_reader(&mut self) -> &mut crate::step_control::Reader {
-        unsafe { &mut *(crate::ffi::STEPCAFControl_Reader_change_reader(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_change_reader(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:165 - `STEPCAFControl_Reader::Reader()`
     /// Returns basic reader as const
     pub fn reader(&self) -> &crate::step_control::Reader {
-        unsafe { &*(crate::ffi::STEPCAFControl_Reader_reader(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Reader_reader(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:176 - `STEPCAFControl_Reader::SetColorMode()`
     /// Set ColorMode for indicate read Colors or not.
     pub fn set_color_mode(&mut self, colormode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_color_mode(self as *mut Self, colormode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_color_mode(self as *mut Self, colormode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:178 - `STEPCAFControl_Reader::GetColorMode()`
     pub fn get_color_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_color_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_color_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:181 - `STEPCAFControl_Reader::SetNameMode()`
     /// Set NameMode for indicate read Name or not.
     pub fn set_name_mode(&mut self, namemode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_name_mode(self as *mut Self, namemode) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Reader_set_name_mode(self as *mut Self, namemode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:183 - `STEPCAFControl_Reader::GetNameMode()`
     pub fn get_name_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_name_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_name_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:186 - `STEPCAFControl_Reader::SetLayerMode()`
     /// Set LayerMode for indicate read Layers or not.
     pub fn set_layer_mode(&mut self, layermode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_layer_mode(self as *mut Self, layermode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_layer_mode(self as *mut Self, layermode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:188 - `STEPCAFControl_Reader::GetLayerMode()`
     pub fn get_layer_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_layer_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_layer_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:191 - `STEPCAFControl_Reader::SetPropsMode()`
     /// PropsMode for indicate read Validation properties or not.
     pub fn set_props_mode(&mut self, propsmode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_props_mode(self as *mut Self, propsmode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_props_mode(self as *mut Self, propsmode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:193 - `STEPCAFControl_Reader::GetPropsMode()`
     pub fn get_props_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_props_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_props_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:196 - `STEPCAFControl_Reader::SetMetaMode()`
     /// MetaMode for indicate read Metadata or not.
     pub fn set_meta_mode(&mut self, theMetaMode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_meta_mode(self as *mut Self, theMetaMode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_meta_mode(self as *mut Self, theMetaMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:198 - `STEPCAFControl_Reader::GetMetaMode()`
     pub fn get_meta_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_meta_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_meta_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:201 - `STEPCAFControl_Reader::SetProductMetaMode()`
     /// MetaMode for indicate whether to read Product Metadata or not.
     pub fn set_product_meta_mode(&mut self, theProductMetaMode: bool) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_set_product_meta_mode(
-                self as *mut Self,
-                theProductMetaMode,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_product_meta_mode(
+                    self as *mut Self,
+                    theProductMetaMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:203 - `STEPCAFControl_Reader::GetProductMetaMode()`
     pub fn get_product_meta_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_product_meta_mode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_get_product_meta_mode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:206 - `STEPCAFControl_Reader::SetSHUOMode()`
     /// Set SHUO mode for indicate write SHUO or not.
     pub fn set_shuo_mode(&mut self, shuomode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_shuo_mode(self as *mut Self, shuomode) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Reader_set_shuo_mode(self as *mut Self, shuomode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:208 - `STEPCAFControl_Reader::GetSHUOMode()`
     pub fn get_shuo_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_shuo_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_shuo_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:211 - `STEPCAFControl_Reader::SetGDTMode()`
     /// Set GDT mode for indicate write GDT or not.
     pub fn set_gdt_mode(&mut self, gdtmode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_gdt_mode(self as *mut Self, gdtmode) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Reader_set_gdt_mode(self as *mut Self, gdtmode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:213 - `STEPCAFControl_Reader::GetGDTMode()`
     pub fn get_gdt_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_gdt_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_gdt_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:216 - `STEPCAFControl_Reader::SetMatMode()`
     /// Set Material mode
     pub fn set_mat_mode(&mut self, matmode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_mat_mode(self as *mut Self, matmode) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Reader_set_mat_mode(self as *mut Self, matmode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:218 - `STEPCAFControl_Reader::GetMatMode()`
     pub fn get_mat_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_mat_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_mat_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:221 - `STEPCAFControl_Reader::SetViewMode()`
     /// Set View mode
     pub fn set_view_mode(&mut self, viewmode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Reader_set_view_mode(self as *mut Self, viewmode) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Reader_set_view_mode(self as *mut Self, viewmode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:224 - `STEPCAFControl_Reader::GetViewMode()`
     /// Get View mode
     pub fn get_view_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Reader_get_view_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Reader_get_view_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:226 - `STEPCAFControl_Reader::GetShapeLabelMap()`
     pub fn get_shape_label_map(&self) -> &crate::ffi::XCAFDoc_DataMapOfShapeLabel {
-        unsafe { &*(crate::ffi::STEPCAFControl_Reader_get_shape_label_map(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_get_shape_label_map(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:230 - `STEPCAFControl_Reader::SetShapeFixParameters()`
@@ -1852,11 +2502,14 @@ impl Reader {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_set_shape_fix_parameters_parametermap(
-                self as *mut Self,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_shape_fix_parameters_parametermap(
+                    self as *mut Self,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1872,8 +2525,11 @@ impl Reader {
         theParameters: &crate::de::ShapeFixParameters,
         theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1881,8 +2537,12 @@ impl Reader {
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Reader_get_shape_fix_parameters(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_get_shape_fix_parameters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1890,8 +2550,14 @@ impl Reader {
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Reader_set_shape_process_flags(self as *mut Self, theFlags)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Reader_set_shape_process_flags(
+                    self as *mut Self,
+                    theFlags,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1900,8 +2566,12 @@ impl Reader {
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
     /// that indicates whether the flags were set.
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Reader_get_shape_process_flags(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_get_shape_process_flags(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1914,13 +2584,12 @@ impl Reader {
         Tool: &crate::step_construct::Tool,
         ShapeLabelMap: &crate::ffi::XCAFDoc_DataMapOfShapeLabel,
     ) -> crate::OwnedPtr<crate::tdf::Label> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Reader_find_instance(
-                NAUO,
-                STool,
-                Tool,
-                ShapeLabelMap,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Reader_find_instance(NAUO, STool, Tool, ShapeLabelMap)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1959,7 +2628,11 @@ impl Writer {
     /// STEP model and sets ColorMode, LayerMode, NameMode and
     /// PropsMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Writer_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Writer_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:64 - `STEPCAFControl_Writer::STEPCAFControl_Writer()`
@@ -1970,12 +2643,14 @@ impl Writer {
         theWS: &crate::ffi::HandleXSControlWorkSession,
         theScratch: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::STEPCAFControl_Writer_ctor_handlexscontrolworksession_bool(
                     theWS, theScratch,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1993,7 +2668,10 @@ impl Writer {
     /// Clears the internal data structures and attaches to a new session
     /// Clears the session if it was not yet set for STEP
     pub fn init(&mut self, theWS: &crate::ffi::HandleXSControlWorkSession, theScratch: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Writer_init(self as *mut Self, theWS, theScratch) }
+        {
+            unsafe { crate::ffi::STEPCAFControl_Writer_init(self as *mut Self, theWS, theScratch) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:77 - `STEPCAFControl_Writer::Write()`
@@ -2004,12 +2682,12 @@ impl Writer {
     /// Provided for use like single-file writer
     pub fn write(&mut self, theFileName: &str) -> crate::if_select::ReturnStatus {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPCAFControl_Writer_write(
-                self as *mut Self,
-                c_theFileName.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_write(self as *mut Self, c_theFileName.as_ptr())
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
@@ -2020,11 +2698,12 @@ impl Writer {
         &mut self,
         theStream: &mut crate::ffi::Standard_OStream,
     ) -> crate::if_select::ReturnStatus {
-        unsafe {
-            crate::if_select::ReturnStatus::try_from(
-                crate::ffi::STEPCAFControl_Writer_write_stream(self as *mut Self, theStream),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_write_stream(self as *mut Self, theStream)
+            };
+            crate::check_exception();
+            crate::if_select::ReturnStatus::try_from(__result).unwrap()
         }
     }
 
@@ -2043,8 +2722,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2068,8 +2751,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2083,14 +2770,18 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_transfer_label_stepmodeltype_charptr_progressrange(
-                self as *mut Self,
-                theLabel,
-                theMode.into(),
-                c_theIsMulti.as_ptr(),
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_transfer_label_stepmodeltype_charptr_progressrange(
+                    self as *mut Self,
+                    theLabel,
+                    theMode.into(),
+                    c_theIsMulti.as_ptr(),
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2107,8 +2798,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_transfer_label_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabel, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_transfer_label_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabel, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2123,8 +2818,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2142,8 +2841,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2154,8 +2857,12 @@ impl Writer {
         theFileName: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, theDoc, theFileName, theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, theDoc, theFileName, theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2169,13 +2876,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(
-                self as *mut Self,
-                theDoc,
-                c_theFileName.as_ptr(),
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(self as *mut Self, theDoc, c_theFileName.as_ptr(), theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2192,8 +2898,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_parameters_progressrange(self as *mut Self, theDoc, c_theFileName.as_ptr(), theParams, theProgress)
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_parameters_progressrange(self as *mut Self, theDoc, c_theFileName.as_ptr(), theParams, theProgress)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2201,7 +2911,12 @@ impl Writer {
     /// Returns data on external files
     /// Returns Null handle if no external files are read
     pub fn extern_files(&self) -> &crate::ffi::NCollection_DataMap_TCollection_AsciiString_opencascade_handle_STEPCAFControl_ExternFile{
-        unsafe { &*(crate::ffi::STEPCAFControl_Writer_extern_files(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_extern_files(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:180 - `STEPCAFControl_Writer::ExternFile()`
@@ -2212,12 +2927,16 @@ impl Writer {
         theLabel: &crate::tdf::Label,
         theExtFile: &mut crate::ffi::HandleSTEPCAFControlExternFile,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_extern_file_label_handlestepcafcontrolexternfile(
-                self as *const Self,
-                theLabel,
-                theExtFile,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_extern_file_label_handlestepcafcontrolexternfile(
+                    self as *const Self,
+                    theLabel,
+                    theExtFile,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2230,106 +2949,188 @@ impl Writer {
         theExtFile: &mut crate::ffi::HandleSTEPCAFControlExternFile,
     ) -> bool {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_extern_file_charptr_handlestepcafcontrolexternfile(
-                self as *const Self,
-                c_theName.as_ptr(),
-                theExtFile,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_extern_file_charptr_handlestepcafcontrolexternfile(
+                    self as *const Self,
+                    c_theName.as_ptr(),
+                    theExtFile,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:189 - `STEPCAFControl_Writer::ChangeWriter()`
     /// Returns basic reader for root file
     pub fn change_writer(&mut self) -> &mut crate::step_control::Writer {
-        unsafe { &mut *(crate::ffi::STEPCAFControl_Writer_change_writer(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_change_writer(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:192 - `STEPCAFControl_Writer::Writer()`
     /// Returns basic reader as const
     pub fn writer(&self) -> &crate::step_control::Writer {
-        unsafe { &*(crate::ffi::STEPCAFControl_Writer_writer(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::STEPCAFControl_Writer_writer(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:195 - `STEPCAFControl_Writer::SetColorMode()`
     /// Set ColorMode for indicate write Colors or not.
     pub fn set_color_mode(&mut self, theColorMode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Writer_set_color_mode(self as *mut Self, theColorMode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_color_mode(self as *mut Self, theColorMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:197 - `STEPCAFControl_Writer::GetColorMode()`
     pub fn get_color_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_color_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_color_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:200 - `STEPCAFControl_Writer::SetNameMode()`
     /// Set NameMode for indicate write Name or not.
     pub fn set_name_mode(&mut self, theNameMode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Writer_set_name_mode(self as *mut Self, theNameMode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_name_mode(self as *mut Self, theNameMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:202 - `STEPCAFControl_Writer::GetNameMode()`
     pub fn get_name_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_name_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_name_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:205 - `STEPCAFControl_Writer::SetLayerMode()`
     /// Set LayerMode for indicate write Layers or not.
     pub fn set_layer_mode(&mut self, theLayerMode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Writer_set_layer_mode(self as *mut Self, theLayerMode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_layer_mode(self as *mut Self, theLayerMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:207 - `STEPCAFControl_Writer::GetLayerMode()`
     pub fn get_layer_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_layer_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_layer_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:210 - `STEPCAFControl_Writer::SetPropsMode()`
     /// PropsMode for indicate write Validation properties or not.
     pub fn set_props_mode(&mut self, thePropsMode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Writer_set_props_mode(self as *mut Self, thePropsMode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_props_mode(self as *mut Self, thePropsMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:212 - `STEPCAFControl_Writer::GetPropsMode()`
     pub fn get_props_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_props_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_props_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:215 - `STEPCAFControl_Writer::SetSHUOMode()`
     /// Set SHUO mode for indicate write SHUO or not.
     pub fn set_shuo_mode(&mut self, theSHUOMode: bool) {
-        unsafe { crate::ffi::STEPCAFControl_Writer_set_shuo_mode(self as *mut Self, theSHUOMode) }
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_shuo_mode(self as *mut Self, theSHUOMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:217 - `STEPCAFControl_Writer::GetSHUOMode()`
     pub fn get_shuo_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_shuo_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_shuo_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:220 - `STEPCAFControl_Writer::SetDimTolMode()`
     /// Set dimtolmode for indicate write D&GTs or not.
     pub fn set_dim_tol_mode(&mut self, theDimTolMode: bool) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_set_dim_tol_mode(self as *mut Self, theDimTolMode)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_dim_tol_mode(self as *mut Self, theDimTolMode)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:222 - `STEPCAFControl_Writer::GetDimTolMode()`
     pub fn get_dim_tol_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_dim_tol_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_dim_tol_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:225 - `STEPCAFControl_Writer::SetMaterialMode()`
     /// Set dimtolmode for indicate write D&GTs or not.
     pub fn set_material_mode(&mut self, theMaterialMode: bool) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_set_material_mode(self as *mut Self, theMaterialMode)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_material_mode(
+                    self as *mut Self,
+                    theMaterialMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:227 - `STEPCAFControl_Writer::GetMaterialMode()`
     pub fn get_material_mode(&self) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_Writer_get_material_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::STEPCAFControl_Writer_get_material_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:231 - `STEPCAFControl_Writer::SetShapeFixParameters()`
@@ -2339,11 +3140,14 @@ impl Writer {
         &mut self,
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_set_shape_fix_parameters_parametermap(
-                self as *mut Self,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_shape_fix_parameters_parametermap(
+                    self as *mut Self,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2359,8 +3163,11 @@ impl Writer {
         theParameters: &crate::de::ShapeFixParameters,
         theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2368,8 +3175,12 @@ impl Writer {
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
     pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Writer_get_shape_fix_parameters(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_get_shape_fix_parameters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2377,8 +3188,14 @@ impl Writer {
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
-        unsafe {
-            crate::ffi::STEPCAFControl_Writer_set_shape_process_flags(self as *mut Self, theFlags)
+        {
+            unsafe {
+                crate::ffi::STEPCAFControl_Writer_set_shape_process_flags(
+                    self as *mut Self,
+                    theFlags,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2387,8 +3204,12 @@ impl Writer {
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
     /// that indicates whether the flags were set.
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
-        unsafe {
-            &*(crate::ffi::STEPCAFControl_Writer_get_shape_process_flags(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::STEPCAFControl_Writer_get_shape_process_flags(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }

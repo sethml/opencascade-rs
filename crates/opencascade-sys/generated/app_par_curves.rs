@@ -62,7 +62,11 @@ impl ConstraintCouple {
     /// **Source:** `AppParCurves_ConstraintCouple.hxx`:34 - `AppParCurves_ConstraintCouple::AppParCurves_ConstraintCouple()`
     /// returns an indefinite ConstraintCouple.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_ConstraintCouple_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_ConstraintCouple_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_ConstraintCouple.hxx`:38 - `AppParCurves_ConstraintCouple::AppParCurves_ConstraintCouple()`
@@ -72,44 +76,60 @@ impl ConstraintCouple {
         TheIndex: i32,
         Cons: crate::app_par_curves::Constraint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppParCurves_ConstraintCouple_ctor_int_constraint(
-                    TheIndex,
-                    Cons.into(),
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_ConstraintCouple_ctor_int_constraint(TheIndex, Cons.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_ConstraintCouple.hxx`:42 - `AppParCurves_ConstraintCouple::Index()`
     /// returns the index of the constraint object.
     pub fn index(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_ConstraintCouple_index(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_ConstraintCouple_index(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_ConstraintCouple.hxx`:45 - `AppParCurves_ConstraintCouple::Constraint()`
     /// returns the constraint of the object.
     pub fn constraint(&self) -> crate::app_par_curves::Constraint {
-        unsafe {
-            crate::app_par_curves::Constraint::try_from(
-                crate::ffi::AppParCurves_ConstraintCouple_constraint(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_ConstraintCouple_constraint(self as *const Self)
+            };
+            crate::check_exception();
+            crate::app_par_curves::Constraint::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `AppParCurves_ConstraintCouple.hxx`:48 - `AppParCurves_ConstraintCouple::SetIndex()`
     /// Changes the index of the constraint object.
     pub fn set_index(&mut self, TheIndex: i32) {
-        unsafe { crate::ffi::AppParCurves_ConstraintCouple_set_index(self as *mut Self, TheIndex) }
+        {
+            unsafe {
+                crate::ffi::AppParCurves_ConstraintCouple_set_index(self as *mut Self, TheIndex)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppParCurves_ConstraintCouple.hxx`:51 - `AppParCurves_ConstraintCouple::SetConstraint()`
     /// Changes the constraint of the object.
     pub fn set_constraint(&mut self, Cons: crate::app_par_curves::Constraint) {
-        unsafe {
-            crate::ffi::AppParCurves_ConstraintCouple_set_constraint(self as *mut Self, Cons.into())
+        {
+            unsafe {
+                crate::ffi::AppParCurves_ConstraintCouple_set_constraint(
+                    self as *mut Self,
+                    Cons.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -130,17 +150,21 @@ unsafe impl crate::CppDeletable for HArray1OfConstraintCouple {
 impl HArray1OfConstraintCouple {
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::AppParCurves_HArray1OfConstraintCouple()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor())
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::AppParCurves_HArray1OfConstraintCouple()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -150,12 +174,14 @@ impl HArray1OfConstraintCouple {
         theUpper: i32,
         theValue: &ConstraintCouple,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_int2_constraintcouple(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -166,12 +192,14 @@ impl HArray1OfConstraintCouple {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_constraintcouple_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -179,69 +207,93 @@ impl HArray1OfConstraintCouple {
     pub fn new_array1ofconstraintcouple(
         theOther: &crate::ffi::AppParCurves_Array1OfConstraintCouple,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_array1ofconstraintcouple(
                     theOther,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::Array1()`
     pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfConstraintCouple {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfConstraintCouple_array1(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_array1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfConstraintCouple {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfConstraintCouple_change_array1(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfConstraintCouple_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_name(),
-            )
-            .to_string_lossy()
-            .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -249,80 +301,107 @@ impl HArray1OfConstraintCouple {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfConstraintCouple_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_to_handle(obj.into_raw())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_This(
                     self as *const Self,
                 )
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_Delete(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -338,28 +417,36 @@ unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfConstraintCouple 
 impl HandleAppParCurvesHArray1OfConstraintCouple {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfConstraintCouple
     pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfConstraintCouple {
-        unsafe {
-            &*(crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_get(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfConstraintCouple
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfConstraintCouple {
-        unsafe {
-            &mut *(crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_get_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfConstraintCouple> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -380,15 +467,21 @@ unsafe impl crate::CppDeletable for HArray1OfMultiBSpCurve {
 impl HArray1OfMultiBSpCurve {
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::AppParCurves_HArray1OfMultiBSpCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::AppParCurves_HArray1OfMultiBSpCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -398,12 +491,14 @@ impl HArray1OfMultiBSpCurve {
         theUpper: i32,
         theValue: &MultiBSpCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2_multibspcurve(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -414,12 +509,14 @@ impl HArray1OfMultiBSpCurve {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_multibspcurve_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -427,61 +524,91 @@ impl HArray1OfMultiBSpCurve {
     pub fn new_array1ofmultibspcurve(
         theOther: &crate::ffi::AppParCurves_Array1OfMultiBSpCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_array1ofmultibspcurve(
-                    theOther,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_array1ofmultibspcurve(theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::Array1()`
     pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfMultiBSpCurve {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_array1(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_array1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfMultiBSpCurve {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_change_array1(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_name()).to_string_lossy().into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -489,78 +616,105 @@ impl HArray1OfMultiBSpCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_to_handle(obj.into_raw())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_Delete(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -576,24 +730,36 @@ unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiBSpCurve {
 impl HandleAppParCurvesHArray1OfMultiBSpCurve {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiBSpCurve
     pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiBSpCurve {
-        unsafe { &*(crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiBSpCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiBSpCurve {
-        unsafe {
-            &mut *(crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfMultiBSpCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -614,15 +780,21 @@ unsafe impl crate::CppDeletable for HArray1OfMultiCurve {
 impl HArray1OfMultiCurve {
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::AppParCurves_HArray1OfMultiCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::AppParCurves_HArray1OfMultiCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -632,12 +804,14 @@ impl HArray1OfMultiCurve {
         theUpper: i32,
         theValue: &MultiCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_int2_multicurve(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -648,12 +822,14 @@ impl HArray1OfMultiCurve {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_multicurve_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -661,61 +837,89 @@ impl HArray1OfMultiCurve {
     pub fn new_array1ofmulticurve(
         theOther: &crate::ffi::AppParCurves_Array1OfMultiCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_array1ofmulticurve(theOther),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_array1ofmulticurve(theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::Array1()`
     pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfMultiCurve {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiCurve_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiCurve_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfMultiCurve {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfMultiCurve_change_array1(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfMultiCurve_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -723,76 +927,102 @@ impl HArray1OfMultiCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiCurve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -808,24 +1038,36 @@ unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiCurve {
 impl HandleAppParCurvesHArray1OfMultiCurve {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiCurve
     pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiCurve {
-        unsafe { &*(crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiCurve {
-        unsafe {
-            &mut *(crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfMultiCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -846,15 +1088,21 @@ unsafe impl crate::CppDeletable for HArray1OfMultiPoint {
 impl HArray1OfMultiPoint {
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -864,12 +1112,14 @@ impl HArray1OfMultiPoint {
         theUpper: i32,
         theValue: &MultiPoint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2_multipoint(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -880,12 +1130,14 @@ impl HArray1OfMultiPoint {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_multipoint_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -893,61 +1145,89 @@ impl HArray1OfMultiPoint {
     pub fn new_array1ofmultipoint(
         theOther: &crate::ffi::AppParCurves_Array1OfMultiPoint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_array1ofmultipoint(theOther),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_array1ofmultipoint(theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::Array1()`
     pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfMultiPoint {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiPoint_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiPoint_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfMultiPoint {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfMultiPoint_change_array1(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfMultiPoint_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -955,76 +1235,102 @@ impl HArray1OfMultiPoint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiPoint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiPoint_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_HArray1OfMultiPoint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1040,24 +1346,36 @@ unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiPoint {
 impl HandleAppParCurvesHArray1OfMultiPoint {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiPoint
     pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiPoint {
-        unsafe { &*(crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiPoint
     pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiPoint {
-        unsafe {
-            &mut *(crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfMultiPoint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1102,7 +1420,11 @@ impl MultiBSpCurve {
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:66 - `AppParCurves_MultiBSpCurve::AppParCurves_MultiBSpCurve()`
     /// returns an indefinite MultiBSpCurve.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiBSpCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_MultiBSpCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:71 - `AppParCurves_MultiBSpCurve::AppParCurves_MultiBSpCurve()`
@@ -1110,7 +1432,11 @@ impl MultiBSpCurve {
     /// containing the same number of MultiPoint.
     /// An exception is raised if Degree < 0.
     pub fn new_int(NbPol: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiBSpCurve_ctor_int(NbPol)) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_MultiBSpCurve_ctor_int(NbPol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:76 - `AppParCurves_MultiBSpCurve::AppParCurves_MultiBSpCurve()`
@@ -1122,8 +1448,12 @@ impl MultiBSpCurve {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Mults: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiBSpCurve_ctor_array1ofmultipoint_array1ofreal_array1ofinteger(tabMU, Knots, Mults))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_ctor_array1ofmultipoint_array1ofreal_array1ofinteger(tabMU, Knots, Mults)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1135,27 +1465,40 @@ impl MultiBSpCurve {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Mults: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::AppParCurves_MultiBSpCurve_ctor_multicurve_array1ofreal_array1ofinteger(
                     SC, Knots, Mults,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:87 - `AppParCurves_MultiBSpCurve::SetKnots()`
     /// Knots of the multiBSpCurve are assigned to <theknots>.
     pub fn set_knots(&mut self, theKnots: &crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::AppParCurves_MultiBSpCurve_set_knots(self as *mut Self, theKnots) }
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_set_knots(self as *mut Self, theKnots)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:91 - `AppParCurves_MultiBSpCurve::SetMultiplicities()`
     /// Multiplicities of the multiBSpCurve are assigned
     /// to <theMults>.
     pub fn set_multiplicities(&mut self, theMults: &crate::ffi::TColStd_Array1OfInteger) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_set_multiplicities(self as *mut Self, theMults)
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_set_multiplicities(
+                    self as *mut Self,
+                    theMults,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1163,20 +1506,36 @@ impl MultiBSpCurve {
     /// Returns an array of Reals containing
     /// the multiplicities of curves resulting from the approximation.
     pub fn knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
-        unsafe { &*(crate::ffi::AppParCurves_MultiBSpCurve_knots(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiBSpCurve_knots(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:99 - `AppParCurves_MultiBSpCurve::Multiplicities()`
     /// Returns an array of Reals containing the
     /// multiplicities of curves resulting from the approximation.
     pub fn multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
-        unsafe { &*(crate::ffi::AppParCurves_MultiBSpCurve_multiplicities(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_multiplicities(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:102 - `AppParCurves_MultiBSpCurve::Degree()`
     /// returns the degree of the curve(s).
     pub fn degree(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiBSpCurve_degree(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiBSpCurve_degree(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:108 - `AppParCurves_MultiBSpCurve::Value()`
@@ -1185,13 +1544,16 @@ impl MultiBSpCurve {
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 2d.
     pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1201,13 +1563,16 @@ impl MultiBSpCurve {
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 3d.
     pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt2d(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt2d(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1223,14 +1588,17 @@ impl MultiBSpCurve {
         Pt: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt_vec(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt_vec(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1246,14 +1614,17 @@ impl MultiBSpCurve {
         Pt: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt2d_vec2d(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt2d_vec2d(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1270,15 +1641,18 @@ impl MultiBSpCurve {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt_vec2(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-                V2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt_vec2(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                    V2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1295,15 +1669,18 @@ impl MultiBSpCurve {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt2d_vec2d2(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-                V2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt2d_vec2d2(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                    V2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1312,122 +1689,178 @@ impl MultiBSpCurve {
     /// state of the object.
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::AppParCurves_MultiBSpCurve_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::AppParCurves_MultiBSpCurve_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to AppParCurves_MultiCurve
     pub fn as_multi_curve(&self) -> &MultiCurve {
-        unsafe {
-            &*(crate::ffi::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to AppParCurves_MultiCurve (mutable)
     pub fn as_multi_curve_mut(&mut self) -> &mut MultiCurve {
-        unsafe {
-            &mut *(crate::ffi::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:79 - `AppParCurves_MultiCurve::SetNbPoles()`
     pub fn set_nb_poles(&mut self, nbPoles: i32) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetNbPoles(self as *mut Self, nbPoles)
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetNbPoles(
+                    self as *mut Self,
+                    nbPoles,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:84 - `AppParCurves_MultiCurve::SetValue()`
     pub fn set_value(&mut self, Index: i32, MPoint: &MultiPoint) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetValue(
-                self as *mut Self,
-                Index,
-                MPoint,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetValue(
+                    self as *mut Self,
+                    Index,
+                    MPoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:89 - `AppParCurves_MultiCurve::NbCurves()`
     pub fn nb_curves(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiBSpCurve_inherited_NbCurves(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_NbCurves(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:92 - `AppParCurves_MultiCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiBSpCurve_inherited_NbPoles(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_NbPoles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:99 - `AppParCurves_MultiCurve::Dimension()`
     pub fn dimension(&self, CuIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Dimension(self as *const Self, CuIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_Dimension(
+                    self as *const Self,
+                    CuIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:104 - `AppParCurves_MultiCurve::Curve()`
     pub fn curve(&self, CuIndex: i32, TabPnt: &mut crate::ffi::TColgp_Array1OfPnt) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Curve(
-                self as *const Self,
-                CuIndex,
-                TabPnt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_Curve(
+                    self as *const Self,
+                    CuIndex,
+                    TabPnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:117 - `AppParCurves_MultiCurve::Pole()`
     pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole(
-                self as *const Self,
-                CuIndex,
-                Nieme,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole(
+                    self as *const Self,
+                    CuIndex,
+                    Nieme,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:122 - `AppParCurves_MultiCurve::Pole2d()`
     pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole2d(
-                self as *const Self,
-                CuIndex,
-                Nieme,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole2d(
+                    self as *const Self,
+                    CuIndex,
+                    Nieme,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:130 - `AppParCurves_MultiCurve::Transform()`
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Transform(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-                z,
-                dz,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_Transform(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                    z,
+                    dz,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:142 - `AppParCurves_MultiCurve::Transform2d()`
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Transform2d(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiBSpCurve_inherited_Transform2d(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1470,7 +1903,11 @@ impl MultiCurve {
     /// **Source:** `AppParCurves_MultiCurve.hxx`:64 - `AppParCurves_MultiCurve::AppParCurves_MultiCurve()`
     /// returns an indefinite MultiCurve.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_MultiCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:69 - `AppParCurves_MultiCurve::AppParCurves_MultiCurve()`
@@ -1478,7 +1915,11 @@ impl MultiCurve {
     /// containing the same number of MultiPoint.
     /// An exception is raised if Degree < 0.
     pub fn new_int(NbPol: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiCurve_ctor_int(NbPol)) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_MultiCurve_ctor_int(NbPol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:74 - `AppParCurves_MultiCurve::AppParCurves_MultiCurve()`
@@ -1488,10 +1929,11 @@ impl MultiCurve {
     pub fn new_array1ofmultipoint(
         tabMU: &crate::ffi::AppParCurves_Array1OfMultiPoint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiCurve_ctor_array1ofmultipoint(
-                tabMU,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiCurve_ctor_array1ofmultipoint(tabMU) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1499,7 +1941,10 @@ impl MultiCurve {
     /// The number of poles of the MultiCurve
     /// will be set to <nbPoles>.
     pub fn set_nb_poles(&mut self, nbPoles: i32) {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_set_nb_poles(self as *mut Self, nbPoles) }
+        {
+            unsafe { crate::ffi::AppParCurves_MultiCurve_set_nb_poles(self as *mut Self, nbPoles) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:84 - `AppParCurves_MultiCurve::SetValue()`
@@ -1507,33 +1952,59 @@ impl MultiCurve {
     /// <MPoint>.
     /// An exception is raised if Index <0 or Index >NbMPoint.
     pub fn set_value(&mut self, Index: i32, MPoint: &MultiPoint) {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_set_value(self as *mut Self, Index, MPoint) }
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_set_value(self as *mut Self, Index, MPoint)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:89 - `AppParCurves_MultiCurve::NbCurves()`
     /// Returns the number of curves resulting from the
     /// approximation of a MultiLine.
     pub fn nb_curves(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_nb_curves(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiCurve_nb_curves(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:92 - `AppParCurves_MultiCurve::NbPoles()`
     /// Returns the number of poles on curves resulting from the approximation of a MultiLine.
     pub fn nb_poles(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_nb_poles(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiCurve_nb_poles(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:95 - `AppParCurves_MultiCurve::Degree()`
     /// returns the degree of the curves.
     pub fn degree(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_degree(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiCurve_degree(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:99 - `AppParCurves_MultiCurve::Dimension()`
     /// returns the dimension of the CuIndex curve.
     /// An exception is raised if CuIndex<0 or CuIndex>NbCurves.
     pub fn dimension(&self, CuIndex: i32) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_dimension(self as *const Self, CuIndex) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiCurve_dimension(self as *const Self, CuIndex)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:104 - `AppParCurves_MultiCurve::Curve()`
@@ -1541,12 +2012,15 @@ impl MultiCurve {
     /// An exception is raised if the dimension of the curve
     /// is 2d.
     pub fn curve_int_array1ofpnt(&self, CuIndex: i32, TabPnt: &mut crate::ffi::TColgp_Array1OfPnt) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_curve_int_array1ofpnt(
-                self as *const Self,
-                CuIndex,
-                TabPnt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_curve_int_array1ofpnt(
+                    self as *const Self,
+                    CuIndex,
+                    TabPnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1559,12 +2033,15 @@ impl MultiCurve {
         CuIndex: i32,
         TabPnt: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_curve_int_array1ofpnt2d(
-                self as *const Self,
-                CuIndex,
-                TabPnt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_curve_int_array1ofpnt2d(
+                    self as *const Self,
+                    CuIndex,
+                    TabPnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1572,22 +2049,38 @@ impl MultiCurve {
     /// returns the Index MultiPoint.
     /// An exception is raised if Index <0 or Index >Degree+1.
     pub fn value_int(&self, Index: i32) -> &MultiPoint {
-        unsafe { &*(crate::ffi::AppParCurves_MultiCurve_value_int(self as *const Self, Index)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiCurve_value_int(self as *const Self, Index)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:117 - `AppParCurves_MultiCurve::Pole()`
     /// returns the Nieme pole of the CuIndex curve.
     /// the curve must be a 3D curve.
     pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::AppParCurves_MultiCurve_pole(self as *const Self, CuIndex, Nieme)) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiCurve_pole(self as *const Self, CuIndex, Nieme)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:122 - `AppParCurves_MultiCurve::Pole2d()`
     /// returns the Nieme pole of the CuIndex curve.
     /// the curve must be a 2D curve.
     pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::AppParCurves_MultiCurve_pole2d(self as *const Self, CuIndex, Nieme))
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiCurve_pole2d(self as *const Self, CuIndex, Nieme)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1598,17 +2091,20 @@ impl MultiCurve {
     /// newy = y + dy*oldy    for all points of the curve.
     /// newz = z + dz*oldz
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_transform(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-                z,
-                dz,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_transform(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                    z,
+                    dz,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1618,15 +2114,18 @@ impl MultiCurve {
     /// newx = x + dx*oldx
     /// newy = y + dy*oldy    for all points of the curve.
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_transform2d(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_transform2d(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1636,13 +2135,16 @@ impl MultiCurve {
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 2d.
     pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1652,13 +2154,16 @@ impl MultiCurve {
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 3d.
     pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt2d(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt2d(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1674,14 +2179,17 @@ impl MultiCurve {
         Pt: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt_vec(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt_vec(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1697,14 +2205,17 @@ impl MultiCurve {
         Pt: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt2d_vec2d(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt2d_vec2d(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1721,15 +2232,18 @@ impl MultiCurve {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt_vec2(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-                V2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt_vec2(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                    V2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1746,15 +2260,18 @@ impl MultiCurve {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt2d_vec2d2(
-                self as *const Self,
-                CuIndex,
-                U,
-                Pt,
-                V1,
-                V2,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt2d_vec2d2(
+                    self as *const Self,
+                    CuIndex,
+                    U,
+                    Pt,
+                    V1,
+                    V2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1763,7 +2280,10 @@ impl MultiCurve {
     /// state of the object.
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::AppParCurves_MultiCurve_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::AppParCurves_MultiCurve_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1790,7 +2310,11 @@ impl MultiPoint {
     /// **Source:** `AppParCurves_MultiPoint.hxx`:45 - `AppParCurves_MultiPoint::AppParCurves_MultiPoint()`
     /// creates an indefinite MultiPoint.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiPoint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_MultiPoint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:53 - `AppParCurves_MultiPoint::AppParCurves_MultiPoint()`
@@ -1801,28 +2325,32 @@ impl MultiPoint {
     /// NbPoints is the number of 3D Points.
     /// NbPoints2d is the number of 2D Points.
     pub fn new_int2(NbPoints: i32, NbPoints2d: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiPoint_ctor_int2(
-                NbPoints, NbPoints2d,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiPoint_ctor_int2(NbPoints, NbPoints2d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:57 - `AppParCurves_MultiPoint::AppParCurves_MultiPoint()`
     /// creates a MultiPoint only composed of 3D points.
     pub fn new_array1ofpnt(tabP: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt(tabP))
+        {
+            let __result = unsafe { crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt(tabP) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:60 - `AppParCurves_MultiPoint::AppParCurves_MultiPoint()`
     /// creates a MultiPoint only composed of 2D points.
     pub fn new_array1ofpnt2d(tabP2d: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt2d(
-                tabP2d,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt2d(tabP2d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1836,10 +2364,12 @@ impl MultiPoint {
         tabP: &crate::ffi::TColgp_Array1OfPnt,
         tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt_array1ofpnt2d(tabP, tabP2d),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt_array1ofpnt2d(tabP, tabP2d)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1849,7 +2379,12 @@ impl MultiPoint {
     /// An exception is raised if Index < 0 or
     /// Index > number of 3d Points.
     pub fn set_point(&mut self, Index: i32, Point: &crate::gp::Pnt) {
-        unsafe { crate::ffi::AppParCurves_MultiPoint_set_point(self as *mut Self, Index, Point) }
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiPoint_set_point(self as *mut Self, Index, Point)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:80 - `AppParCurves_MultiPoint::Point()`
@@ -1857,7 +2392,12 @@ impl MultiPoint {
     /// An exception is raised if Index < 0 or
     /// Index < number of 3d Points.
     pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::AppParCurves_MultiPoint_point(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiPoint_point(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:85 - `AppParCurves_MultiPoint::SetPoint2d()`
@@ -1865,7 +2405,12 @@ impl MultiPoint {
     /// An exception is raised if Index > 3d Points or
     /// Index > total number of Points.
     pub fn set_point2d(&mut self, Index: i32, Point: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::AppParCurves_MultiPoint_set_point2d(self as *mut Self, Index, Point) }
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiPoint_set_point2d(self as *mut Self, Index, Point)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:90 - `AppParCurves_MultiPoint::Point2d()`
@@ -1873,26 +2418,47 @@ impl MultiPoint {
     /// An exception is raised if index <= number of
     /// 3d Points or Index > total number of Points.
     pub fn point2d(&self, Index: i32) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::AppParCurves_MultiPoint_point2d(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiPoint_point2d(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:94 - `AppParCurves_MultiPoint::Dimension()`
     /// returns the dimension of the point of range Index.
     /// An exception is raised if Index <0 or Index > NbCurves.
     pub fn dimension(&self, Index: i32) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiPoint_dimension(self as *const Self, Index) }
+        {
+            let __result = unsafe {
+                crate::ffi::AppParCurves_MultiPoint_dimension(self as *const Self, Index)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:97 - `AppParCurves_MultiPoint::NbPoints()`
     /// returns the number of points of dimension 3D.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiPoint_nb_points(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiPoint_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:100 - `AppParCurves_MultiPoint::NbPoints2d()`
     /// returns the number of points of dimension 2D.
     pub fn nb_points2d(&self) -> i32 {
-        unsafe { crate::ffi::AppParCurves_MultiPoint_nb_points2d(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::AppParCurves_MultiPoint_nb_points2d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:107 - `AppParCurves_MultiPoint::Transform()`
@@ -1902,17 +2468,20 @@ impl MultiPoint {
     /// newy = y + dy*oldy    for all points of the curve.
     /// newz = z + dz*oldz
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiPoint_transform(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-                z,
-                dz,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiPoint_transform(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                    z,
+                    dz,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1922,15 +2491,18 @@ impl MultiPoint {
     /// newx = x + dx*oldx
     /// newy = y + dy*oldy    for all points of the curve.
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
-        unsafe {
-            crate::ffi::AppParCurves_MultiPoint_transform2d(
-                self as *mut Self,
-                CuIndex,
-                x,
-                dx,
-                y,
-                dy,
-            )
+        {
+            unsafe {
+                crate::ffi::AppParCurves_MultiPoint_transform2d(
+                    self as *mut Self,
+                    CuIndex,
+                    x,
+                    dx,
+                    y,
+                    dy,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1939,7 +2511,10 @@ impl MultiPoint {
     /// state of the object.
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::AppParCurves_MultiPoint_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::AppParCurves_MultiPoint_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 }
 

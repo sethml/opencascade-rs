@@ -26,7 +26,11 @@ impl ReflectLines {
     /// **Source:** `HLRAppli_ReflectLines.hxx`:39 - `HLRAppli_ReflectLines::HLRAppli_ReflectLines()`
     /// Constructor
     pub fn new_shape(aShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAppli_ReflectLines_ctor_shape(aShape)) }
+        {
+            let __result = unsafe { crate::ffi::HLRAppli_ReflectLines_ctor_shape(aShape) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `HLRAppli_ReflectLines.hxx`:44 - `HLRAppli_ReflectLines::SetAxes()`
@@ -45,35 +49,42 @@ impl ReflectLines {
         YUp: f64,
         ZUp: f64,
     ) {
-        unsafe {
-            crate::ffi::HLRAppli_ReflectLines_set_axes(
-                self as *mut Self,
-                Nx,
-                Ny,
-                Nz,
-                XAt,
-                YAt,
-                ZAt,
-                XUp,
-                YUp,
-                ZUp,
-            )
+        {
+            unsafe {
+                crate::ffi::HLRAppli_ReflectLines_set_axes(
+                    self as *mut Self,
+                    Nx,
+                    Ny,
+                    Nz,
+                    XAt,
+                    YAt,
+                    ZAt,
+                    XUp,
+                    YUp,
+                    ZUp,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `HLRAppli_ReflectLines.hxx`:54 - `HLRAppli_ReflectLines::Perform()`
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::HLRAppli_ReflectLines_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::HLRAppli_ReflectLines_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `HLRAppli_ReflectLines.hxx`:58 - `HLRAppli_ReflectLines::GetResult()`
     /// returns resulting compound of reflect lines
     /// represented by edges in 3d
     pub fn get_result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HLRAppli_ReflectLines_get_result(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HLRAppli_ReflectLines_get_result(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -87,13 +98,17 @@ impl ReflectLines {
         visible: bool,
         In3d: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HLRAppli_ReflectLines_get_compound_of3d_edges(
-                self as *const Self,
-                type_.into(),
-                visible,
-                In3d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HLRAppli_ReflectLines_get_compound_of3d_edges(
+                    self as *const Self,
+                    type_.into(),
+                    visible,
+                    In3d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

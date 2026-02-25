@@ -89,7 +89,11 @@ impl Appearance {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Appearance_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Appearance_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:39 - `VrmlData_Appearance::VrmlData_Appearance()`
@@ -97,11 +101,12 @@ impl Appearance {
     /// Constructor
     pub fn new_scene_charptr(theScene: &Scene, theName: &str) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Appearance_ctor_scene_charptr(
-                theScene,
-                c_theName.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_ctor_scene_charptr(theScene, c_theName.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -109,42 +114,66 @@ impl Appearance {
     ///
     /// Query the Material
     pub fn material(&self) -> &crate::ffi::HandleVrmlDataMaterial {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_material(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Appearance_material(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:52 - `VrmlData_Appearance::Texture()`
     ///
     /// Query the Texture
     pub fn texture(&self) -> &crate::ffi::HandleVrmlDataTexture {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_texture(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Appearance_texture(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:57 - `VrmlData_Appearance::TextureTransform()`
     ///
     /// Query the TextureTransform
     pub fn texture_transform(&self) -> &crate::ffi::HandleVrmlDataTextureTransform {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_texture_transform(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_texture_transform(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:62 - `VrmlData_Appearance::SetMaterial()`
     ///
     /// Set the Material
     pub fn set_material(&mut self, theMat: &crate::ffi::HandleVrmlDataMaterial) {
-        unsafe { crate::ffi::VrmlData_Appearance_set_material(self as *mut Self, theMat) }
+        {
+            unsafe { crate::ffi::VrmlData_Appearance_set_material(self as *mut Self, theMat) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:67 - `VrmlData_Appearance::SetTexture()`
     ///
     /// Set the Texture
     pub fn set_texture(&mut self, theTexture: &crate::ffi::HandleVrmlDataTexture) {
-        unsafe { crate::ffi::VrmlData_Appearance_set_texture(self as *mut Self, theTexture) }
+        {
+            unsafe { crate::ffi::VrmlData_Appearance_set_texture(self as *mut Self, theTexture) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:72 - `VrmlData_Appearance::SetTextureTransform()`
     ///
     /// Set the Texture Transform
     pub fn set_texture_transform(&mut self, theTT: &crate::ffi::HandleVrmlDataTextureTransform) {
-        unsafe { crate::ffi::VrmlData_Appearance_set_texture_transform(self as *mut Self, theTT) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Appearance_set_texture_transform(self as *mut Self, theTT)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:82 - `VrmlData_Appearance::Clone()`
@@ -156,11 +185,11 @@ impl Appearance {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Appearance_clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_clone(self as *const Self, arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -168,12 +197,11 @@ impl Appearance {
     ///
     /// Read the node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Appearance_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -182,12 +210,12 @@ impl Appearance {
     /// Write the Node from input stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Appearance_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -195,47 +223,81 @@ impl Appearance {
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Appearance_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Appearance_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Appearance_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Appearance_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Appearance_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_Appearance_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -243,14 +305,21 @@ impl Appearance {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataAppearance> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Appearance_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Appearance_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Appearance_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Appearance_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -260,72 +329,105 @@ impl Appearance {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Appearance_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Appearance_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_Appearance_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Appearance_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_Appearance_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Appearance_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Appearance_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Appearance_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Appearance_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Appearance_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Appearance_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Appearance_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -340,31 +442,42 @@ unsafe impl crate::CppDeletable for HandleVrmlDataAppearance {
 impl HandleVrmlDataAppearance {
     /// Dereference this Handle to access the underlying VrmlData_Appearance
     pub fn get(&self) -> &crate::ffi::VrmlData_Appearance {
-        unsafe { &*(crate::ffi::HandleVrmlDataAppearance_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataAppearance_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Appearance
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Appearance {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataAppearance_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataAppearance_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Appearance> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataAppearance_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataAppearance_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Appearance> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataAppearance_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataAppearance_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -390,7 +503,11 @@ impl ArrayVec3d {
     ///
     /// Query the number of vectors
     pub fn length(&self) -> usize {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_length(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ArrayVec3d_length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
@@ -398,11 +515,12 @@ impl ArrayVec3d {
     /// Query the array
     pub fn values(&self) -> Option<&crate::gp::XYZ> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_ArrayVec3d_values(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::VrmlData_ArrayVec3d_values(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
@@ -413,19 +531,28 @@ impl ArrayVec3d {
     /// @return
     /// True if allocation was successful.
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_allocate_values(self as *mut Self, theLength) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_allocate_values(self as *mut Self, theLength)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
     ///
     /// Set the array data
     pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::VrmlData_ArrayVec3d_set_values(
-                self as *mut Self,
-                nValues,
-                arrValues as *const _,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_set_values(
+                    self as *mut Self,
+                    nValues,
+                    arrValues as *const _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -439,14 +566,17 @@ impl ArrayVec3d {
         isScale: bool,
     ) -> crate::vrml_data::ErrorStatus {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ArrayVec3d_read_array(
-                self as *mut Self,
-                theBuffer,
-                c_theName.as_ptr(),
-                isScale,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_read_array(
+                    self as *mut Self,
+                    theBuffer,
+                    c_theName.as_ptr(),
+                    isScale,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -455,13 +585,16 @@ impl ArrayVec3d {
     /// Write the Node to the output stream currently opened in Scene.
     pub fn write_array(&self, theName: &str, isScale: bool) -> crate::vrml_data::ErrorStatus {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ArrayVec3d_write_array(
-                self as *const Self,
-                c_theName.as_ptr(),
-                isScale,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_write_array(
+                    self as *const Self,
+                    c_theName.as_ptr(),
+                    isScale,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -469,53 +602,92 @@ impl ArrayVec3d {
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ArrayVec3d_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_ArrayVec3d_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ArrayVec3d_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_ArrayVec3d_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ArrayVec3d_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_ArrayVec3d_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ArrayVec3d_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_ArrayVec3d_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ArrayVec3d_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_ArrayVec3d_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ArrayVec3d_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_ArrayVec3d_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_ArrayVec3d_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_ArrayVec3d_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -525,37 +697,39 @@ impl ArrayVec3d {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_ArrayVec3d_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ArrayVec3d_inherited_Read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_Read(self as *mut Self, theBuffer)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_ArrayVec3d_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -564,57 +738,89 @@ impl ArrayVec3d {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ArrayVec3d_inherited_Clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_Clone(self as *const Self, arg0)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_ArrayVec3d_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ArrayVec3d_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -629,31 +835,42 @@ unsafe impl crate::CppDeletable for HandleVrmlDataArrayVec3d {
 impl HandleVrmlDataArrayVec3d {
     /// Dereference this Handle to access the underlying VrmlData_ArrayVec3d
     pub fn get(&self) -> &crate::ffi::VrmlData_ArrayVec3d {
-        unsafe { &*(crate::ffi::HandleVrmlDataArrayVec3d_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataArrayVec3d_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_ArrayVec3d
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_ArrayVec3d {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataArrayVec3d_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataArrayVec3d_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_ArrayVec3d> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataArrayVec3d_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataArrayVec3d_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_ArrayVec3d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataArrayVec3d_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataArrayVec3d_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -666,6 +883,7 @@ impl HandleVrmlDataArrayVec3d {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -684,6 +902,7 @@ impl HandleVrmlDataArrayVec3d {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -700,6 +919,7 @@ impl HandleVrmlDataArrayVec3d {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -730,7 +950,11 @@ impl Box {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Box_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:43 - `VrmlData_Box::VrmlData_Box()`
@@ -744,14 +968,18 @@ impl Box {
         sizeZ: f64,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Box_ctor_scene_charptr_real3(
-                theScene,
-                c_theName.as_ptr(),
-                sizeX,
-                sizeY,
-                sizeZ,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Box_ctor_scene_charptr_real3(
+                    theScene,
+                    c_theName.as_ptr(),
+                    sizeX,
+                    sizeY,
+                    sizeZ,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -789,14 +1017,21 @@ impl Box {
     ///
     /// Query the Box size
     pub fn size(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::VrmlData_Box_size(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_size(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:61 - `VrmlData_Box::SetSize()`
     ///
     /// Set the Box Size
     pub fn set_size(&mut self, theSize: &crate::gp::XYZ) {
-        unsafe { crate::ffi::VrmlData_Box_set_size(self as *mut Self, theSize) }
+        {
+            unsafe { crate::ffi::VrmlData_Box_set_size(self as *mut Self, theSize) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:71 - `VrmlData_Box::TShape()`
@@ -804,7 +1039,11 @@ impl Box {
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_Box_t_shape(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:78 - `VrmlData_Box::Clone()`
@@ -816,8 +1055,10 @@ impl Box {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Box_clone(self as *const Self, theOther))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -825,12 +1066,10 @@ impl Box {
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Box_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -839,72 +1078,118 @@ impl Box {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Box_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Box_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Box_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Box_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Box_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_Box_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_as_VrmlData_Geometry(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::VrmlData_Box_as_VrmlData_Geometry_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_as_VrmlData_Geometry_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Box_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Box_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Box_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Box_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataBox> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Box_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Box_inherited_Scene(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Box_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -914,72 +1199,109 @@ impl Box {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Box_inherited_ReadNode(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Box_inherited_ReadNode(
+                    self as *mut Self,
+                    theBuffer,
+                    theNode,
+                    Type,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Box_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Box_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Box_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Box_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Box_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Box_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::VrmlData_Box_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Box_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Box_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Box_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Box_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Box_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Box_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Box_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Box_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -994,38 +1316,51 @@ unsafe impl crate::CppDeletable for HandleVrmlDataBox {
 impl HandleVrmlDataBox {
     /// Dereference this Handle to access the underlying VrmlData_Box
     pub fn get(&self) -> &crate::ffi::VrmlData_Box {
-        unsafe { &*(crate::ffi::HandleVrmlDataBox_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataBox_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Box
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Box {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataBox_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataBox_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Box> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataBox_to_HandleVrmlDataGeometry(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataBox_to_HandleVrmlDataGeometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Box> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataBox_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataBox_to_HandleVrmlDataNode(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Box> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataBox_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataBox_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1050,7 +1385,11 @@ impl Color {
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Color_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Color.hxx`:39 - `VrmlData_Color::VrmlData_Color()`
@@ -1063,13 +1402,17 @@ impl Color {
         arrColors: Option<&crate::gp::XYZ>,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Color_ctor_scene_charptr_size_xyzptr(
-                theScene,
-                c_theName.as_ptr(),
-                nColors,
-                arrColors.map_or(std::ptr::null(), |r| r as *const _),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_ctor_scene_charptr_size_xyzptr(
+                    theScene,
+                    c_theName.as_ptr(),
+                    nColors,
+                    arrColors.map_or(std::ptr::null(), |r| r as *const _),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1081,8 +1424,10 @@ impl Color {
     /// @return
     /// the color value for the index. If index irrelevant, returns (0., 0., 0.)
     pub fn color(&self, i: i32) -> crate::OwnedPtr<crate::quantity::Color> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Color_color(self as *const Self, i))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_color(self as *const Self, i) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1090,8 +1435,15 @@ impl Color {
     ///
     /// Set the array data
     pub fn set_colors(&mut self, nColors: usize, arrColors: &crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::VrmlData_Color_set_colors(self as *mut Self, nColors, arrColors as *const _)
+        {
+            unsafe {
+                crate::ffi::VrmlData_Color_set_colors(
+                    self as *mut Self,
+                    nColors,
+                    arrColors as *const _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1104,11 +1456,11 @@ impl Color {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Color_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1116,12 +1468,10 @@ impl Color {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Color_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -1130,112 +1480,180 @@ impl Color {
     /// Write the Node to the Scene output.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Color_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Color_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Color_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Color_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_ArrayVec3d
     pub fn as_array_vec3d(&self) -> &ArrayVec3d {
-        unsafe { &*(crate::ffi::VrmlData_Color_as_VrmlData_ArrayVec3d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_as_VrmlData_ArrayVec3d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_ArrayVec3d (mutable)
     pub fn as_array_vec3d_mut(&mut self) -> &mut ArrayVec3d {
-        unsafe { &mut *(crate::ffi::VrmlData_Color_as_VrmlData_ArrayVec3d_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_as_VrmlData_ArrayVec3d_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Color_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Color_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Color_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Color_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataColor> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Color_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Color_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:56 - `VrmlData_ArrayVec3d::Length()`
     pub fn length(&self) -> usize {
-        unsafe { crate::ffi::VrmlData_Color_inherited_Length(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_Length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
     pub fn values(&self) -> Option<&crate::gp::XYZ> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Color_inherited_Values(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_Values(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
-        unsafe { crate::ffi::VrmlData_Color_inherited_AllocateValues(self as *mut Self, theLength) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_inherited_AllocateValues(self as *mut Self, theLength)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
     pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::VrmlData_Color_inherited_SetValues(
-                self as *mut Self,
-                nValues,
-                arrValues as *const _,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_Color_inherited_SetValues(
+                    self as *mut Self,
+                    nValues,
+                    arrValues as *const _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Color_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Color_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -1245,67 +1663,101 @@ impl Color {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Color_inherited_ReadNode(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_inherited_ReadNode(
+                    self as *mut Self,
+                    theBuffer,
+                    theNode,
+                    Type,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Color_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Color_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Color_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Color_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Color_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Color_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Color_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Color_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Color_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Color_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Color_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Color_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1320,38 +1772,52 @@ unsafe impl crate::CppDeletable for HandleVrmlDataColor {
 impl HandleVrmlDataColor {
     /// Dereference this Handle to access the underlying VrmlData_Color
     pub fn get(&self) -> &crate::ffi::VrmlData_Color {
-        unsafe { &*(crate::ffi::HandleVrmlDataColor_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataColor_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Color
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Color {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataColor_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataColor_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Color> to Handle<VrmlData_ArrayVec3d>
     pub fn to_handle_array_vec3d(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataArrayVec3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataColor_to_HandleVrmlDataArrayVec3d(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataColor_to_HandleVrmlDataArrayVec3d(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Color> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataColor_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataColor_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Color> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataColor_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataColor_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1378,7 +1844,11 @@ impl Cone {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cone_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:45 - `VrmlData_Cone::VrmlData_Cone()`
@@ -1391,13 +1861,17 @@ impl Cone {
         theHeight: f64,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cone_ctor_scene_charptr_real2(
-                theScene,
-                c_theName.as_ptr(),
-                theBottomRadius,
-                theHeight,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cone_ctor_scene_charptr_real2(
+                    theScene,
+                    c_theName.as_ptr(),
+                    theBottomRadius,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1423,49 +1897,74 @@ impl Cone {
     ///
     /// Query the Bottom Radius
     pub fn bottom_radius(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Cone_bottom_radius(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_bottom_radius(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:65 - `VrmlData_Cone::Height()`
     ///
     /// Query the Height
     pub fn height(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Cone_height(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_height(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:70 - `VrmlData_Cone::HasBottom()`
     ///
     /// Query if the bottom circle is included
     pub fn has_bottom(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cone_has_bottom(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_has_bottom(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:75 - `VrmlData_Cone::HasSide()`
     ///
     /// Query if the side surface is included
     pub fn has_side(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cone_has_side(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_has_side(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:80 - `VrmlData_Cone::SetBottomRadius()`
     ///
     /// Set the Bottom Radius
     pub fn set_bottom_radius(&mut self, theRadius: f64) {
-        unsafe { crate::ffi::VrmlData_Cone_set_bottom_radius(self as *mut Self, theRadius) }
+        {
+            unsafe { crate::ffi::VrmlData_Cone_set_bottom_radius(self as *mut Self, theRadius) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:89 - `VrmlData_Cone::SetHeight()`
     ///
     /// Set the Height
     pub fn set_height(&mut self, theHeight: f64) {
-        unsafe { crate::ffi::VrmlData_Cone_set_height(self as *mut Self, theHeight) }
+        {
+            unsafe { crate::ffi::VrmlData_Cone_set_height(self as *mut Self, theHeight) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:98 - `VrmlData_Cone::SetFaces()`
     ///
     /// Set which faces are included
     pub fn set_faces(&mut self, hasBottom: bool, hasSide: bool) {
-        unsafe { crate::ffi::VrmlData_Cone_set_faces(self as *mut Self, hasBottom, hasSide) }
+        {
+            unsafe { crate::ffi::VrmlData_Cone_set_faces(self as *mut Self, hasBottom, hasSide) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:109 - `VrmlData_Cone::TShape()`
@@ -1473,7 +1972,11 @@ impl Cone {
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_Cone_t_shape(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:116 - `VrmlData_Cone::Clone()`
@@ -1485,11 +1988,11 @@ impl Cone {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cone_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1497,12 +2000,10 @@ impl Cone {
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Cone_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -1511,74 +2012,121 @@ impl Cone {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Cone_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cone_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Cone_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Cone_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Cone_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_Cone_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_as_VrmlData_Geometry(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::VrmlData_Cone_as_VrmlData_Geometry_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_as_VrmlData_Geometry_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Cone_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Cone_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Cone_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Cone_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataCone> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cone_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Cone_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -1588,72 +2136,109 @@ impl Cone {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Cone_inherited_ReadNode(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cone_inherited_ReadNode(
+                    self as *mut Self,
+                    theBuffer,
+                    theNode,
+                    Type,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Cone_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cone_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Cone_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::VrmlData_Cone_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cone_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Cone_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cone_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Cone_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Cone_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1668,38 +2253,52 @@ unsafe impl crate::CppDeletable for HandleVrmlDataCone {
 impl HandleVrmlDataCone {
     /// Dereference this Handle to access the underlying VrmlData_Cone
     pub fn get(&self) -> &crate::ffi::VrmlData_Cone {
-        unsafe { &*(crate::ffi::HandleVrmlDataCone_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataCone_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Cone
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Cone {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataCone_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataCone_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Cone> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataCone_to_HandleVrmlDataGeometry(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCone_to_HandleVrmlDataGeometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Cone> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataCone_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCone_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Cone> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataCone_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCone_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1724,7 +2323,11 @@ impl Coordinate {
     ///
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Coordinate_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Coordinate_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Coordinate.hxx`:37 - `VrmlData_Coordinate::VrmlData_Coordinate()`
@@ -1737,15 +2340,17 @@ impl Coordinate {
         arrPoints: Option<&crate::gp::XYZ>,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Coordinate_ctor_scene_charptr_size_xyzptr(
                     theScene,
                     c_theName.as_ptr(),
                     nPoints,
                     arrPoints.map_or(std::ptr::null(), |r| r as *const _),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1757,7 +2362,12 @@ impl Coordinate {
     /// @return
     /// the coordinate for the index. If index irrelevant, returns (0., 0., 0.)
     pub fn coordinate(&self, i: i32) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_coordinate(self as *const Self, i)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_coordinate(self as *const Self, i) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Coordinate.hxx`:59 - `VrmlData_Coordinate::Clone()`
@@ -1769,11 +2379,11 @@ impl Coordinate {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Coordinate_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1781,12 +2391,11 @@ impl Coordinate {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Coordinate_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -1795,65 +2404,104 @@ impl Coordinate {
     /// Write the Node to the Scene output.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Coordinate_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Coordinate_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Coordinate_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Coordinate_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_ArrayVec3d
     pub fn as_array_vec3d(&self) -> &ArrayVec3d {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_as_VrmlData_ArrayVec3d(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_as_VrmlData_ArrayVec3d(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_ArrayVec3d (mutable)
     pub fn as_array_vec3d_mut(&mut self) -> &mut ArrayVec3d {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_Coordinate_as_VrmlData_ArrayVec3d_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_as_VrmlData_ArrayVec3d_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Coordinate_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_Coordinate_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1861,55 +2509,83 @@ impl Coordinate {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataCoordinate> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Coordinate_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Coordinate_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:56 - `VrmlData_ArrayVec3d::Length()`
     pub fn length(&self) -> usize {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_Length(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_inherited_Length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
     pub fn values(&self) -> Option<&crate::gp::XYZ> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_Coordinate_inherited_Values(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_Coordinate_inherited_AllocateValues(self as *mut Self, theLength)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_AllocateValues(
+                    self as *mut Self,
+                    theLength,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
     pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::VrmlData_Coordinate_inherited_SetValues(
-                self as *mut Self,
-                nValues,
-                arrValues as *const _,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_SetValues(
+                    self as *mut Self,
+                    nValues,
+                    arrValues as *const _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Coordinate_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Coordinate_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -1919,72 +2595,105 @@ impl Coordinate {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Coordinate_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Coordinate_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_Coordinate_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_Coordinate_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Coordinate_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Coordinate_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Coordinate_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1999,42 +2708,55 @@ unsafe impl crate::CppDeletable for HandleVrmlDataCoordinate {
 impl HandleVrmlDataCoordinate {
     /// Dereference this Handle to access the underlying VrmlData_Coordinate
     pub fn get(&self) -> &crate::ffi::VrmlData_Coordinate {
-        unsafe { &*(crate::ffi::HandleVrmlDataCoordinate_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataCoordinate_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Coordinate
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Coordinate {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataCoordinate_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataCoordinate_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Coordinate> to Handle<VrmlData_ArrayVec3d>
     pub fn to_handle_array_vec3d(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataArrayVec3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataCoordinate_to_HandleVrmlDataArrayVec3d(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Coordinate> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataCoordinate_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCoordinate_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Coordinate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataCoordinate_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCoordinate_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2059,7 +2781,11 @@ impl Cylinder {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cylinder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:44 - `VrmlData_Cylinder::VrmlData_Cylinder()`
@@ -2072,13 +2798,17 @@ impl Cylinder {
         theHeight: f64,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cylinder_ctor_scene_charptr_real2(
-                theScene,
-                c_theName.as_ptr(),
-                theRadius,
-                theHeight,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_ctor_scene_charptr_real2(
+                    theScene,
+                    c_theName.as_ptr(),
+                    theRadius,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2104,57 +2834,91 @@ impl Cylinder {
     ///
     /// Query the Radius
     pub fn radius(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Cylinder_radius(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_radius(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:65 - `VrmlData_Cylinder::Height()`
     ///
     /// Query the Height
     pub fn height(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Cylinder_height(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_height(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:70 - `VrmlData_Cylinder::HasBottom()`
     ///
     /// Query if the bottom circle is included
     pub fn has_bottom(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cylinder_has_bottom(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_has_bottom(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:75 - `VrmlData_Cylinder::HasSide()`
     ///
     /// Query if the side surface is included
     pub fn has_side(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cylinder_has_side(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_has_side(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:80 - `VrmlData_Cylinder::HasTop()`
     ///
     /// Query if the top surface is included
     pub fn has_top(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cylinder_has_top(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_has_top(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:85 - `VrmlData_Cylinder::SetRadius()`
     ///
     /// Set the Radius
     pub fn set_radius(&mut self, theRadius: f64) {
-        unsafe { crate::ffi::VrmlData_Cylinder_set_radius(self as *mut Self, theRadius) }
+        {
+            unsafe { crate::ffi::VrmlData_Cylinder_set_radius(self as *mut Self, theRadius) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:94 - `VrmlData_Cylinder::SetHeight()`
     ///
     /// Set the Height
     pub fn set_height(&mut self, theHeight: f64) {
-        unsafe { crate::ffi::VrmlData_Cylinder_set_height(self as *mut Self, theHeight) }
+        {
+            unsafe { crate::ffi::VrmlData_Cylinder_set_height(self as *mut Self, theHeight) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:103 - `VrmlData_Cylinder::SetFaces()`
     ///
     /// Set which faces are included
     pub fn set_faces(&mut self, hasBottom: bool, hasSide: bool, hasTop: bool) {
-        unsafe {
-            crate::ffi::VrmlData_Cylinder_set_faces(self as *mut Self, hasBottom, hasSide, hasTop)
+        {
+            unsafe {
+                crate::ffi::VrmlData_Cylinder_set_faces(
+                    self as *mut Self,
+                    hasBottom,
+                    hasSide,
+                    hasTop,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2163,7 +2927,11 @@ impl Cylinder {
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_t_shape(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:124 - `VrmlData_Cylinder::Clone()`
@@ -2175,11 +2943,11 @@ impl Cylinder {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cylinder_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2187,12 +2955,11 @@ impl Cylinder {
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Cylinder_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -2201,63 +2968,102 @@ impl Cylinder {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Cylinder_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Cylinder_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_as_VrmlData_Geometry(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::VrmlData_Cylinder_as_VrmlData_Geometry_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_as_VrmlData_Geometry_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Cylinder_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_Cylinder_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2265,14 +3071,21 @@ impl Cylinder {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataCylinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Cylinder_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Cylinder_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Cylinder_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -2282,74 +3095,114 @@ impl Cylinder {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Cylinder_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Cylinder_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Cylinder_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Cylinder_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Cylinder_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Cylinder_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Cylinder_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Cylinder_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2364,38 +3217,52 @@ unsafe impl crate::CppDeletable for HandleVrmlDataCylinder {
 impl HandleVrmlDataCylinder {
     /// Dereference this Handle to access the underlying VrmlData_Cylinder
     pub fn get(&self) -> &crate::ffi::VrmlData_Cylinder {
-        unsafe { &*(crate::ffi::HandleVrmlDataCylinder_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataCylinder_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Cylinder
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Cylinder {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataCylinder_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataCylinder_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Cylinder> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataCylinder_to_HandleVrmlDataGeometry(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCylinder_to_HandleVrmlDataGeometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Cylinder> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataCylinder_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCylinder_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Cylinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataCylinder_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataCylinder_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2421,115 +3288,194 @@ impl Faceted {
     ///
     /// Query "Is Counter-Clockwise" attribute
     pub fn is_ccw(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Faceted_is_ccw(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Faceted_is_ccw(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:66 - `VrmlData_Faceted::IsSolid()`
     ///
     /// Query "Is Solid" attribute
     pub fn is_solid(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Faceted_is_solid(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Faceted_is_solid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:71 - `VrmlData_Faceted::IsConvex()`
     ///
     /// Query "Is Convex" attribute
     pub fn is_convex(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Faceted_is_convex(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Faceted_is_convex(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:76 - `VrmlData_Faceted::CreaseAngle()`
     ///
     /// Query the Crease Angle
     pub fn crease_angle(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Faceted_crease_angle(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_crease_angle(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:81 - `VrmlData_Faceted::SetCCW()`
     ///
     /// Set "Is Counter-Clockwise" attribute
     pub fn set_ccw(&mut self, theValue: bool) {
-        unsafe { crate::ffi::VrmlData_Faceted_set_ccw(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::VrmlData_Faceted_set_ccw(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:86 - `VrmlData_Faceted::SetSolid()`
     ///
     /// Set "Is Solid" attribute
     pub fn set_solid(&mut self, theValue: bool) {
-        unsafe { crate::ffi::VrmlData_Faceted_set_solid(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::VrmlData_Faceted_set_solid(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:91 - `VrmlData_Faceted::SetConvex()`
     ///
     /// Set "Is Convex" attribute
     pub fn set_convex(&mut self, theValue: bool) {
-        unsafe { crate::ffi::VrmlData_Faceted_set_convex(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::VrmlData_Faceted_set_convex(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:96 - `VrmlData_Faceted::SetCreaseAngle()`
     ///
     /// Set "Is Convex" attribute
     pub fn set_crease_angle(&mut self, theValue: f64) {
-        unsafe { crate::ffi::VrmlData_Faceted_set_crease_angle(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::VrmlData_Faceted_set_crease_angle(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Faceted_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Faceted_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Faceted_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_as_VrmlData_Geometry(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::VrmlData_Faceted_as_VrmlData_Geometry_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_as_VrmlData_Geometry_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Faceted_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Faceted_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Faceted_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Geometry.hxx`:53 - `VrmlData_Geometry::TShape()`
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_inherited_TShape(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_TShape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Faceted_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -2539,42 +3485,48 @@ impl Faceted {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Faceted_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Faceted_inherited_Read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Faceted_inherited_Read(self as *mut Self, theBuffer)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Faceted_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -2583,54 +3535,87 @@ impl Faceted {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Faceted_inherited_Clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_Clone(self as *const Self, arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Faceted_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Faceted_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Faceted_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Faceted_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Faceted_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Faceted_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Faceted_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Faceted_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2645,38 +3630,52 @@ unsafe impl crate::CppDeletable for HandleVrmlDataFaceted {
 impl HandleVrmlDataFaceted {
     /// Dereference this Handle to access the underlying VrmlData_Faceted
     pub fn get(&self) -> &crate::ffi::VrmlData_Faceted {
-        unsafe { &*(crate::ffi::HandleVrmlDataFaceted_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataFaceted_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Faceted
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Faceted {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataFaceted_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataFaceted_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Faceted> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataFaceted_to_HandleVrmlDataGeometry(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataFaceted_to_HandleVrmlDataGeometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Faceted> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataFaceted_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataFaceted_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Faceted> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataFaceted_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataFaceted_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2691,6 +3690,7 @@ impl HandleVrmlDataFaceted {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2721,53 +3721,90 @@ impl Geometry {
     /// Query the shape. This method checks the flag myIsModified; if True it
     /// should rebuild the shape presentation.
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_Geometry_t_shape(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Geometry_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Geometry_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Geometry_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Geometry_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Geometry_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Geometry_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Geometry_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Geometry_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Geometry_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_Geometry_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Geometry_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Geometry_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -2777,42 +3814,49 @@ impl Geometry {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Geometry_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Geometry_inherited_Read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Geometry_inherited_Read(self as *mut Self, theBuffer)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Geometry_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Geometry_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -2821,54 +3865,87 @@ impl Geometry {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Geometry_inherited_Clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_inherited_Clone(self as *const Self, arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Geometry_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Geometry_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Geometry_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Geometry_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Geometry_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Geometry_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Geometry_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Geometry_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2883,29 +3960,41 @@ unsafe impl crate::CppDeletable for HandleVrmlDataGeometry {
 impl HandleVrmlDataGeometry {
     /// Dereference this Handle to access the underlying VrmlData_Geometry
     pub fn get(&self) -> &crate::ffi::VrmlData_Geometry {
-        unsafe { &*(crate::ffi::HandleVrmlDataGeometry_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataGeometry_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Geometry
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Geometry {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataGeometry_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataGeometry_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Geometry> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataGeometry_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataGeometry_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Geometry> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataGeometry_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataGeometry_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2916,6 +4005,7 @@ impl HandleVrmlDataGeometry {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataBox(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2930,6 +4020,7 @@ impl HandleVrmlDataGeometry {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCone(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2948,6 +4039,7 @@ impl HandleVrmlDataGeometry {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2966,6 +4058,7 @@ impl HandleVrmlDataGeometry {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2984,6 +4077,7 @@ impl HandleVrmlDataGeometry {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3002,6 +4096,7 @@ impl HandleVrmlDataGeometry {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3016,6 +4111,7 @@ impl HandleVrmlDataGeometry {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataSphere(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3048,7 +4144,11 @@ impl Group {
     /// @param theAlloc
     /// Allocator used for the list of children
     pub fn new_bool(isTransform: bool) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Group_ctor_bool(isTransform)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_ctor_bool(isTransform) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:58 - `VrmlData_Group::VrmlData_Group()`
@@ -3066,12 +4166,16 @@ impl Group {
         isTransform: bool,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Group_ctor_scene_charptr_bool(
-                theScene,
-                c_theName.as_ptr(),
-                isTransform,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_ctor_scene_charptr_bool(
+                    theScene,
+                    c_theName.as_ptr(),
+                    isTransform,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3112,7 +4216,12 @@ impl Group {
         &mut self,
         theNode: &crate::ffi::HandleVrmlDataNode,
     ) -> &mut crate::ffi::HandleVrmlDataNode {
-        unsafe { &mut *(crate::ffi::VrmlData_Group_add_node(self as *mut Self, theNode)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_add_node(self as *mut Self, theNode) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:75 - `VrmlData_Group::RemoveNode()`
@@ -3121,15 +4230,22 @@ impl Group {
     /// @return
     /// True if the node was located and removed, False if none removed.
     pub fn remove_node(&mut self, theNode: &crate::ffi::HandleVrmlDataNode) -> bool {
-        unsafe { crate::ffi::VrmlData_Group_remove_node(self as *mut Self, theNode) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_remove_node(self as *mut Self, theNode) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:80 - `VrmlData_Group::NodeIterator()`
     ///
     /// Create iterator on nodes belonging to the Group.
     pub fn node_iterator(&self) -> crate::OwnedPtr<crate::ffi::VrmlData_Group_Iterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Group_node_iterator(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_node_iterator(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3137,14 +4253,21 @@ impl Group {
     ///
     /// Query the bounding box.
     pub fn box_(&self) -> &crate::bnd::B3f {
-        unsafe { &*(crate::ffi::VrmlData_Group_box_(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_box_(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:90 - `VrmlData_Group::SetBox()`
     ///
     /// Set the bounding box.
     pub fn set_box(&mut self, theBox: &crate::bnd::B3f) {
-        unsafe { crate::ffi::VrmlData_Group_set_box(self as *mut Self, theBox) }
+        {
+            unsafe { crate::ffi::VrmlData_Group_set_box(self as *mut Self, theBox) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:96 - `VrmlData_Group::SetTransform()`
@@ -3152,7 +4275,12 @@ impl Group {
     /// Set the transformation. Returns True if the group is Transform type,
     /// otherwise do nothing and return False.
     pub fn set_transform(&mut self, theTrsf: &crate::gp::Trsf) -> bool {
-        unsafe { crate::ffi::VrmlData_Group_set_transform(self as *mut Self, theTrsf) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_set_transform(self as *mut Self, theTrsf) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:102 - `VrmlData_Group::GetTransform()`
@@ -3160,14 +4288,22 @@ impl Group {
     /// Query the transform value.
     /// For group without transformation this always returns Identity
     pub fn get_transform(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::VrmlData_Group_get_transform(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_get_transform(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:107 - `VrmlData_Group::IsTransform()`
     ///
     /// Query if the node is Transform type.
     pub fn is_transform(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Group_is_transform(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_is_transform(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:114 - `VrmlData_Group::Clone()`
@@ -3179,11 +4315,11 @@ impl Group {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Group_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3191,12 +4327,10 @@ impl Group {
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Group_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -3205,12 +4339,12 @@ impl Group {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Group_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -3227,12 +4361,16 @@ impl Group {
         theLocation: &mut crate::gp::Trsf,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Group_find_node(
-                self as *const Self,
-                c_theName.as_ptr(),
-                theLocation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_find_node(
+                    self as *const Self,
+                    c_theName.as_ptr(),
+                    theLocation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3244,58 +4382,100 @@ impl Group {
         theShape: &mut crate::topo_ds::Shape,
         pMapApp: &mut crate::ffi::VrmlData_DataMapOfShapeAppearance,
     ) {
-        unsafe { crate::ffi::VrmlData_Group_shape(self as *mut Self, theShape, pMapApp as *mut _) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Group_shape(self as *mut Self, theShape, pMapApp as *mut _)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Group_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Group_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Group_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Group_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Group_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Group_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Group_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGroup> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Group_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Group_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Group_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -3305,72 +4485,111 @@ impl Group {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Group_inherited_ReadNode(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_inherited_ReadNode(
+                    self as *mut Self,
+                    theBuffer,
+                    theNode,
+                    Type,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Group_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Group_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Group_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Group_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Group_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Group_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Group_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Group_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Group_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Group_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Group_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Group_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Group_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3385,29 +4604,41 @@ unsafe impl crate::CppDeletable for HandleVrmlDataGroup {
 impl HandleVrmlDataGroup {
     /// Dereference this Handle to access the underlying VrmlData_Group
     pub fn get(&self) -> &crate::ffi::VrmlData_Group {
-        unsafe { &*(crate::ffi::HandleVrmlDataGroup_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataGroup_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Group
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Group {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataGroup_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataGroup_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Group> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataGroup_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataGroup_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Group> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataGroup_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataGroup_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3432,7 +4663,11 @@ impl ImageTexture {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ImageTexture_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ImageTexture_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ImageTexture.hxx`:37 - `VrmlData_ImageTexture::VrmlData_ImageTexture()`
@@ -3447,14 +4682,18 @@ impl ImageTexture {
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         let c_theURL = std::ffi::CString::new(theURL).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ImageTexture_ctor_scene_charptr2_bool2(
-                theScene,
-                c_theName.as_ptr(),
-                c_theURL.as_ptr(),
-                theRepS,
-                theRepT,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_ctor_scene_charptr2_bool2(
+                    theScene,
+                    c_theName.as_ptr(),
+                    c_theURL.as_ptr(),
+                    theRepS,
+                    theRepT,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3485,7 +4724,11 @@ impl ImageTexture {
     ///
     /// Query the associated URL.
     pub fn url(&self) -> &crate::ffi::TColStd_ListOfAsciiString {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_url(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ImageTexture_url(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ImageTexture.hxx`:53 - `VrmlData_ImageTexture::Clone()`
@@ -3497,11 +4740,11 @@ impl ImageTexture {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ImageTexture_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3509,12 +4752,11 @@ impl ImageTexture {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ImageTexture_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -3523,65 +4765,105 @@ impl ImageTexture {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ImageTexture_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_ImageTexture_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ImageTexture_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ImageTexture_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Texture
     pub fn as_texture(&self) -> &Texture {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_as_VrmlData_Texture(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_as_VrmlData_Texture(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Texture (mutable)
     pub fn as_texture_mut(&mut self) -> &mut Texture {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_ImageTexture_as_VrmlData_Texture_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_as_VrmlData_Texture_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_ImageTexture_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_as_VrmlData_Node_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_ImageTexture_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3589,38 +4871,61 @@ impl ImageTexture {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataImageTexture> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ImageTexture_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ImageTexture_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Texture.hxx`:54 - `VrmlData_Texture::RepeatS()`
     pub fn repeat_s(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_ImageTexture_inherited_RepeatS(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_inherited_RepeatS(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Texture.hxx`:59 - `VrmlData_Texture::RepeatT()`
     pub fn repeat_t(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_ImageTexture_inherited_RepeatT(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_inherited_RepeatT(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Texture.hxx`:64 - `VrmlData_Texture::SetRepeatS()`
     pub fn set_repeat_s(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::VrmlData_ImageTexture_inherited_SetRepeatS(self as *mut Self, theFlag)
+        {
+            unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_SetRepeatS(self as *mut Self, theFlag)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Texture.hxx`:69 - `VrmlData_Texture::SetRepeatT()`
     pub fn set_repeat_t(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::VrmlData_ImageTexture_inherited_SetRepeatT(self as *mut Self, theFlag)
+        {
+            unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_SetRepeatT(self as *mut Self, theFlag)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_ImageTexture_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ImageTexture_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -3630,81 +4935,116 @@ impl ImageTexture {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_ImageTexture_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_ImageTexture_inherited_IsDefault(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_IsDefault(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_ImageTexture_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_ImageTexture_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_ImageTexture_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_ImageTexture_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_ImageTexture_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::VrmlData_ImageTexture_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_ImageTexture_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ImageTexture_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_ImageTexture_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_ImageTexture_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3719,42 +5059,56 @@ unsafe impl crate::CppDeletable for HandleVrmlDataImageTexture {
 impl HandleVrmlDataImageTexture {
     /// Dereference this Handle to access the underlying VrmlData_ImageTexture
     pub fn get(&self) -> &crate::ffi::VrmlData_ImageTexture {
-        unsafe { &*(crate::ffi::HandleVrmlDataImageTexture_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataImageTexture_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_ImageTexture
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_ImageTexture {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataImageTexture_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataImageTexture_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<VrmlData_Texture>
     pub fn to_handle_texture(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataTexture> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataImageTexture_to_HandleVrmlDataTexture(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataImageTexture_to_HandleVrmlDataTexture(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataImageTexture_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataImageTexture_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataImageTexture_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3777,7 +5131,11 @@ unsafe impl crate::CppDeletable for InBuffer {
 impl InBuffer {
     /// **Source:** `VrmlData_InBuffer.hxx`:31 - `VrmlData_InBuffer::VrmlData_InBuffer()`
     pub fn new_istream(theStream: &mut crate::ffi::Standard_IStream) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_InBuffer_ctor_istream(theStream)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_InBuffer_ctor_istream(theStream) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -3801,7 +5159,11 @@ impl IndexedFaceSet {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedFaceSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedFaceSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:55 - `VrmlData_IndexedFaceSet::VrmlData_IndexedFaceSet()`
@@ -3816,8 +5178,8 @@ impl IndexedFaceSet {
         theCreaseAngle: f64,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_IndexedFaceSet_ctor_scene_charptr_bool3_real(
                     theScene,
                     c_theName.as_ptr(),
@@ -3825,8 +5187,10 @@ impl IndexedFaceSet {
                     isSolid,
                     isConvex,
                     theCreaseAngle,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3877,35 +5241,61 @@ impl IndexedFaceSet {
     ///
     /// Query the Normals.
     pub fn normals(&self) -> &crate::ffi::HandleVrmlDataNormal {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_normals(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_normals(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:83 - `VrmlData_IndexedFaceSet::Colors()`
     ///
     /// Query the Colors.
     pub fn colors(&self) -> &crate::ffi::HandleVrmlDataColor {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_colors(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_colors(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:88 - `VrmlData_IndexedFaceSet::TextureCoords()`
     ///
     /// Query the Texture Coordinates.
     pub fn texture_coords(&self) -> &crate::ffi::HandleVrmlDataTextureCoordinate {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_texture_coords(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_texture_coords(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:95 - `VrmlData_IndexedFaceSet::Coordinates()`
     ///
     /// Query the Coordinates.
     pub fn coordinates(&self) -> &crate::ffi::HandleVrmlDataCoordinate {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_coordinates(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_coordinates(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:100 - `VrmlData_IndexedFaceSet::Polygons()`
     ///
     /// Query the array of polygons
     pub unsafe fn polygons(&self, arrPolygons: &mut *mut *const i32) -> usize {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_polygons(self as *const Self, arrPolygons) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_polygons(self as *const Self, arrPolygons)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:115 - `VrmlData_IndexedFaceSet::Polygon()`
@@ -3918,26 +5308,40 @@ impl IndexedFaceSet {
     /// @return
     /// number of vertice in the polygon - the dimension of outIndice array
     pub unsafe fn polygon(&mut self, iFace: i32, outIndice: &mut *const i32) -> i32 {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_polygon(self as *mut Self, iFace, outIndice) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_polygon(self as *mut Self, iFace, outIndice)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:123 - `VrmlData_IndexedFaceSet::SetCoordinates()`
     ///
     /// Set the nodes
     pub fn set_coordinates(&mut self, theCoord: &crate::ffi::HandleVrmlDataCoordinate) {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_set_coordinates(self as *mut Self, theCoord) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_coordinates(self as *mut Self, theCoord)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:128 - `VrmlData_IndexedFaceSet::SetPolygons()`
     ///
     /// Set the polygons
     pub unsafe fn set_polygons(&mut self, nPolygons: usize, thePolygons: *mut *const i32) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_set_polygons(
-                self as *mut Self,
-                nPolygons,
-                thePolygons,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_polygons(
+                    self as *mut Self,
+                    nPolygons,
+                    thePolygons,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3949,8 +5353,15 @@ impl IndexedFaceSet {
     /// @return
     /// Number of integers in the array arrNormalInd.
     pub unsafe fn array_normal_ind(&self, arrNormalInd: &mut *mut *const i32) -> usize {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_array_normal_ind(self as *const Self, arrNormalInd)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_array_normal_ind(
+                    self as *const Self,
+                    arrNormalInd,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3965,8 +5376,16 @@ impl IndexedFaceSet {
     /// @return
     /// number of indice in the array - the dimension of outIndice array
     pub unsafe fn indice_normals(&mut self, iFace: i32, outIndice: &mut *const i32) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_indice_normals(self as *mut Self, iFace, outIndice)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_indice_normals(
+                    self as *mut Self,
+                    iFace,
+                    outIndice,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3983,12 +5402,12 @@ impl IndexedFaceSet {
     /// @return
     /// Normal vector; if the normal is indefinite then returns (0., 0., 0.)
     pub fn get_normal(&mut self, iFace: i32, iVertex: i32) -> crate::OwnedPtr<crate::gp::XYZ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedFaceSet_get_normal(
-                self as *mut Self,
-                iFace,
-                iVertex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_get_normal(self as *mut Self, iFace, iVertex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3996,12 +5415,15 @@ impl IndexedFaceSet {
     ///
     /// Set the normals array of indice
     pub unsafe fn set_normal_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_set_normal_ind(
-                self as *mut Self,
-                nIndice,
-                theIndice,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_normal_ind(
+                    self as *mut Self,
+                    nIndice,
+                    theIndice,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4009,18 +5431,26 @@ impl IndexedFaceSet {
     ///
     /// Set the normals node
     pub fn set_normals(&mut self, theNormals: &crate::ffi::HandleVrmlDataNormal) {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_set_normals(self as *mut Self, theNormals) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_normals(self as *mut Self, theNormals)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:197 - `VrmlData_IndexedFaceSet::SetNormalPerVertex()`
     ///
     /// Set the boolean value "normalPerVertex"
     pub fn set_normal_per_vertex(&mut self, isNormalPerVertex: bool) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_set_normal_per_vertex(
-                self as *mut Self,
-                isNormalPerVertex,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_normal_per_vertex(
+                    self as *mut Self,
+                    isNormalPerVertex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4032,8 +5462,15 @@ impl IndexedFaceSet {
     /// @return
     /// Number of integers in the array arrColorInd.
     pub unsafe fn array_color_ind(&self, arrColorInd: &mut *mut *const i32) -> usize {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_array_color_ind(self as *const Self, arrColorInd)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_array_color_ind(
+                    self as *const Self,
+                    arrColorInd,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4054,12 +5491,12 @@ impl IndexedFaceSet {
         iFace: i32,
         iVertex: i32,
     ) -> crate::OwnedPtr<crate::quantity::Color> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedFaceSet_get_color(
-                self as *mut Self,
-                iFace,
-                iVertex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_get_color(self as *mut Self, iFace, iVertex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4067,8 +5504,15 @@ impl IndexedFaceSet {
     ///
     /// Set the colors array of indice
     pub unsafe fn set_color_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_set_color_ind(self as *mut Self, nIndice, theIndice)
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_color_ind(
+                    self as *mut Self,
+                    nIndice,
+                    theIndice,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4076,18 +5520,24 @@ impl IndexedFaceSet {
     ///
     /// Set the Color node
     pub fn set_colors(&mut self, theColors: &crate::ffi::HandleVrmlDataColor) {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_set_colors(self as *mut Self, theColors) }
+        {
+            unsafe { crate::ffi::VrmlData_IndexedFaceSet_set_colors(self as *mut Self, theColors) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:250 - `VrmlData_IndexedFaceSet::SetColorPerVertex()`
     ///
     /// Set the boolean value "colorPerVertex"
     pub fn set_color_per_vertex(&mut self, isColorPerVertex: bool) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_set_color_per_vertex(
-                self as *mut Self,
-                isColorPerVertex,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_color_per_vertex(
+                    self as *mut Self,
+                    isColorPerVertex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4102,11 +5552,15 @@ impl IndexedFaceSet {
         &self,
         arrTextureCoordInd: &mut *mut *const i32,
     ) -> usize {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_array_texture_coord_ind(
-                self as *const Self,
-                arrTextureCoordInd,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_array_texture_coord_ind(
+                    self as *const Self,
+                    arrTextureCoordInd,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4114,12 +5568,15 @@ impl IndexedFaceSet {
     ///
     /// Set the TexCoordiante array of indice
     pub unsafe fn set_texture_coord_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_set_texture_coord_ind(
-                self as *mut Self,
-                nIndice,
-                theIndice,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_texture_coord_ind(
+                    self as *mut Self,
+                    nIndice,
+                    theIndice,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4127,7 +5584,12 @@ impl IndexedFaceSet {
     ///
     /// Set the Texture Coordinate node
     pub fn set_texture_coords(&mut self, tc: &crate::ffi::HandleVrmlDataTextureCoordinate) {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_set_texture_coords(self as *mut Self, tc) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_set_texture_coords(self as *mut Self, tc)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:289 - `VrmlData_IndexedFaceSet::TShape()`
@@ -4135,7 +5597,12 @@ impl IndexedFaceSet {
     /// Query the shape. This method checks the flag myIsModified; if True it
     /// should rebuild the shape presentation.
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_t_shape(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:296 - `VrmlData_IndexedFaceSet::Clone()`
@@ -4147,11 +5614,11 @@ impl IndexedFaceSet {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedFaceSet_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4159,12 +5626,11 @@ impl IndexedFaceSet {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_IndexedFaceSet_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -4173,12 +5639,12 @@ impl IndexedFaceSet {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_IndexedFaceSet_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -4186,75 +5652,127 @@ impl IndexedFaceSet {
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_IndexedFaceSet_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedFaceSet_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedFaceSet_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Faceted
     pub fn as_faceted(&self) -> &Faceted {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Faceted(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Faceted(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Faceted (mutable)
     pub fn as_faceted_mut(&mut self) -> &mut Faceted {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Faceted_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Faceted_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Geometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Geometry_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Geometry_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Node(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Node_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_VrmlData_Node_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::VrmlData_IndexedFaceSet_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedFaceSet_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4262,63 +5780,107 @@ impl IndexedFaceSet {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataIndexedFaceSet> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedFaceSet_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedFaceSet_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:61 - `VrmlData_Faceted::IsCCW()`
     pub fn is_ccw(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_IsCCW(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_IsCCW(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:66 - `VrmlData_Faceted::IsSolid()`
     pub fn is_solid(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_IsSolid(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_IsSolid(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:71 - `VrmlData_Faceted::IsConvex()`
     pub fn is_convex(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_IsConvex(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_IsConvex(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:76 - `VrmlData_Faceted::CreaseAngle()`
     pub fn crease_angle(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_CreaseAngle(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_CreaseAngle(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:81 - `VrmlData_Faceted::SetCCW()`
     pub fn set_ccw(&mut self, theValue: bool) {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_SetCCW(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_SetCCW(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:86 - `VrmlData_Faceted::SetSolid()`
     pub fn set_solid(&mut self, theValue: bool) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_SetSolid(self as *mut Self, theValue)
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_SetSolid(self as *mut Self, theValue)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:91 - `VrmlData_Faceted::SetConvex()`
     pub fn set_convex(&mut self, theValue: bool) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_SetConvex(self as *mut Self, theValue)
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_SetConvex(self as *mut Self, theValue)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:96 - `VrmlData_Faceted::SetCreaseAngle()`
     pub fn set_crease_angle(&mut self, theValue: f64) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_SetCreaseAngle(
-                self as *mut Self,
-                theValue,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_SetCreaseAngle(
+                    self as *mut Self,
+                    theValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_IndexedFaceSet_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -4328,78 +5890,108 @@ impl IndexedFaceSet {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_IndexedFaceSet_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_IndexedFaceSet_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_IndexedFaceSet_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedFaceSet_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4414,53 +6006,71 @@ unsafe impl crate::CppDeletable for HandleVrmlDataIndexedFaceSet {
 impl HandleVrmlDataIndexedFaceSet {
     /// Dereference this Handle to access the underlying VrmlData_IndexedFaceSet
     pub fn get(&self) -> &crate::ffi::VrmlData_IndexedFaceSet {
-        unsafe { &*(crate::ffi::HandleVrmlDataIndexedFaceSet_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataIndexedFaceSet_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_IndexedFaceSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_IndexedFaceSet {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataIndexedFaceSet_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataIndexedFaceSet_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Faceted>
     pub fn to_handle_faceted(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataFaceted> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataFaceted(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataGeometry(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataNode(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataIndexedFaceSet_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4485,7 +6095,11 @@ impl IndexedLineSet {
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedLineSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedLineSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:49 - `VrmlData_IndexedLineSet::VrmlData_IndexedLineSet()`
@@ -4497,12 +6111,16 @@ impl IndexedLineSet {
         isColorPerVertex: bool,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedLineSet_ctor_scene_charptr_bool(
-                theScene,
-                c_theName.as_ptr(),
-                isColorPerVertex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_ctor_scene_charptr_bool(
+                    theScene,
+                    c_theName.as_ptr(),
+                    isColorPerVertex,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4517,35 +6135,59 @@ impl IndexedLineSet {
     ///
     /// Query the Coordinates.
     pub fn coordinates(&self) -> &crate::ffi::HandleVrmlDataCoordinate {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_coordinates(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_coordinates(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:69 - `VrmlData_IndexedLineSet::SetCoordinates()`
     ///
     /// Set the nodes
     pub fn set_coordinates(&mut self, theCoord: &crate::ffi::HandleVrmlDataCoordinate) {
-        unsafe { crate::ffi::VrmlData_IndexedLineSet_set_coordinates(self as *mut Self, theCoord) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_set_coordinates(self as *mut Self, theCoord)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:74 - `VrmlData_IndexedLineSet::Colors()`
     ///
     /// Query the Colors.
     pub fn colors(&self) -> &crate::ffi::HandleVrmlDataColor {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_colors(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_colors(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:79 - `VrmlData_IndexedLineSet::SetColors()`
     ///
     /// Set the Color node
     pub fn set_colors(&mut self, theColors: &crate::ffi::HandleVrmlDataColor) {
-        unsafe { crate::ffi::VrmlData_IndexedLineSet_set_colors(self as *mut Self, theColors) }
+        {
+            unsafe { crate::ffi::VrmlData_IndexedLineSet_set_colors(self as *mut Self, theColors) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:86 - `VrmlData_IndexedLineSet::Polygons()`
     ///
     /// Query the array of polygons
     pub unsafe fn polygons(&self, arrPolygons: &mut *mut *const i32) -> usize {
-        unsafe { crate::ffi::VrmlData_IndexedLineSet_polygons(self as *const Self, arrPolygons) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_polygons(self as *const Self, arrPolygons)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:101 - `VrmlData_IndexedLineSet::Polygon()`
@@ -4558,8 +6200,12 @@ impl IndexedLineSet {
     /// @return
     /// number of vertice in the polygon - the dimension of outIndice array
     pub unsafe fn polygon(&mut self, iPolygon: i32, outIndice: &mut *const i32) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_polygon(self as *mut Self, iPolygon, outIndice)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_polygon(self as *mut Self, iPolygon, outIndice)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4567,12 +6213,15 @@ impl IndexedLineSet {
     ///
     /// Set the polygons
     pub unsafe fn set_polygons(&mut self, nPolygons: usize, thePolygons: *mut *const i32) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_set_polygons(
-                self as *mut Self,
-                nPolygons,
-                thePolygons,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_set_polygons(
+                    self as *mut Self,
+                    nPolygons,
+                    thePolygons,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4584,8 +6233,15 @@ impl IndexedLineSet {
     /// @return
     /// Number of integers in the array arrColorInd.
     pub unsafe fn array_color_ind(&self, arrColorInd: &mut *mut *const i32) -> usize {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_array_color_ind(self as *const Self, arrColorInd)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_array_color_ind(
+                    self as *const Self,
+                    arrColorInd,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4606,12 +6262,12 @@ impl IndexedLineSet {
         iFace: i32,
         iVertex: i32,
     ) -> crate::OwnedPtr<crate::quantity::Color> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedLineSet_get_color(
-                self as *mut Self,
-                iFace,
-                iVertex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_get_color(self as *mut Self, iFace, iVertex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4619,8 +6275,15 @@ impl IndexedLineSet {
     ///
     /// Set the colors array of indice
     pub unsafe fn set_color_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_set_color_ind(self as *mut Self, nIndice, theIndice)
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_set_color_ind(
+                    self as *mut Self,
+                    nIndice,
+                    theIndice,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4628,11 +6291,14 @@ impl IndexedLineSet {
     ///
     /// Set the boolean value "colorPerVertex"
     pub fn set_color_per_vertex(&mut self, isColorPerVertex: bool) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_set_color_per_vertex(
-                self as *mut Self,
-                isColorPerVertex,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_set_color_per_vertex(
+                    self as *mut Self,
+                    isColorPerVertex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4641,7 +6307,12 @@ impl IndexedLineSet {
     /// Query the shape. This method checks the flag myIsModified; if True it
     /// should rebuild the shape presentation.
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_t_shape(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:174 - `VrmlData_IndexedLineSet::Clone()`
@@ -4653,11 +6324,11 @@ impl IndexedLineSet {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedLineSet_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4665,12 +6336,11 @@ impl IndexedLineSet {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_IndexedLineSet_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -4679,12 +6349,12 @@ impl IndexedLineSet {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_IndexedLineSet_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -4692,63 +6362,105 @@ impl IndexedLineSet {
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_IndexedLineSet_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_IndexedLineSet_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedLineSet_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedLineSet_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Geometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Geometry_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Geometry_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Node(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Node_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_as_VrmlData_Node_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::VrmlData_IndexedLineSet_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_IndexedLineSet_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4756,14 +6468,21 @@ impl IndexedLineSet {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataIndexedLineSet> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_IndexedLineSet_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_IndexedLineSet_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_IndexedLineSet_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -4773,78 +6492,108 @@ impl IndexedLineSet {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_IndexedLineSet_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_IndexedLineSet_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_IndexedLineSet_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_IndexedLineSet_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_IndexedLineSet_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_IndexedLineSet_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_IndexedLineSet_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_IndexedLineSet_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4859,42 +6608,58 @@ unsafe impl crate::CppDeletable for HandleVrmlDataIndexedLineSet {
 impl HandleVrmlDataIndexedLineSet {
     /// Dereference this Handle to access the underlying VrmlData_IndexedLineSet
     pub fn get(&self) -> &crate::ffi::VrmlData_IndexedLineSet {
-        unsafe { &*(crate::ffi::HandleVrmlDataIndexedLineSet_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataIndexedLineSet_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_IndexedLineSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_IndexedLineSet {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataIndexedLineSet_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataIndexedLineSet_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataIndexedLineSet_to_HandleVrmlDataGeometry(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataIndexedLineSet_to_HandleVrmlDataNode(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataIndexedLineSet_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataIndexedLineSet_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4919,7 +6684,11 @@ impl Material {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Material_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Material_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:38 - `VrmlData_Material::VrmlData_Material()`
@@ -4933,14 +6702,18 @@ impl Material {
         theTransparency: f64,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Material_ctor_scene_charptr_real3(
-                theScene,
-                c_theName.as_ptr(),
-                theAmbientIntensity,
-                theShininess,
-                theTransparency,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_ctor_scene_charptr_real3(
+                    theScene,
+                    c_theName.as_ptr(),
+                    theAmbientIntensity,
+                    theShininess,
+                    theTransparency,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4978,60 +6751,97 @@ impl Material {
     ///
     /// Query the Ambient Intensity value
     pub fn ambient_intensity(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Material_ambient_intensity(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_ambient_intensity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:52 - `VrmlData_Material::Shininess()`
     ///
     /// Query the Shininess value
     pub fn shininess(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Material_shininess(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Material_shininess(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:57 - `VrmlData_Material::Transparency()`
     ///
     /// Query the Transparency value
     pub fn transparency(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Material_transparency(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_transparency(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:62 - `VrmlData_Material::AmbientColor()`
     ///
     /// Query the Ambient color
     pub fn ambient_color(&self) -> &crate::quantity::Color {
-        unsafe { &*(crate::ffi::VrmlData_Material_ambient_color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_ambient_color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:67 - `VrmlData_Material::DiffuseColor()`
     ///
     /// Query the Diffuse color
     pub fn diffuse_color(&self) -> &crate::quantity::Color {
-        unsafe { &*(crate::ffi::VrmlData_Material_diffuse_color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_diffuse_color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:72 - `VrmlData_Material::EmissiveColor()`
     ///
     /// Query the Emissive color
     pub fn emissive_color(&self) -> &crate::quantity::Color {
-        unsafe { &*(crate::ffi::VrmlData_Material_emissive_color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_emissive_color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:77 - `VrmlData_Material::SpecularColor()`
     ///
     /// Query the Specular color
     pub fn specular_color(&self) -> &crate::quantity::Color {
-        unsafe { &*(crate::ffi::VrmlData_Material_specular_color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_specular_color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:82 - `VrmlData_Material::SetAmbientIntensity()`
     ///
     /// Set the Ambient Intensity value
     pub fn set_ambient_intensity(&mut self, theAmbientIntensity: f64) {
-        unsafe {
-            crate::ffi::VrmlData_Material_set_ambient_intensity(
-                self as *mut Self,
-                theAmbientIntensity,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_Material_set_ambient_intensity(
+                    self as *mut Self,
+                    theAmbientIntensity,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5039,15 +6849,21 @@ impl Material {
     ///
     /// Set the Shininess value
     pub fn set_shininess(&mut self, theShininess: f64) {
-        unsafe { crate::ffi::VrmlData_Material_set_shininess(self as *mut Self, theShininess) }
+        {
+            unsafe { crate::ffi::VrmlData_Material_set_shininess(self as *mut Self, theShininess) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:95 - `VrmlData_Material::SetTransparency()`
     ///
     /// Set the Transparency value
     pub fn set_transparency(&mut self, theTransparency: f64) {
-        unsafe {
-            crate::ffi::VrmlData_Material_set_transparency(self as *mut Self, theTransparency)
+        {
+            unsafe {
+                crate::ffi::VrmlData_Material_set_transparency(self as *mut Self, theTransparency)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5055,28 +6871,44 @@ impl Material {
     ///
     /// Query the Ambient color
     pub fn set_ambient_color(&mut self, theColor: &crate::quantity::Color) {
-        unsafe { crate::ffi::VrmlData_Material_set_ambient_color(self as *mut Self, theColor) }
+        {
+            unsafe { crate::ffi::VrmlData_Material_set_ambient_color(self as *mut Self, theColor) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:108 - `VrmlData_Material::SetDiffuseColor()`
     ///
     /// Query the Diffuse color
     pub fn set_diffuse_color(&mut self, theColor: &crate::quantity::Color) {
-        unsafe { crate::ffi::VrmlData_Material_set_diffuse_color(self as *mut Self, theColor) }
+        {
+            unsafe { crate::ffi::VrmlData_Material_set_diffuse_color(self as *mut Self, theColor) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:113 - `VrmlData_Material::SetEmissiveColor()`
     ///
     /// Query the Emissive color
     pub fn set_emissive_color(&mut self, theColor: &crate::quantity::Color) {
-        unsafe { crate::ffi::VrmlData_Material_set_emissive_color(self as *mut Self, theColor) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Material_set_emissive_color(self as *mut Self, theColor)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:118 - `VrmlData_Material::SetSpecularColor()`
     ///
     /// Query the Specular color
     pub fn set_specular_color(&mut self, theColor: &crate::quantity::Color) {
-        unsafe { crate::ffi::VrmlData_Material_set_specular_color(self as *mut Self, theColor) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Material_set_specular_color(self as *mut Self, theColor)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:125 - `VrmlData_Material::Clone()`
@@ -5088,11 +6920,11 @@ impl Material {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Material_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5100,12 +6932,11 @@ impl Material {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Material_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5114,12 +6945,12 @@ impl Material {
     /// Write the Node to the Scene output.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Material_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5127,47 +6958,79 @@ impl Material {
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Material_is_default(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Material_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Material_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Material_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Material_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Material_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Material_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Material_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Material_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Material_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_Material_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -5175,14 +7038,21 @@ impl Material {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataMaterial> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Material_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Material_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Material_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -5192,69 +7062,104 @@ impl Material {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Material_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Material_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Material_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Material_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Material_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Material_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Material_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Material_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Material_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Material_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Material_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Material_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Material_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5269,29 +7174,41 @@ unsafe impl crate::CppDeletable for HandleVrmlDataMaterial {
 impl HandleVrmlDataMaterial {
     /// Dereference this Handle to access the underlying VrmlData_Material
     pub fn get(&self) -> &crate::ffi::VrmlData_Material {
-        unsafe { &*(crate::ffi::HandleVrmlDataMaterial_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataMaterial_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Material
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Material {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataMaterial_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataMaterial_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Material> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataMaterial_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataMaterial_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Material> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataMaterial_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataMaterial_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -5316,17 +7233,21 @@ impl Node {
     ///
     /// Query the Scene that contains this Node
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Node_scene(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:58 - `VrmlData_Node::Name()`
     ///
     /// Query the name
     pub fn name(&self) -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Node_name(self as *const Self))
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5347,14 +7268,12 @@ impl Node {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_read_node(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Node_read_node(self as *mut Self, theBuffer, theNode, Type)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5362,12 +7281,10 @@ impl Node {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5376,12 +7293,12 @@ impl Node {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Node_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5389,18 +7306,21 @@ impl Node {
     ///
     /// Returns True if the node is default, then it would not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Node_is_default(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     ///
     /// Write the closing brace in the end of a node output.
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_write_closing(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_write_closing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5415,14 +7335,20 @@ impl Node {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Node_clone(self as *const Self, arg0))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_clone(self as *const Self, arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Node_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:107 - `VrmlData_Node::ReadBoolean()`
@@ -5432,11 +7358,10 @@ impl Node {
         theBuffer: &mut InBuffer,
         theResult: &mut bool,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_read_boolean(
-                theBuffer, theResult,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_read_boolean(theBuffer, theResult) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5447,11 +7372,10 @@ impl Node {
         theBuffer: &mut InBuffer,
         theRes: &mut crate::t_collection::AsciiString,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_read_string(
-                theBuffer, theRes,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_read_string(theBuffer, theRes) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5462,11 +7386,11 @@ impl Node {
         theBuffer: &mut InBuffer,
         theRes: &mut crate::ffi::TColStd_ListOfAsciiString,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_read_multi_string(
-                theBuffer, theRes,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Node_read_multi_string(theBuffer, theRes) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -5477,17 +7401,20 @@ impl Node {
         theBuffer: &mut InBuffer,
         theResult: &mut std::ffi::c_long,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Node_read_integer(
-                theBuffer, theResult,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_read_integer(theBuffer, theResult) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:129 - `VrmlData_Node::OK()`
     pub fn ok_errorstatus(theStat: crate::vrml_data::ErrorStatus) -> bool {
-        unsafe { crate::ffi::VrmlData_Node_ok_errorstatus(theStat.into()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_ok_errorstatus(theStat.into()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:134 - `VrmlData_Node::OK()`
@@ -5496,8 +7423,13 @@ impl Node {
         theStat: crate::vrml_data::ErrorStatus,
     ) -> bool {
         let mut outStat_i32_: i32 = (*outStat).into();
-        let result_ =
-            unsafe { crate::ffi::VrmlData_Node_ok_errorstatus2(&mut outStat_i32_, theStat.into()) };
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Node_ok_errorstatus2(&mut outStat_i32_, theStat.into())
+            };
+            crate::check_exception();
+            __result
+        };
         *outStat = crate::vrml_data::ErrorStatus::try_from(outStat_i32_).unwrap();
         result_
     }
@@ -5506,73 +7438,120 @@ impl Node {
     ///
     /// Define the common Indent in spaces, for writing all nodes.
     pub fn global_indent() -> i32 {
-        unsafe { crate::ffi::VrmlData_Node_global_indent() }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_global_indent() };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Node_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Node_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Node_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Node_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Node_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Node_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Node_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Node_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Node_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Node_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Node_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Node_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::VrmlData_Node_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Node_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Node_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Node_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Node_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Node_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Node_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Node_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Node_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5587,20 +7566,30 @@ unsafe impl crate::CppDeletable for HandleVrmlDataNode {
 impl HandleVrmlDataNode {
     /// Dereference this Handle to access the underlying VrmlData_Node
     pub fn get(&self) -> &crate::ffi::VrmlData_Node {
-        unsafe { &*(crate::ffi::HandleVrmlDataNode_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataNode_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Node
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Node {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataNode_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataNode_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Node> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataNode_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataNode_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5613,6 +7602,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataAppearance(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5629,6 +7619,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataArrayVec3d(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5643,6 +7634,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataBox(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5657,6 +7649,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataColor(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5671,6 +7664,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataCone(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5687,6 +7681,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataCoordinate(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5703,6 +7698,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataCylinder(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5719,6 +7715,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataFaceted(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5733,6 +7730,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataGroup(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5751,6 +7749,7 @@ impl HandleVrmlDataNode {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5769,6 +7768,7 @@ impl HandleVrmlDataNode {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5787,6 +7787,7 @@ impl HandleVrmlDataNode {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5803,6 +7804,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataMaterial(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5817,6 +7819,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataNormal(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5833,6 +7836,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataShapeNode(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5847,6 +7851,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataSphere(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5863,6 +7868,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataTexture(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5881,6 +7887,7 @@ impl HandleVrmlDataNode {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5899,6 +7906,7 @@ impl HandleVrmlDataNode {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5917,6 +7925,7 @@ impl HandleVrmlDataNode {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5933,6 +7942,7 @@ impl HandleVrmlDataNode {
         let ptr = unsafe {
             crate::ffi::HandleVrmlDataNode_downcast_to_HandleVrmlDataWorldInfo(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -5961,7 +7971,11 @@ impl Normal {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Normal_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Normal_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Normal.hxx`:37 - `VrmlData_Normal::VrmlData_Normal()`
@@ -5974,13 +7988,17 @@ impl Normal {
         arrVec: Option<&crate::gp::XYZ>,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Normal_ctor_scene_charptr_size_xyzptr(
-                theScene,
-                c_theName.as_ptr(),
-                nVec,
-                arrVec.map_or(std::ptr::null(), |r| r as *const _),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_ctor_scene_charptr_size_xyzptr(
+                    theScene,
+                    c_theName.as_ptr(),
+                    nVec,
+                    arrVec.map_or(std::ptr::null(), |r| r as *const _),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5992,7 +8010,11 @@ impl Normal {
     /// @return
     /// the normal value for the index. If index irrelevant, returns (0., 0., 0.)
     pub fn normal(&self, i: i32) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::VrmlData_Normal_normal(self as *const Self, i)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Normal_normal(self as *const Self, i) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Normal.hxx`:59 - `VrmlData_Normal::Clone()`
@@ -6004,11 +8026,11 @@ impl Normal {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Normal_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6016,12 +8038,11 @@ impl Normal {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Normal_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6030,114 +8051,181 @@ impl Normal {
     /// Write the Node to the Scene output.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Normal_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Normal_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Normal_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Normal_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Normal_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Normal_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Normal_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_ArrayVec3d
     pub fn as_array_vec3d(&self) -> &ArrayVec3d {
-        unsafe { &*(crate::ffi::VrmlData_Normal_as_VrmlData_ArrayVec3d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_as_VrmlData_ArrayVec3d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_ArrayVec3d (mutable)
     pub fn as_array_vec3d_mut(&mut self) -> &mut ArrayVec3d {
-        unsafe { &mut *(crate::ffi::VrmlData_Normal_as_VrmlData_ArrayVec3d_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_as_VrmlData_ArrayVec3d_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Normal_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Normal_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Normal_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Normal_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNormal> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Normal_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Normal_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:56 - `VrmlData_ArrayVec3d::Length()`
     pub fn length(&self) -> usize {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_Length(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_Length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
     pub fn values(&self) -> Option<&crate::gp::XYZ> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Normal_inherited_Values(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_Values(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_Normal_inherited_AllocateValues(self as *mut Self, theLength)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_inherited_AllocateValues(self as *mut Self, theLength)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:73 - `VrmlData_ArrayVec3d::SetValues()`
     pub fn set_values(&mut self, nValues: usize, arrValues: &crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::VrmlData_Normal_inherited_SetValues(
-                self as *mut Self,
-                nValues,
-                arrValues as *const _,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_Normal_inherited_SetValues(
+                    self as *mut Self,
+                    nValues,
+                    arrValues as *const _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Normal_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -6147,67 +8235,101 @@ impl Normal {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Normal_inherited_ReadNode(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_inherited_ReadNode(
+                    self as *mut Self,
+                    theBuffer,
+                    theNode,
+                    Type,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Normal_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Normal_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Normal_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Normal_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Normal_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Normal_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Normal_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6222,38 +8344,52 @@ unsafe impl crate::CppDeletable for HandleVrmlDataNormal {
 impl HandleVrmlDataNormal {
     /// Dereference this Handle to access the underlying VrmlData_Normal
     pub fn get(&self) -> &crate::ffi::VrmlData_Normal {
-        unsafe { &*(crate::ffi::HandleVrmlDataNormal_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataNormal_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Normal
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Normal {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataNormal_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataNormal_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Normal> to Handle<VrmlData_ArrayVec3d>
     pub fn to_handle_array_vec3d(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataArrayVec3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataNormal_to_HandleVrmlDataArrayVec3d(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataNormal_to_HandleVrmlDataArrayVec3d(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Normal> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataNormal_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataNormal_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Normal> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataNormal_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataNormal_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -6280,10 +8416,11 @@ impl Scene {
     pub fn new_handlencollectionincallocator(
         arg0: &crate::ffi::HandleNCollectionIncAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::VrmlData_Scene_ctor_handlencollectionincallocator(arg0),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Scene_ctor_handlencollectionincallocator(arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6292,11 +8429,10 @@ impl Scene {
     /// Query the status of the previous operation.
     /// Normally it should be equal to VrmlData_StatusOK (no error).
     pub fn status(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_status(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6310,7 +8446,10 @@ impl Scene {
     /// ("."). It takes effect if the list is empty or if there is no match with
     /// existing directories.
     pub fn set_vrml_dir(&mut self, arg0: &crate::t_collection::ExtendedString) {
-        unsafe { crate::ffi::VrmlData_Scene_set_vrml_dir(self as *mut Self, arg0) }
+        {
+            unsafe { crate::ffi::VrmlData_Scene_set_vrml_dir(self as *mut Self, arg0) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:79 - `VrmlData_Scene::SetLinearScale()`
@@ -6319,7 +8458,10 @@ impl Scene {
     /// ReadReal, ReadXYZ and ReadXY. All coordinates, distances and sized are
     /// multiplied by this factor during reading the data.
     pub fn set_linear_scale(&mut self, theScale: f64) {
-        unsafe { crate::ffi::VrmlData_Scene_set_linear_scale(self as *mut Self, theScale) }
+        {
+            unsafe { crate::ffi::VrmlData_Scene_set_linear_scale(self as *mut Self, theScale) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:85 - `VrmlData_Scene::VrmlDirIterator()`
@@ -6329,10 +8471,11 @@ impl Scene {
     pub fn vrml_dir_iterator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::TDataStd_ListIteratorOfListOfExtendedString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_vrml_dir_iterator(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Scene_vrml_dir_iterator(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6340,8 +8483,10 @@ impl Scene {
     ///
     /// Iterator of Nodes
     pub fn get_iterator(&self) -> crate::OwnedPtr<crate::ffi::VrmlData_Scene_Iterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_get_iterator(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_get_iterator(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6349,10 +8494,11 @@ impl Scene {
     ///
     /// Get the iterator of named nodes.
     pub fn named_nodes_iterator(&self) -> crate::OwnedPtr<crate::ffi::VrmlData_MapOfNode_Iterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_named_nodes_iterator(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Scene_named_nodes_iterator(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6360,7 +8506,11 @@ impl Scene {
     ///
     /// Allocator used by all nodes contained in the Scene.
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionIncAllocator {
-        unsafe { &*(crate::ffi::VrmlData_Scene_allocator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_allocator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:110 - `VrmlData_Scene::AddNode()`
@@ -6379,7 +8529,12 @@ impl Scene {
         theN: &crate::ffi::HandleVrmlDataNode,
         isTopLevel: bool,
     ) -> &crate::ffi::HandleVrmlDataNode {
-        unsafe { &*(crate::ffi::VrmlData_Scene_add_node(self as *mut Self, theN, isTopLevel)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Scene_add_node(self as *mut Self, theN, isTopLevel) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:123 - `VrmlData_Scene::FindNode()`
@@ -6397,14 +8552,16 @@ impl Scene {
         theType: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Scene_find_node_charptr_handlestandardtype(
                     self as *const Self,
                     c_theName.as_ptr(),
                     theType,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6421,12 +8578,16 @@ impl Scene {
         theLocation: &mut crate::gp::Trsf,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_find_node_charptr_trsf(
-                self as *const Self,
-                c_theName.as_ptr(),
-                theLocation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_find_node_charptr_trsf(
+                    self as *const Self,
+                    c_theName.as_ptr(),
+                    theLocation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6446,8 +8607,10 @@ impl Scene {
         &mut self,
         M: &mut crate::ffi::VrmlData_DataMapOfShapeAppearance,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Scene_get_shape(self as *mut Self, M))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_get_shape(self as *mut Self, M) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6455,14 +8618,21 @@ impl Scene {
     ///
     /// Query the WorldInfo member.
     pub fn world_info(&self) -> &crate::ffi::HandleVrmlDataWorldInfo {
-        unsafe { &*(crate::ffi::VrmlData_Scene_world_info(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_world_info(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:202 - `VrmlData_Scene::Dump()`
     ///
     /// Diagnostic dump of the contents
     pub fn dump(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::VrmlData_Scene_dump(self as *const Self, theStream) }
+        {
+            unsafe { crate::ffi::VrmlData_Scene_dump(self as *const Self, theStream) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:207 - `VrmlData_Scene::ReadReal()`
@@ -6475,15 +8645,18 @@ impl Scene {
         isApplyScale: bool,
         isOnlyPositive: bool,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_real(
-                self as *const Self,
-                theBuffer,
-                theResult,
-                isApplyScale,
-                isOnlyPositive,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_read_real(
+                    self as *const Self,
+                    theBuffer,
+                    theResult,
+                    isApplyScale,
+                    isOnlyPositive,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6497,15 +8670,18 @@ impl Scene {
         isApplyScale: bool,
         isOnlyPositive: bool,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_xyz(
-                self as *const Self,
-                theBuffer,
-                theXYZ,
-                isApplyScale,
-                isOnlyPositive,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_read_xyz(
+                    self as *const Self,
+                    theBuffer,
+                    theXYZ,
+                    isApplyScale,
+                    isOnlyPositive,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6519,15 +8695,18 @@ impl Scene {
         isApplyScale: bool,
         isOnlyPositive: bool,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_xy(
-                self as *const Self,
-                theBuffer,
-                theXYZ,
-                isApplyScale,
-                isOnlyPositive,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_read_xy(
+                    self as *const Self,
+                    theBuffer,
+                    theXYZ,
+                    isApplyScale,
+                    isOnlyPositive,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6540,14 +8719,17 @@ impl Scene {
         theArr: &mut *mut *const i32,
         theNBl: &mut usize,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_arr_index(
-                self as *const Self,
-                theBuffer,
-                theArr,
-                theNBl,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_read_arr_index(
+                    self as *const Self,
+                    theBuffer,
+                    theArr,
+                    theNBl,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6555,7 +8737,12 @@ impl Scene {
     ///
     /// Query the line where the error occurred (if the status is not OK)
     pub fn get_line_error(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Scene_get_line_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Scene_get_line_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:244 - `VrmlData_Scene::SetIndent()`
@@ -6564,7 +8751,10 @@ impl Scene {
     /// @param nSpc
     /// number of spaces to insert at every indentation level
     pub fn set_indent(&mut self, nSpc: i32) {
-        unsafe { crate::ffi::VrmlData_Scene_set_indent(self as *mut Self, nSpc) }
+        {
+            unsafe { crate::ffi::VrmlData_Scene_set_indent(self as *mut Self, nSpc) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:255 - `VrmlData_Scene::WriteXYZ()`
@@ -6583,14 +8773,17 @@ impl Scene {
         thePostfix: &str,
     ) -> crate::vrml_data::ErrorStatus {
         let c_thePostfix = std::ffi::CString::new(thePostfix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_write_xyz(
-                self as *const Self,
-                theXYZ,
-                isScale,
-                c_thePostfix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_write_xyz(
+                    self as *const Self,
+                    theXYZ,
+                    isScale,
+                    c_thePostfix.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6604,14 +8797,17 @@ impl Scene {
         theNbBl: usize,
     ) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_write_arr_index(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-                theArr,
-                theNbBl,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_write_arr_index(
+                    self as *const Self,
+                    c_thePrefix.as_ptr(),
+                    theArr,
+                    theNbBl,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6639,14 +8835,17 @@ impl Scene {
     ) -> crate::vrml_data::ErrorStatus {
         let c_theLine0 = std::ffi::CString::new(theLine0).unwrap();
         let c_theLine1 = std::ffi::CString::new(theLine1).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_write_line(
-                self as *const Self,
-                c_theLine0.as_ptr(),
-                c_theLine1.as_ptr(),
-                theIndent,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_write_line(
+                    self as *const Self,
+                    c_theLine0.as_ptr(),
+                    c_theLine1.as_ptr(),
+                    theIndent,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6659,13 +8858,16 @@ impl Scene {
         arg1: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_write_node(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-                arg1,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Scene_write_node(
+                    self as *const Self,
+                    c_thePrefix.as_ptr(),
+                    arg1,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6674,7 +8876,12 @@ impl Scene {
     /// Query if the current write operation is dummy, i.e., for the purpose of
     /// collecting information before the real write is commenced.
     pub fn is_dummy_write(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Scene_is_dummy_write(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Scene_is_dummy_write(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Scene.hxx`:191 - `VrmlData_Scene::ReadLine()`
@@ -6690,9 +8897,10 @@ impl Scene {
     /// @param theLen
     /// Length of the input buffer (maximal line length)
     pub fn read_line(theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_line(theBuffer))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_read_line(theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6703,11 +8911,10 @@ impl Scene {
         theBuffer: &mut InBuffer,
         theStr: &mut crate::t_collection::AsciiString,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Scene_read_word(
-                theBuffer, theStr,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Scene_read_word(theBuffer, theStr) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 }
@@ -6737,10 +8944,11 @@ impl ShapeConvert {
     /// Scale factor, considering that VRML standard specifies coordinates in
     /// meters. So if your data are in mm, you should provide theScale=0.001
     pub fn new_scene_real(theScene: &mut Scene, theScale: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ShapeConvert_ctor_scene_real(
-                theScene, theScale,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeConvert_ctor_scene_real(theScene, theScale) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6762,12 +8970,15 @@ impl ShapeConvert {
     /// different shapes.
     pub fn add_shape(&mut self, theShape: &crate::topo_ds::Shape, theName: &str) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::ffi::VrmlData_ShapeConvert_add_shape(
-                self as *mut Self,
-                theShape,
-                c_theName.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_ShapeConvert_add_shape(
+                    self as *mut Self,
+                    theShape,
+                    c_theName.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6792,14 +9003,17 @@ impl ShapeConvert {
         theDeflection: f64,
         theDeflAngle: f64,
     ) {
-        unsafe {
-            crate::ffi::VrmlData_ShapeConvert_convert(
-                self as *mut Self,
-                theExtractFaces,
-                theExtractEdges,
-                theDeflection,
-                theDeflAngle,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_ShapeConvert_convert(
+                    self as *mut Self,
+                    theExtractFaces,
+                    theExtractEdges,
+                    theDeflection,
+                    theDeflAngle,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6807,7 +9021,12 @@ impl ShapeConvert {
     ///
     /// Add all shapes start from given document with colors and names to the internal structure
     pub fn convert_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        unsafe { crate::ffi::VrmlData_ShapeConvert_convert_document(self as *mut Self, theDoc) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_ShapeConvert_convert_document(self as *mut Self, theDoc)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6824,7 +9043,11 @@ impl ShapeConvert_ShapeData {
     /// **Source:** `VrmlData_ShapeConvert.hxx` - `VrmlData_ShapeConvert_ShapeData::VrmlData_ShapeConvert_ShapeData()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ShapeConvert_ShapeData_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ShapeConvert_ShapeData_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -6848,7 +9071,11 @@ impl ShapeNode {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ShapeNode_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ShapeNode_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:38 - `VrmlData_ShapeNode::VrmlData_ShapeNode()`
@@ -6856,11 +9083,12 @@ impl ShapeNode {
     /// Constructor
     pub fn new_scene_charptr(theScene: &Scene, theName: &str) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ShapeNode_ctor_scene_charptr(
-                theScene,
-                c_theName.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_ctor_scene_charptr(theScene, c_theName.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6868,28 +9096,43 @@ impl ShapeNode {
     ///
     /// Query the Appearance.
     pub fn appearance(&self) -> &crate::ffi::HandleVrmlDataAppearance {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_appearance(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_appearance(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:51 - `VrmlData_ShapeNode::Geometry()`
     ///
     /// Query the Geometry.
     pub fn geometry(&self) -> &crate::ffi::HandleVrmlDataGeometry {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_geometry(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ShapeNode_geometry(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:56 - `VrmlData_ShapeNode::SetAppearance()`
     ///
     /// Set the Appearance
     pub fn set_appearance(&mut self, theAppear: &crate::ffi::HandleVrmlDataAppearance) {
-        unsafe { crate::ffi::VrmlData_ShapeNode_set_appearance(self as *mut Self, theAppear) }
+        {
+            unsafe { crate::ffi::VrmlData_ShapeNode_set_appearance(self as *mut Self, theAppear) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:64 - `VrmlData_ShapeNode::SetGeometry()`
     ///
     /// Set the Geometry
     pub fn set_geometry(&mut self, theGeometry: &crate::ffi::HandleVrmlDataGeometry) {
-        unsafe { crate::ffi::VrmlData_ShapeNode_set_geometry(self as *mut Self, theGeometry) }
+        {
+            unsafe { crate::ffi::VrmlData_ShapeNode_set_geometry(self as *mut Self, theGeometry) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:74 - `VrmlData_ShapeNode::Clone()`
@@ -6901,11 +9144,11 @@ impl ShapeNode {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ShapeNode_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6913,12 +9156,11 @@ impl ShapeNode {
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ShapeNode_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6927,12 +9169,12 @@ impl ShapeNode {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_ShapeNode_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -6940,47 +9182,81 @@ impl ShapeNode {
     ///
     /// Check if the Shape Node is writeable.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_ShapeNode_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_ShapeNode_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ShapeNode_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ShapeNode_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_ShapeNode_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_ShapeNode_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -6988,14 +9264,21 @@ impl ShapeNode {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataShapeNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_ShapeNode_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_ShapeNode_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_ShapeNode_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -7005,69 +9288,105 @@ impl ShapeNode {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_ShapeNode_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_ShapeNode_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_ShapeNode_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_ShapeNode_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_ShapeNode_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_ShapeNode_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_ShapeNode_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_ShapeNode_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_ShapeNode_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_ShapeNode_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_ShapeNode_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_ShapeNode_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_ShapeNode_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7082,29 +9401,42 @@ unsafe impl crate::CppDeletable for HandleVrmlDataShapeNode {
 impl HandleVrmlDataShapeNode {
     /// Dereference this Handle to access the underlying VrmlData_ShapeNode
     pub fn get(&self) -> &crate::ffi::VrmlData_ShapeNode {
-        unsafe { &*(crate::ffi::HandleVrmlDataShapeNode_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataShapeNode_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_ShapeNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_ShapeNode {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataShapeNode_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataShapeNode_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_ShapeNode> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataShapeNode_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataShapeNode_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_ShapeNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataShapeNode_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataShapeNode_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7129,7 +9461,11 @@ impl Sphere {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Sphere_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:40 - `VrmlData_Sphere::VrmlData_Sphere()`
@@ -7141,12 +9477,16 @@ impl Sphere {
         theRadius: f64,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Sphere_ctor_scene_charptr_real(
-                theScene,
-                c_theName.as_ptr(),
-                theRadius,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Sphere_ctor_scene_charptr_real(
+                    theScene,
+                    c_theName.as_ptr(),
+                    theRadius,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7161,14 +9501,21 @@ impl Sphere {
     ///
     /// Query the sphere radius
     pub fn radius(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_Sphere_radius(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_radius(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:56 - `VrmlData_Sphere::SetRadius()`
     ///
     /// Set the sphere radius
     pub fn set_radius(&mut self, theRadius: f64) {
-        unsafe { crate::ffi::VrmlData_Sphere_set_radius(self as *mut Self, theRadius) }
+        {
+            unsafe { crate::ffi::VrmlData_Sphere_set_radius(self as *mut Self, theRadius) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:66 - `VrmlData_Sphere::TShape()`
@@ -7176,7 +9523,11 @@ impl Sphere {
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
     pub fn t_shape(&mut self) -> &crate::ffi::HandleTopoDSTShape {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_t_shape(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_t_shape(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:73 - `VrmlData_Sphere::Clone()`
@@ -7188,11 +9539,11 @@ impl Sphere {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Sphere_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7200,12 +9551,11 @@ impl Sphere {
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Sphere_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -7214,74 +9564,121 @@ impl Sphere {
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Sphere_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Sphere_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Sphere_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_as_VrmlData_Geometry(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_as_VrmlData_Geometry(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::VrmlData_Sphere_as_VrmlData_Geometry_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_as_VrmlData_Geometry_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Sphere_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Sphere_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataSphere> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Sphere_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Sphere_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Sphere_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -7291,72 +9688,111 @@ impl Sphere {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Sphere_inherited_ReadNode(
-                self as *mut Self,
-                theBuffer,
-                theNode,
-                Type,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Sphere_inherited_ReadNode(
+                    self as *mut Self,
+                    theBuffer,
+                    theNode,
+                    Type,
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Sphere_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Sphere_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Sphere_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Sphere_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Sphere_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Sphere_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Sphere_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Sphere_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Sphere_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7371,38 +9807,52 @@ unsafe impl crate::CppDeletable for HandleVrmlDataSphere {
 impl HandleVrmlDataSphere {
     /// Dereference this Handle to access the underlying VrmlData_Sphere
     pub fn get(&self) -> &crate::ffi::VrmlData_Sphere {
-        unsafe { &*(crate::ffi::HandleVrmlDataSphere_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataSphere_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Sphere
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Sphere {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataSphere_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataSphere_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Sphere> to Handle<VrmlData_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataSphere_to_HandleVrmlDataGeometry(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataSphere_to_HandleVrmlDataGeometry(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Sphere> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataSphere_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataSphere_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Sphere> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataSphere_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataSphere_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7427,72 +9877,121 @@ impl Texture {
     ///
     /// Query the RepeatS value
     pub fn repeat_s(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Texture_repeat_s(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Texture_repeat_s(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:59 - `VrmlData_Texture::RepeatT()`
     ///
     /// Query the RepeatT value
     pub fn repeat_t(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Texture_repeat_t(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Texture_repeat_t(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:64 - `VrmlData_Texture::SetRepeatS()`
     ///
     /// Set the RepeatS flag
     pub fn set_repeat_s(&mut self, theFlag: bool) {
-        unsafe { crate::ffi::VrmlData_Texture_set_repeat_s(self as *mut Self, theFlag) }
+        {
+            unsafe { crate::ffi::VrmlData_Texture_set_repeat_s(self as *mut Self, theFlag) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:69 - `VrmlData_Texture::SetRepeatT()`
     ///
     /// Set the RepeatT flag
     pub fn set_repeat_t(&mut self, theFlag: bool) {
-        unsafe { crate::ffi::VrmlData_Texture_set_repeat_t(self as *mut Self, theFlag) }
+        {
+            unsafe { crate::ffi::VrmlData_Texture_set_repeat_t(self as *mut Self, theFlag) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Texture_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_Texture_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Texture_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_Texture_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_Texture_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_Texture_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_Texture_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_Texture_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::VrmlData_Texture_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Texture_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_Texture_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -7502,42 +10001,48 @@ impl Texture {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_Texture_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_Texture_inherited_Read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Texture_inherited_Read(self as *mut Self, theBuffer)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_IsDefault(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_inherited_IsDefault(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_Texture_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_inherited_WriteClosing(self as *const Self) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -7546,54 +10051,87 @@ impl Texture {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_Texture_inherited_Clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_inherited_Clone(self as *const Self, arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Texture_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Texture_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_Texture_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_Texture_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_Texture_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_Texture_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_Texture_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_Texture_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7608,29 +10146,41 @@ unsafe impl crate::CppDeletable for HandleVrmlDataTexture {
 impl HandleVrmlDataTexture {
     /// Dereference this Handle to access the underlying VrmlData_Texture
     pub fn get(&self) -> &crate::ffi::VrmlData_Texture {
-        unsafe { &*(crate::ffi::HandleVrmlDataTexture_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataTexture_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_Texture
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_Texture {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataTexture_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataTexture_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_Texture> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataTexture_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataTexture_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_Texture> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataTexture_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataTexture_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7645,6 +10195,7 @@ impl HandleVrmlDataTexture {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7673,7 +10224,11 @@ impl TextureCoordinate {
     ///
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_TextureCoordinate_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_TextureCoordinate_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:42 - `VrmlData_TextureCoordinate::VrmlData_TextureCoordinate()`
@@ -7686,15 +10241,17 @@ impl TextureCoordinate {
         arrPoints: Option<&crate::gp::XY>,
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_TextureCoordinate_ctor_scene_charptr_size_xyptr(
                     theScene,
                     c_theName.as_ptr(),
                     nPoints,
                     arrPoints.map_or(std::ptr::null(), |r| r as *const _),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7704,8 +10261,12 @@ impl TextureCoordinate {
     /// @return
     /// True if allocation was successful.
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_TextureCoordinate_allocate_values(self as *mut Self, theLength)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_allocate_values(self as *mut Self, theLength)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7713,7 +10274,12 @@ impl TextureCoordinate {
     ///
     /// Query the number of points
     pub fn length(&mut self) -> usize {
-        unsafe { crate::ffi::VrmlData_TextureCoordinate_length(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureCoordinate_length(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:67 - `VrmlData_TextureCoordinate::Points()`
@@ -7721,11 +10287,13 @@ impl TextureCoordinate {
     /// Query the points
     pub fn points(&mut self) -> Option<&crate::gp::XY> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_TextureCoordinate_points(self as *mut Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureCoordinate_points(self as *mut Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
@@ -7734,12 +10302,15 @@ impl TextureCoordinate {
     ///
     /// Set the points array
     pub fn set_points(&mut self, nPoints: usize, arrPoints: &crate::gp::XY) {
-        unsafe {
-            crate::ffi::VrmlData_TextureCoordinate_set_points(
-                self as *mut Self,
-                nPoints,
-                arrPoints as *const _,
-            )
+        {
+            unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_set_points(
+                    self as *mut Self,
+                    nPoints,
+                    arrPoints as *const _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7752,11 +10323,12 @@ impl TextureCoordinate {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_TextureCoordinate_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_clone(self as *const Self, theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7764,59 +10336,84 @@ impl TextureCoordinate {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_TextureCoordinate_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_read(self as *mut Self, theBuffer)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_TextureCoordinate_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureCoordinate_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_TextureCoordinate_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_TextureCoordinate_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_TextureCoordinate_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_TextureCoordinate_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_TextureCoordinate_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_as_VrmlData_Node(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_TextureCoordinate_as_VrmlData_Node_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_as_VrmlData_Node_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::VrmlData_TextureCoordinate_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_TextureCoordinate_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7824,16 +10421,23 @@ impl TextureCoordinate {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataTextureCoordinate> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_TextureCoordinate_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureCoordinate_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_TextureCoordinate_inherited_Scene(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_Scene(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -7843,87 +10447,127 @@ impl TextureCoordinate {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_TextureCoordinate_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_TextureCoordinate_inherited_IsDefault(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_IsDefault(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_TextureCoordinate_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_TextureCoordinate_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_TextureCoordinate_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::VrmlData_TextureCoordinate_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_TextureCoordinate_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::VrmlData_TextureCoordinate_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_TextureCoordinate_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_TextureCoordinate_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_TextureCoordinate_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7938,33 +10582,47 @@ unsafe impl crate::CppDeletable for HandleVrmlDataTextureCoordinate {
 impl HandleVrmlDataTextureCoordinate {
     /// Dereference this Handle to access the underlying VrmlData_TextureCoordinate
     pub fn get(&self) -> &crate::ffi::VrmlData_TextureCoordinate {
-        unsafe { &*(crate::ffi::HandleVrmlDataTextureCoordinate_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataTextureCoordinate_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_TextureCoordinate
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_TextureCoordinate {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataTextureCoordinate_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataTextureCoordinate_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_TextureCoordinate> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataTextureCoordinate_to_HandleVrmlDataNode(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_TextureCoordinate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataTextureCoordinate_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7988,108 +10646,171 @@ impl TextureTransform {
     ///
     /// Query the Center
     pub fn center(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_center(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureTransform_center(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:54 - `VrmlData_TextureTransform::Rotation()`
     ///
     /// Query the Rotation
     pub fn rotation(&self) -> f64 {
-        unsafe { crate::ffi::VrmlData_TextureTransform_rotation(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureTransform_rotation(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:59 - `VrmlData_TextureTransform::Scale()`
     ///
     /// Query the Scale
     pub fn scale(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_scale(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureTransform_scale(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:64 - `VrmlData_TextureTransform::Translation()`
     ///
     /// Query the Translation
     pub fn translation(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_translation(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureTransform_translation(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:69 - `VrmlData_TextureTransform::SetCenter()`
     ///
     /// Set the Center
     pub fn set_center(&mut self, V: &crate::gp::XY) {
-        unsafe { crate::ffi::VrmlData_TextureTransform_set_center(self as *mut Self, V) }
+        {
+            unsafe { crate::ffi::VrmlData_TextureTransform_set_center(self as *mut Self, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:74 - `VrmlData_TextureTransform::SetRotation()`
     ///
     /// Set the Rotation
     pub fn set_rotation(&mut self, V: f64) {
-        unsafe { crate::ffi::VrmlData_TextureTransform_set_rotation(self as *mut Self, V) }
+        {
+            unsafe { crate::ffi::VrmlData_TextureTransform_set_rotation(self as *mut Self, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:79 - `VrmlData_TextureTransform::SetScale()`
     ///
     /// Set the Scale
     pub fn set_scale(&mut self, V: &crate::gp::XY) {
-        unsafe { crate::ffi::VrmlData_TextureTransform_set_scale(self as *mut Self, V) }
+        {
+            unsafe { crate::ffi::VrmlData_TextureTransform_set_scale(self as *mut Self, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:84 - `VrmlData_TextureTransform::SetTranslation()`
     ///
     /// Set the Translation
     pub fn set_translation(&mut self, V: &crate::gp::XY) {
-        unsafe { crate::ffi::VrmlData_TextureTransform_set_translation(self as *mut Self, V) }
+        {
+            unsafe { crate::ffi::VrmlData_TextureTransform_set_translation(self as *mut Self, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_TextureTransform_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_TextureTransform_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_TextureTransform_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_TextureTransform_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_as_VrmlData_Node(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_TextureTransform_as_VrmlData_Node_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_as_VrmlData_Node_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::VrmlData_TextureTransform_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_TextureTransform_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_TextureTransform_inherited_Scene(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_Scene(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -8099,41 +10820,50 @@ impl TextureTransform {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_TextureTransform_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_TextureTransform_inherited_Read(self as *mut Self, theBuffer),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_Read(self as *mut Self, theBuffer)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_TextureTransform_inherited_IsDefault(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_IsDefault(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_TextureTransform_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -8142,64 +10872,97 @@ impl TextureTransform {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_TextureTransform_inherited_Clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_Clone(self as *const Self, arg0)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_TextureTransform_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_TextureTransform_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::VrmlData_TextureTransform_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_TextureTransform_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::VrmlData_TextureTransform_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::VrmlData_TextureTransform_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_TextureTransform_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_TextureTransform_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8214,33 +10977,47 @@ unsafe impl crate::CppDeletable for HandleVrmlDataTextureTransform {
 impl HandleVrmlDataTextureTransform {
     /// Dereference this Handle to access the underlying VrmlData_TextureTransform
     pub fn get(&self) -> &crate::ffi::VrmlData_TextureTransform {
-        unsafe { &*(crate::ffi::HandleVrmlDataTextureTransform_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataTextureTransform_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_TextureTransform
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_TextureTransform {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataTextureTransform_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataTextureTransform_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_TextureTransform> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataTextureTransform_to_HandleVrmlDataNode(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_TextureTransform> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataTextureTransform_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8266,7 +11043,11 @@ impl UnknownNode {
     ///
     /// Empty Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_UnknownNode_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_UnknownNode_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:40 - `VrmlData_UnknownNode::VrmlData_UnknownNode()`
@@ -8279,12 +11060,16 @@ impl UnknownNode {
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         let c_theTitle = std::ffi::CString::new(theTitle).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_UnknownNode_ctor_scene_charptr2(
-                theScene,
-                c_theName.as_ptr(),
-                c_theTitle.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_ctor_scene_charptr2(
+                    theScene,
+                    c_theName.as_ptr(),
+                    c_theTitle.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8292,12 +11077,11 @@ impl UnknownNode {
     ///
     /// Read the unknown node, till the last closing brace of it.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_UnknownNode_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -8305,54 +11089,93 @@ impl UnknownNode {
     ///
     /// Query the title of the unknown node.
     pub fn get_title(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::VrmlData_UnknownNode_get_title(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_get_title(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:62 - `VrmlData_UnknownNode::IsDefault()`
     ///
     /// Check if the Node is non-writeable -- always returns true.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_UnknownNode_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_UnknownNode_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_UnknownNode_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_UnknownNode_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_UnknownNode_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_UnknownNode_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_UnknownNode_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_UnknownNode_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_UnknownNode_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_UnknownNode_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8360,14 +11183,21 @@ impl UnknownNode {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataUnknownNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_UnknownNode_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_UnknownNode_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_UnknownNode_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_UnknownNode_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -8377,26 +11207,28 @@ impl UnknownNode {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_UnknownNode_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_UnknownNode_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -8405,57 +11237,89 @@ impl UnknownNode {
         &self,
         arg0: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_UnknownNode_inherited_Clone(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_Clone(self as *const Self, arg0)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::VrmlData_UnknownNode_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_UnknownNode_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::VrmlData_UnknownNode_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_UnknownNode_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_UnknownNode_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_UnknownNode_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_UnknownNode_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_UnknownNode_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_UnknownNode_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8470,31 +11334,45 @@ unsafe impl crate::CppDeletable for HandleVrmlDataUnknownNode {
 impl HandleVrmlDataUnknownNode {
     /// Dereference this Handle to access the underlying VrmlData_UnknownNode
     pub fn get(&self) -> &crate::ffi::VrmlData_UnknownNode {
-        unsafe { &*(crate::ffi::HandleVrmlDataUnknownNode_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataUnknownNode_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_UnknownNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_UnknownNode {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataUnknownNode_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataUnknownNode_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_UnknownNode> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataUnknownNode_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataUnknownNode_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_UnknownNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleVrmlDataUnknownNode_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8519,7 +11397,11 @@ impl WorldInfo {
     ///
     /// Empty Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::VrmlData_WorldInfo_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_WorldInfo_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:41 - `VrmlData_WorldInfo::VrmlData_WorldInfo()`
@@ -8532,12 +11414,16 @@ impl WorldInfo {
     ) -> crate::OwnedPtr<Self> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         let c_theTitle = std::ffi::CString::new(theTitle).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_WorldInfo_ctor_scene_charptr2(
-                theScene,
-                c_theName.as_ptr(),
-                c_theTitle.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_ctor_scene_charptr2(
+                    theScene,
+                    c_theName.as_ptr(),
+                    c_theTitle.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8546,7 +11432,12 @@ impl WorldInfo {
     /// Set or modify the title.
     pub fn set_title(&mut self, theString: &str) {
         let c_theString = std::ffi::CString::new(theString).unwrap();
-        unsafe { crate::ffi::VrmlData_WorldInfo_set_title(self as *mut Self, c_theString.as_ptr()) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_WorldInfo_set_title(self as *mut Self, c_theString.as_ptr())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:53 - `VrmlData_WorldInfo::AddInfo()`
@@ -8554,17 +11445,22 @@ impl WorldInfo {
     /// Add a string to the list of info strings.
     pub fn add_info(&mut self, theString: &str) {
         let c_theString = std::ffi::CString::new(theString).unwrap();
-        unsafe { crate::ffi::VrmlData_WorldInfo_add_info(self as *mut Self, c_theString.as_ptr()) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_WorldInfo_add_info(self as *mut Self, c_theString.as_ptr())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:58 - `VrmlData_WorldInfo::Title()`
     ///
     /// Query the title string.
     pub fn title(&self) -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_WorldInfo_title(self as *const Self))
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_WorldInfo_title(self as *const Self) };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8577,11 +11473,11 @@ impl WorldInfo {
         &self,
         theOther: &crate::ffi::HandleVrmlDataNode,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_WorldInfo_clone(
-                self as *const Self,
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_clone(self as *const Self, theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8589,12 +11485,11 @@ impl WorldInfo {
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_WorldInfo_read(
-                self as *mut Self,
-                theBuffer,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_read(self as *mut Self, theBuffer) };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -8603,12 +11498,12 @@ impl WorldInfo {
     /// Write the Node to the Scene output.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(crate::ffi::VrmlData_WorldInfo_write(
-                self as *const Self,
-                c_thePrefix.as_ptr(),
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_write(self as *const Self, c_thePrefix.as_ptr())
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
@@ -8616,47 +11511,81 @@ impl WorldInfo {
     ///
     /// Returns True if the node is default, then it would not be written.
     pub fn is_default(&self) -> bool {
-        unsafe { crate::ffi::VrmlData_WorldInfo_is_default(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_is_default(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_WorldInfo_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::VrmlData_WorldInfo_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::VrmlData_WorldInfo_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::VrmlData_WorldInfo_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::VrmlData_WorldInfo_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to VrmlData_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*(crate::ffi::VrmlData_WorldInfo_as_VrmlData_Node(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_as_VrmlData_Node(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to VrmlData_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        unsafe { &mut *(crate::ffi::VrmlData_WorldInfo_as_VrmlData_Node_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_as_VrmlData_Node_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::VrmlData_WorldInfo_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::VrmlData_WorldInfo_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8664,14 +11593,21 @@ impl WorldInfo {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataWorldInfo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::VrmlData_WorldInfo_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::VrmlData_WorldInfo_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
-        unsafe { &*(crate::ffi::VrmlData_WorldInfo_inherited_Scene(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_inherited_Scene(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
@@ -8681,69 +11617,105 @@ impl WorldInfo {
         theNode: &mut crate::ffi::HandleVrmlDataNode,
         Type: &crate::ffi::HandleStandardType,
     ) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::VrmlData_WorldInfo_inherited_ReadNode(
                     self as *mut Self,
                     theBuffer,
                     theNode,
                     Type,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
-        unsafe {
-            crate::vrml_data::ErrorStatus::try_from(
-                crate::ffi::VrmlData_WorldInfo_inherited_WriteClosing(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_inherited_WriteClosing(self as *const Self)
+            };
+            crate::check_exception();
+            crate::vrml_data::ErrorStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_WorldInfo_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::VrmlData_WorldInfo_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::VrmlData_WorldInfo_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::VrmlData_WorldInfo_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::VrmlData_WorldInfo_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::VrmlData_WorldInfo_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::VrmlData_WorldInfo_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::VrmlData_WorldInfo_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::VrmlData_WorldInfo_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::VrmlData_WorldInfo_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::VrmlData_WorldInfo_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8758,29 +11730,42 @@ unsafe impl crate::CppDeletable for HandleVrmlDataWorldInfo {
 impl HandleVrmlDataWorldInfo {
     /// Dereference this Handle to access the underlying VrmlData_WorldInfo
     pub fn get(&self) -> &crate::ffi::VrmlData_WorldInfo {
-        unsafe { &*(crate::ffi::HandleVrmlDataWorldInfo_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleVrmlDataWorldInfo_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlData_WorldInfo
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlData_WorldInfo {
-        unsafe { &mut *(crate::ffi::HandleVrmlDataWorldInfo_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleVrmlDataWorldInfo_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<VrmlData_WorldInfo> to Handle<VrmlData_Node>
     pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlDataNode> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleVrmlDataWorldInfo_to_HandleVrmlDataNode(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataWorldInfo_to_HandleVrmlDataNode(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<VrmlData_WorldInfo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleVrmlDataWorldInfo_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleVrmlDataWorldInfo_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

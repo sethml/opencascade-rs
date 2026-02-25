@@ -62,149 +62,225 @@ impl BCirc {
     /// **Source:** `GccInt_BCirc.hxx`:36 - `GccInt_BCirc::GccInt_BCirc()`
     /// Constructs a bisecting curve whose geometry is the 2D circle Circ.
     pub fn new_circ2d(Circ: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_ctor_circ2d(Circ)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_ctor_circ2d(Circ) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:39 - `GccInt_BCirc::Circle()`
     /// Returns a 2D circle which is the geometry of this bisecting curve.
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_circle(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:42 - `GccInt_BCirc::ArcType()`
     /// Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_BCirc_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BCirc_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_BCirc_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BCirc_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to GccInt_Bisec
     pub fn as_bisec(&self) -> &Bisec {
-        unsafe { &*(crate::ffi::GccInt_BCirc_as_GccInt_Bisec(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_as_GccInt_Bisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to GccInt_Bisec (mutable)
     pub fn as_bisec_mut(&mut self) -> &mut Bisec {
-        unsafe { &mut *(crate::ffi::GccInt_BCirc_as_GccInt_Bisec_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_as_GccInt_Bisec_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_BCirc_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_BCirc_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleGccIntBCirc> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Point(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_inherited_Point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_inherited_Line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Hyperbola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_inherited_Hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Parabola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_inherited_Parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Ellipse(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_inherited_Ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BCirc_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BCirc_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BCirc_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_BCirc_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_BCirc_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_BCirc_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BCirc_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_BCirc_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_BCirc_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_BCirc_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BCirc_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_BCirc_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_BCirc_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -219,29 +295,40 @@ unsafe impl crate::CppDeletable for HandleGccIntBCirc {
 impl HandleGccIntBCirc {
     /// Dereference this Handle to access the underlying GccInt_BCirc
     pub fn get(&self) -> &crate::ffi::GccInt_BCirc {
-        unsafe { &*(crate::ffi::HandleGccIntBCirc_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBCirc_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_BCirc
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BCirc {
-        unsafe { &mut *(crate::ffi::HandleGccIntBCirc_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBCirc_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_BCirc> to Handle<GccInt_Bisec>
     pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBCirc_to_HandleGccIntBisec(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGccIntBCirc_to_HandleGccIntBisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<GccInt_BCirc> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBCirc_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBCirc_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -265,153 +352,229 @@ impl BElips {
     /// **Source:** `GccInt_BElips.hxx`:36 - `GccInt_BElips::GccInt_BElips()`
     /// Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
     pub fn new_elips2d(Ellipse: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_ctor_elips2d(Ellipse)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_ctor_elips2d(Ellipse) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BElips.hxx`:39 - `GccInt_BElips::Ellipse()`
     /// Returns a 2D ellipse which is the geometry of this bisecting curve.
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_ellipse(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BElips.hxx`:42 - `GccInt_BElips::ArcType()`
     /// Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_BElips_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BElips_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_BElips_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BElips_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to GccInt_Bisec
     pub fn as_bisec(&self) -> &Bisec {
-        unsafe { &*(crate::ffi::GccInt_BElips_as_GccInt_Bisec(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_as_GccInt_Bisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to GccInt_Bisec (mutable)
     pub fn as_bisec_mut(&mut self) -> &mut Bisec {
-        unsafe { &mut *(crate::ffi::GccInt_BElips_as_GccInt_Bisec_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_as_GccInt_Bisec_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_BElips_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_BElips_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBElips> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Point(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_inherited_Point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BElips_inherited_Line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Circle(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_inherited_Circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Hyperbola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_inherited_Hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Parabola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_inherited_Parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BElips_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BElips_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BElips_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_BElips_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_BElips_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_BElips_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BElips_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_BElips_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_BElips_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_BElips_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BElips_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_BElips_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_BElips_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -426,29 +589,40 @@ unsafe impl crate::CppDeletable for HandleGccIntBElips {
 impl HandleGccIntBElips {
     /// Dereference this Handle to access the underlying GccInt_BElips
     pub fn get(&self) -> &crate::ffi::GccInt_BElips {
-        unsafe { &*(crate::ffi::HandleGccIntBElips_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBElips_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_BElips
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BElips {
-        unsafe { &mut *(crate::ffi::HandleGccIntBElips_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBElips_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_BElips> to Handle<GccInt_Bisec>
     pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBElips_to_HandleGccIntBisec(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGccIntBElips_to_HandleGccIntBisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<GccInt_BElips> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBElips_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBElips_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -472,155 +646,229 @@ impl BHyper {
     /// **Source:** `GccInt_BHyper.hxx`:36 - `GccInt_BHyper::GccInt_BHyper()`
     /// Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
     pub fn new_hypr2d(Hyper: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_ctor_hypr2d(Hyper)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_ctor_hypr2d(Hyper) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:39 - `GccInt_BHyper::Hyperbola()`
     /// Returns a 2D hyperbola which is the geometry of this bisecting curve.
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_hyperbola(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:42 - `GccInt_BHyper::ArcType()`
     /// Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_BHyper_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BHyper_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_BHyper_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BHyper_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to GccInt_Bisec
     pub fn as_bisec(&self) -> &Bisec {
-        unsafe { &*(crate::ffi::GccInt_BHyper_as_GccInt_Bisec(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_as_GccInt_Bisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to GccInt_Bisec (mutable)
     pub fn as_bisec_mut(&mut self) -> &mut Bisec {
-        unsafe { &mut *(crate::ffi::GccInt_BHyper_as_GccInt_Bisec_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_as_GccInt_Bisec_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_BHyper_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_BHyper_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBHyper> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Point(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_inherited_Point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_inherited_Line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Circle(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_inherited_Circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Parabola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_inherited_Parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Ellipse(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_inherited_Ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BHyper_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BHyper_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BHyper_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_BHyper_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_BHyper_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_BHyper_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BHyper_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_BHyper_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_BHyper_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_BHyper_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BHyper_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_BHyper_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_BHyper_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -635,29 +883,40 @@ unsafe impl crate::CppDeletable for HandleGccIntBHyper {
 impl HandleGccIntBHyper {
     /// Dereference this Handle to access the underlying GccInt_BHyper
     pub fn get(&self) -> &crate::ffi::GccInt_BHyper {
-        unsafe { &*(crate::ffi::HandleGccIntBHyper_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBHyper_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_BHyper
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BHyper {
-        unsafe { &mut *(crate::ffi::HandleGccIntBHyper_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBHyper_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_BHyper> to Handle<GccInt_Bisec>
     pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBHyper_to_HandleGccIntBisec(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGccIntBHyper_to_HandleGccIntBisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<GccInt_BHyper> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBHyper_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBHyper_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -681,151 +940,226 @@ impl BLine {
     /// **Source:** `GccInt_BLine.hxx`:36 - `GccInt_BLine::GccInt_BLine()`
     /// Constructs a bisecting line whose geometry is the 2D line Line.
     pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_ctor_lin2d(Line)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_ctor_lin2d(Line) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BLine.hxx`:39 - `GccInt_BLine::Line()`
     /// Returns a 2D line which is the geometry of this bisecting line.
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_line(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BLine.hxx`:42 - `GccInt_BLine::ArcType()`
     /// Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_BLine_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BLine_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_BLine_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BLine_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to GccInt_Bisec
     pub fn as_bisec(&self) -> &Bisec {
-        unsafe { &*(crate::ffi::GccInt_BLine_as_GccInt_Bisec(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_as_GccInt_Bisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to GccInt_Bisec (mutable)
     pub fn as_bisec_mut(&mut self) -> &mut Bisec {
-        unsafe { &mut *(crate::ffi::GccInt_BLine_as_GccInt_Bisec_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_as_GccInt_Bisec_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_BLine_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_BLine_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleGccIntBLine> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Point(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BLine_inherited_Point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Circle(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_inherited_Circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Hyperbola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_inherited_Hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Parabola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_inherited_Parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Ellipse(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_inherited_Ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BLine_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BLine_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BLine_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_BLine_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_BLine_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_BLine_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BLine_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_BLine_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_BLine_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_BLine_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BLine_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_BLine_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_BLine_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -840,29 +1174,40 @@ unsafe impl crate::CppDeletable for HandleGccIntBLine {
 impl HandleGccIntBLine {
     /// Dereference this Handle to access the underlying GccInt_BLine
     pub fn get(&self) -> &crate::ffi::GccInt_BLine {
-        unsafe { &*(crate::ffi::HandleGccIntBLine_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBLine_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_BLine
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BLine {
-        unsafe { &mut *(crate::ffi::HandleGccIntBLine_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBLine_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_BLine> to Handle<GccInt_Bisec>
     pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBLine_to_HandleGccIntBisec(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGccIntBLine_to_HandleGccIntBisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<GccInt_BLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBLine_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBLine_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -886,155 +1231,229 @@ impl BParab {
     /// **Source:** `GccInt_BParab.hxx`:36 - `GccInt_BParab::GccInt_BParab()`
     /// Constructs a bisecting curve whose geometry is the 2D parabola Parab.
     pub fn new_parab2d(Parab: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_ctor_parab2d(Parab)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_ctor_parab2d(Parab) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BParab.hxx`:39 - `GccInt_BParab::Parabola()`
     /// Returns a 2D parabola which is the geometry of this bisecting curve.
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_parabola(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GccInt_BParab.hxx`:42 - `GccInt_BParab::ArcType()`
     /// Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_BParab_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BParab_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_BParab_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BParab_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to GccInt_Bisec
     pub fn as_bisec(&self) -> &Bisec {
-        unsafe { &*(crate::ffi::GccInt_BParab_as_GccInt_Bisec(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_as_GccInt_Bisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to GccInt_Bisec (mutable)
     pub fn as_bisec_mut(&mut self) -> &mut Bisec {
-        unsafe { &mut *(crate::ffi::GccInt_BParab_as_GccInt_Bisec_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_as_GccInt_Bisec_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_BParab_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_BParab_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBParab> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Point(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_inherited_Point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BParab_inherited_Line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Circle(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_inherited_Circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Hyperbola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_inherited_Hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Ellipse(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_inherited_Ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BParab_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BParab_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BParab_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_BParab_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_BParab_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_BParab_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BParab_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_BParab_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_BParab_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_BParab_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BParab_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_BParab_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_BParab_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1049,29 +1468,40 @@ unsafe impl crate::CppDeletable for HandleGccIntBParab {
 impl HandleGccIntBParab {
     /// Dereference this Handle to access the underlying GccInt_BParab
     pub fn get(&self) -> &crate::ffi::GccInt_BParab {
-        unsafe { &*(crate::ffi::HandleGccIntBParab_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBParab_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_BParab
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BParab {
-        unsafe { &mut *(crate::ffi::HandleGccIntBParab_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBParab_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_BParab> to Handle<GccInt_Bisec>
     pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBParab_to_HandleGccIntBisec(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGccIntBParab_to_HandleGccIntBisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<GccInt_BParab> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBParab_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBParab_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1094,153 +1524,229 @@ impl BPoint {
     /// **Source:** `GccInt_BPoint.hxx`:35 - `GccInt_BPoint::GccInt_BPoint()`
     /// Constructs a bisecting object whose geometry is the 2D point Point.
     pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_ctor_pnt2d(Point)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_ctor_pnt2d(Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:38 - `GccInt_BPoint::Point()`
     /// Returns a 2D point which is the geometry of this bisecting object.
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:41 - `GccInt_BPoint::ArcType()`
     /// Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_BPoint_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BPoint_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_BPoint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_BPoint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to GccInt_Bisec
     pub fn as_bisec(&self) -> &Bisec {
-        unsafe { &*(crate::ffi::GccInt_BPoint_as_GccInt_Bisec(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_as_GccInt_Bisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to GccInt_Bisec (mutable)
     pub fn as_bisec_mut(&mut self) -> &mut Bisec {
-        unsafe { &mut *(crate::ffi::GccInt_BPoint_as_GccInt_Bisec_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_as_GccInt_Bisec_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_BPoint_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_BPoint_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBPoint> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Line(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_inherited_Line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Circle(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_inherited_Circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Hyperbola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_inherited_Hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Parabola(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_inherited_Parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Ellipse(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_inherited_Ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BPoint_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BPoint_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_BPoint_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_BPoint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_BPoint_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_BPoint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_BPoint_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_BPoint_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_BPoint_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_BPoint_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_BPoint_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_BPoint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_BPoint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1255,29 +1761,40 @@ unsafe impl crate::CppDeletable for HandleGccIntBPoint {
 impl HandleGccIntBPoint {
     /// Dereference this Handle to access the underlying GccInt_BPoint
     pub fn get(&self) -> &crate::ffi::GccInt_BPoint {
-        unsafe { &*(crate::ffi::HandleGccIntBPoint_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBPoint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_BPoint
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BPoint {
-        unsafe { &mut *(crate::ffi::HandleGccIntBPoint_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBPoint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_BPoint> to Handle<GccInt_Bisec>
     pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBPoint_to_HandleGccIntBisec(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::HandleGccIntBPoint_to_HandleGccIntBisec(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<GccInt_BPoint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBPoint_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBPoint_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1319,9 +1836,10 @@ impl Bisec {
     /// Returns the type of bisecting object (line, circle,
     /// parabola, hyperbola, ellipse, point).
     pub fn arc_type(&self) -> crate::gcc_int::IType {
-        unsafe {
-            crate::gcc_int::IType::try_from(crate::ffi::GccInt_Bisec_arc_type(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_arc_type(self as *const Self) };
+            crate::check_exception();
+            crate::gcc_int::IType::try_from(__result).unwrap()
         }
     }
 
@@ -1329,29 +1847,43 @@ impl Bisec {
     /// Returns the bisecting line when ArcType returns Pnt.
     /// An exception DomainError is raised if ArcType is not a Pnt.
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     /// Returns the bisecting line when ArcType returns Lin.
     /// An exception DomainError is raised if ArcType is not a Lin.
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_line(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_line(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     /// Returns the bisecting line when ArcType returns Cir.
     /// An exception DomainError is raised if ArcType is not a Cir.
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_circle(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_circle(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     /// Returns the bisecting line when ArcType returns Hpr.
     /// An exception DomainError is raised if ArcType is not a Hpr.
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_hyperbola(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_hyperbola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1359,85 +1891,140 @@ impl Bisec {
     /// Returns the bisecting line when ArcType returns Par.
     /// An exception DomainError is raised if ArcType is not a Par.
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_parabola(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_parabola(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     /// Returns the bisecting line when ArcType returns Ell.
     /// An exception DomainError is raised if ArcType is not an Ell.
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_ellipse(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_ellipse(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_Bisec_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GccInt_Bisec_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GccInt_Bisec_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::GccInt_Bisec_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_Bisec_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::GccInt_Bisec_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_Bisec_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_Bisec_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_Bisec_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::GccInt_Bisec_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_Bisec_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::GccInt_Bisec_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::GccInt_Bisec_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::GccInt_Bisec_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GccInt_Bisec_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::GccInt_Bisec_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GccInt_Bisec_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::GccInt_Bisec_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GccInt_Bisec_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::GccInt_Bisec_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::GccInt_Bisec_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1452,20 +2039,30 @@ unsafe impl crate::CppDeletable for HandleGccIntBisec {
 impl HandleGccIntBisec {
     /// Dereference this Handle to access the underlying GccInt_Bisec
     pub fn get(&self) -> &crate::ffi::GccInt_Bisec {
-        unsafe { &*(crate::ffi::HandleGccIntBisec_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBisec_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GccInt_Bisec
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_Bisec {
-        unsafe { &mut *(crate::ffi::HandleGccIntBisec_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleGccIntBisec_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<GccInt_Bisec> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBisec_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleGccIntBisec_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1476,6 +2073,7 @@ impl HandleGccIntBisec {
         let ptr = unsafe {
             crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBCirc(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1490,6 +2088,7 @@ impl HandleGccIntBisec {
         let ptr = unsafe {
             crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBElips(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1504,6 +2103,7 @@ impl HandleGccIntBisec {
         let ptr = unsafe {
             crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBHyper(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1518,6 +2118,7 @@ impl HandleGccIntBisec {
         let ptr = unsafe {
             crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBLine(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1532,6 +2133,7 @@ impl HandleGccIntBisec {
         let ptr = unsafe {
             crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBParab(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1546,6 +2148,7 @@ impl HandleGccIntBisec {
         let ptr = unsafe {
             crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBPoint(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {

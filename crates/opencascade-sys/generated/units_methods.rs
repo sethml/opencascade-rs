@@ -11,13 +11,22 @@
 /// (integer value denoting unit, as described in IGES
 /// standard) in millimeters by default
 pub fn get_length_factor_value(theUnit: i32) -> f64 {
-    unsafe { crate::ffi::UnitsMethods_get_length_factor_value(theUnit) }
+    {
+        let __result = unsafe { crate::ffi::UnitsMethods_get_length_factor_value(theUnit) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `UnitsMethods.hxx`:35 - `UnitsMethods::GetCasCadeLengthUnit`
 /// Returns value of current internal unit for CASCADE
 /// in millemeters by default
 pub fn get_cas_cade_length_unit(theBaseUnit: crate::units_methods::LengthUnit) -> f64 {
-    unsafe { crate::ffi::UnitsMethods_get_cas_cade_length_unit(theBaseUnit.into()) }
+    {
+        let __result =
+            unsafe { crate::ffi::UnitsMethods_get_cas_cade_length_unit(theBaseUnit.into()) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `UnitsMethods.hxx`:39 - `UnitsMethods::SetCasCadeLengthUnit`
 /// Sets value of current internal unit for CASCADE
@@ -25,11 +34,14 @@ pub fn set_cas_cade_length_unit_real_lengthunit(
     theUnitValue: f64,
     theBaseUnit: crate::units_methods::LengthUnit,
 ) {
-    unsafe {
-        crate::ffi::UnitsMethods_set_cas_cade_length_unit_real_lengthunit(
-            theUnitValue,
-            theBaseUnit.into(),
-        )
+    {
+        unsafe {
+            crate::ffi::UnitsMethods_set_cas_cade_length_unit_real_lengthunit(
+                theUnitValue,
+                theBaseUnit.into(),
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `UnitsMethods.hxx`:46 - `UnitsMethods::SetCasCadeLengthUnit`
@@ -37,7 +49,10 @@ pub fn set_cas_cade_length_unit_real_lengthunit(
 /// by parameter theUnit (integer value denoting unit,
 /// as described in IGES standard)
 pub fn set_cas_cade_length_unit_int(theUnit: i32) {
-    unsafe { crate::ffi::UnitsMethods_set_cas_cade_length_unit_int(theUnit) }
+    {
+        unsafe { crate::ffi::UnitsMethods_set_cas_cade_length_unit_int(theUnit) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `UnitsMethods.hxx`:49 - `UnitsMethods::GetLengthUnitScale`
 /// Returns the scale factor for switch from first given unit to second given unit
@@ -45,7 +60,13 @@ pub fn get_length_unit_scale(
     theFromUnit: crate::units_methods::LengthUnit,
     theToUnit: crate::units_methods::LengthUnit,
 ) -> f64 {
-    unsafe { crate::ffi::UnitsMethods_get_length_unit_scale(theFromUnit.into(), theToUnit.into()) }
+    {
+        let __result = unsafe {
+            crate::ffi::UnitsMethods_get_length_unit_scale(theFromUnit.into(), theToUnit.into())
+        };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `UnitsMethods.hxx`:53 - `UnitsMethods::GetLengthUnitByFactorValue`
 /// Returns the enumeration corresponding to the given scale factor
@@ -53,14 +74,15 @@ pub fn get_length_unit_by_factor_value(
     theFactorValue: f64,
     theBaseUnit: crate::units_methods::LengthUnit,
 ) -> crate::units_methods::LengthUnit {
-    unsafe {
-        crate::units_methods::LengthUnit::try_from(
+    {
+        let __result = unsafe {
             crate::ffi::UnitsMethods_get_length_unit_by_factor_value(
                 theFactorValue,
                 theBaseUnit.into(),
-            ),
-        )
-        .unwrap()
+            )
+        };
+        crate::check_exception();
+        crate::units_methods::LengthUnit::try_from(__result).unwrap()
     }
 }
 /// **Source:** `UnitsMethods.hxx`:58 - `UnitsMethods::DumpLengthUnit`
@@ -69,13 +91,15 @@ pub fn dump_length_unit_real_lengthunit(
     theScaleFactor: f64,
     theBaseUnit: crate::units_methods::LengthUnit,
 ) -> std::string::String {
-    unsafe {
-        std::ffi::CStr::from_ptr(crate::ffi::UnitsMethods_dump_length_unit_real_lengthunit(
-            theScaleFactor,
-            theBaseUnit.into(),
-        ))
-        .to_string_lossy()
-        .into_owned()
+    {
+        let __result = unsafe {
+            crate::ffi::UnitsMethods_dump_length_unit_real_lengthunit(
+                theScaleFactor,
+                theBaseUnit.into(),
+            )
+        };
+        crate::check_exception();
+        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `UnitsMethods.hxx`:63 - `UnitsMethods::DumpLengthUnit`
@@ -83,12 +107,11 @@ pub fn dump_length_unit_real_lengthunit(
 pub fn dump_length_unit_lengthunit(
     theUnit: crate::units_methods::LengthUnit,
 ) -> std::string::String {
-    unsafe {
-        std::ffi::CStr::from_ptr(crate::ffi::UnitsMethods_dump_length_unit_lengthunit(
-            theUnit.into(),
-        ))
-        .to_string_lossy()
-        .into_owned()
+    {
+        let __result =
+            unsafe { crate::ffi::UnitsMethods_dump_length_unit_lengthunit(theUnit.into()) };
+        crate::check_exception();
+        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `UnitsMethods.hxx`:66 - `UnitsMethods::LengthUnitFromString`
@@ -98,11 +121,12 @@ pub fn length_unit_from_string(
     theCaseSensitive: bool,
 ) -> crate::units_methods::LengthUnit {
     let c_theStr = std::ffi::CString::new(theStr).unwrap();
-    unsafe {
-        crate::units_methods::LengthUnit::try_from(
-            crate::ffi::UnitsMethods_length_unit_from_string(c_theStr.as_ptr(), theCaseSensitive),
-        )
-        .unwrap()
+    {
+        let __result = unsafe {
+            crate::ffi::UnitsMethods_length_unit_from_string(c_theStr.as_ptr(), theCaseSensitive)
+        };
+        crate::check_exception();
+        crate::units_methods::LengthUnit::try_from(__result).unwrap()
     }
 }
 

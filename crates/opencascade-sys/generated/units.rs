@@ -12,36 +12,50 @@
 /// the units known to the system.
 pub fn units_file(afile: &str) {
     let c_afile = std::ffi::CString::new(afile).unwrap();
-    unsafe { crate::ffi::Units_units_file(c_afile.as_ptr()) }
+    {
+        unsafe { crate::ffi::Units_units_file(c_afile.as_ptr()) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `Units.hxx`:48 - `Units::LexiconFile`
 /// Defines the location of the file containing the lexicon
 /// useful in manipulating composite units.
 pub fn lexicon_file(afile: &str) {
     let c_afile = std::ffi::CString::new(afile).unwrap();
-    unsafe { crate::ffi::Units_lexicon_file(c_afile.as_ptr()) }
+    {
+        unsafe { crate::ffi::Units_lexicon_file(c_afile.as_ptr()) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `Units.hxx`:53 - `Units::DictionaryOfUnits`
 /// Returns a unique instance of the dictionary of units.
 /// If <amode> is True, then it forces the recomputation of
 /// the dictionary of units.
 pub fn dictionary_of_units(amode: bool) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsDictionary> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_dictionary_of_units(amode)) }
+    {
+        let __result = unsafe { crate::ffi::Units_dictionary_of_units(amode) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `Units.hxx`:57 - `Units::Quantity`
 /// Returns a unique quantity instance corresponding to <aquantity>.
 pub fn quantity(aquantity: &str) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantity> {
     let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_quantity(c_aquantity.as_ptr())) }
+    {
+        let __result = unsafe { crate::ffi::Units_quantity(c_aquantity.as_ptr()) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `Units.hxx`:60 - `Units::FirstQuantity`
 /// Returns the first quantity string founded from the unit <aUnit>.
 pub fn first_quantity(aunit: &str) -> std::string::String {
     let c_aunit = std::ffi::CString::new(aunit).unwrap();
-    unsafe {
-        std::ffi::CStr::from_ptr(crate::ffi::Units_first_quantity(c_aunit.as_ptr()))
-            .to_string_lossy()
-            .into_owned()
+    {
+        let __result = unsafe { crate::ffi::Units_first_quantity(c_aunit.as_ptr()) };
+        crate::check_exception();
+        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `Units.hxx`:66 - `Units::LexiconUnits`
@@ -50,29 +64,51 @@ pub fn first_quantity(aunit: &str) -> std::string::String {
 /// the dictionary of units, and by consequence the
 /// completion of the Units_Lexicon.
 pub fn lexicon_units(amode: bool) -> crate::OwnedPtr<crate::ffi::HandleUnitsLexicon> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_lexicon_units(amode)) }
+    {
+        let __result = unsafe { crate::ffi::Units_lexicon_units(amode) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `Units.hxx`:70 - `Units::LexiconFormula`
 /// Return a unique instance of LexiconFormula.
 pub fn lexicon_formula() -> crate::OwnedPtr<crate::ffi::HandleUnitsLexicon> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_lexicon_formula()) }
+    {
+        let __result = unsafe { crate::ffi::Units_lexicon_formula() };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `Units.hxx`:73 - `Units::NullDimensions`
 /// Returns always the same instance of Dimensions.
 pub fn null_dimensions() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_null_dimensions()) }
+    {
+        let __result = unsafe { crate::ffi::Units_null_dimensions() };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `Units.hxx`:76 - `Units::Convert`
 /// Converts <avalue> expressed in <afirstunit> into the <asecondunit>.
 pub fn convert(avalue: f64, afirstunit: &str, asecondunit: &str) -> f64 {
     let c_afirstunit = std::ffi::CString::new(afirstunit).unwrap();
     let c_asecondunit = std::ffi::CString::new(asecondunit).unwrap();
-    unsafe { crate::ffi::Units_convert(avalue, c_afirstunit.as_ptr(), c_asecondunit.as_ptr()) }
+    {
+        let __result = unsafe {
+            crate::ffi::Units_convert(avalue, c_afirstunit.as_ptr(), c_asecondunit.as_ptr())
+        };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Units.hxx`:80 - `Units::ToSI`
 pub fn to_si_real_charptr(aData: f64, aUnit: &str) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
-    unsafe { crate::ffi::Units_to_si_real_charptr(aData, c_aUnit.as_ptr()) }
+    {
+        let __result = unsafe { crate::ffi::Units_to_si_real_charptr(aData, c_aUnit.as_ptr()) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Units.hxx`:83 - `Units::ToSI`
 pub fn to_si_real_charptr_handleunitsdimensions(
@@ -81,14 +117,26 @@ pub fn to_si_real_charptr_handleunitsdimensions(
     aDim: &mut crate::ffi::HandleUnitsDimensions,
 ) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
-    unsafe {
-        crate::ffi::Units_to_si_real_charptr_handleunitsdimensions(aData, c_aUnit.as_ptr(), aDim)
+    {
+        let __result = unsafe {
+            crate::ffi::Units_to_si_real_charptr_handleunitsdimensions(
+                aData,
+                c_aUnit.as_ptr(),
+                aDim,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `Units.hxx`:87 - `Units::FromSI`
 pub fn from_si_real_charptr(aData: f64, aUnit: &str) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
-    unsafe { crate::ffi::Units_from_si_real_charptr(aData, c_aUnit.as_ptr()) }
+    {
+        let __result = unsafe { crate::ffi::Units_from_si_real_charptr(aData, c_aUnit.as_ptr()) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `Units.hxx`:90 - `Units::FromSI`
 pub fn from_si_real_charptr_handleunitsdimensions(
@@ -97,15 +145,27 @@ pub fn from_si_real_charptr_handleunitsdimensions(
     aDim: &mut crate::ffi::HandleUnitsDimensions,
 ) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
-    unsafe {
-        crate::ffi::Units_from_si_real_charptr_handleunitsdimensions(aData, c_aUnit.as_ptr(), aDim)
+    {
+        let __result = unsafe {
+            crate::ffi::Units_from_si_real_charptr_handleunitsdimensions(
+                aData,
+                c_aUnit.as_ptr(),
+                aDim,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `Units.hxx`:95 - `Units::Dimensions`
 /// return the dimension associated to the Type
 pub fn dimensions(aType: &str) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
     let c_aType = std::ffi::CString::new(aType).unwrap();
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_dimensions(c_aType.as_ptr())) }
+    {
+        let __result = unsafe { crate::ffi::Units_dimensions(c_aType.as_ptr()) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
@@ -151,88 +211,133 @@ impl Dimensions {
         aplaneangle: f64,
         asolidangle: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_ctor_real9(
-                amass,
-                alength,
-                atime,
-                anelectriccurrent,
-                athermodynamictemperature,
-                anamountofsubstance,
-                aluminousintensity,
-                aplaneangle,
-                asolidangle,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_ctor_real9(
+                    amass,
+                    alength,
+                    atime,
+                    anelectriccurrent,
+                    athermodynamictemperature,
+                    anamountofsubstance,
+                    aluminousintensity,
+                    aplaneangle,
+                    asolidangle,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:55 - `Units_Dimensions::Mass()`
     /// Returns the power of mass stored in the dimensions.
     pub fn mass(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_mass(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_mass(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:58 - `Units_Dimensions::Length()`
     /// Returns the power of length stored in the dimensions.
     pub fn length(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_length(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:61 - `Units_Dimensions::Time()`
     /// Returns the power of time stored in the dimensions.
     pub fn time(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_time(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_time(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:65 - `Units_Dimensions::ElectricCurrent()`
     /// Returns the  power of  electrical  intensity (current)
     /// stored in the dimensions.
     pub fn electric_current(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_electric_current(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_electric_current(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:69 - `Units_Dimensions::ThermodynamicTemperature()`
     /// Returns  the  power  of   temperature stored  in   the
     /// dimensions.
     pub fn thermodynamic_temperature(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_thermodynamic_temperature(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_thermodynamic_temperature(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:73 - `Units_Dimensions::AmountOfSubstance()`
     /// Returns  the power   of quantity   of  material (mole)
     /// stored in the dimensions.
     pub fn amount_of_substance(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_amount_of_substance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_amount_of_substance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:77 - `Units_Dimensions::LuminousIntensity()`
     /// Returns the  power of light   intensity stored  in the
     /// dimensions.
     pub fn luminous_intensity(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_luminous_intensity(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_luminous_intensity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:81 - `Units_Dimensions::PlaneAngle()`
     /// Returns  the power   of plane   angle  stored  in  the
     /// dimensions.
     pub fn plane_angle(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_plane_angle(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_plane_angle(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:85 - `Units_Dimensions::SolidAngle()`
     /// Returns the   power   of  solid angle stored   in  the
     /// dimensions.
     pub fn solid_angle(&self) -> f64 {
-        unsafe { crate::ffi::Units_Dimensions_solid_angle(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_solid_angle(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:88 - `Units_Dimensions::Quantity()`
     /// Returns the quantity string of the dimension
     pub fn quantity(&self) -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_Dimensions_quantity(self as *const Self))
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_quantity(self as *const Self) };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
@@ -244,11 +349,11 @@ impl Dimensions {
         &self,
         adimensions: &crate::ffi::HandleUnitsDimensions,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_multiply(
-                self as *const Self,
-                adimensions,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_multiply(self as *const Self, adimensions) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -259,11 +364,11 @@ impl Dimensions {
         &self,
         adimensions: &crate::ffi::HandleUnitsDimensions,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_divide(
-                self as *const Self,
-                adimensions,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_divide(self as *const Self, adimensions) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -271,11 +376,11 @@ impl Dimensions {
     /// Creates  and returns a new  Dimensions object which is
     /// the result of the power of <me> and <anexponent>.
     pub fn power(&self, anexponent: f64) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_power(
-                self as *const Self,
-                anexponent,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_power(self as *const Self, anexponent) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -283,151 +388,260 @@ impl Dimensions {
     /// Returns true if  <me>  and <adimensions> have the same
     /// dimensions, false otherwise.
     pub fn is_equal(&self, adimensions: &crate::ffi::HandleUnitsDimensions) -> bool {
-        unsafe { crate::ffi::Units_Dimensions_is_equal(self as *const Self, adimensions) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_is_equal(self as *const Self, adimensions) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:111 - `Units_Dimensions::IsNotEqual()`
     /// Returns false if <me> and  <adimensions> have the same
     /// dimensions, true otherwise.
     pub fn is_not_equal(&self, adimensions: &crate::ffi::HandleUnitsDimensions) -> bool {
-        unsafe { crate::ffi::Units_Dimensions_is_not_equal(self as *const Self, adimensions) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_is_not_equal(self as *const Self, adimensions)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:114 - `Units_Dimensions::Dump()`
     /// Useful for degugging.
     pub fn dump(&self, ashift: i32) {
-        unsafe { crate::ffi::Units_Dimensions_dump(self as *const Self, ashift) }
+        {
+            unsafe { crate::ffi::Units_Dimensions_dump(self as *const Self, ashift) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Dimensions_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:116 - `Units_Dimensions::ALess()`
     pub fn a_less() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_less()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_less() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:118 - `Units_Dimensions::AMass()`
     pub fn a_mass() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_mass()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_mass() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:120 - `Units_Dimensions::ALength()`
     pub fn a_length() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_length()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_length() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:122 - `Units_Dimensions::ATime()`
     pub fn a_time() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_time()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_time() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:124 - `Units_Dimensions::AElectricCurrent()`
     pub fn a_electric_current() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_electric_current()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_electric_current() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:126 - `Units_Dimensions::AThermodynamicTemperature()`
     pub fn a_thermodynamic_temperature() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_thermodynamic_temperature())
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_thermodynamic_temperature() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:128 - `Units_Dimensions::AAmountOfSubstance()`
     pub fn a_amount_of_substance() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_amount_of_substance()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_amount_of_substance() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:130 - `Units_Dimensions::ALuminousIntensity()`
     pub fn a_luminous_intensity() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_luminous_intensity()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_luminous_intensity() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:132 - `Units_Dimensions::APlaneAngle()`
     pub fn a_plane_angle() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_plane_angle()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_plane_angle() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:135 - `Units_Dimensions::ASolidAngle()`
     /// Returns the basic dimensions.
     pub fn a_solid_angle() -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_a_solid_angle()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_a_solid_angle() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_Dimensions_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Dimensions_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_Dimensions_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_Dimensions_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Dimensions_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Dimensions_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Dimensions_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Dimensions_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_Dimensions_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_Dimensions_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Dimensions_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_Dimensions_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_Dimensions_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_Dimensions_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Dimensions_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_Dimensions_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Dimensions_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -442,20 +656,30 @@ unsafe impl crate::CppDeletable for HandleUnitsDimensions {
 impl HandleUnitsDimensions {
     /// Dereference this Handle to access the underlying Units_Dimensions
     pub fn get(&self) -> &crate::ffi::Units_Dimensions {
-        unsafe { &*(crate::ffi::HandleUnitsDimensions_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsDimensions_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_Dimensions
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Dimensions {
-        unsafe { &mut *(crate::ffi::HandleUnitsDimensions_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsDimensions_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_Dimensions> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsDimensions_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsDimensions_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -479,7 +703,11 @@ impl Explorer {
     /// **Source:** `Units_Explorer.hxx`:40 - `Units_Explorer::Units_Explorer()`
     /// Empty constructor of the class.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Explorer_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Explorer.hxx`:44 - `Units_Explorer::Units_Explorer()`
@@ -488,10 +716,11 @@ impl Explorer {
     pub fn new_handleunitsunitssystem(
         aunitssystem: &crate::ffi::HandleUnitsUnitsSystem,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_ctor_handleunitsunitssystem(
-                aunitssystem,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Explorer_ctor_handleunitsunitssystem(aunitssystem) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -501,10 +730,12 @@ impl Explorer {
     pub fn new_handleunitsunitsdictionary(
         aunitsdictionary: &crate::ffi::HandleUnitsUnitsDictionary,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_ctor_handleunitsunitsdictionary(
-                aunitsdictionary,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Explorer_ctor_handleunitsunitsdictionary(aunitsdictionary)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -517,13 +748,15 @@ impl Explorer {
         aquantity: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_Explorer_ctor_handleunitsunitssystem_charptr(
                     aunitssystem,
                     c_aquantity.as_ptr(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -536,13 +769,15 @@ impl Explorer {
         aquantity: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_Explorer_ctor_handleunitsunitsdictionary_charptr(
                     aunitsdictionary,
                     c_aquantity.as_ptr(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -553,8 +788,14 @@ impl Explorer {
         &mut self,
         aunitssystem: &crate::ffi::HandleUnitsUnitsSystem,
     ) {
-        unsafe {
-            crate::ffi::Units_Explorer_init_handleunitsunitssystem(self as *mut Self, aunitssystem)
+        {
+            unsafe {
+                crate::ffi::Units_Explorer_init_handleunitsunitssystem(
+                    self as *mut Self,
+                    aunitssystem,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -565,11 +806,14 @@ impl Explorer {
         &mut self,
         aunitsdictionary: &crate::ffi::HandleUnitsUnitsDictionary,
     ) {
-        unsafe {
-            crate::ffi::Units_Explorer_init_handleunitsunitsdictionary(
-                self as *mut Self,
-                aunitsdictionary,
-            )
+        {
+            unsafe {
+                crate::ffi::Units_Explorer_init_handleunitsunitsdictionary(
+                    self as *mut Self,
+                    aunitsdictionary,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -583,12 +827,15 @@ impl Explorer {
         aquantity: &str,
     ) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::ffi::Units_Explorer_init_handleunitsunitssystem_charptr(
-                self as *mut Self,
-                aunitssystem,
-                c_aquantity.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::Units_Explorer_init_handleunitsunitssystem_charptr(
+                    self as *mut Self,
+                    aunitssystem,
+                    c_aquantity.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -602,12 +849,15 @@ impl Explorer {
         aquantity: &str,
     ) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::ffi::Units_Explorer_init_handleunitsunitsdictionary_charptr(
-                self as *mut Self,
-                aunitsdictionary,
-                c_aquantity.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::Units_Explorer_init_handleunitsunitsdictionary_charptr(
+                    self as *mut Self,
+                    aunitsdictionary,
+                    c_aquantity.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -615,20 +865,29 @@ impl Explorer {
     /// Returns True if there is another Quantity to explore,
     /// False otherwise.
     pub fn more_quantity(&self) -> bool {
-        unsafe { crate::ffi::Units_Explorer_more_quantity(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Explorer_more_quantity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Explorer.hxx`:87 - `Units_Explorer::NextQuantity()`
     /// Sets the next Quantity current.
     pub fn next_quantity(&mut self) {
-        unsafe { crate::ffi::Units_Explorer_next_quantity(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Explorer_next_quantity(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Explorer.hxx`:90 - `Units_Explorer::Quantity()`
     /// Returns the name of the current Quantity.
     pub fn quantity(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_quantity(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Explorer_quantity(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -636,19 +895,30 @@ impl Explorer {
     /// Returns True if there is another Unit to explore,
     /// False otherwise.
     pub fn more_unit(&self) -> bool {
-        unsafe { crate::ffi::Units_Explorer_more_unit(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Explorer_more_unit(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Explorer.hxx`:97 - `Units_Explorer::NextUnit()`
     /// Sets the next Unit current.
     pub fn next_unit(&mut self) {
-        unsafe { crate::ffi::Units_Explorer_next_unit(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Explorer_next_unit(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Explorer.hxx`:100 - `Units_Explorer::Unit()`
     /// Returns the name of the current unit.
     pub fn unit(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_unit(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Explorer_unit(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Explorer.hxx`:109 - `Units_Explorer::IsActive()`
@@ -660,7 +930,11 @@ impl Explorer {
     /// dictionary,  returns True if the  current unit is  the
     /// S.I. unit.
     pub fn is_active(&self) -> bool {
-        unsafe { crate::ffi::Units_Explorer_is_active(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Explorer_is_active(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -685,21 +959,30 @@ impl Lexicon {
     /// **Source:** `Units_Lexicon.hxx`:42 - `Units_Lexicon::Units_Lexicon()`
     /// Creates an empty instance of Lexicon.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Lexicon_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Lexicon_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Lexicon.hxx`:46 - `Units_Lexicon::Creates()`
     /// Reads the file <afilename> to create a sequence  of tokens
     /// stored in <thesequenceoftokens>.
     pub fn creates(&mut self) {
-        unsafe { crate::ffi::Units_Lexicon_creates(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Lexicon_creates(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
     /// Returns the first item of the sequence of tokens.
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Lexicon_sequence(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Lexicon_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -711,98 +994,155 @@ impl Lexicon {
     pub fn add_token(&mut self, aword: &str, amean: &str, avalue: f64) {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe {
-            crate::ffi::Units_Lexicon_add_token(
-                self as *mut Self,
-                c_aword.as_ptr(),
-                c_amean.as_ptr(),
-                avalue,
-            )
+        {
+            unsafe {
+                crate::ffi::Units_Lexicon_add_token(
+                    self as *mut Self,
+                    c_aword.as_ptr(),
+                    c_amean.as_ptr(),
+                    avalue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_Lexicon.hxx`:60 - `Units_Lexicon::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_Lexicon_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Lexicon_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Lexicon_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Lexicon_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_Lexicon_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_Lexicon_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Lexicon_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Lexicon_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_Lexicon_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Lexicon_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_Lexicon_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Lexicon_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsLexicon> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Lexicon_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Lexicon_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Lexicon_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Lexicon_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Lexicon_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Lexicon_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_Lexicon_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::Units_Lexicon_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_Lexicon_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Lexicon_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_Lexicon_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Lexicon_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_Lexicon_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Lexicon_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_Lexicon_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Lexicon_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -817,20 +1157,30 @@ unsafe impl crate::CppDeletable for HandleUnitsLexicon {
 impl HandleUnitsLexicon {
     /// Dereference this Handle to access the underlying Units_Lexicon
     pub fn get(&self) -> &crate::ffi::Units_Lexicon {
-        unsafe { &*(crate::ffi::HandleUnitsLexicon_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsLexicon_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_Lexicon
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Lexicon {
-        unsafe { &mut *(crate::ffi::HandleUnitsLexicon_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsLexicon_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_Lexicon> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsLexicon_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsLexicon_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -843,6 +1193,7 @@ impl HandleUnitsLexicon {
         let ptr = unsafe {
             crate::ffi::HandleUnitsLexicon_downcast_to_HandleUnitsUnitsLexicon(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -873,54 +1224,78 @@ impl MathSentence {
     /// language.
     pub fn new_charptr(astring: &str) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_MathSentence_ctor_charptr(
-                c_astring.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_MathSentence_ctor_charptr(c_astring.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to Units_Sentence
     pub fn as_sentence(&self) -> &Sentence {
-        unsafe { &*(crate::ffi::Units_MathSentence_as_Units_Sentence(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_MathSentence_as_Units_Sentence(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Units_Sentence (mutable)
     pub fn as_sentence_mut(&mut self) -> &mut Sentence {
-        unsafe { &mut *(crate::ffi::Units_MathSentence_as_Units_Sentence_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_MathSentence_as_Units_Sentence_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
     pub fn set_constants(&mut self) {
-        unsafe { crate::ffi::Units_MathSentence_inherited_SetConstants(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_MathSentence_inherited_SetConstants(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_MathSentence_inherited_Sequence(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_MathSentence_inherited_Sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
     pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_MathSentence_inherited_Evaluate(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_MathSentence_inherited_Evaluate(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:56 - `Units_Sentence::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Units_MathSentence_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_MathSentence_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::Dump()`
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_MathSentence_inherited_Dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_MathSentence_inherited_Dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -943,7 +1318,11 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:34 - `Units_Measurement::Units_Measurement()`
     /// It is the empty constructor of the class.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Measurement_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Measurement.hxx`:39 - `Units_Measurement::Units_Measurement()`
@@ -954,10 +1333,11 @@ impl Measurement {
         avalue: f64,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_ctor_real_handleunitstoken(
-                avalue, atoken,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Measurement_ctor_real_handleunitstoken(avalue, atoken) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -967,11 +1347,12 @@ impl Measurement {
     /// described in natural language.
     pub fn new_real_charptr(avalue: f64, aunit: &str) -> crate::OwnedPtr<Self> {
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_ctor_real_charptr(
-                avalue,
-                c_aunit.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Measurement_ctor_real_charptr(avalue, c_aunit.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -982,15 +1363,20 @@ impl Measurement {
     /// <thetoken>.
     pub fn convert(&mut self, aunit: &str) {
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
-        unsafe { crate::ffi::Units_Measurement_convert(self as *mut Self, c_aunit.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_Measurement_convert(self as *mut Self, c_aunit.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Measurement.hxx`:54 - `Units_Measurement::Integer()`
     /// Returns a Measurement object with the integer value of
     /// the measurement contained in <me>.
     pub fn integer(&self) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_integer(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Measurement_integer(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -998,22 +1384,31 @@ impl Measurement {
     /// Returns a Measurement object with the fractional value
     /// of the measurement contained in <me>.
     pub fn fractional(&self) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_fractional(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Measurement_fractional(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Measurement.hxx`:61 - `Units_Measurement::Measurement()`
     /// Returns the value of the measurement.
     pub fn measurement(&self) -> f64 {
-        unsafe { crate::ffi::Units_Measurement_measurement(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Measurement_measurement(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Measurement.hxx`:64 - `Units_Measurement::Token()`
     /// Returns the token contained in <me>.
     pub fn token(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_token(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Measurement_token(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1022,11 +1417,11 @@ impl Measurement {
     /// addition  of  <me>  and  <ameasurement>.  The   chosen
     /// returned unit is the unit of <me>.
     pub fn add(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_add(
-                self as *const Self,
-                ameasurement,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Measurement_add(self as *const Self, ameasurement) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1035,11 +1430,12 @@ impl Measurement {
     /// subtraction of  <me>  and <ameasurement>.   The chosen
     /// returned unit is the unit of <me>.
     pub fn subtract(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_subtract(
-                self as *const Self,
-                ameasurement,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Measurement_subtract(self as *const Self, ameasurement)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1047,11 +1443,15 @@ impl Measurement {
     /// Returns  a measurement which  is the multiplication of
     /// <me> and <ameasurement>.
     pub fn multiply_measurement(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_multiply_measurement(
-                self as *const Self,
-                ameasurement,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Measurement_multiply_measurement(
+                    self as *const Self,
+                    ameasurement,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1059,11 +1459,11 @@ impl Measurement {
     /// Returns  a measurement which  is the multiplication of
     /// <me> with the value  <avalue>.
     pub fn multiply_real(&self, avalue: f64) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_multiply_real(
-                self as *const Self,
-                avalue,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Measurement_multiply_real(self as *const Self, avalue) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1071,11 +1471,12 @@ impl Measurement {
     /// Returns a measurement which  is the division of  <me> by
     /// <ameasurement>.
     pub fn divide_measurement(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_divide_measurement(
-                self as *const Self,
-                ameasurement,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Measurement_divide_measurement(self as *const Self, ameasurement)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1083,11 +1484,11 @@ impl Measurement {
     /// Returns  a measurement which  is the division of <me> by
     /// the constant <avalue>.
     pub fn divide_real(&self, avalue: f64) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_divide_real(
-                self as *const Self,
-                avalue,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Measurement_divide_real(self as *const Self, avalue) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1095,23 +1496,30 @@ impl Measurement {
     /// Returns   a    measurement  which   is <me>    powered
     /// <anexponent>.
     pub fn power(&self, anexponent: f64) -> crate::OwnedPtr<Measurement> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_power(
-                self as *const Self,
-                anexponent,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Measurement_power(self as *const Self, anexponent) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Measurement.hxx`:120 - `Units_Measurement::HasToken()`
     pub fn has_token(&self) -> bool {
-        unsafe { crate::ffi::Units_Measurement_has_token(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Measurement_has_token(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Measurement.hxx`:123 - `Units_Measurement::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_Measurement_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Measurement_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1131,16 +1539,21 @@ unsafe impl crate::CppDeletable for NoSuchType {
 impl NoSuchType {
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Units_NoSuchType()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchType_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Units_NoSuchType()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_ctor_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_ctor_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1148,28 +1561,43 @@ impl NoSuchType {
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_ctor_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_NoSuchType_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise()`
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Units_NoSuchType_raise_charptr(c_theMessage.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_NoSuchType_raise_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        unsafe { crate::ffi::Units_NoSuchType_raise_sstream(theMessage) }
+        {
+            unsafe { crate::ffi::Units_NoSuchType_raise_sstream(theMessage) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance()`
@@ -1177,10 +1605,11 @@ impl NoSuchType {
         theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_new_instance_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_new_instance_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1191,134 +1620,229 @@ impl NoSuchType {
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_new_instance_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_new_instance_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_NoSuchType_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchType_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_NoSuchType_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchType_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_NoSuchObject
     pub fn as_standard_no_such_object(&self) -> &crate::standard::NoSuchObject {
-        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_NoSuchObject(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_as_Standard_NoSuchObject(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_NoSuchObject (mutable)
     pub fn as_standard_no_such_object_mut(&mut self) -> &mut crate::standard::NoSuchObject {
-        unsafe {
-            &mut *(crate::ffi::Units_NoSuchType_as_Standard_NoSuchObject_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_as_Standard_NoSuchObject_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_DomainError(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_as_Standard_DomainError(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        unsafe {
-            &mut *(crate::ffi::Units_NoSuchType_as_Standard_DomainError_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_as_Standard_DomainError_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_Failure(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_as_Standard_Failure(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        unsafe { &mut *(crate::ffi::Units_NoSuchType_as_Standard_Failure_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_as_Standard_Failure_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_NoSuchType_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_NoSuchType_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchType> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchType_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchType_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_Print(self as *const Self, theStream) }
+        {
+            unsafe { crate::ffi::Units_NoSuchType_inherited_Print(self as *const Self, theStream) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_Reraise(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_NoSuchType_inherited_Reraise(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_Jump(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_NoSuchType_inherited_Jump(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_NoSuchType_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchType_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_NoSuchType_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchType_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_NoSuchType_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_NoSuchType_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1333,51 +1857,65 @@ unsafe impl crate::CppDeletable for HandleUnitsNoSuchType {
 impl HandleUnitsNoSuchType {
     /// Dereference this Handle to access the underlying Units_NoSuchType
     pub fn get(&self) -> &crate::ffi::Units_NoSuchType {
-        unsafe { &*(crate::ffi::HandleUnitsNoSuchType_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsNoSuchType_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_NoSuchType
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_NoSuchType {
-        unsafe { &mut *(crate::ffi::HandleUnitsNoSuchType_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsNoSuchType_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_NoSuchType> to Handle<Standard_NoSuchObject>
     pub fn to_handle_no_such_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardNoSuchObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardNoSuchObject(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardNoSuchObject(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_NoSuchType> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardDomainError(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardDomainError(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_NoSuchType> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchType_to_HandleStandardFailure(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardFailure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_NoSuchType> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchType_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchType_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1398,16 +1936,21 @@ unsafe impl crate::CppDeletable for NoSuchUnit {
 impl NoSuchUnit {
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Units_NoSuchUnit()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchUnit_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Units_NoSuchUnit()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_ctor_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_ctor_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1415,28 +1958,43 @@ impl NoSuchUnit {
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_ctor_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_NoSuchUnit_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise()`
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Units_NoSuchUnit_raise_charptr(c_theMessage.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_NoSuchUnit_raise_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        unsafe { crate::ffi::Units_NoSuchUnit_raise_sstream(theMessage) }
+        {
+            unsafe { crate::ffi::Units_NoSuchUnit_raise_sstream(theMessage) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance()`
@@ -1444,10 +2002,11 @@ impl NoSuchUnit {
         theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_new_instance_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_new_instance_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1458,134 +2017,229 @@ impl NoSuchUnit {
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_new_instance_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_new_instance_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_NoSuchUnit_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchUnit_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_NoSuchUnit_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchUnit_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_NoSuchObject
     pub fn as_standard_no_such_object(&self) -> &crate::standard::NoSuchObject {
-        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_NoSuchObject(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_as_Standard_NoSuchObject(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_NoSuchObject (mutable)
     pub fn as_standard_no_such_object_mut(&mut self) -> &mut crate::standard::NoSuchObject {
-        unsafe {
-            &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_NoSuchObject_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_as_Standard_NoSuchObject_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_DomainError(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_as_Standard_DomainError(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        unsafe {
-            &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_DomainError_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_as_Standard_DomainError_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_Failure(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_as_Standard_Failure(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        unsafe { &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_Failure_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_as_Standard_Failure_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_NoSuchUnit_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_NoSuchUnit_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsNoSuchUnit> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_NoSuchUnit_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_NoSuchUnit_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Print(self as *const Self, theStream) }
+        {
+            unsafe { crate::ffi::Units_NoSuchUnit_inherited_Print(self as *const Self, theStream) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Reraise(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_NoSuchUnit_inherited_Reraise(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Jump(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_NoSuchUnit_inherited_Jump(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_NoSuchUnit_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_NoSuchUnit_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_NoSuchUnit_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_NoSuchUnit_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_NoSuchUnit_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_NoSuchUnit_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1600,51 +2254,65 @@ unsafe impl crate::CppDeletable for HandleUnitsNoSuchUnit {
 impl HandleUnitsNoSuchUnit {
     /// Dereference this Handle to access the underlying Units_NoSuchUnit
     pub fn get(&self) -> &crate::ffi::Units_NoSuchUnit {
-        unsafe { &*(crate::ffi::HandleUnitsNoSuchUnit_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsNoSuchUnit_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_NoSuchUnit
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_NoSuchUnit {
-        unsafe { &mut *(crate::ffi::HandleUnitsNoSuchUnit_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsNoSuchUnit_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_NoSuchObject>
     pub fn to_handle_no_such_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardNoSuchObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardNoSuchObject(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardNoSuchObject(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardDomainError(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardDomainError(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardFailure(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardFailure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsNoSuchUnit_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1665,77 +2333,116 @@ unsafe impl crate::CppDeletable for QuantitiesSequence {
 impl QuantitiesSequence {
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Units_QuantitiesSequence()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_QuantitiesSequence_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Units_QuantitiesSequence()`
     pub fn new_qtssequence(theOther: &crate::ffi::Units_QtsSequence) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_ctor_qtssequence(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_QuantitiesSequence_ctor_qtssequence(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::Units_QtsSequence {
-        unsafe { &*(crate::ffi::Units_QuantitiesSequence_sequence(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_QuantitiesSequence_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
     pub fn append_handleunitsquantity(&mut self, theItem: &crate::ffi::HandleUnitsQuantity) {
-        unsafe {
-            crate::ffi::Units_QuantitiesSequence_append_handleunitsquantity(
-                self as *mut Self,
-                theItem,
-            )
+        {
+            unsafe {
+                crate::ffi::Units_QuantitiesSequence_append_handleunitsquantity(
+                    self as *mut Self,
+                    theItem,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
     pub fn append_qtssequence(&mut self, theSequence: &mut crate::ffi::Units_QtsSequence) {
-        unsafe {
-            crate::ffi::Units_QuantitiesSequence_append_qtssequence(self as *mut Self, theSequence)
+        {
+            unsafe {
+                crate::ffi::Units_QuantitiesSequence_append_qtssequence(
+                    self as *mut Self,
+                    theSequence,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::Units_QtsSequence {
-        unsafe { &mut *(crate::ffi::Units_QuantitiesSequence_change_sequence(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_QuantitiesSequence_change_sequence(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_QuantitiesSequence_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_QuantitiesSequence_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_QuantitiesSequence_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_QuantitiesSequence_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_QuantitiesSequence_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_QuantitiesSequence_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Units_QuantitiesSequence_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_QuantitiesSequence_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_QuantitiesSequence_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_QuantitiesSequence_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1743,62 +2450,95 @@ impl QuantitiesSequence {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantitiesSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_QuantitiesSequence_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Units_QuantitiesSequence_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_QuantitiesSequence_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Units_QuantitiesSequence_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_QuantitiesSequence_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Units_QuantitiesSequence_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_QuantitiesSequence_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_QuantitiesSequence_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Units_QuantitiesSequence_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Units_QuantitiesSequence_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Units_QuantitiesSequence_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_QuantitiesSequence_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_QuantitiesSequence_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_QuantitiesSequence_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1813,22 +2553,34 @@ unsafe impl crate::CppDeletable for HandleUnitsQuantitiesSequence {
 impl HandleUnitsQuantitiesSequence {
     /// Dereference this Handle to access the underlying Units_QuantitiesSequence
     pub fn get(&self) -> &crate::ffi::Units_QuantitiesSequence {
-        unsafe { &*(crate::ffi::HandleUnitsQuantitiesSequence_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsQuantitiesSequence_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_QuantitiesSequence
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_QuantitiesSequence {
-        unsafe { &mut *(crate::ffi::HandleUnitsQuantitiesSequence_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsQuantitiesSequence_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_QuantitiesSequence> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleUnitsQuantitiesSequence_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1862,22 +2614,32 @@ impl Quantity {
         aunitssequence: &crate::ffi::HandleUnitsUnitsSequence,
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_ctor_charptr_handleunitsdimensions_handleunitsunitssequence(c_aname.as_ptr(), adimensions, aunitssequence))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Quantity_ctor_charptr_handleunitsdimensions_handleunitsunitssequence(c_aname.as_ptr(), adimensions, aunitssequence)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Quantity.hxx`:50 - `Units_Quantity::Name()`
     /// Returns in a AsciiString from TCollection the name of the quantity.
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_name(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Quantity.hxx`:53 - `Units_Quantity::Dimensions()`
     /// Returns the physical dimensions of the quantity.
     pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_dimensions(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_dimensions(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1885,8 +2647,10 @@ impl Quantity {
     /// Returns <theunitssequence>, which  is the  sequence of
     /// all the units stored for this physical quantity.
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_sequence(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1895,91 +2659,153 @@ impl Quantity {
     /// to <astring>, False otherwise.
     pub fn is_equal(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe { crate::ffi::Units_Quantity_is_equal(self as *const Self, c_astring.as_ptr()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Quantity_is_equal(self as *const Self, c_astring.as_ptr())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Quantity.hxx`:64 - `Units_Quantity::Dump()`
     /// Useful for debugging.
     pub fn dump(&self, ashift: i32, alevel: i32) {
-        unsafe { crate::ffi::Units_Quantity_dump(self as *const Self, ashift, alevel) }
+        {
+            unsafe { crate::ffi::Units_Quantity_dump(self as *const Self, ashift, alevel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Quantity_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_Quantity_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Quantity_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_Quantity_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Quantity_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_Quantity_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Quantity_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantity> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Quantity_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Quantity_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Quantity_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Quantity_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Quantity_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_Quantity_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_Quantity_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_Quantity_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Quantity_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_Quantity_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Quantity_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_Quantity_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Quantity_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_Quantity_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Quantity_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1994,20 +2820,30 @@ unsafe impl crate::CppDeletable for HandleUnitsQuantity {
 impl HandleUnitsQuantity {
     /// Dereference this Handle to access the underlying Units_Quantity
     pub fn get(&self) -> &crate::ffi::Units_Quantity {
-        unsafe { &*(crate::ffi::HandleUnitsQuantity_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsQuantity_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_Quantity
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Quantity {
-        unsafe { &mut *(crate::ffi::HandleUnitsQuantity_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsQuantity_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_Quantity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsQuantity_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsQuantity_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2036,25 +2872,34 @@ impl Sentence {
         astring: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Sentence_ctor_handleunitslexicon_charptr(
-                alexicon,
-                c_astring.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Sentence_ctor_handleunitslexicon_charptr(
+                    alexicon,
+                    c_astring.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
     /// For each constant encountered, sets the value.
     pub fn set_constants(&mut self) {
-        unsafe { crate::ffi::Units_Sentence_set_constants(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Sentence_set_constants(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
     /// Returns <thesequenceoftokens>.
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Sentence_sequence(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Sentence_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2064,11 +2909,14 @@ impl Sentence {
         &mut self,
         asequenceoftokens: &crate::ffi::HandleUnitsTokensSequence,
     ) {
-        unsafe {
-            crate::ffi::Units_Sentence_sequence_handleunitstokenssequence(
-                self as *mut Self,
-                asequenceoftokens,
-            )
+        {
+            unsafe {
+                crate::ffi::Units_Sentence_sequence_handleunitstokenssequence(
+                    self as *mut Self,
+                    asequenceoftokens,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2076,20 +2924,31 @@ impl Sentence {
     /// Computes and  returns in a   token the result  of  the
     /// expression.
     pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Sentence_evaluate(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Sentence_evaluate(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Sentence.hxx`:56 - `Units_Sentence::IsDone()`
     /// Return True if number of created tokens > 0
     /// (i.e creation of sentence is successful)
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Units_Sentence_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Sentence_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_Sentence_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Sentence_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2137,31 +2996,39 @@ impl ShiftedToken {
     ) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_ShiftedToken_ctor_charptr2_real2_handleunitsdimensions(
                     c_aword.as_ptr(),
                     c_amean.as_ptr(),
                     avalue,
                     amove,
                     adimensions,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:61 - `Units_ShiftedToken::Creates()`
     /// Creates and returns a  token, which is a ShiftedToken.
     pub fn creates(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_creates(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedToken_creates(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:64 - `Units_ShiftedToken::Move()`
     /// Returns the gap <themove>
     pub fn move_(&self) -> f64 {
-        unsafe { crate::ffi::Units_ShiftedToken_move_(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedToken_move_(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:69 - `Units_ShiftedToken::Multiplied()`
@@ -2169,7 +3036,12 @@ impl ShiftedToken {
     /// methods,  to   compute  the   measurement    during  a
     /// conversion.
     pub fn multiplied(&self, avalue: f64) -> f64 {
-        unsafe { crate::ffi::Units_ShiftedToken_multiplied(self as *const Self, avalue) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_multiplied(self as *const Self, avalue) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:75 - `Units_ShiftedToken::Divided()`
@@ -2177,52 +3049,89 @@ impl ShiftedToken {
     /// methods,   to   compute   the   measurement   during a
     /// conversion.
     pub fn divided(&self, avalue: f64) -> f64 {
-        unsafe { crate::ffi::Units_ShiftedToken_divided(self as *const Self, avalue) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_divided(self as *const Self, avalue) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:77 - `Units_ShiftedToken::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
-        unsafe { crate::ffi::Units_ShiftedToken_dump(self as *const Self, ashift, alevel) }
+        {
+            unsafe { crate::ffi::Units_ShiftedToken_dump(self as *const Self, ashift, alevel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_ShiftedToken_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_ShiftedToken_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedToken_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_ShiftedToken_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedToken_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Units_Token
     pub fn as_token(&self) -> &Token {
-        unsafe { &*(crate::ffi::Units_ShiftedToken_as_Units_Token(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_as_Units_Token(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Units_Token (mutable)
     pub fn as_token_mut(&mut self) -> &mut Token {
-        unsafe { &mut *(crate::ffi::Units_ShiftedToken_as_Units_Token_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_as_Units_Token_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_ShiftedToken_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_ShiftedToken_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2230,55 +3139,71 @@ impl ShiftedToken {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsShiftedToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedToken_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:75 - `Units_Token::Length()`
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_Length(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_inherited_Length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
     pub fn word(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Word(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_inherited_Word(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
     pub fn mean(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Mean(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_inherited_Mean(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:91 - `Units_Token::Value()`
     pub fn value(&self) -> f64 {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_Value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:97 - `Units_Token::Dimensions()`
     pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Dimensions(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_inherited_Dimensions(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:109 - `Units_Token::Add()`
     pub fn add(&self, aninteger: i32) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Add(
-                self as *const Self,
-                aninteger,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_Add(self as *const Self, aninteger)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2287,11 +3212,12 @@ impl ShiftedToken {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Subtract(
-                self as *const Self,
-                atoken,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_Subtract(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2300,11 +3226,12 @@ impl ShiftedToken {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Multiply(
-                self as *const Self,
-                atoken,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_Multiply(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2313,11 +3240,12 @@ impl ShiftedToken {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Divide(
-                self as *const Self,
-                atoken,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_Divide(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2326,61 +3254,103 @@ impl ShiftedToken {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Power(
-                self as *const Self,
-                atoken,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_Power(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:185 - `Units_Token::IsGreaterOrEqual()`
     pub fn is_greater_or_equal(&self, atoken: &crate::ffi::HandleUnitsToken) -> bool {
-        unsafe {
-            crate::ffi::Units_ShiftedToken_inherited_IsGreaterOrEqual(self as *const Self, atoken)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_IsGreaterOrEqual(
+                    self as *const Self,
+                    atoken,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_ShiftedToken_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedToken_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedToken_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_ShiftedToken_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_ShiftedToken_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2395,29 +3365,42 @@ unsafe impl crate::CppDeletable for HandleUnitsShiftedToken {
 impl HandleUnitsShiftedToken {
     /// Dereference this Handle to access the underlying Units_ShiftedToken
     pub fn get(&self) -> &crate::ffi::Units_ShiftedToken {
-        unsafe { &*(crate::ffi::HandleUnitsShiftedToken_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsShiftedToken_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_ShiftedToken
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_ShiftedToken {
-        unsafe { &mut *(crate::ffi::HandleUnitsShiftedToken_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsShiftedToken_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_ShiftedToken> to Handle<Units_Token>
     pub fn to_handle_token(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsShiftedToken_to_HandleUnitsToken(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsShiftedToken_to_HandleUnitsToken(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_ShiftedToken> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsShiftedToken_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsShiftedToken_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2460,16 +3443,18 @@ impl ShiftedUnit {
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_ShiftedUnit_ctor_charptr2_real2_handleunitsquantity(
                     c_aname.as_ptr(),
                     c_asymbol.as_ptr(),
                     avalue,
                     amove,
                     aquantity,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2480,11 +3465,12 @@ impl ShiftedUnit {
     pub fn new_charptr2(aname: &str, asymbol: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_ctor_charptr2(
-                c_aname.as_ptr(),
-                c_asymbol.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedUnit_ctor_charptr2(c_aname.as_ptr(), c_asymbol.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2493,74 +3479,116 @@ impl ShiftedUnit {
     /// the  unit.
     pub fn new_charptr(aname: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_ctor_charptr(c_aname.as_ptr()))
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedUnit_ctor_charptr(c_aname.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:65 - `Units_ShiftedUnit::Move()`
     /// Sets the field <themove> to <amove>
     pub fn move_real(&mut self, amove: f64) {
-        unsafe { crate::ffi::Units_ShiftedUnit_move_real(self as *mut Self, amove) }
+        {
+            unsafe { crate::ffi::Units_ShiftedUnit_move_real(self as *mut Self, amove) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:68 - `Units_ShiftedUnit::Move()`
     /// Returns the shifted value <themove>.
     pub fn move_(&self) -> f64 {
-        unsafe { crate::ffi::Units_ShiftedUnit_move_(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedUnit_move_(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:71 - `Units_ShiftedUnit::Token()`
     /// This redefined method returns a ShiftedToken object.
     pub fn token(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_token(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedUnit_token(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:73 - `Units_ShiftedUnit::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
-        unsafe { crate::ffi::Units_ShiftedUnit_dump(self as *const Self, ashift, alevel) }
+        {
+            unsafe { crate::ffi::Units_ShiftedUnit_dump(self as *const Self, ashift, alevel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_ShiftedUnit_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_ShiftedUnit_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedUnit_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_ShiftedUnit_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedUnit_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Units_Unit
     pub fn as_unit(&self) -> &Unit {
-        unsafe { &*(crate::ffi::Units_ShiftedUnit_as_Units_Unit(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_as_Units_Unit(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Units_Unit (mutable)
     pub fn as_unit_mut(&mut self) -> &mut Unit {
-        unsafe { &mut *(crate::ffi::Units_ShiftedUnit_as_Units_Unit_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_as_Units_Unit_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_ShiftedUnit_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_ShiftedUnit_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedUnit_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2568,31 +3596,40 @@ impl ShiftedUnit {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsShiftedUnit> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_ShiftedUnit_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_inherited_Name(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_inherited_Name(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Unit.hxx`:66 - `Units_Unit::Value()`
     pub fn value(&self) -> f64 {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_Value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Units_Unit.hxx`:69 - `Units_Unit::Quantity()`
     pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_inherited_Quantity(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_inherited_Quantity(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2600,53 +3637,88 @@ impl ShiftedUnit {
     pub fn symbols_sequence(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_inherited_SymbolsSequence(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedUnit_inherited_SymbolsSequence(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedUnit_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedUnit_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_ShiftedUnit_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_ShiftedUnit_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_ShiftedUnit_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_ShiftedUnit_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_ShiftedUnit_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_ShiftedUnit_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2661,29 +3733,41 @@ unsafe impl crate::CppDeletable for HandleUnitsShiftedUnit {
 impl HandleUnitsShiftedUnit {
     /// Dereference this Handle to access the underlying Units_ShiftedUnit
     pub fn get(&self) -> &crate::ffi::Units_ShiftedUnit {
-        unsafe { &*(crate::ffi::HandleUnitsShiftedUnit_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsShiftedUnit_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_ShiftedUnit
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_ShiftedUnit {
-        unsafe { &mut *(crate::ffi::HandleUnitsShiftedUnit_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsShiftedUnit_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_ShiftedUnit> to Handle<Units_Unit>
     pub fn to_handle_unit(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnit> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsShiftedUnit_to_HandleUnitsUnit(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsShiftedUnit_to_HandleUnitsUnit(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_ShiftedUnit> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsShiftedUnit_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsShiftedUnit_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2707,7 +3791,11 @@ impl Token {
     /// **Source:** `Units_Token.hxx`:38 - `Units_Token::Units_Token()`
     /// Creates and returns a empty token.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:42 - `Units_Token::Units_Token()`
@@ -2715,14 +3803,22 @@ impl Token {
     /// containing the available word.
     pub fn new_charptr(aword: &str) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_ctor_charptr(c_aword.as_ptr())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_ctor_charptr(c_aword.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:46 - `Units_Token::Units_Token()`
     /// Creates and returns a  token.  <atoken> is  copied  in
     /// the returned token.
     pub fn new_handleunitstoken(atoken: &crate::ffi::HandleUnitsToken) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_ctor_handleunitstoken(atoken)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_ctor_handleunitstoken(atoken) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:51 - `Units_Token::Units_Token()`
@@ -2732,11 +3828,12 @@ impl Token {
     pub fn new_charptr2(aword: &str, amean: &str) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_ctor_charptr2(
-                c_aword.as_ptr(),
-                c_amean.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_ctor_charptr2(c_aword.as_ptr(), c_amean.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2748,12 +3845,16 @@ impl Token {
     pub fn new_charptr2_real(aword: &str, amean: &str, avalue: f64) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_ctor_charptr2_real(
-                c_aword.as_ptr(),
-                c_amean.as_ptr(),
-                avalue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_ctor_charptr2_real(
+                    c_aword.as_ptr(),
+                    c_amean.as_ptr(),
+                    avalue,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2771,74 +3872,107 @@ impl Token {
     ) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_Token_ctor_charptr2_real_handleunitsdimensions(
                     c_aword.as_ptr(),
                     c_amean.as_ptr(),
                     avalue,
                     adimension,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Token.hxx`:72 - `Units_Token::Creates()`
     /// Creates and returns a  token, which is a ShiftedToken.
     pub fn creates(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_creates(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_creates(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:75 - `Units_Token::Length()`
     /// Returns the length of the word.
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::Units_Token_length(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_length(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
     /// Returns the string <theword>
     pub fn word(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_word(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_word(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:81 - `Units_Token::Word()`
     /// Sets the field <theword> to <aword>.
     pub fn word_charptr(&mut self, aword: &str) {
         let c_aword = std::ffi::CString::new(aword).unwrap();
-        unsafe { crate::ffi::Units_Token_word_charptr(self as *mut Self, c_aword.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_Token_word_charptr(self as *mut Self, c_aword.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
     /// Returns the significance of the word  <theword>, which
     /// is in the field <themean>.
     pub fn mean(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_mean(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_mean(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:88 - `Units_Token::Mean()`
     /// Sets the field <themean> to <amean>.
     pub fn mean_charptr(&mut self, amean: &str) {
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe { crate::ffi::Units_Token_mean_charptr(self as *mut Self, c_amean.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_Token_mean_charptr(self as *mut Self, c_amean.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:91 - `Units_Token::Value()`
     /// Returns the value stored in the field <thevalue>.
     pub fn value(&self) -> f64 {
-        unsafe { crate::ffi::Units_Token_value(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:94 - `Units_Token::Value()`
     /// Sets the field <thevalue> to <avalue>.
     pub fn value_real(&mut self, avalue: f64) {
-        unsafe { crate::ffi::Units_Token_value_real(self as *mut Self, avalue) }
+        {
+            unsafe { crate::ffi::Units_Token_value_real(self as *mut Self, avalue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:97 - `Units_Token::Dimensions()`
     /// Returns the dimensions of the token <thedimensions>.
     pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_dimensions(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Token_dimensions(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2848,8 +3982,14 @@ impl Token {
         &mut self,
         adimensions: &crate::ffi::HandleUnitsDimensions,
     ) {
-        unsafe {
-            crate::ffi::Units_Token_dimensions_handleunitsdimensions(self as *mut Self, adimensions)
+        {
+            unsafe {
+                crate::ffi::Units_Token_dimensions_handleunitsdimensions(
+                    self as *mut Self,
+                    adimensions,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2861,16 +4001,19 @@ impl Token {
     /// is written in the output device.
     pub fn update(&mut self, amean: &str) {
         let c_amean = std::ffi::CString::new(amean).unwrap();
-        unsafe { crate::ffi::Units_Token_update(self as *mut Self, c_amean.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_Token_update(self as *mut Self, c_amean.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:109 - `Units_Token::Add()`
     pub fn add_int(&self, aninteger: i32) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_add_int(
-                self as *const Self,
-                aninteger,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_add_int(self as *const Self, aninteger) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2882,11 +4025,12 @@ impl Token {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_add_handleunitstoken(
-                self as *const Self,
-                atoken,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_add_handleunitstoken(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2898,8 +4042,10 @@ impl Token {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_subtract(self as *const Self, atoken))
+        {
+            let __result = unsafe { crate::ffi::Units_Token_subtract(self as *const Self, atoken) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2910,8 +4056,10 @@ impl Token {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_multiply(self as *const Self, atoken))
+        {
+            let __result = unsafe { crate::ffi::Units_Token_multiply(self as *const Self, atoken) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2920,7 +4068,12 @@ impl Token {
     /// methods,  to  compute    the   measurement   during  a
     /// conversion.
     pub fn multiplied(&self, avalue: f64) -> f64 {
-        unsafe { crate::ffi::Units_Token_multiplied(self as *const Self, avalue) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_multiplied(self as *const Self, avalue) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:133 - `Units_Token::Divide()`
@@ -2930,8 +4083,10 @@ impl Token {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_divide(self as *const Self, atoken))
+        {
+            let __result = unsafe { crate::ffi::Units_Token_divide(self as *const Self, atoken) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2940,7 +4095,11 @@ impl Token {
     /// methods,   to   compute   the measurement  during    a
     /// conversion.
     pub fn divided(&self, avalue: f64) -> f64 {
-        unsafe { crate::ffi::Units_Token_divided(self as *const Self, avalue) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_divided(self as *const Self, avalue) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:144 - `Units_Token::Power()`
@@ -2951,22 +4110,23 @@ impl Token {
         &self,
         atoken: &crate::ffi::HandleUnitsToken,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_power_handleunitstoken(
-                self as *const Self,
-                atoken,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_power_handleunitstoken(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Token.hxx`:147 - `Units_Token::Power()`
     /// Returns a token which is <me> to the power  of <anexponent>.
     pub fn power_real(&self, anexponent: f64) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Token_power_real(
-                self as *const Self,
-                anexponent,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_power_real(self as *const Self, anexponent) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2975,7 +4135,13 @@ impl Token {
     /// <astring> are the same, false otherwise.
     pub fn is_equal_charptr(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe { crate::ffi::Units_Token_is_equal_charptr(self as *const Self, c_astring.as_ptr()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_equal_charptr(self as *const Self, c_astring.as_ptr())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:156 - `Units_Token::IsEqual()`
@@ -2983,7 +4149,13 @@ impl Token {
     /// <theword> contained  in  the  token <atoken>  are  the
     /// same, false otherwise.
     pub fn is_equal_handleunitstoken(&self, atoken: &crate::ffi::HandleUnitsToken) -> bool {
-        unsafe { crate::ffi::Units_Token_is_equal_handleunitstoken(self as *const Self, atoken) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_equal_handleunitstoken(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:160 - `Units_Token::IsNotEqual()`
@@ -2991,8 +4163,15 @@ impl Token {
     /// <astring> are the same, true otherwise.
     pub fn is_not_equal_charptr(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe {
-            crate::ffi::Units_Token_is_not_equal_charptr(self as *const Self, c_astring.as_ptr())
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_not_equal_charptr(
+                    self as *const Self,
+                    c_astring.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3001,8 +4180,12 @@ impl Token {
     /// <theword> contained  in the  token  <atoken>  are  the
     /// same, true otherwise.
     pub fn is_not_equal_handleunitstoken(&self, atoken: &crate::ffi::HandleUnitsToken) -> bool {
-        unsafe {
-            crate::ffi::Units_Token_is_not_equal_handleunitstoken(self as *const Self, atoken)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_not_equal_handleunitstoken(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3012,7 +4195,13 @@ impl Token {
     /// false otherwise.
     pub fn is_less_or_equal(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe { crate::ffi::Units_Token_is_less_or_equal(self as *const Self, c_astring.as_ptr()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_less_or_equal(self as *const Self, c_astring.as_ptr())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:175 - `Units_Token::IsGreater()`
@@ -3021,8 +4210,12 @@ impl Token {
     /// true otherwise.
     pub fn is_greater_charptr(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe {
-            crate::ffi::Units_Token_is_greater_charptr(self as *const Self, c_astring.as_ptr())
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_greater_charptr(self as *const Self, c_astring.as_ptr())
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3031,7 +4224,13 @@ impl Token {
     /// contained at  the  beginning  of the string <astring>,
     /// true otherwise.
     pub fn is_greater_handleunitstoken(&self, atoken: &crate::ffi::HandleUnitsToken) -> bool {
-        unsafe { crate::ffi::Units_Token_is_greater_handleunitstoken(self as *const Self, atoken) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_is_greater_handleunitstoken(self as *const Self, atoken)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:185 - `Units_Token::IsGreaterOrEqual()`
@@ -3039,89 +4238,147 @@ impl Token {
     /// contained   at the  beginning  of  the field <theword>
     /// false otherwise.
     pub fn is_greater_or_equal(&self, atoken: &crate::ffi::HandleUnitsToken) -> bool {
-        unsafe { crate::ffi::Units_Token_is_greater_or_equal(self as *const Self, atoken) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_is_greater_or_equal(self as *const Self, atoken) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:188 - `Units_Token::Dump()`
     /// Useful for debugging
     pub fn dump(&self, ashift: i32, alevel: i32) {
-        unsafe { crate::ffi::Units_Token_dump(self as *const Self, ashift, alevel) }
+        {
+            unsafe { crate::ffi::Units_Token_dump(self as *const Self, ashift, alevel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:191 - `Units_Token::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Token_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_Token.hxx`:191 - `Units_Token::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_Token_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_Token_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_Token.hxx`:191 - `Units_Token::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Token_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_Token_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_Token_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Token_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Token_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Token_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Token_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_Token_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::Units_Token_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_Token_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_Token_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Token_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_Token_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Token_inherited_DecrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_Token_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Token_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3136,20 +4393,30 @@ unsafe impl crate::CppDeletable for HandleUnitsToken {
 impl HandleUnitsToken {
     /// Dereference this Handle to access the underlying Units_Token
     pub fn get(&self) -> &crate::ffi::Units_Token {
-        unsafe { &*(crate::ffi::HandleUnitsToken_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsToken_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_Token
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Token {
-        unsafe { &mut *(crate::ffi::HandleUnitsToken_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsToken_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_Token> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsToken_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsToken_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3162,6 +4429,7 @@ impl HandleUnitsToken {
         let ptr = unsafe {
             crate::ffi::HandleUnitsToken_downcast_to_HandleUnitsShiftedToken(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3186,68 +4454,109 @@ unsafe impl crate::CppDeletable for TokensSequence {
 impl TokensSequence {
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Units_TokensSequence()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_TokensSequence_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Units_TokensSequence()`
     pub fn new_tkssequence(theOther: &crate::ffi::Units_TksSequence) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_ctor_tkssequence(theOther))
+        {
+            let __result = unsafe { crate::ffi::Units_TokensSequence_ctor_tkssequence(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::Units_TksSequence {
-        unsafe { &*(crate::ffi::Units_TokensSequence_sequence(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_TokensSequence_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
     pub fn append_handleunitstoken(&mut self, theItem: &crate::ffi::HandleUnitsToken) {
-        unsafe {
-            crate::ffi::Units_TokensSequence_append_handleunitstoken(self as *mut Self, theItem)
+        {
+            unsafe {
+                crate::ffi::Units_TokensSequence_append_handleunitstoken(self as *mut Self, theItem)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
     pub fn append_tkssequence(&mut self, theSequence: &mut crate::ffi::Units_TksSequence) {
-        unsafe {
-            crate::ffi::Units_TokensSequence_append_tkssequence(self as *mut Self, theSequence)
+        {
+            unsafe {
+                crate::ffi::Units_TokensSequence_append_tkssequence(self as *mut Self, theSequence)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::Units_TksSequence {
-        unsafe { &mut *(crate::ffi::Units_TokensSequence_change_sequence(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_TokensSequence_change_sequence(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_TokensSequence_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_TokensSequence_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_TokensSequence_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_TokensSequence_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_TokensSequence_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_TokensSequence_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_TokensSequence_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_TokensSequence_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_TokensSequence_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_TokensSequence_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3255,54 +4564,87 @@ impl TokensSequence {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_TokensSequence_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Units_TokensSequence_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_TokensSequence_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_TokensSequence_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_TokensSequence_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Units_TokensSequence_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_TokensSequence_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_TokensSequence_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_TokensSequence_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_TokensSequence_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_TokensSequence_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_TokensSequence_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_TokensSequence_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_TokensSequence_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3317,22 +4659,34 @@ unsafe impl crate::CppDeletable for HandleUnitsTokensSequence {
 impl HandleUnitsTokensSequence {
     /// Dereference this Handle to access the underlying Units_TokensSequence
     pub fn get(&self) -> &crate::ffi::Units_TokensSequence {
-        unsafe { &*(crate::ffi::HandleUnitsTokensSequence_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsTokensSequence_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_TokensSequence
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_TokensSequence {
-        unsafe { &mut *(crate::ffi::HandleUnitsTokensSequence_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsTokensSequence_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_TokensSequence> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleUnitsTokensSequence_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3366,15 +4720,17 @@ impl Unit {
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_Unit_ctor_charptr2_real_handleunitsquantity(
                     c_aname.as_ptr(),
                     c_asymbol.as_ptr(),
                     avalue,
                     aquantity,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3385,11 +4741,12 @@ impl Unit {
     pub fn new_charptr2(aname: &str, asymbol: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_ctor_charptr2(
-                c_aname.as_ptr(),
-                c_asymbol.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Unit_ctor_charptr2(c_aname.as_ptr(), c_asymbol.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3398,33 +4755,52 @@ impl Unit {
     /// the  unit.
     pub fn new_charptr(aname: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_ctor_charptr(c_aname.as_ptr())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_ctor_charptr(c_aname.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
     /// Returns the name of the unit <thename>
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_name(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:62 - `Units_Unit::Symbol()`
     /// Adds a new symbol <asymbol> attached to <me>.
     pub fn symbol(&mut self, asymbol: &str) {
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
-        unsafe { crate::ffi::Units_Unit_symbol(self as *mut Self, c_asymbol.as_ptr()) }
+        {
+            unsafe { crate::ffi::Units_Unit_symbol(self as *mut Self, c_asymbol.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:66 - `Units_Unit::Value()`
     /// Returns the  value in relation  with the International
     /// System of Units.
     pub fn value(&self) -> f64 {
-        unsafe { crate::ffi::Units_Unit_value(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:69 - `Units_Unit::Quantity()`
     /// Returns <thequantity> contained in <me>.
     pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantity> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_quantity(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_quantity(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:72 - `Units_Unit::SymbolsSequence()`
@@ -3432,27 +4808,41 @@ impl Unit {
     pub fn symbols_sequence(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_symbols_sequence(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_symbols_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_Unit.hxx`:75 - `Units_Unit::Value()`
     /// Sets the value <avalue> to <me>.
     pub fn value_real(&mut self, avalue: f64) {
-        unsafe { crate::ffi::Units_Unit_value_real(self as *mut Self, avalue) }
+        {
+            unsafe { crate::ffi::Units_Unit_value_real(self as *mut Self, avalue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:78 - `Units_Unit::Quantity()`
     /// Sets the physical Quantity <aquantity> to <me>.
     pub fn quantity_handleunitsquantity(&mut self, aquantity: &crate::ffi::HandleUnitsQuantity) {
-        unsafe { crate::ffi::Units_Unit_quantity_handleunitsquantity(self as *mut Self, aquantity) }
+        {
+            unsafe {
+                crate::ffi::Units_Unit_quantity_handleunitsquantity(self as *mut Self, aquantity)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:81 - `Units_Unit::Token()`
     /// Starting with <me>, returns a new Token object.
     pub fn token(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_token(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_token(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:86 - `Units_Unit::IsEqual()`
@@ -3461,89 +4851,147 @@ impl Unit {
     /// symbol equal to the name, False otherwise.
     pub fn is_equal(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe { crate::ffi::Units_Unit_is_equal(self as *const Self, c_astring.as_ptr()) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Unit_is_equal(self as *const Self, c_astring.as_ptr()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:89 - `Units_Unit::Dump()`
     /// Useful for debugging
     pub fn dump(&self, ashift: i32, alevel: i32) {
-        unsafe { crate::ffi::Units_Unit_dump(self as *const Self, ashift, alevel) }
+        {
+            unsafe { crate::ffi::Units_Unit_dump(self as *const Self, ashift, alevel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Unit_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_Unit_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_Unit_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_Unit_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Unit_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Units_Unit_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Unit_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnit> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Units_Unit_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Unit_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_Unit_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_Unit_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Unit_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_Unit_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::Units_Unit_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_Unit_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Unit_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_Unit_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_Unit_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_Unit_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_Unit_inherited_DecrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_Unit_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_Unit_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3558,20 +5006,30 @@ unsafe impl crate::CppDeletable for HandleUnitsUnit {
 impl HandleUnitsUnit {
     /// Dereference this Handle to access the underlying Units_Unit
     pub fn get(&self) -> &crate::ffi::Units_Unit {
-        unsafe { &*(crate::ffi::HandleUnitsUnit_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsUnit_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_Unit
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Unit {
-        unsafe { &mut *(crate::ffi::HandleUnitsUnit_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsUnit_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_Unit> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsUnit_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsUnit_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3584,6 +5042,7 @@ impl HandleUnitsUnit {
         let ptr = unsafe {
             crate::ffi::HandleUnitsUnit_downcast_to_HandleUnitsShiftedUnit(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3615,10 +5074,11 @@ impl UnitSentence {
     /// the composed unit to be analysed.
     pub fn new_charptr(astring: &str) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitSentence_ctor_charptr(
-                c_astring.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitSentence_ctor_charptr(c_astring.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3633,13 +5093,15 @@ impl UnitSentence {
         aquantitiessequence: &crate::ffi::HandleUnitsQuantitiesSequence,
     ) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Units_UnitSentence_ctor_charptr_handleunitsquantitiessequence(
                     c_astring.as_ptr(),
                     aquantitiessequence,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3648,7 +5110,10 @@ impl UnitSentence {
     /// constructor to  find  the true significance   of  each
     /// token.
     pub fn analyse(&mut self) {
-        unsafe { crate::ffi::Units_UnitSentence_analyse(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_UnitSentence_analyse(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitSentence.hxx`:57 - `Units_UnitSentence::SetUnits()`
@@ -3656,50 +5121,78 @@ impl UnitSentence {
     /// sequence    of    physical   quantities      all   the
     /// characteristics of the unit found.
     pub fn set_units(&mut self, aquantitiessequence: &crate::ffi::HandleUnitsQuantitiesSequence) {
-        unsafe { crate::ffi::Units_UnitSentence_set_units(self as *mut Self, aquantitiessequence) }
+        {
+            unsafe {
+                crate::ffi::Units_UnitSentence_set_units(self as *mut Self, aquantitiessequence)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to Units_Sentence
     pub fn as_sentence(&self) -> &Sentence {
-        unsafe { &*(crate::ffi::Units_UnitSentence_as_Units_Sentence(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitSentence_as_Units_Sentence(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Units_Sentence (mutable)
     pub fn as_sentence_mut(&mut self) -> &mut Sentence {
-        unsafe { &mut *(crate::ffi::Units_UnitSentence_as_Units_Sentence_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitSentence_as_Units_Sentence_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
     pub fn set_constants(&mut self) {
-        unsafe { crate::ffi::Units_UnitSentence_inherited_SetConstants(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_UnitSentence_inherited_SetConstants(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitSentence_inherited_Sequence(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitSentence_inherited_Sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
     pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitSentence_inherited_Evaluate(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitSentence_inherited_Evaluate(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:56 - `Units_Sentence::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Units_UnitSentence_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitSentence_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::Dump()`
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_UnitSentence_inherited_Dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitSentence_inherited_Dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3722,7 +5215,11 @@ impl UnitsDictionary {
     /// **Source:** `Units_UnitsDictionary.hxx`:34 - `Units_UnitsDictionary::Units_UnitsDictionary()`
     /// Returns an empty instance of UnitsDictionary.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsDictionary_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:39 - `Units_UnitsDictionary::Creates()`
@@ -3730,17 +5227,21 @@ impl UnitsDictionary {
     /// sequence  of all   the  units  you want to   consider,
     /// physical quantity by physical quantity.
     pub fn creates(&mut self) {
-        unsafe { crate::ffi::Units_UnitsDictionary_creates(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsDictionary_creates(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:43 - `Units_UnitsDictionary::Sequence()`
     /// Returns   the  head   of   the  sequence  of  physical
     /// quantities.
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantitiesSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_sequence(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsDictionary_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3751,11 +5252,15 @@ impl UnitsDictionary {
         aquantity: &str,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_active_unit(
-                self as *const Self,
-                c_aquantity.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_active_unit(
+                    self as *const Self,
+                    c_aquantity.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3765,49 +5270,74 @@ impl UnitsDictionary {
     /// quantity all the units stored if <alevel>  is equal to
     /// one.
     pub fn dump_int(&self, alevel: i32) {
-        unsafe { crate::ffi::Units_UnitsDictionary_dump_int(self as *const Self, alevel) }
+        {
+            unsafe { crate::ffi::Units_UnitsDictionary_dump_int(self as *const Self, alevel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:56 - `Units_UnitsDictionary::Dump()`
     /// Dumps  for a     designated  physical       dimensions
     /// <adimensions> all the previously stored units.
     pub fn dump_handleunitsdimensions(&self, adimensions: &crate::ffi::HandleUnitsDimensions) {
-        unsafe {
-            crate::ffi::Units_UnitsDictionary_dump_handleunitsdimensions(
-                self as *const Self,
-                adimensions,
-            )
+        {
+            unsafe {
+                crate::ffi::Units_UnitsDictionary_dump_handleunitsdimensions(
+                    self as *const Self,
+                    adimensions,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsDictionary_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsDictionary_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsDictionary_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsDictionary_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsDictionary_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsDictionary_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_UnitsDictionary_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_UnitsDictionary_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3815,58 +5345,87 @@ impl UnitsDictionary {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsDictionary> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsDictionary_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Units_UnitsDictionary_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_UnitsDictionary_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Units_UnitsDictionary_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsDictionary_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Units_UnitsDictionary_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Units_UnitsDictionary_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Units_UnitsDictionary_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsDictionary_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_UnitsDictionary_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsDictionary_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3881,22 +5440,34 @@ unsafe impl crate::CppDeletable for HandleUnitsUnitsDictionary {
 impl HandleUnitsUnitsDictionary {
     /// Dereference this Handle to access the underlying Units_UnitsDictionary
     pub fn get(&self) -> &crate::ffi::Units_UnitsDictionary {
-        unsafe { &*(crate::ffi::HandleUnitsUnitsDictionary_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsUnitsDictionary_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_UnitsDictionary
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsDictionary {
-        unsafe { &mut *(crate::ffi::HandleUnitsUnitsDictionary_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsUnitsDictionary_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_UnitsDictionary> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleUnitsUnitsDictionary_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3922,7 +5493,11 @@ impl UnitsLexicon {
     /// **Source:** `Units_UnitsLexicon.hxx`:40 - `Units_UnitsLexicon::Units_UnitsLexicon()`
     /// Returns an empty instance of UnitsLexicon
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsLexicon_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsLexicon_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsLexicon.hxx`:45 - `Units_UnitsLexicon::Creates()`
@@ -3930,53 +5505,88 @@ impl UnitsLexicon {
     /// create     a   sequence     of    tokens   stored   in
     /// <thesequenceoftokens>.
     pub fn creates(&mut self, amode: bool) {
-        unsafe { crate::ffi::Units_UnitsLexicon_creates(self as *mut Self, amode) }
+        {
+            unsafe { crate::ffi::Units_UnitsLexicon_creates(self as *mut Self, amode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitsLexicon.hxx`:48 - `Units_UnitsLexicon::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_UnitsLexicon_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsLexicon_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsLexicon_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsLexicon_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsLexicon_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsLexicon_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsLexicon_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsLexicon_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Units_Lexicon
     pub fn as_lexicon(&self) -> &Lexicon {
-        unsafe { &*(crate::ffi::Units_UnitsLexicon_as_Units_Lexicon(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsLexicon_as_Units_Lexicon(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Units_Lexicon (mutable)
     pub fn as_lexicon_mut(&mut self) -> &mut Lexicon {
-        unsafe { &mut *(crate::ffi::Units_UnitsLexicon_as_Units_Lexicon_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsLexicon_as_Units_Lexicon_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_UnitsLexicon_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsLexicon_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_UnitsLexicon_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsLexicon_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3984,60 +5594,97 @@ impl UnitsLexicon {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsLexicon> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsLexicon_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsLexicon_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsLexicon_inherited_Sequence(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsLexicon_inherited_Sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_UnitsLexicon_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsLexicon_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_UnitsLexicon_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsLexicon_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_UnitsLexicon_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsLexicon_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsLexicon_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsLexicon_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_UnitsLexicon_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_UnitsLexicon_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsLexicon_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsLexicon_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_UnitsLexicon_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsLexicon_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4052,29 +5699,42 @@ unsafe impl crate::CppDeletable for HandleUnitsUnitsLexicon {
 impl HandleUnitsUnitsLexicon {
     /// Dereference this Handle to access the underlying Units_UnitsLexicon
     pub fn get(&self) -> &crate::ffi::Units_UnitsLexicon {
-        unsafe { &*(crate::ffi::HandleUnitsUnitsLexicon_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsUnitsLexicon_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_UnitsLexicon
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsLexicon {
-        unsafe { &mut *(crate::ffi::HandleUnitsUnitsLexicon_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsUnitsLexicon_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_UnitsLexicon> to Handle<Units_Lexicon>
     pub fn to_handle_lexicon(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsLexicon> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsUnitsLexicon_to_HandleUnitsLexicon(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsUnitsLexicon_to_HandleUnitsLexicon(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Units_UnitsLexicon> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsUnitsLexicon_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsUnitsLexicon_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4095,68 +5755,108 @@ unsafe impl crate::CppDeletable for UnitsSequence {
 impl UnitsSequence {
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSequence_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
     pub fn new_utssequence(theOther: &crate::ffi::Units_UtsSequence) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_ctor_utssequence(theOther))
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSequence_ctor_utssequence(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::Units_UtsSequence {
-        unsafe { &*(crate::ffi::Units_UnitsSequence_sequence(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSequence_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
     pub fn append_handleunitsunit(&mut self, theItem: &crate::ffi::HandleUnitsUnit) {
-        unsafe {
-            crate::ffi::Units_UnitsSequence_append_handleunitsunit(self as *mut Self, theItem)
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSequence_append_handleunitsunit(self as *mut Self, theItem)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
     pub fn append_utssequence(&mut self, theSequence: &mut crate::ffi::Units_UtsSequence) {
-        unsafe {
-            crate::ffi::Units_UnitsSequence_append_utssequence(self as *mut Self, theSequence)
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSequence_append_utssequence(self as *mut Self, theSequence)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::Units_UtsSequence {
-        unsafe { &mut *(crate::ffi::Units_UnitsSequence_change_sequence(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSequence_change_sequence(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsSequence_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSequence_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsSequence_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSequence_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsSequence_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSequence_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_UnitsSequence_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSequence_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_UnitsSequence_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSequence_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4164,54 +5864,87 @@ impl UnitsSequence {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSequence_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Units_UnitsSequence_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSequence_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_UnitsSequence_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSequence_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Units_UnitsSequence_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsSequence_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSequence_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_UnitsSequence_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSequence_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsSequence_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSequence_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_UnitsSequence_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsSequence_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4226,22 +5959,31 @@ unsafe impl crate::CppDeletable for HandleUnitsUnitsSequence {
 impl HandleUnitsUnitsSequence {
     /// Dereference this Handle to access the underlying Units_UnitsSequence
     pub fn get(&self) -> &crate::ffi::Units_UnitsSequence {
-        unsafe { &*(crate::ffi::HandleUnitsUnitsSequence_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsUnitsSequence_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_UnitsSequence
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsSequence {
-        unsafe { &mut *(crate::ffi::HandleUnitsUnitsSequence_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleUnitsUnitsSequence_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_UnitsSequence> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsUnitsSequence_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsUnitsSequence_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4266,7 +6008,11 @@ impl UnitsSystem {
     /// Returns an instance of UnitsSystem initialized to the
     /// S.I. units system.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSystem_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:50 - `Units_UnitsSystem::Units_UnitsSystem()`
@@ -4281,11 +6027,12 @@ impl UnitsSystem {
     /// See : Resource_Manager for the description of this file.
     pub fn new_charptr_bool(aName: &str, Verbose: bool) -> crate::OwnedPtr<Self> {
         let c_aName = std::ffi::CString::new(aName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_ctor_charptr_bool(
-                c_aName.as_ptr(),
-                Verbose,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_ctor_charptr_bool(c_aName.as_ptr(), Verbose)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4308,10 +6055,11 @@ impl UnitsSystem {
     pub fn quantities_sequence(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantitiesSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_quantities_sequence(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSystem_quantities_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4323,10 +6071,11 @@ impl UnitsSystem {
     pub fn active_units_sequence(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_active_units_sequence(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSystem_active_units_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4335,12 +6084,15 @@ impl UnitsSystem {
     pub fn specify(&mut self, aquantity: &str, aunit: &str) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
-        unsafe {
-            crate::ffi::Units_UnitsSystem_specify(
-                self as *mut Self,
-                c_aquantity.as_ptr(),
-                c_aunit.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSystem_specify(
+                    self as *mut Self,
+                    c_aquantity.as_ptr(),
+                    c_aunit.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4349,12 +6101,15 @@ impl UnitsSystem {
     pub fn remove(&mut self, aquantity: &str, aunit: &str) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
-        unsafe {
-            crate::ffi::Units_UnitsSystem_remove(
-                self as *mut Self,
-                c_aquantity.as_ptr(),
-                c_aunit.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSystem_remove(
+                    self as *mut Self,
+                    c_aquantity.as_ptr(),
+                    c_aunit.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4363,19 +6118,25 @@ impl UnitsSystem {
     pub fn activate(&mut self, aquantity: &str, aunit: &str) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
-        unsafe {
-            crate::ffi::Units_UnitsSystem_activate(
-                self as *mut Self,
-                c_aquantity.as_ptr(),
-                c_aunit.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSystem_activate(
+                    self as *mut Self,
+                    c_aquantity.as_ptr(),
+                    c_aunit.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:72 - `Units_UnitsSystem::Activates()`
     /// Activates the first unit of all defined system quantities
     pub fn activates(&mut self) {
-        unsafe { crate::ffi::Units_UnitsSystem_activates(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsSystem_activates(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:75 - `Units_UnitsSystem::ActiveUnit()`
@@ -4385,11 +6146,12 @@ impl UnitsSystem {
         aquantity: &str,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_active_unit(
-                self as *const Self,
-                c_aquantity.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_active_unit(self as *const Self, c_aquantity.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4400,13 +6162,17 @@ impl UnitsSystem {
     pub fn convert_value_to_user_system(&self, aquantity: &str, avalue: f64, aunit: &str) -> f64 {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
-        unsafe {
-            crate::ffi::Units_UnitsSystem_convert_value_to_user_system(
-                self as *const Self,
-                c_aquantity.as_ptr(),
-                avalue,
-                c_aunit.as_ptr(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_convert_value_to_user_system(
+                    self as *const Self,
+                    c_aquantity.as_ptr(),
+                    avalue,
+                    c_aunit.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4416,12 +6182,16 @@ impl UnitsSystem {
     /// the physical dimensions of the measurement.
     pub fn convert_si_value_to_user_system(&self, aquantity: &str, avalue: f64) -> f64 {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::ffi::Units_UnitsSystem_convert_si_value_to_user_system(
-                self as *const Self,
-                c_aquantity.as_ptr(),
-                avalue,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_convert_si_value_to_user_system(
+                    self as *const Self,
+                    c_aquantity.as_ptr(),
+                    avalue,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4431,54 +6201,83 @@ impl UnitsSystem {
     /// the physical dimensions of the measurement.
     pub fn convert_user_system_value_to_si(&self, aquantity: &str, avalue: f64) -> f64 {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
-        unsafe {
-            crate::ffi::Units_UnitsSystem_convert_user_system_value_to_si(
-                self as *const Self,
-                c_aquantity.as_ptr(),
-                avalue,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_convert_user_system_value_to_si(
+                    self as *const Self,
+                    c_aquantity.as_ptr(),
+                    avalue,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:96 - `Units_UnitsSystem::Dump()`
     pub fn dump(&self) {
-        unsafe { crate::ffi::Units_UnitsSystem_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsSystem_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:99 - `Units_UnitsSystem::IsEmpty()`
     /// Returns TRUE if no units has been defined in the system.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::Units_UnitsSystem_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSystem_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsSystem_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSystem_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsSystem_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSystem_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Units_UnitsSystem_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSystem_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Units_UnitsSystem_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSystem_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Units_UnitsSystem_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4486,51 +6285,86 @@ impl UnitsSystem {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsSystem> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Units_UnitsSystem_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_UnitsSystem_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Units_UnitsSystem_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Units_UnitsSystem_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSystem_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsSystem_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Units_UnitsSystem_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Units_UnitsSystem_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Units_UnitsSystem_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Units_UnitsSystem_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Units_UnitsSystem_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Units_UnitsSystem_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Units_UnitsSystem_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4545,20 +6379,30 @@ unsafe impl crate::CppDeletable for HandleUnitsUnitsSystem {
 impl HandleUnitsUnitsSystem {
     /// Dereference this Handle to access the underlying Units_UnitsSystem
     pub fn get(&self) -> &crate::ffi::Units_UnitsSystem {
-        unsafe { &*(crate::ffi::HandleUnitsUnitsSystem_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsUnitsSystem_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Units_UnitsSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsSystem {
-        unsafe { &mut *(crate::ffi::HandleUnitsUnitsSystem_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleUnitsUnitsSystem_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Units_UnitsSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleUnitsUnitsSystem_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleUnitsUnitsSystem_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

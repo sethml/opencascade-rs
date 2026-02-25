@@ -16,8 +16,12 @@ pub fn write_shape_charptr_bool(
     theAsciiMode: bool,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    unsafe {
-        crate::ffi::StlAPI_write_shape_charptr_bool(theShape, c_theFile.as_ptr(), theAsciiMode)
+    {
+        let __result = unsafe {
+            crate::ffi::StlAPI_write_shape_charptr_bool(theShape, c_theFile.as_ptr(), theAsciiMode)
+        };
+        crate::check_exception();
+        __result
     }
 }
 
@@ -42,7 +46,11 @@ impl Reader {
     /// **Source:** `StlAPI_Reader.hxx` - `StlAPI_Reader::StlAPI_Reader()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StlAPI_Reader_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::StlAPI_Reader_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
@@ -50,8 +58,12 @@ impl Reader {
     /// @return True if reading is successful
     pub fn read(&mut self, theShape: &mut crate::topo_ds::Shape, theFileName: &str) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
+        {
+            let __result = unsafe {
+                crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -76,7 +88,11 @@ impl Writer {
     /// **Source:** `StlAPI_Writer.hxx`:33 - `StlAPI_Writer::StlAPI_Writer()`
     /// Creates a writer object with default parameters: ASCIIMode.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StlAPI_Writer_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::StlAPI_Writer_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `StlAPI_Writer.hxx`:39 - `StlAPI_Writer::ASCIIMode()`
@@ -85,7 +101,11 @@ impl Writer {
     /// If the mode returns True (default value) the generated file is an ASCII file.
     /// If the mode returns False, the generated file is a binary file.
     pub fn ascii_mode(&mut self) -> &mut bool {
-        unsafe { &mut *(crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `StlAPI_Writer.hxx`:44 - `StlAPI_Writer::Write()`
@@ -98,13 +118,17 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::ffi::StlAPI_Writer_write(
-                self as *mut Self,
-                theShape,
-                c_theFileName.as_ptr(),
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::StlAPI_Writer_write(
+                    self as *mut Self,
+                    theShape,
+                    c_theFileName.as_ptr(),
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }

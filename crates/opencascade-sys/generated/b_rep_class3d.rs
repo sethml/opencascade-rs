@@ -11,7 +11,11 @@
 /// shell if <S> has no outer shell.
 /// If <S> has only one shell, then it will return, without checking orientation.
 pub fn outer_shell_solid(S: &crate::topo_ds::Solid) -> crate::OwnedPtr<crate::topo_ds::Shell> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_outer_shell_solid(S)) }
+    {
+        let __result = unsafe { crate::ffi::BRepClass3d_outer_shell_solid(S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 
 // ========================
@@ -32,34 +36,49 @@ impl BndBoxTreeSelectorPoint {
     pub fn new_indexedmapofshape(
         theMapOfShape: &crate::ffi::TopTools_IndexedMapOfShape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_ctor_indexedmapofshape(
                     theMapOfShape,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:42 - `BRepClass3d_BndBoxTreeSelectorPoint::Reject()`
     pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_reject(self as *const Self, theBox)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_reject(self as *const Self, theBox)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:44 - `BRepClass3d_BndBoxTreeSelectorPoint::Accept()`
     pub fn accept(&mut self, theObj: &i32) -> bool {
-        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_accept(self as *mut Self, theObj) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_accept(self as *mut Self, theObj)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:47 - `BRepClass3d_BndBoxTreeSelectorPoint::SetCurrentPoint()`
     pub fn set_current_point(&mut self, theP: &crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_set_current_point(
-                self as *mut Self,
-                theP,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_set_current_point(
+                    self as *mut Self,
+                    theP,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -78,35 +97,48 @@ impl BndBoxTreeSelectorLine {
     pub fn new_indexedmapofshape(
         theMapOfShape: &crate::ffi::TopTools_IndexedMapOfShape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_ctor_indexedmapofshape(
-                    theMapOfShape,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_ctor_indexedmapofshape(theMapOfShape)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:83 - `BRepClass3d_BndBoxTreeSelectorLine::Reject()`
     pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_reject(self as *const Self, theBox)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_reject(self as *const Self, theBox)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Accept()`
     pub fn accept(&mut self, theObj: &i32) -> bool {
-        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_accept(self as *mut Self, theObj) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_accept(self as *mut Self, theObj)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:88 - `BRepClass3d_BndBoxTreeSelectorLine::SetCurrentLine()`
     pub fn set_current_line(&mut self, theL: &crate::gp::Lin, theMaxParam: f64) {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_set_current_line(
-                self as *mut Self,
-                theL,
-                theMaxParam,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_set_current_line(
+                    self as *mut Self,
+                    theL,
+                    theMaxParam,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -118,14 +150,17 @@ impl BndBoxTreeSelectorLine {
         theOutParam: &mut f64,
         outLParam: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_edge_param(
-                self as *const Self,
-                i,
-                theOutE,
-                theOutParam,
-                outLParam,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_edge_param(
+                    self as *const Self,
+                    i,
+                    theOutE,
+                    theOutParam,
+                    outLParam,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -136,39 +171,65 @@ impl BndBoxTreeSelectorLine {
         theOutV: &mut crate::topo_ds::Vertex,
         outLParam: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_vert_param(
-                self as *const Self,
-                i,
-                theOutV,
-                outLParam,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_vert_param(
+                    self as *const Self,
+                    i,
+                    theOutV,
+                    outLParam,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:114 - `BRepClass3d_BndBoxTreeSelectorLine::GetNbEdgeParam()`
     pub fn get_nb_edge_param(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_nb_edge_param(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_nb_edge_param(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:116 - `BRepClass3d_BndBoxTreeSelectorLine::GetNbVertParam()`
     pub fn get_nb_vert_param(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_nb_vert_param(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_get_nb_vert_param(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:118 - `BRepClass3d_BndBoxTreeSelectorLine::ClearResults()`
     pub fn clear_results(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_clear_results(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_clear_results(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:126 - `BRepClass3d_BndBoxTreeSelectorLine::IsCorrect()`
     /// Returns TRUE if correct classification is possible
     pub fn is_correct(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_is_correct(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_is_correct(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -185,10 +246,11 @@ impl BndBoxTreeSelectorLine_EdgeParam {
     /// **Source:** `BRepClass3d_BndBoxTree.hxx` - `BRepClass3d_BndBoxTreeSelectorLine_EdgeParam::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -206,10 +268,11 @@ impl BndBoxTreeSelectorLine_VertParam {
     /// **Source:** `BRepClass3d_BndBoxTree.hxx` - `BRepClass3d_BndBoxTreeSelectorLine_VertParam::BRepClass3d_BndBoxTreeSelectorLine_VertParam()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_VertParam_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_VertParam_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -231,7 +294,11 @@ impl Intersector3d {
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:35 - `BRepClass3d_Intersector3d::BRepClass3d_Intersector3d()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_Intersector3d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_Intersector3d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:47 - `BRepClass3d_Intersector3d::Perform()`
@@ -246,57 +313,92 @@ impl Intersector3d {
     /// that case, the parameter of the intersection point
     /// on the line can be a negative value (greater than -Tol).
     pub fn perform(&mut self, L: &crate::gp::Lin, Prm: f64, Tol: f64, F: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepClass3d_Intersector3d_perform(self as *mut Self, L, Prm, Tol, F) }
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_Intersector3d_perform(self as *mut Self, L, Prm, Tol, F)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:53 - `BRepClass3d_Intersector3d::IsDone()`
     /// True is returned when the intersection have been computed.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_Intersector3d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:56 - `BRepClass3d_Intersector3d::HasAPoint()`
     /// True is returned if a point has been found.
     pub fn has_a_point(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_Intersector3d_has_a_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_has_a_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:60 - `BRepClass3d_Intersector3d::UParameter()`
     /// Returns the U parameter of the intersection point
     /// on the surface.
     pub fn u_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BRepClass3d_Intersector3d_u_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_u_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:64 - `BRepClass3d_Intersector3d::VParameter()`
     /// Returns the V parameter of the intersection point
     /// on the surface.
     pub fn v_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BRepClass3d_Intersector3d_v_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_v_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:68 - `BRepClass3d_Intersector3d::WParameter()`
     /// Returns the parameter of the intersection point
     /// on the line.
     pub fn w_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BRepClass3d_Intersector3d_w_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_w_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:72 - `BRepClass3d_Intersector3d::Pnt()`
     /// Returns the geometric point of the intersection
     /// between the line and the surface.
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::BRepClass3d_Intersector3d_pnt(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:75 - `BRepClass3d_Intersector3d::Transition()`
     /// Returns the transition of the line on the surface.
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
-        unsafe {
-            crate::int_curve_surface::TransitionOnCurve::try_from(
-                crate::ffi::BRepClass3d_Intersector3d_transition(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_transition(self as *const Self) };
+            crate::check_exception();
+            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
         }
     }
 
@@ -307,11 +409,11 @@ impl Intersector3d {
     /// or TopAbs_ON
     /// ( the point is on a boundary of the face).
     pub fn state(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BRepClass3d_Intersector3d_state(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_state(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -319,7 +421,12 @@ impl Intersector3d {
     /// Returns the significant face used to determine
     /// the intersection.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::BRepClass3d_Intersector3d_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_Intersector3d_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -341,7 +448,11 @@ impl SClassifier {
     /// **Source:** `BRepClass3d_SClassifier.hxx`:36 - `BRepClass3d_SClassifier::BRepClass3d_SClassifier()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SClassifier_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SClassifier_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SClassifier.hxx`:40 - `BRepClass3d_SClassifier::BRepClass3d_SClassifier()`
@@ -352,10 +463,12 @@ impl SClassifier {
         P: &crate::gp::Pnt,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepClass3d_SClassifier_ctor_solidexplorer_pnt_real(S, P, Tol),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SClassifier_ctor_solidexplorer_pnt_real(S, P, Tol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -363,15 +476,25 @@ impl SClassifier {
     /// Classify the point P with the
     /// tolerance Tol on the solid S.
     pub fn perform(&mut self, S: &mut SolidExplorer, P: &crate::gp::Pnt, Tol: f64) {
-        unsafe { crate::ffi::BRepClass3d_SClassifier_perform(self as *mut Self, S, P, Tol) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SClassifier_perform(self as *mut Self, S, P, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SClassifier.hxx`:52 - `BRepClass3d_SClassifier::PerformInfinitePoint()`
     /// Classify an infinite point with the
     /// tolerance Tol on the solid S.
     pub fn perform_infinite_point(&mut self, S: &mut SolidExplorer, Tol: f64) {
-        unsafe {
-            crate::ffi::BRepClass3d_SClassifier_perform_infinite_point(self as *mut Self, S, Tol)
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_SClassifier_perform_infinite_point(
+                    self as *mut Self,
+                    S,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -380,24 +503,34 @@ impl SClassifier {
     /// computed by rejection.
     /// The State is then OUT.
     pub fn rejected(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SClassifier_rejected(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SClassifier_rejected(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SClassifier.hxx`:60 - `BRepClass3d_SClassifier::State()`
     /// Returns the result of the classification.
     pub fn state(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BRepClass3d_SClassifier_state(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SClassifier_state(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BRepClass3d_SClassifier.hxx`:63 - `BRepClass3d_SClassifier::IsOnAFace()`
     /// Returns True when the point is a point of a face.
     pub fn is_on_a_face(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SClassifier_is_on_a_face(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SClassifier_is_on_a_face(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SClassifier.hxx`:70 - `BRepClass3d_SClassifier::Face()`
@@ -407,8 +540,10 @@ impl SClassifier {
     ///
     /// When Rejected() returns True, Face() has no signification.
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SClassifier_face(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SClassifier_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -431,13 +566,21 @@ impl SolidClassifier {
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:36 - `BRepClass3d_SolidClassifier::BRepClass3d_SolidClassifier()`
     /// empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidClassifier_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SolidClassifier_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:41 - `BRepClass3d_SolidClassifier::BRepClass3d_SolidClassifier()`
     /// Constructor from a Shape.
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidClassifier_ctor_shape(S)) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SolidClassifier_ctor_shape(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:45 - `BRepClass3d_SolidClassifier::BRepClass3d_SolidClassifier()`
@@ -448,23 +591,30 @@ impl SolidClassifier {
         P: &crate::gp::Pnt,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidClassifier_ctor_shape_pnt_real(
-                S, P, Tol,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidClassifier_ctor_shape_pnt_real(S, P, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:38 - `BRepClass3d_SolidClassifier::Load()`
     pub fn load(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BRepClass3d_SolidClassifier_load(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidClassifier_load(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:51 - `BRepClass3d_SolidClassifier::Perform()`
     /// Classify the point P with the
     /// tolerance Tol on the solid S.
     pub fn perform(&mut self, P: &crate::gp::Pnt, Tol: f64) {
-        unsafe { crate::ffi::BRepClass3d_SolidClassifier_perform(self as *mut Self, P, Tol) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidClassifier_perform(self as *mut Self, P, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:56 - `BRepClass3d_SolidClassifier::PerformInfinitePoint()`
@@ -472,60 +622,92 @@ impl SolidClassifier {
     /// tolerance Tol on the solid S.
     /// Useful for compute the orientation of a solid.
     pub fn perform_infinite_point(&mut self, Tol: f64) {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidClassifier_perform_infinite_point(self as *mut Self, Tol)
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_perform_infinite_point(
+                    self as *mut Self,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:58 - `BRepClass3d_SolidClassifier::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_SolidClassifier_destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidClassifier_destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to BRepClass3d_SClassifier
     pub fn as_s_classifier(&self) -> &SClassifier {
-        unsafe {
-            &*(crate::ffi::BRepClass3d_SolidClassifier_as_BRepClass3d_SClassifier(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_as_BRepClass3d_SClassifier(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepClass3d_SClassifier (mutable)
     pub fn as_s_classifier_mut(&mut self) -> &mut SClassifier {
-        unsafe {
-            &mut *(crate::ffi::BRepClass3d_SolidClassifier_as_BRepClass3d_SClassifier_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_as_BRepClass3d_SClassifier_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:57 - `BRepClass3d_SClassifier::Rejected()`
     pub fn rejected(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidClassifier_inherited_Rejected(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_inherited_Rejected(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:60 - `BRepClass3d_SClassifier::State()`
     pub fn state(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
-                crate::ffi::BRepClass3d_SolidClassifier_inherited_State(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_inherited_State(self as *const Self)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:63 - `BRepClass3d_SClassifier::IsOnAFace()`
     pub fn is_on_a_face(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidClassifier_inherited_IsOnAFace(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_inherited_IsOnAFace(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:70 - `BRepClass3d_SClassifier::Face()`
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidClassifier_inherited_Face(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidClassifier_inherited_Face(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -548,23 +730,39 @@ unsafe impl crate::CppDeletable for SolidExplorer {
 impl SolidExplorer {
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:43 - `BRepClass3d_SolidExplorer::BRepClass3d_SolidExplorer()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SolidExplorer_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:45 - `BRepClass3d_SolidExplorer::BRepClass3d_SolidExplorer()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_ctor_shape(S)) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SolidExplorer_ctor_shape(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:49 - `BRepClass3d_SolidExplorer::InitShape()`
     pub fn init_shape(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_shape(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_shape(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:52 - `BRepClass3d_SolidExplorer::Reject()`
     /// Should return True if P outside of bounding vol. of the shape
     pub fn reject(&self, P: &crate::gp::Pnt) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject(self as *const Self, P) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject(self as *const Self, P) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace()`
@@ -577,16 +775,20 @@ impl SolidExplorer {
         Param: &mut f64,
         Index: &mut i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int(
-                self as *const Self,
-                F,
-                P,
-                u,
-                v,
-                Param,
-                Index,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int(
+                    self as *const Self,
+                    F,
+                    P,
+                    u,
+                    v,
+                    Param,
+                    Index,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -605,8 +807,12 @@ impl SolidExplorer {
         u2: f64,
         v2: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4(self as *const Self, F, P, u, v, Param, Index, surf, u1, v1, u2, v2)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4(self as *const Self, F, P, u, v, Param, Index, surf, u1, v1, u2, v2)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -629,77 +835,117 @@ impl SolidExplorer {
         theVecD1U: &mut crate::gp::Vec,
         theVecD1V: &mut crate::gp::Vec,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4_vec2(self as *const Self, F, P, u, v, Param, Index, surf, u1, v1, u2, v2, theVecD1U, theVecD1V)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4_vec2(self as *const Self, F, P, u, v, Param, Index, surf, u1, v1, u2, v2, theVecD1U, theVecD1V)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:122 - `BRepClass3d_SolidExplorer::InitShell()`
     /// Starts an exploration of the shells.
     pub fn init_shell(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_shell(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_shell(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:125 - `BRepClass3d_SolidExplorer::MoreShell()`
     /// Returns True if there is a current shell.
     pub fn more_shell(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_more_shell(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_more_shell(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:128 - `BRepClass3d_SolidExplorer::NextShell()`
     /// Sets the explorer to the next shell.
     pub fn next_shell(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_next_shell(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidExplorer_next_shell(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:131 - `BRepClass3d_SolidExplorer::CurrentShell()`
     /// Returns the current shell.
     pub fn current_shell(&self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_current_shell(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_current_shell(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:134 - `BRepClass3d_SolidExplorer::RejectShell()`
     /// Returns True if the Shell is rejected.
     pub fn reject_shell(&self, L: &crate::gp::Lin) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject_shell(self as *const Self, L) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_reject_shell(self as *const Self, L)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:137 - `BRepClass3d_SolidExplorer::InitFace()`
     /// Starts an exploration of the faces of the current shell.
     pub fn init_face(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_face(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_face(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:140 - `BRepClass3d_SolidExplorer::MoreFace()`
     /// Returns True if current face in current shell.
     pub fn more_face(&self) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_more_face(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_more_face(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:143 - `BRepClass3d_SolidExplorer::NextFace()`
     /// Sets the explorer to the next Face of the current shell.
     pub fn next_face(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_next_face(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidExplorer_next_face(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:146 - `BRepClass3d_SolidExplorer::CurrentFace()`
     /// Returns the current face.
     pub fn current_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_current_face(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_current_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:149 - `BRepClass3d_SolidExplorer::RejectFace()`
     /// returns True if the face is rejected.
     pub fn reject_face(&self, L: &crate::gp::Lin) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject_face(self as *const Self, L) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_reject_face(self as *const Self, L)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:154 - `BRepClass3d_SolidExplorer::Segment()`
@@ -707,7 +953,13 @@ impl SolidExplorer {
     /// one  intersection  with  the  shape  boundary  to
     /// compute  intersections.
     pub fn segment(&mut self, P: &crate::gp::Pnt, L: &mut crate::gp::Lin, Par: &mut f64) -> i32 {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_segment(self as *mut Self, P, L, Par) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_segment(self as *mut Self, P, L, Par)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:164 - `BRepClass3d_SolidExplorer::OtherSegment()`
@@ -725,14 +977,26 @@ impl SolidExplorer {
         L: &mut crate::gp::Lin,
         Par: &mut f64,
     ) -> i32 {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_other_segment(self as *mut Self, P, L, Par) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_other_segment(self as *mut Self, P, L, Par)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:168 - `BRepClass3d_SolidExplorer::GetFaceSegmentIndex()`
     /// Returns the index of face for which
     /// last segment is calculated.
     pub fn get_face_segment_index(&self) -> i32 {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_get_face_segment_index(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_get_face_segment_index(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:170 - `BRepClass3d_SolidExplorer::DumpSegment()`
@@ -743,25 +1007,38 @@ impl SolidExplorer {
         Par: f64,
         S: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_dump_segment(
-                self as *const Self,
-                P,
-                L,
-                Par,
-                S.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_dump_segment(
+                    self as *const Self,
+                    P,
+                    L,
+                    Par,
+                    S.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:175 - `BRepClass3d_SolidExplorer::Box()`
     pub fn box_(&self) -> &crate::bnd::Box {
-        unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_box_(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_box_(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:177 - `BRepClass3d_SolidExplorer::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_get_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector()`
@@ -775,24 +1052,42 @@ impl SolidExplorer {
         &mut self,
         F: &crate::topo_ds::Face,
     ) -> &mut crate::int_curves_face::Intersector {
-        unsafe { &mut *(crate::ffi::BRepClass3d_SolidExplorer_intersector(self as *mut Self, F)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_intersector(self as *mut Self, F) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:182 - `BRepClass3d_SolidExplorer::GetTree()`
     /// Return UB-tree instance which is used for edge / vertex checks.
     pub fn get_tree(&mut self) -> &crate::ffi::BRepClass3d_BndBoxTree {
-        unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_tree(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_get_tree(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:185 - `BRepClass3d_SolidExplorer::GetMapEV()`
     /// Return edge/vertices map for current shape.
     pub fn get_map_ev(&mut self) -> &crate::ffi::TopTools_IndexedMapOfShape {
-        unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_map_ev(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepClass3d_SolidExplorer_get_map_ev(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:187 - `BRepClass3d_SolidExplorer::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepClass3d_SolidExplorer_destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:57 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
@@ -804,10 +1099,14 @@ impl SolidExplorer {
         P: &mut crate::gp::Pnt,
         Param: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real(
-                F, P, Param,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real(
+                    F, P, Param,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -819,10 +1118,14 @@ impl SolidExplorer {
         v: &mut f64,
         Param: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3(
-                F, P, u, v, Param,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3(
+                    F, P, u, v, Param,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -836,10 +1139,14 @@ impl SolidExplorer {
         theVecD1U: &mut crate::gp::Vec,
         theVecD1V: &mut crate::gp::Vec,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3_vec2(
-                F, P, u, v, Param, theVecD1U, theVecD1V,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3_vec2(
+                    F, P, u, v, Param, theVecD1U, theVecD1V,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -850,10 +1157,14 @@ impl SolidExplorer {
         u: &mut f64,
         v: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real2(
-                F, P, u, v,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real2(
+                    F, P, u, v,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -862,7 +1173,13 @@ impl SolidExplorer {
         F: &crate::topo_ds::Face,
         P: &mut crate::gp::Pnt,
     ) -> bool {
-        unsafe { crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt(F, P) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt(F, P)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:82 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
@@ -871,8 +1188,12 @@ impl SolidExplorer {
         u: &mut f64,
         v: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_real2(F, u, v)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_real2(F, u, v)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -894,7 +1215,11 @@ impl SolidPassiveClassifier {
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:39 - `BRepClass3d_SolidPassiveClassifier::BRepClass3d_SolidPassiveClassifier()`
     /// Creates an undefined classifier.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidPassiveClassifier_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepClass3d_SolidPassiveClassifier_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:46 - `BRepClass3d_SolidPassiveClassifier::Reset()`
@@ -904,8 +1229,11 @@ impl SolidPassiveClassifier {
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin, P: f64, Tol: f64) {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidPassiveClassifier_reset(self as *mut Self, L, P, Tol)
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_SolidPassiveClassifier_reset(self as *mut Self, L, P, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -913,41 +1241,63 @@ impl SolidPassiveClassifier {
     /// Updates  the classification process with  the face
     /// <F> from the boundary.
     pub fn compare(&mut self, F: &crate::topo_ds::Face, Or: crate::top_abs::Orientation) {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidPassiveClassifier_compare(self as *mut Self, F, Or.into())
+        {
+            unsafe {
+                crate::ffi::BRepClass3d_SolidPassiveClassifier_compare(
+                    self as *mut Self,
+                    F,
+                    Or.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:53 - `BRepClass3d_SolidPassiveClassifier::Parameter()`
     /// Returns the current value of the parameter.
     pub fn parameter(&self) -> f64 {
-        unsafe { crate::ffi::BRepClass3d_SolidPassiveClassifier_parameter(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidPassiveClassifier_parameter(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:56 - `BRepClass3d_SolidPassiveClassifier::HasIntersection()`
     /// Returns True if an intersection is computed.
     pub fn has_intersection(&self) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidPassiveClassifier_has_intersection(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidPassiveClassifier_has_intersection(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:59 - `BRepClass3d_SolidPassiveClassifier::Intersector()`
     /// Returns the intersecting algorithm.
     pub fn intersector(&mut self) -> &mut Intersector3d {
-        unsafe {
-            &mut *(crate::ffi::BRepClass3d_SolidPassiveClassifier_intersector(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidPassiveClassifier_intersector(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:62 - `BRepClass3d_SolidPassiveClassifier::State()`
     /// Returns the current state of the point.
     pub fn state(&self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BRepClass3d_SolidPassiveClassifier_state(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::BRepClass3d_SolidPassiveClassifier_state(self as *const Self)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 }

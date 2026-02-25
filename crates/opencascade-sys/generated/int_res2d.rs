@@ -123,7 +123,11 @@ impl Domain {
     /// Creates an infinite Domain (HasFirstPoint = False
     /// and HasLastPoint = False).
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Domain_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_Domain_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:50 - `IntRes2d_Domain::IntRes2d_Domain()`
@@ -136,10 +140,14 @@ impl Domain {
         Par2: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_pnt2d_real2(
-                Pnt1, Par1, Tol1, Pnt2, Par2, Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_pnt2d_real2(
+                    Pnt1, Par1, Tol1, Pnt2, Par2, Tol2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -153,10 +161,11 @@ impl Domain {
         Tol: f64,
         First: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_bool(
-                Pnt, Par, Tol, First,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_bool(Pnt, Par, Tol, First) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -171,23 +180,29 @@ impl Domain {
         Par2: f64,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_pnt2d_real2(
-                self as *mut Self,
-                Pnt1,
-                Par1,
-                Tol1,
-                Pnt2,
-                Par2,
-                Tol2,
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_pnt2d_real2(
+                    self as *mut Self,
+                    Pnt1,
+                    Par1,
+                    Tol1,
+                    Pnt2,
+                    Par2,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:74 - `IntRes2d_Domain::SetValues()`
     /// Sets the values for an infinite domain.
     pub fn set_values(&mut self) {
-        unsafe { crate::ffi::IntRes2d_Domain_set_values(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntRes2d_Domain_set_values(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:77 - `IntRes2d_Domain::SetValues()`
@@ -199,22 +214,32 @@ impl Domain {
         Tol: f64,
         First: bool,
     ) {
-        unsafe {
-            crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_bool(
-                self as *mut Self,
-                Pnt,
-                Par,
-                Tol,
-                First,
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_bool(
+                    self as *mut Self,
+                    Pnt,
+                    Par,
+                    Tol,
+                    First,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:83 - `IntRes2d_Domain::SetEquivalentParameters()`
     /// Defines a closed domain.
     pub fn set_equivalent_parameters(&mut self, zero: f64, period: f64) {
-        unsafe {
-            crate::ffi::IntRes2d_Domain_set_equivalent_parameters(self as *mut Self, zero, period)
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Domain_set_equivalent_parameters(
+                    self as *mut Self,
+                    zero,
+                    period,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -223,7 +248,12 @@ impl Domain {
     /// a point defining the lowest admitted parameter on the
     /// curve.
     pub fn has_first_point(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Domain_has_first_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_has_first_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:93 - `IntRes2d_Domain::FirstParameter()`
@@ -231,7 +261,12 @@ impl Domain {
     /// The exception DomainError is raised if HasFirstPoint
     /// returns False.
     pub fn first_parameter(&self) -> f64 {
-        unsafe { crate::ffi::IntRes2d_Domain_first_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_first_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:98 - `IntRes2d_Domain::FirstPoint()`
@@ -239,7 +274,11 @@ impl Domain {
     /// The exception DomainError is raised if HasFirstPoint
     /// returns False.
     pub fn first_point(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::IntRes2d_Domain_first_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_Domain_first_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:103 - `IntRes2d_Domain::FirstTolerance()`
@@ -247,7 +286,12 @@ impl Domain {
     /// The exception DomainError is raised if HasFirstPoint
     /// returns False.
     pub fn first_tolerance(&self) -> f64 {
-        unsafe { crate::ffi::IntRes2d_Domain_first_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_first_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:108 - `IntRes2d_Domain::HasLastPoint()`
@@ -255,7 +299,12 @@ impl Domain {
     /// a point defining the highest admitted parameter on the
     /// curve.
     pub fn has_last_point(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Domain_has_last_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_has_last_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:113 - `IntRes2d_Domain::LastParameter()`
@@ -263,7 +312,12 @@ impl Domain {
     /// The exception DomainError is raised if HasLastPoint
     /// returns False.
     pub fn last_parameter(&self) -> f64 {
-        unsafe { crate::ffi::IntRes2d_Domain_last_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_last_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:118 - `IntRes2d_Domain::LastPoint()`
@@ -271,7 +325,11 @@ impl Domain {
     /// The exception DomainError is raised if HasLastPoint
     /// returns False.
     pub fn last_point(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::IntRes2d_Domain_last_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_Domain_last_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:123 - `IntRes2d_Domain::LastTolerance()`
@@ -279,25 +337,37 @@ impl Domain {
     /// The exception DomainError is raised if HasLastPoint
     /// returns False.
     pub fn last_tolerance(&self) -> f64 {
-        unsafe { crate::ffi::IntRes2d_Domain_last_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Domain_last_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:126 - `IntRes2d_Domain::IsClosed()`
     /// Returns True if the domain is closed.
     pub fn is_closed(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Domain_is_closed(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_Domain_is_closed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:130 - `IntRes2d_Domain::EquivalentParameters()`
     /// Returns Equivalent parameters if the domain is closed.
     /// Otherwise, the exception DomainError is raised.
     pub fn equivalent_parameters(&self, zero: &mut f64, zeroplusperiod: &mut f64) {
-        unsafe {
-            crate::ffi::IntRes2d_Domain_equivalent_parameters(
-                self as *const Self,
-                zero,
-                zeroplusperiod,
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Domain_equivalent_parameters(
+                    self as *const Self,
+                    zero,
+                    zeroplusperiod,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -316,7 +386,12 @@ impl Intersection {
     /// **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     /// returns TRUE when the computation was successful.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Intersection_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Intersection_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
@@ -324,7 +399,12 @@ impl Intersection {
     /// given arguments.
     /// The exception NotDone is raised if IsDone returns FALSE.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Intersection_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Intersection_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
@@ -332,7 +412,12 @@ impl Intersection {
     /// points between the 2 curves.
     /// The exception NotDone is raised if IsDone returns FALSE.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::IntRes2d_Intersection_nb_points(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Intersection_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
@@ -342,7 +427,12 @@ impl Intersection {
     /// The exception OutOfRange is raised if (N <= 0)
     /// or (N > NbPoints).
     pub fn point(&self, N: i32) -> &IntersectionPoint {
-        unsafe { &*(crate::ffi::IntRes2d_Intersection_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Intersection_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
@@ -350,7 +440,12 @@ impl Intersection {
     /// segments between the two curves.
     /// The exception NotDone is raised if IsDone returns FALSE.
     pub fn nb_segments(&self) -> i32 {
-        unsafe { crate::ffi::IntRes2d_Intersection_nb_segments(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Intersection_nb_segments(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
@@ -360,16 +455,24 @@ impl Intersection {
     /// The exception OutOfRange is raised if (N <= 0)
     /// or (N > NbPoints).
     pub fn segment(&self, N: i32) -> &IntersectionSegment {
-        unsafe { &*(crate::ffi::IntRes2d_Intersection_segment(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Intersection_segment(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
-        unsafe {
-            crate::ffi::IntRes2d_Intersection_set_reversed_parameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Intersection_set_reversed_parameters(
+                    self as *mut Self,
+                    Reverseflag,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -393,7 +496,11 @@ impl IntersectionPoint {
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:36 - `IntRes2d_IntersectionPoint::IntRes2d_IntersectionPoint()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_IntersectionPoint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_IntersectionPoint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:44 - `IntRes2d_IntersectionPoint::IntRes2d_IntersectionPoint()`
@@ -411,8 +518,8 @@ impl IntersectionPoint {
         Trans2: &Transition,
         ReversedFlag: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionPoint_ctor_pnt2d_real2_transition2_bool(
                     P,
                     Uc1,
@@ -420,8 +527,10 @@ impl IntersectionPoint {
                     Trans1,
                     Trans2,
                     ReversedFlag,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -438,16 +547,19 @@ impl IntersectionPoint {
         Trans2: &Transition,
         ReversedFlag: bool,
     ) {
-        unsafe {
-            crate::ffi::IntRes2d_IntersectionPoint_set_values(
-                self as *mut Self,
-                P,
-                Uc1,
-                Uc2,
-                Trans1,
-                Trans2,
-                ReversedFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_IntersectionPoint_set_values(
+                    self as *mut Self,
+                    P,
+                    Uc1,
+                    Uc2,
+                    Trans1,
+                    Trans2,
+                    ReversedFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -455,27 +567,48 @@ impl IntersectionPoint {
     /// Returns the value of the coordinates of the
     /// intersection point in the 2D space.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::IntRes2d_IntersectionPoint_value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_IntersectionPoint_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:66 - `IntRes2d_IntersectionPoint::ParamOnFirst()`
     /// Returns the parameter on the first curve.
     pub fn param_on_first(&self) -> f64 {
-        unsafe { crate::ffi::IntRes2d_IntersectionPoint_param_on_first(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionPoint_param_on_first(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:69 - `IntRes2d_IntersectionPoint::ParamOnSecond()`
     /// Returns the parameter on the second curve.
     pub fn param_on_second(&self) -> f64 {
-        unsafe { crate::ffi::IntRes2d_IntersectionPoint_param_on_second(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionPoint_param_on_second(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:73 - `IntRes2d_IntersectionPoint::TransitionOfFirst()`
     /// Returns the transition of the 1st curve compared to
     /// the 2nd one.
     pub fn transition_of_first(&self) -> &Transition {
-        unsafe {
-            &*(crate::ffi::IntRes2d_IntersectionPoint_transition_of_first(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionPoint_transition_of_first(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -483,8 +616,12 @@ impl IntersectionPoint {
     /// returns the transition of the 2nd curve compared to
     /// the 1st one.
     pub fn transition_of_second(&self) -> &Transition {
-        unsafe {
-            &*(crate::ffi::IntRes2d_IntersectionPoint_transition_of_second(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionPoint_transition_of_second(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -508,7 +645,11 @@ impl IntersectionSegment {
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:35 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_IntersectionSegment_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_IntersectionSegment_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:37 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
@@ -518,15 +659,17 @@ impl IntersectionSegment {
         Oppos: bool,
         ReverseFlag: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionSegment_ctor_intersectionpoint2_bool2(
                     P1,
                     P2,
                     Oppos,
                     ReverseFlag,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -537,23 +680,27 @@ impl IntersectionSegment {
         Oppos: bool,
         ReverseFlag: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionSegment_ctor_intersectionpoint_bool3(
                     P,
                     First,
                     Oppos,
                     ReverseFlag,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:48 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
     /// Creates an infinite segment of intersection.
     pub fn new_bool(Oppos: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_IntersectionSegment_ctor_bool(Oppos))
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_IntersectionSegment_ctor_bool(Oppos) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -561,7 +708,13 @@ impl IntersectionSegment {
     /// Returns FALSE if the intersection segment has got
     /// the same orientation on both curves.
     pub fn is_opposite(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_IntersectionSegment_is_opposite(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionSegment_is_opposite(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:60 - `IntRes2d_IntersectionSegment::HasFirstPoint()`
@@ -572,7 +725,13 @@ impl IntersectionSegment {
     /// parameter on the  second curve, otherwise,  it  is
     /// the highest parameter on the second curve.
     pub fn has_first_point(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_IntersectionSegment_has_first_point(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionSegment_has_first_point(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:66 - `IntRes2d_IntersectionSegment::FirstPoint()`
@@ -581,7 +740,13 @@ impl IntersectionSegment {
     /// exception  DomainError  is raised if HasFirstPoint
     /// returns False.
     pub fn first_point(&self) -> &IntersectionPoint {
-        unsafe { &*(crate::ffi::IntRes2d_IntersectionSegment_first_point(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionSegment_first_point(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:74 - `IntRes2d_IntersectionSegment::HasLastPoint()`
@@ -592,7 +757,13 @@ impl IntersectionSegment {
     /// parameter on  the  second curve, otherwise, it  is
     /// the lowest parameter on the second curve.
     pub fn has_last_point(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_IntersectionSegment_has_last_point(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_IntersectionSegment_has_last_point(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:80 - `IntRes2d_IntersectionSegment::LastPoint()`
@@ -601,7 +772,12 @@ impl IntersectionSegment {
     /// exception        DomainError     is   raised    if
     /// HasLastExtremity returns False.
     pub fn last_point(&self) -> &IntersectionPoint {
-        unsafe { &*(crate::ffi::IntRes2d_IntersectionSegment_last_point(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_IntersectionSegment_last_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -630,7 +806,11 @@ impl Transition {
     /// **Source:** `IntRes2d_Transition.hxx`:43 - `IntRes2d_Transition::IntRes2d_Transition()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Transition_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_Transition_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntRes2d_Transition.hxx`:46 - `IntRes2d_Transition::IntRes2d_Transition()`
@@ -640,12 +820,16 @@ impl Transition {
         Pos: crate::int_res2d::Position,
         Type: crate::int_res2d::TypeTrans,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Transition_ctor_bool_position_typetrans(
-                Tangent,
-                Pos.into(),
-                Type.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntRes2d_Transition_ctor_bool_position_typetrans(
+                    Tangent,
+                    Pos.into(),
+                    Type.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -657,23 +841,27 @@ impl Transition {
         Situ: crate::int_res2d::Situation,
         Oppos: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntRes2d_Transition_ctor_bool_position_situation_bool(
                     Tangent,
                     Pos.into(),
                     Situ.into(),
                     Oppos,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntRes2d_Transition.hxx`:57 - `IntRes2d_Transition::IntRes2d_Transition()`
     /// Creates an UNDECIDED transition.
     pub fn new_position(Pos: crate::int_res2d::Position) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Transition_ctor_position(Pos.into()))
+        {
+            let __result = unsafe { crate::ffi::IntRes2d_Transition_ctor_position(Pos.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -685,13 +873,16 @@ impl Transition {
         Pos: crate::int_res2d::Position,
         Type: crate::int_res2d::TypeTrans,
     ) {
-        unsafe {
-            crate::ffi::IntRes2d_Transition_set_value_bool_position_typetrans(
-                self as *mut Self,
-                Tangent,
-                Pos.into(),
-                Type.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Transition_set_value_bool_position_typetrans(
+                    self as *mut Self,
+                    Tangent,
+                    Pos.into(),
+                    Type.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -704,27 +895,38 @@ impl Transition {
         Situ: crate::int_res2d::Situation,
         Oppos: bool,
     ) {
-        unsafe {
-            crate::ffi::IntRes2d_Transition_set_value_bool_position_situation_bool(
-                self as *mut Self,
-                Tangent,
-                Pos.into(),
-                Situ.into(),
-                Oppos,
-            )
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Transition_set_value_bool_position_situation_bool(
+                    self as *mut Self,
+                    Tangent,
+                    Pos.into(),
+                    Situ.into(),
+                    Oppos,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntRes2d_Transition.hxx`:71 - `IntRes2d_Transition::SetValue()`
     /// Sets the values of an UNDECIDED transition.
     pub fn set_value_position(&mut self, Pos: crate::int_res2d::Position) {
-        unsafe { crate::ffi::IntRes2d_Transition_set_value_position(self as *mut Self, Pos.into()) }
+        {
+            unsafe {
+                crate::ffi::IntRes2d_Transition_set_value_position(self as *mut Self, Pos.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntRes2d_Transition.hxx`:74 - `IntRes2d_Transition::SetPosition()`
     /// Sets the value of the position.
     pub fn set_position(&mut self, Pos: crate::int_res2d::Position) {
-        unsafe { crate::ffi::IntRes2d_Transition_set_position(self as *mut Self, Pos.into()) }
+        {
+            unsafe { crate::ffi::IntRes2d_Transition_set_position(self as *mut Self, Pos.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntRes2d_Transition.hxx`:79 - `IntRes2d_Transition::PositionOnCurve()`
@@ -732,11 +934,11 @@ impl Transition {
     /// (IntRes2d_Head),  at the end (IntRes2d_End), or in
     /// the middle (IntRes2d_Middle) of the curve.
     pub fn position_on_curve(&self) -> crate::int_res2d::Position {
-        unsafe {
-            crate::int_res2d::Position::try_from(crate::ffi::IntRes2d_Transition_position_on_curve(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Transition_position_on_curve(self as *const Self) };
+            crate::check_exception();
+            crate::int_res2d::Position::try_from(__result).unwrap()
         }
     }
 
@@ -746,11 +948,11 @@ impl Transition {
     /// two first derivatives are not enough to give
     /// the tangent to one of the two curves.
     pub fn transition_type(&self) -> crate::int_res2d::TypeTrans {
-        unsafe {
-            crate::int_res2d::TypeTrans::try_from(crate::ffi::IntRes2d_Transition_transition_type(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Transition_transition_type(self as *const Self) };
+            crate::check_exception();
+            crate::int_res2d::TypeTrans::try_from(__result).unwrap()
         }
     }
 
@@ -760,7 +962,12 @@ impl Transition {
     /// Theexception DomainError is raised if the type of
     /// transition is UNDECIDED.
     pub fn is_tangent(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Transition_is_tangent(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Transition_is_tangent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntRes2d_Transition.hxx`:101 - `IntRes2d_Transition::Situation()`
@@ -773,11 +980,11 @@ impl Transition {
     /// If TransitionType returns IN or OUT or UNDECIDED, the
     /// exception DomainError is raised.
     pub fn situation(&self) -> crate::int_res2d::Situation {
-        unsafe {
-            crate::int_res2d::Situation::try_from(crate::ffi::IntRes2d_Transition_situation(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Transition_situation(self as *const Self) };
+            crate::check_exception();
+            crate::int_res2d::Situation::try_from(__result).unwrap()
         }
     }
 
@@ -789,7 +996,12 @@ impl Transition {
     /// returns  IN or   OUT or UNDECIDED,  the  exception
     /// DomainError is raised.
     pub fn is_opposite(&self) -> bool {
-        unsafe { crate::ffi::IntRes2d_Transition_is_opposite(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntRes2d_Transition_is_opposite(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 

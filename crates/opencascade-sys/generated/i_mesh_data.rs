@@ -88,134 +88,221 @@ impl Curve {
         thePoint: &crate::gp::Pnt,
         theParamOnPCurve: f64,
     ) {
-        unsafe {
-            crate::ffi::IMeshData_Curve_insert_point(
-                self as *mut Self,
-                thePosition,
-                thePoint,
-                theParamOnPCurve,
-            )
+        {
+            unsafe {
+                crate::ffi::IMeshData_Curve_insert_point(
+                    self as *mut Self,
+                    thePosition,
+                    thePoint,
+                    theParamOnPCurve,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:38 - `IMeshData_Curve::AddPoint()`
     /// Adds new discretization point to curve.
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt, theParamOnCurve: f64) {
-        unsafe {
-            crate::ffi::IMeshData_Curve_add_point(self as *mut Self, thePoint, theParamOnCurve)
+        {
+            unsafe {
+                crate::ffi::IMeshData_Curve_add_point(self as *mut Self, thePoint, theParamOnCurve)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:42 - `IMeshData_Curve::GetPoint()`
     /// Returns discretization point with the given index.
     pub fn get_point(&mut self, theIndex: i32) -> &mut crate::gp::Pnt {
-        unsafe { &mut *(crate::ffi::IMeshData_Curve_get_point(self as *mut Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Curve_get_point(self as *mut Self, theIndex) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:45 - `IMeshData_Curve::RemovePoint()`
     /// Removes point with the given index.
     pub fn remove_point(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::IMeshData_Curve_remove_point(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::IMeshData_Curve_remove_point(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Curve_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Curve_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Curve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Curve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Curve_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Curve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_ParametersList
     pub fn as_parameters_list(&self) -> &ParametersList {
-        unsafe { &*(crate::ffi::IMeshData_Curve_as_IMeshData_ParametersList(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Curve_as_IMeshData_ParametersList(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_ParametersList (mutable)
     pub fn as_parameters_list_mut(&mut self) -> &mut ParametersList {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Curve_as_IMeshData_ParametersList_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Curve_as_IMeshData_ParametersList_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_Curve_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Curve_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_Curve_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Curve_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     pub fn get_parameter(&mut self, theIndex: i32) -> &mut f64 {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Curve_inherited_GetParameter(self as *mut Self, theIndex))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Curve_inherited_GetParameter(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:33 - `IMeshData_ParametersList::ParametersNb()`
     pub fn parameters_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_ParametersNb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Curve_inherited_ParametersNb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     pub fn clear(&mut self, isKeepEndPoints: bool) {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Curve_inherited_Clear(self as *mut Self, isKeepEndPoints)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Curve_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Curve_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_Curve_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Curve_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Curve_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Curve_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Curve_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_Curve_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Curve_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -230,33 +317,45 @@ unsafe impl crate::CppDeletable for HandleIMeshDataCurve {
 impl HandleIMeshDataCurve {
     /// Dereference this Handle to access the underlying IMeshData_Curve
     pub fn get(&self) -> &crate::ffi::IMeshData_Curve {
-        unsafe { &*(crate::ffi::HandleIMeshDataCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataCurve_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Curve {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataCurve_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataCurve_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_Curve> to Handle<IMeshData_ParametersList>
     pub fn to_handle_parameters_list(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataParametersList> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataCurve_to_HandleIMeshDataParametersList(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataCurve_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataCurve_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -279,244 +378,426 @@ impl Edge {
     /// **Source:** `IMeshData_Edge.hxx`:33 - `IMeshData_Edge::GetEdge()`
     /// Returns TopoDS_Edge attached to model.
     pub fn get_edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::IMeshData_Edge_get_edge(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_get_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:36 - `IMeshData_Edge::PCurvesNb()`
     /// Returns number of pcurves assigned to current edge.
     pub fn p_curves_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Edge_p_curves_nb(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_p_curves_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:49 - `IMeshData_Edge::GetPCurve()`
     /// Returns pcurve with the given index.
     pub fn get_p_curve(&self, theIndex: i32) -> &crate::ffi::HandleIMeshDataPCurve {
-        unsafe { &*(crate::ffi::IMeshData_Edge_get_p_curve(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_get_p_curve(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:53 - `IMeshData_Edge::Clear()`
     /// Clears curve and all pcurves assigned to the edge from discretization.
     pub fn clear(&mut self, isKeepEndPoints: bool) {
-        unsafe { crate::ffi::IMeshData_Edge_clear(self as *mut Self, isKeepEndPoints) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_clear(self as *mut Self, isKeepEndPoints) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:63 - `IMeshData_Edge::IsFree()`
     /// Returns true in case if the edge is free one, i.e. it does not have pcurves.
     pub fn is_free(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_is_free(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_is_free(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:66 - `IMeshData_Edge::SetCurve()`
     /// Sets 3d curve associated with current edge.
     pub fn set_curve(&mut self, theCurve: &crate::ffi::HandleIMeshDataCurve) {
-        unsafe { crate::ffi::IMeshData_Edge_set_curve(self as *mut Self, theCurve) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_set_curve(self as *mut Self, theCurve) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:69 - `IMeshData_Edge::GetCurve()`
     /// Returns 3d curve associated with current edge.
     pub fn get_curve(&self) -> &crate::ffi::HandleIMeshDataCurve {
-        unsafe { &*(crate::ffi::IMeshData_Edge_get_curve(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_get_curve(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:72 - `IMeshData_Edge::GetAngularDeflection()`
     /// Gets value of angular deflection for the discrete model.
     pub fn get_angular_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Edge_get_angular_deflection(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_get_angular_deflection(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:75 - `IMeshData_Edge::SetAngularDeflection()`
     /// Sets value of angular deflection for the discrete model.
     pub fn set_angular_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Edge_set_angular_deflection(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Edge_set_angular_deflection(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:79 - `IMeshData_Edge::GetSameParam()`
     /// Returns same param flag.
     /// By default equals to flag stored in topological shape.
     pub fn get_same_param(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_get_same_param(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_get_same_param(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:82 - `IMeshData_Edge::SetSameParam()`
     /// Updates same param flag.
     pub fn set_same_param(&mut self, theValue: bool) {
-        unsafe { crate::ffi::IMeshData_Edge_set_same_param(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_set_same_param(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:86 - `IMeshData_Edge::GetSameRange()`
     /// Returns same range flag.
     /// By default equals to flag stored in topological shape.
     pub fn get_same_range(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_get_same_range(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_get_same_range(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:89 - `IMeshData_Edge::SetSameRange()`
     /// Updates same range flag.
     pub fn set_same_range(&mut self, theValue: bool) {
-        unsafe { crate::ffi::IMeshData_Edge_set_same_range(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_set_same_range(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:93 - `IMeshData_Edge::GetDegenerated()`
     /// Returns degenerative flag.
     /// By default equals to flag stored in topological shape.
     pub fn get_degenerated(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_get_degenerated(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_get_degenerated(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:96 - `IMeshData_Edge::SetDegenerated()`
     /// Updates degenerative flag.
     pub fn set_degenerated(&mut self, theValue: bool) {
-        unsafe { crate::ffi::IMeshData_Edge_set_degenerated(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_set_degenerated(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Edge_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Edge_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Edge_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Edge_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_TessellatedShape
     pub fn as_tessellated_shape(&self) -> &TessellatedShape {
-        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_TessellatedShape (mutable)
     pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshData_StatusOwner
     pub fn as_status_owner(&self) -> &StatusOwner {
-        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_StatusOwner(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_as_IMeshData_StatusOwner(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_StatusOwner (mutable)
     pub fn as_status_owner_mut(&mut self) -> &mut StatusOwner {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_StatusOwner_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_as_IMeshData_StatusOwner_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_Shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_as_IMeshData_Shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_Shape_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_as_IMeshData_Shape_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_Edge_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_Edge_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_GetDeflection(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_inherited_GetDeflection(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
     pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_SetDeflection(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Edge_inherited_SetDeflection(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
     pub fn is_equal(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_IsEqual(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_inherited_IsEqual(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:32 - `IMeshData_StatusOwner::IsSet()`
     pub fn is_set(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_IsSet(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_inherited_IsSet(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
     pub fn set_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_SetStatus(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_inherited_SetStatus(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn unset_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_UnsetStatus(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Edge_inherited_UnsetStatus(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn get_status_mask(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_GetStatusMask(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_inherited_GetStatusMask(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_SetShape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_inherited_SetShape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::IMeshData_Edge_inherited_GetShape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_inherited_GetShape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_Edge_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Edge_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Edge_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Edge_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -531,42 +812,56 @@ unsafe impl crate::CppDeletable for HandleIMeshDataEdge {
 impl HandleIMeshDataEdge {
     /// Dereference this Handle to access the underlying IMeshData_Edge
     pub fn get(&self) -> &crate::ffi::IMeshData_Edge {
-        unsafe { &*(crate::ffi::HandleIMeshDataEdge_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataEdge_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_Edge
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Edge {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataEdge_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataEdge_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_Edge> to Handle<IMeshData_TessellatedShape>
     pub fn to_handle_tessellated_shape(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataEdge_to_HandleIMeshDataTessellatedShape(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Edge> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataEdge_to_HandleIMeshDataShape(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataEdge_to_HandleIMeshDataShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Edge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataEdge_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataEdge_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -603,7 +898,11 @@ impl Face {
     /// **Source:** `IMeshData_Face.hxx`:39 - `IMeshData_Face::WiresNb()`
     /// Returns number of wires.
     pub fn wires_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Face_wires_nb(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_wires_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:42 - `IMeshData_Face::AddWire()`
@@ -619,181 +918,325 @@ impl Face {
         theWire: &crate::topo_ds::Wire,
         theEdgeNb: i32,
     ) -> &crate::ffi::HandleIMeshDataWire {
-        unsafe { &*(crate::ffi::IMeshData_Face_add_wire(self as *mut Self, theWire, theEdgeNb)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_add_wire(self as *mut Self, theWire, theEdgeNb)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:47 - `IMeshData_Face::GetWire()`
     /// Returns discrete edge with the given index.
     pub fn get_wire(&self, theIndex: i32) -> &crate::ffi::HandleIMeshDataWire {
-        unsafe { &*(crate::ffi::IMeshData_Face_get_wire(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_get_wire(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:51 - `IMeshData_Face::GetSurface()`
     /// Returns face's surface.
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe { &*(crate::ffi::IMeshData_Face_get_surface(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_get_surface(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:54 - `IMeshData_Face::GetFace()`
     /// Returns TopoDS_Face attached to model.
     pub fn get_face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IMeshData_Face_get_face(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_get_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:57 - `IMeshData_Face::IsValid()`
     /// Returns whether the face discrete model is valid.
     pub fn is_valid(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_Face_is_valid(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_is_valid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Face_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Face_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Face_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Face_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_TessellatedShape
     pub fn as_tessellated_shape(&self) -> &TessellatedShape {
-        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_TessellatedShape (mutable)
     pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshData_StatusOwner
     pub fn as_status_owner(&self) -> &StatusOwner {
-        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_StatusOwner(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_as_IMeshData_StatusOwner(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_StatusOwner (mutable)
     pub fn as_status_owner_mut(&mut self) -> &mut StatusOwner {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Face_as_IMeshData_StatusOwner_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_as_IMeshData_StatusOwner_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_Shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_as_IMeshData_Shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Face_as_IMeshData_Shape_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_as_IMeshData_Shape_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_Face_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_Face_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Face_inherited_GetDeflection(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_inherited_GetDeflection(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
     pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_SetDeflection(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Face_inherited_SetDeflection(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
     pub fn is_equal(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_Face_inherited_IsEqual(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_inherited_IsEqual(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:32 - `IMeshData_StatusOwner::IsSet()`
     pub fn is_set(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_Face_inherited_IsSet(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_inherited_IsSet(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
     pub fn set_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_SetStatus(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_Face_inherited_SetStatus(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn unset_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_UnsetStatus(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Face_inherited_UnsetStatus(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn get_status_mask(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Face_inherited_GetStatusMask(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_inherited_GetStatusMask(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_SetShape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::IMeshData_Face_inherited_SetShape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::IMeshData_Face_inherited_GetShape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_inherited_GetShape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Face_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Face_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_Face_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Face_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Face_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Face_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Face_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Face_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Face_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -808,42 +1251,56 @@ unsafe impl crate::CppDeletable for HandleIMeshDataFace {
 impl HandleIMeshDataFace {
     /// Dereference this Handle to access the underlying IMeshData_Face
     pub fn get(&self) -> &crate::ffi::IMeshData_Face {
-        unsafe { &*(crate::ffi::HandleIMeshDataFace_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataFace_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_Face
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Face {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataFace_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataFace_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_Face> to Handle<IMeshData_TessellatedShape>
     pub fn to_handle_tessellated_shape(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataFace_to_HandleIMeshDataTessellatedShape(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Face> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataFace_to_HandleIMeshDataShape(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataFace_to_HandleIMeshDataShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Face> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataFace_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataFace_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -866,19 +1323,31 @@ impl Model {
     /// **Source:** `IMeshData_Model.hxx`:35 - `IMeshData_Model::GetMaxSize()`
     /// Returns maximum size of shape model.
     pub fn get_max_size(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Model_get_max_size(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Model_get_max_size(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Model_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Model_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:41 - `IMeshData_Model::FacesNb()`
     /// @name discrete faces
     /// Returns number of faces in discrete model.
     pub fn faces_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Model_faces_nb(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Model_faces_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:44 - `IMeshData_Model::AddFace()`
@@ -893,20 +1362,34 @@ impl Model {
         &mut self,
         theFace: &crate::topo_ds::Face,
     ) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe { &*(crate::ffi::IMeshData_Model_add_face(self as *mut Self, theFace)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_add_face(self as *mut Self, theFace) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:47 - `IMeshData_Model::GetFace()`
     /// Gets model's face with the given index.
     pub fn get_face(&self, theIndex: i32) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe { &*(crate::ffi::IMeshData_Model_get_face(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_get_face(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:52 - `IMeshData_Model::EdgesNb()`
     /// @name discrete edges
     /// Returns number of edges in discrete model.
     pub fn edges_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Model_edges_nb(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Model_edges_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:55 - `IMeshData_Model::AddEdge()`
@@ -921,99 +1404,172 @@ impl Model {
         &mut self,
         theEdge: &crate::topo_ds::Edge,
     ) -> &crate::ffi::HandleIMeshDataEdge {
-        unsafe { &*(crate::ffi::IMeshData_Model_add_edge(self as *mut Self, theEdge)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_add_edge(self as *mut Self, theEdge) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:58 - `IMeshData_Model::GetEdge()`
     /// Gets model's edge with the given index.
     pub fn get_edge(&self, theIndex: i32) -> &crate::ffi::HandleIMeshDataEdge {
-        unsafe { &*(crate::ffi::IMeshData_Model_get_edge(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_get_edge(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Model_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Model_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Model_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Model_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Model_as_IMeshData_Shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_as_IMeshData_Shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Model_as_IMeshData_Shape_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_as_IMeshData_Shape_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_Model_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_Model_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::IMeshData_Model_inherited_SetShape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::IMeshData_Model_inherited_SetShape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::IMeshData_Model_inherited_GetShape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_inherited_GetShape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Model_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Model_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Model_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Model_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_Model_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Model_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Model_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_Model_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Model_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Model_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Model_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_Model_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Model_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1028,29 +1584,41 @@ unsafe impl crate::CppDeletable for HandleIMeshDataModel {
 impl HandleIMeshDataModel {
     /// Dereference this Handle to access the underlying IMeshData_Model
     pub fn get(&self) -> &crate::ffi::IMeshData_Model {
-        unsafe { &*(crate::ffi::HandleIMeshDataModel_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataModel_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_Model
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Model {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataModel_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataModel_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_Model> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataModel_to_HandleIMeshDataShape(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataModel_to_HandleIMeshDataShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Model> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataModel_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataModel_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1079,163 +1647,271 @@ impl PCurve {
         thePoint: &crate::gp::Pnt2d,
         theParamOnPCurve: f64,
     ) {
-        unsafe {
-            crate::ffi::IMeshData_PCurve_insert_point(
-                self as *mut Self,
-                thePosition,
-                thePoint,
-                theParamOnPCurve,
-            )
+        {
+            unsafe {
+                crate::ffi::IMeshData_PCurve_insert_point(
+                    self as *mut Self,
+                    thePosition,
+                    thePoint,
+                    theParamOnPCurve,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:39 - `IMeshData_PCurve::AddPoint()`
     /// Adds new discretization point to pcurve.
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d, theParamOnPCurve: f64) {
-        unsafe {
-            crate::ffi::IMeshData_PCurve_add_point(self as *mut Self, thePoint, theParamOnPCurve)
+        {
+            unsafe {
+                crate::ffi::IMeshData_PCurve_add_point(
+                    self as *mut Self,
+                    thePoint,
+                    theParamOnPCurve,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:43 - `IMeshData_PCurve::GetPoint()`
     /// Returns discretization point with the given index.
     pub fn get_point(&mut self, theIndex: i32) -> &mut crate::gp::Pnt2d {
-        unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_point(self as *mut Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_get_point(self as *mut Self, theIndex) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:46 - `IMeshData_PCurve::GetIndex()`
     /// Returns index in mesh corresponded to discretization point with the given index.
     pub fn get_index(&mut self, theIndex: i32) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_index(self as *mut Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_get_index(self as *mut Self, theIndex) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:49 - `IMeshData_PCurve::RemovePoint()`
     /// Removes point with the given index.
     pub fn remove_point(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::IMeshData_PCurve_remove_point(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::IMeshData_PCurve_remove_point(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:52 - `IMeshData_PCurve::IsForward()`
     /// Returns forward flag of this pcurve.
     pub fn is_forward(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_PCurve_is_forward(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_PCurve_is_forward(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:55 - `IMeshData_PCurve::IsInternal()`
     /// Returns internal flag of this pcurve.
     pub fn is_internal(&self) -> bool {
-        unsafe { crate::ffi::IMeshData_PCurve_is_internal(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_PCurve_is_internal(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:58 - `IMeshData_PCurve::GetOrientation()`
     /// Returns orientation of the edge associated with current pcurve.
     pub fn get_orientation(&self) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(crate::ffi::IMeshData_PCurve_get_orientation(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_get_orientation(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_PCurve_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_PCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_PCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_PCurve_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_PCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_ParametersList
     pub fn as_parameters_list(&self) -> &ParametersList {
-        unsafe { &*(crate::ffi::IMeshData_PCurve_as_IMeshData_ParametersList(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_as_IMeshData_ParametersList(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_ParametersList (mutable)
     pub fn as_parameters_list_mut(&mut self) -> &mut ParametersList {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_PCurve_as_IMeshData_ParametersList_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_as_IMeshData_ParametersList_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_PCurve_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_PCurve_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     pub fn get_parameter(&mut self, theIndex: i32) -> &mut f64 {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_PCurve_inherited_GetParameter(self as *mut Self, theIndex))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_inherited_GetParameter(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:33 - `IMeshData_ParametersList::ParametersNb()`
     pub fn parameters_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_ParametersNb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_inherited_ParametersNb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     pub fn clear(&mut self, isKeepEndPoints: bool) {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_PCurve_inherited_Clear(self as *mut Self, isKeepEndPoints)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_PCurve_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_PCurve_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_PCurve_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_PCurve_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_PCurve_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_PCurve_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1250,33 +1926,45 @@ unsafe impl crate::CppDeletable for HandleIMeshDataPCurve {
 impl HandleIMeshDataPCurve {
     /// Dereference this Handle to access the underlying IMeshData_PCurve
     pub fn get(&self) -> &crate::ffi::IMeshData_PCurve {
-        unsafe { &*(crate::ffi::HandleIMeshDataPCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataPCurve_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_PCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_PCurve {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataPCurve_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataPCurve_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_PCurve> to Handle<IMeshData_ParametersList>
     pub fn to_handle_parameters_list(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataParametersList> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataPCurve_to_HandleIMeshDataParametersList(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_PCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataPCurve_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataPCurve_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1306,107 +1994,168 @@ impl ParametersList {
     /// **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     /// Returns parameter with the given index.
     pub fn get_parameter(&mut self, theIndex: i32) -> &mut f64 {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_ParametersList_get_parameter(self as *mut Self, theIndex))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_get_parameter(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:33 - `IMeshData_ParametersList::ParametersNb()`
     /// Returns number of parameters.
     pub fn parameters_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_ParametersList_parameters_nb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_ParametersList_parameters_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     /// Clears parameters list.
     pub fn clear(&mut self, isKeepEndPoints: bool) {
-        unsafe { crate::ffi::IMeshData_ParametersList_clear(self as *mut Self, isKeepEndPoints) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_ParametersList_clear(self as *mut Self, isKeepEndPoints)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_ParametersList_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_ParametersList_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_ParametersList_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_ParametersList_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_ParametersList_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_ParametersList_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::IMeshData_ParametersList_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_ParametersList_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::IMeshData_ParametersList_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::IMeshData_ParametersList_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::IMeshData_ParametersList_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_ParametersList_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::IMeshData_ParametersList_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::IMeshData_ParametersList_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::IMeshData_ParametersList_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_ParametersList_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_ParametersList_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_ParametersList_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1421,22 +2170,34 @@ unsafe impl crate::CppDeletable for HandleIMeshDataParametersList {
 impl HandleIMeshDataParametersList {
     /// Dereference this Handle to access the underlying IMeshData_ParametersList
     pub fn get(&self) -> &crate::ffi::IMeshData_ParametersList {
-        unsafe { &*(crate::ffi::HandleIMeshDataParametersList_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIMeshDataParametersList_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_ParametersList
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_ParametersList {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataParametersList_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIMeshDataParametersList_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_ParametersList> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataParametersList_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1461,91 +2222,151 @@ impl Shape {
     /// **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     /// Assigns shape to discrete shape.
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::IMeshData_Shape_set_shape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::IMeshData_Shape_set_shape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     /// Returns shape assigned to discrete shape.
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::IMeshData_Shape_get_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Shape_get_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Shape_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Shape_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Shape_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Shape_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Shape_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Shape_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_Shape_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Shape_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_Shape_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Shape_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IMeshData_Shape_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Shape_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Shape_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Shape_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Shape_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Shape_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_Shape_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Shape_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Shape_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Shape_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_Shape_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Shape_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Shape_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Shape_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_Shape_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Shape_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1560,20 +2381,30 @@ unsafe impl crate::CppDeletable for HandleIMeshDataShape {
 impl HandleIMeshDataShape {
     /// Dereference this Handle to access the underlying IMeshData_Shape
     pub fn get(&self) -> &crate::ffi::IMeshData_Shape {
-        unsafe { &*(crate::ffi::HandleIMeshDataShape_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataShape_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_Shape
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Shape {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataShape_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataShape_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_Shape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataShape_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataShape_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1586,6 +2417,7 @@ impl HandleIMeshDataShape {
         let ptr = unsafe {
             crate::ffi::HandleIMeshDataShape_downcast_to_HandleBRepMeshContext(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1604,6 +2436,7 @@ impl HandleIMeshDataShape {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1622,6 +2455,7 @@ impl HandleIMeshDataShape {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1640,6 +2474,7 @@ impl HandleIMeshDataShape {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1666,31 +2501,53 @@ impl StatusOwner {
     /// **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
     /// Returns true in case if status is strictly equal to the given value.
     pub fn is_equal(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_StatusOwner_is_equal(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_StatusOwner_is_equal(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_StatusOwner.hxx`:32 - `IMeshData_StatusOwner::IsSet()`
     /// Returns true in case if status is set.
     pub fn is_set(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_StatusOwner_is_set(self as *const Self, theValue) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_StatusOwner_is_set(self as *const Self, theValue) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
     /// Adds status to status flags of a face.
     pub fn set_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_StatusOwner_set_status(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_StatusOwner_set_status(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
     /// Adds status to status flags of a face.
     pub fn unset_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_StatusOwner_unset_status(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_StatusOwner_unset_status(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
     /// Returns complete status mask.
     pub fn get_status_mask(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_StatusOwner_get_status_mask(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_StatusOwner_get_status_mask(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1712,63 +2569,95 @@ impl TessellatedShape {
     /// **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     /// Gets deflection value for the discrete model.
     pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_TessellatedShape_get_deflection(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_get_deflection(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
     /// Sets deflection value for the discrete model.
     pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe {
-            crate::ffi::IMeshData_TessellatedShape_set_deflection(self as *mut Self, theValue)
+        {
+            unsafe {
+                crate::ffi::IMeshData_TessellatedShape_set_deflection(self as *mut Self, theValue)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_TessellatedShape_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_TessellatedShape_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_TessellatedShape_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_TessellatedShape_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_TessellatedShape_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_TessellatedShape_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_shape(&self) -> &Shape {
-        unsafe {
-            &*(crate::ffi::IMeshData_TessellatedShape_as_IMeshData_Shape(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_as_IMeshData_Shape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_TessellatedShape_as_IMeshData_Shape_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_as_IMeshData_Shape_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::IMeshData_TessellatedShape_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_TessellatedShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1776,80 +2665,123 @@ impl TessellatedShape {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IMeshData_TessellatedShape_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_TessellatedShape_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::IMeshData_TessellatedShape_inherited_SetShape(self as *mut Self, theShape)
+        {
+            unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_SetShape(
+                    self as *mut Self,
+                    theShape,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::IMeshData_TessellatedShape_inherited_GetShape(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_GetShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::IMeshData_TessellatedShape_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::IMeshData_TessellatedShape_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::IMeshData_TessellatedShape_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_TessellatedShape_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::IMeshData_TessellatedShape_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::IMeshData_TessellatedShape_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_TessellatedShape_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_TessellatedShape_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_TessellatedShape_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1864,33 +2796,47 @@ unsafe impl crate::CppDeletable for HandleIMeshDataTessellatedShape {
 impl HandleIMeshDataTessellatedShape {
     /// Dereference this Handle to access the underlying IMeshData_TessellatedShape
     pub fn get(&self) -> &crate::ffi::IMeshData_TessellatedShape {
-        unsafe { &*(crate::ffi::HandleIMeshDataTessellatedShape_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIMeshDataTessellatedShape_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_TessellatedShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_TessellatedShape {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataTessellatedShape_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIMeshDataTessellatedShape_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_TessellatedShape> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataTessellatedShape_to_HandleIMeshDataShape(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_TessellatedShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataTessellatedShape_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1914,175 +2860,304 @@ impl Wire {
     /// **Source:** `IMeshData_Wire.hxx`:35 - `IMeshData_Wire::GetWire()`
     /// Returns TopoDS_Face attached to model.
     pub fn get_wire(&self) -> &crate::topo_ds::Wire {
-        unsafe { &*(crate::ffi::IMeshData_Wire_get_wire(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Wire_get_wire(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:38 - `IMeshData_Wire::EdgesNb()`
     /// Returns number of edges.
     pub fn edges_nb(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Wire_edges_nb(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Wire_edges_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:50 - `IMeshData_Wire::GetEdgeOrientation()`
     /// Returns True if orientation of discrete edge with the given index is forward.
     pub fn get_edge_orientation(&self, theIndex: i32) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(crate::ffi::IMeshData_Wire_get_edge_orientation(
-                self as *const Self,
-                theIndex,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_get_edge_orientation(self as *const Self, theIndex)
+            };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Wire_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Wire_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Wire_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Wire_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IMeshData_Wire_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IMeshData_Wire_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshData_TessellatedShape
     pub fn as_tessellated_shape(&self) -> &TessellatedShape {
-        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_TessellatedShape (mutable)
     pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshData_StatusOwner
     pub fn as_status_owner(&self) -> &StatusOwner {
-        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_StatusOwner(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_as_IMeshData_StatusOwner(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_StatusOwner (mutable)
     pub fn as_status_owner_mut(&mut self) -> &mut StatusOwner {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_StatusOwner_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_as_IMeshData_StatusOwner_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_Shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_as_IMeshData_Shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_Shape_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_as_IMeshData_Shape_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IMeshData_Wire_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IMeshData_Wire_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_GetDeflection(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_inherited_GetDeflection(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
     pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_SetDeflection(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Wire_inherited_SetDeflection(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
     pub fn is_equal(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_IsEqual(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_inherited_IsEqual(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:32 - `IMeshData_StatusOwner::IsSet()`
     pub fn is_set(&self, theValue: i32) -> bool {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_IsSet(self as *const Self, theValue) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_inherited_IsSet(self as *const Self, theValue)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
     pub fn set_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_SetStatus(self as *mut Self, theValue) }
+        {
+            unsafe { crate::ffi::IMeshData_Wire_inherited_SetStatus(self as *mut Self, theValue) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn unset_status(&mut self, theValue: i32) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_UnsetStatus(self as *mut Self, theValue) }
+        {
+            unsafe {
+                crate::ffi::IMeshData_Wire_inherited_UnsetStatus(self as *mut Self, theValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn get_status_mask(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_GetStatusMask(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_inherited_GetStatusMask(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_SetShape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::IMeshData_Wire_inherited_SetShape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IMeshData_Wire_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IMeshData_Wire_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Wire_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IMeshData_Wire_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IMeshData_Wire_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2097,42 +3172,56 @@ unsafe impl crate::CppDeletable for HandleIMeshDataWire {
 impl HandleIMeshDataWire {
     /// Dereference this Handle to access the underlying IMeshData_Wire
     pub fn get(&self) -> &crate::ffi::IMeshData_Wire {
-        unsafe { &*(crate::ffi::HandleIMeshDataWire_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataWire_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshData_Wire
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Wire {
-        unsafe { &mut *(crate::ffi::HandleIMeshDataWire_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIMeshDataWire_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IMeshData_Wire> to Handle<IMeshData_TessellatedShape>
     pub fn to_handle_tessellated_shape(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIMeshDataWire_to_HandleIMeshDataTessellatedShape(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Wire> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataWire_to_HandleIMeshDataShape(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataWire_to_HandleIMeshDataShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<IMeshData_Wire> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataWire_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIMeshDataWire_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

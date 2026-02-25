@@ -136,7 +136,11 @@ unsafe impl crate::CppDeletable for LexicalCompare {
 impl LexicalCompare {
     /// **Source:** `Resource_LexicalCompare.hxx`:32 - `Resource_LexicalCompare::Resource_LexicalCompare()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_LexicalCompare_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Resource_LexicalCompare_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Resource_LexicalCompare.hxx`:35 - `Resource_LexicalCompare::IsLower()`
@@ -146,7 +150,13 @@ impl LexicalCompare {
         Left: &crate::t_collection::AsciiString,
         Right: &crate::t_collection::AsciiString,
     ) -> bool {
-        unsafe { crate::ffi::Resource_LexicalCompare_is_lower(self as *const Self, Left, Right) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_LexicalCompare_is_lower(self as *const Self, Left, Right)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -180,18 +190,23 @@ impl Manager {
     /// syntax of an individual resource line is:
     pub fn new_charptr_bool(aName: &str, Verbose: bool) -> crate::OwnedPtr<Self> {
         let c_aName = std::ffi::CString::new(aName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_ctor_charptr_bool(
-                c_aName.as_ptr(),
-                Verbose,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_ctor_charptr_bool(c_aName.as_ptr(), Verbose)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Resource_Manager.hxx`:56 - `Resource_Manager::Resource_Manager()`
     /// Create an empty Resource manager
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Resource_Manager_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:63 - `Resource_Manager::Resource_Manager()`
@@ -206,13 +221,17 @@ impl Manager {
         theUserDefaultsDirectory: &crate::t_collection::AsciiString,
         theIsVerbose: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_ctor_asciistring3_bool(
-                theName,
-                theDefaultsDirectory,
-                theUserDefaultsDirectory,
-                theIsVerbose,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_ctor_asciistring3_bool(
+                    theName,
+                    theDefaultsDirectory,
+                    theUserDefaultsDirectory,
+                    theIsVerbose,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -249,22 +268,35 @@ impl Manager {
 
     /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Resource_Manager_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_Manager_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:70 - `Resource_Manager::Save()`
     /// Save the user resource structure in the specified file.
     /// Creates the file if it does not exist.
     pub fn save(&self) -> bool {
-        unsafe { crate::ffi::Resource_Manager_save(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Resource_Manager_save(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:73 - `Resource_Manager::Find()`
     /// returns True if the Resource does exist.
     pub fn find_charptr(&self, aResource: &str) -> bool {
         let c_aResource = std::ffi::CString::new(aResource).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_find_charptr(self as *const Self, c_aResource.as_ptr())
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_find_charptr(self as *const Self, c_aResource.as_ptr())
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -275,12 +307,16 @@ impl Manager {
         theResource: &crate::t_collection::AsciiString,
         theValue: &mut crate::t_collection::AsciiString,
     ) -> bool {
-        unsafe {
-            crate::ffi::Resource_Manager_find_asciistring2(
-                self as *const Self,
-                theResource,
-                theValue,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_find_asciistring2(
+                    self as *const Self,
+                    theResource,
+                    theValue,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -289,8 +325,12 @@ impl Manager {
     /// instance and its type.
     pub fn integer(&self, aResourceName: &str) -> i32 {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_integer(self as *const Self, c_aResourceName.as_ptr())
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_integer(self as *const Self, c_aResourceName.as_ptr())
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -299,7 +339,13 @@ impl Manager {
     /// and its type.
     pub fn real(&self, aResourceName: &str) -> f64 {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe { crate::ffi::Resource_Manager_real(self as *const Self, c_aResourceName.as_ptr()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_real(self as *const Self, c_aResourceName.as_ptr())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:89 - `Resource_Manager::Value()`
@@ -307,13 +353,12 @@ impl Manager {
     /// and its type.
     pub fn value(&self, aResourceName: &str) -> std::string::String {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Resource_Manager_value(
-                self as *const Self,
-                c_aResourceName.as_ptr(),
-            ))
-            .to_string_lossy()
-            .into_owned()
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_value(self as *const Self, c_aResourceName.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
@@ -322,8 +367,12 @@ impl Manager {
     /// and its type.
     pub unsafe fn ext_value(&mut self, aResourceName: &str) -> *const u16 {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_ext_value(self as *mut Self, c_aResourceName.as_ptr())
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_ext_value(self as *mut Self, c_aResourceName.as_ptr())
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -332,12 +381,15 @@ impl Manager {
     /// If the resource does not exist, it is created.
     pub fn set_resource_charptr_int(&mut self, aResourceName: &str, aValue: i32) {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_set_resource_charptr_int(
-                self as *mut Self,
-                c_aResourceName.as_ptr(),
-                aValue,
-            )
+        {
+            unsafe {
+                crate::ffi::Resource_Manager_set_resource_charptr_int(
+                    self as *mut Self,
+                    c_aResourceName.as_ptr(),
+                    aValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -346,12 +398,15 @@ impl Manager {
     /// If the resource does not exist, it is created.
     pub fn set_resource_charptr_real(&mut self, aResourceName: &str, aValue: f64) {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_set_resource_charptr_real(
-                self as *mut Self,
-                c_aResourceName.as_ptr(),
-                aValue,
-            )
+        {
+            unsafe {
+                crate::ffi::Resource_Manager_set_resource_charptr_real(
+                    self as *mut Self,
+                    c_aResourceName.as_ptr(),
+                    aValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -361,12 +416,15 @@ impl Manager {
     pub fn set_resource_charptr2(&mut self, aResourceName: &str, aValue: &str) {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_set_resource_charptr2(
-                self as *mut Self,
-                c_aResourceName.as_ptr(),
-                c_aValue.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::Resource_Manager_set_resource_charptr2(
+                    self as *mut Self,
+                    c_aResourceName.as_ptr(),
+                    c_aValue.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -379,12 +437,15 @@ impl Manager {
         aValue: *const u16,
     ) {
         let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_set_resource_charptr_char16ptr(
-                self as *mut Self,
-                c_aResourceName.as_ptr(),
-                aValue,
-            )
+        {
+            unsafe {
+                crate::ffi::Resource_Manager_set_resource_charptr_char16ptr(
+                    self as *mut Self,
+                    c_aResourceName.as_ptr(),
+                    aValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -394,27 +455,41 @@ impl Manager {
         &mut self,
         theRefMap: bool,
     ) -> &mut crate::ffi::Resource_DataMapOfAsciiStringAsciiString {
-        unsafe { &mut *(crate::ffi::Resource_Manager_get_map(self as *mut Self, theRefMap)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_Manager_get_map(self as *mut Self, theRefMap) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:127 - `Resource_Manager::IsInitialized()`
     /// Returns true if Resource have been found
     pub fn is_initialized(&self) -> bool {
-        unsafe { crate::ffi::Resource_Manager_is_initialized(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_Manager_is_initialized(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Resource_Manager_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Resource_Manager_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Resource_Manager_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Resource_Manager_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Resource_Manager.hxx`:118 - `Resource_Manager::GetResourcePath()`
@@ -427,68 +502,123 @@ impl Manager {
         isUserDefaults: bool,
     ) {
         let c_aName = std::ffi::CString::new(aName).unwrap();
-        unsafe {
-            crate::ffi::Resource_Manager_get_resource_path(aPath, c_aName.as_ptr(), isUserDefaults)
+        {
+            unsafe {
+                crate::ffi::Resource_Manager_get_resource_path(
+                    aPath,
+                    c_aName.as_ptr(),
+                    isUserDefaults,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Resource_Manager_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_Manager_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Resource_Manager_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Resource_Manager_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Resource_Manager_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Resource_Manager_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Resource_Manager_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Resource_Manager_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Resource_Manager_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_Manager_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Resource_Manager_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Resource_Manager_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Resource_Manager_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Manager_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Resource_Manager_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Resource_Manager_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -503,20 +633,30 @@ unsafe impl crate::CppDeletable for HandleResourceManager {
 impl HandleResourceManager {
     /// Dereference this Handle to access the underlying Resource_Manager
     pub fn get(&self) -> &crate::ffi::Resource_Manager {
-        unsafe { &*(crate::ffi::HandleResourceManager_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleResourceManager_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Resource_Manager
     pub fn get_mut(&mut self) -> &mut crate::ffi::Resource_Manager {
-        unsafe { &mut *(crate::ffi::HandleResourceManager_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleResourceManager_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Resource_Manager> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleResourceManager_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleResourceManager_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -537,16 +677,21 @@ unsafe impl crate::CppDeletable for NoSuchResource {
 impl NoSuchResource {
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Resource_NoSuchResource()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Resource_NoSuchResource_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Resource_NoSuchResource()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_ctor_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_NoSuchResource_ctor_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -554,28 +699,43 @@ impl NoSuchResource {
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_ctor_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Resource_NoSuchResource_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Resource_NoSuchResource_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise()`
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::Resource_NoSuchResource_raise_charptr(c_theMessage.as_ptr()) }
+        {
+            unsafe { crate::ffi::Resource_NoSuchResource_raise_charptr(c_theMessage.as_ptr()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        unsafe { crate::ffi::Resource_NoSuchResource_raise_sstream(theMessage) }
+        {
+            unsafe { crate::ffi::Resource_NoSuchResource_raise_sstream(theMessage) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::NewInstance()`
@@ -583,10 +743,12 @@ impl NoSuchResource {
         theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_new_instance_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_new_instance_charptr(c_theMessage.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -597,83 +759,121 @@ impl NoSuchResource {
     ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_new_instance_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_new_instance_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Resource_NoSuchResource_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Resource_NoSuchResource_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Resource_NoSuchResource_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Resource_NoSuchResource_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_NoSuchObject
     pub fn as_standard_no_such_object(&self) -> &crate::standard::NoSuchObject {
-        unsafe {
-            &*(crate::ffi::Resource_NoSuchResource_as_Standard_NoSuchObject(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_NoSuchObject(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_NoSuchObject (mutable)
     pub fn as_standard_no_such_object_mut(&mut self) -> &mut crate::standard::NoSuchObject {
-        unsafe {
-            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_NoSuchObject_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_NoSuchObject_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        unsafe {
-            &*(crate::ffi::Resource_NoSuchResource_as_Standard_DomainError(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_DomainError(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        unsafe {
-            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_DomainError_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        unsafe { &*(crate::ffi::Resource_NoSuchResource_as_Standard_Failure(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_Failure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        unsafe {
-            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_Failure_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_Failure_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Resource_NoSuchResource_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Resource_NoSuchResource_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -681,77 +881,116 @@ impl NoSuchResource {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleResourceNoSuchResource> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::Resource_NoSuchResource_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::Resource_NoSuchResource_inherited_Print(self as *const Self, theStream)
+        {
+            unsafe {
+                crate::ffi::Resource_NoSuchResource_inherited_Print(self as *const Self, theStream)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
-        unsafe { crate::ffi::Resource_NoSuchResource_inherited_Reraise(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Resource_NoSuchResource_inherited_Reraise(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
-        unsafe { crate::ffi::Resource_NoSuchResource_inherited_Jump(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Resource_NoSuchResource_inherited_Jump(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Resource_NoSuchResource_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Resource_NoSuchResource_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Resource_NoSuchResource_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Resource_NoSuchResource_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Resource_NoSuchResource_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Resource_NoSuchResource_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Resource_NoSuchResource_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_NoSuchResource_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Resource_NoSuchResource_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Resource_NoSuchResource_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -766,57 +1005,75 @@ unsafe impl crate::CppDeletable for HandleResourceNoSuchResource {
 impl HandleResourceNoSuchResource {
     /// Dereference this Handle to access the underlying Resource_NoSuchResource
     pub fn get(&self) -> &crate::ffi::Resource_NoSuchResource {
-        unsafe { &*(crate::ffi::HandleResourceNoSuchResource_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleResourceNoSuchResource_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Resource_NoSuchResource
     pub fn get_mut(&mut self) -> &mut crate::ffi::Resource_NoSuchResource {
-        unsafe { &mut *(crate::ffi::HandleResourceNoSuchResource_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleResourceNoSuchResource_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_NoSuchObject>
     pub fn to_handle_no_such_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardNoSuchObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleResourceNoSuchResource_to_HandleStandardNoSuchObject(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleResourceNoSuchResource_to_HandleStandardDomainError(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleResourceNoSuchResource_to_HandleStandardFailure(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<Resource_NoSuchResource> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleResourceNoSuchResource_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -841,7 +1098,11 @@ impl Unicode {
     /// **Source:** `Resource_Unicode.hxx` - `Resource_Unicode::Resource_Unicode()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Unicode_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Resource_Unicode_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:41 - `Resource_Unicode::ConvertSJISToUnicode()`
@@ -849,7 +1110,12 @@ impl Unicode {
     /// to Unicode ExtendedString <tostr>.
     pub fn convert_sjis_to_unicode(fromstr: &str, tostr: &mut crate::t_collection::ExtendedString) {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
-        unsafe { crate::ffi::Resource_Unicode_convert_sjis_to_unicode(c_fromstr.as_ptr(), tostr) }
+        {
+            unsafe {
+                crate::ffi::Resource_Unicode_convert_sjis_to_unicode(c_fromstr.as_ptr(), tostr)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:46 - `Resource_Unicode::ConvertEUCToUnicode()`
@@ -857,7 +1123,12 @@ impl Unicode {
     /// to Unicode ExtendedString <tostr>.
     pub fn convert_euc_to_unicode(fromstr: &str, tostr: &mut crate::t_collection::ExtendedString) {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
-        unsafe { crate::ffi::Resource_Unicode_convert_euc_to_unicode(c_fromstr.as_ptr(), tostr) }
+        {
+            unsafe {
+                crate::ffi::Resource_Unicode_convert_euc_to_unicode(c_fromstr.as_ptr(), tostr)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:51 - `Resource_Unicode::ConvertGBToUnicode()`
@@ -865,7 +1136,12 @@ impl Unicode {
     /// to Unicode ExtendedString <tostr>.
     pub fn convert_gb_to_unicode(fromstr: &str, tostr: &mut crate::t_collection::ExtendedString) {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
-        unsafe { crate::ffi::Resource_Unicode_convert_gb_to_unicode(c_fromstr.as_ptr(), tostr) }
+        {
+            unsafe {
+                crate::ffi::Resource_Unicode_convert_gb_to_unicode(c_fromstr.as_ptr(), tostr)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:56 - `Resource_Unicode::ConvertGBKToUnicode()`
@@ -876,7 +1152,13 @@ impl Unicode {
         tostr: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
-        unsafe { crate::ffi::Resource_Unicode_convert_gbk_to_unicode(c_fromstr.as_ptr(), tostr) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_gbk_to_unicode(c_fromstr.as_ptr(), tostr)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:61 - `Resource_Unicode::ConvertBig5ToUnicode()`
@@ -887,7 +1169,13 @@ impl Unicode {
         tostr: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
-        unsafe { crate::ffi::Resource_Unicode_convert_big5_to_unicode(c_fromstr.as_ptr(), tostr) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_big5_to_unicode(c_fromstr.as_ptr(), tostr)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:69 - `Resource_Unicode::ConvertUnicodeToSJIS()`
@@ -901,7 +1189,13 @@ impl Unicode {
         tostr: &mut *mut std::ffi::c_char,
         maxsize: i32,
     ) -> bool {
-        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_sjis(fromstr, tostr, maxsize) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_unicode_to_sjis(fromstr, tostr, maxsize)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:79 - `Resource_Unicode::ConvertUnicodeToEUC()`
@@ -915,7 +1209,13 @@ impl Unicode {
         tostr: &mut *mut std::ffi::c_char,
         maxsize: i32,
     ) -> bool {
-        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_euc(fromstr, tostr, maxsize) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_unicode_to_euc(fromstr, tostr, maxsize)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:89 - `Resource_Unicode::ConvertUnicodeToGB()`
@@ -929,7 +1229,13 @@ impl Unicode {
         tostr: &mut *mut std::ffi::c_char,
         maxsize: i32,
     ) -> bool {
-        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_gb(fromstr, tostr, maxsize) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_unicode_to_gb(fromstr, tostr, maxsize)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:99 - `Resource_Unicode::ConvertUnicodeToANSI()`
@@ -943,7 +1249,13 @@ impl Unicode {
         tostr: &mut *mut std::ffi::c_char,
         maxsize: i32,
     ) -> bool {
-        unsafe { crate::ffi::Resource_Unicode_convert_unicode_to_ansi(fromstr, tostr, maxsize) }
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_unicode_to_ansi(fromstr, tostr, maxsize)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:108 - `Resource_Unicode::SetFormat()`
@@ -952,7 +1264,10 @@ impl Unicode {
     /// functions ConvertFormatToUnicode and
     /// ConvertUnicodeToFormat to convert the strings.
     pub fn set_format(typecode: crate::resource::FormatType) {
-        unsafe { crate::ffi::Resource_Unicode_set_format(typecode.into()) }
+        {
+            unsafe { crate::ffi::Resource_Unicode_set_format(typecode.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:114 - `Resource_Unicode::GetFormat()`
@@ -961,9 +1276,10 @@ impl Unicode {
     /// The current converting format must be defined in
     /// advance with the SetFormat function.
     pub fn get_format() -> crate::resource::FormatType {
-        unsafe {
-            crate::resource::FormatType::try_from(crate::ffi::Resource_Unicode_get_format())
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::Resource_Unicode_get_format() };
+            crate::check_exception();
+            crate::resource::FormatType::try_from(__result).unwrap()
         }
     }
 
@@ -971,7 +1287,10 @@ impl Unicode {
     /// Reads converting format from resource "FormatType"
     /// in Resource Manager "CharSet"
     pub fn read_format() {
-        unsafe { crate::ffi::Resource_Unicode_read_format() }
+        {
+            unsafe { crate::ffi::Resource_Unicode_read_format() };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Resource_Unicode.hxx`:122 - `Resource_Unicode::ConvertFormatToUnicode()`
@@ -982,11 +1301,14 @@ impl Unicode {
         theToStr: &mut crate::t_collection::ExtendedString,
     ) {
         let c_theFromStr = std::ffi::CString::new(theFromStr).unwrap();
-        unsafe {
-            crate::ffi::Resource_Unicode_convert_format_to_unicode_charptr_extendedstring(
-                c_theFromStr.as_ptr(),
-                theToStr,
-            )
+        {
+            unsafe {
+                crate::ffi::Resource_Unicode_convert_format_to_unicode_charptr_extendedstring(
+                    c_theFromStr.as_ptr(),
+                    theToStr,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1002,12 +1324,11 @@ impl Unicode {
         theToStr: &mut crate::t_collection::ExtendedString,
     ) {
         let c_theFromStr = std::ffi::CString::new(theFromStr).unwrap();
-        unsafe {
-            crate::ffi::Resource_Unicode_convert_format_to_unicode_formattype_charptr_extendedstring(
-                theFormat.into(),
-                c_theFromStr.as_ptr(),
-                theToStr,
-            )
+        {
+            unsafe {
+                crate::ffi::Resource_Unicode_convert_format_to_unicode_formattype_charptr_extendedstring(theFormat.into(), c_theFromStr.as_ptr(), theToStr)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1026,8 +1347,12 @@ impl Unicode {
         theToStr: &mut *mut std::ffi::c_char,
         theMaxSize: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::Resource_Unicode_convert_unicode_to_format_formattype_extendedstring_charptr_int(theFormat.into(), theFromStr, theToStr, theMaxSize)
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_unicode_to_format_formattype_extendedstring_charptr_int(theFormat.into(), theFromStr, theToStr, theMaxSize)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1042,10 +1367,14 @@ impl Unicode {
         theToStr: &mut *mut std::ffi::c_char,
         theMaxSize: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::Resource_Unicode_convert_unicode_to_format_extendedstring_charptr_int(
-                theFromStr, theToStr, theMaxSize,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Resource_Unicode_convert_unicode_to_format_extendedstring_charptr_int(
+                    theFromStr, theToStr, theMaxSize,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }

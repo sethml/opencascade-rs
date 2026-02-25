@@ -43,10 +43,14 @@ impl Intersector {
         aRestr: bool,
         UseBToler: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurvesFace_Intersector_ctor_face_real_bool2(
-                F, aTol, aRestr, UseBToler,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_ctor_face_real_bool2(
+                    F, aTol, aRestr, UseBToler,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -92,7 +96,12 @@ impl Intersector {
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntCurvesFace_Intersector_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:75 - `IntCurvesFace_Intersector::Perform()`
@@ -105,13 +114,16 @@ impl Intersector {
     /// For an infinite line PInf and PSup can be
     /// +/- RealLast.
     pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_perform_lin_real2(
-                self as *mut Self,
-                L,
-                PInf,
-                PSup,
-            )
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_Intersector_perform_lin_real2(
+                    self as *mut Self,
+                    L,
+                    PInf,
+                    PSup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -124,74 +136,110 @@ impl Intersector {
         PInf: f64,
         PSup: f64,
     ) {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_perform_handleadaptor3dcurve_real2(
-                self as *mut Self,
-                HCu,
-                PInf,
-                PSup,
-            )
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_Intersector_perform_handleadaptor3dcurve_real2(
+                    self as *mut Self,
+                    HCu,
+                    PInf,
+                    PSup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:84 - `IntCurvesFace_Intersector::SurfaceType()`
     /// Return the surface type
     pub fn surface_type(&self) -> crate::geom_abs::SurfaceType {
-        unsafe {
-            crate::geom_abs::SurfaceType::try_from(
-                crate::ffi::IntCurvesFace_Intersector_surface_type(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_surface_type(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:87 - `IntCurvesFace_Intersector::IsDone()`
     /// True is returned when the intersection have been computed.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:89 - `IntCurvesFace_Intersector::NbPnt()`
     pub fn nb_pnt(&self) -> i32 {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_nb_pnt(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_nb_pnt(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:93 - `IntCurvesFace_Intersector::UParameter()`
     /// Returns the U parameter of the ith intersection point
     /// on the surface.
     pub fn u_parameter(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_u_parameter(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_u_parameter(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:97 - `IntCurvesFace_Intersector::VParameter()`
     /// Returns the V parameter of the ith intersection point
     /// on the surface.
     pub fn v_parameter(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_v_parameter(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_v_parameter(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:101 - `IntCurvesFace_Intersector::WParameter()`
     /// Returns the parameter of the ith intersection point
     /// on the line.
     pub fn w_parameter(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_w_parameter(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_w_parameter(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:105 - `IntCurvesFace_Intersector::Pnt()`
     /// Returns the geometric point of the ith intersection
     /// between the line and the surface.
     pub fn pnt(&self, I: i32) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::IntCurvesFace_Intersector_pnt(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_pnt(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:108 - `IntCurvesFace_Intersector::Transition()`
     /// Returns the ith transition of the line on the surface.
     pub fn transition(&self, I: i32) -> crate::int_curve_surface::TransitionOnCurve {
-        unsafe {
-            crate::int_curve_surface::TransitionOnCurve::try_from(
-                crate::ffi::IntCurvesFace_Intersector_transition(self as *const Self, I),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_transition(self as *const Self, I) };
+            crate::check_exception();
+            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
         }
     }
 
@@ -202,12 +250,11 @@ impl Intersector {
     /// or TopAbs_ON
     /// ( the point is on a boundary of the face).
     pub fn state(&self, I: i32) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntCurvesFace_Intersector_state(
-                self as *const Self,
-                I,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_state(self as *const Self, I) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -216,76 +263,110 @@ impl Intersector {
     /// This case is recognized only for some pairs
     /// of analytical curves and surfaces (plane - line, ...)
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_is_parallel(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:124 - `IntCurvesFace_Intersector::Face()`
     /// Returns the significant face used to determine
     /// the intersection.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IntCurvesFace_Intersector_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:126 - `IntCurvesFace_Intersector::ClassifyUVPoint()`
     pub fn classify_uv_point(&self, Puv: &crate::gp::Pnt2d) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
-                crate::ffi::IntCurvesFace_Intersector_classify_uv_point(self as *const Self, Puv),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_classify_uv_point(self as *const Self, Puv)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:128 - `IntCurvesFace_Intersector::Bounding()`
     pub fn bounding(&self) -> crate::OwnedPtr<crate::bnd::Box> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurvesFace_Intersector_bounding(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_bounding(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:131 - `IntCurvesFace_Intersector::SetUseBoundToler()`
     /// Sets the boundary tolerance flag
     pub fn set_use_bound_toler(&mut self, UseBToler: bool) {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_set_use_bound_toler(self as *mut Self, UseBToler)
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_Intersector_set_use_bound_toler(
+                    self as *mut Self,
+                    UseBToler,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:134 - `IntCurvesFace_Intersector::GetUseBoundToler()`
     /// Returns the boundary tolerance flag
     pub fn get_use_bound_toler(&self) -> bool {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_get_use_bound_toler(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_get_use_bound_toler(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IntCurvesFace_Intersector_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IntCurvesFace_Intersector_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntCurvesFace_Intersector_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IntCurvesFace_Intersector_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -293,63 +374,96 @@ impl Intersector {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIntCurvesFaceIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurvesFace_Intersector_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_Intersector_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_Intersector_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IntCurvesFace_Intersector_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IntCurvesFace_Intersector_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -364,22 +478,34 @@ unsafe impl crate::CppDeletable for HandleIntCurvesFaceIntersector {
 impl HandleIntCurvesFaceIntersector {
     /// Dereference this Handle to access the underlying IntCurvesFace_Intersector
     pub fn get(&self) -> &crate::ffi::IntCurvesFace_Intersector {
-        unsafe { &*(crate::ffi::HandleIntCurvesFaceIntersector_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIntCurvesFaceIntersector_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IntCurvesFace_Intersector
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntCurvesFace_Intersector {
-        unsafe { &mut *(crate::ffi::HandleIntCurvesFaceIntersector_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleIntCurvesFaceIntersector_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IntCurvesFace_Intersector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleIntCurvesFaceIntersector_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -400,12 +526,19 @@ unsafe impl crate::CppDeletable for ShapeIntersector {
 impl ShapeIntersector {
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:45 - `IntCurvesFace_ShapeIntersector::IntCurvesFace_ShapeIntersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurvesFace_ShapeIntersector_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:47 - `IntCurvesFace_ShapeIntersector::Load()`
     pub fn load(&mut self, Sh: &crate::topo_ds::Shape, Tol: f64) {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_load(self as *mut Self, Sh, Tol) }
+        {
+            unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_load(self as *mut Self, Sh, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:57 - `IntCurvesFace_ShapeIntersector::Perform()`
@@ -418,13 +551,16 @@ impl ShapeIntersector {
     /// For an infinite line PInf and PSup can be
     /// +/- RealLast.
     pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
-        unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_perform_lin_real2(
-                self as *mut Self,
-                L,
-                PInf,
-                PSup,
-            )
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_perform_lin_real2(
+                    self as *mut Self,
+                    L,
+                    PInf,
+                    PSup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -438,13 +574,16 @@ impl ShapeIntersector {
     /// For an infinite line PInf and PSup can be
     /// +/- RealLast.
     pub fn perform_nearest(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
-        unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_perform_nearest(
-                self as *mut Self,
-                L,
-                PInf,
-                PSup,
-            )
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_perform_nearest(
+                    self as *mut Self,
+                    L,
+                    PInf,
+                    PSup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -457,64 +596,101 @@ impl ShapeIntersector {
         PInf: f64,
         PSup: f64,
     ) {
-        unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_perform_handleadaptor3dcurve_real2(
-                self as *mut Self,
-                HCu,
-                PInf,
-                PSup,
-            )
+        {
+            unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_perform_handleadaptor3dcurve_real2(
+                    self as *mut Self,
+                    HCu,
+                    PInf,
+                    PSup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:78 - `IntCurvesFace_ShapeIntersector::IsDone()`
     /// True when the intersection has been computed.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:81 - `IntCurvesFace_ShapeIntersector::NbPnt()`
     /// Returns the number of the intersection points
     pub fn nb_pnt(&self) -> i32 {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_nb_pnt(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_nb_pnt(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:85 - `IntCurvesFace_ShapeIntersector::UParameter()`
     /// Returns the U parameter of the ith intersection point
     /// on the surface.
     pub fn u_parameter(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_u_parameter(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_u_parameter(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:93 - `IntCurvesFace_ShapeIntersector::VParameter()`
     /// Returns the V parameter of the ith intersection point
     /// on the surface.
     pub fn v_parameter(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_v_parameter(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_v_parameter(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:101 - `IntCurvesFace_ShapeIntersector::WParameter()`
     /// Returns the parameter of the ith intersection point
     /// on the line.
     pub fn w_parameter(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_w_parameter(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_w_parameter(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:109 - `IntCurvesFace_ShapeIntersector::Pnt()`
     /// Returns the geometric point of the ith intersection
     /// between the line and the surface.
     pub fn pnt(&self, I: i32) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::IntCurvesFace_ShapeIntersector_pnt(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_pnt(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:116 - `IntCurvesFace_ShapeIntersector::Transition()`
     /// Returns the ith transition of the line on the surface.
     pub fn transition(&self, I: i32) -> crate::int_curve_surface::TransitionOnCurve {
-        unsafe {
-            crate::int_curve_surface::TransitionOnCurve::try_from(
-                crate::ffi::IntCurvesFace_ShapeIntersector_transition(self as *const Self, I),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_transition(self as *const Self, I)
+            };
+            crate::check_exception();
+            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
         }
     }
 
@@ -525,12 +701,11 @@ impl ShapeIntersector {
     /// or TopAbs_ON
     /// ( the point is on a boundary of the face).
     pub fn state(&self, I: i32) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::IntCurvesFace_ShapeIntersector_state(
-                self as *const Self,
-                I,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_state(self as *const Self, I) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -538,13 +713,21 @@ impl ShapeIntersector {
     /// Returns the significant face used to determine
     /// the intersection.
     pub fn face(&self, I: i32) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::IntCurvesFace_ShapeIntersector_face(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_face(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:143 - `IntCurvesFace_ShapeIntersector::SortResult()`
     /// Internal method. Sort the result on the Curve
     /// parameter.
     pub fn sort_result(&mut self) {
-        unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_sort_result(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_sort_result(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }

@@ -16,21 +16,22 @@ pub fn apply_modifier(
     theProgress: &crate::message::ProgressRange,
     aReShape: &crate::ffi::HandleShapeBuildReShape,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_apply_modifier(
-            S,
-            M,
-            context,
-            MD,
-            theProgress,
-            aReShape,
-        ))
+    {
+        let __result = unsafe {
+            crate::ffi::ShapeCustom_apply_modifier(S, M, context, MD, theProgress, aReShape)
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ShapeCustom.hxx`:64 - `ShapeCustom::DirectFaces`
 /// Returns a new shape without indirect surfaces.
 pub fn direct_faces(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_direct_faces(S)) }
+    {
+        let __result = unsafe { crate::ffi::ShapeCustom_direct_faces(S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ShapeCustom.hxx`:67 - `ShapeCustom::ScaleShape`
 /// Returns a new shape which is scaled original
@@ -38,7 +39,11 @@ pub fn scale_shape(
     S: &crate::topo_ds::Shape,
     scale: f64,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_scale_shape(S, scale)) }
+    {
+        let __result = unsafe { crate::ffi::ShapeCustom_scale_shape(S, scale) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ShapeCustom.hxx`:85 - `ShapeCustom::BSplineRestriction`
 /// Returns a new shape with all surfaces, curves and pcurves
@@ -69,32 +74,44 @@ pub fn b_spline_restriction(
     Rational: bool,
     aParameters: &crate::ffi::HandleShapeCustomRestrictionParameters,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_b_spline_restriction(
-            S,
-            Tol3d,
-            Tol2d,
-            MaxDegree,
-            MaxNbSegment,
-            Continuity3d.into(),
-            Continuity2d.into(),
-            Degree,
-            Rational,
-            aParameters,
-        ))
+    {
+        let __result = unsafe {
+            crate::ffi::ShapeCustom_b_spline_restriction(
+                S,
+                Tol3d,
+                Tol2d,
+                MaxDegree,
+                MaxNbSegment,
+                Continuity3d.into(),
+                Continuity2d.into(),
+                Degree,
+                Rational,
+                aParameters,
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ShapeCustom.hxx`:99 - `ShapeCustom::ConvertToRevolution`
 /// Returns a new shape with all elementary periodic surfaces converted
 /// to Geom_SurfaceOfRevolution
 pub fn convert_to_revolution(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_convert_to_revolution(S)) }
+    {
+        let __result = unsafe { crate::ffi::ShapeCustom_convert_to_revolution(S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ShapeCustom.hxx`:103 - `ShapeCustom::SweptToElementary`
 /// Returns a new shape with all surfaces of revolution and linear extrusion
 /// convert to elementary periodic surfaces
 pub fn swept_to_elementary(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_swept_to_elementary(S)) }
+    {
+        let __result = unsafe { crate::ffi::ShapeCustom_swept_to_elementary(S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ShapeCustom.hxx`:108 - `ShapeCustom::ConvertToBSpline`
 /// Returns a new shape with all surfaces of linear extrusion, revolution,
@@ -107,10 +124,14 @@ pub fn convert_to_b_spline(
     offsetMode: bool,
     planeMode: bool,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_convert_to_b_spline(
-            S, extrMode, revolMode, offsetMode, planeMode,
-        ))
+    {
+        let __result = unsafe {
+            crate::ffi::ShapeCustom_convert_to_b_spline(
+                S, extrMode, revolMode, offsetMode, planeMode,
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 
@@ -139,7 +160,11 @@ impl BSplineRestriction {
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:47 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_BSplineRestriction_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_BSplineRestriction_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:50 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
@@ -157,8 +182,8 @@ impl BSplineRestriction {
         Degree: bool,
         Rational: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_BSplineRestriction_ctor_bool3_real2_shape2_int2_bool2(
                     anApproxSurfaceFlag,
                     anApproxCurve3dFlag,
@@ -171,8 +196,10 @@ impl BSplineRestriction {
                     aNbMaxSeg,
                     Degree,
                     Rational,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -192,8 +219,12 @@ impl BSplineRestriction {
         Rational: bool,
         aModes: &crate::ffi::HandleShapeCustomRestrictionParameters,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_BSplineRestriction_ctor_bool3_real2_shape2_int2_bool2_handleshapecustomrestrictionparameters(anApproxSurfaceFlag, anApproxCurve3dFlag, anApproxCurve2dFlag, aTol3d, aTol2d, aContinuity3d.into(), aContinuity2d.into(), aMaxDegree, aNbMaxSeg, Degree, Rational, aModes))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_ctor_bool3_real2_shape2_int2_bool2_handleshapecustomrestrictionparameters(anApproxSurfaceFlag, anApproxCurve3dFlag, anApproxCurve2dFlag, aTol3d, aTol2d, aContinuity3d.into(), aContinuity2d.into(), aMaxDegree, aNbMaxSeg, Degree, Rational, aModes)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -219,16 +250,20 @@ impl BSplineRestriction {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_new_surface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_new_surface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -249,8 +284,18 @@ impl BSplineRestriction {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_new_curve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_new_curve(
+                    self as *mut Self,
+                    E,
+                    C,
+                    L,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -275,16 +320,20 @@ impl BSplineRestriction {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_new_curve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_new_curve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -302,17 +351,21 @@ impl BSplineRestriction {
         VL: f64,
         IsOf: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_convert_surface(
-                self as *mut Self,
-                aSurface,
-                S,
-                UF,
-                UL,
-                VF,
-                VL,
-                IsOf,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_convert_surface(
+                    self as *mut Self,
+                    aSurface,
+                    S,
+                    UF,
+                    UL,
+                    VF,
+                    VL,
+                    IsOf,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -330,17 +383,21 @@ impl BSplineRestriction {
         TolCur: &mut f64,
         IsOf: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_convert_curve(
-                self as *mut Self,
-                aCurve,
-                C,
-                IsConvert,
-                First,
-                Last,
-                TolCur,
-                IsOf,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_convert_curve(
+                    self as *mut Self,
+                    aCurve,
+                    C,
+                    IsConvert,
+                    First,
+                    Last,
+                    TolCur,
+                    IsOf,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -358,40 +415,58 @@ impl BSplineRestriction {
         TolCur: &mut f64,
         IsOf: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_convert_curve2d(
-                self as *mut Self,
-                aCurve,
-                C,
-                IsConvert,
-                First,
-                Last,
-                TolCur,
-                IsOf,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_convert_curve2d(
+                    self as *mut Self,
+                    aCurve,
+                    C,
+                    IsConvert,
+                    First,
+                    Last,
+                    TolCur,
+                    IsOf,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:162 - `ShapeCustom_BSplineRestriction::SetTol3d()`
     /// Sets tolerance of approximation for curve3d and surface
     pub fn set_tol3d(&mut self, Tol3d: f64) {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_set_tol3d(self as *mut Self, Tol3d) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_tol3d(self as *mut Self, Tol3d)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:165 - `ShapeCustom_BSplineRestriction::SetTol2d()`
     /// Sets tolerance of approximation for curve2d
     pub fn set_tol2d(&mut self, Tol2d: f64) {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_set_tol2d(self as *mut Self, Tol2d) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_tol2d(self as *mut Self, Tol2d)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:169 - `ShapeCustom_BSplineRestriction::ModifyApproxSurfaceFlag()`
     /// Returns (modifiable) the flag which defines whether the
     /// surface is approximated.
     pub fn modify_approx_surface_flag(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_modify_approx_surface_flag(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_modify_approx_surface_flag(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -399,61 +474,84 @@ impl BSplineRestriction {
     /// Returns (modifiable) the flag which defines whether the
     /// curve3d is approximated.
     pub fn modify_approx_curve3d_flag(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_modify_approx_curve3d_flag(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_modify_approx_curve3d_flag(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:176 - `ShapeCustom_BSplineRestriction::ModifyApproxCurve2dFlag()`
     /// Returns (modifiable) the flag which defines whether the curve2d is approximated.
     pub fn modify_approx_curve2d_flag(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_modify_approx_curve2d_flag(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_modify_approx_curve2d_flag(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:179 - `ShapeCustom_BSplineRestriction::SetContinuity3d()`
     /// Sets continuity3d for approximation curve3d and surface.
     pub fn set_continuity3d(&mut self, Continuity3d: crate::geom_abs::Shape) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_continuity3d(
-                self as *mut Self,
-                Continuity3d.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_continuity3d(
+                    self as *mut Self,
+                    Continuity3d.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:182 - `ShapeCustom_BSplineRestriction::SetContinuity2d()`
     /// Sets continuity3d for approximation curve2d.
     pub fn set_continuity2d(&mut self, Continuity2d: crate::geom_abs::Shape) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_continuity2d(
-                self as *mut Self,
-                Continuity2d.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_continuity2d(
+                    self as *mut Self,
+                    Continuity2d.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:185 - `ShapeCustom_BSplineRestriction::SetMaxDegree()`
     /// Sets max degree for approximation.
     pub fn set_max_degree(&mut self, MaxDegree: i32) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_max_degree(self as *mut Self, MaxDegree)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_max_degree(
+                    self as *mut Self,
+                    MaxDegree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:188 - `ShapeCustom_BSplineRestriction::SetMaxNbSegments()`
     /// Sets max number of segments for approximation.
     pub fn set_max_nb_segments(&mut self, MaxNbSegments: i32) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_max_nb_segments(
-                self as *mut Self,
-                MaxNbSegments,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_max_nb_segments(
+                    self as *mut Self,
+                    MaxNbSegments,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -465,8 +563,11 @@ impl BSplineRestriction {
     /// spans less then specified MaxNbSegment at the expense of
     /// specified MaxDegree.
     pub fn set_priority(&mut self, Degree: bool) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_priority(self as *mut Self, Degree)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_priority(self as *mut Self, Degree)
+            };
+            crate::check_exception();
         }
     }
 
@@ -477,11 +578,14 @@ impl BSplineRestriction {
     /// if degree is less then MaxDegree and number of spans is less
     /// then specified MaxNbSegment.
     pub fn set_conv_rational(&mut self, Rational: bool) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_conv_rational(
-                self as *mut Self,
-                Rational,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_conv_rational(
+                    self as *mut Self,
+                    Rational,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -491,12 +595,14 @@ impl BSplineRestriction {
     pub fn get_restriction_parameters(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomRestrictionParameters> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_BSplineRestriction_get_restriction_parameters(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -507,30 +613,51 @@ impl BSplineRestriction {
         &mut self,
         aModes: &crate::ffi::HandleShapeCustomRestrictionParameters,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_set_restriction_parameters(
-                self as *mut Self,
-                aModes,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_set_restriction_parameters(
+                    self as *mut Self,
+                    aModes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:214 - `ShapeCustom_BSplineRestriction::Curve3dError()`
     /// Returns error for approximation curve3d.
     pub fn curve3d_error(&self) -> f64 {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_curve3d_error(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_curve3d_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:217 - `ShapeCustom_BSplineRestriction::Curve2dError()`
     /// Returns error for approximation curve2d.
     pub fn curve2d_error(&self) -> f64 {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_curve2d_error(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_curve2d_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:220 - `ShapeCustom_BSplineRestriction::SurfaceError()`
     /// Returns error for approximation surface.
     pub fn surface_error(&self) -> f64 {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_surface_error(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_surface_error(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:222 - `ShapeCustom_BSplineRestriction::NewPoint()`
@@ -540,8 +667,12 @@ impl BSplineRestriction {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_new_point(self as *mut Self, V, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_new_point(self as *mut Self, V, P, Tol)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -553,14 +684,18 @@ impl BSplineRestriction {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_new_parameter(
-                self as *mut Self,
-                V,
-                E,
-                P,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_new_parameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -574,108 +709,156 @@ impl BSplineRestriction {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_BSplineRestriction_continuity(
-                self as *mut Self,
-                E,
-                F1,
-                F2,
-                NewE,
-                NewF1,
-                NewF2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_continuity(
+                    self as *mut Self,
+                    E,
+                    F1,
+                    F2,
+                    NewE,
+                    NewF1,
+                    NewF2,
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:239 - `ShapeCustom_BSplineRestriction::MaxErrors()`
     /// Returns error for approximation surface, curve3d and curve2d.
     pub fn max_errors(&self, aCurve3dErr: &mut f64, aCurve2dErr: &mut f64) -> f64 {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_max_errors(
-                self as *const Self,
-                aCurve3dErr,
-                aCurve2dErr,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_max_errors(
+                    self as *const Self,
+                    aCurve3dErr,
+                    aCurve2dErr,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:243 - `ShapeCustom_BSplineRestriction::NbOfSpan()`
     /// Returns number for approximation surface, curve3d and curve2d.
     pub fn nb_of_span(&self) -> i32 {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_nb_of_span(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_nb_of_span(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_BSplineRestriction_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_BSplineRestriction_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_BSplineRestriction_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_BSplineRestriction_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_BSplineRestriction_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_BSplineRestriction_as_ShapeCustom_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_as_ShapeCustom_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to ShapeCustom_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_as_ShapeCustom_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_as_ShapeCustom_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_BSplineRestriction_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -683,10 +866,11 @@ impl BSplineRestriction {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomBSplineRestriction> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_BSplineRestriction_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_BSplineRestriction_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -695,11 +879,14 @@ impl BSplineRestriction {
         &mut self,
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_SetMsgRegistrator(
+                    self as *mut Self,
+                    msgreg,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -707,12 +894,14 @@ impl BSplineRestriction {
     pub fn msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_BSplineRestriction_inherited_MsgRegistrator(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -723,13 +912,16 @@ impl BSplineRestriction {
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_SendMsg(
+                    self as *const Self,
+                    shape,
+                    message,
+                    gravity.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -739,12 +931,16 @@ impl BSplineRestriction {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -754,8 +950,16 @@ impl BSplineRestriction {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygon(self as *mut Self, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygon(
+                    self as *mut Self,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -766,78 +970,109 @@ impl BSplineRestriction {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_BSplineRestriction_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_BSplineRestriction_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_BSplineRestriction_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -852,13 +1087,22 @@ unsafe impl crate::CppDeletable for HandleShapeCustomBSplineRestriction {
 impl HandleShapeCustomBSplineRestriction {
     /// Dereference this Handle to access the underlying ShapeCustom_BSplineRestriction
     pub fn get(&self) -> &crate::ffi::ShapeCustom_BSplineRestriction {
-        unsafe { &*(crate::ffi::HandleShapeCustomBSplineRestriction_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomBSplineRestriction_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_BSplineRestriction
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_BSplineRestriction {
-        unsafe {
-            &mut *(crate::ffi::HandleShapeCustomBSplineRestriction_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomBSplineRestriction_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -866,12 +1110,14 @@ impl HandleShapeCustomBSplineRestriction {
     pub fn to_handle_shape_custom_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomBSplineRestriction_to_HandleShapeCustomModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -879,23 +1125,27 @@ impl HandleShapeCustomBSplineRestriction {
     pub fn to_handle_b_rep_tools_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomBSplineRestriction_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_BSplineRestriction> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomBSplineRestriction_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -921,42 +1171,67 @@ unsafe impl crate::CppDeletable for ConvertToBSpline {
 impl ConvertToBSpline {
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:46 - `ShapeCustom_ConvertToBSpline::ShapeCustom_ConvertToBSpline()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_ConvertToBSpline_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:50 - `ShapeCustom_ConvertToBSpline::SetExtrusionMode()`
     /// Sets mode for conversion of Surfaces of Linear
     /// extrusion.
     pub fn set_extrusion_mode(&mut self, extrMode: bool) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_set_extrusion_mode(self as *mut Self, extrMode)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_set_extrusion_mode(
+                    self as *mut Self,
+                    extrMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:53 - `ShapeCustom_ConvertToBSpline::SetRevolutionMode()`
     /// Sets mode for conversion of Surfaces of Revolution.
     pub fn set_revolution_mode(&mut self, revolMode: bool) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_set_revolution_mode(
-                self as *mut Self,
-                revolMode,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_set_revolution_mode(
+                    self as *mut Self,
+                    revolMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:56 - `ShapeCustom_ConvertToBSpline::SetOffsetMode()`
     /// Sets mode for conversion of Offset surfaces.
     pub fn set_offset_mode(&mut self, offsetMode: bool) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_set_offset_mode(self as *mut Self, offsetMode)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_set_offset_mode(
+                    self as *mut Self,
+                    offsetMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:59 - `ShapeCustom_ConvertToBSpline::SetPlaneMode()`
     /// Sets mode for conversion of Plane surfaces.
     pub fn set_plane_mode(&mut self, planeMode: bool) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_set_plane_mode(self as *mut Self, planeMode)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_set_plane_mode(
+                    self as *mut Self,
+                    planeMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -976,16 +1251,20 @@ impl ConvertToBSpline {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_new_surface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_new_surface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1003,8 +1282,12 @@ impl ConvertToBSpline {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_new_curve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_new_curve(self as *mut Self, E, C, L, Tol)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1020,7 +1303,13 @@ impl ConvertToBSpline {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_new_point(self as *mut Self, V, P, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_new_point(self as *mut Self, V, P, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:104 - `ShapeCustom_ConvertToBSpline::NewCurve2d()`
@@ -1043,16 +1332,20 @@ impl ConvertToBSpline {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_new_curve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_new_curve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1069,8 +1362,18 @@ impl ConvertToBSpline {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_new_parameter(self as *mut Self, V, E, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_new_parameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1090,88 +1393,126 @@ impl ConvertToBSpline {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_ConvertToBSpline_continuity(
-                self as *mut Self,
-                E,
-                F1,
-                F2,
-                NewE,
-                NewF1,
-                NewF2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_continuity(
+                    self as *mut Self,
+                    E,
+                    F1,
+                    F2,
+                    NewE,
+                    NewF1,
+                    NewF2,
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_ConvertToBSpline_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_ConvertToBSpline_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_ConvertToBSpline_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToBSpline_as_ShapeCustom_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_as_ShapeCustom_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to ShapeCustom_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToBSpline_as_ShapeCustom_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_as_ShapeCustom_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToBSpline_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToBSpline_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1179,10 +1520,11 @@ impl ConvertToBSpline {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToBSpline> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_ConvertToBSpline_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1191,11 +1533,14 @@ impl ConvertToBSpline {
         &mut self,
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_SetMsgRegistrator(
+                    self as *mut Self,
+                    msgreg,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1203,12 +1548,14 @@ impl ConvertToBSpline {
     pub fn msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_ConvertToBSpline_inherited_MsgRegistrator(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1219,13 +1566,16 @@ impl ConvertToBSpline {
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_SendMsg(
+                    self as *const Self,
+                    shape,
+                    message,
+                    gravity.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1235,12 +1585,16 @@ impl ConvertToBSpline {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1250,8 +1604,16 @@ impl ConvertToBSpline {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygon(self as *mut Self, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygon(
+                    self as *mut Self,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1262,75 +1624,107 @@ impl ConvertToBSpline {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_ConvertToBSpline_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToBSpline_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1345,24 +1739,36 @@ unsafe impl crate::CppDeletable for HandleShapeCustomConvertToBSpline {
 impl HandleShapeCustomConvertToBSpline {
     /// Dereference this Handle to access the underlying ShapeCustom_ConvertToBSpline
     pub fn get(&self) -> &crate::ffi::ShapeCustom_ConvertToBSpline {
-        unsafe { &*(crate::ffi::HandleShapeCustomConvertToBSpline_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomConvertToBSpline_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_ConvertToBSpline
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_ConvertToBSpline {
-        unsafe { &mut *(crate::ffi::HandleShapeCustomConvertToBSpline_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomConvertToBSpline_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomConvertToBSpline_to_HandleShapeCustomModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1370,23 +1776,27 @@ impl HandleShapeCustomConvertToBSpline {
     pub fn to_handle_b_rep_tools_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomConvertToBSpline_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomConvertToBSpline_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1410,7 +1820,11 @@ unsafe impl crate::CppDeletable for ConvertToRevolution {
 impl ConvertToRevolution {
     /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:44 - `ShapeCustom_ConvertToRevolution::ShapeCustom_ConvertToRevolution()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_ConvertToRevolution_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_ConvertToRevolution_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:52 - `ShapeCustom_ConvertToRevolution::NewSurface()`
@@ -1429,16 +1843,20 @@ impl ConvertToRevolution {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_new_surface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_new_surface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1456,8 +1874,18 @@ impl ConvertToRevolution {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_new_curve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_new_curve(
+                    self as *mut Self,
+                    E,
+                    C,
+                    L,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1473,8 +1901,12 @@ impl ConvertToRevolution {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_new_point(self as *mut Self, V, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_new_point(self as *mut Self, V, P, Tol)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1498,16 +1930,20 @@ impl ConvertToRevolution {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_new_curve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_new_curve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1524,14 +1960,18 @@ impl ConvertToRevolution {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_new_parameter(
-                self as *mut Self,
-                V,
-                E,
-                P,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_new_parameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1551,8 +1991,8 @@ impl ConvertToRevolution {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_ConvertToRevolution_continuity(
                     self as *mut Self,
                     E,
@@ -1561,82 +2001,118 @@ impl ConvertToRevolution {
                     NewE,
                     NewF1,
                     NewF2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_ConvertToRevolution_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_ConvertToRevolution_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_ConvertToRevolution_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_ConvertToRevolution_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_ConvertToRevolution_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to ShapeCustom_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToRevolution_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_as_BRepTools_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToRevolution_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToRevolution_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToRevolution_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1644,10 +2120,11 @@ impl ConvertToRevolution {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToRevolution> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_ConvertToRevolution_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_ConvertToRevolution_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1656,11 +2133,14 @@ impl ConvertToRevolution {
         &mut self,
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SetMsgRegistrator(
+                    self as *mut Self,
+                    msgreg,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1668,12 +2148,14 @@ impl ConvertToRevolution {
     pub fn msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_ConvertToRevolution_inherited_MsgRegistrator(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1684,13 +2166,16 @@ impl ConvertToRevolution {
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SendMsg(
+                    self as *const Self,
+                    shape,
+                    message,
+                    gravity.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1700,12 +2185,16 @@ impl ConvertToRevolution {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1715,12 +2204,16 @@ impl ConvertToRevolution {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_NewPolygon(
-                self as *mut Self,
-                E,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_NewPolygon(
+                    self as *mut Self,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1731,78 +2224,109 @@ impl ConvertToRevolution {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_ConvertToRevolution_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_ConvertToRevolution_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1817,13 +2341,23 @@ unsafe impl crate::CppDeletable for HandleShapeCustomConvertToRevolution {
 impl HandleShapeCustomConvertToRevolution {
     /// Dereference this Handle to access the underlying ShapeCustom_ConvertToRevolution
     pub fn get(&self) -> &crate::ffi::ShapeCustom_ConvertToRevolution {
-        unsafe { &*(crate::ffi::HandleShapeCustomConvertToRevolution_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomConvertToRevolution_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_ConvertToRevolution
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_ConvertToRevolution {
-        unsafe {
-            &mut *(crate::ffi::HandleShapeCustomConvertToRevolution_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomConvertToRevolution_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1831,12 +2365,14 @@ impl HandleShapeCustomConvertToRevolution {
     pub fn to_handle_shape_custom_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomConvertToRevolution_to_HandleShapeCustomModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1844,23 +2380,27 @@ impl HandleShapeCustomConvertToRevolution {
     pub fn to_handle_b_rep_tools_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomConvertToRevolution_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToRevolution> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomConvertToRevolution_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1882,17 +2422,28 @@ unsafe impl crate::CppDeletable for Curve {
 impl Curve {
     /// **Source:** `ShapeCustom_Curve.hxx`:31 - `ShapeCustom_Curve::ShapeCustom_Curve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Curve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Curve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_Curve.hxx`:33 - `ShapeCustom_Curve::ShapeCustom_Curve()`
     pub fn new_handlegeomcurve(C: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Curve_ctor_handlegeomcurve(C)) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Curve_ctor_handlegeomcurve(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_Curve.hxx`:35 - `ShapeCustom_Curve::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
-        unsafe { crate::ffi::ShapeCustom_Curve_init(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::ShapeCustom_Curve_init(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `ShapeCustom_Curve.hxx`:42 - `ShapeCustom_Curve::ConvertToPeriodic()`
@@ -1906,12 +2457,16 @@ impl Curve {
         substitute: bool,
         preci: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Curve_convert_to_periodic(
-                self as *mut Self,
-                substitute,
-                preci,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Curve_convert_to_periodic(
+                    self as *mut Self,
+                    substitute,
+                    preci,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1935,7 +2490,11 @@ impl Curve2d {
     /// **Source:** `ShapeCustom_Curve2d.hxx` - `ShapeCustom_Curve2d::ShapeCustom_Curve2d()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Curve2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Curve2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_Curve2d.hxx`:37 - `ShapeCustom_Curve2d::IsLinear()`
@@ -1946,7 +2505,13 @@ impl Curve2d {
         theTolerance: f64,
         theDeviation: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::ShapeCustom_Curve2d_is_linear(thePoles, theTolerance, theDeviation) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Curve2d_is_linear(thePoles, theTolerance, theDeviation)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_Curve2d.hxx`:44 - `ShapeCustom_Curve2d::ConvertToLine2d()`
@@ -1962,16 +2527,20 @@ impl Curve2d {
         theNewLast: &mut f64,
         theDeviation: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dLine> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Curve2d_convert_to_line2d(
-                theCurve,
-                theFirstIn,
-                theLastIn,
-                theTolerance,
-                theNewFirst,
-                theNewLast,
-                theDeviation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Curve2d_convert_to_line2d(
+                    theCurve,
+                    theFirstIn,
+                    theLastIn,
+                    theTolerance,
+                    theNewFirst,
+                    theNewLast,
+                    theDeviation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1983,7 +2552,13 @@ impl Curve2d {
         theBSpline2d: &mut crate::ffi::HandleGeom2dBSplineCurve,
         theTolerance: f64,
     ) -> bool {
-        unsafe { crate::ffi::ShapeCustom_Curve2d_simplify_b_spline2d(theBSpline2d, theTolerance) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Curve2d_simplify_b_spline2d(theBSpline2d, theTolerance)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2006,7 +2581,11 @@ unsafe impl crate::CppDeletable for DirectModification {
 impl DirectModification {
     /// **Source:** `ShapeCustom_DirectModification.hxx`:44 - `ShapeCustom_DirectModification::ShapeCustom_DirectModification()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_DirectModification_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_DirectModification_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_DirectModification.hxx`:52 - `ShapeCustom_DirectModification::NewSurface()`
@@ -2025,16 +2604,20 @@ impl DirectModification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_new_surface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_new_surface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2052,8 +2635,18 @@ impl DirectModification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_new_curve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_new_curve(
+                    self as *mut Self,
+                    E,
+                    C,
+                    L,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2069,8 +2662,12 @@ impl DirectModification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_new_point(self as *mut Self, V, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_new_point(self as *mut Self, V, P, Tol)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2094,16 +2691,20 @@ impl DirectModification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_new_curve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_new_curve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2120,14 +2721,18 @@ impl DirectModification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_new_parameter(
-                self as *mut Self,
-                V,
-                E,
-                P,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_new_parameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2147,90 +2752,128 @@ impl DirectModification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_DirectModification_continuity(
-                self as *mut Self,
-                E,
-                F1,
-                F2,
-                NewE,
-                NewF1,
-                NewF2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_continuity(
+                    self as *mut Self,
+                    E,
+                    F1,
+                    F2,
+                    NewE,
+                    NewF1,
+                    NewF2,
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_DirectModification_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_DirectModification_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_DirectModification_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_DirectModification_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_DirectModification_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_DirectModification_as_ShapeCustom_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_as_ShapeCustom_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to ShapeCustom_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_DirectModification_as_ShapeCustom_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_as_ShapeCustom_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_DirectModification_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_DirectModification_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2238,10 +2881,11 @@ impl DirectModification {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomDirectModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_DirectModification_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_DirectModification_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2250,11 +2894,14 @@ impl DirectModification {
         &mut self,
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_SetMsgRegistrator(
+                    self as *mut Self,
+                    msgreg,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2262,12 +2909,14 @@ impl DirectModification {
     pub fn msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_DirectModification_inherited_MsgRegistrator(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2278,13 +2927,16 @@ impl DirectModification {
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_SendMsg(
+                    self as *const Self,
+                    shape,
+                    message,
+                    gravity.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2294,12 +2946,16 @@ impl DirectModification {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2309,8 +2965,16 @@ impl DirectModification {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygon(self as *mut Self, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygon(
+                    self as *mut Self,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2321,78 +2985,109 @@ impl DirectModification {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_DirectModification_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_DirectModification_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_DirectModification_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2407,13 +3102,22 @@ unsafe impl crate::CppDeletable for HandleShapeCustomDirectModification {
 impl HandleShapeCustomDirectModification {
     /// Dereference this Handle to access the underlying ShapeCustom_DirectModification
     pub fn get(&self) -> &crate::ffi::ShapeCustom_DirectModification {
-        unsafe { &*(crate::ffi::HandleShapeCustomDirectModification_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomDirectModification_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_DirectModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_DirectModification {
-        unsafe {
-            &mut *(crate::ffi::HandleShapeCustomDirectModification_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomDirectModification_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2421,12 +3125,14 @@ impl HandleShapeCustomDirectModification {
     pub fn to_handle_shape_custom_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomDirectModification_to_HandleShapeCustomModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2434,23 +3140,27 @@ impl HandleShapeCustomDirectModification {
     pub fn to_handle_b_rep_tools_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomDirectModification_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_DirectModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomDirectModification_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2477,8 +3187,11 @@ impl Modification {
         &mut self,
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_set_msg_registrator(self as *mut Self, msgreg)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_Modification_set_msg_registrator(self as *mut Self, msgreg)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2487,10 +3200,12 @@ impl Modification {
     pub fn msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Modification_msg_registrator(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_msg_registrator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2503,64 +3218,90 @@ impl Modification {
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_send_msg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_Modification_send_msg(
+                    self as *const Self,
+                    shape,
+                    message,
+                    gravity.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_Modification_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_Modification_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_Modification_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Modification_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_Modification_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Modification_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_Modification_as_BRepTools_Modification(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_as_BRepTools_Modification(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_Modification_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_Modification_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_Modification_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2574,16 +3315,20 @@ impl Modification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewSurface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewSurface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2593,8 +3338,16 @@ impl Modification {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewTriangulation(self as *mut Self, F, T)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2606,8 +3359,18 @@ impl Modification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewCurve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewCurve(
+                    self as *mut Self,
+                    E,
+                    C,
+                    L,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2617,8 +3380,12 @@ impl Modification {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewPolygon(self as *mut Self, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewPolygon(self as *mut Self, E, P)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2629,13 +3396,17 @@ impl Modification {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2646,8 +3417,17 @@ impl Modification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewPoint(self as *mut Self, V, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewPoint(
+                    self as *mut Self,
+                    V,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2661,16 +3441,20 @@ impl Modification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewCurve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewCurve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2682,14 +3466,18 @@ impl Modification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_NewParameter(
-                self as *mut Self,
-                V,
-                E,
-                P,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_NewParameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2703,8 +3491,8 @@ impl Modification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_Modification_inherited_Continuity(
                     self as *mut Self,
                     E,
@@ -2713,61 +3501,94 @@ impl Modification {
                     NewE,
                     NewF1,
                     NewF2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::ShapeCustom_Modification_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::ShapeCustom_Modification_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_Modification_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Modification_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_Modification_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::ShapeCustom_Modification_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2782,35 +3603,49 @@ unsafe impl crate::CppDeletable for HandleShapeCustomModification {
 impl HandleShapeCustomModification {
     /// Dereference this Handle to access the underlying ShapeCustom_Modification
     pub fn get(&self) -> &crate::ffi::ShapeCustom_Modification {
-        unsafe { &*(crate::ffi::HandleShapeCustomModification_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomModification_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_Modification
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_Modification {
-        unsafe { &mut *(crate::ffi::HandleShapeCustomModification_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomModification_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<ShapeCustom_Modification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomModification_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_Modification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomModification_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2823,6 +3658,7 @@ impl HandleShapeCustomModification {
         let ptr = unsafe {
             crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomBSplineRestriction(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2841,6 +3677,7 @@ impl HandleShapeCustomModification {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2857,6 +3694,7 @@ impl HandleShapeCustomModification {
         let ptr = unsafe {
             crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToRevolution(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2873,6 +3711,7 @@ impl HandleShapeCustomModification {
         let ptr = unsafe {
             crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomDirectModification(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2891,6 +3730,7 @@ impl HandleShapeCustomModification {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2918,14 +3758,22 @@ impl RestrictionParameters {
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:35 - `ShapeCustom_RestrictionParameters::ShapeCustom_RestrictionParameters()`
     /// Sets default parameters.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_RestrictionParameters_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_RestrictionParameters_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:38 - `ShapeCustom_RestrictionParameters::GMaxDegree()`
     /// Returns (modifiable) maximal degree of approximation.
     pub fn g_max_degree(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_g_max_degree(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_g_max_degree(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -2933,16 +3781,24 @@ impl RestrictionParameters {
     /// Returns (modifiable) maximal number of spans of
     /// approximation.
     pub fn g_max_seg(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_g_max_seg(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_g_max_seg(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:45 - `ShapeCustom_RestrictionParameters::ConvertPlane()`
     /// Sets flag for define if Plane converted to BSpline surface.
     pub fn convert_plane(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_plane(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_plane(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -2950,10 +3806,12 @@ impl RestrictionParameters {
     /// Sets flag for define if Bezier surface converted to BSpline
     /// surface.
     pub fn convert_bezier_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_bezier_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_bezier_surf(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -2961,10 +3819,14 @@ impl RestrictionParameters {
     /// Sets flag for define if surface of Revolution converted to
     /// BSpline surface.
     pub fn convert_revolution_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_revolution_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_revolution_surf(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -2972,10 +3834,14 @@ impl RestrictionParameters {
     /// Sets flag for define if surface of LinearExtrusion converted
     /// to BSpline surface.
     pub fn convert_extrusion_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_extrusion_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_extrusion_surf(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -2983,10 +3849,12 @@ impl RestrictionParameters {
     /// Sets flag for define if Offset surface converted to BSpline
     /// surface.
     pub fn convert_offset_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_offset_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_offset_surf(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -2994,10 +3862,14 @@ impl RestrictionParameters {
     /// Sets flag for define if cylindrical surface converted to BSpline
     /// surface.
     pub fn convert_cylindrical_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_cylindrical_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_cylindrical_surf(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3005,10 +3877,14 @@ impl RestrictionParameters {
     /// Sets flag for define if conical surface converted to BSpline
     /// surface.
     pub fn convert_conical_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_conical_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_conical_surf(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3016,10 +3892,14 @@ impl RestrictionParameters {
     /// Sets flag for define if toroidal surface converted to BSpline
     /// surface.
     pub fn convert_toroidal_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_toroidal_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_toroidal_surf(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3027,10 +3907,14 @@ impl RestrictionParameters {
     /// Sets flag for define if spherical surface converted to BSpline
     /// surface.
     pub fn convert_spherical_surf(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_spherical_surf(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_spherical_surf(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3038,18 +3922,26 @@ impl RestrictionParameters {
     /// Sets Segment mode for surface. If Segment is True surface is
     /// approximated in the bondaries of face lying on this surface.
     pub fn segment_surface_mode(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_segment_surface_mode(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_segment_surface_mode(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:84 - `ShapeCustom_RestrictionParameters::ConvertCurve3d()`
     /// Sets flag for define if 3d curve converted to BSpline curve.
     pub fn convert_curve3d(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_curve3d(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_curve3d(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3057,10 +3949,14 @@ impl RestrictionParameters {
     /// Sets flag for define if Offset curve3d converted to BSpline
     /// surface.
     pub fn convert_offset_curv3d(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_offset_curv3d(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_offset_curv3d(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3068,8 +3964,12 @@ impl RestrictionParameters {
     /// Returns (modifiable) flag for define if 2d curve converted
     /// to BSpline curve.
     pub fn convert_curve2d(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_curve2d(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_curve2d(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3077,49 +3977,70 @@ impl RestrictionParameters {
     /// Returns (modifiable) flag for define if Offset curve2d
     /// converted to BSpline surface.
     pub fn convert_offset_curv2d(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_convert_offset_curv2d(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_convert_offset_curv2d(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_RestrictionParameters_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_RestrictionParameters_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_RestrictionParameters_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_RestrictionParameters_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_RestrictionParameters_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_RestrictionParameters_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3127,76 +4048,102 @@ impl RestrictionParameters {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomRestrictionParameters> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_RestrictionParameters_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_RestrictionParameters_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_RestrictionParameters_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_RestrictionParameters_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_RestrictionParameters_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_RestrictionParameters_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_RestrictionParameters_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_RestrictionParameters_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::ShapeCustom_RestrictionParameters_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_RestrictionParameters_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -3212,24 +4159,36 @@ unsafe impl crate::CppDeletable for HandleShapeCustomRestrictionParameters {
 impl HandleShapeCustomRestrictionParameters {
     /// Dereference this Handle to access the underlying ShapeCustom_RestrictionParameters
     pub fn get(&self) -> &crate::ffi::ShapeCustom_RestrictionParameters {
-        unsafe { &*(crate::ffi::HandleShapeCustomRestrictionParameters_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomRestrictionParameters_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_RestrictionParameters
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_RestrictionParameters {
-        unsafe {
-            &mut *(crate::ffi::HandleShapeCustomRestrictionParameters_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomRestrictionParameters_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<ShapeCustom_RestrictionParameters> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomRestrictionParameters_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3254,26 +4213,39 @@ unsafe impl crate::CppDeletable for Surface {
 impl Surface {
     /// **Source:** `ShapeCustom_Surface.hxx`:37 - `ShapeCustom_Surface::ShapeCustom_Surface()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Surface_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Surface_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_Surface.hxx`:39 - `ShapeCustom_Surface::ShapeCustom_Surface()`
     pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Surface_ctor_handlegeomsurface(S))
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Surface_ctor_handlegeomsurface(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `ShapeCustom_Surface.hxx`:41 - `ShapeCustom_Surface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
-        unsafe { crate::ffi::ShapeCustom_Surface_init(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::ShapeCustom_Surface_init(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `ShapeCustom_Surface.hxx`:45 - `ShapeCustom_Surface::Gap()`
     /// Returns maximal deviation of converted surface from the original
     /// one computed by last call to ConvertToAnalytical
     pub fn gap(&self) -> f64 {
-        unsafe { crate::ffi::ShapeCustom_Surface_gap(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_Surface_gap(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_Surface.hxx`:58 - `ShapeCustom_Surface::ConvertToAnalytical()`
@@ -3293,12 +4265,16 @@ impl Surface {
         tol: f64,
         substitute: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Surface_convert_to_analytical(
-                self as *mut Self,
-                tol,
-                substitute,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Surface_convert_to_analytical(
+                    self as *mut Self,
+                    tol,
+                    substitute,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3313,12 +4289,16 @@ impl Surface {
         substitute: bool,
         preci: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_Surface_convert_to_periodic(
-                self as *mut Self,
-                substitute,
-                preci,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_Surface_convert_to_periodic(
+                    self as *mut Self,
+                    substitute,
+                    preci,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3342,7 +4322,11 @@ unsafe impl crate::CppDeletable for SweptToElementary {
 impl SweptToElementary {
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:43 - `ShapeCustom_SweptToElementary::ShapeCustom_SweptToElementary()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_SweptToElementary_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_SweptToElementary_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:51 - `ShapeCustom_SweptToElementary::NewSurface()`
@@ -3361,16 +4345,20 @@ impl SweptToElementary {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_new_surface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_new_surface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3388,8 +4376,12 @@ impl SweptToElementary {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_new_curve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_new_curve(self as *mut Self, E, C, L, Tol)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3405,7 +4397,13 @@ impl SweptToElementary {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::ShapeCustom_SweptToElementary_new_point(self as *mut Self, V, P, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_new_point(self as *mut Self, V, P, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:88 - `ShapeCustom_SweptToElementary::NewCurve2d()`
@@ -3428,16 +4426,20 @@ impl SweptToElementary {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_new_curve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_new_curve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3454,8 +4456,18 @@ impl SweptToElementary {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_new_parameter(self as *mut Self, V, E, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_new_parameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3475,88 +4487,126 @@ impl SweptToElementary {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_SweptToElementary_continuity(
-                self as *mut Self,
-                E,
-                F1,
-                F2,
-                NewE,
-                NewF1,
-                NewF2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_continuity(
+                    self as *mut Self,
+                    E,
+                    F1,
+                    F2,
+                    NewE,
+                    NewF1,
+                    NewF2,
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_SweptToElementary_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_SweptToElementary_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_SweptToElementary_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_SweptToElementary_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_SweptToElementary_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_SweptToElementary_as_ShapeCustom_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_as_ShapeCustom_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to ShapeCustom_Modification (mutable)
     pub fn as_modification_mut(&mut self) -> &mut Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_SweptToElementary_as_ShapeCustom_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_as_ShapeCustom_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_SweptToElementary_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_SweptToElementary_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3564,10 +4614,11 @@ impl SweptToElementary {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomSweptToElementary> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_SweptToElementary_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_SweptToElementary_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3576,11 +4627,14 @@ impl SweptToElementary {
         &mut self,
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_SetMsgRegistrator(
+                    self as *mut Self,
+                    msgreg,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3588,12 +4642,14 @@ impl SweptToElementary {
     pub fn msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_SweptToElementary_inherited_MsgRegistrator(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3604,13 +4660,16 @@ impl SweptToElementary {
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_SendMsg(
+                    self as *const Self,
+                    shape,
+                    message,
+                    gravity.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3620,12 +4679,16 @@ impl SweptToElementary {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3635,8 +4698,16 @@ impl SweptToElementary {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygon(self as *mut Self, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygon(
+                    self as *mut Self,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3647,75 +4718,107 @@ impl SweptToElementary {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_SweptToElementary_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_SweptToElementary_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_SweptToElementary_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3730,24 +4833,37 @@ unsafe impl crate::CppDeletable for HandleShapeCustomSweptToElementary {
 impl HandleShapeCustomSweptToElementary {
     /// Dereference this Handle to access the underlying ShapeCustom_SweptToElementary
     pub fn get(&self) -> &crate::ffi::ShapeCustom_SweptToElementary {
-        unsafe { &*(crate::ffi::HandleShapeCustomSweptToElementary_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomSweptToElementary_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_SweptToElementary
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_SweptToElementary {
-        unsafe { &mut *(crate::ffi::HandleShapeCustomSweptToElementary_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleShapeCustomSweptToElementary_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomSweptToElementary_to_HandleShapeCustomModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3755,23 +4871,27 @@ impl HandleShapeCustomSweptToElementary {
     pub fn to_handle_b_rep_tools_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomSweptToElementary_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomSweptToElementary_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3798,7 +4918,11 @@ impl TrsfModification {
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:47 - `ShapeCustom_TrsfModification::ShapeCustom_TrsfModification()`
     /// Empty constructor
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_TrsfModification_ctor_trsf(T)) }
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_TrsfModification_ctor_trsf(T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:52 - `ShapeCustom_TrsfModification::NewSurface()`
@@ -3814,16 +4938,20 @@ impl TrsfModification {
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_new_surface(
-                self as *mut Self,
-                F,
-                S,
-                L,
-                Tol,
-                RevWires,
-                RevFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_new_surface(
+                    self as *mut Self,
+                    F,
+                    S,
+                    L,
+                    Tol,
+                    RevWires,
+                    RevFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3838,8 +4966,12 @@ impl TrsfModification {
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3853,7 +4985,13 @@ impl TrsfModification {
         P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::ShapeCustom_TrsfModification_new_point(self as *mut Self, V, P, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_new_point(self as *mut Self, V, P, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:77 - `ShapeCustom_TrsfModification::NewCurve2d()`
@@ -3869,16 +5007,20 @@ impl TrsfModification {
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_new_curve2d(
-                self as *mut Self,
-                E,
-                F,
-                NewE,
-                NewF,
-                C,
-                Tol,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_new_curve2d(
+                    self as *mut Self,
+                    E,
+                    F,
+                    NewE,
+                    NewF,
+                    C,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3893,36 +5035,61 @@ impl TrsfModification {
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_new_parameter(self as *mut Self, V, E, P, Tol)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_new_parameter(
+                    self as *mut Self,
+                    V,
+                    E,
+                    P,
+                    Tol,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_TrsfModification_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeCustom_TrsfModification_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::ShapeCustom_TrsfModification_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeCustom_TrsfModification_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_TrsfModification_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepTools_TrsfModification
     pub fn as_b_rep_tools_trsf_modification(&self) -> &crate::b_rep_tools::TrsfModification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_TrsfModification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_TrsfModification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -3930,44 +5097,64 @@ impl TrsfModification {
     pub fn as_b_rep_tools_trsf_modification_mut(
         &mut self,
     ) -> &mut crate::b_rep_tools::TrsfModification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_TrsfModification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_TrsfModification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_TrsfModification_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3975,24 +5162,33 @@ impl TrsfModification {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomTrsfModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_TrsfModification_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeCustom_TrsfModification_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
     pub fn trsf(&mut self) -> &mut crate::gp::Trsf {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_Trsf(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_Trsf(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:52 - `BRepTools_TrsfModification::IsCopyMesh()`
     pub fn is_copy_mesh(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_IsCopyMesh(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_IsCopyMesh(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -4002,12 +5198,16 @@ impl TrsfModification {
         F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_NewTriangulation(
+                    self as *mut Self,
+                    F,
+                    T,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4017,8 +5217,16 @@ impl TrsfModification {
         E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_NewPolygon(self as *mut Self, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_NewPolygon(
+                    self as *mut Self,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4029,13 +5237,17 @@ impl TrsfModification {
         F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_NewPolygonOnTriangulation(
-                self as *mut Self,
-                E,
-                F,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_NewPolygonOnTriangulation(
+                    self as *mut Self,
+                    E,
+                    F,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4049,8 +5261,8 @@ impl TrsfModification {
         NewF1: &crate::topo_ds::Face,
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_TrsfModification_inherited_Continuity(
                     self as *mut Self,
                     E,
@@ -4059,71 +5271,100 @@ impl TrsfModification {
                     NewE,
                     NewF1,
                     NewF2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::ShapeCustom_TrsfModification_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::ShapeCustom_TrsfModification_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::ShapeCustom_TrsfModification_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::ShapeCustom_TrsfModification_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4138,24 +5379,36 @@ unsafe impl crate::CppDeletable for HandleShapeCustomTrsfModification {
 impl HandleShapeCustomTrsfModification {
     /// Dereference this Handle to access the underlying ShapeCustom_TrsfModification
     pub fn get(&self) -> &crate::ffi::ShapeCustom_TrsfModification {
-        unsafe { &*(crate::ffi::HandleShapeCustomTrsfModification_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomTrsfModification_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeCustom_TrsfModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_TrsfModification {
-        unsafe { &mut *(crate::ffi::HandleShapeCustomTrsfModification_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleShapeCustomTrsfModification_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<BRepTools_TrsfModification>
     pub fn to_handle_trsf_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsTrsfModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomTrsfModification_to_HandleBRepToolsTrsfModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4163,23 +5416,27 @@ impl HandleShapeCustomTrsfModification {
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomTrsfModification_to_HandleBRepToolsModification(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleShapeCustomTrsfModification_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

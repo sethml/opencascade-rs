@@ -12,11 +12,14 @@ pub fn add_drivers_handlebinmdfadrivertable_handlemessagemessenger_6(
     aDriverTable: &crate::ffi::HandleBinMDFADriverTable,
     aMsgDrv: &crate::ffi::HandleMessageMessenger,
 ) {
-    unsafe {
-        crate::ffi::BinMDF_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_6(
-            aDriverTable,
-            aMsgDrv,
-        )
+    {
+        unsafe {
+            crate::ffi::BinMDF_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_6(
+                aDriverTable,
+                aMsgDrv,
+            )
+        };
+        crate::check_exception();
     }
 }
 
@@ -67,8 +70,10 @@ impl ADriver {
     /// **Source:** `BinMDF_ADriver.hxx`:37 - `BinMDF_ADriver::NewEmpty()`
     /// Creates a new attribute from TDF.
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_ADriver_new_empty(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriver_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -76,13 +81,21 @@ impl ADriver {
     /// Returns the type of source object,
     /// inheriting from Attribute from TDF.
     pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ADriver_source_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriver_source_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     /// Returns the type name of the attribute object
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::BinMDF_ADriver_type_name(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriver_type_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:49 - `BinMDF_ADriver::Paste()`
@@ -95,13 +108,17 @@ impl ADriver {
         aTarget: &crate::ffi::HandleTDFAttribute,
         aRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_ADriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                aSource,
-                aTarget,
-                aRelocTable,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriver_paste_persistent_handletdfattribute_rrelocationtable(
+                    self as *const Self,
+                    aSource,
+                    aTarget,
+                    aRelocTable,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -115,91 +132,148 @@ impl ADriver {
         aTarget: &mut crate::bin_obj_mgt::Persistent,
         aRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_ADriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-                self as *const Self,
-                aSource,
-                aTarget,
-                aRelocTable,
-            )
+        {
+            unsafe {
+                crate::ffi::BinMDF_ADriver_paste_handletdfattribute_persistent_indexedmapoftransient(
+                    self as *const Self,
+                    aSource,
+                    aTarget,
+                    aRelocTable,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
     /// Returns the current message driver of this driver
     pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe { &*(crate::ffi::BinMDF_ADriver_message_driver(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ADriver_message_driver(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:63 - `BinMDF_ADriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ADriver_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:63 - `BinMDF_ADriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinMDF_ADriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinMDF_ADriver.hxx`:63 - `BinMDF_ADriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ADriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BinMDF_ADriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ADriver_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::BinMDF_ADriver_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ADriver_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BinMDF_ADriver_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriver_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BinMDF_ADriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::BinMDF_ADriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ADriver_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BinMDF_ADriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ADriver_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BinMDF_ADriver_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinMDF_ADriver_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BinMDF_ADriver_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BinMDF_ADriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BinMDF_ADriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -214,20 +288,30 @@ unsafe impl crate::CppDeletable for HandleBinMDFADriver {
 impl HandleBinMDFADriver {
     /// Dereference this Handle to access the underlying BinMDF_ADriver
     pub fn get(&self) -> &crate::ffi::BinMDF_ADriver {
-        unsafe { &*(crate::ffi::HandleBinMDFADriver_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBinMDFADriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMDF_ADriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinMDF_ADriver {
-        unsafe { &mut *(crate::ffi::HandleBinMDFADriver_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBinMDFADriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BinMDF_ADriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBinMDFADriver_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinMDFADriver_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -242,6 +326,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -260,6 +345,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -278,6 +364,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -296,6 +383,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -314,6 +402,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -332,6 +421,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -350,6 +440,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -368,6 +459,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -386,6 +478,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -404,6 +497,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -422,6 +516,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -440,6 +535,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -458,6 +554,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -476,6 +573,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -494,6 +592,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -512,6 +611,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -530,6 +630,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -548,6 +649,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -566,6 +668,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -584,6 +687,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -602,6 +706,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -620,6 +725,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -638,6 +744,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -656,6 +763,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -674,6 +782,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -692,6 +801,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -710,6 +820,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -728,6 +839,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -746,6 +858,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -764,6 +877,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -782,6 +896,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -800,6 +915,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -818,6 +934,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -836,6 +953,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -854,6 +972,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -872,6 +991,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -890,6 +1010,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -908,6 +1029,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -926,6 +1048,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -944,6 +1067,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -962,6 +1086,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -980,6 +1105,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -998,6 +1124,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1016,6 +1143,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1034,6 +1162,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1052,6 +1181,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1070,6 +1200,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1088,6 +1219,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1106,6 +1238,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1124,6 +1257,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1142,6 +1276,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1160,6 +1295,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1178,6 +1314,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1196,6 +1333,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1214,6 +1352,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1232,6 +1371,7 @@ impl HandleBinMDFADriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1262,13 +1402,20 @@ impl ADriverTable {
     /// **Source:** `BinMDF_ADriverTable.hxx`:43 - `BinMDF_ADriverTable::BinMDF_ADriverTable()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinMDF_ADriverTable_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriverTable_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ADriverTable.hxx`:46 - `BinMDF_ADriverTable::AddDriver()`
     /// Adds a translation driver <theDriver>.
     pub fn add_driver(&mut self, theDriver: &crate::ffi::HandleBinMDFADriver) {
-        unsafe { crate::ffi::BinMDF_ADriverTable_add_driver(self as *mut Self, theDriver) }
+        {
+            unsafe { crate::ffi::BinMDF_ADriverTable_add_driver(self as *mut Self, theDriver) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinMDF_ADriverTable.hxx`:50 - `BinMDF_ADriverTable::AddDerivedDriver()`
@@ -1278,11 +1425,14 @@ impl ADriverTable {
         &mut self,
         theInstance: &crate::ffi::HandleTDFAttribute,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_ADriverTable_add_derived_driver_handletdfattribute(
-                self as *mut Self,
-                theInstance,
-            )
+        {
+            unsafe {
+                crate::ffi::BinMDF_ADriverTable_add_derived_driver_handletdfattribute(
+                    self as *mut Self,
+                    theInstance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1300,11 +1450,15 @@ impl ADriverTable {
         theDerivedType: &str,
     ) -> &crate::ffi::HandleStandardType {
         let c_theDerivedType = std::ffi::CString::new(theDerivedType).unwrap();
-        unsafe {
-            &*(crate::ffi::BinMDF_ADriverTable_add_derived_driver_charptr(
-                self as *mut Self,
-                c_theDerivedType.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_add_derived_driver_charptr(
+                    self as *mut Self,
+                    c_theDerivedType.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1316,11 +1470,14 @@ impl ADriverTable {
         &mut self,
         theTypes: &crate::ffi::TColStd_IndexedMapOfTransient,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_ADriverTable_assign_ids_indexedmapoftransient(
-                self as *mut Self,
-                theTypes,
-            )
+        {
+            unsafe {
+                crate::ffi::BinMDF_ADriverTable_assign_ids_indexedmapoftransient(
+                    self as *mut Self,
+                    theTypes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1332,11 +1489,14 @@ impl ADriverTable {
         &mut self,
         theTypeNames: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_ADriverTable_assign_ids_sequenceofasciistring(
-                self as *mut Self,
-                theTypeNames,
-            )
+        {
+            unsafe {
+                crate::ffi::BinMDF_ADriverTable_assign_ids_sequenceofasciistring(
+                    self as *mut Self,
+                    theTypeNames,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1348,12 +1508,16 @@ impl ADriverTable {
         theType: &crate::ffi::HandleStandardType,
         theDriver: &mut crate::ffi::HandleBinMDFADriver,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BinMDF_ADriverTable_get_driver_handlestandardtype_handlebinmdfadriver(
-                self as *mut Self,
-                theType,
-                theDriver,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_get_driver_handlestandardtype_handlebinmdfadriver(
+                    self as *mut Self,
+                    theType,
+                    theDriver,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1364,42 +1528,62 @@ impl ADriverTable {
         &mut self,
         theTypeId: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_ADriverTable_get_driver_int(
-                self as *mut Self,
-                theTypeId,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_get_driver_int(self as *mut Self, theTypeId)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinMDF_ADriverTable.hxx`:75 - `BinMDF_ADriverTable::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ADriverTable_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ADriverTable_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ADriverTable.hxx`:75 - `BinMDF_ADriverTable::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinMDF_ADriverTable_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriverTable_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinMDF_ADriverTable.hxx`:75 - `BinMDF_ADriverTable::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ADriverTable_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriverTable_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BinMDF_ADriverTable_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BinMDF_ADriverTable_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1407,54 +1591,87 @@ impl ADriverTable {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriverTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_ADriverTable_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ADriverTable_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_ADriverTable_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BinMDF_ADriverTable_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BinMDF_ADriverTable_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BinMDF_ADriverTable_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BinMDF_ADriverTable_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BinMDF_ADriverTable_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BinMDF_ADriverTable_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ADriverTable_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BinMDF_ADriverTable_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BinMDF_ADriverTable_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1469,22 +1686,31 @@ unsafe impl crate::CppDeletable for HandleBinMDFADriverTable {
 impl HandleBinMDFADriverTable {
     /// Dereference this Handle to access the underlying BinMDF_ADriverTable
     pub fn get(&self) -> &crate::ffi::BinMDF_ADriverTable {
-        unsafe { &*(crate::ffi::HandleBinMDFADriverTable_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBinMDFADriverTable_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMDF_ADriverTable
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinMDF_ADriverTable {
-        unsafe { &mut *(crate::ffi::HandleBinMDFADriverTable_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFADriverTable_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BinMDF_ADriverTable> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBinMDFADriverTable_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinMDFADriverTable_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1514,28 +1740,36 @@ impl DerivedDriver {
         theDerivative: &crate::ffi::HandleTDFAttribute,
         theBaseDriver: &crate::ffi::HandleBinMDFADriver,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BinMDF_DerivedDriver_ctor_handletdfattribute_handlebinmdfadriver(
                     theDerivative,
                     theBaseDriver,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinMDF_DerivedDriver.hxx`:23 - `BinMDF_DerivedDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_DerivedDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_DerivedDriver.hxx`:38 - `BinMDF_DerivedDriver::NewEmpty()`
     /// Creates a new instance of the derivative attribute
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_DerivedDriver_new_empty(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_DerivedDriver_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1547,13 +1781,12 @@ impl DerivedDriver {
         theTarget: &crate::ffi::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_DerivedDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                theSource,
-                theTarget,
-                theRelocTable,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1565,44 +1798,72 @@ impl DerivedDriver {
         theTarget: &mut crate::bin_obj_mgt::Persistent,
         theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_DerivedDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+        {
+            unsafe {
+                crate::ffi::BinMDF_DerivedDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinMDF_DerivedDriver.hxx`:23 - `BinMDF_DerivedDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinMDF_DerivedDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BinMDF_DerivedDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinMDF_DerivedDriver.hxx`:23 - `BinMDF_DerivedDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_DerivedDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_a_driver(&self) -> &ADriver {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_as_BinMDF_ADriver(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_DerivedDriver_as_BinMDF_ADriver(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_a_driver_mut(&mut self) -> &mut ADriver {
-        unsafe { &mut *(crate::ffi::BinMDF_DerivedDriver_as_BinMDF_ADriver_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_as_BinMDF_ADriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BinMDF_DerivedDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1610,69 +1871,119 @@ impl DerivedDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFDerivedDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_DerivedDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BinMDF_DerivedDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
     pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_inherited_SourceType(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_SourceType(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_inherited_TypeName(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_TypeName(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
     pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe { &*(crate::ffi::BinMDF_DerivedDriver_inherited_MessageDriver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_MessageDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_DerivedDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_DerivedDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BinMDF_DerivedDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1687,31 +1998,45 @@ unsafe impl crate::CppDeletable for HandleBinMDFDerivedDriver {
 impl HandleBinMDFDerivedDriver {
     /// Dereference this Handle to access the underlying BinMDF_DerivedDriver
     pub fn get(&self) -> &crate::ffi::BinMDF_DerivedDriver {
-        unsafe { &*(crate::ffi::HandleBinMDFDerivedDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFDerivedDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMDF_DerivedDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinMDF_DerivedDriver {
-        unsafe { &mut *(crate::ffi::HandleBinMDFDerivedDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFDerivedDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BinMDF_DerivedDriver> to Handle<BinMDF_ADriver>
     pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBinMDFDerivedDriver_to_HandleBinMDFADriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinMDFDerivedDriver_to_HandleBinMDFADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinMDF_DerivedDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinMDFDerivedDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1735,19 +2060,22 @@ impl ReferenceDriver {
     pub fn new_handlemessagemessenger(
         theMessageDriver: &crate::ffi::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BinMDF_ReferenceDriver_ctor_handlemessagemessenger(theMessageDriver),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_ctor_handlemessagemessenger(theMessageDriver)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinMDF_ReferenceDriver.hxx`:38 - `BinMDF_ReferenceDriver::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_ReferenceDriver_new_empty(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ReferenceDriver_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1758,13 +2086,12 @@ impl ReferenceDriver {
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_ReferenceDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1775,51 +2102,83 @@ impl ReferenceDriver {
         Target: &mut crate::bin_obj_mgt::Persistent,
         RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_ReferenceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
+        {
+            unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinMDF_ReferenceDriver.hxx`:50 - `BinMDF_ReferenceDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ReferenceDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_ReferenceDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_ReferenceDriver.hxx`:50 - `BinMDF_ReferenceDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinMDF_ReferenceDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ReferenceDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinMDF_ReferenceDriver.hxx`:50 - `BinMDF_ReferenceDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ReferenceDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ReferenceDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_a_driver(&self) -> &ADriver {
-        unsafe { &*(crate::ffi::BinMDF_ReferenceDriver_as_BinMDF_ADriver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_as_BinMDF_ADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_a_driver_mut(&mut self) -> &mut ADriver {
-        unsafe {
-            &mut *(crate::ffi::BinMDF_ReferenceDriver_as_BinMDF_ADriver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_as_BinMDF_ADriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BinMDF_ReferenceDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BinMDF_ReferenceDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1827,75 +2186,123 @@ impl ReferenceDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFReferenceDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_ReferenceDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BinMDF_ReferenceDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
     pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_ReferenceDriver_inherited_SourceType(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_SourceType(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::BinMDF_ReferenceDriver_inherited_TypeName(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_TypeName(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
     pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::ffi::BinMDF_ReferenceDriver_inherited_MessageDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_MessageDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_ReferenceDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BinMDF_ReferenceDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BinMDF_ReferenceDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BinMDF_ReferenceDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BinMDF_ReferenceDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BinMDF_ReferenceDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_ReferenceDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BinMDF_ReferenceDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BinMDF_ReferenceDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1910,31 +2317,45 @@ unsafe impl crate::CppDeletable for HandleBinMDFReferenceDriver {
 impl HandleBinMDFReferenceDriver {
     /// Dereference this Handle to access the underlying BinMDF_ReferenceDriver
     pub fn get(&self) -> &crate::ffi::BinMDF_ReferenceDriver {
-        unsafe { &*(crate::ffi::HandleBinMDFReferenceDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFReferenceDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMDF_ReferenceDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinMDF_ReferenceDriver {
-        unsafe { &mut *(crate::ffi::HandleBinMDFReferenceDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFReferenceDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BinMDF_ReferenceDriver> to Handle<BinMDF_ADriver>
     pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBinMDFReferenceDriver_to_HandleBinMDFADriver(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinMDFReferenceDriver_to_HandleBinMDFADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinMDF_ReferenceDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinMDFReferenceDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1958,19 +2379,22 @@ impl TagSourceDriver {
     pub fn new_handlemessagemessenger(
         theMessageDriver: &crate::ffi::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BinMDF_TagSourceDriver_ctor_handlemessagemessenger(theMessageDriver),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_ctor_handlemessagemessenger(theMessageDriver)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinMDF_TagSourceDriver.hxx`:38 - `BinMDF_TagSourceDriver::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_TagSourceDriver_new_empty(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_TagSourceDriver_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1981,13 +2405,12 @@ impl TagSourceDriver {
         Target: &crate::ffi::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_TagSourceDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1998,51 +2421,83 @@ impl TagSourceDriver {
         Target: &mut crate::bin_obj_mgt::Persistent,
         RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
     ) {
-        unsafe {
-            crate::ffi::BinMDF_TagSourceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
+        {
+            unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinMDF_TagSourceDriver.hxx`:49 - `BinMDF_TagSourceDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_TagSourceDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinMDF_TagSourceDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinMDF_TagSourceDriver.hxx`:49 - `BinMDF_TagSourceDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinMDF_TagSourceDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BinMDF_TagSourceDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinMDF_TagSourceDriver.hxx`:49 - `BinMDF_TagSourceDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_TagSourceDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BinMDF_TagSourceDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_a_driver(&self) -> &ADriver {
-        unsafe { &*(crate::ffi::BinMDF_TagSourceDriver_as_BinMDF_ADriver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_as_BinMDF_ADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_a_driver_mut(&mut self) -> &mut ADriver {
-        unsafe {
-            &mut *(crate::ffi::BinMDF_TagSourceDriver_as_BinMDF_ADriver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_as_BinMDF_ADriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BinMDF_TagSourceDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BinMDF_TagSourceDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2050,75 +2505,123 @@ impl TagSourceDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFTagSourceDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinMDF_TagSourceDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BinMDF_TagSourceDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
     pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinMDF_TagSourceDriver_inherited_SourceType(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_SourceType(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::BinMDF_TagSourceDriver_inherited_TypeName(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_TypeName(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
     pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::ffi::BinMDF_TagSourceDriver_inherited_MessageDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_MessageDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinMDF_TagSourceDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BinMDF_TagSourceDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BinMDF_TagSourceDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BinMDF_TagSourceDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BinMDF_TagSourceDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BinMDF_TagSourceDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BinMDF_TagSourceDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BinMDF_TagSourceDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BinMDF_TagSourceDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2133,31 +2636,45 @@ unsafe impl crate::CppDeletable for HandleBinMDFTagSourceDriver {
 impl HandleBinMDFTagSourceDriver {
     /// Dereference this Handle to access the underlying BinMDF_TagSourceDriver
     pub fn get(&self) -> &crate::ffi::BinMDF_TagSourceDriver {
-        unsafe { &*(crate::ffi::HandleBinMDFTagSourceDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFTagSourceDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMDF_TagSourceDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinMDF_TagSourceDriver {
-        unsafe { &mut *(crate::ffi::HandleBinMDFTagSourceDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBinMDFTagSourceDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BinMDF_TagSourceDriver> to Handle<BinMDF_ADriver>
     pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBinMDFTagSourceDriver_to_HandleBinMDFADriver(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinMDFTagSourceDriver_to_HandleBinMDFADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinMDF_TagSourceDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinMDFTagSourceDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

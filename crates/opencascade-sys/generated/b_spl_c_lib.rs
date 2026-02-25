@@ -18,17 +18,27 @@
 /// (sum of multiplicities(but  for the last) + degree
 /// - 1)
 pub fn reverse_array1ofpnt_int(Poles: &mut crate::ffi::TColgp_Array1OfPnt, Last: i32) {
-    unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last) }
+    {
+        unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:337 - `BSplCLib::Reverse`
 /// Reverses the array of poles.
 pub fn reverse_array1ofpnt2d_int(Poles: &mut crate::ffi::TColgp_Array1OfPnt2d, Last: i32) {
-    unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last) }
+    {
+        unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree`
 /// returns the degree maxima for a BSplineCurve.
 pub fn max_degree() -> i32 {
-    unsafe { crate::ffi::BSplCLib_max_degree() }
+    {
+        let __result = unsafe { crate::ffi::BSplCLib_max_degree() };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `BSplCLib.hxx`:363 - `BSplCLib::Eval`
 /// Perform the Boor  algorithm  to  evaluate a point at
@@ -41,7 +51,10 @@ pub fn max_degree() -> i32 {
 /// Containing  the poles.  At  the end <Poles> contains
 /// the current point.
 pub fn eval(U: f64, Degree: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
-    unsafe { crate::ffi::BSplCLib_eval(U, Degree, Knots, Dimension, Poles) }
+    {
+        unsafe { crate::ffi::BSplCLib_eval(U, Degree, Knots, Dimension, Poles) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:398 - `BSplCLib::BoorScheme`
 /// Performs the  Boor Algorithm  at  parameter <U> with
@@ -82,7 +95,12 @@ pub fn boor_scheme(
     Depth: i32,
     Length: i32,
 ) {
-    unsafe { crate::ffi::BSplCLib_boor_scheme(U, Degree, Knots, Dimension, Poles, Depth, Length) }
+    {
+        unsafe {
+            crate::ffi::BSplCLib_boor_scheme(U, Degree, Knots, Dimension, Poles, Depth, Length)
+        };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:417 - `BSplCLib::AntiBoorScheme`
 /// Compute  the content of  Pole before the BoorScheme.
@@ -106,10 +124,14 @@ pub fn anti_boor_scheme(
     Length: i32,
     Tolerance: f64,
 ) -> bool {
-    unsafe {
-        crate::ffi::BSplCLib_anti_boor_scheme(
-            U, Degree, Knots, Dimension, Poles, Depth, Length, Tolerance,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BSplCLib_anti_boor_scheme(
+                U, Degree, Knots, Dimension, Poles, Depth, Length, Tolerance,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BSplCLib.hxx`:436 - `BSplCLib::Derivative`
@@ -131,7 +153,10 @@ pub fn derivative(
     Order: i32,
     Poles: &mut f64,
 ) {
-    unsafe { crate::ffi::BSplCLib_derivative(Degree, Knots, Dimension, Length, Order, Poles) }
+    {
+        unsafe { crate::ffi::BSplCLib_derivative(Degree, Knots, Dimension, Length, Order, Poles) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:452 - `BSplCLib::Bohm`
 /// Performs the Bohm  Algorithm at  parameter <U>. This
@@ -144,14 +169,21 @@ pub fn derivative(
 /// derivatives.  Poles[0] is  the value,  Poles[Degree]
 /// is the last  derivative.
 pub fn bohm(U: f64, Degree: i32, N: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
-    unsafe { crate::ffi::BSplCLib_bohm(U, Degree, N, Knots, Dimension, Poles) }
+    {
+        unsafe { crate::ffi::BSplCLib_bohm(U, Degree, N, Knots, Dimension, Poles) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:514 - `BSplCLib::BoorIndex`
 /// Returns the index in  the Boor result array of the
 /// poles <Index>. If  the Boor  algorithm was perform
 /// with <Length> and <Depth>.
 pub fn boor_index(Index: i32, Length: i32, Depth: i32) -> i32 {
-    unsafe { crate::ffi::BSplCLib_boor_index(Index, Length, Depth) }
+    {
+        let __result = unsafe { crate::ffi::BSplCLib_boor_index(Index, Length, Depth) };
+        crate::check_exception();
+        __result
+    }
 }
 /// **Source:** `BSplCLib.hxx`:1254 - `BSplCLib::FactorBandedMatrix`
 /// this  factors  the Banded Matrix in
@@ -167,13 +199,17 @@ pub fn factor_banded_matrix(
     LowerBandWidth: i32,
     PivotIndexProblem: &mut i32,
 ) -> i32 {
-    unsafe {
-        crate::ffi::BSplCLib_factor_banded_matrix(
-            Matrix,
-            UpperBandWidth,
-            LowerBandWidth,
-            PivotIndexProblem,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BSplCLib_factor_banded_matrix(
+                Matrix,
+                UpperBandWidth,
+                LowerBandWidth,
+                PivotIndexProblem,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BSplCLib.hxx`:1268 - `BSplCLib::SolveBandedSystem`
@@ -193,14 +229,18 @@ pub fn solve_banded_system_matrix_int3_real(
     ArrayDimension: i32,
     Array: &mut f64,
 ) -> i32 {
-    unsafe {
-        crate::ffi::BSplCLib_solve_banded_system_matrix_int3_real(
-            Matrix,
-            UpperBandWidth,
-            LowerBandWidth,
-            ArrayDimension,
-            Array,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BSplCLib_solve_banded_system_matrix_int3_real(
+                Matrix,
+                UpperBandWidth,
+                LowerBandWidth,
+                ArrayDimension,
+                Array,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BSplCLib.hxx`:1282 - `BSplCLib::SolveBandedSystem`
@@ -218,13 +258,17 @@ pub fn solve_banded_system_matrix_int2_array1ofpnt2d(
     LowerBandWidth: i32,
     Array: &mut crate::ffi::TColgp_Array1OfPnt2d,
 ) -> i32 {
-    unsafe {
-        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
-            Matrix,
-            UpperBandWidth,
-            LowerBandWidth,
-            Array,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
+                Matrix,
+                UpperBandWidth,
+                LowerBandWidth,
+                Array,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BSplCLib.hxx`:1295 - `BSplCLib::SolveBandedSystem`
@@ -242,13 +286,17 @@ pub fn solve_banded_system_matrix_int2_array1ofpnt(
     LowerBandWidth: i32,
     Array: &mut crate::ffi::TColgp_Array1OfPnt,
 ) -> i32 {
-    unsafe {
-        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
-            Matrix,
-            UpperBandWidth,
-            LowerBandWidth,
-            Array,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
+                Matrix,
+                UpperBandWidth,
+                LowerBandWidth,
+                Array,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BSplCLib.hxx`:1300 - `BSplCLib::SolveBandedSystem`
@@ -261,16 +309,20 @@ pub fn solve_banded_system_matrix_int2_bool_int_real2(
     Array: &mut f64,
     Weights: &mut f64,
 ) -> i32 {
-    unsafe {
-        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(
-            Matrix,
-            UpperBandWidth,
-            LowerBandWidth,
-            HomogenousFlag,
-            ArrayDimension,
-            Array,
-            Weights,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(
+                Matrix,
+                UpperBandWidth,
+                LowerBandWidth,
+                HomogenousFlag,
+                ArrayDimension,
+                Array,
+                Weights,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients`
@@ -278,21 +330,31 @@ pub fn poles_coefficients_array1ofpnt2d2(
     Poles: &crate::ffi::TColgp_Array1OfPnt2d,
     CachePoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
 ) {
-    unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles) }
+    {
+        unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients`
 pub fn poles_coefficients_array1ofpnt2(
     Poles: &crate::ffi::TColgp_Array1OfPnt,
     CachePoles: &mut crate::ffi::TColgp_Array1OfPnt,
 ) {
-    unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles) }
+    {
+        unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BSplCLib.hxx`:2025 - `BSplCLib::FlatBezierKnots`
 /// Returns pointer to statically allocated array representing
 /// flat knots for bezier curve of the specified degree.
 /// Raises OutOfRange if Degree > MaxDegree()
 pub fn flat_bezier_knots(Degree: i32) -> f64 {
-    unsafe { crate::ffi::BSplCLib_flat_bezier_knots(Degree) }
+    {
+        let __result = unsafe { crate::ffi::BSplCLib_flat_bezier_knots(Degree) };
+        crate::check_exception();
+        __result
+    }
 }
 
 /// This enumeration describes the repartition of the
@@ -400,16 +462,18 @@ impl Cache {
         thePoles2d: &crate::ffi::TColgp_Array1OfPnt2d,
         theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BSplCLib_Cache_ctor_int_bool_array1ofreal_array1ofpnt2d_array1ofrealptr(
                     theDegree,
                     thePeriodic,
                     theFlatKnots,
                     thePoles2d,
                     theWeights.map_or(std::ptr::null(), |r| r as *const _),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -427,16 +491,18 @@ impl Cache {
         thePoles: &crate::ffi::TColgp_Array1OfPnt,
         theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BSplCLib_Cache_ctor_int_bool_array1ofreal_array1ofpnt_array1ofrealptr(
                     theDegree,
                     thePeriodic,
                     theFlatKnots,
                     thePoles,
                     theWeights.map_or(std::ptr::null(), |r| r as *const _),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -444,7 +510,13 @@ impl Cache {
     /// Verifies validity of the cache using flat parameter of the point
     /// \param theParameter parameter of the point placed in the span
     pub fn is_cache_valid(&self, theParameter: f64) -> bool {
-        unsafe { crate::ffi::BSplCLib_Cache_is_cache_valid(self as *const Self, theParameter) }
+        {
+            let __result = unsafe {
+                crate::ffi::BSplCLib_Cache_is_cache_valid(self as *const Self, theParameter)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:60 - `BSplCLib_Cache::BuildCache()`
@@ -460,14 +532,11 @@ impl Cache {
         thePoles2d: &crate::ffi::TColgp_Array1OfPnt2d,
         theWeights: &crate::ffi::TColStd_Array1OfReal,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt2d_array1ofrealptr(
-                self as *mut Self,
-                theParameter,
-                theFlatKnots,
-                thePoles2d,
-                theWeights as *const _,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt2d_array1ofrealptr(self as *mut Self, theParameter, theFlatKnots, thePoles2d, theWeights as *const _)
+            };
+            crate::check_exception();
         }
     }
 
@@ -484,14 +553,17 @@ impl Cache {
         thePoles: &crate::ffi::TColgp_Array1OfPnt,
         theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt_array1ofrealptr(
-                self as *mut Self,
-                theParameter,
-                theFlatKnots,
-                thePoles,
-                theWeights.map_or(std::ptr::null(), |r| r as *const _),
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt_array1ofrealptr(
+                    self as *mut Self,
+                    theParameter,
+                    theFlatKnots,
+                    thePoles,
+                    theWeights.map_or(std::ptr::null(), |r| r as *const _),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -500,15 +572,25 @@ impl Cache {
     /// \param[in]  theParameter parameter of calculation of the value
     /// \param[out] thePoint     the result of calculation (the point on the curve)
     pub fn d0_real_pnt2d(&self, theParameter: &f64, thePoint: &mut crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d0_real_pnt2d(self as *const Self, theParameter, thePoint)
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d0_real_pnt2d(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:79 - `BSplCLib_Cache::D0()`
     pub fn d0_real_pnt(&self, theParameter: &f64, thePoint: &mut crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d0_real_pnt(self as *const Self, theParameter, thePoint)
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d0_real_pnt(self as *const Self, theParameter, thePoint)
+            };
+            crate::check_exception();
         }
     }
 
@@ -524,13 +606,16 @@ impl Cache {
         thePoint: &mut crate::gp::Pnt2d,
         theTangent: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d1_real_pnt2d_vec2d(
-                self as *const Self,
-                theParameter,
-                thePoint,
-                theTangent,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d1_real_pnt2d_vec2d(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                    theTangent,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -541,13 +626,16 @@ impl Cache {
         thePoint: &mut crate::gp::Pnt,
         theTangent: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d1_real_pnt_vec(
-                self as *const Self,
-                theParameter,
-                thePoint,
-                theTangent,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d1_real_pnt_vec(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                    theTangent,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -565,14 +653,17 @@ impl Cache {
         theTangent: &mut crate::gp::Vec2d,
         theCurvature: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d2_real_pnt2d_vec2d2(
-                self as *const Self,
-                theParameter,
-                thePoint,
-                theTangent,
-                theCurvature,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d2_real_pnt2d_vec2d2(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                    theTangent,
+                    theCurvature,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -584,14 +675,17 @@ impl Cache {
         theTangent: &mut crate::gp::Vec,
         theCurvature: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d2_real_pnt_vec2(
-                self as *const Self,
-                theParameter,
-                thePoint,
-                theTangent,
-                theCurvature,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d2_real_pnt_vec2(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                    theTangent,
+                    theCurvature,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -611,15 +705,18 @@ impl Cache {
         theCurvature: &mut crate::gp::Vec2d,
         theTorsion: &mut crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d3_real_pnt2d_vec2d3(
-                self as *const Self,
-                theParameter,
-                thePoint,
-                theTangent,
-                theCurvature,
-                theTorsion,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d3_real_pnt2d_vec2d3(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                    theTangent,
+                    theCurvature,
+                    theTorsion,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -632,94 +729,150 @@ impl Cache {
         theCurvature: &mut crate::gp::Vec,
         theTorsion: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_Cache_d3_real_pnt_vec3(
-                self as *const Self,
-                theParameter,
-                thePoint,
-                theTangent,
-                theCurvature,
-                theTorsion,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_Cache_d3_real_pnt_vec3(
+                    self as *const Self,
+                    theParameter,
+                    thePoint,
+                    theTangent,
+                    theCurvature,
+                    theTorsion,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BSplCLib_Cache_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BSplCLib_Cache_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BSplCLib_Cache_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BSplCLib_Cache_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BSplCLib_Cache_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BSplCLib_Cache_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BSplCLib_Cache_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BSplCLib_Cache_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::BSplCLib_Cache_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BSplCLib_Cache_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBSplCLibCache> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BSplCLib_Cache_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::BSplCLib_Cache_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BSplCLib_Cache_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BSplCLib_Cache_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BSplCLib_Cache_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BSplCLib_Cache_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::BSplCLib_Cache_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::BSplCLib_Cache_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BSplCLib_Cache_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BSplCLib_Cache_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BSplCLib_Cache_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BSplCLib_Cache_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BSplCLib_Cache_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BSplCLib_Cache_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BSplCLib_Cache_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BSplCLib_Cache_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -734,20 +887,30 @@ unsafe impl crate::CppDeletable for HandleBSplCLibCache {
 impl HandleBSplCLibCache {
     /// Dereference this Handle to access the underlying BSplCLib_Cache
     pub fn get(&self) -> &crate::ffi::BSplCLib_Cache {
-        unsafe { &*(crate::ffi::HandleBSplCLibCache_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBSplCLibCache_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BSplCLib_Cache
     pub fn get_mut(&mut self) -> &mut crate::ffi::BSplCLib_Cache {
-        unsafe { &mut *(crate::ffi::HandleBSplCLibCache_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBSplCLibCache_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BSplCLib_Cache> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBSplCLibCache_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBSplCLibCache_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -792,15 +955,18 @@ impl EvaluatorFunction {
         theResult: &mut f64,
         theErrorCode: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::BSplCLib_EvaluatorFunction_evaluate(
-                self as *const Self,
-                theDerivativeRequest,
-                theStartEnd,
-                theParameter,
-                theResult,
-                theErrorCode,
-            )
+        {
+            unsafe {
+                crate::ffi::BSplCLib_EvaluatorFunction_evaluate(
+                    self as *const Self,
+                    theDerivativeRequest,
+                    theStartEnd,
+                    theParameter,
+                    theResult,
+                    theErrorCode,
+                )
+            };
+            crate::check_exception();
         }
     }
 }

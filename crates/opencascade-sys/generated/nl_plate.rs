@@ -26,201 +26,361 @@ unsafe impl crate::CppDeletable for HGPPConstraint {
 impl HGPPConstraint {
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_uv_free_sliding(self as *mut Self, UVFree) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_uv_free_sliding(self as *mut Self, UVFree)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HGPPConstraint_set_incremental_load_allowed(self as *mut Self, ILA)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_incremental_load_allowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HGPPConstraint_set_active_order(self as *mut Self, ActiveOrder)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_active_order(self as *mut Self, ActiveOrder)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_uv(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HGPPConstraint_set_uv(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_orientation(self as *mut Self, Orient) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_orientation(self as *mut Self, Orient)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_g0_criterion(self as *mut Self, TolDist) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_g0_criterion(self as *mut Self, TolDist)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_g1_criterion(self as *mut Self, TolAng) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_g1_criterion(self as *mut Self, TolAng)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_g2_criterion(self as *mut Self, TolCurv) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_g2_criterion(self as *mut Self, TolCurv)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_set_g3_criterion(self as *mut Self, TolG3) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_set_g3_criterion(self as *mut Self, TolG3)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_uv_free_sliding(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_uv_free_sliding(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_incremental_load_allowed(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_incremental_load_allowed(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:66 - `NLPlate_HGPPConstraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_uv(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HGPPConstraint_uv(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_orientation(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_orientation(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_is_g0(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HGPPConstraint_is_g0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g0_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g0_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g1_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g1_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g2_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g2_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g3_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g3_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_g0_criterion(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g0_criterion(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_g1_criterion(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g1_criterion(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_g2_criterion(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g2_criterion(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_g3_criterion(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_g3_criterion(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HGPPConstraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HGPPConstraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HGPPConstraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HGPPConstraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HGPPConstraint_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HGPPConstraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HGPPConstraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HGPPConstraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HGPPConstraint_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HGPPConstraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -235,22 +395,34 @@ unsafe impl crate::CppDeletable for HandleNLPlateHGPPConstraint {
 impl HandleNLPlateHGPPConstraint {
     /// Dereference this Handle to access the underlying NLPlate_HGPPConstraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HGPPConstraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHGPPConstraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHGPPConstraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HGPPConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HGPPConstraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHGPPConstraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHGPPConstraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HGPPConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHGPPConstraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -265,6 +437,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -283,6 +456,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -301,6 +475,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -319,6 +494,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -337,6 +513,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -355,6 +532,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -373,6 +551,7 @@ impl HandleNLPlateHGPPConstraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -399,92 +578,155 @@ unsafe impl crate::CppDeletable for HPG0Constraint {
 impl HPG0Constraint {
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:36 - `NLPlate_HPG0Constraint::NLPlate_HPG0Constraint()`
     pub fn new_xy_xyz(UV: &crate::gp::XY, Value: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0Constraint_ctor_xy_xyz(UV, Value))
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0Constraint_ctor_xy_xyz(UV, Value) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_set_uv_free_sliding(self as *mut Self, UVFree) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_set_uv_free_sliding(self as *mut Self, UVFree)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_set_incremental_load_allowed(self as *mut Self, ILA)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_set_incremental_load_allowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_uv_free_sliding(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0Constraint_uv_free_sliding(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_incremental_load_allowed(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_incremental_load_allowed(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:47 - `NLPlate_HPG0Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_is_g0(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0Constraint_is_g0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_g0_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0Constraint_g0_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_as_NLPlate_HGPPConstraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0Constraint_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -492,153 +734,274 @@ impl HPG0Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0Constraint_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_SetOrientation(
+                    self as *mut Self,
+                    Orient,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_SetG0Criterion(self as *mut Self, TolDist)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_SetG2Criterion(self as *mut Self, TolCurv)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_Orientation(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_Orientation(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_G1Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G1Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_G2Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G2Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_G3Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G3Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG0Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0Constraint_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -653,35 +1016,49 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG0Constraint {
 impl HandleNLPlateHPG0Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG0Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG0Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG0Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG0Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG0Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -696,6 +1073,7 @@ impl HandleNLPlateHPG0Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -714,6 +1092,7 @@ impl HandleNLPlateHPG0Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -732,6 +1111,7 @@ impl HandleNLPlateHPG0Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -762,97 +1142,149 @@ impl HPG0G1Constraint {
         Value: &crate::gp::XYZ,
         D1T: &crate::plate::D1,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G1Constraint_ctor_xy_xyz_d1(
-                UV, Value, D1T,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_ctor_xy_xyz_d1(UV, Value, D1T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_set_orientation(self as *mut Self, Orient) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_set_orientation(self as *mut Self, Orient)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:43 - `NLPlate_HPG0G1Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_orientation(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_orientation(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_g1_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_g1_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0G1Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0G1Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0G1Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HPG0Constraint
     pub fn as_hpg0_constraint(&self) -> &HPG0Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HPG0Constraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HPG0Constraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0Constraint (mutable)
     pub fn as_hpg0_constraint_mut(&mut self) -> &mut HPG0Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HPG0Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HPG0Constraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G1Constraint_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -860,190 +1292,315 @@ impl HPG0G1Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G1Constraint_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetUVFreeSliding(
-                self as *mut Self,
-                UVFree,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetUVFreeSliding(
+                    self as *mut Self,
+                    UVFree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetIncrementalLoadAllowed(
-                self as *mut Self,
-                ILA,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetIncrementalLoadAllowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_UVFreeSliding(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_UVFreeSliding(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementalLoadAllowed(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementalLoadAllowed(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsG0(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsG0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG0Criterion(
-                self as *mut Self,
-                TolDist,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG2Criterion(
-                self as *mut Self,
-                TolCurv,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G2Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G2Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G3Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G3Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G1Constraint_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1058,24 +1615,36 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG0G1Constraint {
 impl HandleNLPlateHPG0G1Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG0G1Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG0G1Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG0G1Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0G1Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG0G1Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0G1Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0G1Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0G1Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HPG0Constraint>
     pub fn to_handle_hpg0_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHPG0Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1083,23 +1652,27 @@ impl HandleNLPlateHPG0G1Constraint {
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1114,6 +1687,7 @@ impl HandleNLPlateHPG0G1Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1132,6 +1706,7 @@ impl HandleNLPlateHPG0G1Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1163,105 +1738,156 @@ impl HPG0G2Constraint {
         D1T: &crate::plate::D1,
         D2T: &crate::plate::D2,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G2Constraint_ctor_xy_xyz_d1_d2(
-                UV, Value, D1T, D2T,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_ctor_xy_xyz_d1_d2(UV, Value, D1T, D2T)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:43 - `NLPlate_HPG0G2Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G2Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_g2_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G2Constraint_g2_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G2Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0G2Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0G2Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0G2Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HPG0G1Constraint
     pub fn as_hpg0g1_constraint(&self) -> &HPG0G1Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0G1Constraint (mutable)
     pub fn as_hpg0g1_constraint_mut(&mut self) -> &mut HPG0G1Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0Constraint
     pub fn as_hpg0_constraint(&self) -> &HPG0Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0Constraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0Constraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0Constraint (mutable)
     pub fn as_hpg0_constraint_mut(&mut self) -> &mut HPG0Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0Constraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1269,202 +1895,339 @@ impl HPG0G2Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G2Constraint_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G2Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetOrientation(
+                    self as *mut Self,
+                    Orient,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_Orientation(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_Orientation(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUVFreeSliding(
-                self as *mut Self,
-                UVFree,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUVFreeSliding(
+                    self as *mut Self,
+                    UVFree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetIncrementalLoadAllowed(
-                self as *mut Self,
-                ILA,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetIncrementalLoadAllowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_UVFreeSliding(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_UVFreeSliding(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementalLoadAllowed(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementalLoadAllowed(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsG0(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsG0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG0Criterion(
-                self as *mut Self,
-                TolDist,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG2Criterion(
-                self as *mut Self,
-                TolCurv,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G3Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G3Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G2Constraint_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1479,24 +2242,36 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG0G2Constraint {
 impl HandleNLPlateHPG0G2Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG0G2Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG0G2Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG0G2Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0G2Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG0G2Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0G2Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0G2Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0G2Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HPG0G1Constraint>
     pub fn to_handle_hpg0g1_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0G1Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1504,12 +2279,14 @@ impl HandleNLPlateHPG0G2Constraint {
     pub fn to_handle_hpg0_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1517,23 +2294,27 @@ impl HandleNLPlateHPG0G2Constraint {
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1548,6 +2329,7 @@ impl HandleNLPlateHPG0G2Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1580,123 +2362,182 @@ impl HPG0G3Constraint {
         D2T: &crate::plate::D2,
         D3T: &crate::plate::D3,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G3Constraint_ctor_xy_xyz_d1_d2_d3(
-                UV, Value, D1T, D2T, D3T,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_ctor_xy_xyz_d1_d2_d3(UV, Value, D1T, D2T, D3T)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:45 - `NLPlate_HPG0G3Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G3Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:47 - `NLPlate_HPG0G3Constraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_g3_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G3Constraint_g3_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G3Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG0G3Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0G3Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG0G3Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HPG0G2Constraint
     pub fn as_hpg0g2_constraint(&self) -> &HPG0G2Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0G2Constraint (mutable)
     pub fn as_hpg0g2_constraint_mut(&mut self) -> &mut HPG0G2Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0G1Constraint
     pub fn as_hpg0g1_constraint(&self) -> &HPG0G1Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G1Constraint(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G1Constraint(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0G1Constraint (mutable)
     pub fn as_hpg0g1_constraint_mut(&mut self) -> &mut HPG0G1Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G1Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G1Constraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0Constraint
     pub fn as_hpg0_constraint(&self) -> &HPG0Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG0Constraint (mutable)
     pub fn as_hpg0_constraint_mut(&mut self) -> &mut HPG0Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1704,202 +2545,339 @@ impl HPG0G3Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G3Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G3Constraint_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G3Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetOrientation(
+                    self as *mut Self,
+                    Orient,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_Orientation(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_Orientation(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUVFreeSliding(
-                self as *mut Self,
-                UVFree,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUVFreeSliding(
+                    self as *mut Self,
+                    UVFree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetIncrementalLoadAllowed(
-                self as *mut Self,
-                ILA,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetIncrementalLoadAllowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_UVFreeSliding(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_UVFreeSliding(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementalLoadAllowed(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementalLoadAllowed(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsG0(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsG0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG0Criterion(
-                self as *mut Self,
-                TolDist,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG2Criterion(
-                self as *mut Self,
-                TolCurv,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG0G3Constraint_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1914,24 +2892,36 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG0G3Constraint {
 impl HandleNLPlateHPG0G3Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG0G3Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG0G3Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG0G3Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0G3Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG0G3Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0G3Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0G3Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG0G3Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0G2Constraint>
     pub fn to_handle_hpg0g2_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G2Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1939,12 +2929,14 @@ impl HandleNLPlateHPG0G3Constraint {
     pub fn to_handle_hpg0g1_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G1Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1952,12 +2944,14 @@ impl HandleNLPlateHPG0G3Constraint {
     pub fn to_handle_hpg0_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1965,23 +2959,27 @@ impl HandleNLPlateHPG0G3Constraint {
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2004,90 +3002,155 @@ unsafe impl crate::CppDeletable for HPG1Constraint {
 impl HPG1Constraint {
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:36 - `NLPlate_HPG1Constraint::NLPlate_HPG1Constraint()`
     pub fn new_xy_d1(UV: &crate::gp::XY, D1T: &crate::plate::D1) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG1Constraint_ctor_xy_d1(UV, D1T)) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG1Constraint_ctor_xy_d1(UV, D1T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_set_incremental_load_allowed(self as *mut Self, ILA)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_set_incremental_load_allowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_set_orientation(self as *mut Self, Orient) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_set_orientation(self as *mut Self, Orient)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_incremental_load_allowed(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_incremental_load_allowed(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:45 - `NLPlate_HPG1Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG1Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_is_g0(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG1Constraint_is_g0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_orientation(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG1Constraint_orientation(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_g1_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG1Constraint_g1_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG1Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG1Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG1Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG1Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG1Constraint_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2095,153 +3158,274 @@ impl HPG1Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG1Constraint_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG1Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_SetUVFreeSliding(
+                    self as *mut Self,
+                    UVFree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_SetG0Criterion(self as *mut Self, TolDist)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_SetG2Criterion(self as *mut Self, TolCurv)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_UVFreeSliding(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_UVFreeSliding(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_G0Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G0Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_G2Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G2Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_G3Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G3Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG1Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG1Constraint_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2256,35 +3440,49 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG1Constraint {
 impl HandleNLPlateHPG1Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG1Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG1Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG1Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG1Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG1Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG1Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG1Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG1Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG1Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG1Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG1Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG1Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2299,6 +3497,7 @@ impl HandleNLPlateHPG1Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2317,6 +3516,7 @@ impl HandleNLPlateHPG1Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2347,83 +3547,125 @@ impl HPG2Constraint {
         D1T: &crate::plate::D1,
         D2T: &crate::plate::D2,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG2Constraint_ctor_xy_d1_d2(
-                UV, D1T, D2T,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG2Constraint_ctor_xy_d1_d2(UV, D1T, D2T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:39 - `NLPlate_HPG2Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG2Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_g2_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG2Constraint_g2_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG2Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG2Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG2Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG2Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HPG1Constraint
     pub fn as_hpg1_constraint(&self) -> &HPG1Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HPG1Constraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HPG1Constraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG1Constraint (mutable)
     pub fn as_hpg1_constraint_mut(&mut self) -> &mut HPG1Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HPG1Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HPG1Constraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG2Constraint_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2431,187 +3673,334 @@ impl HPG2Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG2Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG2Constraint_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG2Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetIncrementalLoadAllowed(
-                self as *mut Self,
-                ILA,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetIncrementalLoadAllowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetOrientation(
+                    self as *mut Self,
+                    Orient,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementalLoadAllowed(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementalLoadAllowed(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_IsG0(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_IsG0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_Orientation(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_Orientation(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G1Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G1Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetUVFreeSliding(
+                    self as *mut Self,
+                    UVFree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetG0Criterion(self as *mut Self, TolDist)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetG2Criterion(self as *mut Self, TolCurv)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_UVFreeSliding(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_UVFreeSliding(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G0Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G0Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G3Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G3Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG2Constraint_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2626,24 +4015,36 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG2Constraint {
 impl HandleNLPlateHPG2Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG2Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG2Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG2Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG2Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG2Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG2Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG2Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG2Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<NLPlate_HPG1Constraint>
     pub fn to_handle_hpg1_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG2Constraint_to_HandleNLPlateHPG1Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2651,23 +4052,27 @@ impl HandleNLPlateHPG2Constraint {
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG2Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG2Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2682,6 +4087,7 @@ impl HandleNLPlateHPG2Constraint {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2713,99 +4119,147 @@ impl HPG3Constraint {
         D2T: &crate::plate::D2,
         D3T: &crate::plate::D3,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG3Constraint_ctor_xy_d1_d2_d3(
-                UV, D1T, D2T, D3T,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG3Constraint_ctor_xy_d1_d2_d3(UV, D1T, D2T, D3T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:43 - `NLPlate_HPG3Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_active_order(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG3Constraint_active_order(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:45 - `NLPlate_HPG3Constraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_g3_target(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG3Constraint_g3_target(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG3Constraint_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::NLPlate_HPG3Constraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG3Constraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG3Constraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to NLPlate_HPG2Constraint
     pub fn as_hpg2_constraint(&self) -> &HPG2Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG2Constraint (mutable)
     pub fn as_hpg2_constraint_mut(&mut self) -> &mut HPG2Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HPG1Constraint
     pub fn as_hpg1_constraint(&self) -> &HPG1Constraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG1Constraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG1Constraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HPG1Constraint (mutable)
     pub fn as_hpg1_constraint_mut(&mut self) -> &mut HPG1Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG1Constraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG1Constraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint
     pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to NLPlate_HGPPConstraint (mutable)
     pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2813,187 +4267,334 @@ impl HPG3Constraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG3Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG3Constraint_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::NLPlate_HPG3Constraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G2Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G2Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetIncrementalLoadAllowed(
-                self as *mut Self,
-                ILA,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetIncrementalLoadAllowed(
+                    self as *mut Self,
+                    ILA,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetOrientation(
+                    self as *mut Self,
+                    Orient,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementalLoadAllowed(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementalLoadAllowed(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_IsG0(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_IsG0(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_Orientation(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_Orientation(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G1Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G1Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetUVFreeSliding(
+                    self as *mut Self,
+                    UVFree,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetActiveOrder(
-                self as *mut Self,
-                ActiveOrder,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetActiveOrder(
+                    self as *mut Self,
+                    ActiveOrder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_SetUV(self as *mut Self, UV) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_SetUV(self as *mut Self, UV) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetG0Criterion(self as *mut Self, TolDist)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetG0Criterion(
+                    self as *mut Self,
+                    TolDist,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetG1Criterion(self as *mut Self, TolAng)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetG1Criterion(
+                    self as *mut Self,
+                    TolAng,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetG2Criterion(self as *mut Self, TolCurv)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetG2Criterion(
+                    self as *mut Self,
+                    TolCurv,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetG3Criterion(self as *mut Self, TolG3)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_SetG3Criterion(
+                    self as *mut Self,
+                    TolG3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_UVFreeSliding(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_UVFreeSliding(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_UV(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_UV(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G0Target(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G0Target(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_G0Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G0Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_G1Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G1Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_G2Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G2Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_G3Criterion(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_G3Criterion(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_HPG3Constraint_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3008,24 +4609,36 @@ unsafe impl crate::CppDeletable for HandleNLPlateHPG3Constraint {
 impl HandleNLPlateHPG3Constraint {
     /// Dereference this Handle to access the underlying NLPlate_HPG3Constraint
     pub fn get(&self) -> &crate::ffi::NLPlate_HPG3Constraint {
-        unsafe { &*(crate::ffi::HandleNLPlateHPG3Constraint_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG3Constraint_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying NLPlate_HPG3Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG3Constraint {
-        unsafe { &mut *(crate::ffi::HandleNLPlateHPG3Constraint_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleNLPlateHPG3Constraint_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HPG2Constraint>
     pub fn to_handle_hpg2_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG2Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG2Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3033,12 +4646,14 @@ impl HandleNLPlateHPG3Constraint {
     pub fn to_handle_hpg1_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG1Constraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3046,23 +4661,27 @@ impl HandleNLPlateHPG3Constraint {
     pub fn to_handle_hgpp_constraint(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHGPPConstraint(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleNLPlateHPG3Constraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3085,26 +4704,40 @@ impl NLPlate {
     pub fn new_handlegeomsurface(
         InitialSurface: &crate::ffi::HandleGeomSurface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_NLPlate_ctor_handlegeomsurface(
-                InitialSurface,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_NLPlate_ctor_handlegeomsurface(InitialSurface) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:39 - `NLPlate_NLPlate::Load()`
     pub fn load(&mut self, GConst: &crate::ffi::HandleNLPlateHGPPConstraint) {
-        unsafe { crate::ffi::NLPlate_NLPlate_load(self as *mut Self, GConst) }
+        {
+            unsafe { crate::ffi::NLPlate_NLPlate_load(self as *mut Self, GConst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:41 - `NLPlate_NLPlate::Solve()`
     pub fn solve(&mut self, ord: i32, InitialConsraintOrder: i32) {
-        unsafe { crate::ffi::NLPlate_NLPlate_solve(self as *mut Self, ord, InitialConsraintOrder) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_NLPlate_solve(self as *mut Self, ord, InitialConsraintOrder)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:44 - `NLPlate_NLPlate::Solve2()`
     pub fn solve2(&mut self, ord: i32, InitialConsraintOrder: i32) {
-        unsafe { crate::ffi::NLPlate_NLPlate_solve2(self as *mut Self, ord, InitialConsraintOrder) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_NLPlate_solve2(self as *mut Self, ord, InitialConsraintOrder)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:47 - `NLPlate_NLPlate::IncrementalSolve()`
@@ -3115,42 +4748,55 @@ impl NLPlate {
         NbIncrements: i32,
         UVSliding: bool,
     ) {
-        unsafe {
-            crate::ffi::NLPlate_NLPlate_incremental_solve(
-                self as *mut Self,
-                ord,
-                InitialConsraintOrder,
-                NbIncrements,
-                UVSliding,
-            )
+        {
+            unsafe {
+                crate::ffi::NLPlate_NLPlate_incremental_solve(
+                    self as *mut Self,
+                    ord,
+                    InitialConsraintOrder,
+                    NbIncrements,
+                    UVSliding,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:53 - `NLPlate_NLPlate::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_NLPlate_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_NLPlate_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:55 - `NLPlate_NLPlate::destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::NLPlate_NLPlate_destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::NLPlate_NLPlate_destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:61 - `NLPlate_NLPlate::Init()`
     /// reset the Plate in the initial state
     /// ( same as after Create((Surface))
     pub fn init(&mut self) {
-        unsafe { crate::ffi::NLPlate_NLPlate_init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::NLPlate_NLPlate_init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:63 - `NLPlate_NLPlate::Evaluate()`
     pub fn evaluate(&self, point2d: &crate::gp::XY) -> crate::OwnedPtr<crate::gp::XYZ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_NLPlate_evaluate(
-                self as *const Self,
-                point2d,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::NLPlate_NLPlate_evaluate(self as *const Self, point2d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3161,28 +4807,47 @@ impl NLPlate {
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<crate::gp::XYZ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_NLPlate_evaluate_derivative(
-                self as *const Self,
-                point2d,
-                iu,
-                iv,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_NLPlate_evaluate_derivative(
+                    self as *const Self,
+                    point2d,
+                    iu,
+                    iv,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:69 - `NLPlate_NLPlate::Continuity()`
     pub fn continuity(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_NLPlate_continuity(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::NLPlate_NLPlate_continuity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:71 - `NLPlate_NLPlate::ConstraintsSliding()`
     pub fn constraints_sliding(&mut self, NbIterations: i32) {
-        unsafe { crate::ffi::NLPlate_NLPlate_constraints_sliding(self as *mut Self, NbIterations) }
+        {
+            unsafe {
+                crate::ffi::NLPlate_NLPlate_constraints_sliding(self as *mut Self, NbIterations)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:73 - `NLPlate_NLPlate::MaxActiveConstraintOrder()`
     pub fn max_active_constraint_order(&self) -> i32 {
-        unsafe { crate::ffi::NLPlate_NLPlate_max_active_constraint_order(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::NLPlate_NLPlate_max_active_constraint_order(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }

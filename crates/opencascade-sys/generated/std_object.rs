@@ -23,7 +23,11 @@ impl Location {
     /// **Source:** `StdObject_Location.hxx` - `StdObject_Location::StdObject_Location()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdObject_Location_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::StdObject_Location_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `StdObject_Location.hxx`:28 - `StdObject_Location::PChildren()`
@@ -32,14 +36,19 @@ impl Location {
         &self,
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
-        unsafe { crate::ffi::StdObject_Location_p_children(self as *const Self, theChildren) }
+        {
+            unsafe { crate::ffi::StdObject_Location_p_children(self as *const Self, theChildren) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `StdObject_Location.hxx`:31 - `StdObject_Location::Import()`
     /// Import transient object from the persistent data.
     pub fn import(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StdObject_Location_import(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::StdObject_Location_import(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -49,8 +58,10 @@ impl Location {
         theLoc: &crate::top_loc::Location,
         theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
     ) -> crate::OwnedPtr<Location> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StdObject_Location_translate(theLoc, theMap))
+        {
+            let __result = unsafe { crate::ffi::StdObject_Location_translate(theLoc, theMap) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -72,14 +83,20 @@ impl Shape {
     /// **Source:** `StdObject_Shape.hxx`:28 - `StdObject_Shape::StdObject_Shape()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdObject_Shape_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::StdObject_Shape_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `StdObject_Shape.hxx`:34 - `StdObject_Shape::Import()`
     /// Import transient object from the persistent data.
     pub fn import(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::StdObject_Shape_import(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::StdObject_Shape_import(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -88,6 +105,9 @@ impl Shape {
         &self,
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
-        unsafe { crate::ffi::StdObject_Shape_p_children(self as *const Self, theChildren) }
+        {
+            unsafe { crate::ffi::StdObject_Shape_p_children(self as *const Self, theChildren) };
+            crate::check_exception();
+        }
     }
 }

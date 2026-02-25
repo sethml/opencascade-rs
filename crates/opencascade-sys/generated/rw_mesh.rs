@@ -11,7 +11,11 @@
 pub fn read_name_attribute(
     theLabel: &crate::tdf::Label,
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_read_name_attribute(theLabel)) }
+    {
+        let __result = unsafe { crate::ffi::RWMesh_read_name_attribute(theLabel) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `RWMesh.hxx`:32 - `RWMesh::FormatName`
 /// Generate name for specified labels.
@@ -23,12 +27,11 @@ pub fn format_name(
     theLabel: &crate::tdf::Label,
     theRefLabel: &crate::tdf::Label,
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::RWMesh_format_name(
-            theFormat.into(),
-            theLabel,
-            theRefLabel,
-        ))
+    {
+        let __result =
+            unsafe { crate::ffi::RWMesh_format_name(theFormat.into(), theLabel, theRefLabel) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 
@@ -176,32 +179,53 @@ unsafe impl crate::CppDeletable for CafReader {
 impl CafReader {
     /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
     /// Return target document.
     pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_document(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CafReader_document(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
     /// Set target document.
     /// Set system length unit according to the units of the document
     pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
-        unsafe { crate::ffi::RWMesh_CafReader_set_document(self as *mut Self, theDoc) }
+        {
+            unsafe { crate::ffi::RWMesh_CafReader_set_document(self as *mut Self, theDoc) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     /// Return prefix for generating root labels names.
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_root_prefix(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CafReader_root_prefix(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
     /// Set prefix for generating root labels names
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
-        unsafe { crate::ffi::RWMesh_CafReader_set_root_prefix(self as *mut Self, theRootPrefix) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_root_prefix(self as *mut Self, theRootPrefix)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
@@ -217,48 +241,74 @@ impl CafReader {
     /// put into document), Perform() will return TRUE and result flag will have failure bit set.
     /// @sa MemoryLimitMiB(), ExtraStatus().
     pub fn to_fill_incomplete_document(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_CafReader_to_fill_incomplete_document(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_to_fill_incomplete_document(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     /// Set flag allowing partially read file content to be put into the XDE document.
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_fill_incomplete_document(
-                self as *mut Self,
-                theToFillIncomplete,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_fill_incomplete_document(
+                    self as *mut Self,
+                    theToFillIncomplete,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
     /// Return memory usage limit in MiB, -1 by default which means no limit.
     pub fn memory_limit_mi_b(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_CafReader_memory_limit_mi_b(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_memory_limit_mi_b(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     /// Set memory usage limit in MiB; can be ignored by reader implementation!
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_memory_limit_mi_b(self as *mut Self, theLimitMiB)
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_memory_limit_mi_b(self as *mut Self, theLimitMiB)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
     /// Return coordinate system converter.
     pub fn coordinate_system_converter(&self) -> &CoordinateSystemConverter {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_coordinate_system_converter(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_coordinate_system_converter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     /// Set coordinate system converter.
     pub fn set_coordinate_system_converter(&mut self, theConverter: &CoordinateSystemConverter) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_coordinate_system_converter(
-                self as *mut Self,
-                theConverter,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_coordinate_system_converter(
+                    self as *mut Self,
+                    theConverter,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -266,34 +316,62 @@ impl CafReader {
     /// Return the length unit to convert into while reading the file, defined as scale factor for m
     /// (meters); -1.0 by default, which means that NO conversion will be applied.
     pub fn system_length_unit(&self) -> f64 {
-        unsafe { crate::ffi::RWMesh_CafReader_system_length_unit(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_system_length_unit(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
     /// Set system length units to convert into while reading the file, defined as scale factor for m
     /// (meters).
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
-        unsafe { crate::ffi::RWMesh_CafReader_set_system_length_unit(self as *mut Self, theUnits) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_system_length_unit(self as *mut Self, theUnits)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     /// Return TRUE if system coordinate system has been defined; FALSE by default.
     pub fn has_system_coordinate_system(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_CafReader_has_system_coordinate_system(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_has_system_coordinate_system(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
     /// Return system coordinate system; UNDEFINED by default, which means that no conversion will be
     /// done.
     pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_system_coordinate_system(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_system_coordinate_system(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     /// Set system origin coordinate system to perform conversion into during read.
     pub fn set_system_coordinate_system_ax3(&mut self, theCS: &crate::gp::Ax3) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_system_coordinate_system_ax3(self as *mut Self, theCS)
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_system_coordinate_system_ax3(
+                    self as *mut Self,
+                    theCS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -303,11 +381,14 @@ impl CafReader {
         &mut self,
         theCS: crate::rw_mesh::CoordinateSystem,
     ) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_system_coordinate_system_coordinatesystem(
-                self as *mut Self,
-                theCS.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_system_coordinate_system_coordinatesystem(
+                    self as *mut Self,
+                    theCS.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -315,34 +396,61 @@ impl CafReader {
     /// Return the length unit to convert from while reading the file, defined as scale factor for m
     /// (meters). Can be undefined (-1.0) if file format is unitless.
     pub fn file_length_unit(&self) -> f64 {
-        unsafe { crate::ffi::RWMesh_CafReader_file_length_unit(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_file_length_unit(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
     /// Set (override) file length units to convert from while reading the file, defined as scale
     /// factor for m (meters).
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
-        unsafe { crate::ffi::RWMesh_CafReader_set_file_length_unit(self as *mut Self, theUnits) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_file_length_unit(self as *mut Self, theUnits)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     /// Return TRUE if file origin coordinate system has been defined.
     pub fn has_file_coordinate_system(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_CafReader_has_file_coordinate_system(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_has_file_coordinate_system(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
     /// Return file origin coordinate system; can be UNDEFINED, which means no conversion will be
     /// done.
     pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_file_coordinate_system(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_file_coordinate_system(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     /// Set (override) file origin coordinate system to perform conversion during read.
     pub fn set_file_coordinate_system_ax3(&mut self, theCS: &crate::gp::Ax3) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_file_coordinate_system_ax3(self as *mut Self, theCS)
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_file_coordinate_system_ax3(
+                    self as *mut Self,
+                    theCS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -352,11 +460,14 @@ impl CafReader {
         &mut self,
         theCS: crate::rw_mesh::CoordinateSystem,
     ) {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_set_file_coordinate_system_coordinatesystem(
-                self as *mut Self,
-                theCS.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_set_file_coordinate_system_coordinatesystem(
+                    self as *mut Self,
+                    theCS.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -368,12 +479,16 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_perform_asciistring_progressrange(
-                self as *mut Self,
-                theFile,
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_perform_asciistring_progressrange(
+                    self as *mut Self,
+                    theFile,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -385,13 +500,17 @@ impl CafReader {
         theProgress: &crate::message::ProgressRange,
         theFile: &crate::t_collection::AsciiString,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_perform_istream_progressrange_asciistring(
-                self as *mut Self,
-                theStream,
-                theProgress,
-                theFile,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_perform_istream_progressrange_asciistring(
+                    self as *mut Self,
+                    theStream,
+                    theProgress,
+                    theFile,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -399,29 +518,44 @@ impl CafReader {
     /// Return extended status flags.
     /// @sa RWMesh_CafReaderStatusEx enumeration.
     pub fn extra_status(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_CafReader_extra_status(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_extra_status(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
     /// Return result as a single shape.
     pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_CafReader_single_shape(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_single_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
     /// Return the list of complementary files - external references (textures, data, etc.).
     pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_external_files(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_external_files(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
     /// Return metadata map.
     pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_metadata(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CafReader_metadata(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
@@ -431,12 +565,16 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_probe_header_asciistring_progressrange(
-                self as *mut Self,
-                theFile,
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_probe_header_asciistring_progressrange(
+                    self as *mut Self,
+                    theFile,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -450,80 +588,132 @@ impl CafReader {
         theFile: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_CafReader_probe_header_istream_asciistring_progressrange(
-                self as *mut Self,
-                theStream,
-                theFile,
-                theProgress,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_probe_header_istream_asciistring_progressrange(
+                    self as *mut Self,
+                    theStream,
+                    theFile,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::RWMesh_CafReader_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CafReader_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CafReader_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::RWMesh_CafReader_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::RWMesh_CafReader_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::RWMesh_CafReader_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::RWMesh_CafReader_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::RWMesh_CafReader_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_CafReader_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_CafReader_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::RWMesh_CafReader_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_CafReader_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::RWMesh_CafReader_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CafReader_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::RWMesh_CafReader_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::RWMesh_CafReader_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -538,20 +728,30 @@ unsafe impl crate::CppDeletable for HandleRWMeshCafReader {
 impl HandleRWMeshCafReader {
     /// Dereference this Handle to access the underlying RWMesh_CafReader
     pub fn get(&self) -> &crate::ffi::RWMesh_CafReader {
-        unsafe { &*(crate::ffi::HandleRWMeshCafReader_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleRWMeshCafReader_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying RWMesh_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_CafReader {
-        unsafe { &mut *(crate::ffi::HandleRWMeshCafReader_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleRWMeshCafReader_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<RWMesh_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleRWMeshCafReader_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleRWMeshCafReader_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -564,6 +764,7 @@ impl HandleRWMeshCafReader {
         let ptr = unsafe {
             crate::ffi::HandleRWMeshCafReader_downcast_to_HandleRWGltfCafReader(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -580,6 +781,7 @@ impl HandleRWMeshCafReader {
         let ptr = unsafe {
             crate::ffi::HandleRWMeshCafReader_downcast_to_HandleRWObjCafReader(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -598,6 +800,7 @@ impl HandleRWMeshCafReader {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -620,7 +823,11 @@ impl CafReader_CafDocumentTools {
     /// **Source:** `RWMesh_CafReader.hxx` - `RWMesh_CafReader_CafDocumentTools::RWMesh_CafReader_CafDocumentTools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_CafReader_CafDocumentTools_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CafReader_CafDocumentTools_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -665,13 +872,23 @@ impl CoordinateSystemConverter {
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:69 - `RWMesh_CoordinateSystemConverter::RWMesh_CoordinateSystemConverter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_CoordinateSystemConverter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_CoordinateSystemConverter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:72 - `RWMesh_CoordinateSystemConverter::IsEmpty()`
     /// Return TRUE if there is no transformation (target and current coordinates systems are same).
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_CoordinateSystemConverter_is_empty(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_is_empty(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:77 - `RWMesh_CoordinateSystemConverter::InputLengthUnit()`
@@ -679,19 +896,26 @@ impl CoordinateSystemConverter {
     /// -1.0 by default, which means that NO conversion will be applied (regardless output length
     /// unit).
     pub fn input_length_unit(&self) -> f64 {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_input_length_unit(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_input_length_unit(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:80 - `RWMesh_CoordinateSystemConverter::SetInputLengthUnit()`
     /// Set source length units as scale factor to m (meters).
     pub fn set_input_length_unit(&mut self, theInputScale: f64) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_set_input_length_unit(
-                self as *mut Self,
-                theInputScale,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_set_input_length_unit(
+                    self as *mut Self,
+                    theInputScale,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -700,50 +924,68 @@ impl CoordinateSystemConverter {
     /// -1.0 by default, which means that NO conversion will be applied (regardless input length
     /// unit).
     pub fn output_length_unit(&self) -> f64 {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_output_length_unit(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_output_length_unit(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:91 - `RWMesh_CoordinateSystemConverter::SetOutputLengthUnit()`
     /// Set destination length units as scale factor to m (meters).
     pub fn set_output_length_unit(&mut self, theOutputScale: f64) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_set_output_length_unit(
-                self as *mut Self,
-                theOutputScale,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_set_output_length_unit(
+                    self as *mut Self,
+                    theOutputScale,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:97 - `RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem()`
     /// Return TRUE if source coordinate system has been set; FALSE by default.
     pub fn has_input_coordinate_system(&self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_has_input_coordinate_system(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_has_input_coordinate_system(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:100 - `RWMesh_CoordinateSystemConverter::InputCoordinateSystem()`
     /// Source coordinate system; UNDEFINED by default.
     pub fn input_coordinate_system(&self) -> &crate::gp::Ax3 {
-        unsafe {
-            &*(crate::ffi::RWMesh_CoordinateSystemConverter_input_coordinate_system(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_input_coordinate_system(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:103 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
     /// Set source coordinate system.
     pub fn set_input_coordinate_system_ax3(&mut self, theSysFrom: &crate::gp::Ax3) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_set_input_coordinate_system_ax3(
-                self as *mut Self,
-                theSysFrom,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_set_input_coordinate_system_ax3(
+                    self as *mut Self,
+                    theSysFrom,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -753,39 +995,53 @@ impl CoordinateSystemConverter {
         &mut self,
         theSysFrom: crate::rw_mesh::CoordinateSystem,
     ) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_set_input_coordinate_system_coordinatesystem(self as *mut Self, theSysFrom.into())
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_set_input_coordinate_system_coordinatesystem(self as *mut Self, theSysFrom.into())
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:117 - `RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem()`
     /// Return TRUE if destination coordinate system has been set; FALSE by default.
     pub fn has_output_coordinate_system(&self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_has_output_coordinate_system(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_has_output_coordinate_system(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:120 - `RWMesh_CoordinateSystemConverter::OutputCoordinateSystem()`
     /// Destination coordinate system; UNDEFINED by default.
     pub fn output_coordinate_system(&self) -> &crate::gp::Ax3 {
-        unsafe {
-            &*(crate::ffi::RWMesh_CoordinateSystemConverter_output_coordinate_system(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_output_coordinate_system(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:123 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
     /// Set destination coordinate system.
     pub fn set_output_coordinate_system_ax3(&mut self, theSysTo: &crate::gp::Ax3) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_set_output_coordinate_system_ax3(
-                self as *mut Self,
-                theSysTo,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_set_output_coordinate_system_ax3(
+                    self as *mut Self,
+                    theSysTo,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -795,8 +1051,11 @@ impl CoordinateSystemConverter {
         &mut self,
         theSysTo: crate::rw_mesh::CoordinateSystem,
     ) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_set_output_coordinate_system_coordinatesystem(self as *mut Self, theSysTo.into())
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_set_output_coordinate_system_coordinatesystem(self as *mut Self, theSysTo.into())
+            };
+            crate::check_exception();
         }
     }
 
@@ -809,47 +1068,59 @@ impl CoordinateSystemConverter {
         theOutputSystem: &crate::gp::Ax3,
         theOutputLengthUnit: f64,
     ) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_init(
-                self as *mut Self,
-                theInputSystem,
-                theInputLengthUnit,
-                theOutputSystem,
-                theOutputLengthUnit,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_init(
+                    self as *mut Self,
+                    theInputSystem,
+                    theInputLengthUnit,
+                    theOutputSystem,
+                    theOutputLengthUnit,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:144 - `RWMesh_CoordinateSystemConverter::TransformTransformation()`
     /// Transform transformation.
     pub fn transform_transformation(&self, theTrsf: &mut crate::gp::Trsf) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_transform_transformation(
-                self as *const Self,
-                theTrsf,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_transform_transformation(
+                    self as *const Self,
+                    theTrsf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:159 - `RWMesh_CoordinateSystemConverter::TransformPosition()`
     /// Transform position.
     pub fn transform_position(&self, thePos: &mut crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_transform_position(
-                self as *const Self,
-                thePos,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_transform_position(
+                    self as *const Self,
+                    thePos,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:172 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
     /// Transform normal (e.g. exclude translation/scale part of transformation).
     pub fn transform_normal(&self, theNorm: &mut crate::ffi::Graphic3d_Vec3) {
-        unsafe {
-            crate::ffi::RWMesh_CoordinateSystemConverter_transform_normal(
-                self as *const Self,
-                theNorm,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_CoordinateSystemConverter_transform_normal(
+                    self as *const Self,
+                    theNorm,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -858,12 +1129,14 @@ impl CoordinateSystemConverter {
     pub fn standard_coordinate_system(
         theSys: crate::rw_mesh::CoordinateSystem,
     ) -> crate::OwnedPtr<crate::gp::Ax3> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::RWMesh_CoordinateSystemConverter_standard_coordinate_system(
                     theSys.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -898,15 +1171,17 @@ impl EdgeIterator {
         theToMapColors: bool,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::RWMesh_EdgeIterator_ctor_label_location_bool_style(
                     theLabel,
                     theLocation,
                     theToMapColors,
                     theStyle,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -918,129 +1193,213 @@ impl EdgeIterator {
         theShape: &crate::topo_ds::Shape,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_ctor_shape_style(
-                theShape, theStyle,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_ctor_shape_style(theShape, theStyle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:54 - `RWMesh_EdgeIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_more(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_EdgeIterator_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:57 - `RWMesh_EdgeIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_EdgeIterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:60 - `RWMesh_EdgeIterator::Edge()`
     /// Return current edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_edge(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_EdgeIterator_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:63 - `RWMesh_EdgeIterator::Shape()`
     /// Return current edge.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_EdgeIterator_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:66 - `RWMesh_EdgeIterator::Polygon3D()`
     /// Return current edge data.
     pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_polygon3_d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_polygon3_d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:69 - `RWMesh_EdgeIterator::IsEmpty()`
     /// Return true if geometry data is defined.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_EdgeIterator_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:76 - `RWMesh_EdgeIterator::ElemLower()`
     /// Lower element index in current triangulation.
     pub fn elem_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_elem_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_elem_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:79 - `RWMesh_EdgeIterator::ElemUpper()`
     /// Upper element index in current triangulation.
     pub fn elem_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_elem_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_elem_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:83 - `RWMesh_EdgeIterator::NbNodes()`
     /// Return number of nodes for the current edge.
     pub fn nb_nodes(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_nb_nodes(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_EdgeIterator_nb_nodes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:89 - `RWMesh_EdgeIterator::NodeLower()`
     /// Lower node index in current triangulation.
     pub fn node_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_node_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_node_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:92 - `RWMesh_EdgeIterator::NodeUpper()`
     /// Upper node index in current triangulation.
     pub fn node_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_node_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_node_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:96 - `RWMesh_EdgeIterator::node()`
     /// Return the node with specified index with applied transformation.
     pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_node(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_node(self as *const Self, theNode) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to RWMesh_ShapeIterator
     pub fn as_shape_iterator(&self) -> &ShapeIterator {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_as_RWMesh_ShapeIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_EdgeIterator_as_RWMesh_ShapeIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to RWMesh_ShapeIterator (mutable)
     pub fn as_shape_iterator_mut(&mut self) -> &mut ShapeIterator {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_EdgeIterator_as_RWMesh_ShapeIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_EdgeIterator_as_RWMesh_ShapeIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_ExploredShape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_EdgeIterator_inherited_ExploredShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
     pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_Style(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_inherited_Style(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_EdgeIterator_inherited_HasColor(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_inherited_HasColor(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
-        unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_Color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_EdgeIterator_inherited_Color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_inherited_NodeTransformed(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_EdgeIterator_inherited_NodeTransformed(
+                    self as *const Self,
+                    theNode,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1076,15 +1435,17 @@ impl FaceIterator {
         theToMapColors: bool,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::RWMesh_FaceIterator_ctor_label_location_bool_style(
                     theLabel,
                     theLocation,
                     theToMapColors,
                     theStyle,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1096,227 +1457,350 @@ impl FaceIterator {
         theShape: &crate::topo_ds::Shape,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_ctor_shape_style(
-                theShape, theStyle,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_ctor_shape_style(theShape, theStyle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:52 - `RWMesh_FaceIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_more(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_FaceIterator_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:55 - `RWMesh_FaceIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
-        unsafe { crate::ffi::RWMesh_FaceIterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_FaceIterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:58 - `RWMesh_FaceIterator::Face()`
     /// Return current face.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_face(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_FaceIterator_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:61 - `RWMesh_FaceIterator::Shape()`
     /// Return current face.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_FaceIterator_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:64 - `RWMesh_FaceIterator::Triangulation()`
     /// Return current face triangulation.
     pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_triangulation(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_triangulation(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:67 - `RWMesh_FaceIterator::IsEmptyMesh()`
     /// Return true if mesh data is defined.
     pub fn is_empty_mesh(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_is_empty_mesh(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_is_empty_mesh(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:70 - `RWMesh_FaceIterator::IsEmpty()`
     /// Return true if mesh data is defined.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_FaceIterator_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:78 - `RWMesh_FaceIterator::FaceStyle()`
     /// Return face material.
     pub fn face_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_face_style(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_face_style(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:81 - `RWMesh_FaceIterator::HasFaceColor()`
     /// Return TRUE if face color is set.
     pub fn has_face_color(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_has_face_color(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_has_face_color(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:84 - `RWMesh_FaceIterator::FaceColor()`
     /// Return face color.
     pub fn face_color(&self) -> &crate::quantity::ColorRGBA {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_face_color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_face_color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:88 - `RWMesh_FaceIterator::NbTriangles()`
     /// Return number of elements of specific type for the current face.
     pub fn nb_triangles(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_FaceIterator_nb_triangles(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_nb_triangles(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:91 - `RWMesh_FaceIterator::ElemLower()`
     /// Lower element index in current triangulation.
     pub fn elem_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_FaceIterator_elem_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_elem_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:94 - `RWMesh_FaceIterator::ElemUpper()`
     /// Upper element index in current triangulation.
     pub fn elem_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_FaceIterator_elem_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_elem_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:97 - `RWMesh_FaceIterator::TriangleOriented()`
     /// Return triangle with specified index with applied Face orientation.
     pub fn triangle_oriented(&self, theElemIndex: i32) -> crate::OwnedPtr<crate::poly::Triangle> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_triangle_oriented(
-                self as *const Self,
-                theElemIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_triangle_oriented(self as *const Self, theElemIndex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:109 - `RWMesh_FaceIterator::HasNormals()`
     /// Return true if triangulation has defined normals.
     pub fn has_normals(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_has_normals(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_has_normals(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:112 - `RWMesh_FaceIterator::HasTexCoords()`
     /// Return true if triangulation has defined normals.
     pub fn has_tex_coords(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_has_tex_coords(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_has_tex_coords(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:116 - `RWMesh_FaceIterator::NormalTransformed()`
     /// Return normal at specified node index with face transformation applied and face orientation
     /// applied.
     pub fn normal_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Dir> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_normal_transformed(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_normal_transformed(self as *const Self, theNode)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:131 - `RWMesh_FaceIterator::NbNodes()`
     /// Return number of nodes for the current face.
     pub fn nb_nodes(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_FaceIterator_nb_nodes(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_FaceIterator_nb_nodes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:137 - `RWMesh_FaceIterator::NodeLower()`
     /// Lower node index in current triangulation.
     pub fn node_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_FaceIterator_node_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_node_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:140 - `RWMesh_FaceIterator::NodeUpper()`
     /// Upper node index in current triangulation.
     pub fn node_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_FaceIterator_node_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_node_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:143 - `RWMesh_FaceIterator::NodeTexCoord()`
     /// Return texture coordinates for the node.
     pub fn node_tex_coord(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_node_tex_coord(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_node_tex_coord(self as *const Self, theNode)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:150 - `RWMesh_FaceIterator::node()`
     /// Return the node with specified index with applied transformation.
     pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_node(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_node(self as *const Self, theNode) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:156 - `RWMesh_FaceIterator::normal()`
     /// Return normal at specified node index without face transformation applied.
     pub fn normal(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Dir> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_normal(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_normal(self as *const Self, theNode) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:159 - `RWMesh_FaceIterator::triangle()`
     /// Return triangle with specified index.
     pub fn triangle(&self, theElemIndex: i32) -> crate::OwnedPtr<crate::poly::Triangle> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_triangle(
-                self as *const Self,
-                theElemIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_triangle(self as *const Self, theElemIndex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to RWMesh_ShapeIterator
     pub fn as_shape_iterator(&self) -> &ShapeIterator {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_as_RWMesh_ShapeIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_as_RWMesh_ShapeIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to RWMesh_ShapeIterator (mutable)
     pub fn as_shape_iterator_mut(&mut self) -> &mut ShapeIterator {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_FaceIterator_as_RWMesh_ShapeIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_as_RWMesh_ShapeIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_ExploredShape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_inherited_ExploredShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
     pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_Style(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_inherited_Style(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_FaceIterator_inherited_HasColor(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_inherited_HasColor(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
-        unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_Color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_FaceIterator_inherited_Color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_inherited_NodeTransformed(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_FaceIterator_inherited_NodeTransformed(
+                    self as *const Self,
+                    theNode,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1340,19 +1824,34 @@ unsafe impl crate::CppDeletable for MaterialMap {
 impl MaterialMap {
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_MaterialMap_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_MaterialMap_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_MaterialMap_default_style(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_MaterialMap_default_style(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
-        unsafe { crate::ffi::RWMesh_MaterialMap_set_default_style(self as *mut Self, theStyle) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_MaterialMap_set_default_style(self as *mut Self, theStyle)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
@@ -1361,11 +1860,12 @@ impl MaterialMap {
         &self,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_MaterialMap_find_material(
-                self as *const Self,
-                theStyle,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_find_material(self as *const Self, theStyle)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1375,11 +1875,11 @@ impl MaterialMap {
         &mut self,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_MaterialMap_add_material(
-                self as *mut Self,
-                theStyle,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_MaterialMap_add_material(self as *mut Self, theStyle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1389,7 +1889,12 @@ impl MaterialMap {
     /// IMAGES: Path/ModelName/textures/
     /// Warning! Output folder is NOT cleared.
     pub fn create_texture_folder(&mut self) -> bool {
-        unsafe { crate::ffi::RWMesh_MaterialMap_create_texture_folder(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_MaterialMap_create_texture_folder(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
@@ -1403,13 +1908,17 @@ impl MaterialMap {
         theTexture: &crate::ffi::HandleImageTexture,
         theKey: &crate::t_collection::AsciiString,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_MaterialMap_copy_texture(
-                self as *mut Self,
-                theResTexture,
-                theTexture,
-                theKey,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_copy_texture(
+                    self as *mut Self,
+                    theResTexture,
+                    theTexture,
+                    theKey,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1421,88 +1930,143 @@ impl MaterialMap {
         theKey: &crate::t_collection::AsciiString,
         theName: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::RWMesh_MaterialMap_define_material(
-                self as *mut Self,
-                theStyle,
-                theKey,
-                theName,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_MaterialMap_define_material(
+                    self as *mut Self,
+                    theStyle,
+                    theKey,
+                    theName,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
     /// Return failed flag.
     pub fn is_failed(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_MaterialMap_is_failed(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_MaterialMap_is_failed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::RWMesh_MaterialMap_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::RWMesh_MaterialMap_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_MaterialMap_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_MaterialMap_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::RWMesh_MaterialMap_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_MaterialMap_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::RWMesh_MaterialMap_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::RWMesh_MaterialMap_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_MaterialMap_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_MaterialMap_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::RWMesh_MaterialMap_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::RWMesh_MaterialMap_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1517,20 +2081,31 @@ unsafe impl crate::CppDeletable for HandleRWMeshMaterialMap {
 impl HandleRWMeshMaterialMap {
     /// Dereference this Handle to access the underlying RWMesh_MaterialMap
     pub fn get(&self) -> &crate::ffi::RWMesh_MaterialMap {
-        unsafe { &*(crate::ffi::HandleRWMeshMaterialMap_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleRWMeshMaterialMap_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying RWMesh_MaterialMap
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_MaterialMap {
-        unsafe { &mut *(crate::ffi::HandleRWMeshMaterialMap_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleRWMeshMaterialMap_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<RWMesh_MaterialMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleRWMeshMaterialMap_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleRWMeshMaterialMap_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1545,6 +2120,7 @@ impl HandleRWMeshMaterialMap {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1563,6 +2139,7 @@ impl HandleRWMeshMaterialMap {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1589,7 +2166,11 @@ impl NodeAttributes {
     /// **Source:** `RWMesh_NodeAttributes.hxx` - `RWMesh_NodeAttributes::RWMesh_NodeAttributes()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_NodeAttributes_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_NodeAttributes_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -1614,89 +2195,149 @@ impl ShapeIterator {
     /// **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
     /// Return explored shape.
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_ShapeIterator_explored_shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_explored_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::Shape()`
     /// Return shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_ShapeIterator_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_ShapeIterator_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:44 - `RWMesh_ShapeIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_more(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_ShapeIterator_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:47 - `RWMesh_ShapeIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_ShapeIterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:50 - `RWMesh_ShapeIterator::IsEmpty()`
     /// Return true if mesh data is defined.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
     /// Return shape material.
     pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_ShapeIterator_style(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_ShapeIterator_style(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     /// Return TRUE if shape color is set.
     pub fn has_color(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_has_color(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_has_color(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
     /// Return shape color.
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
-        unsafe { &*(crate::ffi::RWMesh_ShapeIterator_color(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_ShapeIterator_color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::ElemLower()`
     /// Lower element index in current triangulation.
     pub fn elem_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_elem_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_elem_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:65 - `RWMesh_ShapeIterator::ElemUpper()`
     /// Upper element index in current triangulation.
     pub fn elem_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_elem_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_elem_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:68 - `RWMesh_ShapeIterator::NbNodes()`
     /// Return number of nodes for the current shape.
     pub fn nb_nodes(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_nb_nodes(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_nb_nodes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:71 - `RWMesh_ShapeIterator::NodeLower()`
     /// Lower node index in current shape.
     pub fn node_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_node_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_node_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:74 - `RWMesh_ShapeIterator::NodeUpper()`
     /// Upper node index in current shape.
     pub fn node_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_ShapeIterator_node_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_ShapeIterator_node_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
     /// Return the node with specified index with applied transformation.
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_ShapeIterator_node_transformed(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_ShapeIterator_node_transformed(self as *const Self, theNode)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1718,58 +2359,87 @@ unsafe impl crate::CppDeletable for TriangulationReader {
 impl TriangulationReader {
     /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_TriangulationReader_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationReader_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:65 - `RWMesh_TriangulationReader::FileName()`
     /// Returns file name for reporting issues.
     pub fn file_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::RWMesh_TriangulationReader_file_name(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationReader_file_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:68 - `RWMesh_TriangulationReader::SetFileName()`
     /// Sets file name for reporting issues.
     pub fn set_file_name(&mut self, theFileName: &crate::t_collection::AsciiString) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_set_file_name(self as *mut Self, theFileName)
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationReader_set_file_name(self as *mut Self, theFileName)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:71 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
     /// Returns coordinate system converter using for correct data loading.
     pub fn coordinate_system_converter(&self) -> &CoordinateSystemConverter {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationReader_coordinate_system_converter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_coordinate_system_converter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:77 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
     /// Sets coordinate system converter.
     pub fn set_coordinate_system_converter(&mut self, theConverter: &CoordinateSystemConverter) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_set_coordinate_system_converter(
-                self as *mut Self,
-                theConverter,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationReader_set_coordinate_system_converter(
+                    self as *mut Self,
+                    theConverter,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:83 - `RWMesh_TriangulationReader::IsDoublePrecision()`
     /// Returns flag to fill in triangulation using double or single precision; FALSE by default.
     pub fn is_double_precision(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_is_double_precision(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_is_double_precision(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:86 - `RWMesh_TriangulationReader::SetDoublePrecision()`
     /// Sets flag to fill in triangulation using double or single precision.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_set_double_precision(
-                self as *mut Self,
-                theIsDouble,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationReader_set_double_precision(
+                    self as *mut Self,
+                    theIsDouble,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1777,36 +2447,52 @@ impl TriangulationReader {
     /// Returns TRUE if degenerated triangles should be skipped during mesh loading (only indexes will
     /// be checked).
     pub fn to_skip_degenerates(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_to_skip_degenerates(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_to_skip_degenerates(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:93 - `RWMesh_TriangulationReader::SetToSkipDegenerates()`
     /// Sets flag to skip degenerated triangles during mesh loading (only indexes will be checked).
     pub fn set_to_skip_degenerates(&mut self, theToSkip: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_set_to_skip_degenerates(
-                self as *mut Self,
-                theToSkip,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationReader_set_to_skip_degenerates(
+                    self as *mut Self,
+                    theToSkip,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:99 - `RWMesh_TriangulationReader::ToPrintDebugMessages()`
     /// Returns TRUE if additional debug information should be print.
     pub fn to_print_debug_messages(&self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_to_print_debug_messages(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_to_print_debug_messages(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:102 - `RWMesh_TriangulationReader::SetToPrintDebugMessages()`
     /// Sets flag to print debug information.
     pub fn set_to_print_debug_messages(&mut self, theToPrint: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_set_to_print_debug_messages(
-                self as *mut Self,
-                theToPrint,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationReader_set_to_print_debug_messages(
+                    self as *mut Self,
+                    theToPrint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1814,14 +2500,20 @@ impl TriangulationReader {
     /// Starts and reset internal object that accumulates nodes/triangles statistic during data
     /// reading.
     pub fn start_statistic(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_start_statistic(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_TriangulationReader_start_statistic(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:123 - `RWMesh_TriangulationReader::StopStatistic()`
     /// Stops and nullify internal object that accumulates nodes/triangles statistic during data
     /// reading.
     pub fn stop_statistic(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_stop_statistic(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_TriangulationReader_stop_statistic(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:135 - `RWMesh_TriangulationReader::PrintStatistic()`
@@ -1829,7 +2521,10 @@ impl TriangulationReader {
     /// This method should be used between StartStatistic() and StopStatistic() calls
     /// for correct results.
     pub fn print_statistic(&self) {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_print_statistic(self as *const Self) }
+        {
+            unsafe { crate::ffi::RWMesh_TriangulationReader_print_statistic(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load()`
@@ -1840,99 +2535,145 @@ impl TriangulationReader {
         theDestMesh: &crate::ffi::HandlePolyTriangulation,
         theFileSystem: &crate::ffi::HandleOSDFileSystem,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_load(
-                self as *const Self,
-                theSourceMesh,
-                theDestMesh,
-                theFileSystem,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_load(
+                    self as *const Self,
+                    theSourceMesh,
+                    theDestMesh,
+                    theFileSystem,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::RWMesh_TriangulationReader_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::RWMesh_TriangulationReader_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_TriangulationReader_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_TriangulationReader_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationReader_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationReader_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::RWMesh_TriangulationReader_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationReader_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationReader_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationReader_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::RWMesh_TriangulationReader_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::RWMesh_TriangulationReader_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1947,22 +2688,34 @@ unsafe impl crate::CppDeletable for HandleRWMeshTriangulationReader {
 impl HandleRWMeshTriangulationReader {
     /// Dereference this Handle to access the underlying RWMesh_TriangulationReader
     pub fn get(&self) -> &crate::ffi::RWMesh_TriangulationReader {
-        unsafe { &*(crate::ffi::HandleRWMeshTriangulationReader_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleRWMeshTriangulationReader_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying RWMesh_TriangulationReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_TriangulationReader {
-        unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationReader_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleRWMeshTriangulationReader_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<RWMesh_TriangulationReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleRWMeshTriangulationReader_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1977,6 +2730,7 @@ impl HandleRWMeshTriangulationReader {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2014,53 +2768,90 @@ impl TriangulationSource {
     /// **Source:** `RWMesh_TriangulationSource.hxx`:30 - `RWMesh_TriangulationSource::RWMesh_TriangulationSource()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_TriangulationSource_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_TriangulationSource_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationSource_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:36 - `RWMesh_TriangulationSource::Reader()`
     /// Returns reader allowing to read data from the buffer.
     pub fn reader(&self) -> &crate::ffi::HandleRWMeshTriangulationReader {
-        unsafe { &*(crate::ffi::RWMesh_TriangulationSource_reader(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationSource_reader(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:39 - `RWMesh_TriangulationSource::SetReader()`
     /// Sets reader allowing to read data from the buffer.
     pub fn set_reader(&mut self, theReader: &crate::ffi::HandleRWMeshTriangulationReader) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_set_reader(self as *mut Self, theReader) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_set_reader(self as *mut Self, theReader)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:43 - `RWMesh_TriangulationSource::DegeneratedTriNb()`
     /// Returns number of degenerated triangles collected during data reading.
     /// Used for debug statistic purpose.
     pub fn degenerated_tri_nb(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_degenerated_tri_nb(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_degenerated_tri_nb(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
     /// Gets access to number of degenerated triangles to collect them during data reading.
     pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_change_degenerated_tri_nb(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_change_degenerated_tri_nb(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:49 - `RWMesh_TriangulationSource::HasGeometry()`
     /// Returns TRUE if triangulation has some geometry.
     pub fn has_geometry(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_has_geometry(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationSource_has_geometry(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:55 - `RWMesh_TriangulationSource::NbEdges()`
     /// Returns the number of edges for this triangulation.
     pub fn nb_edges(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_nb_edges(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationSource_nb_edges(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:60 - `RWMesh_TriangulationSource::Edge()`
@@ -2068,7 +2859,13 @@ impl TriangulationSource {
     /// @param[in] theIndex edge index within [1, NbEdges()] range
     /// @return edge node indices, with each node defined within [1, NbNodes()] range
     pub fn edge(&self, theIndex: i32) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_edge(self as *const Self, theIndex) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_edge(self as *const Self, theIndex)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:65 - `RWMesh_TriangulationSource::SetEdge()`
@@ -2076,8 +2873,15 @@ impl TriangulationSource {
     /// @param[in] theIndex edge index within [1, NbEdges()] range
     /// @param[in] theEdge edge node indices, with each node defined within [1, NbNodes()] range
     pub fn set_edge(&mut self, theIndex: i32, theEdge: i32) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_set_edge(self as *mut Self, theIndex, theEdge)
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_set_edge(
+                    self as *mut Self,
+                    theIndex,
+                    theEdge,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2088,17 +2892,26 @@ impl TriangulationSource {
     /// actually loaded values (due to broken header or extra mesh processing). Always check
     /// triangulation size of actually loaded data in code to avoid out-of-range issues.
     pub fn nb_deferred_nodes(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_nb_deferred_nodes(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_nb_deferred_nodes(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:78 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
     /// Sets number of nodes for deferred loading.
     pub fn set_nb_deferred_nodes(&mut self, theNbNodes: i32) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_set_nb_deferred_nodes(
-                self as *mut Self,
-                theNbNodes,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_set_nb_deferred_nodes(
+                    self as *mut Self,
+                    theNbNodes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2108,17 +2921,26 @@ impl TriangulationSource {
     /// actually loaded values (due to broken header or extra mesh processing). Always check
     /// triangulation size of actually loaded data in code to avoid out-of-range issues.
     pub fn nb_deferred_triangles(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_nb_deferred_triangles(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_nb_deferred_triangles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:90 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
     /// Sets number of triangles for deferred loading.
     pub fn set_nb_deferred_triangles(&mut self, theNbTris: i32) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_set_nb_deferred_triangles(
-                self as *mut Self,
-                theNbTris,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_set_nb_deferred_triangles(
+                    self as *mut Self,
+                    theNbTris,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2126,7 +2948,12 @@ impl TriangulationSource {
     /// Returns an internal array of edges.
     /// Edge()/SetEdge() should be used instead in portable code.
     pub fn internal_edges(&mut self) -> &mut crate::ffi::TColStd_Array1OfInteger {
-        unsafe { &mut *(crate::ffi::RWMesh_TriangulationSource_internal_edges(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationSource_internal_edges(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
@@ -2134,58 +2961,77 @@ impl TriangulationSource {
     /// @param[in] theNbTriangles  new number of triangles
     /// @param[in] theToCopyOld    copy old triangles into the new array
     pub fn resize_edges(&mut self, theNbEdges: i32, theToCopyOld: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_resize_edges(
-                self as *mut Self,
-                theNbEdges,
-                theToCopyOld,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_resize_edges(
+                    self as *mut Self,
+                    theNbEdges,
+                    theToCopyOld,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::RWMesh_TriangulationSource_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::RWMesh_TriangulationSource_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::RWMesh_TriangulationSource_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_TriangulationSource_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Poly_Triangulation
     pub fn as_poly_triangulation(&self) -> &crate::poly::Triangulation {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationSource_as_Poly_Triangulation(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_as_Poly_Triangulation(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Poly_Triangulation (mutable)
     pub fn as_poly_triangulation_mut(&mut self) -> &mut crate::poly::Triangulation {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_as_Poly_Triangulation_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_as_Poly_Triangulation_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationSource_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2193,186 +3039,278 @@ impl TriangulationSource {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationSource> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_TriangulationSource_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:100 - `Poly_Triangulation::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_Copy(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_Copy(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
     pub fn deflection(&self) -> f64 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_Deflection(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_Deflection(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
     pub fn parameters(&self) -> &crate::ffi::HandlePolyTriangulationParameters {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationSource_inherited_Parameters(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_Parameters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_Clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_Clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
     pub fn nb_nodes(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_NbNodes(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_NbNodes(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
     pub fn nb_triangles(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_NbTriangles(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_NbTriangles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
     pub fn has_uv_nodes(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_HasUVNodes(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_HasUVNodes(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
     pub fn has_normals(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_HasNormals(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_HasNormals(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
     pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_Node(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_Node(self as *const Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
     pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetNode(
-                self as *mut Self,
-                theIndex,
-                thePnt,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetNode(
+                    self as *mut Self,
+                    theIndex,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:155 - `Poly_Triangulation::UVNode()`
     pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_UVNode(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_UVNode(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:160 - `Poly_Triangulation::SetUVNode()`
     pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetUVNode(
-                self as *mut Self,
-                theIndex,
-                thePnt,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetUVNode(
+                    self as *mut Self,
+                    theIndex,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
     pub fn triangle(&self, theIndex: i32) -> &crate::poly::Triangle {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationSource_inherited_Triangle(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_Triangle(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
     pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetTriangle(
-                self as *mut Self,
-                theIndex,
-                theTriangle,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetTriangle(
+                    self as *mut Self,
+                    theIndex,
+                    theTriangle,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
     pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_Normal(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_Normal(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
     pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Vec3f) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetNormal(
-                self as *mut Self,
-                theIndex,
-                theNormal,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetNormal(
+                    self as *mut Self,
+                    theIndex,
+                    theNormal,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
     pub fn mesh_purpose(&self) -> u32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_MeshPurpose(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_MeshPurpose(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
     pub fn set_mesh_purpose(&mut self, thePurpose: u32) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetMeshPurpose(
-                self as *mut Self,
-                thePurpose,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetMeshPurpose(
+                    self as *mut Self,
+                    thePurpose,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
     pub fn cached_min_max(&self) -> &crate::bnd::Box {
-        unsafe {
-            &*(crate::ffi::RWMesh_TriangulationSource_inherited_CachedMinMax(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_CachedMinMax(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
     pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetCachedMinMax(
-                self as *mut Self,
-                theBox,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetCachedMinMax(
+                    self as *mut Self,
+                    theBox,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
     pub fn has_cached_min_max(&self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_HasCachedMinMax(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_HasCachedMinMax(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
     pub fn update_cached_min_max(&mut self) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_UpdateCachedMinMax(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_UpdateCachedMinMax(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2383,174 +3321,240 @@ impl TriangulationSource {
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_MinMax(
-                self as *const Self,
-                theBox,
-                theTrsf,
-                theIsAccurate,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_MinMax(
+                    self as *const Self,
+                    theBox,
+                    theTrsf,
+                    theIsAccurate,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
     pub fn is_double_precision(&self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_IsDoublePrecision(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_IsDoublePrecision(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_SetDoublePrecision(
-                self as *mut Self,
-                theIsDouble,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_SetDoublePrecision(
+                    self as *mut Self,
+                    theIsDouble,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
     pub fn resize_nodes(&mut self, theNbNodes: i32, theToCopyOld: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_ResizeNodes(
-                self as *mut Self,
-                theNbNodes,
-                theToCopyOld,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_ResizeNodes(
+                    self as *mut Self,
+                    theNbNodes,
+                    theToCopyOld,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
     pub fn resize_triangles(&mut self, theNbTriangles: i32, theToCopyOld: bool) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_ResizeTriangles(
-                self as *mut Self,
-                theNbTriangles,
-                theToCopyOld,
-            )
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_ResizeTriangles(
+                    self as *mut Self,
+                    theNbTriangles,
+                    theToCopyOld,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
     pub fn add_uv_nodes(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_AddUVNodes(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_AddUVNodes(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
     pub fn remove_uv_nodes(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_RemoveUVNodes(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_RemoveUVNodes(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
     pub fn add_normals(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_AddNormals(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_AddNormals(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
     pub fn remove_normals(&mut self) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_RemoveNormals(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_RemoveNormals(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
     pub fn compute_normals(&mut self) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_ComputeNormals(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_ComputeNormals(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
     pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::RWMesh_TriangulationSource_inherited_MapNodeArray(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_MapNodeArray(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
     pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::RWMesh_TriangulationSource_inherited_MapTriangleArray(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
     pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::RWMesh_TriangulationSource_inherited_MapUVNodeArray(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_MapUVNodeArray(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
     pub fn map_normal_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTShortHArray1OfShortReal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::RWMesh_TriangulationSource_inherited_MapNormalArray(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_MapNormalArray(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
     pub fn internal_triangles(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalTriangles(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_InternalTriangles(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
     pub fn internal_nodes(&mut self) -> &mut crate::poly::ArrayOfNodes {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalNodes(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_InternalNodes(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
     pub fn internal_uv_nodes(&mut self) -> &mut crate::poly::ArrayOfUVNodes {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalUVNodes(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_InternalUVNodes(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
     pub fn internal_normals(&mut self) -> &mut crate::ffi::NCollection_Array1_gp_Vec3f {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalNormals(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_InternalNormals(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
     pub fn has_deferred_data(&self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_HasDeferredData(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_HasDeferredData(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
     pub fn load_deferred_data(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_LoadDeferredData(
-                self as *mut Self,
-                theFileSystem,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_LoadDeferredData(
+                    self as *mut Self,
+                    theFileSystem,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2559,76 +3563,116 @@ impl TriangulationSource {
         &self,
         theFileSystem: &crate::ffi::HandleOSDFileSystem,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::RWMesh_TriangulationSource_inherited_DetachedLoadDeferredData(
                     self as *const Self,
                     theFileSystem,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
     pub fn unload_deferred_data(&mut self) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_UnloadDeferredData(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_UnloadDeferredData(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::RWMesh_TriangulationSource_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::RWMesh_TriangulationSource_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_TriangulationSource_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::RWMesh_TriangulationSource_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2643,33 +3687,47 @@ unsafe impl crate::CppDeletable for HandleRWMeshTriangulationSource {
 impl HandleRWMeshTriangulationSource {
     /// Dereference this Handle to access the underlying RWMesh_TriangulationSource
     pub fn get(&self) -> &crate::ffi::RWMesh_TriangulationSource {
-        unsafe { &*(crate::ffi::HandleRWMeshTriangulationSource_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleRWMeshTriangulationSource_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying RWMesh_TriangulationSource
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_TriangulationSource {
-        unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationSource_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleRWMeshTriangulationSource_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Poly_Triangulation>
     pub fn to_handle_triangulation(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleRWMeshTriangulationSource_to_HandlePolyTriangulation(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleRWMeshTriangulationSource_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2682,6 +3740,7 @@ impl HandleRWMeshTriangulationSource {
         let ptr = unsafe {
             crate::ffi::HandleRWMeshTriangulationSource_downcast_to_HandleRWGltfGltfLatePrimitiveArray(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2720,15 +3779,17 @@ impl VertexIterator {
         theToMapColors: bool,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::RWMesh_VertexIterator_ctor_label_location_bool_style(
                     theLabel,
                     theLocation,
                     theToMapColors,
                     theStyle,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2740,133 +3801,215 @@ impl VertexIterator {
         theShape: &crate::topo_ds::Shape,
         theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_ctor_shape_style(
-                theShape, theStyle,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_ctor_shape_style(theShape, theStyle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:54 - `RWMesh_VertexIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_VertexIterator_more(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_VertexIterator_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:57 - `RWMesh_VertexIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
-        unsafe { crate::ffi::RWMesh_VertexIterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::RWMesh_VertexIterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:60 - `RWMesh_VertexIterator::Vertex()`
     /// Return current edge.
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
-        unsafe { &*(crate::ffi::RWMesh_VertexIterator_vertex(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_VertexIterator_vertex(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:63 - `RWMesh_VertexIterator::Shape()`
     /// Return current vertex.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::RWMesh_VertexIterator_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_VertexIterator_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:66 - `RWMesh_VertexIterator::Point()`
     /// Return current vertex data.
     pub fn point(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::RWMesh_VertexIterator_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::RWMesh_VertexIterator_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:69 - `RWMesh_VertexIterator::IsEmpty()`
     /// Return true if geometry data is defined.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_VertexIterator_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:73 - `RWMesh_VertexIterator::ElemLower()`
     /// Lower element index in current triangulation.
     pub fn elem_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_VertexIterator_elem_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_elem_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:76 - `RWMesh_VertexIterator::ElemUpper()`
     /// Upper element index in current triangulation.
     pub fn elem_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_VertexIterator_elem_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_elem_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:80 - `RWMesh_VertexIterator::NbNodes()`
     /// Return number of nodes for the current edge.
     pub fn nb_nodes(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_VertexIterator_nb_nodes(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_nb_nodes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:83 - `RWMesh_VertexIterator::NodeLower()`
     /// Lower node index in current triangulation.
     pub fn node_lower(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_VertexIterator_node_lower(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_node_lower(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:86 - `RWMesh_VertexIterator::NodeUpper()`
     /// Upper node index in current triangulation.
     pub fn node_upper(&self) -> i32 {
-        unsafe { crate::ffi::RWMesh_VertexIterator_node_upper(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_node_upper(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:90 - `RWMesh_VertexIterator::node()`
     /// Return the node with specified index with applied transformation.
     pub fn node(&self, arg0: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_node(
-                self as *const Self,
-                arg0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_node(self as *const Self, arg0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to RWMesh_ShapeIterator
     pub fn as_shape_iterator(&self) -> &ShapeIterator {
-        unsafe {
-            &*(crate::ffi::RWMesh_VertexIterator_as_RWMesh_ShapeIterator(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_VertexIterator_as_RWMesh_ShapeIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to RWMesh_ShapeIterator (mutable)
     pub fn as_shape_iterator_mut(&mut self) -> &mut ShapeIterator {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_VertexIterator_as_RWMesh_ShapeIterator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_VertexIterator_as_RWMesh_ShapeIterator_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::RWMesh_VertexIterator_inherited_ExploredShape(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_VertexIterator_inherited_ExploredShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
     pub fn style(&self) -> &crate::xcaf_prs::Style {
-        unsafe { &*(crate::ffi::RWMesh_VertexIterator_inherited_Style(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_inherited_Style(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
-        unsafe { crate::ffi::RWMesh_VertexIterator_inherited_HasColor(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_VertexIterator_inherited_HasColor(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
-        unsafe { &*(crate::ffi::RWMesh_VertexIterator_inherited_Color(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::RWMesh_VertexIterator_inherited_Color(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_inherited_NodeTransformed(
-                self as *const Self,
-                theNode,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::RWMesh_VertexIterator_inherited_NodeTransformed(
+                    self as *const Self,
+                    theNode,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

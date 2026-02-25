@@ -82,8 +82,8 @@ impl PWalking {
         Deflection: f64,
         Increment: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntWalk_PWalking_ctor_handleadaptor3dsurface2_real4(
                     Caro1,
                     Caro2,
@@ -91,8 +91,10 @@ impl PWalking {
                     Epsilon,
                     Deflection,
                     Increment,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -122,8 +124,8 @@ impl PWalking {
         U2: f64,
         V2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntWalk_PWalking_ctor_handleadaptor3dsurface2_real8(
                     Caro1,
                     Caro2,
@@ -135,15 +137,20 @@ impl PWalking {
                     V1,
                     U2,
                     V2,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:87 - `IntWalk_PWalking::Perform()`
     /// calculate the line of intersection
     pub fn perform_array1ofreal(&mut self, ParDep: &crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::IntWalk_PWalking_perform_array1ofreal(self as *mut Self, ParDep) }
+        {
+            unsafe { crate::ffi::IntWalk_PWalking_perform_array1ofreal(self as *mut Self, ParDep) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:94 - `IntWalk_PWalking::Perform()`
@@ -164,19 +171,22 @@ impl PWalking {
         u2max: f64,
         v2max: f64,
     ) {
-        unsafe {
-            crate::ffi::IntWalk_PWalking_perform_array1ofreal_real8(
-                self as *mut Self,
-                ParDep,
-                u1min,
-                v1min,
-                u2min,
-                v2min,
-                u1max,
-                v1max,
-                u2max,
-                v2max,
-            )
+        {
+            unsafe {
+                crate::ffi::IntWalk_PWalking_perform_array1ofreal_real8(
+                    self as *mut Self,
+                    ParDep,
+                    u1min,
+                    v1min,
+                    u2min,
+                    v2min,
+                    u1max,
+                    v1max,
+                    u2max,
+                    v2max,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -187,22 +197,38 @@ impl PWalking {
         ParDep: &crate::ffi::TColStd_Array1OfReal,
         FirstPoint: &mut crate::int_surf::PntOn2S,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntWalk_PWalking_perform_first_point(self as *mut Self, ParDep, FirstPoint)
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_PWalking_perform_first_point(
+                    self as *mut Self,
+                    ParDep,
+                    FirstPoint,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:109 - `IntWalk_PWalking::IsDone()`
     /// Returns true if the calculus was successful.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_PWalking_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_PWalking_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:113 - `IntWalk_PWalking::NbPoints()`
     /// Returns the number of points of the resulting polyline.
     /// An exception is raised if IsDone returns False.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::IntWalk_PWalking_nb_points(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_PWalking_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:118 - `IntWalk_PWalking::Value()`
@@ -210,12 +236,21 @@ impl PWalking {
     /// An exception is raised if IsDone returns False.
     /// An exception is raised if Index<=0 or Index>NbPoints.
     pub fn value(&self, Index: i32) -> &crate::int_surf::PntOn2S {
-        unsafe { &*(crate::ffi::IntWalk_PWalking_value(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_PWalking_value(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:120 - `IntWalk_PWalking::Line()`
     pub fn line(&self) -> &crate::ffi::HandleIntSurfLineOn2S {
-        unsafe { &*(crate::ffi::IntWalk_PWalking_line(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_PWalking_line(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:125 - `IntWalk_PWalking::TangentAtFirst()`
@@ -223,7 +258,12 @@ impl PWalking {
     /// of the line.
     /// An exception is raised if IsDone returns False.
     pub fn tangent_at_first(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_PWalking_tangent_at_first(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_PWalking_tangent_at_first(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:130 - `IntWalk_PWalking::TangentAtLast()`
@@ -231,14 +271,23 @@ impl PWalking {
     /// of the line.
     /// An exception is raised if IsDone returns False.
     pub fn tangent_at_last(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_PWalking_tangent_at_last(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_PWalking_tangent_at_last(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:134 - `IntWalk_PWalking::IsClosed()`
     /// Returns True if the line is closed.
     /// An exception is raised if IsDone returns False.
     pub fn is_closed(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_PWalking_is_closed(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_PWalking_is_closed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:136 - `IntWalk_PWalking::TangentAtLine()`
@@ -249,7 +298,12 @@ impl PWalking {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn tangent_at_line(&self, Index: &mut i32) -> &crate::gp::Dir {
-        unsafe { &*(crate::ffi::IntWalk_PWalking_tangent_at_line(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_PWalking_tangent_at_line(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:138 - `IntWalk_PWalking::TestDeflection()`
@@ -258,15 +312,16 @@ impl PWalking {
         ChoixIso: crate::int_imp::ConstIsoparametric,
         theStatus: crate::int_walk::StatusDeflection,
     ) -> crate::int_walk::StatusDeflection {
-        unsafe {
-            crate::int_walk::StatusDeflection::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::IntWalk_PWalking_test_deflection(
                     self as *mut Self,
                     ChoixIso.into(),
                     theStatus.into(),
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::int_walk::StatusDeflection::try_from(__result).unwrap()
         }
     }
 
@@ -278,13 +333,17 @@ impl PWalking {
         ChoixIso: &mut crate::int_imp::ConstIsoparametric,
     ) -> bool {
         let mut ChoixIso_i32_: i32 = (*ChoixIso).into();
-        let result_ = unsafe {
-            crate::ffi::IntWalk_PWalking_test_arret(
-                self as *mut Self,
-                DejaReparti,
-                Param,
-                &mut ChoixIso_i32_,
-            )
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::IntWalk_PWalking_test_arret(
+                    self as *mut Self,
+                    DejaReparti,
+                    Param,
+                    &mut ChoixIso_i32_,
+                )
+            };
+            crate::check_exception();
+            __result
         };
         *ChoixIso = crate::int_imp::ConstIsoparametric::try_from(ChoixIso_i32_).unwrap();
         result_
@@ -298,13 +357,16 @@ impl PWalking {
         Arrive: &mut bool,
     ) {
         let mut ChoixIso_i32_: i32 = (*ChoixIso).into();
-        unsafe {
-            crate::ffi::IntWalk_PWalking_repartir_ou_diviser(
-                self as *mut Self,
-                DejaReparti,
-                &mut ChoixIso_i32_,
-                Arrive,
-            )
+        {
+            unsafe {
+                crate::ffi::IntWalk_PWalking_repartir_ou_diviser(
+                    self as *mut Self,
+                    DejaReparti,
+                    &mut ChoixIso_i32_,
+                    Arrive,
+                )
+            };
+            crate::check_exception();
         };
         *ChoixIso = crate::int_imp::ConstIsoparametric::try_from(ChoixIso_i32_).unwrap();
     }
@@ -312,7 +374,10 @@ impl PWalking {
     /// **Source:** `IntWalk_PWalking.hxx`:150 - `IntWalk_PWalking::AddAPoint()`
     /// Inserts thePOn2S in the end of line
     pub fn add_a_point(&mut self, thePOn2S: &crate::int_surf::PntOn2S) {
-        unsafe { crate::ffi::IntWalk_PWalking_add_a_point(self as *mut Self, thePOn2S) }
+        {
+            unsafe { crate::ffi::IntWalk_PWalking_add_a_point(self as *mut Self, thePOn2S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:156 - `IntWalk_PWalking::RemoveAPoint()`
@@ -321,7 +386,10 @@ impl PWalking {
     /// then the last point will be removed.
     /// theIndex must be started with 1.
     pub fn remove_a_point(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::IntWalk_PWalking_remove_a_point(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::IntWalk_PWalking_remove_a_point(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:174 - `IntWalk_PWalking::PutToBoundary()`
@@ -330,8 +398,16 @@ impl PWalking {
         theASurf1: &crate::ffi::HandleAdaptor3dSurface,
         theASurf2: &crate::ffi::HandleAdaptor3dSurface,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntWalk_PWalking_put_to_boundary(self as *mut Self, theASurf1, theASurf2)
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_PWalking_put_to_boundary(
+                    self as *mut Self,
+                    theASurf1,
+                    theASurf2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -342,19 +418,28 @@ impl PWalking {
         theASurf2: &crate::ffi::HandleAdaptor3dSurface,
         theMinNbPoints: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::IntWalk_PWalking_seek_additional_points(
-                self as *mut Self,
-                theASurf1,
-                theASurf2,
-                theMinNbPoints,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_PWalking_seek_additional_points(
+                    self as *mut Self,
+                    theASurf1,
+                    theASurf2,
+                    theMinNbPoints,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:181 - `IntWalk_PWalking::MaxStep()`
     pub fn max_step(&mut self, theIndex: i32) -> f64 {
-        unsafe { crate::ffi::IntWalk_PWalking_max_step(self as *mut Self, theIndex) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_PWalking_max_step(self as *mut Self, theIndex) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -377,26 +462,45 @@ impl TheFunctionOfTheInt2S {
         S1: &crate::ffi::HandleAdaptor3dSurface,
         S2: &crate::ffi::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntWalk_TheFunctionOfTheInt2S_ctor_handleadaptor3dsurface2(S1, S2),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_ctor_handleadaptor3dsurface2(S1, S2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:41 - `IntWalk_TheFunctionOfTheInt2S::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_variables(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:43 - `IntWalk_TheFunctionOfTheInt2S::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_equations(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_equations(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:45 - `IntWalk_TheFunctionOfTheInt2S::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:47 - `IntWalk_TheFunctionOfTheInt2S::Derivatives()`
@@ -405,7 +509,13 @@ impl TheFunctionOfTheInt2S {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_derivatives(self as *mut Self, X, D) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_derivatives(self as *mut Self, X, D)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:49 - `IntWalk_TheFunctionOfTheInt2S::Values()`
@@ -415,7 +525,13 @@ impl TheFunctionOfTheInt2S {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_values(self as *mut Self, X, F, D) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_values(self as *mut Self, X, F, D)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:51 - `IntWalk_TheFunctionOfTheInt2S::ComputeParameters()`
@@ -428,31 +544,40 @@ impl TheFunctionOfTheInt2S {
         BornSup: &mut crate::ffi::math_Vector,
         Tolerance: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::IntWalk_TheFunctionOfTheInt2S_compute_parameters(
-                self as *mut Self,
-                ChoixIso.into(),
-                Param,
-                UVap,
-                BornInf,
-                BornSup,
-                Tolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_compute_parameters(
+                    self as *mut Self,
+                    ChoixIso.into(),
+                    Param,
+                    UVap,
+                    BornInf,
+                    BornSup,
+                    Tolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:59 - `IntWalk_TheFunctionOfTheInt2S::Root()`
     /// returns somme des fi*fi
     pub fn root(&self) -> f64 {
-        unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_root(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_root(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:61 - `IntWalk_TheFunctionOfTheInt2S::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntWalk_TheFunctionOfTheInt2S_point(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -464,13 +589,17 @@ impl TheFunctionOfTheInt2S {
         BestChoix: &mut crate::int_imp::ConstIsoparametric,
     ) -> bool {
         let mut BestChoix_i32_: i32 = (*BestChoix).into();
-        let result_ = unsafe {
-            crate::ffi::IntWalk_TheFunctionOfTheInt2S_is_tangent(
-                self as *mut Self,
-                UVap,
-                Param,
-                &mut BestChoix_i32_,
-            )
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_is_tangent(
+                    self as *mut Self,
+                    UVap,
+                    Param,
+                    &mut BestChoix_i32_,
+                )
+            };
+            crate::check_exception();
+            __result
         };
         *BestChoix = crate::int_imp::ConstIsoparametric::try_from(BestChoix_i32_).unwrap();
         result_
@@ -478,42 +607,55 @@ impl TheFunctionOfTheInt2S {
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:67 - `IntWalk_TheFunctionOfTheInt2S::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:69 - `IntWalk_TheFunctionOfTheInt2S::DirectionOnS1()`
     pub fn direction_on_s1(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction_on_s1(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction_on_s1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:71 - `IntWalk_TheFunctionOfTheInt2S::DirectionOnS2()`
     pub fn direction_on_s2(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction_on_s2(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction_on_s2(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:73 - `IntWalk_TheFunctionOfTheInt2S::AuxillarSurface1()`
     pub fn auxillar_surface1(&self) -> &crate::ffi::HandleAdaptor3dSurface {
-        unsafe {
-            &*(crate::ffi::IntWalk_TheFunctionOfTheInt2S_auxillar_surface1(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_auxillar_surface1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:75 - `IntWalk_TheFunctionOfTheInt2S::AuxillarSurface2()`
     pub fn auxillar_surface2(&self) -> &crate::ffi::HandleAdaptor3dSurface {
-        unsafe {
-            &*(crate::ffi::IntWalk_TheFunctionOfTheInt2S_auxillar_surface2(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_auxillar_surface2(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -521,10 +663,14 @@ impl TheFunctionOfTheInt2S {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -532,33 +678,49 @@ impl TheFunctionOfTheInt2S {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::IntWalk_TheFunctionOfTheInt2S_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheFunctionOfTheInt2S_inherited_GetStateNumber(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -585,15 +747,17 @@ impl TheInt2S {
         S2: &crate::ffi::HandleAdaptor3dSurface,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::IntWalk_TheInt2S_ctor_array1ofreal_handleadaptor3dsurface2_real(
                     Param,
                     S1,
                     S2,
                     TolTangency,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -613,10 +777,12 @@ impl TheInt2S {
         S2: &crate::ffi::HandleAdaptor3dSurface,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntWalk_TheInt2S_ctor_handleadaptor3dsurface2_real(S1, S2, TolTangency),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheInt2S_ctor_handleadaptor3dsurface2_real(S1, S2, TolTangency)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -631,15 +797,16 @@ impl TheInt2S {
         Param: &crate::ffi::TColStd_Array1OfReal,
         Rsnld: &mut crate::math::FunctionSetRoot,
     ) -> crate::int_imp::ConstIsoparametric {
-        unsafe {
-            crate::int_imp::ConstIsoparametric::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::IntWalk_TheInt2S_perform_array1ofreal_functionsetroot(
                     self as *mut Self,
                     Param,
                     Rsnld,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::int_imp::ConstIsoparametric::try_from(__result).unwrap()
         }
     }
 
@@ -655,68 +822,115 @@ impl TheInt2S {
         Rsnld: &mut crate::math::FunctionSetRoot,
         ChoixIso: crate::int_imp::ConstIsoparametric,
     ) -> crate::int_imp::ConstIsoparametric {
-        unsafe {
-            crate::int_imp::ConstIsoparametric::try_from(crate::ffi::IntWalk_TheInt2S_perform_array1ofreal_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into())).unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::IntWalk_TheInt2S_perform_array1ofreal_functionsetroot_constisoparametric(
+                    self as *mut Self,
+                    Param,
+                    Rsnld,
+                    ChoixIso.into(),
+                )
+            };
+            crate::check_exception();
+            crate::int_imp::ConstIsoparametric::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:75 - `IntWalk_TheInt2S::IsDone()`
     /// Returns TRUE if the creation completed without failure.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_TheInt2S_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:78 - `IntWalk_TheInt2S::IsEmpty()`
     /// Returns TRUE when there is no solution to the problem.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_TheInt2S_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:81 - `IntWalk_TheInt2S::Point()`
     /// Returns the intersection point.
     pub fn point(&self) -> &crate::int_surf::PntOn2S {
-        unsafe { &*(crate::ffi::IntWalk_TheInt2S_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:85 - `IntWalk_TheInt2S::IsTangent()`
     /// Returns True if the surfaces are tangent at the
     /// intersection point.
     pub fn is_tangent(&self) -> bool {
-        unsafe { crate::ffi::IntWalk_TheInt2S_is_tangent(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_is_tangent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:88 - `IntWalk_TheInt2S::Direction()`
     /// Returns the tangent at the intersection line.
     pub fn direction(&self) -> &crate::gp::Dir {
-        unsafe { &*(crate::ffi::IntWalk_TheInt2S_direction(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_direction(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:92 - `IntWalk_TheInt2S::DirectionOnS1()`
     /// Returns the tangent at the intersection line in the
     /// parametric space of the first surface.
     pub fn direction_on_s1(&self) -> &crate::gp::Dir2d {
-        unsafe { &*(crate::ffi::IntWalk_TheInt2S_direction_on_s1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_TheInt2S_direction_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:96 - `IntWalk_TheInt2S::DirectionOnS2()`
     /// Returns the tangent at the intersection line in the
     /// parametric space of the second surface.
     pub fn direction_on_s2(&self) -> &crate::gp::Dir2d {
-        unsafe { &*(crate::ffi::IntWalk_TheInt2S_direction_on_s2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntWalk_TheInt2S_direction_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:100 - `IntWalk_TheInt2S::Function()`
     /// return the math function which
     /// is used to compute the intersection
     pub fn function(&mut self) -> &mut TheFunctionOfTheInt2S {
-        unsafe { &mut *(crate::ffi::IntWalk_TheInt2S_function(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_function(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:104 - `IntWalk_TheInt2S::ChangePoint()`
     /// return the intersection point which is
     /// enable for changing.
     pub fn change_point(&mut self) -> &mut crate::int_surf::PntOn2S {
-        unsafe { &mut *(crate::ffi::IntWalk_TheInt2S_change_point(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntWalk_TheInt2S_change_point(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 }
 

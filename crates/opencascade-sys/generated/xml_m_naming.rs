@@ -12,11 +12,14 @@ pub fn add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(
     aDriverTable: &crate::ffi::HandleXmlMDFADriverTable,
     aMessageDriver: &crate::ffi::HandleMessageMessenger,
 ) {
-    unsafe {
-        crate::ffi::XmlMNaming_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(
-            aDriverTable,
-            aMessageDriver,
-        )
+    {
+        unsafe {
+            crate::ffi::XmlMNaming_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(
+                aDriverTable,
+                aMessageDriver,
+            )
+        };
+        crate::check_exception();
     }
 }
 
@@ -41,19 +44,22 @@ impl NamedShapeDriver {
     pub fn new_handlemessagemessenger(
         aMessageDriver: &crate::ffi::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::XmlMNaming_NamedShapeDriver_ctor_handlemessagemessenger(aMessageDriver),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_ctor_handlemessagemessenger(aMessageDriver)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:41 - `XmlMNaming_NamedShapeDriver::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_NamedShapeDriver_new_empty(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -64,8 +70,12 @@ impl NamedShapeDriver {
         theTarget: &crate::ffi::HandleTDFAttribute,
         theRelocTable: &mut crate::xml_obj_mgt::RRelocationTable,
     ) -> bool {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -76,8 +86,11 @@ impl NamedShapeDriver {
         theTarget: &mut crate::xml_obj_mgt::Persistent,
         theRelocTable: &mut crate::xml_obj_mgt::SRelocationTable,
     ) {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_srelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_srelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            };
+            crate::check_exception();
         }
     }
 
@@ -88,12 +101,15 @@ impl NamedShapeDriver {
         anElement: &crate::ldom::Element,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_read_shape_section(
-                self as *mut Self,
-                anElement,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_read_shape_section(
+                    self as *mut Self,
+                    anElement,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -105,76 +121,110 @@ impl NamedShapeDriver {
         theStorageFormatVersion: crate::t_doc_std::FormatVersion,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_write_shape_section(
-                self as *mut Self,
-                anElement,
-                theStorageFormatVersion.into(),
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_write_shape_section(
+                    self as *mut Self,
+                    anElement,
+                    theStorageFormatVersion.into(),
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::Clear()`
     /// Clear myShapeSet
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:68 - `XmlMNaming_NamedShapeDriver::GetShapesLocations()`
     /// get the format of topology
     pub fn get_shapes_locations(&mut self) -> &mut crate::top_tools::LocationSet {
-        unsafe {
-            &mut *(crate::ffi::XmlMNaming_NamedShapeDriver_get_shapes_locations(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_get_shapes_locations(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::XmlMNaming_NamedShapeDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::XmlMNaming_NamedShapeDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::XmlMNaming_NamedShapeDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to XmlMDF_ADriver
     pub fn as_xml_mdf_a_driver(&self) -> &crate::xml_mdf::ADriver {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamedShapeDriver_as_XmlMDF_ADriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_as_XmlMDF_ADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to XmlMDF_ADriver (mutable)
     pub fn as_xml_mdf_a_driver_mut(&mut self) -> &mut crate::xml_mdf::ADriver {
-        unsafe {
-            &mut *(crate::ffi::XmlMNaming_NamedShapeDriver_as_XmlMDF_ADriver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_as_XmlMDF_ADriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamedShapeDriver_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::XmlMNaming_NamedShapeDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -182,105 +232,156 @@ impl NamedShapeDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXmlMNamingNamedShapeDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_NamedShapeDriver_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
     pub fn version_number(&self) -> i32 {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_inherited_VersionNumber(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_VersionNumber(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
     pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_NamedShapeDriver_inherited_SourceType(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_SourceType(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamedShapeDriver_inherited_TypeName(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_TypeName(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
     pub fn namespace(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamedShapeDriver_inherited_Namespace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_Namespace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
     pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamedShapeDriver_inherited_MessageDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_MessageDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::XmlMNaming_NamedShapeDriver_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::XmlMNaming_NamedShapeDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::XmlMNaming_NamedShapeDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamedShapeDriver_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -295,33 +396,47 @@ unsafe impl crate::CppDeletable for HandleXmlMNamingNamedShapeDriver {
 impl HandleXmlMNamingNamedShapeDriver {
     /// Dereference this Handle to access the underlying XmlMNaming_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi::XmlMNaming_NamedShapeDriver {
-        unsafe { &*(crate::ffi::HandleXmlMNamingNamedShapeDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleXmlMNamingNamedShapeDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying XmlMNaming_NamedShapeDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::XmlMNaming_NamedShapeDriver {
-        unsafe { &mut *(crate::ffi::HandleXmlMNamingNamedShapeDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleXmlMNamingNamedShapeDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<XmlMNaming_NamedShapeDriver> to Handle<XmlMDF_ADriver>
     pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleXmlMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleXmlMNamingNamedShapeDriver_to_HandleXmlMDFADriver(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<XmlMNaming_NamedShapeDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleXmlMNamingNamedShapeDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -344,19 +459,22 @@ impl NamingDriver {
     pub fn new_handlemessagemessenger(
         aMessageDriver: &crate::ffi::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::XmlMNaming_NamingDriver_ctor_handlemessagemessenger(aMessageDriver),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_ctor_handlemessagemessenger(aMessageDriver)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `XmlMNaming_NamingDriver.hxx`:36 - `XmlMNaming_NamingDriver::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_NamingDriver_new_empty(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::XmlMNaming_NamingDriver_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -367,13 +485,12 @@ impl NamingDriver {
         theTarget: &crate::ffi::HandleTDFAttribute,
         theRelocTable: &mut crate::xml_obj_mgt::RRelocationTable,
     ) -> bool {
-        unsafe {
-            crate::ffi::XmlMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                theSource,
-                theTarget,
-                theRelocTable,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -384,58 +501,83 @@ impl NamingDriver {
         theTarget: &mut crate::xml_obj_mgt::Persistent,
         theRelocTable: &mut crate::xml_obj_mgt::SRelocationTable,
     ) {
-        unsafe {
-            crate::ffi::XmlMNaming_NamingDriver_paste_handletdfattribute_persistent_srelocationtable(
-                self as *const Self,
-                theSource,
-                theTarget,
-                theRelocTable,
-            )
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_paste_handletdfattribute_persistent_srelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::XmlMNaming_NamingDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::XmlMNaming_NamingDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::XmlMNaming_NamingDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_NamingDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::XmlMNaming_NamingDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_NamingDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to XmlMDF_ADriver
     pub fn as_xml_mdf_a_driver(&self) -> &crate::xml_mdf::ADriver {
-        unsafe { &*(crate::ffi::XmlMNaming_NamingDriver_as_XmlMDF_ADriver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_as_XmlMDF_ADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to XmlMDF_ADriver (mutable)
     pub fn as_xml_mdf_a_driver_mut(&mut self) -> &mut crate::xml_mdf::ADriver {
-        unsafe {
-            &mut *(crate::ffi::XmlMNaming_NamingDriver_as_XmlMDF_ADriver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_as_XmlMDF_ADriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamingDriver_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::XmlMNaming_NamingDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -443,91 +585,145 @@ impl NamingDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXmlMNamingNamingDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_NamingDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_NamingDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
     pub fn version_number(&self) -> i32 {
-        unsafe { crate::ffi::XmlMNaming_NamingDriver_inherited_VersionNumber(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_VersionNumber(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
     pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_NamingDriver_inherited_SourceType(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_SourceType(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::XmlMNaming_NamingDriver_inherited_TypeName(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_TypeName(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
     pub fn namespace(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::XmlMNaming_NamingDriver_inherited_Namespace(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_Namespace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
     pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::ffi::XmlMNaming_NamingDriver_inherited_MessageDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_MessageDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::XmlMNaming_NamingDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::XmlMNaming_NamingDriver_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::XmlMNaming_NamingDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::XmlMNaming_NamingDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::XmlMNaming_NamingDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::XmlMNaming_NamingDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::XmlMNaming_NamingDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::XmlMNaming_NamingDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::XmlMNaming_NamingDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -542,33 +738,45 @@ unsafe impl crate::CppDeletable for HandleXmlMNamingNamingDriver {
 impl HandleXmlMNamingNamingDriver {
     /// Dereference this Handle to access the underlying XmlMNaming_NamingDriver
     pub fn get(&self) -> &crate::ffi::XmlMNaming_NamingDriver {
-        unsafe { &*(crate::ffi::HandleXmlMNamingNamingDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleXmlMNamingNamingDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying XmlMNaming_NamingDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::XmlMNaming_NamingDriver {
-        unsafe { &mut *(crate::ffi::HandleXmlMNamingNamingDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleXmlMNamingNamingDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<XmlMNaming_NamingDriver> to Handle<XmlMDF_ADriver>
     pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleXmlMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleXmlMNamingNamingDriver_to_HandleXmlMDFADriver(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleXmlMNamingNamingDriver_to_HandleXmlMDFADriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<XmlMNaming_NamingDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleXmlMNamingNamingDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -595,55 +803,85 @@ unsafe impl crate::CppDeletable for Shape1 {
 impl Shape1 {
     /// **Source:** `XmlMNaming_Shape1.hxx`:38 - `XmlMNaming_Shape1::XmlMNaming_Shape1()`
     pub fn new_document(Doc: &mut crate::ldom::Document) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_Shape1_ctor_document(Doc)) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_Shape1_ctor_document(Doc) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:40 - `XmlMNaming_Shape1::XmlMNaming_Shape1()`
     pub fn new_element(E: &crate::ldom::Element) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XmlMNaming_Shape1_ctor_element(E)) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_Shape1_ctor_element(E) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:43 - `XmlMNaming_Shape1::Element()`
     /// return myElement
     pub fn element(&self) -> &crate::ldom::Element {
-        unsafe { &*(crate::ffi::XmlMNaming_Shape1_element(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_Shape1_element(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:46 - `XmlMNaming_Shape1::Element()`
     /// return myElement
     pub fn element_mut(&mut self) -> &mut crate::ldom::Element {
-        unsafe { &mut *(crate::ffi::XmlMNaming_Shape1_element_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_Shape1_element_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:48 - `XmlMNaming_Shape1::TShapeId()`
     pub fn t_shape_id(&self) -> i32 {
-        unsafe { crate::ffi::XmlMNaming_Shape1_t_shape_id(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_Shape1_t_shape_id(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:50 - `XmlMNaming_Shape1::LocId()`
     pub fn loc_id(&self) -> i32 {
-        unsafe { crate::ffi::XmlMNaming_Shape1_loc_id(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::XmlMNaming_Shape1_loc_id(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:52 - `XmlMNaming_Shape1::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(crate::ffi::XmlMNaming_Shape1_orientation(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::XmlMNaming_Shape1_orientation(self as *const Self) };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:54 - `XmlMNaming_Shape1::SetShape()`
     pub fn set_shape(&mut self, ID: i32, LocID: i32, Orient: crate::top_abs::Orientation) {
-        unsafe {
-            crate::ffi::XmlMNaming_Shape1_set_shape(self as *mut Self, ID, LocID, Orient.into())
+        {
+            unsafe {
+                crate::ffi::XmlMNaming_Shape1_set_shape(self as *mut Self, ID, LocID, Orient.into())
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `XmlMNaming_Shape1.hxx`:58 - `XmlMNaming_Shape1::SetVertex()`
     pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::XmlMNaming_Shape1_set_vertex(self as *mut Self, theVertex) }
+        {
+            unsafe { crate::ffi::XmlMNaming_Shape1_set_vertex(self as *mut Self, theVertex) };
+            crate::check_exception();
+        }
     }
 }

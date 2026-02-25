@@ -8,20 +8,31 @@
 
 /// **Source:** `BinDrivers.hxx`:30 - `BinDrivers::Factory`
 pub fn factory(theGUID: &crate::standard::GUID) -> &crate::ffi::HandleStandardTransient {
-    unsafe { &*(crate::ffi::BinDrivers_factory(theGUID)) }
+    {
+        let __result = unsafe { crate::ffi::BinDrivers_factory(theGUID) };
+        crate::check_exception();
+        unsafe { &*(__result) }
+    }
 }
 /// **Source:** `BinDrivers.hxx`:34 - `BinDrivers::DefineFormat`
 /// Defines format "BinOcaf" and registers its read and write drivers
 /// in the specified application
 pub fn define_format(theApp: &crate::ffi::HandleTDocStdApplication) {
-    unsafe { crate::ffi::BinDrivers_define_format(theApp) }
+    {
+        unsafe { crate::ffi::BinDrivers_define_format(theApp) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BinDrivers.hxx`:37 - `BinDrivers::AttributeDrivers`
 /// Creates the table of drivers of types supported
 pub fn attribute_drivers(
     MsgDrv: &crate::ffi::HandleMessageMessenger,
 ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriverTable> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinDrivers_attribute_drivers(MsgDrv)) }
+    {
+        let __result = unsafe { crate::ffi::BinDrivers_attribute_drivers(MsgDrv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 
 /// C++ enum: `BinDrivers_Marker`
@@ -75,7 +86,11 @@ impl DocumentRetrievalDriver {
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:37 - `BinDrivers_DocumentRetrievalDriver::BinDrivers_DocumentRetrievalDriver()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinDrivers_DocumentRetrievalDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinDrivers_DocumentRetrievalDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:39 - `BinDrivers_DocumentRetrievalDriver::AttributeDrivers()`
@@ -83,13 +98,15 @@ impl DocumentRetrievalDriver {
         &mut self,
         theMsgDriver: &crate::ffi::HandleMessageMessenger,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriverTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentRetrievalDriver_attribute_drivers(
                     self as *mut Self,
                     theMsgDriver,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -101,14 +118,17 @@ impl DocumentRetrievalDriver {
         isMess: bool,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_read_shape_section(
-                self as *mut Self,
-                theSection,
-                theIS,
-                isMess,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_read_shape_section(
+                    self as *mut Self,
+                    theSection,
+                    theIS,
+                    isMess,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -118,19 +138,25 @@ impl DocumentRetrievalDriver {
         thePos: &std::ffi::c_long,
         theIS: &mut crate::ffi::Standard_IStream,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_check_shape_section(
-                self as *mut Self,
-                thePos,
-                theIS,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_check_shape_section(
+                    self as *mut Self,
+                    thePos,
+                    theIS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:52 - `BinDrivers_DocumentRetrievalDriver::Clear()`
     /// Clears the NamedShape driver
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinDrivers_DocumentRetrievalDriver_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinDrivers_DocumentRetrievalDriver_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:55 - `BinDrivers_DocumentRetrievalDriver::EnableQuickPartReading()`
@@ -140,42 +166,59 @@ impl DocumentRetrievalDriver {
         theMessageDriver: &crate::ffi::HandleMessageMessenger,
         theValue: bool,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_enable_quick_part_reading(
-                self as *mut Self,
-                theMessageDriver,
-                theValue,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_enable_quick_part_reading(
+                    self as *mut Self,
+                    theMessageDriver,
+                    theValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:59 - `BinDrivers_DocumentRetrievalDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentRetrievalDriver_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:59 - `BinDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinDrivers_DocumentRetrievalDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::BinDrivers_DocumentRetrievalDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:59 - `BinDrivers_DocumentRetrievalDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinDrivers_DocumentRetrievalDriver_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinDrivers_DocumentRetrievalDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BinLDrivers_DocumentRetrievalDriver
     pub fn as_bin_l_drivers_document_retrieval_driver(
         &self,
     ) -> &crate::bin_l_drivers::DocumentRetrievalDriver {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_BinLDrivers_DocumentRetrievalDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_BinLDrivers_DocumentRetrievalDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -183,60 +226,86 @@ impl DocumentRetrievalDriver {
     pub fn as_bin_l_drivers_document_retrieval_driver_mut(
         &mut self,
     ) -> &mut crate::bin_l_drivers::DocumentRetrievalDriver {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_BinLDrivers_DocumentRetrievalDriver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_BinLDrivers_DocumentRetrievalDriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to PCDM_RetrievalDriver
     pub fn as_pcdm_retrieval_driver(&self) -> &crate::pcdm::RetrievalDriver {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_RetrievalDriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_RetrievalDriver(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to PCDM_RetrievalDriver (mutable)
     pub fn as_pcdm_retrieval_driver_mut(&mut self) -> &mut crate::pcdm::RetrievalDriver {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_RetrievalDriver_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_RetrievalDriver_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to PCDM_Reader
     pub fn as_pcdm_reader(&self) -> &crate::pcdm::Reader {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_Reader(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_Reader(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to PCDM_Reader (mutable)
     pub fn as_pcdm_reader_mut(&mut self) -> &mut crate::pcdm::Reader {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_Reader_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_PCDM_Reader_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentRetrievalDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -244,10 +313,11 @@ impl DocumentRetrievalDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentRetrievalDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinDrivers_DocumentRetrievalDriver_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinDrivers_DocumentRetrievalDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -260,116 +330,148 @@ impl DocumentRetrievalDriver {
         theFilter: &crate::ffi::HandlePCDMReaderFilter,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_Read(
-                self as *mut Self,
-                theFileName,
-                theNewDocument,
-                theApplication,
-                theFilter,
-                theProgress,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_Read(
+                    self as *mut Self,
+                    theFileName,
+                    theNewDocument,
+                    theApplication,
+                    theFilter,
+                    theProgress,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_SetFormat(
-                self as *mut Self,
-                aformat,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_SetFormat(
+                    self as *mut Self,
+                    aformat,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_GetFormat(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
     pub fn get_status(&self) -> crate::pcdm::ReaderStatus {
-        unsafe {
-            crate::pcdm::ReaderStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_GetStatus(
                     self as *const Self,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::pcdm::ReaderStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentRetrievalDriver_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -385,13 +487,23 @@ unsafe impl crate::CppDeletable for HandleBinDriversDocumentRetrievalDriver {
 impl HandleBinDriversDocumentRetrievalDriver {
     /// Dereference this Handle to access the underlying BinDrivers_DocumentRetrievalDriver
     pub fn get(&self) -> &crate::ffi::BinDrivers_DocumentRetrievalDriver {
-        unsafe { &*(crate::ffi::HandleBinDriversDocumentRetrievalDriver_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinDriversDocumentRetrievalDriver_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinDrivers_DocumentRetrievalDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinDrivers_DocumentRetrievalDriver {
-        unsafe {
-            &mut *(crate::ffi::HandleBinDriversDocumentRetrievalDriver_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinDriversDocumentRetrievalDriver_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -399,8 +511,12 @@ impl HandleBinDriversDocumentRetrievalDriver {
     pub fn to_handle_document_retrieval_driver(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentRetrievalDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBinDriversDocumentRetrievalDriver_to_HandleBinLDriversDocumentRetrievalDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinDriversDocumentRetrievalDriver_to_HandleBinLDriversDocumentRetrievalDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -408,34 +524,40 @@ impl HandleBinDriversDocumentRetrievalDriver {
     pub fn to_handle_retrieval_driver(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMRetrievalDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
     pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinDriversDocumentRetrievalDriver_to_HandlePCDMReader(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinDriversDocumentRetrievalDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -448,6 +570,7 @@ impl HandleBinDriversDocumentRetrievalDriver {
         let ptr = unsafe {
             crate::ffi::HandleBinDriversDocumentRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -474,7 +597,11 @@ impl DocumentStorageDriver {
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:36 - `BinDrivers_DocumentStorageDriver::BinDrivers_DocumentStorageDriver()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinDrivers_DocumentStorageDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:38 - `BinDrivers_DocumentStorageDriver::AttributeDrivers()`
@@ -482,13 +609,15 @@ impl DocumentStorageDriver {
         &mut self,
         theMsgDriver: &crate::ffi::HandleMessageMessenger,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriverTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentStorageDriver_attribute_drivers(
                     self as *mut Self,
                     theMsgDriver,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -501,29 +630,42 @@ impl DocumentStorageDriver {
         theDocVer: crate::t_doc_std::FormatVersion,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_write_shape_section(
-                self as *mut Self,
-                theDocSection,
-                theOS,
-                theDocVer.into(),
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_write_shape_section(
+                    self as *mut Self,
+                    theDocSection,
+                    theOS,
+                    theDocVer.into(),
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:49 - `BinDrivers_DocumentStorageDriver::IsWithTriangles()`
     /// Return true if shape should be stored with triangles.
     pub fn is_with_triangles(&self) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_is_with_triangles(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_is_with_triangles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:51 - `BinDrivers_DocumentStorageDriver::IsWithNormals()`
     /// Return true if shape should be stored with triangulation normals.
     pub fn is_with_normals(&self) -> bool {
-        unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_is_with_normals(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_is_with_normals(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:54 - `BinDrivers_DocumentStorageDriver::SetWithTriangles()`
@@ -533,12 +675,15 @@ impl DocumentStorageDriver {
         theMessageDriver: &crate::ffi::HandleMessageMessenger,
         theWithTriangulation: bool,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_set_with_triangles(
-                self as *mut Self,
-                theMessageDriver,
-                theWithTriangulation,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_set_with_triangles(
+                    self as *mut Self,
+                    theMessageDriver,
+                    theWithTriangulation,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -549,12 +694,15 @@ impl DocumentStorageDriver {
         theMessageDriver: &crate::ffi::HandleMessageMessenger,
         theWithTriangulation: bool,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_set_with_normals(
-                self as *mut Self,
-                theMessageDriver,
-                theWithTriangulation,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_set_with_normals(
+                    self as *mut Self,
+                    theMessageDriver,
+                    theWithTriangulation,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -565,50 +713,69 @@ impl DocumentStorageDriver {
         theMessageDriver: &crate::ffi::HandleMessageMessenger,
         theValue: bool,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_enable_quick_part_writing(
-                self as *mut Self,
-                theMessageDriver,
-                theValue,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_enable_quick_part_writing(
+                    self as *mut Self,
+                    theMessageDriver,
+                    theValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:65 - `BinDrivers_DocumentStorageDriver::Clear()`
     /// Clears the NamedShape driver
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:67 - `BinDrivers_DocumentStorageDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentStorageDriver_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:67 - `BinDrivers_DocumentStorageDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BinDrivers_DocumentStorageDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BinDrivers_DocumentStorageDriver.hxx`:67 - `BinDrivers_DocumentStorageDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BinDrivers_DocumentStorageDriver_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BinLDrivers_DocumentStorageDriver
     pub fn as_bin_l_drivers_document_storage_driver(
         &self,
     ) -> &crate::bin_l_drivers::DocumentStorageDriver {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentStorageDriver_as_BinLDrivers_DocumentStorageDriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_BinLDrivers_DocumentStorageDriver(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -616,60 +783,86 @@ impl DocumentStorageDriver {
     pub fn as_bin_l_drivers_document_storage_driver_mut(
         &mut self,
     ) -> &mut crate::bin_l_drivers::DocumentStorageDriver {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentStorageDriver_as_BinLDrivers_DocumentStorageDriver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_BinLDrivers_DocumentStorageDriver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to PCDM_StorageDriver
     pub fn as_pcdm_storage_driver(&self) -> &crate::pcdm::StorageDriver {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_StorageDriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_StorageDriver(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to PCDM_StorageDriver (mutable)
     pub fn as_pcdm_storage_driver_mut(&mut self) -> &mut crate::pcdm::StorageDriver {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_StorageDriver_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_StorageDriver_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to PCDM_Writer
     pub fn as_pcdm_writer(&self) -> &crate::pcdm::Writer {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_Writer(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_Writer(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to PCDM_Writer (mutable)
     pub fn as_pcdm_writer_mut(&mut self) -> &mut crate::pcdm::Writer {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_Writer_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_PCDM_Writer_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BinDrivers_DocumentStorageDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BinDrivers_DocumentStorageDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -677,10 +870,11 @@ impl DocumentStorageDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentStorageDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinDrivers_DocumentStorageDriver_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinDrivers_DocumentStorageDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -691,34 +885,44 @@ impl DocumentStorageDriver {
         theFileName: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_Write(
-                self as *mut Self,
-                theDocument,
-                theFileName,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_Write(
+                    self as *mut Self,
+                    theDocument,
+                    theFileName,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:66 - `BinLDrivers_DocumentStorageDriver::AddSection()`
     pub fn add_section(&mut self, theName: &crate::t_collection::AsciiString, isPostRead: bool) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_AddSection(
-                self as *mut Self,
-                theName,
-                isPostRead,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_AddSection(
+                    self as *mut Self,
+                    theName,
+                    isPostRead,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:70 - `BinLDrivers_DocumentStorageDriver::IsQuickPart()`
     pub fn is_quick_part(&self, theVersion: i32) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsQuickPart(
-                self as *const Self,
-                theVersion,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsQuickPart(
+                    self as *const Self,
+                    theVersion,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -727,137 +931,182 @@ impl DocumentStorageDriver {
         &mut self,
         aDocument: &crate::ffi::HandleCDMDocument,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDocument> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinDrivers_DocumentStorageDriver_inherited_Make(
-                self as *mut Self,
-                aDocument,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_Make(
+                    self as *mut Self,
+                    aDocument,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_SetFormat(
-                self as *mut Self,
-                aformat,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_SetFormat(
+                    self as *mut Self,
+                    aformat,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:78 - `PCDM_StorageDriver::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentStorageDriver_inherited_GetFormat(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
     pub fn is_error(&self) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsError(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsError(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
     pub fn set_is_error(&mut self, theIsError: bool) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_SetIsError(
-                self as *mut Self,
-                theIsError,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_SetIsError(
+                    self as *mut Self,
+                    theIsError,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn get_store_status(&self) -> crate::pcdm::StoreStatus {
-        unsafe {
-            crate::pcdm::StoreStatus::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentStorageDriver_inherited_GetStoreStatus(
                     self as *const Self,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::pcdm::StoreStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn set_store_status(&mut self, theStoreStatus: crate::pcdm::StoreStatus) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_SetStoreStatus(
-                self as *mut Self,
-                theStoreStatus.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_SetStoreStatus(
+                    self as *mut Self,
+                    theStoreStatus.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BinDrivers_DocumentStorageDriver_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::BinDrivers_DocumentStorageDriver_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::BinDrivers_DocumentStorageDriver_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -873,13 +1122,23 @@ unsafe impl crate::CppDeletable for HandleBinDriversDocumentStorageDriver {
 impl HandleBinDriversDocumentStorageDriver {
     /// Dereference this Handle to access the underlying BinDrivers_DocumentStorageDriver
     pub fn get(&self) -> &crate::ffi::BinDrivers_DocumentStorageDriver {
-        unsafe { &*(crate::ffi::HandleBinDriversDocumentStorageDriver_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinDriversDocumentStorageDriver_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BinDrivers_DocumentStorageDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::BinDrivers_DocumentStorageDriver {
-        unsafe {
-            &mut *(crate::ffi::HandleBinDriversDocumentStorageDriver_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinDriversDocumentStorageDriver_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -887,41 +1146,51 @@ impl HandleBinDriversDocumentStorageDriver {
     pub fn to_handle_document_storage_driver(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentStorageDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBinDriversDocumentStorageDriver_to_HandleBinLDriversDocumentStorageDriver(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBinDriversDocumentStorageDriver_to_HandleBinLDriversDocumentStorageDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinDrivers_DocumentStorageDriver> to Handle<PCDM_StorageDriver>
     pub fn to_handle_storage_driver(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinDrivers_DocumentStorageDriver> to Handle<PCDM_Writer>
     pub fn to_handle_writer(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMWriter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinDriversDocumentStorageDriver_to_HandlePCDMWriter(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BinDrivers_DocumentStorageDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBinDriversDocumentStorageDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -934,6 +1203,7 @@ impl HandleBinDriversDocumentStorageDriver {
         let ptr = unsafe {
             crate::ffi::HandleBinDriversDocumentStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {

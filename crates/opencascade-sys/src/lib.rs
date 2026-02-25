@@ -18,7 +18,9 @@
 //! ```
 
 // Support types for extern "C" FFI
+mod exception;
 mod owned_ptr;
+pub use exception::*;
 pub use owned_ptr::*;
 
 // Include the generated modules (including collections)

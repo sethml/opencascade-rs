@@ -104,106 +104,165 @@ impl BaseMeshAlgo {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_BaseMeshAlgo_perform(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_perform(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
     pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_BaseMeshAlgo_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_BaseMeshAlgo_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_BaseMeshAlgo_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_BaseMeshAlgo_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BaseMeshAlgo_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -218,33 +277,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshBaseMeshAlgo {
 impl HandleBRepMeshBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_BaseMeshAlgo
     pub fn get(&self) -> &crate::ffi::BRepMesh_BaseMeshAlgo {
-        unsafe { &*(crate::ffi::HandleBRepMeshBaseMeshAlgo_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshBaseMeshAlgo_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_BaseMeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_BaseMeshAlgo {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshBaseMeshAlgo_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshBaseMeshAlgo_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_BaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
     pub fn to_handle_mesh_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_BaseMeshAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshBaseMeshAlgo_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -259,6 +332,7 @@ impl HandleBRepMeshBaseMeshAlgo {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -277,6 +351,7 @@ impl HandleBRepMeshBaseMeshAlgo {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -295,6 +370,7 @@ impl HandleBRepMeshBaseMeshAlgo {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -322,73 +398,110 @@ impl BoundaryParamsRangeSplitter {
     /// **Source:** `BRepMesh_BoundaryParamsRangeSplitter.hxx`:27 - `BRepMesh_BoundaryParamsRangeSplitter::BRepMesh_BoundaryParamsRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_ctor())
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_BoundaryParamsRangeSplitter.hxx`:33 - `BRepMesh_BoundaryParamsRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_add_point(self as *mut Self, thePoint)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_add_point(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
     pub fn as_nurbs_range_splitter_mut(&mut self) -> &mut NURBSRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -397,13 +510,15 @@ impl BoundaryParamsRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GenerateSurfaceNodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -413,37 +528,54 @@ impl BoundaryParamsRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetParametersU(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetParametersU(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetParametersV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetParametersV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -453,80 +585,108 @@ impl BoundaryParamsRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(
                     self as *const Self,
                     thePoint,
                     isToFaceBasis,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(
                     self as *const Self,
                     thePoint2d,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDFace(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDFace(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetSurface(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetSurface(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeU(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeU(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDelta(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDelta(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -550,7 +710,11 @@ impl Circle {
     /// **Source:** `BRepMesh_Circle.hxx`:29 - `BRepMesh_Circle::BRepMesh_Circle()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Circle_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Circle_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Circle.hxx`:37 - `BRepMesh_Circle::BRepMesh_Circle()`
@@ -558,11 +722,11 @@ impl Circle {
     /// @param theLocation location of a circle.
     /// @param theRadius radius of a circle.
     pub fn new_xy_real(theLocation: &crate::gp::XY, theRadius: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Circle_ctor_xy_real(
-                theLocation,
-                theRadius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Circle_ctor_xy_real(theLocation, theRadius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -570,26 +734,40 @@ impl Circle {
     /// Sets location of a circle.
     /// @param theLocation location of a circle.
     pub fn set_location(&mut self, theLocation: &crate::gp::XY) {
-        unsafe { crate::ffi::BRepMesh_Circle_set_location(self as *mut Self, theLocation) }
+        {
+            unsafe { crate::ffi::BRepMesh_Circle_set_location(self as *mut Self, theLocation) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Circle.hxx`:49 - `BRepMesh_Circle::SetRadius()`
     /// Sets radius of a circle.
     /// @param theRadius radius of a circle.
     pub fn set_radius(&mut self, theRadius: f64) {
-        unsafe { crate::ffi::BRepMesh_Circle_set_radius(self as *mut Self, theRadius) }
+        {
+            unsafe { crate::ffi::BRepMesh_Circle_set_radius(self as *mut Self, theRadius) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Circle.hxx`:52 - `BRepMesh_Circle::Location()`
     /// Returns location of a circle.
     pub fn location(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::BRepMesh_Circle_location(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Circle_location(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Circle.hxx`:55 - `BRepMesh_Circle::Radius()`
     /// Returns radius of a circle.
     pub fn radius(&self) -> &f64 {
-        unsafe { &*(crate::ffi::BRepMesh_Circle_radius(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Circle_radius(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -614,10 +792,12 @@ impl CircleTool {
     pub fn new_handlencollectionincallocator(
         theAllocator: &crate::ffi::HandleNCollectionIncAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepMesh_CircleTool_ctor_handlencollectionincallocator(theAllocator),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CircleTool_ctor_handlencollectionincallocator(theAllocator)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -629,13 +809,15 @@ impl CircleTool {
         theReservedSize: i32,
         theAllocator: &crate::ffi::HandleNCollectionIncAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_CircleTool_ctor_int_handlencollectionincallocator(
                     theReservedSize,
                     theAllocator,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -643,14 +825,22 @@ impl CircleTool {
     /// Initializes the tool.
     /// @param theReservedSize size to be reserved for vector of circles.
     pub fn init(&mut self, arg0: i32) {
-        unsafe { crate::ffi::BRepMesh_CircleTool_init(self as *mut Self, arg0) }
+        {
+            unsafe { crate::ffi::BRepMesh_CircleTool_init(self as *mut Self, arg0) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:53 - `BRepMesh_CircleTool::SetCellSize()`
     /// Sets new size for cell filter.
     /// @param theSize cell size to be set for X and Y dimensions.
     pub fn set_cell_size_real(&mut self, theSize: f64) {
-        unsafe { crate::ffi::BRepMesh_CircleTool_set_cell_size_real(self as *mut Self, theSize) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CircleTool_set_cell_size_real(self as *mut Self, theSize)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:58 - `BRepMesh_CircleTool::SetCellSize()`
@@ -658,12 +848,15 @@ impl CircleTool {
     /// @param theSizeX cell size to be set for X dimension.
     /// @param theSizeY cell size to be set for Y dimension.
     pub fn set_cell_size_real2(&mut self, theSizeX: f64, theSizeY: f64) {
-        unsafe {
-            crate::ffi::BRepMesh_CircleTool_set_cell_size_real2(
-                self as *mut Self,
-                theSizeX,
-                theSizeY,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CircleTool_set_cell_size_real2(
+                    self as *mut Self,
+                    theSizeX,
+                    theSizeY,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -672,15 +865,22 @@ impl CircleTool {
     /// @param theMin bottom left corner of inspection area.
     /// @param theMax top right corner of inspection area.
     pub fn set_min_max_size(&mut self, theMin: &crate::gp::XY, theMax: &crate::gp::XY) {
-        unsafe {
-            crate::ffi::BRepMesh_CircleTool_set_min_max_size(self as *mut Self, theMin, theMax)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CircleTool_set_min_max_size(self as *mut Self, theMin, theMax)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:75 - `BRepMesh_CircleTool::IsEmpty()`
     /// Returns true if cell filter contains no circle.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::BRepMesh_CircleTool_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_CircleTool_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:80 - `BRepMesh_CircleTool::Bind()`
@@ -688,8 +888,15 @@ impl CircleTool {
     /// @param theIndex index a circle should be bound with.
     /// @param theCircle circle to be bound.
     pub fn bind_int_circ2d(&mut self, theIndex: i32, theCircle: &crate::gp::Circ2d) {
-        unsafe {
-            crate::ffi::BRepMesh_CircleTool_bind_int_circ2d(self as *mut Self, theIndex, theCircle)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CircleTool_bind_int_circ2d(
+                    self as *mut Self,
+                    theIndex,
+                    theCircle,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -708,14 +915,18 @@ impl CircleTool {
         thePoint2: &crate::gp::XY,
         thePoint3: &crate::gp::XY,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CircleTool_bind_int_xy3(
-                self as *mut Self,
-                theIndex,
-                thePoint1,
-                thePoint2,
-                thePoint3,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CircleTool_bind_int_xy3(
+                    self as *mut Self,
+                    theIndex,
+                    thePoint1,
+                    thePoint2,
+                    thePoint3,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -723,14 +934,20 @@ impl CircleTool {
     /// Binds implicit zero circle.
     /// @param theIndex index a zero circle should be bound with.
     pub fn moc_bind(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BRepMesh_CircleTool_moc_bind(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::BRepMesh_CircleTool_moc_bind(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:114 - `BRepMesh_CircleTool::Delete()`
     /// Deletes a circle from the tool.
     /// @param theIndex index of a circle to be removed.
     pub fn delete(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BRepMesh_CircleTool_delete(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::BRepMesh_CircleTool_delete(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:118 - `BRepMesh_CircleTool::Select()`
@@ -746,7 +963,12 @@ impl CircleTool {
         &mut self,
         thePoint: &crate::gp::XY,
     ) -> &mut crate::ffi::IMeshData_ListOfInteger {
-        unsafe { &mut *(crate::ffi::BRepMesh_CircleTool_select(self as *mut Self, thePoint)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_CircleTool_select(self as *mut Self, thePoint) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_CircleTool.hxx`:90 - `BRepMesh_CircleTool::MakeCircle()`
@@ -765,14 +987,18 @@ impl CircleTool {
         theLocation: &mut crate::gp::XY,
         theRadius: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CircleTool_make_circle(
-                thePoint1,
-                thePoint2,
-                thePoint3,
-                theLocation,
-                theRadius,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CircleTool_make_circle(
+                    thePoint1,
+                    thePoint2,
+                    thePoint3,
+                    theLocation,
+                    theRadius,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -796,7 +1022,11 @@ impl Classifier {
     /// **Source:** `BRepMesh_Classifier.hxx`:33 - `BRepMesh_Classifier::BRepMesh_Classifier()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Classifier_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Classifier_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:41 - `BRepMesh_Classifier::Perform()`
@@ -804,12 +1034,11 @@ impl Classifier {
     /// @param thePoint Point in parametric space to be classified.
     /// @return TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
     pub fn perform(&self, thePoint: &crate::gp::Pnt2d) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BRepMesh_Classifier_perform(
-                self as *const Self,
-                thePoint,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Classifier_perform(self as *const Self, thePoint) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -829,45 +1058,67 @@ impl Classifier {
         theRangeU: &crate::ffi::std_pair_Standard_Real_Standard_Real,
         theRangeV: &crate::ffi::std_pair_Standard_Real_Standard_Real,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Classifier_register_wire(
-                self as *mut Self,
-                theWire,
-                theTolUV,
-                theRangeU,
-                theRangeV,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Classifier_register_wire(
+                    self as *mut Self,
+                    theWire,
+                    theTolUV,
+                    theRangeU,
+                    theRangeV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_Classifier_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Classifier_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Classifier_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Classifier_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_Classifier_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Classifier_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_Classifier_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Classifier_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_Classifier_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Classifier_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -875,54 +1126,87 @@ impl Classifier {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshClassifier> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Classifier_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Classifier_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_Classifier_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Classifier_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_Classifier_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Classifier_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_Classifier_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Classifier_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Classifier_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_Classifier_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Classifier_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Classifier_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Classifier_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_Classifier_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_Classifier_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -937,22 +1221,31 @@ unsafe impl crate::CppDeletable for HandleBRepMeshClassifier {
 impl HandleBRepMeshClassifier {
     /// Dereference this Handle to access the underlying BRepMesh_Classifier
     pub fn get(&self) -> &crate::ffi::BRepMesh_Classifier {
-        unsafe { &*(crate::ffi::HandleBRepMeshClassifier_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshClassifier_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_Classifier
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_Classifier {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshClassifier_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshClassifier_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_Classifier> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBRepMeshClassifier_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshClassifier_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -976,7 +1269,11 @@ impl ConeRangeSplitter {
     /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:27 - `BRepMesh_ConeRangeSplitter::BRepMesh_ConeRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:35 - `BRepMesh_ConeRangeSplitter::GetSplitSteps()`
@@ -988,12 +1285,16 @@ impl ConeRangeSplitter {
         theParameters: &crate::i_mesh_tools::Parameters,
         theStepsNb: &mut crate::ffi::std_pair_Standard_Integer_Standard_Integer,
     ) -> crate::OwnedPtr<crate::ffi::std_pair_Standard_Real_Standard_Real> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_get_split_steps(
-                self as *const Self,
-                theParameters,
-                theStepsNb,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_get_split_steps(
+                    self as *const Self,
+                    theParameters,
+                    theStepsNb,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1003,31 +1304,41 @@ impl ConeRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ConeRangeSplitter_generate_surface_nodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1037,30 +1348,50 @@ impl ConeRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AdjustRange(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -1069,64 +1400,96 @@ impl ConeRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetSurface(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetSurface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetToleranceUV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConeRangeSplitter_inherited_GetToleranceUV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -1149,76 +1512,109 @@ unsafe impl crate::CppDeletable for ConstrainedBaseMeshAlgo {
 impl ConstrainedBaseMeshAlgo {
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
     pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
     pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1229,79 +1625,107 @@ impl ConstrainedBaseMeshAlgo {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_Perform(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_Perform(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1317,13 +1741,23 @@ unsafe impl crate::CppDeletable for HandleBRepMeshConstrainedBaseMeshAlgo {
 impl HandleBRepMeshConstrainedBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_ConstrainedBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo {
-        unsafe { &*(crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ConstrainedBaseMeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1331,34 +1765,40 @@ impl HandleBRepMeshConstrainedBaseMeshAlgo {
     pub fn to_handle_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
     pub fn to_handle_mesh_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1371,6 +1811,7 @@ impl HandleBRepMeshConstrainedBaseMeshAlgo {
         let ptr = unsafe {
             crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1387,6 +1828,7 @@ impl HandleBRepMeshConstrainedBaseMeshAlgo {
         let ptr = unsafe {
             crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1416,251 +1858,454 @@ impl Context {
     pub fn new_meshalgotype(
         theMeshType: crate::i_mesh_tools::MeshAlgoType,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Context_ctor_meshalgotype(
-                theMeshType.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_ctor_meshalgotype(theMeshType.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_Context_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Context_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Context_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_Context_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Context_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_Context
     pub fn as_i_mesh_tools_context(&self) -> &crate::i_mesh_tools::Context {
-        unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshTools_Context(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_as_IMeshTools_Context(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshTools_Context (mutable)
     pub fn as_i_mesh_tools_context_mut(&mut self) -> &mut crate::i_mesh_tools::Context {
-        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
-        unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
-        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_Context_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshContext> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Context_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Context_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:40 - `IMeshTools_Context::BuildModel()`
     pub fn build_model(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_BuildModel(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_inherited_BuildModel(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:54 - `IMeshTools_Context::DiscretizeEdges()`
     pub fn discretize_edges(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_DiscretizeEdges(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_DiscretizeEdges(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:68 - `IMeshTools_Context::HealModel()`
     pub fn heal_model(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_HealModel(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_inherited_HealModel(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:83 - `IMeshTools_Context::PreProcessModel()`
     pub fn pre_process_model(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_PreProcessModel(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_PreProcessModel(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:97 - `IMeshTools_Context::DiscretizeFaces()`
     pub fn discretize_faces(&mut self, theRange: &crate::message::ProgressRange) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self as *mut Self, theRange)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self as *mut Self, theRange)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:110 - `IMeshTools_Context::PostProcessModel()`
     pub fn post_process_model(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_PostProcessModel(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_PostProcessModel(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:123 - `IMeshTools_Context::Clean()`
     pub fn clean(&mut self) {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_Clean(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_Context_inherited_Clean(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder()`
     pub fn get_model_builder(&self) -> &crate::ffi::HandleIMeshToolsModelBuilder {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetModelBuilder(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetModelBuilder(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder()`
     pub fn set_model_builder(&mut self, theBuilder: &crate::ffi::HandleIMeshToolsModelBuilder) {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_SetModelBuilder(self as *mut Self, theBuilder)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_SetModelBuilder(
+                    self as *mut Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
     pub fn get_edge_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetEdgeDiscret(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetEdgeDiscret(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:144 - `IMeshTools_Context::SetEdgeDiscret()`
     pub fn set_edge_discret(&mut self, theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_SetEdgeDiscret(self as *mut Self, theEdgeDiscret)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_SetEdgeDiscret(
+                    self as *mut Self,
+                    theEdgeDiscret,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:150 - `IMeshTools_Context::GetModelHealer()`
     pub fn get_model_healer(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetModelHealer(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetModelHealer(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:153 - `IMeshTools_Context::SetModelHealer()`
     pub fn set_model_healer(&mut self, theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo) {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_SetModelHealer(self as *mut Self, theModelHealer)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_SetModelHealer(
+                    self as *mut Self,
+                    theModelHealer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:159 - `IMeshTools_Context::GetPreProcessor()`
     pub fn get_pre_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetPreProcessor(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetPreProcessor(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:162 - `IMeshTools_Context::SetPreProcessor()`
     pub fn set_pre_processor(&mut self, thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_SetPreProcessor(
-                self as *mut Self,
-                thePreProcessor,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_SetPreProcessor(
+                    self as *mut Self,
+                    thePreProcessor,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:168 - `IMeshTools_Context::GetFaceDiscret()`
     pub fn get_face_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetFaceDiscret(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetFaceDiscret(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:171 - `IMeshTools_Context::SetFaceDiscret()`
     pub fn set_face_discret(&mut self, theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_SetFaceDiscret(self as *mut Self, theFaceDiscret)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_SetFaceDiscret(
+                    self as *mut Self,
+                    theFaceDiscret,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:177 - `IMeshTools_Context::GetPostProcessor()`
     pub fn get_post_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetPostProcessor(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetPostProcessor(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:180 - `IMeshTools_Context::SetPostProcessor()`
     pub fn set_post_processor(&mut self, thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
-        unsafe {
-            crate::ffi::BRepMesh_Context_inherited_SetPostProcessor(
-                self as *mut Self,
-                thePostProcessor,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_SetPostProcessor(
+                    self as *mut Self,
+                    thePostProcessor,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
     pub fn get_parameters(&self) -> &crate::i_mesh_tools::Parameters {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetParameters(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_GetParameters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:189 - `IMeshTools_Context::ChangeParameters()`
     pub fn change_parameters(&mut self) -> &mut crate::i_mesh_tools::Parameters {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel()`
     pub fn get_model(&self) -> &crate::ffi::HandleIMeshDataModel {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetModel(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_inherited_GetModel(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::BRepMesh_Context_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Context_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Context_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Context_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_Context_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1675,38 +2320,52 @@ unsafe impl crate::CppDeletable for HandleBRepMeshContext {
 impl HandleBRepMeshContext {
     /// Dereference this Handle to access the underlying BRepMesh_Context
     pub fn get(&self) -> &crate::ffi::BRepMesh_Context {
-        unsafe { &*(crate::ffi::HandleBRepMeshContext_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshContext_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_Context
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_Context {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshContext_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshContext_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_Context> to Handle<IMeshTools_Context>
     pub fn to_handle_context(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsContext> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshContext_to_HandleIMeshToolsContext(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshContext_to_HandleIMeshToolsContext(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_Context> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshContext_to_HandleIMeshDataShape(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshContext_to_HandleIMeshDataShape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_Context> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshContext_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshContext_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1733,14 +2392,16 @@ impl CurveTessellator {
         theParameters: &crate::i_mesh_tools::Parameters,
         theMinPointsNb: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_CurveTessellator_ctor_handleimeshdataedge_parameters_int(
                     theEdge,
                     theParameters,
                     theMinPointsNb,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1753,8 +2414,12 @@ impl CurveTessellator {
         theParameters: &crate::i_mesh_tools::Parameters,
         theMinPointsNb: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CurveTessellator_ctor_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(theEdge, theOrientation.into(), theFace, theParameters, theMinPointsNb))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_ctor_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(theEdge, theOrientation.into(), theFace, theParameters, theMinPointsNb)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1787,7 +2452,12 @@ impl CurveTessellator {
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:49 - `BRepMesh_CurveTessellator::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_CurveTessellator_points_nb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_CurveTessellator_points_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:56 - `BRepMesh_CurveTessellator::Value()`
@@ -1802,41 +2472,58 @@ impl CurveTessellator {
         thePoint: &mut crate::gp::Pnt,
         theParameter: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CurveTessellator_value(
-                self as *const Self,
-                theIndex,
-                thePoint,
-                theParameter,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_value(
+                    self as *const Self,
+                    theIndex,
+                    thePoint,
+                    theParameter,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_CurveTessellator_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_CurveTessellator_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_CurveTessellator_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_CurveTessellator_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_CurveTessellator
     pub fn as_i_mesh_tools_curve_tessellator(&self) -> &crate::i_mesh_tools::CurveTessellator {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -1844,26 +2531,36 @@ impl CurveTessellator {
     pub fn as_i_mesh_tools_curve_tessellator_mut(
         &mut self,
     ) -> &mut crate::i_mesh_tools::CurveTessellator {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CurveTessellator_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CurveTessellator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1871,63 +2568,96 @@ impl CurveTessellator {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshCurveTessellator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CurveTessellator_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_CurveTessellator_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CurveTessellator_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CurveTessellator_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_CurveTessellator_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_CurveTessellator_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_CurveTessellator_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_CurveTessellator_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CurveTessellator_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_CurveTessellator_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_CurveTessellator_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1942,35 +2672,49 @@ unsafe impl crate::CppDeletable for HandleBRepMeshCurveTessellator {
 impl HandleBRepMeshCurveTessellator {
     /// Dereference this Handle to access the underlying BRepMesh_CurveTessellator
     pub fn get(&self) -> &crate::ffi::BRepMesh_CurveTessellator {
-        unsafe { &*(crate::ffi::HandleBRepMeshCurveTessellator_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshCurveTessellator_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_CurveTessellator
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_CurveTessellator {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshCurveTessellator_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshCurveTessellator_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_CurveTessellator> to Handle<IMeshTools_CurveTessellator>
     pub fn to_handle_curve_tessellator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshCurveTessellator_to_HandleIMeshToolsCurveTessellator(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_CurveTessellator> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshCurveTessellator_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1993,88 +2737,128 @@ unsafe impl crate::CppDeletable for CustomBaseMeshAlgo {
 impl CustomBaseMeshAlgo {
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
     pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
     pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
     pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2085,71 +2869,106 @@ impl CustomBaseMeshAlgo {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_Perform(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_Perform(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CustomBaseMeshAlgo_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2164,20 +2983,34 @@ unsafe impl crate::CppDeletable for HandleBRepMeshCustomBaseMeshAlgo {
 impl HandleBRepMeshCustomBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_CustomBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi::BRepMesh_CustomBaseMeshAlgo {
-        unsafe { &*(crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_CustomBaseMeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_CustomBaseMeshAlgo {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
     pub fn to_handle_constrained_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2185,34 +3018,40 @@ impl HandleBRepMeshCustomBaseMeshAlgo {
     pub fn to_handle_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
     pub fn to_handle_mesh_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2225,6 +3064,7 @@ impl HandleBRepMeshCustomBaseMeshAlgo {
         let ptr = unsafe {
             crate::ffi::HandleBRepMeshCustomBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2252,7 +3092,11 @@ impl CylinderRangeSplitter {
     /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:27 - `BRepMesh_CylinderRangeSplitter::BRepMesh_CylinderRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_CylinderRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:36 - `BRepMesh_CylinderRangeSplitter::Reset()`
@@ -2262,12 +3106,15 @@ impl CylinderRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_CylinderRangeSplitter_reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2277,54 +3124,76 @@ impl CylinderRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_CylinderRangeSplitter_generate_surface_nodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(
-                self as *mut Self,
-                thePoint,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -2333,66 +3202,98 @@ impl CylinderRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetSurface(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetSurface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -2421,13 +3322,15 @@ impl DataStructureOfDelaun {
         theAllocator: &crate::ffi::HandleNCollectionIncAllocator,
         theReservedNodeSize: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_DataStructureOfDelaun_ctor_handlencollectionincallocator_int(
                     theAllocator,
                     theReservedNodeSize,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2445,7 +3348,12 @@ impl DataStructureOfDelaun {
     /// @name API for accessing mesh nodes.
     /// Returns number of nodes.
     pub fn nb_nodes(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_nodes(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_nodes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:43 - `BRepMesh_DataStructureOfDelaun::AddNode()`
@@ -2455,12 +3363,16 @@ impl DataStructureOfDelaun {
     /// checking on coincidence with other nodes.
     /// @return index of the node in the structure.
     pub fn add_node(&mut self, theNode: &Vertex, isForceAdd: bool) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_add_node(
-                self as *mut Self,
-                theNode,
-                isForceAdd,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_add_node(
+                    self as *mut Self,
+                    theNode,
+                    isForceAdd,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2469,8 +3381,15 @@ impl DataStructureOfDelaun {
     /// @param theNode node to find.
     /// @return index of the given element of zero if node is not in the mesh.
     pub fn index_of_vertex(&mut self, theNode: &Vertex) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_vertex(self as *mut Self, theNode)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_vertex(
+                    self as *mut Self,
+                    theNode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2479,8 +3398,12 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of a node.
     /// @return node with the given index.
     pub fn get_node(&mut self, theIndex: i32) -> &Vertex {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_node(self as *mut Self, theIndex))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_get_node(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2490,12 +3413,16 @@ impl DataStructureOfDelaun {
     /// @param theNewNode substituting node.
     /// @return FALSE in case if new node is already in the structure, TRUE elsewhere.
     pub fn substitute_node(&mut self, theIndex: i32, theNewNode: &Vertex) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_node(
-                self as *mut Self,
-                theIndex,
-                theNewNode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_node(
+                    self as *mut Self,
+                    theIndex,
+                    theNewNode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2506,12 +3433,15 @@ impl DataStructureOfDelaun {
     /// @param isForce if TRUE node will be removed even if movability
     /// is not Free.
     pub fn remove_node(&mut self, theIndex: i32, isForce: bool) {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_remove_node(
-                self as *mut Self,
-                theIndex,
-                isForce,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_remove_node(
+                    self as *mut Self,
+                    theIndex,
+                    isForce,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2520,11 +3450,15 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of node whose links should be retrieved.
     /// @return list of links attached to the node.
     pub fn links_connected_to(&self, theIndex: i32) -> &crate::ffi::IMeshData_ListOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_links_connected_to(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_links_connected_to(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2532,7 +3466,12 @@ impl DataStructureOfDelaun {
     /// @name API for accessing mesh links.
     /// Returns number of links.
     pub fn nb_links(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_links(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_links(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:98 - `BRepMesh_DataStructureOfDelaun::AddLink()`
@@ -2540,7 +3479,13 @@ impl DataStructureOfDelaun {
     /// @param theLink link to be added to the mesh.
     /// @return index of the link in the structure.
     pub fn add_link(&mut self, theLink: &Edge) -> i32 {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_add_link(self as *mut Self, theLink) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_add_link(self as *mut Self, theLink)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:103 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
@@ -2548,8 +3493,15 @@ impl DataStructureOfDelaun {
     /// @param theLink link to find.
     /// @return index of the given element of zero if link is not in the mesh.
     pub fn index_of_edge(&self, theLink: &Edge) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_edge(self as *const Self, theLink)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_edge(
+                    self as *const Self,
+                    theLink,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2558,16 +3510,24 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of a link.
     /// @return link with the given index.
     pub fn get_link(&mut self, theIndex: i32) -> &Edge {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_link(self as *mut Self, theIndex))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_get_link(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:117 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain()`
     /// Returns map of indices of links registered in mesh.
     pub fn links_of_domain(&self) -> &crate::ffi::IMeshData_MapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_links_of_domain(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_links_of_domain(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2577,12 +3537,16 @@ impl DataStructureOfDelaun {
     /// @param theNewLink substituting link.
     /// @return FALSE in case if new link is already in the structure, TRUE elsewhere.
     pub fn substitute_link(&mut self, theIndex: i32, theNewLink: &Edge) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_link(
-                self as *mut Self,
-                theIndex,
-                theNewLink,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_link(
+                    self as *mut Self,
+                    theIndex,
+                    theNewLink,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2593,12 +3557,15 @@ impl DataStructureOfDelaun {
     /// @param isForce if TRUE link will be removed even if movability
     /// is not Free.
     pub fn remove_link(&mut self, theIndex: i32, isForce: bool) {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_remove_link(
-                self as *mut Self,
-                theIndex,
-                isForce,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_remove_link(
+                    self as *mut Self,
+                    theIndex,
+                    isForce,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2607,11 +3574,15 @@ impl DataStructureOfDelaun {
     /// @param theLinkIndex index of link whose data should be retrieved.
     /// @return indices of elements connected to the link.
     pub fn elements_connected_to(&self, theLinkIndex: i32) -> &PairOfIndex {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_elements_connected_to(
-                self as *const Self,
-                theLinkIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_elements_connected_to(
+                    self as *const Self,
+                    theLinkIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2619,7 +3590,13 @@ impl DataStructureOfDelaun {
     /// @name API for accessing mesh elements.
     /// Returns number of links.
     pub fn nb_elements(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_elements(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_nb_elements(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:149 - `BRepMesh_DataStructureOfDelaun::AddElement()`
@@ -2627,8 +3604,15 @@ impl DataStructureOfDelaun {
     /// @param theElement element to be added to the mesh.
     /// @return index of the element in the structure.
     pub fn add_element(&mut self, theElement: &Triangle) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_add_element(self as *mut Self, theElement)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_add_element(
+                    self as *mut Self,
+                    theElement,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2637,16 +3621,24 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of an element.
     /// @return element with the given index.
     pub fn get_element(&mut self, theIndex: i32) -> &Triangle {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_element(self as *mut Self, theIndex))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_get_element(self as *mut Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:160 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain()`
     /// Returns map of indices of elements registered in mesh.
     pub fn elements_of_domain(&self) -> &crate::ffi::IMeshData_MapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_elements_of_domain(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_elements_of_domain(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2656,12 +3648,16 @@ impl DataStructureOfDelaun {
     /// @param theNewLink substituting element.
     /// @return FALSE in case if new element is already in the structure, TRUE elsewhere.
     pub fn substitute_element(&mut self, theIndex: i32, theNewElement: &Triangle) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_element(
-                self as *mut Self,
-                theIndex,
-                theNewElement,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_element(
+                    self as *mut Self,
+                    theIndex,
+                    theNewElement,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2669,8 +3665,14 @@ impl DataStructureOfDelaun {
     /// Removes element from the mesh.
     /// @param theIndex index of element to be removed.
     pub fn remove_element(&mut self, theIndex: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_remove_element(self as *mut Self, theIndex)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_remove_element(
+                    self as *mut Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2679,23 +3681,29 @@ impl DataStructureOfDelaun {
     /// @param theElement element which nodes should be retrieved.
     /// @param[out] theNodes nodes of the given element.
     pub fn element_nodes(&mut self, theElement: &Triangle, theNodes: &mut [i32; 3]) {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_element_nodes(
-                self as *mut Self,
-                theElement,
-                theNodes.as_mut_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_element_nodes(
+                    self as *mut Self,
+                    theElement,
+                    theNodes.as_mut_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:179 - `BRepMesh_DataStructureOfDelaun::Dump()`
     pub fn dump(&mut self, theFileNameStr: &str) {
         let c_theFileNameStr = std::ffi::CString::new(theFileNameStr).unwrap();
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_dump(
-                self as *mut Self,
-                c_theFileNameStr.as_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_dump(
+                    self as *mut Self,
+                    c_theFileNameStr.as_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2704,70 +3712,112 @@ impl DataStructureOfDelaun {
     /// Dumps information about this structure.
     /// @param theStream stream to be used for dump.
     pub fn statistics(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_statistics(self as *const Self, theStream)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_statistics(
+                    self as *const Self,
+                    theStream,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:187 - `BRepMesh_DataStructureOfDelaun::Allocator()`
     /// Returns memory allocator used by the structure.
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionIncAllocator {
-        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_allocator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_allocator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:190 - `BRepMesh_DataStructureOfDelaun::Data()`
     /// Gives the data structure for initialization of cell size and tolerance.
     pub fn data(&mut self) -> &crate::ffi::HandleBRepMeshVertexTool {
-        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_data(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_data(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:193 - `BRepMesh_DataStructureOfDelaun::ClearDomain()`
     /// Removes all elements.
     pub fn clear_domain(&mut self) {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_domain(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_domain(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:197 - `BRepMesh_DataStructureOfDelaun::ClearDeleted()`
     /// Substitutes deleted items by the last one from corresponding map
     /// to have only non-deleted elements, links or nodes in the structure.
     pub fn clear_deleted(&mut self) {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_deleted(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_deleted(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DataStructureOfDelaun_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2775,75 +3825,103 @@ impl DataStructureOfDelaun {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDataStructureOfDelaun> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DataStructureOfDelaun_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DataStructureOfDelaun_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2858,24 +3936,35 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDataStructureOfDelaun {
 impl HandleBRepMeshDataStructureOfDelaun {
     /// Dereference this Handle to access the underlying BRepMesh_DataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi::BRepMesh_DataStructureOfDelaun {
-        unsafe { &*(crate::ffi::HandleBRepMeshDataStructureOfDelaun_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshDataStructureOfDelaun_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DataStructureOfDelaun
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DataStructureOfDelaun {
-        unsafe {
-            &mut *(crate::ffi::HandleBRepMeshDataStructureOfDelaun_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDataStructureOfDelaun_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<BRepMesh_DataStructureOfDelaun> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDataStructureOfDelaun_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2899,7 +3988,11 @@ impl DefaultRangeSplitter {
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:29 - `BRepMesh_DefaultRangeSplitter::BRepMesh_DefaultRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
@@ -2909,31 +4002,47 @@ impl DefaultRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_DefaultRangeSplitter_reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_add_point(self as *mut Self, thePoint) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_add_point(self as *mut Self, thePoint)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     /// Updates discrete range of surface according to its geometric range.
     pub fn adjust_range(&mut self) {
-        unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_adjust_range(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_adjust_range(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     /// Returns True if computed range is valid.
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_is_valid(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_is_valid(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -2948,12 +4057,16 @@ impl DefaultRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2964,13 +4077,15 @@ impl DefaultRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_DefaultRangeSplitter_generate_surface_nodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2978,48 +4093,82 @@ impl DefaultRangeSplitter {
     /// Returns point in 3d space corresponded to the given
     /// point defined in parametric space of surface.
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_point(self as *const Self, thePoint2d)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     /// Returns face model.
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_d_face(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_get_d_face(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     /// Returns surface.
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_surface(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_get_surface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     /// Returns U range.
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_range_u(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_get_range_u(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     /// Returns V range.
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_range_v(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_get_range_v(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     /// Returns delta.
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe { &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_delta(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_get_delta(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DefaultRangeSplitter_get_tolerance_uv(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DefaultRangeSplitter_get_tolerance_uv(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -3042,12 +4191,21 @@ impl Deflection {
     /// **Source:** `BRepMesh_Deflection.hxx` - `BRepMesh_Deflection::BRepMesh_Deflection()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Deflection_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Deflection_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_Deflection_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Deflection_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:35 - `BRepMesh_Deflection::ComputeAbsoluteDeflection()`
@@ -3062,12 +4220,16 @@ impl Deflection {
         theRelativeDeflection: f64,
         theMaxShapeSize: f64,
     ) -> f64 {
-        unsafe {
-            crate::ffi::BRepMesh_Deflection_compute_absolute_deflection(
-                theShape,
-                theRelativeDeflection,
-                theMaxShapeSize,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_compute_absolute_deflection(
+                    theShape,
+                    theRelativeDeflection,
+                    theMaxShapeSize,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3078,12 +4240,11 @@ impl Deflection {
         theMaxShapeSize: f64,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdataedge_real_parameters(
-                theDEdge,
-                theMaxShapeSize,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdataedge_real_parameters(theDEdge, theMaxShapeSize, theParameters)
+            };
+            crate::check_exception();
         }
     }
 
@@ -3093,11 +4254,14 @@ impl Deflection {
         theDWire: &crate::ffi::HandleIMeshDataWire,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdatawire_parameters(
-                theDWire,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdatawire_parameters(
+                    theDWire,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3107,11 +4271,14 @@ impl Deflection {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdataface_parameters(
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Deflection_compute_deflection_handleimeshdataface_parameters(
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3130,39 +4297,57 @@ impl Deflection {
         theAllowDecrease: bool,
         theRatio: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_Deflection_is_consistent(
-                theCurrent,
-                theRequired,
-                theAllowDecrease,
-                theRatio,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_is_consistent(
+                    theCurrent,
+                    theRequired,
+                    theAllowDecrease,
+                    theRatio,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Deflection_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Deflection_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_Deflection_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Deflection_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_Deflection_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_Deflection_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3170,54 +4355,87 @@ impl Deflection {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDeflection> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Deflection_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Deflection_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_Deflection_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_Deflection_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_Deflection_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Deflection_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_Deflection_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Deflection_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Deflection_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Deflection_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_Deflection_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_Deflection_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3232,22 +4450,31 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDeflection {
 impl HandleBRepMeshDeflection {
     /// Dereference this Handle to access the underlying BRepMesh_Deflection
     pub fn get(&self) -> &crate::ffi::BRepMesh_Deflection {
-        unsafe { &*(crate::ffi::HandleBRepMeshDeflection_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshDeflection_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_Deflection
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_Deflection {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshDeflection_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshDeflection_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_Deflection> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBRepMeshDeflection_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDeflection_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3271,113 +4498,170 @@ impl DelabellaBaseMeshAlgo {
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:27 - `BRepMesh_DelabellaBaseMeshAlgo::BRepMesh_DelabellaBaseMeshAlgo()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_CustomBaseMeshAlgo
     pub fn as_custom_base_mesh_algo(&self) -> &CustomBaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_CustomBaseMeshAlgo (mutable)
     pub fn as_custom_base_mesh_algo_mut(&mut self) -> &mut CustomBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
     pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
     pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
     pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3385,10 +4669,11 @@ impl DelabellaBaseMeshAlgo {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3399,78 +4684,108 @@ impl DelabellaBaseMeshAlgo {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_Perform(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_Perform(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3485,13 +4800,22 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDelabellaBaseMeshAlgo {
 impl HandleBRepMeshDelabellaBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_DelabellaBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi::BRepMesh_DelabellaBaseMeshAlgo {
-        unsafe { &*(crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DelabellaBaseMeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DelabellaBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3499,12 +4823,14 @@ impl HandleBRepMeshDelabellaBaseMeshAlgo {
     pub fn to_handle_custom_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshCustomBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshCustomBaseMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3512,8 +4838,12 @@ impl HandleBRepMeshDelabellaBaseMeshAlgo {
     pub fn to_handle_constrained_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3521,34 +4851,40 @@ impl HandleBRepMeshDelabellaBaseMeshAlgo {
     pub fn to_handle_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
     pub fn to_handle_mesh_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3572,7 +4908,11 @@ impl DelabellaMeshAlgoFactory {
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:28 - `BRepMesh_DelabellaMeshAlgoFactory::BRepMesh_DelabellaMeshAlgoFactory()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:34 - `BRepMesh_DelabellaMeshAlgoFactory::GetAlgo()`
@@ -3582,42 +4922,59 @@ impl DelabellaMeshAlgoFactory {
         theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(
-                self as *const Self,
-                theSurfaceType.into(),
-                theParameters,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(
+                    self as *const Self,
+                    theSurfaceType.into(),
+                    theParameters,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgoFactory
     pub fn as_i_mesh_tools_mesh_algo_factory(&self) -> &crate::i_mesh_tools::MeshAlgoFactory {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -3625,28 +4982,40 @@ impl DelabellaMeshAlgoFactory {
     pub fn as_i_mesh_tools_mesh_algo_factory_mut(
         &mut self,
     ) -> &mut crate::i_mesh_tools::MeshAlgoFactory {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3654,76 +5023,102 @@ impl DelabellaMeshAlgoFactory {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -3739,13 +5134,23 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDelabellaMeshAlgoFactory {
 impl HandleBRepMeshDelabellaMeshAlgoFactory {
     /// Dereference this Handle to access the underlying BRepMesh_DelabellaMeshAlgoFactory
     pub fn get(&self) -> &crate::ffi::BRepMesh_DelabellaMeshAlgoFactory {
-        unsafe { &*(crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DelabellaMeshAlgoFactory
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DelabellaMeshAlgoFactory {
-        unsafe {
-            &mut *(crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3753,19 +5158,25 @@ impl HandleBRepMeshDelabellaMeshAlgoFactory {
     pub fn to_handle_mesh_algo_factory(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgoFactory> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_DelabellaMeshAlgoFactory> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -3793,15 +5204,17 @@ impl Delaun {
         theCellsCountV: i32,
         isFillCircles: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_int2_bool(
                     theOldMesh,
                     theCellsCountU,
                     theCellsCountV,
                     isFillCircles,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3810,10 +5223,11 @@ impl Delaun {
     pub fn new_array1ofvertexofdelaun(
         theVertices: &mut crate::ffi::IMeshData_Array1OfVertexOfDelaun,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_array1ofvertexofdelaun(
-                theVertices,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Delaun_ctor_array1ofvertexofdelaun(theVertices) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3823,8 +5237,12 @@ impl Delaun {
         theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
         theVertices: &mut crate::ffi::IMeshData_Array1OfVertexOfDelaun,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(theOldMesh, theVertices))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(theOldMesh, theVertices)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3834,8 +5252,15 @@ impl Delaun {
         theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
         theVertexIndices: &mut crate::ffi::IMeshData_VectorOfInteger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger(theOldMesh, theVertexIndices))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger(
+                    theOldMesh,
+                    theVertexIndices,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3847,33 +5272,46 @@ impl Delaun {
         theCellsCountU: i32,
         theCellsCountV: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(theOldMesh, theVertexIndices, theCellsCountU, theCellsCountV))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(theOldMesh, theVertexIndices, theCellsCountU, theCellsCountV)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:63 - `BRepMesh_Delaun::Init()`
     /// Initializes the triangulation with an array of vertices.
     pub fn init(&mut self, theVertices: &mut crate::ffi::IMeshData_Array1OfVertexOfDelaun) {
-        unsafe { crate::ffi::BRepMesh_Delaun_init(self as *mut Self, theVertices) }
+        {
+            unsafe { crate::ffi::BRepMesh_Delaun_init(self as *mut Self, theVertices) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:66 - `BRepMesh_Delaun::InitCirclesTool()`
     /// Forces initialization of circles cell filter using working structure.
     pub fn init_circles_tool(&mut self, theCellsCountU: i32, theCellsCountV: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_Delaun_init_circles_tool(
-                self as *mut Self,
-                theCellsCountU,
-                theCellsCountV,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Delaun_init_circles_tool(
+                    self as *mut Self,
+                    theCellsCountU,
+                    theCellsCountV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:70 - `BRepMesh_Delaun::RemoveVertex()`
     /// Removes a vertex from the triangulation.
     pub fn remove_vertex(&mut self, theVertex: &Vertex) {
-        unsafe { crate::ffi::BRepMesh_Delaun_remove_vertex(self as *mut Self, theVertex) }
+        {
+            unsafe { crate::ffi::BRepMesh_Delaun_remove_vertex(self as *mut Self, theVertex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:73 - `BRepMesh_Delaun::AddVertices()`
@@ -3883,12 +5321,15 @@ impl Delaun {
         theVerticesIndices: &mut crate::ffi::IMeshData_VectorOfInteger,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Delaun_add_vertices(
-                self as *mut Self,
-                theVerticesIndices,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Delaun_add_vertices(
+                    self as *mut Self,
+                    theVerticesIndices,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3896,19 +5337,31 @@ impl Delaun {
     /// Modify mesh to use the edge.
     /// @return True if done
     pub fn use_edge(&mut self, theEdge: i32) -> bool {
-        unsafe { crate::ffi::BRepMesh_Delaun_use_edge(self as *mut Self, theEdge) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Delaun_use_edge(self as *mut Self, theEdge) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:81 - `BRepMesh_Delaun::Result()`
     /// Gives the Mesh data structure.
     pub fn result(&self) -> &crate::ffi::HandleBRepMeshDataStructureOfDelaun {
-        unsafe { &*(crate::ffi::BRepMesh_Delaun_result(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Delaun_result(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:84 - `BRepMesh_Delaun::ProcessConstraints()`
     /// Forces insertion of constraint edges into the base triangulation.
     pub fn process_constraints(&mut self) {
-        unsafe { crate::ffi::BRepMesh_Delaun_process_constraints(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_Delaun_process_constraints(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:93 - `BRepMesh_Delaun::Frontier()`
@@ -3916,8 +5369,10 @@ impl Delaun {
     pub fn frontier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_frontier(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Delaun_frontier(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3926,10 +5381,11 @@ impl Delaun {
     pub fn internal_edges(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_internal_edges(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Delaun_internal_edges(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3938,33 +5394,54 @@ impl Delaun {
     pub fn free_edges(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Delaun_free_edges(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Delaun_free_edges(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:102 - `BRepMesh_Delaun::GetVertex()`
     /// Gives vertex with the given index
     pub fn get_vertex(&self, theIndex: i32) -> &Vertex {
-        unsafe { &*(crate::ffi::BRepMesh_Delaun_get_vertex(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Delaun_get_vertex(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:108 - `BRepMesh_Delaun::GetEdge()`
     /// Gives edge with the given index
     pub fn get_edge(&self, theIndex: i32) -> &Edge {
-        unsafe { &*(crate::ffi::BRepMesh_Delaun_get_edge(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Delaun_get_edge(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:114 - `BRepMesh_Delaun::GetTriangle()`
     /// Gives triangle with the given index
     pub fn get_triangle(&self, theIndex: i32) -> &Triangle {
-        unsafe { &*(crate::ffi::BRepMesh_Delaun_get_triangle(self as *const Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Delaun_get_triangle(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:120 - `BRepMesh_Delaun::Circles()`
     /// Returns tool used to build mesh consistent to Delaunay criteria.
     pub fn circles(&self) -> &CircleTool {
-        unsafe { &*(crate::ffi::BRepMesh_Delaun_circles(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Delaun_circles(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains()`
@@ -3979,21 +5456,28 @@ impl Delaun {
         theSqTolerance: f64,
         theEdgeOn: &mut i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_Delaun_contains(
-                self as *const Self,
-                theTriangleId,
-                theVertex,
-                theSqTolerance,
-                theEdgeOn,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Delaun_contains(
+                    self as *const Self,
+                    theTriangleId,
+                    theVertex,
+                    theSqTolerance,
+                    theEdgeOn,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices()`
     /// Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
     pub fn set_aux_vertices(&mut self, theSupVert: &crate::ffi::IMeshData_VectorOfInteger) {
-        unsafe { crate::ffi::BRepMesh_Delaun_set_aux_vertices(self as *mut Self, theSupVert) }
+        {
+            unsafe { crate::ffi::BRepMesh_Delaun_set_aux_vertices(self as *mut Self, theSupVert) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:140 - `BRepMesh_Delaun::RemoveAuxElements()`
@@ -4001,7 +5485,10 @@ impl Delaun {
     /// Removes auxiliary vertices also.
     /// @param theAuxVertices auxiliary vertices to be cleaned up.
     pub fn remove_aux_elements(&mut self) {
-        unsafe { crate::ffi::BRepMesh_Delaun_remove_aux_elements(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_Delaun_remove_aux_elements(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4024,93 +5511,142 @@ impl DelaunayBaseMeshAlgo {
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:27 - `BRepMesh_DelaunayBaseMeshAlgo::BRepMesh_DelaunayBaseMeshAlgo()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
     pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
     pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
     pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4118,10 +5654,11 @@ impl DelaunayBaseMeshAlgo {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4132,75 +5669,106 @@ impl DelaunayBaseMeshAlgo {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_Perform(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_Perform(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4215,20 +5783,35 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDelaunayBaseMeshAlgo {
 impl HandleBRepMeshDelaunayBaseMeshAlgo {
     /// Dereference this Handle to access the underlying BRepMesh_DelaunayBaseMeshAlgo
     pub fn get(&self) -> &crate::ffi::BRepMesh_DelaunayBaseMeshAlgo {
-        unsafe { &*(crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DelaunayBaseMeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DelaunayBaseMeshAlgo {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
     pub fn to_handle_constrained_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4236,34 +5819,40 @@ impl HandleBRepMeshDelaunayBaseMeshAlgo {
     pub fn to_handle_base_mesh_algo(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshBaseMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
     pub fn to_handle_mesh_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4282,7 +5871,12 @@ impl DiscretFactory {
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:41 - `BRepMesh_DiscretFactory::Names()`
     /// Returns the list of registered meshing algorithms.
     pub fn names(&self) -> &crate::ffi::TColStd_MapOfAsciiString {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretFactory_names(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DiscretFactory_names(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:46 - `BRepMesh_DiscretFactory::SetDefaultName()`
@@ -4290,13 +5884,24 @@ impl DiscretFactory {
     /// Returns TRUE if requested tool is available. <br>
     /// On fail Factory will continue to use previous algo.
     pub fn set_default_name(&mut self, theName: &crate::t_collection::AsciiString) -> bool {
-        unsafe { crate::ffi::BRepMesh_DiscretFactory_set_default_name(self as *mut Self, theName) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretFactory_set_default_name(self as *mut Self, theName)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:52 - `BRepMesh_DiscretFactory::DefaultName()`
     /// Returns name for current meshing algorithm.
     pub fn default_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretFactory_default_name(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DiscretFactory_default_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:57 - `BRepMesh_DiscretFactory::SetFunctionName()`
@@ -4304,25 +5909,37 @@ impl DiscretFactory {
     /// Returns TRUE if requested tool is available. <br>
     /// On fail Factory will continue to use previous algo.
     pub fn set_function_name(&mut self, theFuncName: &crate::t_collection::AsciiString) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DiscretFactory_set_function_name(self as *mut Self, theFuncName)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretFactory_set_function_name(
+                    self as *mut Self,
+                    theFuncName,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:63 - `BRepMesh_DiscretFactory::FunctionName()`
     /// Returns function name that should be exported by plugin.
     pub fn function_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretFactory_function_name(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DiscretFactory_function_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:66 - `BRepMesh_DiscretFactory::ErrorStatus()`
     /// Returns error status for last meshing algorithm switch.
     pub fn error_status(&self) -> crate::b_rep_mesh::FactoryError {
-        unsafe {
-            crate::b_rep_mesh::FactoryError::try_from(
-                crate::ffi::BRepMesh_DiscretFactory_error_status(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DiscretFactory_error_status(self as *const Self) };
+            crate::check_exception();
+            crate::b_rep_mesh::FactoryError::try_from(__result).unwrap()
         }
     }
 
@@ -4336,8 +5953,16 @@ impl DiscretFactory {
         theName: &crate::t_collection::AsciiString,
         theFuncName: &crate::t_collection::AsciiString,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DiscretFactory_set_default(self as *mut Self, theName, theFuncName)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretFactory_set_default(
+                    self as *mut Self,
+                    theName,
+                    theFuncName,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4352,20 +5977,28 @@ impl DiscretFactory {
         theLinDeflection: f64,
         theAngDeflection: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDiscretRoot> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DiscretFactory_discret(
-                self as *mut Self,
-                theShape,
-                theLinDeflection,
-                theAngDeflection,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretFactory_discret(
+                    self as *mut Self,
+                    theShape,
+                    theLinDeflection,
+                    theAngDeflection,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_DiscretFactory.hxx`:38 - `BRepMesh_DiscretFactory::Get()`
     /// Returns the global factory instance.
     pub fn get() -> &'static mut DiscretFactory {
-        unsafe { &mut *(crate::ffi::BRepMesh_DiscretFactory_get()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DiscretFactory_get() };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 }
 
@@ -4388,100 +6021,164 @@ impl DiscretRoot {
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
     /// Set the shape to triangulate.
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_set_shape(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::BRepMesh_DiscretRoot_set_shape(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DiscretRoot_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:36 - `BRepMesh_DiscretRoot::IsDone()`
     /// Returns true if triangualtion was performed and has success.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DiscretRoot_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:39 - `BRepMesh_DiscretRoot::Perform()`
     /// Compute triangulation for set shape.
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_perform(self as *mut Self, theRange) }
+        {
+            unsafe { crate::ffi::BRepMesh_DiscretRoot_perform(self as *mut Self, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_DiscretRoot_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DiscretRoot_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DiscretRoot_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_DiscretRoot_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DiscretRoot_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_DiscretRoot_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_DiscretRoot_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_DiscretRoot_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4496,22 +6193,34 @@ unsafe impl crate::CppDeletable for HandleBRepMeshDiscretRoot {
 impl HandleBRepMeshDiscretRoot {
     /// Dereference this Handle to access the underlying BRepMesh_DiscretRoot
     pub fn get(&self) -> &crate::ffi::BRepMesh_DiscretRoot {
-        unsafe { &*(crate::ffi::HandleBRepMeshDiscretRoot_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshDiscretRoot_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DiscretRoot
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DiscretRoot {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshDiscretRoot_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshDiscretRoot_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_DiscretRoot> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshDiscretRoot_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4526,6 +6235,7 @@ impl HandleBRepMeshDiscretRoot {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4552,7 +6262,11 @@ impl Edge {
     /// **Source:** `BRepMesh_Edge.hxx`:27 - `BRepMesh_Edge::BRepMesh_Edge()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Edge_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Edge_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Edge.hxx`:34 - `BRepMesh_Edge::BRepMesh_Edge()`
@@ -4562,23 +6276,26 @@ impl Edge {
         theLastNode: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Edge_ctor_int2_degreeoffreedom(
-                theFirstNode,
-                theLastNode,
-                theMovability.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Edge_ctor_int2_degreeoffreedom(
+                    theFirstNode,
+                    theLastNode,
+                    theMovability.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_Edge.hxx`:43 - `BRepMesh_Edge::Movability()`
     /// Returns movability flag of the Link.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
-        unsafe {
-            crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Edge_movability(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Edge_movability(self as *const Self) };
+            crate::check_exception();
+            crate::b_rep_mesh::DegreeOfFreedom::try_from(__result).unwrap()
         }
     }
 
@@ -4586,7 +6303,12 @@ impl Edge {
     /// Sets movability flag of the Link.
     /// @param theMovability flag to be set.
     pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
-        unsafe { crate::ffi::BRepMesh_Edge_set_movability(self as *mut Self, theMovability.into()) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Edge_set_movability(self as *mut Self, theMovability.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Edge.hxx`:52 - `BRepMesh_Edge::IsSameOrientation()`
@@ -4594,7 +6316,13 @@ impl Edge {
     /// @param theOther edge to be checked against this one.
     /// \return TRUE if edges have the same orientation, FALSE if not.
     pub fn is_same_orientation(&self, theOther: &Edge) -> bool {
-        unsafe { crate::ffi::BRepMesh_Edge_is_same_orientation(self as *const Self, theOther) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Edge_is_same_orientation(self as *const Self, theOther)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_Edge.hxx`:60 - `BRepMesh_Edge::IsEqual()`
@@ -4602,27 +6330,53 @@ impl Edge {
     /// @param theOther edge to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
     pub fn is_equal(&self, theOther: &Edge) -> bool {
-        unsafe { crate::ffi::BRepMesh_Edge_is_equal(self as *const Self, theOther) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Edge_is_equal(self as *const Self, theOther) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to BRepMesh_OrientedEdge
     pub fn as_oriented_edge(&self) -> &OrientedEdge {
-        unsafe { &*(crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to BRepMesh_OrientedEdge (mutable)
     pub fn as_oriented_edge_mut(&mut self) -> &mut OrientedEdge {
-        unsafe { &mut *(crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_OrientedEdge.hxx`:42 - `BRepMesh_OrientedEdge::FirstNode()`
     pub fn first_node(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Edge_inherited_FirstNode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Edge_inherited_FirstNode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_OrientedEdge.hxx`:45 - `BRepMesh_OrientedEdge::LastNode()`
     pub fn last_node(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Edge_inherited_LastNode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Edge_inherited_LastNode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -4647,12 +6401,21 @@ impl EdgeDiscret {
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:33 - `BRepMesh_EdgeDiscret::BRepMesh_EdgeDiscret()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_EdgeDiscret_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_EdgeDiscret_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:39 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator()`
@@ -4662,8 +6425,12 @@ impl EdgeDiscret {
         theParameters: &crate::i_mesh_tools::Parameters,
         theMinPointsNb: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_parameters_int(theDEdge, theParameters, theMinPointsNb))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_parameters_int(theDEdge, theParameters, theMinPointsNb)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4676,8 +6443,12 @@ impl EdgeDiscret {
         theParameters: &crate::i_mesh_tools::Parameters,
         theMinPointsNb: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(theDEdge, theOrientation.into(), theDFace, theParameters, theMinPointsNb))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(theDEdge, theOrientation.into(), theDFace, theParameters, theMinPointsNb)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4687,12 +6458,14 @@ impl EdgeDiscret {
         theDEdge: &crate::ffi::HandleIMeshDataEdge,
         theDFace: &crate::ffi::HandleIMeshDataFace,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_EdgeDiscret_create_edge_tessellation_extractor(
                     theDEdge, theDFace,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4703,52 +6476,86 @@ impl EdgeDiscret {
         theTessellator: &crate::ffi::HandleIMeshToolsCurveTessellator,
         theUpdateEnds: bool,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeDiscret_tessellate3d(theDEdge, theTessellator, theUpdateEnds)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_tessellate3d(
+                    theDEdge,
+                    theTessellator,
+                    theUpdateEnds,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:67 - `BRepMesh_EdgeDiscret::Tessellate2d()`
     /// Updates 2d discrete edge model using tessellation of 3D curve.
     pub fn tessellate2d(theDEdge: &crate::ffi::HandleIMeshDataEdge, theUpdateEnds: bool) {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_tessellate2d(theDEdge, theUpdateEnds) }
+        {
+            unsafe { crate::ffi::BRepMesh_EdgeDiscret_tessellate2d(theDEdge, theUpdateEnds) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_EdgeDiscret_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_EdgeDiscret_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
     pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_EdgeDiscret_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4756,8 +6563,10 @@ impl EdgeDiscret {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshEdgeDiscret> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_EdgeDiscret_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4768,59 +6577,94 @@ impl EdgeDiscret {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeDiscret_inherited_Perform(
-                self as *mut Self,
-                theModel,
-                theParameters,
-                theRange,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_inherited_Perform(
+                    self as *mut Self,
+                    theModel,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeDiscret_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeDiscret_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_EdgeDiscret_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4835,33 +6679,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshEdgeDiscret {
 impl HandleBRepMeshEdgeDiscret {
     /// Dereference this Handle to access the underlying BRepMesh_EdgeDiscret
     pub fn get(&self) -> &crate::ffi::BRepMesh_EdgeDiscret {
-        unsafe { &*(crate::ffi::HandleBRepMeshEdgeDiscret_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshEdgeDiscret_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_EdgeDiscret
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_EdgeDiscret {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshEdgeDiscret_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshEdgeDiscret_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_EdgeDiscret> to Handle<IMeshTools_ModelAlgo>
     pub fn to_handle_model_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsModelAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshEdgeDiscret_to_HandleIMeshToolsModelAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_EdgeDiscret> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshEdgeDiscret_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4888,15 +6746,25 @@ impl EdgeTessellationExtractor {
         theEdge: &crate::ffi::HandleIMeshDataEdge,
         theFace: &crate::ffi::HandleIMeshDataFace,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeTessellationExtractor_ctor_handleimeshdataedge_handleimeshdataface(theEdge, theFace))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_ctor_handleimeshdataedge_handleimeshdataface(theEdge, theFace)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:37 - `BRepMesh_EdgeTessellationExtractor::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_points_nb(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_points_nb(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:44 - `BRepMesh_EdgeTessellationExtractor::Value()`
@@ -4911,43 +6779,61 @@ impl EdgeTessellationExtractor {
         thePoint: &mut crate::gp::Pnt,
         theParameter: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_value(
-                self as *const Self,
-                theIndex,
-                thePoint,
-                theParameter,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_value(
+                    self as *const Self,
+                    theIndex,
+                    thePoint,
+                    theParameter,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_CurveTessellator
     pub fn as_i_mesh_tools_curve_tessellator(&self) -> &crate::i_mesh_tools::CurveTessellator {
-        unsafe {
-            &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -4955,26 +6841,40 @@ impl EdgeTessellationExtractor {
     pub fn as_i_mesh_tools_curve_tessellator_mut(
         &mut self,
     ) -> &mut crate::i_mesh_tools::CurveTessellator {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_EdgeTessellationExtractor_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4982,78 +6882,102 @@ impl EdgeTessellationExtractor {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshEdgeTessellationExtractor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeTessellationExtractor_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_EdgeTessellationExtractor_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -5069,13 +6993,23 @@ unsafe impl crate::CppDeletable for HandleBRepMeshEdgeTessellationExtractor {
 impl HandleBRepMeshEdgeTessellationExtractor {
     /// Dereference this Handle to access the underlying BRepMesh_EdgeTessellationExtractor
     pub fn get(&self) -> &crate::ffi::BRepMesh_EdgeTessellationExtractor {
-        unsafe { &*(crate::ffi::HandleBRepMeshEdgeTessellationExtractor_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshEdgeTessellationExtractor_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_EdgeTessellationExtractor
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_EdgeTessellationExtractor {
-        unsafe {
-            &mut *(crate::ffi::HandleBRepMeshEdgeTessellationExtractor_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshEdgeTessellationExtractor_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -5083,19 +7017,25 @@ impl HandleBRepMeshEdgeTessellationExtractor {
     pub fn to_handle_curve_tessellator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsCurveTessellator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshEdgeTessellationExtractor_to_HandleIMeshToolsCurveTessellator(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshEdgeTessellationExtractor_to_HandleIMeshToolsCurveTessellator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_EdgeTessellationExtractor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshEdgeTessellationExtractor_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -5118,67 +7058,98 @@ impl ExtrusionRangeSplitter {
     /// **Source:** `BRepMesh_ExtrusionRangeSplitter.hxx`:26 - `BRepMesh_ExtrusionRangeSplitter::BRepMesh_ExtrusionRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
     pub fn as_nurbs_range_splitter_mut(&mut self) -> &mut NURBSRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5187,13 +7158,15 @@ impl ExtrusionRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GenerateSurfaceNodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5203,46 +7176,66 @@ impl ExtrusionRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetParametersU(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetParametersU(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetParametersV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetParametersV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(
-                self as *mut Self,
-                thePoint,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -5251,68 +7244,100 @@ impl ExtrusionRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetSurface(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetSurface(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -5341,13 +7366,15 @@ impl FaceChecker {
         theFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_FaceChecker_ctor_handleimeshdataface_parameters(
                     theFace,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5355,37 +7382,60 @@ impl FaceChecker {
     /// Performs check wires of the face for intersections.
     /// @return True if there is no intersection, False elsewhere.
     pub fn perform(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_perform(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceChecker_perform(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_FaceChecker_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_FaceChecker_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_FaceChecker_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceChecker_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_FaceChecker_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceChecker_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_FaceChecker_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceChecker_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_FaceChecker_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceChecker_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -5393,54 +7443,87 @@ impl FaceChecker {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshFaceChecker> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_FaceChecker_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceChecker_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_FaceChecker_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceChecker_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceChecker_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceChecker_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_FaceChecker_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceChecker_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_FaceChecker_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5455,22 +7538,34 @@ unsafe impl crate::CppDeletable for HandleBRepMeshFaceChecker {
 impl HandleBRepMeshFaceChecker {
     /// Dereference this Handle to access the underlying BRepMesh_FaceChecker
     pub fn get(&self) -> &crate::ffi::BRepMesh_FaceChecker {
-        unsafe { &*(crate::ffi::HandleBRepMeshFaceChecker_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshFaceChecker_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_FaceChecker
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_FaceChecker {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshFaceChecker_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshFaceChecker_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_FaceChecker> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshFaceChecker_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -5496,7 +7591,11 @@ unsafe impl crate::CppDeletable for FaceChecker_Segment {
 impl FaceChecker_Segment {
     /// **Source:** `BRepMesh_FaceChecker.hxx`:39 - `BRepMesh_FaceChecker_Segment::BRepMesh_FaceChecker_Segment()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_FaceChecker_Segment_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceChecker_Segment_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -5529,55 +7628,86 @@ impl FaceDiscret {
     pub fn new_handleimeshtoolsmeshalgofactory(
         theAlgoFactory: &crate::ffi::HandleIMeshToolsMeshAlgoFactory,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(
                     theAlgoFactory,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_FaceDiscret_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_FaceDiscret_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceDiscret_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceDiscret_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
     pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_FaceDiscret_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -5585,8 +7715,10 @@ impl FaceDiscret {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshFaceDiscret> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_FaceDiscret_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_FaceDiscret_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5597,59 +7729,94 @@ impl FaceDiscret {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_FaceDiscret_inherited_Perform(
-                self as *mut Self,
-                theModel,
-                theParameters,
-                theRange,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_inherited_Perform(
+                    self as *mut Self,
+                    theModel,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_FaceDiscret_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_FaceDiscret_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_FaceDiscret_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5664,33 +7831,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshFaceDiscret {
 impl HandleBRepMeshFaceDiscret {
     /// Dereference this Handle to access the underlying BRepMesh_FaceDiscret
     pub fn get(&self) -> &crate::ffi::BRepMesh_FaceDiscret {
-        unsafe { &*(crate::ffi::HandleBRepMeshFaceDiscret_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshFaceDiscret_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_FaceDiscret
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_FaceDiscret {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshFaceDiscret_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshFaceDiscret_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_FaceDiscret> to Handle<IMeshTools_ModelAlgo>
     pub fn to_handle_model_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsModelAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshFaceDiscret_to_HandleIMeshToolsModelAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_FaceDiscret> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshFaceDiscret_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -5732,16 +7913,20 @@ impl GeomTool {
         theMinPointsNb: i32,
         theMinSize: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_ctor_curve_real4_int_real(
-                theCurve,
-                theFirstParam,
-                theLastParam,
-                theLinDeflection,
-                theAngDeflection,
-                theMinPointsNb,
-                theMinSize,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_ctor_curve_real4_int_real(
+                    theCurve,
+                    theFirstParam,
+                    theLastParam,
+                    theLinDeflection,
+                    theAngDeflection,
+                    theMinPointsNb,
+                    theMinSize,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5768,8 +7953,8 @@ impl GeomTool {
         theMinPointsNb: i32,
         theMinSize: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_GeomTool_ctor_handlebrepadaptorsurface_isotype_real5_int_real(
                     theSurface,
                     theIsoType.into(),
@@ -5780,8 +7965,10 @@ impl GeomTool {
                     theAngDeflection,
                     theMinPointsNb,
                     theMinSize,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5798,20 +7985,28 @@ impl GeomTool {
         theParam: f64,
         theIsReplace: bool,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_GeomTool_add_point(
-                self as *mut Self,
-                thePoint,
-                theParam,
-                theIsReplace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_add_point(
+                    self as *mut Self,
+                    thePoint,
+                    theParam,
+                    theIsReplace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_GeomTool.hxx`:100 - `BRepMesh_GeomTool::NbPoints()`
     /// Returns number of discretization points.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_GeomTool_nb_points(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_GeomTool_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_GeomTool.hxx`:110 - `BRepMesh_GeomTool::Value()`
@@ -5831,15 +8026,19 @@ impl GeomTool {
         thePoint: &mut crate::gp::Pnt,
         theUV: &mut crate::gp::Pnt2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_GeomTool_value_int_real2_pnt_pnt2d(
-                self as *const Self,
-                theIndex,
-                theIsoParam,
-                theParam,
-                thePoint,
-                theUV,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_value_int_real2_pnt_pnt2d(
+                    self as *const Self,
+                    theIndex,
+                    theIsoParam,
+                    theParam,
+                    thePoint,
+                    theUV,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5859,15 +8058,19 @@ impl GeomTool {
         thePoint: &mut crate::gp::Pnt,
         theUV: &mut crate::gp::Pnt2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_GeomTool_value_int_handlebrepadaptorsurface_real_pnt_pnt2d(
-                self as *const Self,
-                theIndex,
-                theSurface,
-                theParam,
-                thePoint,
-                theUV,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_value_int_handlebrepadaptorsurface_real_pnt_pnt2d(
+                    self as *const Self,
+                    theIndex,
+                    theSurface,
+                    theParam,
+                    thePoint,
+                    theUV,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5888,10 +8091,14 @@ impl GeomTool {
         thePoint: &mut crate::gp::Pnt,
         theNormal: &mut crate::gp::Dir,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_GeomTool_normal(
-                theSurface, theParamU, theParamV, thePoint, theNormal,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_normal(
+                    theSurface, theParamU, theParamV, thePoint, theNormal,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5913,15 +8120,19 @@ impl GeomTool {
         theIntPnt: &mut crate::gp::XY,
         theParamOnSegment: &mut [f64; 2],
     ) -> crate::OwnedPtr<crate::ffi::BRepMesh_GeomTool_IntFlag> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_int_lin_lin(
-                theStartPnt1,
-                theEndPnt1,
-                theStartPnt2,
-                theEndPnt2,
-                theIntPnt,
-                theParamOnSegment.as_mut_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_int_lin_lin(
+                    theStartPnt1,
+                    theEndPnt1,
+                    theStartPnt2,
+                    theEndPnt2,
+                    theIntPnt,
+                    theParamOnSegment.as_mut_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5949,16 +8160,20 @@ impl GeomTool {
         isConsiderPointOnSegment: bool,
         theIntPnt: &mut crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::BRepMesh_GeomTool_IntFlag> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_int_seg_seg(
-                theStartPnt1,
-                theEndPnt1,
-                theStartPnt2,
-                theEndPnt2,
-                isConsiderEndPointTouch,
-                isConsiderPointOnSegment,
-                theIntPnt,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_int_seg_seg(
+                    theStartPnt1,
+                    theEndPnt1,
+                    theStartPnt2,
+                    theEndPnt2,
+                    isConsiderEndPointTouch,
+                    isConsiderPointOnSegment,
+                    theIntPnt,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5969,12 +8184,16 @@ impl GeomTool {
         theLastPoint: &crate::gp::Pnt,
         theMidPoint: &crate::gp::Pnt,
     ) -> f64 {
-        unsafe {
-            crate::ffi::BRepMesh_GeomTool_square_deflection_of_segment(
-                theFirstPoint,
-                theLastPoint,
-                theMidPoint,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_square_deflection_of_segment(
+                    theFirstPoint,
+                    theLastPoint,
+                    theMidPoint,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5985,13 +8204,17 @@ impl GeomTool {
         theDeflection: f64,
         theRangeSplitter: &DefaultRangeSplitter,
     ) -> crate::OwnedPtr<crate::ffi::std_pair_Standard_Integer_Standard_Integer> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_cells_count(
-                theSurface,
-                theVerticesNb,
-                theDeflection,
-                theRangeSplitter as *const _,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_GeomTool_cells_count(
+                    theSurface,
+                    theVerticesNb,
+                    theDeflection,
+                    theRangeSplitter as *const _,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -6016,7 +8239,11 @@ impl IncrementalMesh {
     /// @name mesher API
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_IncrementalMesh_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_IncrementalMesh_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
@@ -6036,16 +8263,18 @@ impl IncrementalMesh {
         theAngDeflection: f64,
         isInParallel: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool_real_bool(
                     theShape,
                     theLinDeflection,
                     isRelative,
                     theAngDeflection,
                     isInParallel,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6059,14 +8288,16 @@ impl IncrementalMesh {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_parameters_progressrange(
                     theShape,
                     theParameters,
                     theRange,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6133,8 +8364,14 @@ impl IncrementalMesh {
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:57 - `BRepMesh_IncrementalMesh::Perform()`
     /// Performs meshing of the shape.
     pub fn perform_progressrange(&mut self, theRange: &crate::message::ProgressRange) {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_perform_progressrange(self as *mut Self, theRange)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_perform_progressrange(
+                    self as *mut Self,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6145,12 +8382,15 @@ impl IncrementalMesh {
         theContext: &crate::ffi::HandleIMeshToolsContext,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_perform_handleimeshtoolscontext_progressrange(
-                self as *mut Self,
-                theContext,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_perform_handleimeshtoolscontext_progressrange(
+                    self as *mut Self,
+                    theContext,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6158,30 +8398,57 @@ impl IncrementalMesh {
     /// @name accessing to parameters.
     /// Returns meshing parameters
     pub fn parameters(&self) -> &crate::i_mesh_tools::Parameters {
-        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_parameters(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_IncrementalMesh_parameters(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:69 - `BRepMesh_IncrementalMesh::ChangeParameters()`
     /// Returns modifiable meshing parameters
     pub fn change_parameters(&mut self) -> &mut crate::i_mesh_tools::Parameters {
-        unsafe { &mut *(crate::ffi::BRepMesh_IncrementalMesh_change_parameters(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_change_parameters(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:72 - `BRepMesh_IncrementalMesh::IsModified()`
     /// Returns modified flag.
     pub fn is_modified(&self) -> bool {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_modified(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_modified(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:75 - `BRepMesh_IncrementalMesh::GetStatusFlags()`
     /// Returns accumulated status flags faced during meshing.
     pub fn get_status_flags(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_status_flags(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_get_status_flags(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_IncrementalMesh_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:116 - `BRepMesh_IncrementalMesh::Discret()`
@@ -6198,13 +8465,17 @@ impl IncrementalMesh {
         theAngDeflection: f64,
         theAlgo: &mut *mut DiscretRoot,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_discret(
-                theShape,
-                theLinDeflection,
-                theAngDeflection,
-                theAlgo,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_discret(
+                    theShape,
+                    theLinDeflection,
+                    theAngDeflection,
+                    theAlgo,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6212,59 +8483,82 @@ impl IncrementalMesh {
     /// Returns multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn is_parallel_default() -> bool {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_parallel_default() }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_parallel_default() };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:127 - `BRepMesh_IncrementalMesh::SetParallelDefault()`
     /// Setup multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn set_parallel_default(isInParallel: bool) {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_set_parallel_default(isInParallel) }
+        {
+            unsafe { crate::ffi::BRepMesh_IncrementalMesh_set_parallel_default(isInParallel) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_IncrementalMesh_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_DiscretRoot
     pub fn as_discret_root(&self) -> &DiscretRoot {
-        unsafe {
-            &*(crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DiscretRoot (mutable)
     pub fn as_discret_root_mut(&mut self) -> &mut DiscretRoot {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_IncrementalMesh_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_IncrementalMesh_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -6272,79 +8566,127 @@ impl IncrementalMesh {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshIncrementalMesh> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_IncrementalMesh_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_IncrementalMesh_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self as *mut Self, theShape)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self as *mut Self, theShape)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:36 - `BRepMesh_DiscretRoot::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_IsDone(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_IsDone(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_IncrementalMesh_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_IncrementalMesh_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6359,33 +8701,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshIncrementalMesh {
 impl HandleBRepMeshIncrementalMesh {
     /// Dereference this Handle to access the underlying BRepMesh_IncrementalMesh
     pub fn get(&self) -> &crate::ffi::BRepMesh_IncrementalMesh {
-        unsafe { &*(crate::ffi::HandleBRepMeshIncrementalMesh_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshIncrementalMesh_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_IncrementalMesh
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_IncrementalMesh {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshIncrementalMesh_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshIncrementalMesh_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_IncrementalMesh> to Handle<BRepMesh_DiscretRoot>
     pub fn to_handle_discret_root(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDiscretRoot> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshIncrementalMesh_to_HandleBRepMeshDiscretRoot(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_IncrementalMesh> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshIncrementalMesh_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -6409,7 +8765,11 @@ impl MeshAlgoFactory {
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:28 - `BRepMesh_MeshAlgoFactory::BRepMesh_MeshAlgoFactory()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:34 - `BRepMesh_MeshAlgoFactory::GetAlgo()`
@@ -6419,40 +8779,57 @@ impl MeshAlgoFactory {
         theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(
-                self as *const Self,
-                theSurfaceType.into(),
-                theParameters,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(
+                    self as *const Self,
+                    theSurfaceType.into(),
+                    theParameters,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_MeshAlgoFactory_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgoFactory
     pub fn as_i_mesh_tools_mesh_algo_factory(&self) -> &crate::i_mesh_tools::MeshAlgoFactory {
-        unsafe {
-            &*(crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -6460,26 +8837,36 @@ impl MeshAlgoFactory {
     pub fn as_i_mesh_tools_mesh_algo_factory_mut(
         &mut self,
     ) -> &mut crate::i_mesh_tools::MeshAlgoFactory {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_MeshAlgoFactory_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_MeshAlgoFactory_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -6487,62 +8874,95 @@ impl MeshAlgoFactory {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshMeshAlgoFactory> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_MeshAlgoFactory_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_MeshAlgoFactory_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshAlgoFactory_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_MeshAlgoFactory_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshAlgoFactory_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6557,35 +8977,49 @@ unsafe impl crate::CppDeletable for HandleBRepMeshMeshAlgoFactory {
 impl HandleBRepMeshMeshAlgoFactory {
     /// Dereference this Handle to access the underlying BRepMesh_MeshAlgoFactory
     pub fn get(&self) -> &crate::ffi::BRepMesh_MeshAlgoFactory {
-        unsafe { &*(crate::ffi::HandleBRepMeshMeshAlgoFactory_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshMeshAlgoFactory_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_MeshAlgoFactory
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_MeshAlgoFactory {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshMeshAlgoFactory_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshMeshAlgoFactory_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_MeshAlgoFactory> to Handle<IMeshTools_MeshAlgoFactory>
     pub fn to_handle_mesh_algo_factory(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgoFactory> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_MeshAlgoFactory> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshMeshAlgoFactory_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -6611,19 +9045,24 @@ impl MeshTool {
     pub fn new_handlebrepmeshdatastructureofdelaun(
         theStructure: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(
-                    theStructure,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(theStructure)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:83 - `BRepMesh_MeshTool::GetStructure()`
     /// Returns data structure manipulated by this tool.
     pub fn get_structure(&self) -> &crate::ffi::HandleBRepMeshDataStructureOfDelaun {
-        unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_structure(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshTool_get_structure(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles()`
@@ -6634,12 +9073,15 @@ impl MeshTool {
         theTriangles: &mut crate::ffi::IMeshData_MapOfInteger,
     ) {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_dump_triangles(
-                self as *mut Self,
-                c_theFileName.as_ptr(),
-                theTriangles as *mut _,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_dump_triangles(
+                    self as *mut Self,
+                    c_theFileName.as_ptr(),
+                    theTriangles as *mut _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6647,13 +9089,16 @@ impl MeshTool {
     /// Adds new triangle with specified nodes to mesh.
     /// Legalizes triangle in case if it violates circle criteria.
     pub fn add_and_legalize_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_add_and_legalize_triangle(
-                self as *mut Self,
-                thePoint1,
-                thePoint2,
-                thePoint3,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_add_and_legalize_triangle(
+                    self as *mut Self,
+                    thePoint1,
+                    thePoint2,
+                    thePoint3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6666,14 +9111,17 @@ impl MeshTool {
         thePoint3: i32,
         theEdges: &mut [i32; 3],
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_add_triangle(
-                self as *mut Self,
-                thePoint1,
-                thePoint2,
-                thePoint3,
-                theEdges.as_mut_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_add_triangle(
+                    self as *mut Self,
+                    thePoint1,
+                    thePoint2,
+                    thePoint3,
+                    theEdges.as_mut_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6687,36 +9135,51 @@ impl MeshTool {
         theLinkIndex: &mut i32,
         theLinkOri: &mut bool,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_add_link(
-                self as *mut Self,
-                theFirstNode,
-                theLastNode,
-                theLinkIndex,
-                theLinkOri,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_add_link(
+                    self as *mut Self,
+                    theFirstNode,
+                    theLastNode,
+                    theLinkIndex,
+                    theLinkOri,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:131 - `BRepMesh_MeshTool::Legalize()`
     /// Performs legalization of triangles connected to the specified link.
     pub fn legalize(&mut self, theLinkIndex: i32) {
-        unsafe { crate::ffi::BRepMesh_MeshTool_legalize(self as *mut Self, theLinkIndex) }
+        {
+            unsafe { crate::ffi::BRepMesh_MeshTool_legalize(self as *mut Self, theLinkIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:135 - `BRepMesh_MeshTool::EraseItemsConnectedTo()`
     /// Erases all elements connected to the specified artificial node.
     /// In addition, erases the artificial node itself.
     pub fn erase_items_connected_to(&mut self, theNodeIndex: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_erase_items_connected_to(self as *mut Self, theNodeIndex)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_erase_items_connected_to(
+                    self as *mut Self,
+                    theNodeIndex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:138 - `BRepMesh_MeshTool::CleanFrontierLinks()`
     /// Cleans frontier links from triangles to the right.
     pub fn clean_frontier_links(&mut self) {
-        unsafe { crate::ffi::BRepMesh_MeshTool_clean_frontier_links(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_MeshTool_clean_frontier_links(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles()`
@@ -6727,12 +9190,15 @@ impl MeshTool {
         theTriangles: &crate::ffi::IMeshData_MapOfInteger,
         theLoopEdges: &mut crate::ffi::IMeshData_MapOfIntegerInteger,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_erase_triangles(
-                self as *mut Self,
-                theTriangles,
-                theLoopEdges,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_erase_triangles(
+                    self as *mut Self,
+                    theTriangles,
+                    theLoopEdges,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6744,19 +9210,25 @@ impl MeshTool {
         theTriangleIndex: i32,
         theLoopEdges: &mut crate::ffi::IMeshData_MapOfIntegerInteger,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_erase_triangle(
-                self as *mut Self,
-                theTriangleIndex,
-                theLoopEdges,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_erase_triangle(
+                    self as *mut Self,
+                    theTriangleIndex,
+                    theLoopEdges,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:151 - `BRepMesh_MeshTool::EraseFreeLinks()`
     /// Erases all links that have no elements connected to them.
     pub fn erase_free_links(&mut self) {
-        unsafe { crate::ffi::BRepMesh_MeshTool_erase_free_links(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_MeshTool_erase_free_links(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:154 - `BRepMesh_MeshTool::EraseFreeLinks()`
@@ -6765,11 +9237,14 @@ impl MeshTool {
         &mut self,
         theLinks: &crate::ffi::IMeshData_MapOfIntegerInteger,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_erase_free_links_mapofintegerinteger(
-                self as *mut Self,
-                theLinks,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_erase_free_links_mapofintegerinteger(
+                    self as *mut Self,
+                    theLinks,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6779,42 +9254,64 @@ impl MeshTool {
         &self,
         theEdgeType: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedTColStdPackedMapOfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshTool_get_edges_by_type(
-                self as *const Self,
-                theEdgeType.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_get_edges_by_type(
+                    self as *const Self,
+                    theEdgeType.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_MeshTool_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshTool_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_MeshTool_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_MeshTool_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_MeshTool_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_MeshTool_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshTool_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_MeshTool_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -6822,51 +9319,86 @@ impl MeshTool {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshMeshTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshTool_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_MeshTool_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_MeshTool_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_MeshTool_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::BRepMesh_MeshTool_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshTool_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_MeshTool_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_MeshTool_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_MeshTool_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_MeshTool_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_MeshTool_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_MeshTool_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_MeshTool_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6881,20 +9413,30 @@ unsafe impl crate::CppDeletable for HandleBRepMeshMeshTool {
 impl HandleBRepMeshMeshTool {
     /// Dereference this Handle to access the underlying BRepMesh_MeshTool
     pub fn get(&self) -> &crate::ffi::BRepMesh_MeshTool {
-        unsafe { &*(crate::ffi::HandleBRepMeshMeshTool_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshMeshTool_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_MeshTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_MeshTool {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshMeshTool_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshMeshTool_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_MeshTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBRepMeshMeshTool_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshMeshTool_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -6915,15 +9457,26 @@ impl MeshTool_NodeClassifier {
         theConstraint: &Edge,
         theStructure: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshTool_NodeClassifier_ctor_edge_handlebrepmeshdatastructureofdelaun(theConstraint, theStructure))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_NodeClassifier_ctor_edge_handlebrepmeshdatastructureofdelaun(theConstraint, theStructure)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:48 - `BRepMesh_MeshTool_NodeClassifier::IsAbove()`
     pub fn is_above(&self, theNodeIndex: i32) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_NodeClassifier_is_above(self as *const Self, theNodeIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_MeshTool_NodeClassifier_is_above(
+                    self as *const Self,
+                    theNodeIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -6951,65 +9504,104 @@ impl ModelBuilder {
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:33 - `BRepMesh_ModelBuilder::BRepMesh_ModelBuilder()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ModelBuilder_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelBuilder_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelBuilder_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelBuilder_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ModelBuilder
     pub fn as_i_mesh_tools_model_builder(&self) -> &crate::i_mesh_tools::ModelBuilder {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_ModelBuilder (mutable)
     pub fn as_i_mesh_tools_model_builder_mut(&mut self) -> &mut crate::i_mesh_tools::ModelBuilder {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Message_Algorithm
     pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
-        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Message_Algorithm (mutable)
     pub fn as_message_algorithm_mut(&mut self) -> &mut crate::message::Algorithm {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelBuilder_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7017,8 +9609,10 @@ impl ModelBuilder {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshModelBuilder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelBuilder_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7028,52 +9622,80 @@ impl ModelBuilder {
         theShape: &crate::topo_ds::Shape,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_inherited_Perform(
-                self as *mut Self,
-                theShape,
-                theParameters,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_Perform(
+                    self as *mut Self,
+                    theShape,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
     pub fn set_status(&mut self, theStat: crate::message::Status) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(self as *mut Self, theStat.into())
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(
+                    self as *mut Self,
+                    theStat.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
     pub fn get_status(&self) -> &crate::message::ExecStatus {
-        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
     pub fn change_status(&mut self) -> &mut crate::message::ExecStatus {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
     pub fn clear_status(&mut self) {
-        unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_ClearStatus(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_ClearStatus(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
     pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_SetMessenger(self as *mut Self, theMsgr)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_SetMessenger(self as *mut Self, theMsgr)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
     pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessenger(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessenger(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7084,31 +9706,40 @@ impl ModelBuilder {
         theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_SendStatusMessages(
-                self as *const Self,
-                theFilter,
-                theTraceLevel.into(),
-                theMaxCount,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_SendStatusMessages(
+                    self as *const Self,
+                    theFilter,
+                    theTraceLevel.into(),
+                    theMaxCount,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(
-                self as *const Self,
-                theTraceLevel.into(),
-                theMaxCount,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(
+                    self as *const Self,
+                    theTraceLevel.into(),
+                    theMaxCount,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
     pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self as *mut Self, theOther)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self as *mut Self, theOther)
+            };
+            crate::check_exception();
         }
     }
 
@@ -7117,13 +9748,15 @@ impl ModelBuilder {
         &self,
         theStatus: crate::message::Status,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageNumbers(
                     self as *const Self,
                     theStatus.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7132,63 +9765,92 @@ impl ModelBuilder {
         &self,
         theStatus: crate::message::Status,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageStrings(
                     self as *const Self,
                     theStatus.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ModelBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelBuilder_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7203,46 +9865,62 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelBuilder {
 impl HandleBRepMeshModelBuilder {
     /// Dereference this Handle to access the underlying BRepMesh_ModelBuilder
     pub fn get(&self) -> &crate::ffi::BRepMesh_ModelBuilder {
-        unsafe { &*(crate::ffi::HandleBRepMeshModelBuilder_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelBuilder_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ModelBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ModelBuilder {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshModelBuilder_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelBuilder_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_ModelBuilder> to Handle<IMeshTools_ModelBuilder>
     pub fn to_handle_model_builder(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsModelBuilder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelBuilder_to_HandleIMeshToolsModelBuilder(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ModelBuilder> to Handle<Message_Algorithm>
     pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelBuilder_to_HandleMessageAlgorithm(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ModelBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelBuilder_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7276,49 +9954,82 @@ impl ModelHealer {
     /// **Source:** `BRepMesh_ModelHealer.hxx`:40 - `BRepMesh_ModelHealer::BRepMesh_ModelHealer()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelHealer_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelHealer_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ModelHealer_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelHealer_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelHealer_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelHealer_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
     pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelHealer_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7326,8 +10037,10 @@ impl ModelHealer {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshModelHealer> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelHealer_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelHealer_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7338,59 +10051,94 @@ impl ModelHealer {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelHealer_inherited_Perform(
-                self as *mut Self,
-                theModel,
-                theParameters,
-                theRange,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_inherited_Perform(
+                    self as *mut Self,
+                    theModel,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelHealer_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelHealer_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelHealer_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_ModelHealer_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7405,33 +10153,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelHealer {
 impl HandleBRepMeshModelHealer {
     /// Dereference this Handle to access the underlying BRepMesh_ModelHealer
     pub fn get(&self) -> &crate::ffi::BRepMesh_ModelHealer {
-        unsafe { &*(crate::ffi::HandleBRepMeshModelHealer_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelHealer_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ModelHealer
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ModelHealer {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshModelHealer_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelHealer_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_ModelHealer> to Handle<IMeshTools_ModelAlgo>
     pub fn to_handle_model_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsModelAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelHealer_to_HandleIMeshToolsModelAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ModelHealer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelHealer_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7455,57 +10217,85 @@ impl ModelPostProcessor {
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:28 - `BRepMesh_ModelPostProcessor::BRepMesh_ModelPostProcessor()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPostProcessor_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelPostProcessor_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelPostProcessor_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelPostProcessor_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelPostProcessor_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelPostProcessor_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelPostProcessor_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
     pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ModelPostProcessor_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelPostProcessor_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7513,10 +10303,11 @@ impl ModelPostProcessor {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshModelPostProcessor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPostProcessor_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ModelPostProcessor_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7527,71 +10318,107 @@ impl ModelPostProcessor {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPostProcessor_inherited_Perform(
-                self as *mut Self,
-                theModel,
-                theParameters,
-                theRange,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_Perform(
+                    self as *mut Self,
+                    theModel,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPostProcessor_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPostProcessor_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ModelPostProcessor_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPostProcessor_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPostProcessor_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPostProcessor_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_ModelPostProcessor_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelPostProcessor_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7606,33 +10433,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelPostProcessor {
 impl HandleBRepMeshModelPostProcessor {
     /// Dereference this Handle to access the underlying BRepMesh_ModelPostProcessor
     pub fn get(&self) -> &crate::ffi::BRepMesh_ModelPostProcessor {
-        unsafe { &*(crate::ffi::HandleBRepMeshModelPostProcessor_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelPostProcessor_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ModelPostProcessor
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ModelPostProcessor {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshModelPostProcessor_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelPostProcessor_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_ModelPostProcessor> to Handle<IMeshTools_ModelAlgo>
     pub fn to_handle_model_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsModelAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelPostProcessor_to_HandleIMeshToolsModelAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ModelPostProcessor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelPostProcessor_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7657,57 +10498,84 @@ impl ModelPreProcessor {
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:29 - `BRepMesh_ModelPreProcessor::BRepMesh_ModelPreProcessor()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPreProcessor_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelPreProcessor_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelPreProcessor_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ModelPreProcessor_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelPreProcessor_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelPreProcessor_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ModelPreProcessor_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ModelPreProcessor_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
     pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ModelPreProcessor_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ModelPreProcessor_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7715,10 +10583,11 @@ impl ModelPreProcessor {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshModelPreProcessor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPreProcessor_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ModelPreProcessor_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7729,69 +10598,105 @@ impl ModelPreProcessor {
         theParameters: &crate::i_mesh_tools::Parameters,
         theRange: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPreProcessor_inherited_Perform(
-                self as *mut Self,
-                theModel,
-                theParameters,
-                theRange,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_inherited_Perform(
+                    self as *mut Self,
+                    theModel,
+                    theParameters,
+                    theRange,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPreProcessor_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPreProcessor_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_ModelPreProcessor_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ModelPreProcessor_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPreProcessor_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ModelPreProcessor_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ModelPreProcessor_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_ModelPreProcessor_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_ModelPreProcessor_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7806,33 +10711,47 @@ unsafe impl crate::CppDeletable for HandleBRepMeshModelPreProcessor {
 impl HandleBRepMeshModelPreProcessor {
     /// Dereference this Handle to access the underlying BRepMesh_ModelPreProcessor
     pub fn get(&self) -> &crate::ffi::BRepMesh_ModelPreProcessor {
-        unsafe { &*(crate::ffi::HandleBRepMeshModelPreProcessor_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelPreProcessor_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ModelPreProcessor
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ModelPreProcessor {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshModelPreProcessor_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshModelPreProcessor_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_ModelPreProcessor> to Handle<IMeshTools_ModelAlgo>
     pub fn to_handle_model_algo(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsModelAlgo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelPreProcessor_to_HandleIMeshToolsModelAlgo(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ModelPreProcessor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshModelPreProcessor_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7856,13 +10775,20 @@ impl NURBSRangeSplitter {
     /// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:29 - `BRepMesh_NURBSRangeSplitter::BRepMesh_NURBSRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
     /// Updates discrete range of surface according to its geometric range.
     pub fn adjust_range(&mut self) {
-        unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_adjust_range(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_adjust_range(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:41 - `BRepMesh_NURBSRangeSplitter::GenerateSurfaceNodes()`
@@ -7871,49 +10797,67 @@ impl NURBSRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_NURBSRangeSplitter_generate_surface_nodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7923,43 +10867,66 @@ impl NURBSRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetParametersU(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetParametersU(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetParametersV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetParametersV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -7968,66 +10935,98 @@ impl NURBSRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetSurface(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetSurface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -8050,30 +11049,44 @@ impl OrientedEdge {
     /// **Source:** `BRepMesh_OrientedEdge.hxx`:28 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_OrientedEdge_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_OrientedEdge_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_OrientedEdge.hxx`:35 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
     /// Constructs a link between two vertices.
     pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_OrientedEdge_ctor_int2(
-                theFirstNode,
-                theLastNode,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_OrientedEdge_ctor_int2(theFirstNode, theLastNode) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_OrientedEdge.hxx`:42 - `BRepMesh_OrientedEdge::FirstNode()`
     /// Returns index of first node of the Link.
     pub fn first_node(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_OrientedEdge_first_node(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_OrientedEdge_first_node(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_OrientedEdge.hxx`:45 - `BRepMesh_OrientedEdge::LastNode()`
     /// Returns index of last node of the Link.
     pub fn last_node(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_OrientedEdge_last_node(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_OrientedEdge_last_node(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_OrientedEdge.hxx`:50 - `BRepMesh_OrientedEdge::IsEqual()`
@@ -8081,7 +11094,13 @@ impl OrientedEdge {
     /// @param theOther edge to be checked against this one.
     /// @return TRUE if edges have the same orientation, FALSE if not.
     pub fn is_equal(&self, theOther: &OrientedEdge) -> bool {
-        unsafe { crate::ffi::BRepMesh_OrientedEdge_is_equal(self as *const Self, theOther) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_OrientedEdge_is_equal(self as *const Self, theOther)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -8105,56 +11124,93 @@ impl PairOfIndex {
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:28 - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_PairOfIndex_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_PairOfIndex_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:31 - `BRepMesh_PairOfIndex::Clear()`
     /// Clears indices.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_PairOfIndex_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:34 - `BRepMesh_PairOfIndex::Append()`
     /// Appends index to the pair.
     pub fn append(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_append(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::BRepMesh_PairOfIndex_append(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:48 - `BRepMesh_PairOfIndex::Prepend()`
     /// Prepends index to the pair.
     pub fn prepend(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_prepend(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::BRepMesh_PairOfIndex_prepend(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:58 - `BRepMesh_PairOfIndex::IsEmpty()`
     /// Returns is pair is empty.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_PairOfIndex_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:66 - `BRepMesh_PairOfIndex::Extent()`
     /// Returns number of initialized indices.
     pub fn extent(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_extent(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_PairOfIndex_extent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:69 - `BRepMesh_PairOfIndex::FirstIndex()`
     /// Returns first index of pair.
     pub fn first_index(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_first_index(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_PairOfIndex_first_index(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:72 - `BRepMesh_PairOfIndex::LastIndex()`
     /// Returns last index of pair
     pub fn last_index(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_last_index(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_PairOfIndex_last_index(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:76 - `BRepMesh_PairOfIndex::Index()`
     /// Returns index corresponding to the given position in the pair.
     /// @param thePairPos position of index in the pair (1 or 2).
     pub fn index(&self, thePairPos: i32) -> i32 {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_index(self as *const Self, thePairPos) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_PairOfIndex_index(self as *const Self, thePairPos) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_PairOfIndex.hxx`:87 - `BRepMesh_PairOfIndex::SetIndex()`
@@ -8162,8 +11218,11 @@ impl PairOfIndex {
     /// @param thePairPos position of index in the pair (1 or 2).
     /// @param theIndex index to be stored.
     pub fn set_index(&mut self, thePairPos: i32, theIndex: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_PairOfIndex_set_index(self as *mut Self, thePairPos, theIndex)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_PairOfIndex_set_index(self as *mut Self, thePairPos, theIndex)
+            };
+            crate::check_exception();
         }
     }
 
@@ -8171,7 +11230,10 @@ impl PairOfIndex {
     /// Remove index from the given position.
     /// @param thePairPos position of index in the pair (1 or 2).
     pub fn remove_index(&mut self, thePairPos: i32) {
-        unsafe { crate::ffi::BRepMesh_PairOfIndex_remove_index(self as *mut Self, thePairPos) }
+        {
+            unsafe { crate::ffi::BRepMesh_PairOfIndex_remove_index(self as *mut Self, thePairPos) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8194,8 +11256,10 @@ impl SelectorOfDataStructureOfDelaun {
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:31 - `BRepMesh_SelectorOfDataStructureOfDelaun::BRepMesh_SelectorOfDataStructureOfDelaun()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor())
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8205,96 +11269,124 @@ impl SelectorOfDataStructureOfDelaun {
     pub fn new_handlebrepmeshdatastructureofdelaun(
         theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(theMesh))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(theMesh)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:39 - `BRepMesh_SelectorOfDataStructureOfDelaun::Initialize()`
     /// Initializes selector by the mesh.
     pub fn initialize(&mut self, theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_initialize(
-                self as *mut Self,
-                theMesh,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_initialize(
+                    self as *mut Self,
+                    theMesh,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:42 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given node.
     pub fn neighbours_of_vertex(&mut self, theNode: &Vertex) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_vertex(
-                self as *mut Self,
-                theNode,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_vertex(
+                    self as *mut Self,
+                    theNode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:45 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOfNode()`
     /// Selects all neighboring elements of node with the given index.
     pub fn neighbours_of_node(&mut self, theNodeIndex: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_node(
-                self as *mut Self,
-                theNodeIndex,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_node(
+                    self as *mut Self,
+                    theNodeIndex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:48 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given link.
     pub fn neighbours_of_edge(&mut self, theLink: &Edge) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_edge(
-                self as *mut Self,
-                theLink,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_edge(
+                    self as *mut Self,
+                    theLink,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:51 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOfLink()`
     /// Selects all neighboring elements of link with the given index.
     pub fn neighbours_of_link(&mut self, theLinkIndex: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_link(
-                self as *mut Self,
-                theLinkIndex,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_link(
+                    self as *mut Self,
+                    theLinkIndex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:54 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given element.
     pub fn neighbours_of_triangle(&mut self, theElement: &Triangle) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_triangle(
-                self as *mut Self,
-                theElement,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_triangle(
+                    self as *mut Self,
+                    theElement,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:57 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOfElement()`
     /// Selects all neighboring elements by nodes of the given element.
     pub fn neighbours_of_element(&mut self, theElementIndex: i32) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_element(
-                self as *mut Self,
-                theElementIndex,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_element(
+                    self as *mut Self,
+                    theElementIndex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:60 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursByEdgeOf()`
     /// Selects all neighboring elements by links of the given element.
     pub fn neighbours_by_edge_of(&mut self, theElement: &Triangle) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_by_edge_of(
-                self as *mut Self,
-                theElement,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_by_edge_of(
+                    self as *mut Self,
+                    theElement,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8304,93 +11396,134 @@ impl SelectorOfDataStructureOfDelaun {
         &mut self,
         arg0: &SelectorOfDataStructureOfDelaun,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_selectorofdatastructureofdelaun(self as *mut Self, arg0)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_selectorofdatastructureofdelaun(self as *mut Self, arg0)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:66 - `BRepMesh_SelectorOfDataStructureOfDelaun::AddNeighbours()`
     /// Adds a level of neighbours by edge the selector.
     pub fn add_neighbours(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_add_neighbours(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_add_neighbours(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:69 - `BRepMesh_SelectorOfDataStructureOfDelaun::Nodes()`
     /// Returns selected nodes.
     pub fn nodes(&self) -> &crate::ffi::IMeshData_MapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_nodes(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_nodes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:72 - `BRepMesh_SelectorOfDataStructureOfDelaun::Links()`
     /// Returns selected links.
     pub fn links(&self) -> &crate::ffi::IMeshData_MapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_links(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_links(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:75 - `BRepMesh_SelectorOfDataStructureOfDelaun::Elements()`
     /// Returns selected elements.
     pub fn elements(&self) -> &crate::ffi::IMeshData_MapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_elements(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_elements(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:78 - `BRepMesh_SelectorOfDataStructureOfDelaun::FrontierLinks()`
     /// Gives the list of incices of frontier links.
     pub fn frontier_links(&self) -> &crate::ffi::IMeshData_MapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_frontier_links(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_frontier_links(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_dynamic_type(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_dynamic_type(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name(),
-            )
-            .to_string_lossy()
-            .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor()) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor()
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8398,82 +11531,107 @@ impl SelectorOfDataStructureOfDelaun {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(obj.into_raw()),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(obj.into_raw())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_This(
                     self as *const Self,
                 )
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_Delete(
-                self as *const Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_inherited_Delete(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -8489,24 +11647,36 @@ unsafe impl crate::CppDeletable for HandleBRepMeshSelectorOfDataStructureOfDelau
 impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
     /// Dereference this Handle to access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun {
-        unsafe {
-            &*(crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun {
-        unsafe {
-            &mut *(crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<BRepMesh_SelectorOfDataStructureOfDelaun> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_to_HandleStandardTransient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_to_HandleStandardTransient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8530,19 +11700,32 @@ impl ShapeTool {
     /// **Source:** `BRepMesh_ShapeTool.hxx` - `BRepMesh_ShapeTool::BRepMesh_ShapeTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ShapeTool_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ShapeTool_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:38 - `BRepMesh_ShapeTool::MaxFaceTolerance()`
     /// Returns maximum tolerance of the given face.
     /// Considers tolerances of edges and vertices contained in the given face.
     pub fn max_face_tolerance(theFace: &crate::topo_ds::Face) -> f64 {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:44 - `BRepMesh_ShapeTool::BoxMaxDimension()`
@@ -8551,7 +11734,10 @@ impl ShapeTool {
     /// @param theBox bounding box to be processed.
     /// @param theMaxDimension maximum dimension of the given box.
     pub fn box_max_dimension(theBox: &crate::bnd::Box, theMaxDimension: &mut f64) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:53 - `BRepMesh_ShapeTool::CheckAndUpdateFlags()`
@@ -8565,7 +11751,10 @@ impl ShapeTool {
         theEdge: &crate::ffi::HandleIMeshDataEdge,
         thePCurve: &crate::ffi::HandleIMeshDataPCurve,
     ) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_check_and_update_flags(theEdge, thePCurve) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeTool_check_and_update_flags(theEdge, thePCurve) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:59 - `BRepMesh_ShapeTool::AddInFace()`
@@ -8576,14 +11765,20 @@ impl ShapeTool {
         theFace: &crate::topo_ds::Face,
         theTriangulation: &mut crate::ffi::HandlePolyTriangulation,
     ) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:64 - `BRepMesh_ShapeTool::NullifyFace()`
     /// Nullifies triangulation stored in the face.
     /// @param theFace face to be updated by null triangulation.
     pub fn nullify_face(theFace: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:70 - `BRepMesh_ShapeTool::NullifyEdge()`
@@ -8596,12 +11791,15 @@ impl ShapeTool {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theLocation: &crate::top_loc::Location,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
-                theEdge,
-                theTriangulation,
-                theLocation,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
+                    theEdge,
+                    theTriangulation,
+                    theLocation,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8613,7 +11811,12 @@ impl ShapeTool {
         theEdge: &crate::topo_ds::Edge,
         theLocation: &crate::top_loc::Location,
     ) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:85 - `BRepMesh_ShapeTool::UpdateEdge()`
@@ -8628,8 +11831,11 @@ impl ShapeTool {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theLocation: &crate::top_loc::Location,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(theEdge, thePolygon, theTriangulation, theLocation)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(theEdge, thePolygon, theTriangulation, theLocation)
+            };
+            crate::check_exception();
         }
     }
 
@@ -8641,8 +11847,13 @@ impl ShapeTool {
         theEdge: &crate::topo_ds::Edge,
         thePolygon: &crate::ffi::HandlePolyPolygon3D,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygon3d(theEdge, thePolygon)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygon3d(
+                    theEdge, thePolygon,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8662,8 +11873,11 @@ impl ShapeTool {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theLocation: &crate::top_loc::Location,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(theEdge, thePolygon1, thePolygon2, theTriangulation, theLocation)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(theEdge, thePolygon1, thePolygon2, theTriangulation, theLocation)
+            };
+            crate::check_exception();
         }
     }
 
@@ -8675,8 +11889,10 @@ impl ShapeTool {
         thePnt: &crate::gp::Pnt,
         theLoc: &crate::top_loc::Location,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_use_location(thePnt, theLoc))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeTool_use_location(thePnt, theLoc) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8689,14 +11905,18 @@ impl ShapeTool {
         theLastPoint2d: &mut crate::gp::Pnt2d,
         isConsiderOrientation: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_uv_points(
-                theEdge,
-                theFace,
-                theFirstPoint2d,
-                theLastPoint2d,
-                isConsiderOrientation,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_uv_points(
+                    theEdge,
+                    theFace,
+                    theFirstPoint2d,
+                    theLastPoint2d,
+                    isConsiderOrientation,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8710,15 +11930,19 @@ impl ShapeTool {
         theLastParam: &mut f64,
         isConsiderOrientation: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_real2_bool(
-                theEdge,
-                theFace,
-                thePCurve,
-                theFirstParam,
-                theLastParam,
-                isConsiderOrientation,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_real2_bool(
+                    theEdge,
+                    theFace,
+                    thePCurve,
+                    theFirstParam,
+                    theLastParam,
+                    isConsiderOrientation,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8731,40 +11955,58 @@ impl ShapeTool {
         theLastParam: &mut f64,
         isConsiderOrientation: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(
-                theEdge,
-                theCurve,
-                theFirstParam,
-                theLastParam,
-                isConsiderOrientation,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(
+                    theEdge,
+                    theCurve,
+                    theFirstParam,
+                    theLastParam,
+                    isConsiderOrientation,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ShapeTool_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeTool_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ShapeTool_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeTool_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_ShapeTool_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ShapeTool_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8772,51 +12014,87 @@ impl ShapeTool {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshShapeTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeTool_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeTool_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeTool_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeTool_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8831,20 +12109,31 @@ unsafe impl crate::CppDeletable for HandleBRepMeshShapeTool {
 impl HandleBRepMeshShapeTool {
     /// Dereference this Handle to access the underlying BRepMesh_ShapeTool
     pub fn get(&self) -> &crate::ffi::BRepMesh_ShapeTool {
-        unsafe { &*(crate::ffi::HandleBRepMeshShapeTool_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshShapeTool_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ShapeTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ShapeTool {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshShapeTool_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshShapeTool_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_ShapeTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBRepMeshShapeTool_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshShapeTool_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8872,69 +12161,101 @@ impl ShapeVisitor {
     pub fn new_handleimeshdatamodel(
         theModel: &crate::ffi::HandleIMeshDataModel,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeVisitor_ctor_handleimeshdatamodel(
-                theModel,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ShapeVisitor_ctor_handleimeshdatamodel(theModel) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:44 - `BRepMesh_ShapeVisitor::Visit()`
     /// Handles TopoDS_Face object.
     pub fn visit_face(&mut self, theFace: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_face(self as *mut Self, theFace) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_face(self as *mut Self, theFace) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:47 - `BRepMesh_ShapeVisitor::Visit()`
     /// Handles TopoDS_Edge object.
     pub fn visit_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_edge(self as *mut Self, theEdge) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_edge(self as *mut Self, theEdge) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_ShapeVisitor_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ShapeVisitor_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeVisitor_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IMeshTools_ShapeVisitor
     pub fn as_i_mesh_tools_shape_visitor(&self) -> &crate::i_mesh_tools::ShapeVisitor {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IMeshTools_ShapeVisitor (mutable)
     pub fn as_i_mesh_tools_shape_visitor_mut(&mut self) -> &mut crate::i_mesh_tools::ShapeVisitor {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ShapeVisitor_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8942,58 +12263,87 @@ impl ShapeVisitor {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshShapeVisitor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeVisitor_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_ShapeVisitor_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeVisitor_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_ShapeVisitor_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_ShapeVisitor_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_ShapeVisitor_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeVisitor_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepMesh_ShapeVisitor_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_ShapeVisitor_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_ShapeVisitor_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_ShapeVisitor_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -9008,35 +12358,49 @@ unsafe impl crate::CppDeletable for HandleBRepMeshShapeVisitor {
 impl HandleBRepMeshShapeVisitor {
     /// Dereference this Handle to access the underlying BRepMesh_ShapeVisitor
     pub fn get(&self) -> &crate::ffi::BRepMesh_ShapeVisitor {
-        unsafe { &*(crate::ffi::HandleBRepMeshShapeVisitor_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshShapeVisitor_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ShapeVisitor
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ShapeVisitor {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshShapeVisitor_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshShapeVisitor_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_ShapeVisitor> to Handle<IMeshTools_ShapeVisitor>
     pub fn to_handle_shape_visitor(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsShapeVisitor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshShapeVisitor_to_HandleIMeshToolsShapeVisitor(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepMesh_ShapeVisitor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepMeshShapeVisitor_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -9060,7 +12424,11 @@ impl SphereRangeSplitter {
     /// **Source:** `BRepMesh_SphereRangeSplitter.hxx`:28 - `BRepMesh_SphereRangeSplitter::BRepMesh_SphereRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_SphereRangeSplitter.hxx`:34 - `BRepMesh_SphereRangeSplitter::GenerateSurfaceNodes()`
@@ -9069,31 +12437,41 @@ impl SphereRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_SphereRangeSplitter_generate_surface_nodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -9103,30 +12481,50 @@ impl SphereRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AdjustRange(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -9135,66 +12533,98 @@ impl SphereRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetSurface(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetSurface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_SphereRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -9218,7 +12648,11 @@ impl TorusRangeSplitter {
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:28 - `BRepMesh_TorusRangeSplitter::BRepMesh_TorusRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:34 - `BRepMesh_TorusRangeSplitter::GenerateSurfaceNodes()`
@@ -9227,55 +12661,78 @@ impl TorusRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_TorusRangeSplitter_generate_surface_nodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:38 - `BRepMesh_TorusRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_add_point(self as *mut Self, thePoint) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_add_point(self as *mut Self, thePoint)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -9285,41 +12742,63 @@ impl TorusRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetParametersU(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetParametersU(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetParametersV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetParametersV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -9328,66 +12807,98 @@ impl TorusRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetSurface(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetSurface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_TorusRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -9411,7 +12922,11 @@ impl Triangle {
     /// **Source:** `BRepMesh_Triangle.hxx`:34 - `BRepMesh_Triangle::BRepMesh_Triangle()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangle_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Triangle_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Triangle.hxx`:49 - `BRepMesh_Triangle::BRepMesh_Triangle()`
@@ -9424,14 +12939,16 @@ impl Triangle {
         theOrientations: &mut [bool; 3],
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_Triangle_ctor_int3_bool3_degreeoffreedom(
                     theEdges.as_mut_ptr(),
                     theOrientations.as_mut_ptr(),
                     theMovability.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9446,13 +12963,16 @@ impl Triangle {
         theOrientations: &mut [bool; 3],
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Triangle_initialize(
-                self as *mut Self,
-                theEdges.as_mut_ptr(),
-                theOrientations.as_mut_ptr(),
-                theMovability.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Triangle_initialize(
+                    self as *mut Self,
+                    theEdges.as_mut_ptr(),
+                    theOrientations.as_mut_ptr(),
+                    theMovability.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9461,31 +12981,39 @@ impl Triangle {
     /// @param[out] theEdges array edges are stored to.
     /// @param[out] theOrientations array orientations are stored to.
     pub fn edges(&self, theEdges: &mut [i32; 3], theOrientations: &mut [bool; 3]) {
-        unsafe {
-            crate::ffi::BRepMesh_Triangle_edges(
-                self as *const Self,
-                theEdges.as_mut_ptr(),
-                theOrientations.as_mut_ptr(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Triangle_edges(
+                    self as *const Self,
+                    theEdges.as_mut_ptr(),
+                    theOrientations.as_mut_ptr(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_Triangle.hxx`:79 - `BRepMesh_Triangle::Movability()`
     /// Returns movability of the triangle.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
-        unsafe {
-            crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Triangle_movability(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Triangle_movability(self as *const Self) };
+            crate::check_exception();
+            crate::b_rep_mesh::DegreeOfFreedom::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BRepMesh_Triangle.hxx`:82 - `BRepMesh_Triangle::SetMovability()`
     /// Sets movability of the triangle.
     pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
-        unsafe {
-            crate::ffi::BRepMesh_Triangle_set_movability(self as *mut Self, theMovability.into())
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Triangle_set_movability(
+                    self as *mut Self,
+                    theMovability.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9494,7 +13022,12 @@ impl Triangle {
     /// @param theOther triangle to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
     pub fn is_equal(&self, theOther: &Triangle) -> bool {
-        unsafe { crate::ffi::BRepMesh_Triangle_is_equal(self as *const Self, theOther) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Triangle_is_equal(self as *const Self, theOther) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -9520,8 +13053,12 @@ impl Triangulator {
         theWires: &crate::ffi::NCollection_List_TColStd_SequenceOfInteger,
         theNorm: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangulator_ctor_vector_gp_xyz_list_tcolstd_sequenceofinteger_dir(theXYZs, theWires, theNorm))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Triangulator_ctor_vector_gp_xyz_list_tcolstd_sequenceofinteger_dir(theXYZs, theWires, theNorm)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9531,14 +13068,23 @@ impl Triangulator {
         &mut self,
         thePolyTriangles: &mut crate::ffi::NCollection_List_Poly_Triangle,
     ) -> bool {
-        unsafe { crate::ffi::BRepMesh_Triangulator_perform(self as *mut Self, thePolyTriangles) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Triangulator_perform(self as *mut Self, thePolyTriangles)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_Triangulator.hxx`:53 - `BRepMesh_Triangulator::SetMessenger()`
     /// Set messenger for output information
     /// without this Message::DefaultMessenger() will be used
     pub fn set_messenger(&mut self, theMess: &crate::ffi::HandleMessageMessenger) {
-        unsafe { crate::ffi::BRepMesh_Triangulator_set_messenger(self as *mut Self, theMess) }
+        {
+            unsafe { crate::ffi::BRepMesh_Triangulator_set_messenger(self as *mut Self, theMess) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation()`
@@ -9547,11 +13093,12 @@ impl Triangulator {
         theNodes: &crate::ffi::TColgp_Array1OfPnt,
         thePolyTriangles: &crate::ffi::NCollection_List_Poly_Triangle,
     ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangulator_to_poly_triangulation(
-                theNodes,
-                thePolyTriangles,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Triangulator_to_poly_triangulation(theNodes, thePolyTriangles)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -9574,7 +13121,11 @@ impl UVParamRangeSplitter {
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:27 - `BRepMesh_UVParamRangeSplitter::BRepMesh_UVParamRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_UVParamRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
@@ -9584,89 +13135,124 @@ impl UVParamRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_UVParamRangeSplitter_reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     /// Returns U parameters.
     pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_u(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_u(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:52 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     /// Returns U parameters.
     pub fn get_parameters_u_mut(&mut self) -> &mut crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_u_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_u_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     /// Returns V parameters.
     pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_v(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_v(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:58 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     /// Returns V parameters.
     pub fn get_parameters_v_mut(&mut self) -> &mut crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_v_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_get_parameters_v_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(
-                self as *mut Self,
-                thePoint,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -9675,12 +13261,16 @@ impl UVParamRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9689,67 +13279,97 @@ impl UVParamRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GenerateSurfaceNodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetSurface(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetSurface(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -9773,67 +13393,98 @@ impl UndefinedRangeSplitter {
     /// **Source:** `BRepMesh_UndefinedRangeSplitter.hxx`:27 - `BRepMesh_UndefinedRangeSplitter::BRepMesh_UndefinedRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
     pub fn as_nurbs_range_splitter_mut(&mut self) -> &mut NURBSRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
     pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
@@ -9842,13 +13493,15 @@ impl UndefinedRangeSplitter {
         &self,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionSharedNCollectionListgpPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GenerateSurfaceNodes(
                     self as *const Self,
                     theParameters,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9858,46 +13511,66 @@ impl UndefinedRangeSplitter {
         theDFace: &crate::ffi::HandleIMeshDataFace,
         theParameters: &crate::i_mesh_tools::Parameters,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Reset(
-                self as *mut Self,
-                theDFace,
-                theParameters,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Reset(
+                    self as *mut Self,
+                    theDFace,
+                    theParameters,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
     pub fn get_parameters_u(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetParametersU(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetParametersU(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:55 - `BRepMesh_UVParamRangeSplitter::GetParametersV()`
     pub fn get_parameters_v(&self) -> &crate::ffi::IMeshData_IMapOfReal {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetParametersV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetParametersV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(
-                self as *mut Self,
-                thePoint,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
-        unsafe { crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_IsValid(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_IsValid(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
@@ -9906,68 +13579,100 @@ impl UndefinedRangeSplitter {
         thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Scale(
-                self as *const Self,
-                thePoint,
-                isToFaceBasis,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(
-                self as *const Self,
-                thePoint2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn get_d_face(&self) -> &crate::ffi::HandleIMeshDataFace {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetDFace(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetDFace(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetSurface(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetSurface(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn get_range_u(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetRangeU(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetRangeU(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn get_range_v(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetRangeV(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetRangeV(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn get_delta(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetDelta(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetDelta(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn get_tolerance_uv(&self) -> &crate::ffi::std_pair_Standard_Real_Standard_Real {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetToleranceUV(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_GetToleranceUV(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 }
@@ -9992,7 +13697,11 @@ impl Vertex {
     /// **Source:** `BRepMesh_Vertex.hxx`:32 - `BRepMesh_Vertex::BRepMesh_Vertex()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Vertex_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:42 - `BRepMesh_Vertex::BRepMesh_Vertex()`
@@ -10005,12 +13714,16 @@ impl Vertex {
         theLocation3d: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(
-                theUV,
-                theLocation3d,
-                theMovability.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(
+                    theUV,
+                    theLocation3d,
+                    theMovability.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10024,12 +13737,16 @@ impl Vertex {
         theV: f64,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(
-                theU,
-                theV,
-                theMovability.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(
+                    theU,
+                    theV,
+                    theMovability.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10044,50 +13761,67 @@ impl Vertex {
         theLocation3d: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) {
-        unsafe {
-            crate::ffi::BRepMesh_Vertex_initialize(
-                self as *mut Self,
-                theUV,
-                theLocation3d,
-                theMovability.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Vertex_initialize(
+                    self as *mut Self,
+                    theUV,
+                    theLocation3d,
+                    theMovability.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:76 - `BRepMesh_Vertex::Coord()`
     /// Returns position of the vertex in parametric space.
     pub fn coord(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::BRepMesh_Vertex_coord(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Vertex_coord(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:79 - `BRepMesh_Vertex::ChangeCoord()`
     /// Returns position of the vertex in parametric space for modification.
     pub fn change_coord(&mut self) -> &mut crate::gp::XY {
-        unsafe { &mut *(crate::ffi::BRepMesh_Vertex_change_coord(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Vertex_change_coord(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:82 - `BRepMesh_Vertex::Location3d()`
     /// Returns index of 3d point associated with the vertex.
     pub fn location3d(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_Vertex_location3d(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Vertex_location3d(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:85 - `BRepMesh_Vertex::Movability()`
     /// Returns movability of the vertex.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
-        unsafe {
-            crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Vertex_movability(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_Vertex_movability(self as *const Self) };
+            crate::check_exception();
+            crate::b_rep_mesh::DegreeOfFreedom::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:88 - `BRepMesh_Vertex::SetMovability()`
     /// Sets movability of the vertex.
     pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
-        unsafe {
-            crate::ffi::BRepMesh_Vertex_set_movability(self as *mut Self, theMovability.into())
+        {
+            unsafe {
+                crate::ffi::BRepMesh_Vertex_set_movability(self as *mut Self, theMovability.into())
+            };
+            crate::check_exception();
         }
     }
 
@@ -10096,7 +13830,12 @@ impl Vertex {
     /// @param theOther vertex to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
     pub fn is_equal(&self, theOther: &Vertex) -> bool {
-        unsafe { crate::ffi::BRepMesh_Vertex_is_equal(self as *const Self, theOther) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_Vertex_is_equal(self as *const Self, theOther) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -10123,17 +13862,24 @@ impl VertexTool {
     pub fn new_handlencollectionincallocator(
         theAllocator: &crate::ffi::HandleNCollectionIncAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepMesh_VertexTool_ctor_handlencollectionincallocator(theAllocator),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_ctor_handlencollectionincallocator(theAllocator)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:34 - `BRepMesh_VertexTool::SetCellSize()`
     /// Sets new size of cell for cellfilter equal in both directions.
     pub fn set_cell_size_real(&mut self, theSize: f64) {
-        unsafe { crate::ffi::BRepMesh_VertexTool_set_cell_size_real(self as *mut Self, theSize) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_set_cell_size_real(self as *mut Self, theSize)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:43 - `BRepMesh_VertexTool::SetCellSize()`
@@ -10141,12 +13887,15 @@ impl VertexTool {
     /// @param theSizeX size for X dimension.
     /// @param theSizeY size for Y dimension.
     pub fn set_cell_size_real2(&mut self, theSizeX: f64, theSizeY: f64) {
-        unsafe {
-            crate::ffi::BRepMesh_VertexTool_set_cell_size_real2(
-                self as *mut Self,
-                theSizeX,
-                theSizeY,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_set_cell_size_real2(
+                    self as *mut Self,
+                    theSizeX,
+                    theSizeY,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10154,8 +13903,11 @@ impl VertexTool {
     /// Sets the tolerance to be used for identification of
     /// coincident vertices equal for both dimensions.
     pub fn set_tolerance_real(&mut self, theTolerance: f64) {
-        unsafe {
-            crate::ffi::BRepMesh_VertexTool_set_tolerance_real(self as *mut Self, theTolerance)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_set_tolerance_real(self as *mut Self, theTolerance)
+            };
+            crate::check_exception();
         }
     }
 
@@ -10165,12 +13917,15 @@ impl VertexTool {
     /// @param theToleranceX tolerance for X dimension.
     /// @param theToleranceY tolerance for Y dimension.
     pub fn set_tolerance_real2(&mut self, theToleranceX: f64, theToleranceY: f64) {
-        unsafe {
-            crate::ffi::BRepMesh_VertexTool_set_tolerance_real2(
-                self as *mut Self,
-                theToleranceX,
-                theToleranceY,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_set_tolerance_real2(
+                    self as *mut Self,
+                    theToleranceX,
+                    theToleranceY,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10180,12 +13935,15 @@ impl VertexTool {
     /// @param theToleranceX tolerance for X dimension.
     /// @param theToleranceY tolerance for Y dimension.
     pub fn get_tolerance(&mut self, theToleranceX: &mut f64, theToleranceY: &mut f64) {
-        unsafe {
-            crate::ffi::BRepMesh_VertexTool_get_tolerance(
-                self as *mut Self,
-                theToleranceX,
-                theToleranceY,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_get_tolerance(
+                    self as *mut Self,
+                    theToleranceX,
+                    theToleranceY,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10196,13 +13954,22 @@ impl VertexTool {
     /// checking on coincidence with other nodes.
     /// @return index of the node in the structure.
     pub fn add(&mut self, theVertex: &Vertex, isForceAdd: bool) -> i32 {
-        unsafe { crate::ffi::BRepMesh_VertexTool_add(self as *mut Self, theVertex, isForceAdd) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_add(self as *mut Self, theVertex, isForceAdd)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:90 - `BRepMesh_VertexTool::DeleteVertex()`
     /// Deletes vertex with the given index from the tool.
     pub fn delete_vertex(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BRepMesh_VertexTool_delete_vertex(self as *mut Self, theIndex) }
+        {
+            unsafe { crate::ffi::BRepMesh_VertexTool_delete_vertex(self as *mut Self, theIndex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices()`
@@ -10210,7 +13977,11 @@ impl VertexTool {
     pub fn vertices(
         &self,
     ) -> &crate::ffi::HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
-        unsafe { &*(crate::ffi::BRepMesh_VertexTool_vertices(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_VertexTool_vertices(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:96 - `BRepMesh_VertexTool::ChangeVertices()`
@@ -10218,31 +13989,54 @@ impl VertexTool {
     pub fn change_vertices(
         &mut self,
     ) -> &mut crate::ffi::HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex {
-        unsafe { &mut *(crate::ffi::BRepMesh_VertexTool_change_vertices(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_VertexTool_change_vertices(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:99 - `BRepMesh_VertexTool::FindKey()`
     /// Returns vertex by the given index.
     pub fn find_key(&mut self, theIndex: i32) -> &Vertex {
-        unsafe { &*(crate::ffi::BRepMesh_VertexTool_find_key(self as *mut Self, theIndex)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_VertexTool_find_key(self as *mut Self, theIndex) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:105 - `BRepMesh_VertexTool::FindIndex()`
     /// Returns index of the given vertex.
     pub fn find_index(&mut self, theVertex: &Vertex) -> i32 {
-        unsafe { crate::ffi::BRepMesh_VertexTool_find_index(self as *mut Self, theVertex) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_VertexTool_find_index(self as *mut Self, theVertex) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:113 - `BRepMesh_VertexTool::Extent()`
     /// Returns a number of vertices.
     pub fn extent(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_VertexTool_extent(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_VertexTool_extent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:116 - `BRepMesh_VertexTool::IsEmpty()`
     /// Returns True when the map contains no keys. <br>
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::BRepMesh_VertexTool_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_VertexTool_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:121 - `BRepMesh_VertexTool::Substitute()`
@@ -10250,58 +14044,92 @@ impl VertexTool {
     /// @param theIndex index of vertex to be substituted.
     /// @param theVertex replacement vertex.
     pub fn substitute(&mut self, theIndex: i32, theVertex: &Vertex) {
-        unsafe {
-            crate::ffi::BRepMesh_VertexTool_substitute(self as *mut Self, theIndex, theVertex)
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_substitute(self as *mut Self, theIndex, theVertex)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:125 - `BRepMesh_VertexTool::RemoveLast()`
     /// Remove last node from the structure.
     pub fn remove_last(&mut self) {
-        unsafe { crate::ffi::BRepMesh_VertexTool_remove_last(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_VertexTool_remove_last(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes()`
     /// Returns the list with indexes of vertices that have movability attribute
     /// equal to BRepMesh_Deleted and can be replaced with another node.
     pub fn get_list_of_del_nodes(&self) -> &crate::ffi::IMeshData_ListOfInteger {
-        unsafe { &*(crate::ffi::BRepMesh_VertexTool_get_list_of_del_nodes(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_get_list_of_del_nodes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:135 - `BRepMesh_VertexTool::Statistics()`
     /// Prints statistics.
     pub fn statistics(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::BRepMesh_VertexTool_statistics(self as *const Self, theStream) }
+        {
+            unsafe { crate::ffi::BRepMesh_VertexTool_statistics(self as *const Self, theStream) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_VertexTool_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepMesh_VertexTool_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_VertexTool_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_VertexTool_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepMesh_VertexTool_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_VertexTool_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::BRepMesh_VertexTool_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_VertexTool_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -10309,54 +14137,87 @@ impl VertexTool {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshVertexTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_VertexTool_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepMesh_VertexTool_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_VertexTool_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::BRepMesh_VertexTool_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::BRepMesh_VertexTool_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_VertexTool_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::BRepMesh_VertexTool_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepMesh_VertexTool_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::BRepMesh_VertexTool_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepMesh_VertexTool_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepMesh_VertexTool_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::BRepMesh_VertexTool_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -10371,22 +14232,31 @@ unsafe impl crate::CppDeletable for HandleBRepMeshVertexTool {
 impl HandleBRepMeshVertexTool {
     /// Dereference this Handle to access the underlying BRepMesh_VertexTool
     pub fn get(&self) -> &crate::ffi::BRepMesh_VertexTool {
-        unsafe { &*(crate::ffi::HandleBRepMeshVertexTool_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleBRepMeshVertexTool_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_VertexTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_VertexTool {
-        unsafe { &mut *(crate::ffi::HandleBRepMeshVertexTool_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepMeshVertexTool_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepMesh_VertexTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleBRepMeshVertexTool_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepMeshVertexTool_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

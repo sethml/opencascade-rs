@@ -25,21 +25,32 @@ unsafe impl crate::CppDeletable for EditHeader {
 impl EditHeader {
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:37 - `APIHeaderSection_EditHeader::APIHeaderSection_EditHeader()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:39 - `APIHeaderSection_EditHeader::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_label(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_EditHeader_label(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:42 - `APIHeaderSection_EditHeader::Recognize()`
     pub fn recognize(&self, form: &crate::ffi::HandleIFSelectEditForm) -> bool {
-        unsafe { crate::ffi::APIHeaderSection_EditHeader_recognize(self as *const Self, form) }
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_recognize(self as *const Self, form)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:44 - `APIHeaderSection_EditHeader::StringValue()`
@@ -48,12 +59,12 @@ impl EditHeader {
         form: &crate::ffi::HandleIFSelectEditForm,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_string_value(
-                self as *const Self,
-                form,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_string_value(self as *const Self, form, num)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -64,8 +75,12 @@ impl EditHeader {
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_apply(self as *const Self, form, ent, model)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_apply(self as *const Self, form, ent, model)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -76,59 +91,85 @@ impl EditHeader {
         ent: &crate::ffi::HandleStandardTransient,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_load(self as *const Self, form, ent, model)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_load(self as *const Self, form, ent, model)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::APIHeaderSection_EditHeader_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::APIHeaderSection_EditHeader_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::APIHeaderSection_EditHeader_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to IFSelect_Editor
     pub fn as_if_select_editor(&self) -> &crate::if_select::Editor {
-        unsafe {
-            &*(crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to IFSelect_Editor (mutable)
     pub fn as_if_select_editor_mut(&mut self) -> &mut crate::if_select::Editor {
-        unsafe {
-            &mut *(crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -136,87 +177,121 @@ impl EditHeader {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAPIHeaderSectionEditHeader> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_EditHeader_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_SetList(self as *mut Self, num, max)
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_SetList(
+                    self as *mut Self,
+                    num,
+                    max,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::NbValues()`
     pub fn nb_values(&self) -> i32 {
-        unsafe { crate::ffi::APIHeaderSection_EditHeader_inherited_NbValues(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_NbValues(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue()`
     pub fn typed_value(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceTypedValue> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_inherited_TypedValue(
-                self as *const Self,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_TypedValue(
+                    self as *const Self,
+                    num,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
     pub fn is_list(&self, num: i32) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_IsList(self as *const Self, num)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_IsList(self as *const Self, num)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:76 - `IFSelect_Editor::MaxList()`
     pub fn max_list(&self, num: i32) -> i32 {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_MaxList(self as *const Self, num)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_MaxList(self as *const Self, num)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:84 - `IFSelect_Editor::EditMode()`
     pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
-        unsafe {
-            crate::if_select::EditValue::try_from(
-                crate::ffi::APIHeaderSection_EditHeader_inherited_EditMode(
-                    self as *const Self,
-                    num,
-                ),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_EditMode(self as *const Self, num)
+            };
+            crate::check_exception();
+            crate::if_select::EditValue::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_PrintNames(self as *const Self, S)
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_PrintNames(self as *const Self, S)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_PrintDefs(
-                self as *const Self,
-                S,
-                labels,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_PrintDefs(
+                    self as *const Self,
+                    S,
+                    labels,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_MaxNameLength(
-                self as *const Self,
-                what,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_MaxNameLength(
+                    self as *const Self,
+                    what,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -226,22 +301,30 @@ impl EditHeader {
         readonly: bool,
         undoable: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditForm> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_inherited_Form(
-                self as *const Self,
-                readonly,
-                undoable,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_Form(
+                    self as *const Self,
+                    readonly,
+                    undoable,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListEditor()`
     pub fn list_editor(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectListEditor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_inherited_ListEditor(
-                self as *const Self,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_ListEditor(
+                    self as *const Self,
+                    num,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -251,12 +334,16 @@ impl EditHeader {
         form: &crate::ffi::HandleIFSelectEditForm,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_EditHeader_inherited_ListValue(
-                self as *const Self,
-                form,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_ListValue(
+                    self as *const Self,
+                    form,
+                    num,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -268,14 +355,18 @@ impl EditHeader {
         newval: &crate::ffi::HandleTCollectionHAsciiString,
         enforce: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_Update(
-                self as *const Self,
-                form,
-                num,
-                newval,
-                enforce,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_Update(
+                    self as *const Self,
+                    form,
+                    num,
+                    newval,
+                    enforce,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -287,72 +378,108 @@ impl EditHeader {
         newlist: &crate::ffi::HandleTColStdHSequenceOfHAsciiString,
         enforce: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_UpdateList(
-                self as *const Self,
-                form,
-                num,
-                newlist,
-                enforce,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_UpdateList(
+                    self as *const Self,
+                    form,
+                    num,
+                    newlist,
+                    enforce,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::APIHeaderSection_EditHeader_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::APIHeaderSection_EditHeader_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_EditHeader_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -367,33 +494,47 @@ unsafe impl crate::CppDeletable for HandleAPIHeaderSectionEditHeader {
 impl HandleAPIHeaderSectionEditHeader {
     /// Dereference this Handle to access the underlying APIHeaderSection_EditHeader
     pub fn get(&self) -> &crate::ffi::APIHeaderSection_EditHeader {
-        unsafe { &*(crate::ffi::HandleAPIHeaderSectionEditHeader_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleAPIHeaderSectionEditHeader_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying APIHeaderSection_EditHeader
     pub fn get_mut(&mut self) -> &mut crate::ffi::APIHeaderSection_EditHeader {
-        unsafe { &mut *(crate::ffi::HandleAPIHeaderSectionEditHeader_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleAPIHeaderSectionEditHeader_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<APIHeaderSection_EditHeader> to Handle<IFSelect_Editor>
     pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAPIHeaderSectionEditHeader_to_HandleIFSelectEditor(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<APIHeaderSection_EditHeader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleAPIHeaderSectionEditHeader_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -417,8 +558,10 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:42 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
     /// Prepares a new MakeHeader from scratch
     pub fn new_int(shapetype: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_ctor_int(shapetype))
+        {
+            let __result = unsafe { crate::ffi::APIHeaderSection_MakeHeader_ctor_int(shapetype) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -428,10 +571,12 @@ impl MakeHeader {
     pub fn new_handlestepdatastepmodel(
         model: &crate::ffi::HandleStepDataStepModel,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::APIHeaderSection_MakeHeader_ctor_handlestepdatastepmodel(model),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_ctor_handlestepdatastepmodel(model)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -446,8 +591,11 @@ impl MakeHeader {
     /// To be used when a Model has no well defined Header
     pub fn init(&mut self, nameval: &str) {
         let c_nameval = std::ffi::CString::new(nameval).unwrap();
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_init(self as *mut Self, c_nameval.as_ptr())
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_init(self as *mut Self, c_nameval.as_ptr())
+            };
+            crate::check_exception();
         }
     }
 
@@ -455,14 +603,22 @@ impl MakeHeader {
     /// Returns True if all data have been defined (see also
     /// HasFn, HasFs, HasFd)
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:58 - `APIHeaderSection_MakeHeader::Apply()`
     /// Creates an empty header for a new
     /// STEP model and allows the header fields to be completed.
     pub fn apply(&self, model: &crate::ffi::HandleStepDataStepModel) {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_apply(self as *const Self, model) }
+        {
+            unsafe { crate::ffi::APIHeaderSection_MakeHeader_apply(self as *const Self, model) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:64 - `APIHeaderSection_MakeHeader::NewModel()`
@@ -474,11 +630,12 @@ impl MakeHeader {
         &self,
         protocol: &crate::ffi::HandleInterfaceProtocol,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_new_model(
-                self as *const Self,
-                protocol,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_new_model(self as *const Self, protocol)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -486,55 +643,77 @@ impl MakeHeader {
     /// Checks whether there is a
     /// file_name entity. Returns True if there is one.
     pub fn has_fn(&self) -> bool {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fn(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fn(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:73 - `APIHeaderSection_MakeHeader::FnValue()`
     /// Returns the file_name entity.
     /// Returns an empty entity if the file_name entity is not initialized.
     pub fn fn_value(&self) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileName> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_fn_value(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_fn_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:75 - `APIHeaderSection_MakeHeader::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_set_name(self as *mut Self, aName) }
+        {
+            unsafe { crate::ffi::APIHeaderSection_MakeHeader_set_name(self as *mut Self, aName) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:78 - `APIHeaderSection_MakeHeader::Name()`
     /// Returns the name attribute for the file_name entity.
     pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_name(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:80 - `APIHeaderSection_MakeHeader::SetTimeStamp()`
     pub fn set_time_stamp(&mut self, aTimeStamp: &crate::ffi::HandleTCollectionHAsciiString) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_time_stamp(self as *mut Self, aTimeStamp)
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_time_stamp(
+                    self as *mut Self,
+                    aTimeStamp,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:83 - `APIHeaderSection_MakeHeader::TimeStamp()`
     /// Returns the value of the time_stamp attribute for the file_name entity.
     pub fn time_stamp(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_time_stamp(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_time_stamp(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:85 - `APIHeaderSection_MakeHeader::SetAuthor()`
     pub fn set_author(&mut self, aAuthor: &crate::ffi::HandleInterfaceHArray1OfHAsciiString) {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_set_author(self as *mut Self, aAuthor) }
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_author(self as *mut Self, aAuthor)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:87 - `APIHeaderSection_MakeHeader::SetAuthorValue()`
@@ -543,21 +722,25 @@ impl MakeHeader {
         num: i32,
         aAuthor: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_author_value(
-                self as *mut Self,
-                num,
-                aAuthor,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_author_value(
+                    self as *mut Self,
+                    num,
+                    aAuthor,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:90 - `APIHeaderSection_MakeHeader::Author()`
     pub fn author(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_author(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_author(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -567,18 +750,24 @@ impl MakeHeader {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_author_value(
-                self as *const Self,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_author_value(self as *const Self, num)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:96 - `APIHeaderSection_MakeHeader::NbAuthor()`
     /// Returns the number of values for the author attribute in the file_name entity.
     pub fn nb_author(&self) -> i32 {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_nb_author(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_nb_author(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:98 - `APIHeaderSection_MakeHeader::SetOrganization()`
@@ -586,11 +775,14 @@ impl MakeHeader {
         &mut self,
         aOrganization: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_organization(
-                self as *mut Self,
-                aOrganization,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_organization(
+                    self as *mut Self,
+                    aOrganization,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -600,12 +792,15 @@ impl MakeHeader {
         num: i32,
         aOrganization: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_organization_value(
-                self as *mut Self,
-                num,
-                aOrganization,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_organization_value(
+                    self as *mut Self,
+                    num,
+                    aOrganization,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -613,10 +808,12 @@ impl MakeHeader {
     pub fn organization(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_organization(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_organization(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -627,11 +824,12 @@ impl MakeHeader {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_organization_value(
-                self as *const Self,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_organization_value(self as *const Self, num)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -639,7 +837,13 @@ impl MakeHeader {
     /// Returns the number of values for
     /// the organization attribute in the file_name entity.
     pub fn nb_organization(&self) -> i32 {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_nb_organization(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_nb_organization(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:115 - `APIHeaderSection_MakeHeader::SetPreprocessorVersion()`
@@ -647,11 +851,14 @@ impl MakeHeader {
         &mut self,
         aPreprocessorVersion: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_preprocessor_version(
-                self as *mut Self,
-                aPreprocessorVersion,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_preprocessor_version(
+                    self as *mut Self,
+                    aPreprocessorVersion,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -660,10 +867,12 @@ impl MakeHeader {
     pub fn preprocessor_version(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_preprocessor_version(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_preprocessor_version(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -672,20 +881,25 @@ impl MakeHeader {
         &mut self,
         aOriginatingSystem: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_originating_system(
-                self as *mut Self,
-                aOriginatingSystem,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_originating_system(
+                    self as *mut Self,
+                    aOriginatingSystem,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:124 - `APIHeaderSection_MakeHeader::OriginatingSystem()`
     pub fn originating_system(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_originating_system(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_originating_system(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -694,38 +908,49 @@ impl MakeHeader {
         &mut self,
         aAuthorisation: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_authorisation(
-                self as *mut Self,
-                aAuthorisation,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_authorisation(
+                    self as *mut Self,
+                    aAuthorisation,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:129 - `APIHeaderSection_MakeHeader::Authorisation()`
     /// Returns the value of the authorization attribute for the file_name entity.
     pub fn authorisation(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_authorisation(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_authorisation(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:132 - `APIHeaderSection_MakeHeader::HasFs()`
     /// Checks whether there is a file_schema entity. Returns True if there is one.
     pub fn has_fs(&self) -> bool {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fs(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fs(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:136 - `APIHeaderSection_MakeHeader::FsValue()`
     /// Returns the file_schema entity. Returns an empty entity if the file_schema entity is not
     /// initialized.
     pub fn fs_value(&self) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileSchema> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_fs_value(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_fs_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -734,11 +959,14 @@ impl MakeHeader {
         &mut self,
         aSchemaIdentifiers: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_schema_identifiers(
-                self as *mut Self,
-                aSchemaIdentifiers,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_schema_identifiers(
+                    self as *mut Self,
+                    aSchemaIdentifiers,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -748,12 +976,15 @@ impl MakeHeader {
         num: i32,
         aSchemaIdentifier: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_schema_identifiers_value(
-                self as *mut Self,
-                num,
-                aSchemaIdentifier,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_schema_identifiers_value(
+                    self as *mut Self,
+                    num,
+                    aSchemaIdentifier,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -761,10 +992,12 @@ impl MakeHeader {
     pub fn schema_identifiers(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_schema_identifiers(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_schema_identifiers(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -774,21 +1007,27 @@ impl MakeHeader {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_schema_identifiers_value(
                     self as *const Self,
                     num,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:152 - `APIHeaderSection_MakeHeader::NbSchemaIdentifiers()`
     /// Returns the number of values for the schema_identifier attribute in the file_schema entity.
     pub fn nb_schema_identifiers(&self) -> i32 {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_nb_schema_identifiers(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_nb_schema_identifiers(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -798,28 +1037,37 @@ impl MakeHeader {
         &mut self,
         aSchemaIdentifier: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_add_schema_identifier(
-                self as *mut Self,
-                aSchemaIdentifier,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_add_schema_identifier(
+                    self as *mut Self,
+                    aSchemaIdentifier,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:159 - `APIHeaderSection_MakeHeader::HasFd()`
     /// Checks whether there is a file_description entity. Returns True if there is one.
     pub fn has_fd(&self) -> bool {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fd(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fd(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:163 - `APIHeaderSection_MakeHeader::FdValue()`
     /// Returns the file_description
     /// entity. Returns an empty entity if the file_description entity is not initialized.
     pub fn fd_value(&self) -> crate::OwnedPtr<crate::ffi::HandleHeaderSectionFileDescription> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_fd_value(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_fd_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -828,8 +1076,14 @@ impl MakeHeader {
         &mut self,
         aDescription: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_description(self as *mut Self, aDescription)
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_description(
+                    self as *mut Self,
+                    aDescription,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -839,21 +1093,25 @@ impl MakeHeader {
         num: i32,
         aDescription: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_description_value(
-                self as *mut Self,
-                num,
-                aDescription,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_description_value(
+                    self as *mut Self,
+                    num,
+                    aDescription,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:170 - `APIHeaderSection_MakeHeader::Description()`
     pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_description(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::APIHeaderSection_MakeHeader_description(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -864,11 +1122,12 @@ impl MakeHeader {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_description_value(
-                self as *const Self,
-                num,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_description_value(self as *const Self, num)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -876,7 +1135,13 @@ impl MakeHeader {
     /// Returns the number of values for
     /// the file_description entity in the STEP file header.
     pub fn nb_description(&self) -> i32 {
-        unsafe { crate::ffi::APIHeaderSection_MakeHeader_nb_description(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_nb_description(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:181 - `APIHeaderSection_MakeHeader::SetImplementationLevel()`
@@ -884,11 +1149,14 @@ impl MakeHeader {
         &mut self,
         aImplementationLevel: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
-        unsafe {
-            crate::ffi::APIHeaderSection_MakeHeader_set_implementation_level(
-                self as *mut Self,
-                aImplementationLevel,
-            )
+        {
+            unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_implementation_level(
+                    self as *mut Self,
+                    aImplementationLevel,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -898,10 +1166,12 @@ impl MakeHeader {
     pub fn implementation_level(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::APIHeaderSection_MakeHeader_implementation_level(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_implementation_level(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

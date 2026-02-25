@@ -35,10 +35,12 @@ impl CLProps2d {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom2dLProp_CLProps2d_ctor_handlegeom2dcurve_int_real(C, N, Resolution),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CLProps2d_ctor_handlegeom2dcurve_int_real(C, N, Resolution)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -52,12 +54,14 @@ impl CLProps2d {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Geom2dLProp_CLProps2d_ctor_handlegeom2dcurve_real_int_real(
                     C, U, N, Resolution,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -69,10 +73,11 @@ impl CLProps2d {
     /// All the computations done will be related to <C> and <U>
     /// when the functions "set" will be done.
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dLProp_CLProps2d_ctor_int_real(
-                N, Resolution,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_CLProps2d_ctor_int_real(N, Resolution) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -80,41 +85,63 @@ impl CLProps2d {
     /// Initializes the local properties of the curve
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_set_parameter(self as *mut Self, U) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CLProps2d_set_parameter(self as *mut Self, U) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:81 - `Geom2dLProp_CLProps2d::SetCurve()`
     /// Initializes the local properties of the curve
     /// for the new curve.
     pub fn set_curve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_set_curve(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CLProps2d_set_curve(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:84 - `Geom2dLProp_CLProps2d::Value()`
     /// Returns the Point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_CLProps2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:88 - `Geom2dLProp_CLProps2d::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1(&mut self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_d1(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_CLProps2d_d1(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:92 - `Geom2dLProp_CLProps2d::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2(&mut self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_d2(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_CLProps2d_d2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:96 - `Geom2dLProp_CLProps2d::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d3(&mut self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_d3(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_CLProps2d_d3(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:101 - `Geom2dLProp_CLProps2d::IsTangentDefined()`
@@ -122,31 +149,50 @@ impl CLProps2d {
     /// For example, the tangent is not defined if the
     /// three first derivatives are all null.
     pub fn is_tangent_defined(&mut self) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_is_tangent_defined(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_CLProps2d_is_tangent_defined(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:104 - `Geom2dLProp_CLProps2d::Tangent()`
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir2d) {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_tangent(self as *mut Self, D) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CLProps2d_tangent(self as *mut Self, D) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:107 - `Geom2dLProp_CLProps2d::Curvature()`
     /// Returns the curvature.
     pub fn curvature(&mut self) -> f64 {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_curvature(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_CLProps2d_curvature(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:110 - `Geom2dLProp_CLProps2d::Normal()`
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir2d) {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_normal(self as *mut Self, N) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CLProps2d_normal(self as *mut Self, N) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:113 - `Geom2dLProp_CLProps2d::CentreOfCurvature()`
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Geom2dLProp_CLProps2d_centre_of_curvature(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CLProps2d_centre_of_curvature(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -178,20 +224,30 @@ impl CurAndInf2d {
     /// computed is defined using one of the following
     /// functions: Perform, PerformCurExt or PerformInf.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dLProp_CurAndInf2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_CurAndInf2d.hxx`:48 - `Geom2dLProp_CurAndInf2d::Perform()`
     /// For the curve C, Computes both the
     /// inflection points and the maximum and minimum curvatures.
     pub fn perform(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_perform(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_perform(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CurAndInf2d.hxx`:51 - `Geom2dLProp_CurAndInf2d::PerformCurExt()`
     /// For the curve C, Computes the locals extremas of curvature.
     pub fn perform_cur_ext(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_perform_cur_ext(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_perform_cur_ext(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CurAndInf2d.hxx`:65 - `Geom2dLProp_CurAndInf2d::PerformInf()`
@@ -208,69 +264,121 @@ impl CurAndInf2d {
     /// curves, however it is necessary to clear the table of
     /// results between each computation.
     pub fn perform_inf(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_perform_inf(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_perform_inf(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_CurAndInf2d.hxx`:68 - `Geom2dLProp_CurAndInf2d::IsDone()`
     /// True if the solutions are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to LProp_CurAndInf
     pub fn as_l_prop_cur_and_inf(&self) -> &crate::l_prop::CurAndInf {
-        unsafe { &*(crate::ffi::Geom2dLProp_CurAndInf2d_as_LProp_CurAndInf(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_as_LProp_CurAndInf(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to LProp_CurAndInf (mutable)
     pub fn as_l_prop_cur_and_inf_mut(&mut self) -> &mut crate::l_prop::CurAndInf {
-        unsafe {
-            &mut *(crate::ffi::Geom2dLProp_CurAndInf2d_as_LProp_CurAndInf_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_as_LProp_CurAndInf_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:38 - `LProp_CurAndInf::AddInflection()`
     pub fn add_inflection(&mut self, Param: f64) {
-        unsafe {
-            crate::ffi::Geom2dLProp_CurAndInf2d_inherited_AddInflection(self as *mut Self, Param)
+        {
+            unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_inherited_AddInflection(
+                    self as *mut Self,
+                    Param,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:40 - `LProp_CurAndInf::AddExtCur()`
     pub fn add_ext_cur(&mut self, Param: f64, IsMin: bool) {
-        unsafe {
-            crate::ffi::Geom2dLProp_CurAndInf2d_inherited_AddExtCur(self as *mut Self, Param, IsMin)
+        {
+            unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_inherited_AddExtCur(
+                    self as *mut Self,
+                    Param,
+                    IsMin,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:42 - `LProp_CurAndInf::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_inherited_Clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_inherited_Clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:44 - `LProp_CurAndInf::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_inherited_IsEmpty(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_inherited_IsEmpty(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:48 - `LProp_CurAndInf::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_inherited_NbPoints(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_inherited_NbPoints(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:52 - `LProp_CurAndInf::Parameter()`
     pub fn parameter(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Geom2dLProp_CurAndInf2d_inherited_Parameter(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_inherited_Parameter(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `LProp_CurAndInf.hxx`:62 - `LProp_CurAndInf::Type()`
     pub fn type_(&self, N: i32) -> crate::l_prop::CIType {
-        unsafe {
-            crate::l_prop::CIType::try_from(crate::ffi::Geom2dLProp_CurAndInf2d_inherited_Type(
-                self as *const Self,
-                N,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_CurAndInf2d_inherited_Type(self as *const Self, N)
+            };
+            crate::check_exception();
+            crate::l_prop::CIType::try_from(__result).unwrap()
         }
     }
 }
@@ -292,13 +400,20 @@ impl Curve2dTool {
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx` - `Geom2dLProp_Curve2dTool::Geom2dLProp_Curve2dTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dLProp_Curve2dTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_Curve2dTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:35 - `Geom2dLProp_Curve2dTool::Value()`
     /// Computes the point <P> of parameter <U> on the curve <C>.
     pub fn value(C: &crate::ffi::HandleGeom2dCurve, U: f64, P: &mut crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_value(C, U, P) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_Curve2dTool_value(C, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:41 - `Geom2dLProp_Curve2dTool::D1()`
@@ -310,7 +425,10 @@ impl Curve2dTool {
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d1(C, U, P, V1) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d1(C, U, P, V1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:48 - `Geom2dLProp_Curve2dTool::D2()`
@@ -323,7 +441,10 @@ impl Curve2dTool {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d2(C, U, P, V1, V2) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d2(C, U, P, V1, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:57 - `Geom2dLProp_Curve2dTool::D3()`
@@ -338,7 +459,10 @@ impl Curve2dTool {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d3(C, U, P, V1, V2, V3) }
+        {
+            unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d3(C, U, P, V1, V2, V3) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:68 - `Geom2dLProp_Curve2dTool::Continuity()`
@@ -347,20 +471,32 @@ impl Curve2dTool {
     /// returns 2 : first and second derivative only are computable.
     /// returns 3 : first, second and third are computable.
     pub fn continuity(C: &crate::ffi::HandleGeom2dCurve) -> i32 {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_continuity(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_Curve2dTool_continuity(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:71 - `Geom2dLProp_Curve2dTool::FirstParameter()`
     /// returns the first parameter bound of the curve.
     pub fn first_parameter(C: &crate::ffi::HandleGeom2dCurve) -> f64 {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_first_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_Curve2dTool_first_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:75 - `Geom2dLProp_Curve2dTool::LastParameter()`
     /// returns the last parameter bound of the curve.
     /// FirstParameter must be less than LastParameter.
     pub fn last_parameter(C: &crate::ffi::HandleGeom2dCurve) -> f64 {
-        unsafe { crate::ffi::Geom2dLProp_Curve2dTool_last_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_Curve2dTool_last_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -384,45 +520,70 @@ impl FuncCurExt {
         C: &crate::ffi::HandleGeom2dCurve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom2dLProp_FuncCurExt_ctor_handlegeom2dcurve_real(C, Tol),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurExt_ctor_handlegeom2dcurve_real(C, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurExt.hxx`:36 - `Geom2dLProp_FuncCurExt::Value()`
     /// Returns the value for the variable <X>.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurExt_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurExt_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurExt.hxx`:39 - `Geom2dLProp_FuncCurExt::Derivative()`
     /// Returns the derivative for the variable <X>.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurExt_derivative(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurExt_derivative(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurExt.hxx`:43 - `Geom2dLProp_FuncCurExt::Values()`
     /// Returns the value of the function and the derivative
     /// for the variable <X>.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurExt_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurExt_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurExt.hxx`:49 - `Geom2dLProp_FuncCurExt::IsMinKC()`
     /// True  if  Param  corresponds  to  a minus
     /// of the radius of curvature.
     pub fn is_min_kc(&self, Param: f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurExt_is_min_kc(self as *const Self, Param) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurExt_is_min_kc(self as *const Self, Param) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Geom2dLProp_FuncCurExt_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurExt_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -430,28 +591,47 @@ impl FuncCurExt {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Geom2dLProp_FuncCurExt_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurExt_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Geom2dLProp_FuncCurExt_as_math_Function(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurExt_as_math_Function(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dLProp_FuncCurExt_as_math_Function_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurExt_as_math_Function_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurExt_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurExt_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -472,36 +652,57 @@ unsafe impl crate::CppDeletable for FuncCurNul {
 impl FuncCurNul {
     /// **Source:** `Geom2dLProp_FuncCurNul.hxx`:33 - `Geom2dLProp_FuncCurNul::Geom2dLProp_FuncCurNul()`
     pub fn new_handlegeom2dcurve(C: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2dLProp_FuncCurNul_ctor_handlegeom2dcurve(C))
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_FuncCurNul_ctor_handlegeom2dcurve(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurNul.hxx`:36 - `Geom2dLProp_FuncCurNul::Value()`
     /// Returns the value for the variable <X>.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurNul_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurNul_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurNul.hxx`:39 - `Geom2dLProp_FuncCurNul::Derivative()`
     /// Returns the derivative for the variable <X>
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurNul_derivative(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurNul_derivative(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Geom2dLProp_FuncCurNul.hxx`:43 - `Geom2dLProp_FuncCurNul::Values()`
     /// Returns the value of the function and the derivative
     /// for the variable <X>.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurNul_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurNul_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Geom2dLProp_FuncCurNul_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurNul_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -509,28 +710,47 @@ impl FuncCurNul {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Geom2dLProp_FuncCurNul_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurNul_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Geom2dLProp_FuncCurNul_as_math_Function(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_FuncCurNul_as_math_Function(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dLProp_FuncCurNul_as_math_Function_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurNul_as_math_Function_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Geom2dLProp_FuncCurNul_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Geom2dLProp_FuncCurNul_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -552,7 +772,11 @@ unsafe impl crate::CppDeletable for NumericCurInf2d {
 impl NumericCurInf2d {
     /// **Source:** `Geom2dLProp_NumericCurInf2d.hxx`:34 - `Geom2dLProp_NumericCurInf2d::Geom2dLProp_NumericCurInf2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dLProp_NumericCurInf2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Geom2dLProp_NumericCurInf2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Geom2dLProp_NumericCurInf2d.hxx`:37 - `Geom2dLProp_NumericCurInf2d::PerformCurExt()`
@@ -562,12 +786,15 @@ impl NumericCurInf2d {
         C: &crate::ffi::HandleGeom2dCurve,
         Result: &mut crate::l_prop::CurAndInf,
     ) {
-        unsafe {
-            crate::ffi::Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_curandinf(
-                self as *mut Self,
-                C,
-                Result,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_curandinf(
+                    self as *mut Self,
+                    C,
+                    Result,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -578,12 +805,15 @@ impl NumericCurInf2d {
         C: &crate::ffi::HandleGeom2dCurve,
         Result: &mut crate::l_prop::CurAndInf,
     ) {
-        unsafe {
-            crate::ffi::Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_curandinf(
-                self as *mut Self,
-                C,
-                Result,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_curandinf(
+                    self as *mut Self,
+                    C,
+                    Result,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -597,8 +827,11 @@ impl NumericCurInf2d {
         UMax: f64,
         Result: &mut crate::l_prop::CurAndInf,
     ) {
-        unsafe {
-            crate::ffi::Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_real2_curandinf(self as *mut Self, C, UMin, UMax, Result)
+        {
+            unsafe {
+                crate::ffi::Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_real2_curandinf(self as *mut Self, C, UMin, UMax, Result)
+            };
+            crate::check_exception();
         }
     }
 
@@ -612,20 +845,22 @@ impl NumericCurInf2d {
         UMax: f64,
         Result: &mut crate::l_prop::CurAndInf,
     ) {
-        unsafe {
-            crate::ffi::Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_real2_curandinf(
-                self as *mut Self,
-                C,
-                UMin,
-                UMax,
-                Result,
-            )
+        {
+            unsafe {
+                crate::ffi::Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_real2_curandinf(self as *mut Self, C, UMin, UMax, Result)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Geom2dLProp_NumericCurInf2d.hxx`:57 - `Geom2dLProp_NumericCurInf2d::IsDone()`
     /// True if the solutions are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Geom2dLProp_NumericCurInf2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Geom2dLProp_NumericCurInf2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }

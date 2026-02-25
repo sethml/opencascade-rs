@@ -13,5 +13,10 @@ pub unsafe fn discret(
     theAngle: f64,
     theAlgo: &mut *mut crate::b_rep_mesh::DiscretRoot,
 ) -> i32 {
-    unsafe { crate::ffi::XBRepMesh_discret(theShape, theDeflection, theAngle, theAlgo) }
+    {
+        let __result =
+            unsafe { crate::ffi::XBRepMesh_discret(theShape, theDeflection, theAngle, theAlgo) };
+        crate::check_exception();
+        __result
+    }
 }

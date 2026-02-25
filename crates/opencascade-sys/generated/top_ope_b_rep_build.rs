@@ -53,7 +53,11 @@ unsafe impl crate::CppDeletable for Area1dBuilder {
 impl Area1dBuilder {
     /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:38 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Area1dBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:42 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
@@ -64,12 +68,14 @@ impl Area1dBuilder {
         LC: &mut PaveClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Area1dBuilder_ctor_paveset_paveclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -92,13 +98,16 @@ impl Area1dBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area1dBuilder_init_area_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_init_area_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -109,13 +118,16 @@ impl Area1dBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -126,13 +138,16 @@ impl Area1dBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area1dBuilder_rem_loop_from_listof_loop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_rem_loop_from_listof_loop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -145,74 +160,128 @@ impl Area1dBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList()`
     pub fn dump_list(L: &crate::ffi::TopOpeBRepBuild_ListOfLoop) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_dump_list(L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_dump_list(L) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder (mutable)
     pub fn as_area_builder_mut(&mut self) -> &mut AreaBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_InitArea(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_InitArea(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_MoreArea(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_MoreArea(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_NextArea(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_NextArea(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_InitLoop(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_InitLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_MoreLoop(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_MoreLoop(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_NextLoop(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_NextLoop(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_Loop(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area1dBuilder_inherited_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -240,7 +309,11 @@ unsafe impl crate::CppDeletable for Area2dBuilder {
 impl Area2dBuilder {
     /// **Source:** `TopOpeBRepBuild_Area2dBuilder.hxx`:42 - `TopOpeBRepBuild_Area2dBuilder::TopOpeBRepBuild_Area2dBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Area2dBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Area2dBuilder.hxx`:46 - `TopOpeBRepBuild_Area2dBuilder::TopOpeBRepBuild_Area2dBuilder()`
@@ -251,12 +324,14 @@ impl Area2dBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Area2dBuilder_ctor_loopset_loopclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -279,67 +354,118 @@ impl Area2dBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area2dBuilder_init_area_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_init_area_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Area2dBuilder_as_TopOpeBRepBuild_AreaBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_as_TopOpeBRepBuild_AreaBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder (mutable)
     pub fn as_area_builder_mut(&mut self) -> &mut AreaBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Area2dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_InitArea(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_InitArea(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_MoreArea(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_MoreArea(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_NextArea(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_NextArea(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_InitLoop(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_InitLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_MoreLoop(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_MoreLoop(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_NextLoop(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_NextLoop(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_Loop(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
@@ -349,13 +475,16 @@ impl Area2dBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -366,13 +495,16 @@ impl Area2dBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -385,15 +517,18 @@ impl Area2dBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -422,7 +557,11 @@ unsafe impl crate::CppDeletable for Area3dBuilder {
 impl Area3dBuilder {
     /// **Source:** `TopOpeBRepBuild_Area3dBuilder.hxx`:42 - `TopOpeBRepBuild_Area3dBuilder::TopOpeBRepBuild_Area3dBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Area3dBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Area3dBuilder.hxx`:46 - `TopOpeBRepBuild_Area3dBuilder::TopOpeBRepBuild_Area3dBuilder()`
@@ -433,12 +572,14 @@ impl Area3dBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Area3dBuilder_ctor_loopset_loopclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -461,67 +602,118 @@ impl Area3dBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area3dBuilder_init_area_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_init_area_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Area3dBuilder_as_TopOpeBRepBuild_AreaBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_as_TopOpeBRepBuild_AreaBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder (mutable)
     pub fn as_area_builder_mut(&mut self) -> &mut AreaBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Area3dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_InitArea(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_InitArea(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_MoreArea(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_MoreArea(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_NextArea(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_NextArea(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_InitLoop(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_InitLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_MoreLoop(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_MoreLoop(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_NextLoop(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_NextLoop(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_Loop(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
@@ -531,13 +723,16 @@ impl Area3dBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -548,13 +743,16 @@ impl Area3dBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -567,15 +765,18 @@ impl Area3dBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -613,7 +814,11 @@ unsafe impl crate::CppDeletable for AreaBuilder {
 impl AreaBuilder {
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:57 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_AreaBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:61 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
@@ -624,12 +829,14 @@ impl AreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_AreaBuilder_ctor_loopset_loopclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -652,52 +859,86 @@ impl AreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_AreaBuilder_init_area_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_AreaBuilder_init_area_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     /// Initialize iteration on areas.
     pub fn init_area(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_init_area(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_init_area(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_more_area(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_more_area(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_next_area(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_next_area(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     /// Initialize iteration on loops of current Area.
     pub fn init_loop(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_init_loop(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_init_loop(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_more_loop(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_more_loop(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_next_loop(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_next_loop(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     /// Returns the current Loop in the current area.
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_AreaBuilder_loop_(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_AreaBuilder_loop_(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
@@ -707,13 +948,16 @@ impl AreaBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -724,13 +968,16 @@ impl AreaBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_AreaBuilder_rem_loop_from_listof_loop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_AreaBuilder_rem_loop_from_listof_loop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -743,15 +990,18 @@ impl AreaBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -772,42 +1022,64 @@ unsafe impl crate::CppDeletable for BlockBuilder {
 impl BlockBuilder {
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:37 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BlockBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:39 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
     pub fn new_shapeset(SS: &mut ShapeSet) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BlockBuilder_ctor_shapeset(SS))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_ctor_shapeset(SS) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:41 - `TopOpeBRepBuild_BlockBuilder::MakeBlock()`
     pub fn make_block(&mut self, SS: &mut ShapeSet) {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_make_block(self as *mut Self, SS) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_make_block(self as *mut Self, SS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:43 - `TopOpeBRepBuild_BlockBuilder::InitBlock()`
     pub fn init_block(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_init_block(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_init_block(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:45 - `TopOpeBRepBuild_BlockBuilder::MoreBlock()`
     pub fn more_block(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_more_block(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_more_block(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:47 - `TopOpeBRepBuild_BlockBuilder::NextBlock()`
     pub fn next_block(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_next_block(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_next_block(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:49 - `TopOpeBRepBuild_BlockBuilder::BlockIterator()`
     pub fn block_iterator(&self) -> crate::OwnedPtr<BlockIterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BlockBuilder_block_iterator(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_block_iterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -820,72 +1092,115 @@ impl BlockBuilder {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn element_blockiterator(&self, BI: &BlockIterator) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_BlockBuilder_element_blockiterator(
-                self as *const Self,
-                BI,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_element_blockiterator(
+                    self as *const Self,
+                    BI,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:54 - `TopOpeBRepBuild_BlockBuilder::Element()`
     pub fn element_int(&self, I: i32) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_BlockBuilder_element_int(self as *const Self, I)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_element_int(self as *const Self, I)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:56 - `TopOpeBRepBuild_BlockBuilder::Element()`
     pub fn element_shape(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_element_shape(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_element_shape(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:58 - `TopOpeBRepBuild_BlockBuilder::ElementIsValid()`
     pub fn element_is_valid_blockiterator(&self, BI: &BlockIterator) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BlockBuilder_element_is_valid_blockiterator(
-                self as *const Self,
-                BI,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_element_is_valid_blockiterator(
+                    self as *const Self,
+                    BI,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:60 - `TopOpeBRepBuild_BlockBuilder::ElementIsValid()`
     pub fn element_is_valid_int(&self, I: i32) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BlockBuilder_element_is_valid_int(self as *const Self, I)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_element_is_valid_int(
+                    self as *const Self,
+                    I,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:62 - `TopOpeBRepBuild_BlockBuilder::AddElement()`
     pub fn add_element(&mut self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockBuilder_add_element(self as *mut Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_add_element(self as *mut Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:64 - `TopOpeBRepBuild_BlockBuilder::SetValid()`
     pub fn set_valid_blockiterator_bool(&mut self, BI: &BlockIterator, isvalid: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BlockBuilder_set_valid_blockiterator_bool(
-                self as *mut Self,
-                BI,
-                isvalid,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_set_valid_blockiterator_bool(
+                    self as *mut Self,
+                    BI,
+                    isvalid,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:67 - `TopOpeBRepBuild_BlockBuilder::SetValid()`
     pub fn set_valid_int_bool(&mut self, I: i32, isvalid: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BlockBuilder_set_valid_int_bool(
-                self as *mut Self,
-                I,
-                isvalid,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_set_valid_int_bool(
+                    self as *mut Self,
+                    I,
+                    isvalid,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:69 - `TopOpeBRepBuild_BlockBuilder::CurrentBlockIsRegular()`
     pub fn current_block_is_regular(&mut self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BlockBuilder_current_block_is_regular(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BlockBuilder_current_block_is_regular(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -907,41 +1222,67 @@ unsafe impl crate::CppDeletable for BlockIterator {
 impl BlockIterator {
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:32 - `TopOpeBRepBuild_BlockIterator::TopOpeBRepBuild_BlockIterator()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BlockIterator_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:34 - `TopOpeBRepBuild_BlockIterator::TopOpeBRepBuild_BlockIterator()`
     pub fn new_int2(Lower: i32, Upper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BlockIterator_ctor_int2(
-                Lower, Upper,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_ctor_int2(Lower, Upper) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:37 - `TopOpeBRepBuild_BlockIterator::Initialize()`
     pub fn initialize(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_initialize(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_initialize(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:39 - `TopOpeBRepBuild_BlockIterator::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_more(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:41 - `TopOpeBRepBuild_BlockIterator::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:43 - `TopOpeBRepBuild_BlockIterator::Value()`
     pub fn value(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:45 - `TopOpeBRepBuild_BlockIterator::Extent()`
     pub fn extent(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_extent(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_BlockIterator_extent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -968,17 +1309,31 @@ unsafe impl crate::CppDeletable for Builder {
 impl Builder {
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:82 - `TopOpeBRepBuild_Builder::TopOpeBRepBuild_Builder()`
     pub fn new_buildtool(BT: &crate::top_ope_b_rep_ds::BuildTool) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder_ctor_buildtool(BT)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_ctor_buildtool(BT) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:86 - `TopOpeBRepBuild_Builder::ChangeBuildTool()`
     pub fn change_build_tool(&mut self) -> &mut crate::top_ope_b_rep_ds::BuildTool {
-        unsafe { &mut *(crate::ffi::TopOpeBRepBuild_Builder_change_build_tool(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_change_build_tool(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:88 - `TopOpeBRepBuild_Builder::BuildTool()`
     pub fn build_tool(&self) -> &crate::top_ope_b_rep_ds::BuildTool {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_build_tool(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_build_tool(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:92 - `TopOpeBRepBuild_Builder::Perform()`
@@ -988,11 +1343,14 @@ impl Builder {
         &mut self,
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_perform_handletopopebrepdshdatastructure(
-                self as *mut Self,
-                HDS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_perform_handletopopebrepdshdatastructure(
+                    self as *mut Self,
+                    HDS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1007,23 +1365,27 @@ impl Builder {
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_perform_handletopopebrepdshdatastructure_shape2(
-                self as *mut Self,
-                HDS,
-                S1,
-                S2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_perform_handletopopebrepdshdatastructure_shape2(
+                    self as *mut Self,
+                    HDS,
+                    S1,
+                    S2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:103 - `TopOpeBRepBuild_Builder::DataStructure()`
     /// returns the DS handled by this builder
     pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder_data_structure(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_data_structure(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1031,7 +1393,10 @@ impl Builder {
     /// Removes all splits and merges already performed.
     /// Does NOT clear the handled DS.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:114 - `TopOpeBRepBuild_Builder::MergeEdges()`
@@ -1050,17 +1415,20 @@ impl Builder {
         onB: bool,
         onAB: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_merge_edges(
-                self as *mut Self,
-                L1,
-                TB1.into(),
-                L2,
-                TB2.into(),
-                onA,
-                onB,
-                onAB,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merge_edges(
+                    self as *mut Self,
+                    L1,
+                    TB1.into(),
+                    L2,
+                    TB2.into(),
+                    onA,
+                    onB,
+                    onAB,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1077,17 +1445,20 @@ impl Builder {
         onB: bool,
         onAB: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_merge_faces(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-                onA,
-                onB,
-                onAB,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merge_faces(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                    onA,
+                    onB,
+                    onAB,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1101,14 +1472,17 @@ impl Builder {
         S2: &crate::topo_ds::Shape,
         TB2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_merge_solids(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merge_solids(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1122,61 +1496,101 @@ impl Builder {
         S2: &crate::topo_ds::Shape,
         TB2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_merge_shapes(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merge_shapes(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:146 - `TopOpeBRepBuild_Builder::End()`
     pub fn end(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_end(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_end(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:148 - `TopOpeBRepBuild_Builder::Classify()`
     pub fn classify(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_classify(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_classify(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:150 - `TopOpeBRepBuild_Builder::ChangeClassify()`
     pub fn change_classify(&mut self, B: bool) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_change_classify(self as *mut Self, B) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_change_classify(self as *mut Self, B) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:154 - `TopOpeBRepBuild_Builder::MergeSolid()`
     /// Merges the solid <S>  keeping the
     /// parts of state <TB>.
     pub fn merge_solid(&mut self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_solid(self as *mut Self, S, TB.into()) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merge_solid(self as *mut Self, S, TB.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:157 - `TopOpeBRepBuild_Builder::NewVertex()`
     /// Returns the vertex created on point <I>.
     pub fn new_vertex(&self, I: i32) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_new_vertex(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_new_vertex(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:160 - `TopOpeBRepBuild_Builder::NewEdges()`
     /// Returns the edges created on curve <I>.
     pub fn new_edges(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_new_edges(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_new_edges(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:163 - `TopOpeBRepBuild_Builder::NewFaces()`
     /// Returns the faces created on surface <I>.
     pub fn new_faces(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_new_faces(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_new_faces(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:166 - `TopOpeBRepBuild_Builder::IsSplit()`
     /// Returns True if the shape <S> has been split.
     pub fn is_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_is_split(self as *const Self, S, TB.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_is_split(self as *const Self, S, TB.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:169 - `TopOpeBRepBuild_Builder::Splits()`
@@ -1192,13 +1606,25 @@ impl Builder {
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_splits(self as *const Self, S, TB.into())) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_splits(self as *const Self, S, TB.into())
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:173 - `TopOpeBRepBuild_Builder::IsMerged()`
     /// Returns True if the shape <S> has been merged.
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_is_merged(self as *const Self, S, TB.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_is_merged(self as *const Self, S, TB.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:176 - `TopOpeBRepBuild_Builder::Merged()`
@@ -1214,37 +1640,58 @@ impl Builder {
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_merged(self as *const Self, S, TB.into())) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merged(self as *const Self, S, TB.into())
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:179 - `TopOpeBRepBuild_Builder::InitSection()`
     pub fn init_section(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_init_section(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_init_section(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:182 - `TopOpeBRepBuild_Builder::SplitSectionEdges()`
     /// create parts ON solid of section edges
     pub fn split_section_edges(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_split_section_edges(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_split_section_edges(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:185 - `TopOpeBRepBuild_Builder::SplitSectionEdge()`
     /// create parts ON solid of section edges
     pub fn split_section_edge(&mut self, E: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_split_section_edge(self as *mut Self, E) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_split_section_edge(self as *mut Self, E) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:188 - `TopOpeBRepBuild_Builder::SectionCurves()`
     /// return the section edges built on new curves.
     pub fn section_curves(&mut self, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_section_curves(self as *mut Self, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_section_curves(self as *mut Self, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:192 - `TopOpeBRepBuild_Builder::SectionEdges()`
     /// return the parts of edges found ON the boundary
     /// of the two arguments S1,S2 of Perform()
     pub fn section_edges(&mut self, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_section_edges(self as *mut Self, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_section_edges(self as *mut Self, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:197 - `TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap()`
@@ -1257,39 +1704,58 @@ impl Builder {
         aMapON: &crate::ffi::TopTools_MapOfShape,
         anAncMap: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_fill_sec_edge_ancestor_map(
-                self as *const Self,
-                aShapeRank,
-                aMapON,
-                anAncMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_fill_sec_edge_ancestor_map(
+                    self as *const Self,
+                    aShapeRank,
+                    aMapON,
+                    anAncMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:202 - `TopOpeBRepBuild_Builder::Section()`
     /// return all section edges.
     pub fn section_listofshape(&mut self, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_section_listofshape(self as *mut Self, L) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_section_listofshape(self as *mut Self, L)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:204 - `TopOpeBRepBuild_Builder::Section()`
     pub fn section(&mut self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_section(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_section(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:208 - `TopOpeBRepBuild_Builder::BuildVertices()`
     /// update the DS by creating new geometries.
     /// create vertices on DS points.
     pub fn build_vertices(&mut self, DS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_build_vertices(self as *mut Self, DS) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_build_vertices(self as *mut Self, DS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:212 - `TopOpeBRepBuild_Builder::BuildEdges()`
     /// update the DS by creating new geometries.
     /// create shapes from the new geometries.
     pub fn build_edges(&mut self, DS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_build_edges(self as *mut Self, DS) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_build_edges(self as *mut Self, DS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:214 - `TopOpeBRepBuild_Builder::MSplit()`
@@ -1297,7 +1763,13 @@ impl Builder {
         &self,
         s: crate::top_abs::State,
     ) -> &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder_m_split(self as *const Self, s.into())) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_m_split(self as *const Self, s.into())
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:217 - `TopOpeBRepBuild_Builder::ChangeMSplit()`
@@ -1305,8 +1777,12 @@ impl Builder {
         &mut self,
         s: crate::top_abs::State,
     ) -> &mut crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Builder_change_m_split(self as *mut Self, s.into()))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_change_m_split(self as *mut Self, s.into())
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -1317,7 +1793,10 @@ impl Builder {
         B: &mut EdgeBuilder,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_edges(self as *mut Self, E, B, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_edges(self as *mut Self, E, B, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:224 - `TopOpeBRepBuild_Builder::MakeFaces()`
@@ -1327,17 +1806,26 @@ impl Builder {
         B: &mut FaceBuilder,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_faces(self as *mut Self, F, B, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_faces(self as *mut Self, F, B, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:228 - `TopOpeBRepBuild_Builder::MakeSolids()`
     pub fn make_solids(&mut self, B: &mut SolidBuilder, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_solids(self as *mut Self, B, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_solids(self as *mut Self, B, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:230 - `TopOpeBRepBuild_Builder::MakeShells()`
     pub fn make_shells(&mut self, B: &mut SolidBuilder, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_shells(self as *mut Self, B, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_make_shells(self as *mut Self, B, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:235 - `TopOpeBRepBuild_Builder::ChangeSplit()`
@@ -1355,33 +1843,53 @@ impl Builder {
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
     ) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Builder_change_split(
-                self as *mut Self,
-                S,
-                TB.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_change_split(self as *mut Self, S, TB.into())
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:237 - `TopOpeBRepBuild_Builder::Opec12()`
     pub fn opec12(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_opec12(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_opec12(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:239 - `TopOpeBRepBuild_Builder::Opec21()`
     pub fn opec21(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_opec21(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_opec21(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:241 - `TopOpeBRepBuild_Builder::Opecom()`
     pub fn opecom(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_opecom(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_opecom(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:243 - `TopOpeBRepBuild_Builder::Opefus()`
     pub fn opefus(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_opefus(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_opefus(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:245 - `TopOpeBRepBuild_Builder::ShapePosition()`
@@ -1390,13 +1898,12 @@ impl Builder {
         S: &crate::topo_ds::Shape,
         LS: &crate::ffi::TopTools_ListOfShape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_Builder_shape_position(
-                self as *mut Self,
-                S,
-                LS,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_shape_position(self as *mut Self, S, LS)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1407,8 +1914,12 @@ impl Builder {
         LS: &crate::ffi::TopTools_ListOfShape,
         T: crate::top_abs::State,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_keep_shape(self as *mut Self, S, LS, T.into())
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_keep_shape(self as *mut Self, S, LS, T.into())
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1418,7 +1929,12 @@ impl Builder {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_find_same_domain(self as *const Self, L1, L2) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_find_same_domain(self as *const Self, L1, L2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:260 - `TopOpeBRepBuild_Builder::FindSameDomainSameOrientation()`
@@ -1427,23 +1943,32 @@ impl Builder {
         LSO: &mut crate::ffi::TopTools_ListOfShape,
         LDO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_find_same_domain_same_orientation(
-                self as *const Self,
-                LSO,
-                LDO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_find_same_domain_same_orientation(
+                    self as *const Self,
+                    LSO,
+                    LDO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:263 - `TopOpeBRepBuild_Builder::MapShapes()`
     pub fn map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_map_shapes(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_map_shapes(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:265 - `TopOpeBRepBuild_Builder::ClearMaps()`
     pub fn clear_maps(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_clear_maps(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_clear_maps(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:267 - `TopOpeBRepBuild_Builder::FindSameRank()`
@@ -1453,100 +1978,173 @@ impl Builder {
         R: i32,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_find_same_rank(self as *const Self, L1, R, L2)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_find_same_rank(self as *const Self, L1, R, L2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:271 - `TopOpeBRepBuild_Builder::ShapeRank()`
     pub fn shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_shape_rank(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_shape_rank(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:273 - `TopOpeBRepBuild_Builder::IsShapeOf()`
     pub fn is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_is_shape_of(self as *const Self, S, I12) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_is_shape_of(self as *const Self, S, I12)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:279 - `TopOpeBRepBuild_Builder::FindIsKPart()`
     pub fn find_is_k_part(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_find_is_k_part(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_find_is_k_part(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:281 - `TopOpeBRepBuild_Builder::IsKPart()`
     pub fn is_k_part(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_is_k_part(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_is_k_part(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:283 - `TopOpeBRepBuild_Builder::MergeKPart()`
     pub fn merge_k_part(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_part(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_part(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:285 - `TopOpeBRepBuild_Builder::MergeKPart()`
     pub fn merge_k_part_state2(&mut self, TB1: crate::top_abs::State, TB2: crate::top_abs::State) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_merge_k_part_state2(
-                self as *mut Self,
-                TB1.into(),
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_merge_k_part_state2(
+                    self as *mut Self,
+                    TB1.into(),
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:287 - `TopOpeBRepBuild_Builder::MergeKPartiskole()`
     pub fn merge_k_partiskole(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partiskole(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partiskole(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:289 - `TopOpeBRepBuild_Builder::MergeKPartiskoletge()`
     pub fn merge_k_partiskoletge(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partiskoletge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partiskoletge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:291 - `TopOpeBRepBuild_Builder::MergeKPartisdisj()`
     pub fn merge_k_partisdisj(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partisdisj(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partisdisj(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:293 - `TopOpeBRepBuild_Builder::MergeKPartisfafa()`
     pub fn merge_k_partisfafa(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partisfafa(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partisfafa(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:295 - `TopOpeBRepBuild_Builder::MergeKPartissoso()`
     pub fn merge_k_partissoso(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partissoso(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_merge_k_partissoso(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:297 - `TopOpeBRepBuild_Builder::KPiskole()`
     pub fn k_piskole(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_piskole(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_piskole(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:299 - `TopOpeBRepBuild_Builder::KPiskoletge()`
     pub fn k_piskoletge(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_piskoletge(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_piskoletge(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:301 - `TopOpeBRepBuild_Builder::KPisdisj()`
     pub fn k_pisdisj(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisdisj(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisdisj(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:303 - `TopOpeBRepBuild_Builder::KPisfafa()`
     pub fn k_pisfafa(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisfafa(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisfafa(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:305 - `TopOpeBRepBuild_Builder::KPissoso()`
     pub fn k_pissoso(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pissoso(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pissoso(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:307 - `TopOpeBRepBuild_Builder::KPClearMaps()`
     pub fn kp_clear_maps(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_kp_clear_maps(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_kp_clear_maps(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:309 - `TopOpeBRepBuild_Builder::KPlhg()`
@@ -1556,13 +2154,17 @@ impl Builder {
         T: crate::top_abs::ShapeEnum,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum_listofshape(
-                self as *const Self,
-                S,
-                T.into(),
-                L,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum_listofshape(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                    L,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1572,12 +2174,16 @@ impl Builder {
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum(
-                self as *const Self,
-                S,
-                T.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1588,13 +2194,17 @@ impl Builder {
         T: crate::top_abs::ShapeEnum,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum_listofshape(
-                self as *const Self,
-                S,
-                T.into(),
-                L,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum_listofshape(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                    L,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1604,12 +2214,16 @@ impl Builder {
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum(
-                self as *const Self,
-                S,
-                T.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1620,16 +2234,17 @@ impl Builder {
         exceptLS1: &crate::ffi::TopTools_ListOfShape,
         S2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Builder_k_pclas_ss_shape_listofshape_shape(
                     self as *mut Self,
                     S1,
                     exceptLS1,
                     S2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1640,14 +2255,17 @@ impl Builder {
         exceptS1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_Builder_k_pclas_ss_shape3(
-                self as *mut Self,
-                S1,
-                exceptS1,
-                S2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pclas_ss_shape3(
+                    self as *mut Self,
+                    S1,
+                    exceptS1,
+                    S2,
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1657,13 +2275,12 @@ impl Builder {
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_Builder_k_pclas_ss_shape2(
-                self as *mut Self,
-                S1,
-                S2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pclas_ss_shape2(self as *mut Self, S1, S2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1674,7 +2291,13 @@ impl Builder {
         LS: &mut crate::ffi::TopTools_ListOfShape,
         LF: &mut crate::ffi::TopTools_ListOfShape,
     ) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_piskolesh(self as *const Self, S, LS, LF) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_piskolesh(self as *const Self, S, LS, LF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:335 - `TopOpeBRepBuild_Builder::KPiskoletgesh()`
@@ -1684,8 +2307,12 @@ impl Builder {
         LS: &mut crate::ffi::TopTools_ListOfShape,
         LF: &mut crate::ffi::TopTools_ListOfShape,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_piskoletgesh(self as *const Self, S, LS, LF)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_piskoletgesh(self as *const Self, S, LS, LF)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1695,22 +2322,42 @@ impl Builder {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_kp_same_domain(self as *const Self, L1, L2) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_kp_same_domain(self as *const Self, L1, L2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:341 - `TopOpeBRepBuild_Builder::KPisdisjsh()`
     pub fn k_pisdisjsh(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisdisjsh(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisdisjsh(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:343 - `TopOpeBRepBuild_Builder::KPisfafash()`
     pub fn k_pisfafash(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisfafash(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pisfafash(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:345 - `TopOpeBRepBuild_Builder::KPissososh()`
     pub fn k_pissososh(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pissososh(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pissososh(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:347 - `TopOpeBRepBuild_Builder::KPiskoleanalyse()`
@@ -1724,17 +2371,20 @@ impl Builder {
         I1: &mut i32,
         I2: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_piskoleanalyse(
-                self as *const Self,
-                FT1.into(),
-                FT2.into(),
-                ST1.into(),
-                ST2.into(),
-                I,
-                I1,
-                I2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_piskoleanalyse(
+                    self as *const Self,
+                    FT1.into(),
+                    FT2.into(),
+                    ST1.into(),
+                    ST2.into(),
+                    I,
+                    I1,
+                    I2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1746,14 +2396,17 @@ impl Builder {
         ST2: crate::top_abs::State,
         I: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_piskoletgeanalyse(
-                self as *const Self,
-                Conf.into(),
-                ST1.into(),
-                ST2.into(),
-                I,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_piskoletgeanalyse(
+                    self as *const Self,
+                    Conf.into(),
+                    ST1.into(),
+                    ST2.into(),
+                    I,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1766,15 +2419,18 @@ impl Builder {
         IC1: &mut i32,
         IC2: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_pisdisjanalyse(
-                self as *const Self,
-                ST1.into(),
-                ST2.into(),
-                I,
-                IC1,
-                IC2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pisdisjanalyse(
+                    self as *const Self,
+                    ST1.into(),
+                    ST2.into(),
+                    I,
+                    IC1,
+                    IC2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1784,13 +2440,12 @@ impl Builder {
         F1: &crate::topo_ds::Shape,
         F2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_Builder_k_pclass_f(
-                self as *mut Self,
-                F1,
-                F2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pclass_f(self as *mut Self, F1, F2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -1804,14 +2459,17 @@ impl Builder {
     ) {
         let mut T1_i32_: i32 = (*T1).into();
         let mut T2_i32_: i32 = (*T2).into();
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_pclass_ff(
-                self as *mut Self,
-                F1,
-                F2,
-                &mut T1_i32_,
-                &mut T2_i32_,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pclass_ff(
+                    self as *mut Self,
+                    F1,
+                    F2,
+                    &mut T1_i32_,
+                    &mut T2_i32_,
+                )
+            };
+            crate::check_exception();
         };
         *T1 = crate::top_abs::State::try_from(T1_i32_).unwrap();
         *T2 = crate::top_abs::State::try_from(T2_i32_).unwrap();
@@ -1827,14 +2485,18 @@ impl Builder {
     ) -> bool {
         let mut T1_i32_: i32 = (*T1).into();
         let mut T2_i32_: i32 = (*T2).into();
-        let result_ = unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_piskole_ff(
-                self as *mut Self,
-                F1,
-                F2,
-                &mut T1_i32_,
-                &mut T2_i32_,
-            )
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_piskole_ff(
+                    self as *mut Self,
+                    F1,
+                    F2,
+                    &mut T1_i32_,
+                    &mut T2_i32_,
+                )
+            };
+            crate::check_exception();
+            __result
         };
         *T1 = crate::top_abs::State::try_from(T1_i32_).unwrap();
         *T2 = crate::top_abs::State::try_from(T2_i32_).unwrap();
@@ -1851,22 +2513,31 @@ impl Builder {
         R1: bool,
         R2: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder_k_pmakeface(
-                self as *mut Self,
-                F1,
-                LF2,
-                T1.into(),
-                T2.into(),
-                R1,
-                R2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pmakeface(
+                    self as *mut Self,
+                    F1,
+                    LF2,
+                    T1.into(),
+                    T2.into(),
+                    R1,
+                    R2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:396 - `TopOpeBRepBuild_Builder::SplitEvisoONperiodicF()`
     pub fn split_eviso_o_nperiodic_f(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_split_eviso_o_nperiodic_f(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_split_eviso_o_nperiodic_f(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:398 - `TopOpeBRepBuild_Builder::GMergeSolids()`
@@ -1876,8 +2547,11 @@ impl Builder {
         LSO2: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_merge_solids(self as *mut Self, LSO1, LSO2, G)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_merge_solids(self as *mut Self, LSO1, LSO2, G)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1889,14 +2563,17 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_solids_sfs(
-                self as *mut Self,
-                LSO1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_solids_sfs(
+                    self as *mut Self,
+                    LSO1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1908,14 +2585,17 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_solid_sfs(
-                self as *mut Self,
-                SO1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_solid_sfs(
+                    self as *mut Self,
+                    SO1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1926,13 +2606,11 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_surface_topology_sfs_shape_gtopo_shellfaceset(
-                self as *mut Self,
-                SO1,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_surface_topology_sfs_shape_gtopo_shellfaceset(self as *mut Self, SO1, G, SFS)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1943,8 +2621,11 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_surface_topology_sfs_surfaceiterator_gtopo_shellfaceset(self as *const Self, IT, G, SFS)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_surface_topology_sfs_surfaceiterator_gtopo_shellfaceset(self as *const Self, IT, G, SFS)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1956,14 +2637,17 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_shell_sfs(
-                self as *mut Self,
-                SH1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_shell_sfs(
+                    self as *mut Self,
+                    SH1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1975,8 +2659,17 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_face_sfs(self as *mut Self, F1, LSO2, G, SFS)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_face_sfs(
+                    self as *mut Self,
+                    F1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1988,14 +2681,17 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_split_face_sfs(
-                self as *mut Self,
-                F1,
-                LSclass,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_split_face_sfs(
+                    self as *mut Self,
+                    F1,
+                    LSclass,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2006,8 +2702,11 @@ impl Builder {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_merge_face_sfs(self as *mut Self, F, G, SFS)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_merge_face_sfs(self as *mut Self, F, G, SFS)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2018,14 +2717,22 @@ impl Builder {
         G: &GTopo,
         LSclass: &crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_split_face(self as *mut Self, F, G, LSclass)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_split_face(self as *mut Self, F, G, LSclass)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:443 - `TopOpeBRepBuild_Builder::AddONPatchesSFS()`
     pub fn add_on_patches_sfs(&mut self, G: &GTopo, SFS: &mut ShellFaceSet) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_add_on_patches_sfs(self as *mut Self, G, SFS) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_add_on_patches_sfs(self as *mut Self, G, SFS)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:446 - `TopOpeBRepBuild_Builder::FillOnPatches()`
@@ -2035,13 +2742,16 @@ impl Builder {
         aBaseFace: &crate::topo_ds::Shape,
         avoidMap: &crate::ffi::TopTools_IndexedMapOfOrientedShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_fill_on_patches(
-                self as *mut Self,
-                anEdgesON,
-                aBaseFace,
-                avoidMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_fill_on_patches(
+                    self as *mut Self,
+                    anEdgesON,
+                    aBaseFace,
+                    avoidMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2053,14 +2763,17 @@ impl Builder {
         aShRank: i32,
         aFaces: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_find_faces_touching_edge(
-                self as *const Self,
-                aFace,
-                anEdge,
-                aShRank,
-                aFaces,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_find_faces_touching_edge(
+                    self as *const Self,
+                    aFace,
+                    anEdge,
+                    aShRank,
+                    aFaces,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2071,7 +2784,12 @@ impl Builder {
         LF2: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_merge_faces(self as *mut Self, LF1, LF2, G) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_merge_faces(self as *mut Self, LF1, LF2, G)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:459 - `TopOpeBRepBuild_Builder::GFillFacesWES()`
@@ -2082,14 +2800,17 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_faces_wes(
-                self as *mut Self,
-                LF1,
-                LF2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_faces_wes(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2102,15 +2823,18 @@ impl Builder {
         WES: &mut WireEdgeSet,
         K: i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_faces_wesk(
-                self as *mut Self,
-                LF1,
-                LF2,
-                G,
-                WES,
-                K,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_faces_wesk(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    G,
+                    WES,
+                    K,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2122,14 +2846,17 @@ impl Builder {
         LSO: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_faces_wes_make_faces(
-                self as *mut Self,
-                LF1,
-                LF2,
-                LSO,
-                G,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_faces_wes_make_faces(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    LSO,
+                    G,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2141,8 +2868,17 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_face_wes(self as *mut Self, F, LF2, G, WES)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_face_wes(
+                    self as *mut Self,
+                    F,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2153,13 +2889,11 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_curve_topology_wes_shape_gtopo_wireedgeset(
-                self as *mut Self,
-                F,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_curve_topology_wes_shape_gtopo_wireedgeset(self as *mut Self, F, G, WES)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2170,8 +2904,11 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_curve_topology_wes_curveiterator_gtopo_wireedgeset(self as *const Self, IT, G, WES)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_curve_topology_wes_curveiterator_gtopo_wireedgeset(self as *const Self, IT, G, WES)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2183,14 +2920,17 @@ impl Builder {
         LSclass: &crate::ffi::TopTools_ListOfShape,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_on_parts_wes(
-                self as *mut Self,
-                F,
-                G,
-                LSclass,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_on_parts_wes(
+                    self as *mut Self,
+                    F,
+                    G,
+                    LSclass,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2202,8 +2942,17 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_wire_wes(self as *mut Self, W, LF2, G, WES)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_wire_wes(
+                    self as *mut Self,
+                    W,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2215,8 +2964,17 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_edge_wes(self as *mut Self, E, LF2, G, WES)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_edge_wes(
+                    self as *mut Self,
+                    E,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2228,8 +2986,17 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_split_edge_wes(self as *mut Self, E, LF2, G, WES)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_split_edge_wes(
+                    self as *mut Self,
+                    E,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2240,8 +3007,11 @@ impl Builder {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_merge_edge_wes(self as *mut Self, E, G, WES)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_merge_edge_wes(self as *mut Self, E, G, WES)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2252,8 +3022,11 @@ impl Builder {
         G: &GTopo,
         LSclass: &crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_split_edge(self as *mut Self, E, G, LSclass)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_split_edge(self as *mut Self, E, G, LSclass)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2264,7 +3037,12 @@ impl Builder {
         LE2: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_merge_edges(self as *mut Self, LE1, LE2, G) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_merge_edges(self as *mut Self, LE1, LE2, G)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:520 - `TopOpeBRepBuild_Builder::GFillEdgesPVS()`
@@ -2275,14 +3053,17 @@ impl Builder {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_edges_pvs(
-                self as *mut Self,
-                LE1,
-                LE2,
-                G,
-                PVS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_edges_pvs(
+                    self as *mut Self,
+                    LE1,
+                    LE2,
+                    G,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2294,8 +3075,17 @@ impl Builder {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_edge_pvs(self as *mut Self, E, LE2, G, PVS)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_edge_pvs(
+                    self as *mut Self,
+                    E,
+                    LE2,
+                    G,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2306,13 +3096,16 @@ impl Builder {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_point_topology_pvs_shape_gtopo_paveset(
-                self as *mut Self,
-                E,
-                G,
-                PVS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_point_topology_pvs_shape_gtopo_paveset(
+                    self as *mut Self,
+                    E,
+                    G,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2324,8 +3117,11 @@ impl Builder {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_fill_point_topology_pvs_shape_pointiterator_gtopo_paveset(self as *const Self, E, IT, G, PVS)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_fill_point_topology_pvs_shape_pointiterator_gtopo_paveset(self as *const Self, E, IT, G, PVS)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2336,8 +3132,17 @@ impl Builder {
         E: &crate::topo_ds::Edge,
         P: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_param_on_reference(self as *const Self, V, E, P)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_param_on_reference(
+                    self as *const Self,
+                    V,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2348,8 +3153,17 @@ impl Builder {
         Lref: &crate::ffi::TopTools_ListOfShape,
         T: crate::top_abs::State,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_keep_shape(self as *mut Self, S, Lref, T.into())
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_keep_shape(
+                    self as *mut Self,
+                    S,
+                    Lref,
+                    T.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2363,14 +3177,18 @@ impl Builder {
         pos: &mut crate::top_abs::State,
     ) -> bool {
         let mut pos_i32_: i32 = (*pos).into();
-        let result_ = unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_keep_shape1(
-                self as *mut Self,
-                S,
-                Lref,
-                T.into(),
-                &mut pos_i32_,
-            )
+        let result_ = {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_keep_shape1(
+                    self as *mut Self,
+                    S,
+                    Lref,
+                    T.into(),
+                    &mut pos_i32_,
+                )
+            };
+            crate::check_exception();
+            __result
         };
         *pos = crate::top_abs::State::try_from(pos_i32_).unwrap();
         result_
@@ -2387,15 +3205,18 @@ impl Builder {
         Lin: &crate::ffi::TopTools_ListOfShape,
         Lou: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_keep_shapes(
-                self as *mut Self,
-                S,
-                Lref,
-                T.into(),
-                Lin,
-                Lou,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_keep_shapes(
+                    self as *mut Self,
+                    S,
+                    Lref,
+                    T.into(),
+                    Lin,
+                    Lou,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2406,8 +3227,16 @@ impl Builder {
         SFS: &mut ShellFaceSet,
         LOSO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gsfs_make_solids(self as *mut Self, SOF, SFS, LOSO)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gsfs_make_solids(
+                    self as *mut Self,
+                    SOF,
+                    SFS,
+                    LOSO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2418,13 +3247,16 @@ impl Builder {
         SOBU: &mut SolidBuilder,
         LOSO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gsobu_make_solids(
-                self as *mut Self,
-                SOF,
-                SOBU,
-                LOSO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gsobu_make_solids(
+                    self as *mut Self,
+                    SOF,
+                    SOBU,
+                    LOSO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2435,8 +3267,11 @@ impl Builder {
         WES: &mut WireEdgeSet,
         LOF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gwes_make_faces(self as *mut Self, FF, WES, LOF)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gwes_make_faces(self as *mut Self, FF, WES, LOF)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2448,14 +3283,17 @@ impl Builder {
         LOF: &mut crate::ffi::TopTools_ListOfShape,
         MWisOld: &mut crate::ffi::TopTools_DataMapOfShapeInteger,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gfabu_make_faces(
-                self as *mut Self,
-                FF,
-                FABU,
-                LOF,
-                MWisOld,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gfabu_make_faces(
+                    self as *mut Self,
+                    FF,
+                    FABU,
+                    LOF,
+                    MWisOld,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2466,13 +3304,16 @@ impl Builder {
         lnewFace: &crate::ffi::TopTools_ListOfShape,
         LOF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_regularize_faces(
-                self as *mut Self,
-                FF,
-                lnewFace,
-                LOF,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_regularize_faces(
+                    self as *mut Self,
+                    FF,
+                    lnewFace,
+                    LOF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2483,8 +3324,16 @@ impl Builder {
         newFace: &crate::topo_ds::Shape,
         LOF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_regularize_face(self as *mut Self, FF, newFace, LOF)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_regularize_face(
+                    self as *mut Self,
+                    FF,
+                    newFace,
+                    LOF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2495,13 +3344,16 @@ impl Builder {
         lnewSolid: &crate::ffi::TopTools_ListOfShape,
         LOS: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_regularize_solids(
-                self as *mut Self,
-                SS,
-                lnewSolid,
-                LOS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_regularize_solids(
+                    self as *mut Self,
+                    SS,
+                    lnewSolid,
+                    LOS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2512,13 +3364,16 @@ impl Builder {
         newSolid: &crate::topo_ds::Shape,
         LOS: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_regularize_solid(
-                self as *mut Self,
-                SS,
-                newSolid,
-                LOS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_regularize_solid(
+                    self as *mut Self,
+                    SS,
+                    newSolid,
+                    LOS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2529,8 +3384,16 @@ impl Builder {
         PVS: &mut PaveSet,
         LOE: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gpvs_make_edges(self as *const Self, EF, PVS, LOE)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gpvs_make_edges(
+                    self as *const Self,
+                    EF,
+                    PVS,
+                    LOE,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2541,19 +3404,38 @@ impl Builder {
         EDBU: &mut EdgeBuilder,
         LOE: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gedbu_make_edges(self as *const Self, EF, EDBU, LOE)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gedbu_make_edges(
+                    self as *const Self,
+                    EF,
+                    EDBU,
+                    LOE,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:602 - `TopOpeBRepBuild_Builder::GToSplit()`
     pub fn g_to_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_to_split(self as *const Self, S, TB.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_to_split(self as *const Self, S, TB.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:604 - `TopOpeBRepBuild_Builder::GToMerge()`
     pub fn g_to_merge(&self, S: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_to_merge(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_to_merge(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:610 - `TopOpeBRepBuild_Builder::GFindSamDom()`
@@ -2563,13 +3445,16 @@ impl Builder {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_shape_listofshape2(
-                self as *const Self,
-                S,
-                L1,
-                L2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_shape_listofshape2(
+                    self as *const Self,
+                    S,
+                    L1,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2579,12 +3464,15 @@ impl Builder {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_listofshape2(
-                self as *const Self,
-                L1,
-                L2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_listofshape2(
+                    self as *const Self,
+                    L1,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2595,13 +3483,16 @@ impl Builder {
         LSO: &mut crate::ffi::TopTools_ListOfShape,
         LDO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_shape_listofshape2(
-                self as *const Self,
-                S,
-                LSO,
-                LDO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_shape_listofshape2(
+                    self as *const Self,
+                    S,
+                    LSO,
+                    LDO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2611,23 +3502,32 @@ impl Builder {
         LSO: &mut crate::ffi::TopTools_ListOfShape,
         LDO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_listofshape2(
-                self as *const Self,
-                LSO,
-                LDO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_listofshape2(
+                    self as *const Self,
+                    LSO,
+                    LDO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:622 - `TopOpeBRepBuild_Builder::GMapShapes()`
     pub fn g_map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_map_shapes(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_map_shapes(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:624 - `TopOpeBRepBuild_Builder::GClearMaps()`
     pub fn g_clear_maps(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_clear_maps(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_clear_maps(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:626 - `TopOpeBRepBuild_Builder::GFindSameRank()`
@@ -2637,39 +3537,69 @@ impl Builder {
         R: i32,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_find_same_rank(self as *const Self, L1, R, L2)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_find_same_rank(self as *const Self, L1, R, L2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:630 - `TopOpeBRepBuild_Builder::GShapeRank()`
     pub fn g_shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_shape_rank(self as *const Self, S) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_shape_rank(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:632 - `TopOpeBRepBuild_Builder::GIsShapeOf()`
     pub fn g_is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_is_shape_of(self as *const Self, S, I12) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_is_shape_of(self as *const Self, S, I12)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:645 - `TopOpeBRepBuild_Builder::GdumpLS()`
     pub fn gdump_ls(&self, L: &crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_ls(self as *const Self, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_ls(self as *const Self, L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA()`
     pub unsafe fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_sha(self as *const Self, S, str) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_sha(self as *const Self, S, str) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
     pub unsafe fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shaori(self as *const Self, S, str) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_shaori(self as *const Self, S, str)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
     pub unsafe fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shaorigeo(self as *const Self, S, str) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_shaorigeo(self as *const Self, S, str)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:660 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
@@ -2680,14 +3610,17 @@ impl Builder {
         a: &crate::t_collection::AsciiString,
         b: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gdump_shasta_int_state_asciistring2(
-                self as *const Self,
-                iS,
-                T.into(),
-                a,
-                b,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_shasta_int_state_asciistring2(
+                    self as *const Self,
+                    iS,
+                    T.into(),
+                    a,
+                    b,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2699,14 +3632,17 @@ impl Builder {
         a: &crate::t_collection::AsciiString,
         b: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gdump_shasta_shape_state_asciistring2(
-                self as *const Self,
-                S,
-                T.into(),
-                a,
-                b,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_shasta_shape_state_asciistring2(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                    a,
+                    b,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2720,22 +3656,28 @@ impl Builder {
         b: &crate::t_collection::AsciiString,
         c: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gdump_shasta_int_state_shapeset_asciistring3(
-                self as *const Self,
-                iS,
-                T.into(),
-                SS,
-                a,
-                b,
-                c,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_shasta_int_state_shapeset_asciistring3(
+                    self as *const Self,
+                    iS,
+                    T.into(),
+                    SS,
+                    a,
+                    b,
+                    c,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG()`
     pub unsafe fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edg(self as *const Self, S, str) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edg(self as *const Self, S, str) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
@@ -2745,7 +3687,12 @@ impl Builder {
         V: &crate::topo_ds::Shape,
         str: *mut std::ffi::c_void,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edgver(self as *const Self, E, V, str) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_edgver(self as *const Self, E, V, str)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
@@ -2754,88 +3701,144 @@ impl Builder {
         L: &crate::ffi::TopTools_ListOfShape,
         str: *mut std::ffi::c_void,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_samdom(self as *const Self, L, str) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_samdom(self as *const Self, L, str)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEXP()`
     pub fn gdump_exp(&self, E: &crate::top_ope_b_rep_tool::ShapeExplorer) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_exp(self as *const Self, E) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_exp(self as *const Self, E) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:688 - `TopOpeBRepBuild_Builder::GdumpSOBU()`
     pub fn gdump_sobu(&self, SB: &mut SolidBuilder) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_sobu(self as *const Self, SB) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_sobu(self as *const Self, SB) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:690 - `TopOpeBRepBuild_Builder::GdumpFABU()`
     pub fn gdump_fabu(&self, FB: &mut FaceBuilder) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_fabu(self as *const Self, FB) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_fabu(self as *const Self, FB) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:692 - `TopOpeBRepBuild_Builder::GdumpEDBU()`
     pub fn gdump_edbu(&self, EB: &mut EdgeBuilder) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edbu(self as *const Self, EB) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_edbu(self as *const Self, EB) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:694 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_int(&self, iS: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_int(self as *const Self, iS) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_int(self as *const Self, iS)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:696 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_int2(&self, iS: i32, jS: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_int2(self as *const Self, iS, jS) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_int2(self as *const Self, iS, jS)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:699 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_shape(&self, S: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_shape(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_shape(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:701 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_shape_int(&self, S: &crate::topo_ds::Shape, IS: &mut i32) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_shape_int(self as *const Self, S, IS)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gtrace_sps_shape_int(self as *const Self, S, IS)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:703 - `TopOpeBRepBuild_Builder::GdumpSHASETreset()`
     pub fn gdump_shase_treset(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shase_treset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shase_treset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:705 - `TopOpeBRepBuild_Builder::GdumpSHASETindex()`
     pub fn gdump_shase_tindex(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_shase_tindex(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_gdump_shase_tindex(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:251 - `TopOpeBRepBuild_Builder::TopType()`
     pub fn top_type(S: &crate::topo_ds::Shape) -> crate::top_abs::ShapeEnum {
-        unsafe {
-            crate::top_abs::ShapeEnum::try_from(crate::ffi::TopOpeBRepBuild_Builder_top_type(S))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_top_type(S) };
+            crate::check_exception();
+            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:253 - `TopOpeBRepBuild_Builder::Reverse()`
     pub fn reverse(T1: crate::top_abs::State, T2: crate::top_abs::State) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_reverse(T1.into(), T2.into()) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_reverse(T1.into(), T2.into()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:255 - `TopOpeBRepBuild_Builder::Orient()`
     pub fn orient(O: crate::top_abs::Orientation, R: bool) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(crate::ffi::TopOpeBRepBuild_Builder_orient(
-                O.into(),
-                R,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_orient(O.into(), R) };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:276 - `TopOpeBRepBuild_Builder::Contains()`
     pub fn contains(S: &crate::topo_ds::Shape, L: &crate::ffi::TopTools_ListOfShape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_contains(S, L) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_contains(S, L) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:366 - `TopOpeBRepBuild_Builder::KPls()`
@@ -2844,39 +3847,72 @@ impl Builder {
         T: crate::top_abs::ShapeEnum,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum_listofshape(S, T.into(), L)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum_listofshape(
+                    S,
+                    T.into(),
+                    L,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:370 - `TopOpeBRepBuild_Builder::KPls()`
     pub fn k_pls_shape_shapeenum(S: &crate::topo_ds::Shape, T: crate::top_abs::ShapeEnum) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum(S, T.into()) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum(S, T.into()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:384 - `TopOpeBRepBuild_Builder::KPContains()`
     pub fn kp_contains(S: &crate::topo_ds::Shape, L: &crate::ffi::TopTools_ListOfShape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_kp_contains(S, L) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_kp_contains(S, L) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:394 - `TopOpeBRepBuild_Builder::KPreturn()`
     pub fn k_preturn(KP: i32) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_preturn(KP) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_k_preturn(KP) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:606 - `TopOpeBRepBuild_Builder::GTakeCommonOfSame()`
     pub fn g_take_common_of_same(G: &GTopo) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_take_common_of_same(G) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_take_common_of_same(G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:608 - `TopOpeBRepBuild_Builder::GTakeCommonOfDiff()`
     pub fn g_take_common_of_diff(G: &GTopo) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_take_common_of_diff(G) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_take_common_of_diff(G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:635 - `TopOpeBRepBuild_Builder::GContains()`
     pub fn g_contains(S: &crate::topo_ds::Shape, L: &crate::ffi::TopTools_ListOfShape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_contains(S, L) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_contains(S, L) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:638 - `TopOpeBRepBuild_Builder::GCopyList()`
@@ -2886,10 +3922,13 @@ impl Builder {
         i2: i32,
         Lou: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder_g_copy_list_listofshape_int2_listofshape(
-                Lin, i1, i2, Lou,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder_g_copy_list_listofshape_int2_listofshape(
+                    Lin, i1, i2, Lou,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2898,56 +3937,86 @@ impl Builder {
         Lin: &crate::ffi::TopTools_ListOfShape,
         Lou: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_copy_list_listofshape2(Lin, Lou) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_g_copy_list_listofshape2(Lin, Lou) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:647 - `TopOpeBRepBuild_Builder::GdumpPNT()`
     pub fn gdump_pnt(P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_pnt(P) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_pnt(P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:649 - `TopOpeBRepBuild_Builder::GdumpORIPARPNT()`
     pub fn gdump_oriparpnt(o: crate::top_abs::Orientation, p: f64, Pnt: &crate::gp::Pnt) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_oriparpnt(o.into(), p, Pnt) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_gdump_oriparpnt(o.into(), p, Pnt) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:707 - `TopOpeBRepBuild_Builder::PrintGeo()`
     pub fn print_geo(S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_geo(S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_geo(S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:709 - `TopOpeBRepBuild_Builder::PrintSur()`
     pub fn print_sur(F: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_sur(F) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_sur(F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:711 - `TopOpeBRepBuild_Builder::PrintCur()`
     pub fn print_cur(E: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_cur(E) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_cur(E) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:713 - `TopOpeBRepBuild_Builder::PrintPnt()`
     pub fn print_pnt(V: &crate::topo_ds::Vertex) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_pnt(V) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_pnt(V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:715 - `TopOpeBRepBuild_Builder::PrintOri()`
     pub fn print_ori(S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_ori(S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder_print_ori(S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:717 - `TopOpeBRepBuild_Builder::StringState()`
     pub fn string_state(
         S: crate::top_abs::State,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder_string_state(S.into()))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_string_state(S.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:719 - `TopOpeBRepBuild_Builder::GcheckNBOUNDS()`
     pub fn gcheck_nbounds(E: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder_gcheck_nbounds(E) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder_gcheck_nbounds(E) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2970,8 +4039,10 @@ unsafe impl crate::CppDeletable for Builder1 {
 impl Builder1 {
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:51 - `TopOpeBRepBuild_Builder1::TopOpeBRepBuild_Builder1()`
     pub fn new_buildtool(BT: &crate::top_ope_b_rep_ds::BuildTool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder1_ctor_buildtool(BT))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Builder1_ctor_buildtool(BT) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2979,7 +4050,10 @@ impl Builder1 {
     /// Removes all splits and merges already performed.
     /// Does NOT clear the handled DS  (except  ShapeWithStatesMaps).
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder1_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:59 - `TopOpeBRepBuild_Builder1::Perform()`
@@ -2987,11 +4061,14 @@ impl Builder1 {
         &mut self,
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_perform_handletopopebrepdshdatastructure(
-                self as *mut Self,
-                HDS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_perform_handletopopebrepdshdatastructure(
+                    self as *mut Self,
+                    HDS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3002,29 +4079,38 @@ impl Builder1 {
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_perform_handletopopebrepdshdatastructure_shape2(
-                self as *mut Self,
-                HDS,
-                S1,
-                S2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_perform_handletopopebrepdshdatastructure_shape2(
+                    self as *mut Self,
+                    HDS,
+                    S1,
+                    S2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:66 - `TopOpeBRepBuild_Builder1::MergeKPart()`
     pub fn merge_k_part(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_merge_k_part(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder1_merge_k_part(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:68 - `TopOpeBRepBuild_Builder1::MergeKPart()`
     pub fn merge_k_part_state2(&mut self, TB1: crate::top_abs::State, TB2: crate::top_abs::State) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_merge_k_part_state2(
-                self as *mut Self,
-                TB1.into(),
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_merge_k_part_state2(
+                    self as *mut Self,
+                    TB1.into(),
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3036,14 +4122,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_solid_sfs(
-                self as *mut Self,
-                SO1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_solid_sfs(
+                    self as *mut Self,
+                    SO1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3055,14 +4144,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_shell_sfs(
-                self as *mut Self,
-                SH1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_shell_sfs(
+                    self as *mut Self,
+                    SH1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3073,8 +4165,16 @@ impl Builder1 {
         WES: &mut WireEdgeSet,
         LOF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_gwes_make_faces(self as *mut Self, FF, WES, LOF)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_gwes_make_faces(
+                    self as *mut Self,
+                    FF,
+                    WES,
+                    LOF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3085,13 +4185,16 @@ impl Builder1 {
         G1: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_splits_pvs(
-                self as *mut Self,
-                anEdge,
-                G1,
-                PVS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_splits_pvs(
+                    self as *mut Self,
+                    anEdge,
+                    G1,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3103,14 +4206,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_sfs(
-                self as *mut Self,
-                F1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_sfs(
+                    self as *mut Self,
+                    F1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3122,14 +4228,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_wes(
-                self as *mut Self,
-                F1,
-                LSO2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_wes(
+                    self as *mut Self,
+                    F1,
+                    LSO2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3141,14 +4250,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_wire_not_same_dom_wes(
-                self as *mut Self,
-                W1,
-                LSO2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_wire_not_same_dom_wes(
+                    self as *mut Self,
+                    W1,
+                    LSO2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3160,14 +4272,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_edge_not_same_dom_wes(
-                self as *mut Self,
-                E1,
-                LSO2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_edge_not_same_dom_wes(
+                    self as *mut Self,
+                    E1,
+                    LSO2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3179,14 +4294,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_same_dom_sfs(
-                self as *mut Self,
-                F1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_same_dom_sfs(
+                    self as *mut Self,
+                    F1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3198,14 +4316,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_same_dom_wes(
-                self as *mut Self,
-                F1,
-                LSO2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_face_same_dom_wes(
+                    self as *mut Self,
+                    F1,
+                    LSO2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3217,14 +4338,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_wire_same_dom_wes(
-                self as *mut Self,
-                W1,
-                LSO2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_wire_same_dom_wes(
+                    self as *mut Self,
+                    W1,
+                    LSO2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3236,14 +4360,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_g_fill_edge_same_dom_wes(
-                self as *mut Self,
-                E1,
-                LSO2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_g_fill_edge_same_dom_wes(
+                    self as *mut Self,
+                    E1,
+                    LSO2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3255,14 +4382,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_perform_on_parts(
-                self as *mut Self,
-                F,
-                SDfaces,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_perform_on_parts(
+                    self as *mut Self,
+                    F,
+                    SDfaces,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3276,16 +4406,19 @@ impl Builder1 {
         G: &GTopo,
         keep: &mut bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_perform_piece_in2_d(
-                self as *mut Self,
-                aPieceToPerform,
-                aOriginalEdge,
-                edgeFace,
-                toFace,
-                G,
-                keep,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_perform_piece_in2_d(
+                    self as *mut Self,
+                    aPieceToPerform,
+                    aOriginalEdge,
+                    edgeFace,
+                    toFace,
+                    G,
+                    keep,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3299,16 +4432,20 @@ impl Builder1 {
         aListOfFaces: &mut crate::ffi::TopTools_ListOfShape,
         aListOfPiecesOut2d: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_perform_piece_on2_d(
-                self as *mut Self,
-                aPieceObj,
-                aFaceObj,
-                aEdgeObj,
-                aListOfPieces,
-                aListOfFaces,
-                aListOfPiecesOut2d,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_perform_piece_on2_d(
+                    self as *mut Self,
+                    aPieceObj,
+                    aFaceObj,
+                    aEdgeObj,
+                    aListOfPieces,
+                    aListOfFaces,
+                    aListOfPiecesOut2d,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3320,58 +4457,86 @@ impl Builder1 {
         aListOfFaces: &mut crate::ffi::TopTools_ListOfShape,
         aListOfPiecesOut2d: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_two_pieces_on(
-                self as *mut Self,
-                aSeq,
-                aListOfPieces,
-                aListOfFaces,
-                aListOfPiecesOut2d,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_two_pieces_on(
+                    self as *mut Self,
+                    aSeq,
+                    aListOfPieces,
+                    aListOfFaces,
+                    aListOfPiecesOut2d,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:153 - `TopOpeBRepBuild_Builder1::CorrectResult2d()`
     pub fn correct_result2d(&mut self, aResult: &mut crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_correct_result2d(self as *mut Self, aResult) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_correct_result2d(self as *mut Self, aResult)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_Builder
     pub fn as_builder(&self) -> &Builder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_as_TopOpeBRepBuild_Builder(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_as_TopOpeBRepBuild_Builder(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_Builder (mutable)
     pub fn as_builder_mut(&mut self) -> &mut Builder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Builder1_as_TopOpeBRepBuild_Builder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_as_TopOpeBRepBuild_Builder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:86 - `TopOpeBRepBuild_Builder::ChangeBuildTool()`
     pub fn change_build_tool(&mut self) -> &mut crate::top_ope_b_rep_ds::BuildTool {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Builder1_inherited_ChangeBuildTool(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_ChangeBuildTool(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:88 - `TopOpeBRepBuild_Builder::BuildTool()`
     pub fn build_tool(&self) -> &crate::top_ope_b_rep_ds::BuildTool {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_BuildTool(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_BuildTool(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:103 - `TopOpeBRepBuild_Builder::DataStructure()`
     pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder1_inherited_DataStructure(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_DataStructure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3386,17 +4551,20 @@ impl Builder1 {
         onB: bool,
         onAB: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeEdges(
-                self as *mut Self,
-                L1,
-                TB1.into(),
-                L2,
-                TB2.into(),
-                onA,
-                onB,
-                onAB,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeEdges(
+                    self as *mut Self,
+                    L1,
+                    TB1.into(),
+                    L2,
+                    TB2.into(),
+                    onA,
+                    onB,
+                    onAB,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3411,17 +4579,20 @@ impl Builder1 {
         onB: bool,
         onAB: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeFaces(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-                onA,
-                onB,
-                onAB,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeFaces(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                    onA,
+                    onB,
+                    onAB,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3433,14 +4604,17 @@ impl Builder1 {
         S2: &crate::topo_ds::Shape,
         TB2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeSolids(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeSolids(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3452,117 +4626,177 @@ impl Builder1 {
         S2: &crate::topo_ds::Shape,
         TB2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeShapes(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeShapes(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:146 - `TopOpeBRepBuild_Builder::End()`
     pub fn end(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_End(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_End(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:148 - `TopOpeBRepBuild_Builder::Classify()`
     pub fn classify(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Classify(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_Classify(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:150 - `TopOpeBRepBuild_Builder::ChangeClassify()`
     pub fn change_classify(&mut self, B: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_ChangeClassify(self as *mut Self, B)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_ChangeClassify(self as *mut Self, B)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:154 - `TopOpeBRepBuild_Builder::MergeSolid()`
     pub fn merge_solid(&mut self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeSolid(
-                self as *mut Self,
-                S,
-                TB.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeSolid(
+                    self as *mut Self,
+                    S,
+                    TB.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:157 - `TopOpeBRepBuild_Builder::NewVertex()`
     pub fn new_vertex(&self, I: i32) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_NewVertex(self as *const Self, I))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_NewVertex(self as *const Self, I)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:160 - `TopOpeBRepBuild_Builder::NewEdges()`
     pub fn new_edges(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_NewEdges(self as *const Self, I))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_NewEdges(self as *const Self, I)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:163 - `TopOpeBRepBuild_Builder::NewFaces()`
     pub fn new_faces(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_NewFaces(self as *const Self, I))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_NewFaces(self as *const Self, I)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:166 - `TopOpeBRepBuild_Builder::IsSplit()`
     pub fn is_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsSplit(
-                self as *const Self,
-                S,
-                TB.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsSplit(
+                    self as *const Self,
+                    S,
+                    TB.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:173 - `TopOpeBRepBuild_Builder::IsMerged()`
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsMerged(
-                self as *const Self,
-                S,
-                TB.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsMerged(
+                    self as *const Self,
+                    S,
+                    TB.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:179 - `TopOpeBRepBuild_Builder::InitSection()`
     pub fn init_section(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_InitSection(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_InitSection(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:182 - `TopOpeBRepBuild_Builder::SplitSectionEdges()`
     pub fn split_section_edges(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_SplitSectionEdges(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_SplitSectionEdges(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:185 - `TopOpeBRepBuild_Builder::SplitSectionEdge()`
     pub fn split_section_edge(&mut self, E: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_SplitSectionEdge(self as *mut Self, E)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_SplitSectionEdge(
+                    self as *mut Self,
+                    E,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:188 - `TopOpeBRepBuild_Builder::SectionCurves()`
     pub fn section_curves(&mut self, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_SectionCurves(self as *mut Self, L)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_SectionCurves(self as *mut Self, L)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:192 - `TopOpeBRepBuild_Builder::SectionEdges()`
     pub fn section_edges(&mut self, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_SectionEdges(self as *mut Self, L) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_SectionEdges(self as *mut Self, L)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:197 - `TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap()`
@@ -3572,31 +4806,45 @@ impl Builder1 {
         aMapON: &crate::ffi::TopTools_MapOfShape,
         anAncMap: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_FillSecEdgeAncestorMap(
-                self as *const Self,
-                aShapeRank,
-                aMapON,
-                anAncMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FillSecEdgeAncestorMap(
+                    self as *const Self,
+                    aShapeRank,
+                    aMapON,
+                    anAncMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:202 - `TopOpeBRepBuild_Builder::Section()`
     pub fn section(&mut self, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Section(self as *mut Self, L) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Section(self as *mut Self, L) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:208 - `TopOpeBRepBuild_Builder::BuildVertices()`
     pub fn build_vertices(&mut self, DS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_BuildVertices(self as *mut Self, DS)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_BuildVertices(self as *mut Self, DS)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:212 - `TopOpeBRepBuild_Builder::BuildEdges()`
     pub fn build_edges(&mut self, DS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_BuildEdges(self as *mut Self, DS) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_BuildEdges(self as *mut Self, DS)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:214 - `TopOpeBRepBuild_Builder::MSplit()`
@@ -3604,8 +4852,12 @@ impl Builder1 {
         &self,
         s: crate::top_abs::State,
     ) -> &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_Builder1_inherited_MSplit(self as *const Self, s.into()))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MSplit(self as *const Self, s.into())
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -3614,11 +4866,15 @@ impl Builder1 {
         &mut self,
         s: crate::top_abs::State,
     ) -> &mut crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Builder1_inherited_ChangeMSplit(
-                self as *mut Self,
-                s.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_ChangeMSplit(
+                    self as *mut Self,
+                    s.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -3629,8 +4885,11 @@ impl Builder1 {
         B: &mut EdgeBuilder,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeEdges(self as *mut Self, E, B, L)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeEdges(self as *mut Self, E, B, L)
+            };
+            crate::check_exception();
         }
     }
 
@@ -3641,43 +4900,76 @@ impl Builder1 {
         B: &mut FaceBuilder,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeFaces(self as *mut Self, F, B, L)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeFaces(self as *mut Self, F, B, L)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:228 - `TopOpeBRepBuild_Builder::MakeSolids()`
     pub fn make_solids(&mut self, B: &mut SolidBuilder, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeSolids(self as *mut Self, B, L)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeSolids(self as *mut Self, B, L)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:230 - `TopOpeBRepBuild_Builder::MakeShells()`
     pub fn make_shells(&mut self, B: &mut SolidBuilder, L: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeShells(self as *mut Self, B, L)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MakeShells(self as *mut Self, B, L)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:237 - `TopOpeBRepBuild_Builder::Opec12()`
     pub fn opec12(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opec12(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opec12(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:239 - `TopOpeBRepBuild_Builder::Opec21()`
     pub fn opec21(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opec21(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opec21(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:241 - `TopOpeBRepBuild_Builder::Opecom()`
     pub fn opecom(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opecom(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opecom(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:243 - `TopOpeBRepBuild_Builder::Opefus()`
     pub fn opefus(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opefus(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_Opefus(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:245 - `TopOpeBRepBuild_Builder::ShapePosition()`
@@ -3686,15 +4978,16 @@ impl Builder1 {
         S: &crate::topo_ds::Shape,
         LS: &crate::ffi::TopTools_ListOfShape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Builder1_inherited_ShapePosition(
                     self as *mut Self,
                     S,
                     LS,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -3705,13 +4998,17 @@ impl Builder1 {
         LS: &crate::ffi::TopTools_ListOfShape,
         T: crate::top_abs::State,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KeepShape(
-                self as *mut Self,
-                S,
-                LS,
-                T.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KeepShape(
+                    self as *mut Self,
+                    S,
+                    LS,
+                    T.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3721,12 +5018,15 @@ impl Builder1 {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindSameDomain(
-                self as *const Self,
-                L1,
-                L2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindSameDomain(
+                    self as *const Self,
+                    L1,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3736,25 +5036,34 @@ impl Builder1 {
         LSO: &mut crate::ffi::TopTools_ListOfShape,
         LDO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindSameDomainSameOrientation(
-                self as *const Self,
-                LSO,
-                LDO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindSameDomainSameOrientation(
+                    self as *const Self,
+                    LSO,
+                    LDO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:263 - `TopOpeBRepBuild_Builder::MapShapes()`
     pub fn map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MapShapes(self as *mut Self, S1, S2)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MapShapes(self as *mut Self, S1, S2)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:265 - `TopOpeBRepBuild_Builder::ClearMaps()`
     pub fn clear_maps(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_ClearMaps(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_ClearMaps(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:267 - `TopOpeBRepBuild_Builder::FindSameRank()`
@@ -3764,101 +5073,182 @@ impl Builder1 {
         R: i32,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindSameRank(
-                self as *const Self,
-                L1,
-                R,
-                L2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindSameRank(
+                    self as *const Self,
+                    L1,
+                    R,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:271 - `TopOpeBRepBuild_Builder::ShapeRank()`
     pub fn shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_ShapeRank(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_ShapeRank(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:273 - `TopOpeBRepBuild_Builder::IsShapeOf()`
     pub fn is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsShapeOf(self as *const Self, S, I12)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsShapeOf(
+                    self as *const Self,
+                    S,
+                    I12,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:279 - `TopOpeBRepBuild_Builder::FindIsKPart()`
     pub fn find_is_k_part(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindIsKPart(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindIsKPart(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:281 - `TopOpeBRepBuild_Builder::IsKPart()`
     pub fn is_k_part(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsKPart(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_IsKPart(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:287 - `TopOpeBRepBuild_Builder::MergeKPartiskole()`
     pub fn merge_k_partiskole(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartiskole(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartiskole(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:289 - `TopOpeBRepBuild_Builder::MergeKPartiskoletge()`
     pub fn merge_k_partiskoletge(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartiskoletge(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartiskoletge(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:291 - `TopOpeBRepBuild_Builder::MergeKPartisdisj()`
     pub fn merge_k_partisdisj(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartisdisj(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartisdisj(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:293 - `TopOpeBRepBuild_Builder::MergeKPartisfafa()`
     pub fn merge_k_partisfafa(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartisfafa(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartisfafa(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:295 - `TopOpeBRepBuild_Builder::MergeKPartissoso()`
     pub fn merge_k_partissoso(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartissoso(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_MergeKPartissoso(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:297 - `TopOpeBRepBuild_Builder::KPiskole()`
     pub fn k_piskole(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskole(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskole(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:299 - `TopOpeBRepBuild_Builder::KPiskoletge()`
     pub fn k_piskoletge(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoletge(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoletge(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:301 - `TopOpeBRepBuild_Builder::KPisdisj()`
     pub fn k_pisdisj(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisdisj(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisdisj(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:303 - `TopOpeBRepBuild_Builder::KPisfafa()`
     pub fn k_pisfafa(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisfafa(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisfafa(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:305 - `TopOpeBRepBuild_Builder::KPissoso()`
     pub fn k_pissoso(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPissoso(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPissoso(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:307 - `TopOpeBRepBuild_Builder::KPClearMaps()`
     pub fn kp_clear_maps(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPClearMaps(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPClearMaps(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:309 - `TopOpeBRepBuild_Builder::KPlhg()`
@@ -3868,13 +5258,17 @@ impl Builder1 {
         T: crate::top_abs::ShapeEnum,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPlhg(
-                self as *const Self,
-                S,
-                T.into(),
-                L,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPlhg(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                    L,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3885,13 +5279,17 @@ impl Builder1 {
         T: crate::top_abs::ShapeEnum,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPlhsd(
-                self as *const Self,
-                S,
-                T.into(),
-                L,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPlhsd(
+                    self as *const Self,
+                    S,
+                    T.into(),
+                    L,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3902,16 +5300,17 @@ impl Builder1 {
         exceptLS1: &crate::ffi::TopTools_ListOfShape,
         S2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPclasSS(
                     self as *mut Self,
                     S1,
                     exceptLS1,
                     S2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -3922,13 +5321,17 @@ impl Builder1 {
         LS: &mut crate::ffi::TopTools_ListOfShape,
         LF: &mut crate::ffi::TopTools_ListOfShape,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskolesh(
-                self as *const Self,
-                S,
-                LS,
-                LF,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskolesh(
+                    self as *const Self,
+                    S,
+                    LS,
+                    LF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3939,13 +5342,17 @@ impl Builder1 {
         LS: &mut crate::ffi::TopTools_ListOfShape,
         LF: &mut crate::ffi::TopTools_ListOfShape,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoletgesh(
-                self as *const Self,
-                S,
-                LS,
-                LF,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoletgesh(
+                    self as *const Self,
+                    S,
+                    LS,
+                    LF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3955,24 +5362,49 @@ impl Builder1 {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPSameDomain(self as *const Self, L1, L2)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPSameDomain(
+                    self as *const Self,
+                    L1,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:341 - `TopOpeBRepBuild_Builder::KPisdisjsh()`
     pub fn k_pisdisjsh(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisdisjsh(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisdisjsh(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:343 - `TopOpeBRepBuild_Builder::KPisfafash()`
     pub fn k_pisfafash(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisfafash(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisfafash(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:345 - `TopOpeBRepBuild_Builder::KPissososh()`
     pub fn k_pissososh(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPissososh(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPissososh(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:347 - `TopOpeBRepBuild_Builder::KPiskoleanalyse()`
@@ -3986,17 +5418,20 @@ impl Builder1 {
         I1: &mut i32,
         I2: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoleanalyse(
-                self as *const Self,
-                FT1.into(),
-                FT2.into(),
-                ST1.into(),
-                ST2.into(),
-                I,
-                I1,
-                I2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoleanalyse(
+                    self as *const Self,
+                    FT1.into(),
+                    FT2.into(),
+                    ST1.into(),
+                    ST2.into(),
+                    I,
+                    I1,
+                    I2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4008,14 +5443,17 @@ impl Builder1 {
         ST2: crate::top_abs::State,
         I: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoletgeanalyse(
-                self as *const Self,
-                Conf.into(),
-                ST1.into(),
-                ST2.into(),
-                I,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPiskoletgeanalyse(
+                    self as *const Self,
+                    Conf.into(),
+                    ST1.into(),
+                    ST2.into(),
+                    I,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4028,15 +5466,18 @@ impl Builder1 {
         IC1: &mut i32,
         IC2: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisdisjanalyse(
-                self as *const Self,
-                ST1.into(),
-                ST2.into(),
-                I,
-                IC1,
-                IC2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPisdisjanalyse(
+                    self as *const Self,
+                    ST1.into(),
+                    ST2.into(),
+                    I,
+                    IC1,
+                    IC2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4046,11 +5487,12 @@ impl Builder1 {
         F1: &crate::topo_ds::Shape,
         F2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
-                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPclassF(self as *mut Self, F1, F2),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPclassF(self as *mut Self, F1, F2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -4064,23 +5506,32 @@ impl Builder1 {
         R1: bool,
         R2: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPmakeface(
-                self as *mut Self,
-                F1,
-                LF2,
-                T1.into(),
-                T2.into(),
-                R1,
-                R2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_KPmakeface(
+                    self as *mut Self,
+                    F1,
+                    LF2,
+                    T1.into(),
+                    T2.into(),
+                    R1,
+                    R2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:396 - `TopOpeBRepBuild_Builder::SplitEvisoONperiodicF()`
     pub fn split_eviso_o_nperiodic_f(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_SplitEvisoONperiodicF(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_SplitEvisoONperiodicF(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4091,13 +5542,16 @@ impl Builder1 {
         LSO2: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeSolids(
-                self as *mut Self,
-                LSO1,
-                LSO2,
-                G,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeSolids(
+                    self as *mut Self,
+                    LSO1,
+                    LSO2,
+                    G,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4109,14 +5563,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillSolidsSFS(
-                self as *mut Self,
-                LSO1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillSolidsSFS(
+                    self as *mut Self,
+                    LSO1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4127,13 +5584,16 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillSurfaceTopologySFS(
-                self as *mut Self,
-                SO1,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillSurfaceTopologySFS(
+                    self as *mut Self,
+                    SO1,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4145,14 +5605,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFaceSFS(
-                self as *mut Self,
-                F1,
-                LSO2,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFaceSFS(
+                    self as *mut Self,
+                    F1,
+                    LSO2,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4164,14 +5627,17 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitFaceSFS(
-                self as *mut Self,
-                F1,
-                LSclass,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitFaceSFS(
+                    self as *mut Self,
+                    F1,
+                    LSclass,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4182,13 +5648,16 @@ impl Builder1 {
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeFaceSFS(
-                self as *mut Self,
-                F,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeFaceSFS(
+                    self as *mut Self,
+                    F,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4199,24 +5668,30 @@ impl Builder1 {
         G: &GTopo,
         LSclass: &crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitFace(
-                self as *mut Self,
-                F,
-                G,
-                LSclass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitFace(
+                    self as *mut Self,
+                    F,
+                    G,
+                    LSclass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:443 - `TopOpeBRepBuild_Builder::AddONPatchesSFS()`
     pub fn add_on_patches_sfs(&mut self, G: &GTopo, SFS: &mut ShellFaceSet) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_AddONPatchesSFS(
-                self as *mut Self,
-                G,
-                SFS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_AddONPatchesSFS(
+                    self as *mut Self,
+                    G,
+                    SFS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4227,13 +5702,16 @@ impl Builder1 {
         aBaseFace: &crate::topo_ds::Shape,
         avoidMap: &crate::ffi::TopTools_IndexedMapOfOrientedShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_FillOnPatches(
-                self as *mut Self,
-                anEdgesON,
-                aBaseFace,
-                avoidMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FillOnPatches(
+                    self as *mut Self,
+                    anEdgesON,
+                    aBaseFace,
+                    avoidMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4245,14 +5723,17 @@ impl Builder1 {
         aShRank: i32,
         aFaces: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindFacesTouchingEdge(
-                self as *const Self,
-                aFace,
-                anEdge,
-                aShRank,
-                aFaces,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_FindFacesTouchingEdge(
+                    self as *const Self,
+                    aFace,
+                    anEdge,
+                    aShRank,
+                    aFaces,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4263,13 +5744,16 @@ impl Builder1 {
         LF2: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeFaces(
-                self as *mut Self,
-                LF1,
-                LF2,
-                G,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeFaces(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    G,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4281,14 +5765,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFacesWES(
-                self as *mut Self,
-                LF1,
-                LF2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFacesWES(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4301,15 +5788,18 @@ impl Builder1 {
         WES: &mut WireEdgeSet,
         K: i32,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFacesWESK(
-                self as *mut Self,
-                LF1,
-                LF2,
-                G,
-                WES,
-                K,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFacesWESK(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    G,
+                    WES,
+                    K,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4321,14 +5811,17 @@ impl Builder1 {
         LSO: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFacesWESMakeFaces(
-                self as *mut Self,
-                LF1,
-                LF2,
-                LSO,
-                G,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFacesWESMakeFaces(
+                    self as *mut Self,
+                    LF1,
+                    LF2,
+                    LSO,
+                    G,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4340,14 +5833,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFaceWES(
-                self as *mut Self,
-                F,
-                LF2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillFaceWES(
+                    self as *mut Self,
+                    F,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4358,13 +5854,16 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillCurveTopologyWES(
-                self as *mut Self,
-                F,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillCurveTopologyWES(
+                    self as *mut Self,
+                    F,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4376,14 +5875,17 @@ impl Builder1 {
         LSclass: &crate::ffi::TopTools_ListOfShape,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillONPartsWES(
-                self as *mut Self,
-                F,
-                G,
-                LSclass,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillONPartsWES(
+                    self as *mut Self,
+                    F,
+                    G,
+                    LSclass,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4395,14 +5897,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillWireWES(
-                self as *mut Self,
-                W,
-                LF2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillWireWES(
+                    self as *mut Self,
+                    W,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4414,14 +5919,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillEdgeWES(
-                self as *mut Self,
-                E,
-                LF2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillEdgeWES(
+                    self as *mut Self,
+                    E,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4433,14 +5941,17 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitEdgeWES(
-                self as *mut Self,
-                E,
-                LF2,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitEdgeWES(
+                    self as *mut Self,
+                    E,
+                    LF2,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4451,13 +5962,16 @@ impl Builder1 {
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeEdgeWES(
-                self as *mut Self,
-                E,
-                G,
-                WES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeEdgeWES(
+                    self as *mut Self,
+                    E,
+                    G,
+                    WES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4468,13 +5982,16 @@ impl Builder1 {
         G: &GTopo,
         LSclass: &crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitEdge(
-                self as *mut Self,
-                E,
-                G,
-                LSclass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSplitEdge(
+                    self as *mut Self,
+                    E,
+                    G,
+                    LSclass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4485,13 +6002,16 @@ impl Builder1 {
         LE2: &crate::ffi::TopTools_ListOfShape,
         G: &GTopo,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeEdges(
-                self as *mut Self,
-                LE1,
-                LE2,
-                G,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMergeEdges(
+                    self as *mut Self,
+                    LE1,
+                    LE2,
+                    G,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4503,14 +6023,17 @@ impl Builder1 {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillEdgesPVS(
-                self as *mut Self,
-                LE1,
-                LE2,
-                G,
-                PVS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillEdgesPVS(
+                    self as *mut Self,
+                    LE1,
+                    LE2,
+                    G,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4522,14 +6045,17 @@ impl Builder1 {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillEdgePVS(
-                self as *mut Self,
-                E,
-                LE2,
-                G,
-                PVS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillEdgePVS(
+                    self as *mut Self,
+                    E,
+                    LE2,
+                    G,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4540,13 +6066,16 @@ impl Builder1 {
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillPointTopologyPVS(
-                self as *mut Self,
-                E,
-                G,
-                PVS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFillPointTopologyPVS(
+                    self as *mut Self,
+                    E,
+                    G,
+                    PVS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4557,13 +6086,17 @@ impl Builder1 {
         E: &crate::topo_ds::Edge,
         P: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GParamOnReference(
-                self as *const Self,
-                V,
-                E,
-                P,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GParamOnReference(
+                    self as *const Self,
+                    V,
+                    E,
+                    P,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4574,13 +6107,17 @@ impl Builder1 {
         Lref: &crate::ffi::TopTools_ListOfShape,
         T: crate::top_abs::State,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GKeepShape(
-                self as *mut Self,
-                S,
-                Lref,
-                T.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GKeepShape(
+                    self as *mut Self,
+                    S,
+                    Lref,
+                    T.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4593,15 +6130,18 @@ impl Builder1 {
         Lin: &crate::ffi::TopTools_ListOfShape,
         Lou: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GKeepShapes(
-                self as *mut Self,
-                S,
-                Lref,
-                T.into(),
-                Lin,
-                Lou,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GKeepShapes(
+                    self as *mut Self,
+                    S,
+                    Lref,
+                    T.into(),
+                    Lin,
+                    Lou,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4612,13 +6152,16 @@ impl Builder1 {
         SFS: &mut ShellFaceSet,
         LOSO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSFSMakeSolids(
-                self as *mut Self,
-                SOF,
-                SFS,
-                LOSO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSFSMakeSolids(
+                    self as *mut Self,
+                    SOF,
+                    SFS,
+                    LOSO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4629,13 +6172,16 @@ impl Builder1 {
         SOBU: &mut SolidBuilder,
         LOSO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSOBUMakeSolids(
-                self as *mut Self,
-                SOF,
-                SOBU,
-                LOSO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GSOBUMakeSolids(
+                    self as *mut Self,
+                    SOF,
+                    SOBU,
+                    LOSO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4647,14 +6193,17 @@ impl Builder1 {
         LOF: &mut crate::ffi::TopTools_ListOfShape,
         MWisOld: &mut crate::ffi::TopTools_DataMapOfShapeInteger,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFABUMakeFaces(
-                self as *mut Self,
-                FF,
-                FABU,
-                LOF,
-                MWisOld,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFABUMakeFaces(
+                    self as *mut Self,
+                    FF,
+                    FABU,
+                    LOF,
+                    MWisOld,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4665,13 +6214,16 @@ impl Builder1 {
         lnewFace: &crate::ffi::TopTools_ListOfShape,
         LOF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeFaces(
-                self as *mut Self,
-                FF,
-                lnewFace,
-                LOF,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeFaces(
+                    self as *mut Self,
+                    FF,
+                    lnewFace,
+                    LOF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4682,13 +6234,16 @@ impl Builder1 {
         newFace: &crate::topo_ds::Shape,
         LOF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeFace(
-                self as *mut Self,
-                FF,
-                newFace,
-                LOF,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeFace(
+                    self as *mut Self,
+                    FF,
+                    newFace,
+                    LOF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4699,13 +6254,16 @@ impl Builder1 {
         lnewSolid: &crate::ffi::TopTools_ListOfShape,
         LOS: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeSolids(
-                self as *mut Self,
-                SS,
-                lnewSolid,
-                LOS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeSolids(
+                    self as *mut Self,
+                    SS,
+                    lnewSolid,
+                    LOS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4716,13 +6274,16 @@ impl Builder1 {
         newSolid: &crate::topo_ds::Shape,
         LOS: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeSolid(
-                self as *mut Self,
-                SS,
-                newSolid,
-                LOS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_RegularizeSolid(
+                    self as *mut Self,
+                    SS,
+                    newSolid,
+                    LOS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4733,13 +6294,16 @@ impl Builder1 {
         PVS: &mut PaveSet,
         LOE: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GPVSMakeEdges(
-                self as *const Self,
-                EF,
-                PVS,
-                LOE,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GPVSMakeEdges(
+                    self as *const Self,
+                    EF,
+                    PVS,
+                    LOE,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4750,30 +6314,43 @@ impl Builder1 {
         EDBU: &mut EdgeBuilder,
         LOE: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GEDBUMakeEdges(
-                self as *const Self,
-                EF,
-                EDBU,
-                LOE,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GEDBUMakeEdges(
+                    self as *const Self,
+                    EF,
+                    EDBU,
+                    LOE,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:602 - `TopOpeBRepBuild_Builder::GToSplit()`
     pub fn g_to_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GToSplit(
-                self as *const Self,
-                S,
-                TB.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GToSplit(
+                    self as *const Self,
+                    S,
+                    TB.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:604 - `TopOpeBRepBuild_Builder::GToMerge()`
     pub fn g_to_merge(&self, S: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GToMerge(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GToMerge(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:610 - `TopOpeBRepBuild_Builder::GFindSamDom()`
@@ -4783,13 +6360,16 @@ impl Builder1 {
         L1: &mut crate::ffi::TopTools_ListOfShape,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFindSamDom(
-                self as *const Self,
-                S,
-                L1,
-                L2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFindSamDom(
+                    self as *const Self,
+                    S,
+                    L1,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4800,26 +6380,35 @@ impl Builder1 {
         LSO: &mut crate::ffi::TopTools_ListOfShape,
         LDO: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFindSamDomSODO(
-                self as *const Self,
-                S,
-                LSO,
-                LDO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFindSamDomSODO(
+                    self as *const Self,
+                    S,
+                    LSO,
+                    LDO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:622 - `TopOpeBRepBuild_Builder::GMapShapes()`
     pub fn g_map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMapShapes(self as *mut Self, S1, S2)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GMapShapes(self as *mut Self, S1, S2)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:624 - `TopOpeBRepBuild_Builder::GClearMaps()`
     pub fn g_clear_maps(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GClearMaps(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GClearMaps(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:626 - `TopOpeBRepBuild_Builder::GFindSameRank()`
@@ -4829,55 +6418,90 @@ impl Builder1 {
         R: i32,
         L2: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFindSameRank(
-                self as *const Self,
-                L1,
-                R,
-                L2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GFindSameRank(
+                    self as *const Self,
+                    L1,
+                    R,
+                    L2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:630 - `TopOpeBRepBuild_Builder::GShapeRank()`
     pub fn g_shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GShapeRank(self as *const Self, S) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GShapeRank(self as *const Self, S)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:632 - `TopOpeBRepBuild_Builder::GIsShapeOf()`
     pub fn g_is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GIsShapeOf(self as *const Self, S, I12)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GIsShapeOf(
+                    self as *const Self,
+                    S,
+                    I12,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:645 - `TopOpeBRepBuild_Builder::GdumpLS()`
     pub fn gdump_ls(&self, L: &crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpLS(self as *const Self, L) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpLS(self as *const Self, L)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA()`
     pub unsafe fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHA(self as *const Self, S, str)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHA(self as *const Self, S, str)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
     pub unsafe fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORI(self as *const Self, S, str)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORI(
+                    self as *const Self,
+                    S,
+                    str,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
     pub unsafe fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORIGEO(
-                self as *const Self,
-                S,
-                str,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORIGEO(
+                    self as *const Self,
+                    S,
+                    str,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4889,21 +6513,27 @@ impl Builder1 {
         a: &crate::t_collection::AsciiString,
         b: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHASTA(
-                self as *const Self,
-                iS,
-                T.into(),
-                a,
-                b,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHASTA(
+                    self as *const Self,
+                    iS,
+                    T.into(),
+                    a,
+                    b,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG()`
     pub unsafe fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDG(self as *const Self, S, str)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDG(self as *const Self, S, str)
+            };
+            crate::check_exception();
         }
     }
 
@@ -4914,13 +6544,16 @@ impl Builder1 {
         V: &crate::topo_ds::Shape,
         str: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDGVER(
-                self as *const Self,
-                E,
-                V,
-                str,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDGVER(
+                    self as *const Self,
+                    E,
+                    V,
+                    str,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4930,47 +6563,87 @@ impl Builder1 {
         L: &crate::ffi::TopTools_ListOfShape,
         str: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSAMDOM(self as *const Self, L, str)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSAMDOM(
+                    self as *const Self,
+                    L,
+                    str,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEXP()`
     pub fn gdump_exp(&self, E: &crate::top_ope_b_rep_tool::ShapeExplorer) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEXP(self as *const Self, E) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEXP(self as *const Self, E)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:688 - `TopOpeBRepBuild_Builder::GdumpSOBU()`
     pub fn gdump_sobu(&self, SB: &mut SolidBuilder) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSOBU(self as *const Self, SB) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSOBU(self as *const Self, SB)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:690 - `TopOpeBRepBuild_Builder::GdumpFABU()`
     pub fn gdump_fabu(&self, FB: &mut FaceBuilder) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpFABU(self as *const Self, FB) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpFABU(self as *const Self, FB)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:692 - `TopOpeBRepBuild_Builder::GdumpEDBU()`
     pub fn gdump_edbu(&self, EB: &mut EdgeBuilder) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDBU(self as *const Self, EB) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpEDBU(self as *const Self, EB)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:694 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps(&self, iS: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Builder1_inherited_GtraceSPS(self as *const Self, iS) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GtraceSPS(self as *const Self, iS)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:703 - `TopOpeBRepBuild_Builder::GdumpSHASETreset()`
     pub fn gdump_shase_treset(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHASETreset(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHASETreset(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:705 - `TopOpeBRepBuild_Builder::GdumpSHASETindex()`
     pub fn gdump_shase_tindex(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHASETindex(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Builder1_inherited_GdumpSHASETindex(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -4991,7 +6664,11 @@ unsafe impl crate::CppDeletable for BuilderON {
 impl BuilderON {
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:37 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BuilderON_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_BuilderON_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:39 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
@@ -5002,8 +6679,12 @@ impl BuilderON {
         PLSclass: &*mut crate::ffi::TopoDS_ListOfShape,
         PWES: &*mut WireEdgeSet,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(PB, F, PG, PLSclass, PWES))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(PB, F, PG, PLSclass, PWES)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5016,26 +6697,40 @@ impl BuilderON {
         PLSclass: &*mut crate::ffi::TopoDS_ListOfShape,
         PWES: &*mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BuilderON_perform(
-                self as *mut Self,
-                PB,
-                F,
-                PG,
-                PLSclass,
-                PWES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_perform(
+                    self as *mut Self,
+                    PB,
+                    F,
+                    PG,
+                    PLSclass,
+                    PWES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:51 - `TopOpeBRepBuild_BuilderON::GFillONCheckI()`
     pub fn g_fill_on_check_i(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_check_i(self as *const Self, I) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_check_i(self as *const Self, I)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:53 - `TopOpeBRepBuild_BuilderON::GFillONPartsWES1()`
     pub fn g_fill_on_parts_wes1(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
-        unsafe { crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_parts_wes1(self as *mut Self, I) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_parts_wes1(self as *mut Self, I)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:55 - `TopOpeBRepBuild_BuilderON::GFillONPartsWES2()`
@@ -5044,8 +6739,15 @@ impl BuilderON {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
         EspON: &crate::topo_ds::Shape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_parts_wes2(self as *mut Self, I, EspON)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_parts_wes2(
+                    self as *mut Self,
+                    I,
+                    EspON,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5058,15 +6760,18 @@ impl BuilderON {
         PLSclass: &*mut crate::ffi::TopoDS_ListOfShape,
         PWES: &*mut WireEdgeSet,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BuilderON_perform2d(
-                self as *mut Self,
-                PB,
-                F,
-                PG,
-                PLSclass,
-                PWES,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_perform2d(
+                    self as *mut Self,
+                    PB,
+                    F,
+                    PG,
+                    PLSclass,
+                    PWES,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5076,12 +6781,15 @@ impl BuilderON {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
         EspON: &crate::topo_ds::Shape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_parts2d_wes2(
-                self as *mut Self,
-                I,
-                EspON,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_BuilderON_g_fill_on_parts2d_wes2(
+                    self as *mut Self,
+                    I,
+                    EspON,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -5108,11 +6816,12 @@ impl CompositeClassifier {
         L1: &crate::ffi::HandleTopOpeBRepBuildLoop,
         L2: &crate::ffi::HandleTopOpeBRepBuildLoop,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
-                crate::ffi::TopOpeBRepBuild_CompositeClassifier_compare(self as *mut Self, L1, L2),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CompositeClassifier_compare(self as *mut Self, L1, L2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -5123,15 +6832,16 @@ impl CompositeClassifier {
         B1: &crate::topo_ds::Shape,
         B2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_CompositeClassifier_compare_shapes(
                     self as *mut Self,
                     B1,
                     B2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -5142,15 +6852,16 @@ impl CompositeClassifier {
         E: &crate::topo_ds::Shape,
         B: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_CompositeClassifier_compare_element_to_shape(
                     self as *mut Self,
                     E,
                     B,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -5158,14 +6869,22 @@ impl CompositeClassifier {
     /// prepare classification involving shape <B>
     /// calls ResetElement on first element of <B>
     pub fn reset_shape(&mut self, B: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_CompositeClassifier_reset_shape(self as *mut Self, B) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_CompositeClassifier_reset_shape(self as *mut Self, B)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:54 - `TopOpeBRepBuild_CompositeClassifier::ResetElement()`
     /// prepare classification involving element <E>.
     pub fn reset_element(&mut self, E: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_CompositeClassifier_reset_element(self as *mut Self, E)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_CompositeClassifier_reset_element(self as *mut Self, E)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5174,8 +6893,15 @@ impl CompositeClassifier {
     /// Returns FALSE if the element <E> has been already added to the set of elements,
     /// otherwise returns TRUE.
     pub fn compare_element(&mut self, E: &crate::topo_ds::Shape) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_CompositeClassifier_compare_element(self as *mut Self, E)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CompositeClassifier_compare_element(
+                    self as *mut Self,
+                    E,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5183,27 +6909,35 @@ impl CompositeClassifier {
     /// Returns state of classification of 2D point, defined by
     /// ResetElement, with the current set of elements, defined by Compare.
     pub fn state(&mut self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_CompositeClassifier_state(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_CompositeClassifier_state(self as *mut Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier
     pub fn as_loop_classifier(&self) -> &LoopClassifier {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_CompositeClassifier_as_TopOpeBRepBuild_LoopClassifier(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CompositeClassifier_as_TopOpeBRepBuild_LoopClassifier(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier (mutable)
     pub fn as_loop_classifier_mut(&mut self) -> &mut LoopClassifier {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_CompositeClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CompositeClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -5224,7 +6958,11 @@ unsafe impl crate::CppDeletable for CorrectFace2d {
 impl CorrectFace2d {
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:41 - `TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_CorrectFace2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:43 - `TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()`
@@ -5233,34 +6971,63 @@ impl CorrectFace2d {
         anAvoidMap: &crate::ffi::TopTools_IndexedMapOfOrientedShape,
         aMap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeShape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_CorrectFace2d_ctor_face_indexedmapoforientedshape_indexeddatamapofshapeshape(aFace, anAvoidMap, aMap))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CorrectFace2d_ctor_face_indexedmapoforientedshape_indexeddatamapofshapeshape(aFace, anAvoidMap, aMap)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:48 - `TopOpeBRepBuild_CorrectFace2d::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_CorrectFace2d_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:50 - `TopOpeBRepBuild_CorrectFace2d::Perform()`
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:52 - `TopOpeBRepBuild_CorrectFace2d::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:54 - `TopOpeBRepBuild_CorrectFace2d::ErrorStatus()`
     pub fn error_status(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_error_status(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CorrectFace2d_error_status(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:56 - `TopOpeBRepBuild_CorrectFace2d::CorrectedFace()`
     pub fn corrected_face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_CorrectFace2d_corrected_face(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CorrectFace2d_corrected_face(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:58 - `TopOpeBRepBuild_CorrectFace2d::SetMapOfTrans2dInfo()`
@@ -5268,18 +7035,25 @@ impl CorrectFace2d {
         &mut self,
         aMap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_CorrectFace2d_set_map_of_trans2d_info(
-                self as *mut Self,
-                aMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_CorrectFace2d_set_map_of_trans2d_info(
+                    self as *mut Self,
+                    aMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:60 - `TopOpeBRepBuild_CorrectFace2d::MapOfTrans2dInfo()`
     pub fn map_of_trans2d_info(&mut self) -> &mut crate::ffi::TopTools_IndexedDataMapOfShapeShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_CorrectFace2d_map_of_trans2d_info(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_CorrectFace2d_map_of_trans2d_info(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -5290,7 +7064,12 @@ impl CorrectFace2d {
         P2dF: &mut crate::gp::Pnt2d,
         P2dL: &mut crate::gp::Pnt2d,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_get_p2d_fl(aFace, anEdge, P2dF, P2dL) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_CorrectFace2d_get_p2d_fl(aFace, anEdge, P2dF, P2dL)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:67 - `TopOpeBRepBuild_CorrectFace2d::CheckList()`
@@ -5298,7 +7077,10 @@ impl CorrectFace2d {
         aFace: &crate::topo_ds::Face,
         aHeadList: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_check_list(aFace, aHeadList) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_CorrectFace2d_check_list(aFace, aHeadList) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5318,7 +7100,11 @@ unsafe impl crate::CppDeletable for EdgeBuilder {
 impl EdgeBuilder {
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:37 - `TopOpeBRepBuild_EdgeBuilder::TopOpeBRepBuild_EdgeBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_EdgeBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:41 - `TopOpeBRepBuild_EdgeBuilder::TopOpeBRepBuild_EdgeBuilder()`
@@ -5329,12 +7115,14 @@ impl EdgeBuilder {
         LC: &mut PaveClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_EdgeBuilder_ctor_paveset_paveclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5355,89 +7143,140 @@ impl EdgeBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_EdgeBuilder_init_edge_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_init_edge_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:49 - `TopOpeBRepBuild_EdgeBuilder::InitEdge()`
     pub fn init_edge(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_init_edge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_init_edge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:51 - `TopOpeBRepBuild_EdgeBuilder::MoreEdge()`
     pub fn more_edge(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_more_edge(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_more_edge(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:53 - `TopOpeBRepBuild_EdgeBuilder::NextEdge()`
     pub fn next_edge(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_next_edge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_next_edge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:55 - `TopOpeBRepBuild_EdgeBuilder::InitVertex()`
     pub fn init_vertex(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_init_vertex(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_init_vertex(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:57 - `TopOpeBRepBuild_EdgeBuilder::MoreVertex()`
     pub fn more_vertex(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_more_vertex(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_more_vertex(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:59 - `TopOpeBRepBuild_EdgeBuilder::NextVertex()`
     pub fn next_vertex(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_next_vertex(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_next_vertex(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:61 - `TopOpeBRepBuild_EdgeBuilder::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_EdgeBuilder_vertex(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_vertex(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_EdgeBuilder.hxx`:63 - `TopOpeBRepBuild_EdgeBuilder::Parameter()`
     pub fn parameter(&self) -> f64 {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_Area1dBuilder
     pub fn as_area1d_builder(&self) -> &Area1dBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_Area1dBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_Area1dBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_Area1dBuilder (mutable)
     pub fn as_area1d_builder_mut(&mut self) -> &mut Area1dBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_Area1dBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_Area1dBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_AreaBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_AreaBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder (mutable)
     pub fn as_area_builder_mut(&mut self) -> &mut AreaBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -5448,13 +7287,16 @@ impl EdgeBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitAreaBuilder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitAreaBuilder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5465,13 +7307,16 @@ impl EdgeBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5482,13 +7327,16 @@ impl EdgeBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5501,51 +7349,94 @@ impl EdgeBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_MoreArea(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_MoreArea(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_NextArea(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_NextArea(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitLoop(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_InitLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_MoreLoop(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_MoreLoop(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_NextLoop(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_NextLoop(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_Loop(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_EdgeBuilder_inherited_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -5573,7 +7464,11 @@ unsafe impl crate::CppDeletable for FaceAreaBuilder {
 impl FaceAreaBuilder {
     /// **Source:** `TopOpeBRepBuild_FaceAreaBuilder.hxx`:42 - `TopOpeBRepBuild_FaceAreaBuilder::TopOpeBRepBuild_FaceAreaBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceAreaBuilder.hxx`:46 - `TopOpeBRepBuild_FaceAreaBuilder::TopOpeBRepBuild_FaceAreaBuilder()`
@@ -5584,12 +7479,14 @@ impl FaceAreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_ctor_loopset_loopclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5610,49 +7507,68 @@ impl FaceAreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_init_face_area_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_init_face_area_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to TopOpeBRepBuild_Area2dBuilder
     pub fn as_area2d_builder(&self) -> &Area2dBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_Area2dBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_Area2dBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_Area2dBuilder (mutable)
     pub fn as_area2d_builder_mut(&mut self) -> &mut Area2dBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_Area2dBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_Area2dBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_AreaBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_AreaBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder (mutable)
     pub fn as_area_builder_mut(&mut self) -> &mut AreaBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -5663,54 +7579,91 @@ impl FaceAreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitAreaBuilder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitAreaBuilder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitArea(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitArea(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_MoreArea(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_MoreArea(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_NextArea(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_NextArea(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitLoop(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_MoreLoop(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_MoreLoop(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_NextLoop(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_NextLoop(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_Loop(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5721,13 +7674,16 @@ impl FaceAreaBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5738,13 +7694,16 @@ impl FaceAreaBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5757,15 +7716,18 @@ impl FaceAreaBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -5786,7 +7748,11 @@ unsafe impl crate::CppDeletable for FaceBuilder {
 impl FaceBuilder {
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:41 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_FaceBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:45 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
@@ -5797,12 +7763,14 @@ impl FaceBuilder {
         F: &crate::topo_ds::Shape,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_FaceBuilder_ctor_wireedgeset_shape_bool(
                     ES, F, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5823,13 +7791,16 @@ impl FaceBuilder {
         F: &crate::topo_ds::Shape,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceBuilder_init_face_builder(
-                self as *mut Self,
-                ES,
-                F,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_init_face_builder(
+                    self as *mut Self,
+                    ES,
+                    F,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5843,12 +7814,15 @@ impl FaceBuilder {
         mapVVsameG: &mut crate::ffi::TopTools_IndexedDataMapOfShapeShape,
         mapVon1Edge: &mut crate::ffi::TopTools_IndexedDataMapOfShapeShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceBuilder_detect_unclosed_wire(
-                self as *mut Self,
-                mapVVsameG,
-                mapVon1Edge,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_detect_unclosed_wire(
+                    self as *mut Self,
+                    mapVVsameG,
+                    mapVon1Edge,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5860,12 +7834,15 @@ impl FaceBuilder {
         mapVVref: &crate::ffi::TopTools_IndexedDataMapOfShapeShape,
         mapVon1Edge: &crate::ffi::TopTools_IndexedDataMapOfShapeShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceBuilder_correct_gclosed_wire(
-                self as *mut Self,
-                mapVVref,
-                mapVon1Edge,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_correct_gclosed_wire(
+                    self as *mut Self,
+                    mapVVref,
+                    mapVon1Edge,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5878,53 +7855,92 @@ impl FaceBuilder {
         &mut self,
         mapE: &mut crate::ffi::TopTools_IndexedMapOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceBuilder_detect_pseudo_internal_edge(
-                self as *mut Self,
-                mapE,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_detect_pseudo_internal_edge(
+                    self as *mut Self,
+                    mapE,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:72 - `TopOpeBRepBuild_FaceBuilder::Face()`
     /// return myFace
     pub fn face(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FaceBuilder_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:74 - `TopOpeBRepBuild_FaceBuilder::InitFace()`
     pub fn init_face(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_init_face(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_init_face(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:76 - `TopOpeBRepBuild_FaceBuilder::MoreFace()`
     pub fn more_face(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_more_face(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_more_face(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:78 - `TopOpeBRepBuild_FaceBuilder::NextFace()`
     pub fn next_face(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_next_face(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_next_face(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:80 - `TopOpeBRepBuild_FaceBuilder::InitWire()`
     pub fn init_wire(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_init_wire(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_init_wire(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:82 - `TopOpeBRepBuild_FaceBuilder::MoreWire()`
     pub fn more_wire(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_more_wire(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_more_wire(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:84 - `TopOpeBRepBuild_FaceBuilder::NextWire()`
     pub fn next_wire(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_next_wire(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_next_wire(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:86 - `TopOpeBRepBuild_FaceBuilder::IsOldWire()`
     pub fn is_old_wire(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_is_old_wire(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_is_old_wire(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:92 - `TopOpeBRepBuild_FaceBuilder::OldWire()`
@@ -5933,46 +7949,84 @@ impl FaceBuilder {
     /// * an old wire OldWire(), which has not been reconstructed;
     /// * a new wire made of edges described by ...NewEdge() methods.
     pub fn old_wire(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FaceBuilder_old_wire(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_old_wire(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:95 - `TopOpeBRepBuild_FaceBuilder::FindNextValidElement()`
     /// Iterates on myBlockIterator until finding a valid element
     pub fn find_next_valid_element(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_FaceBuilder_find_next_valid_element(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_find_next_valid_element(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:97 - `TopOpeBRepBuild_FaceBuilder::InitEdge()`
     pub fn init_edge(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_init_edge(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_init_edge(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:99 - `TopOpeBRepBuild_FaceBuilder::MoreEdge()`
     pub fn more_edge(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_more_edge(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_more_edge(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:101 - `TopOpeBRepBuild_FaceBuilder::NextEdge()`
     pub fn next_edge(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_next_edge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_next_edge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:104 - `TopOpeBRepBuild_FaceBuilder::Edge()`
     /// Returns current new edge of current new wire.
     pub fn edge(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FaceBuilder_edge(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:106 - `TopOpeBRepBuild_FaceBuilder::EdgeConnexity()`
     pub fn edge_connexity(&self, E: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_edge_connexity(self as *const Self, E) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_edge_connexity(self as *const Self, E)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:108 - `TopOpeBRepBuild_FaceBuilder::AddEdgeWire()`
     pub fn add_edge_wire(&self, E: &crate::topo_ds::Shape, W: &mut crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_FaceBuilder_add_edge_wire(self as *const Self, E, W) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FaceBuilder_add_edge_wire(self as *const Self, E, W)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -5992,7 +8046,11 @@ unsafe impl crate::CppDeletable for FuseFace {
 impl FuseFace {
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:32 - `TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_FuseFace_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:34 - `TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace()`
@@ -6001,10 +8059,12 @@ impl FuseFace {
         LRF: &crate::ffi::TopTools_ListOfShape,
         CXM: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_FuseFace_ctor_listofshape2_int(
-                LIF, LRF, CXM,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FuseFace_ctor_listofshape2_int(LIF, LRF, CXM)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6015,72 +8075,134 @@ impl FuseFace {
         LRF: &crate::ffi::TopTools_ListOfShape,
         CXM: i32,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_init(self as *mut Self, LIF, LRF, CXM) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_init(self as *mut Self, LIF, LRF, CXM) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:42 - `TopOpeBRepBuild_FuseFace::PerformFace()`
     pub fn perform_face(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_perform_face(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_perform_face(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:44 - `TopOpeBRepBuild_FuseFace::PerformEdge()`
     pub fn perform_edge(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_perform_edge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_perform_edge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:46 - `TopOpeBRepBuild_FuseFace::ClearEdge()`
     pub fn clear_edge(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_clear_edge(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_clear_edge(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:48 - `TopOpeBRepBuild_FuseFace::ClearVertex()`
     pub fn clear_vertex(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_clear_vertex(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_clear_vertex(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:50 - `TopOpeBRepBuild_FuseFace::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:52 - `TopOpeBRepBuild_FuseFace::IsModified()`
     pub fn is_modified(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_is_modified(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_is_modified(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:54 - `TopOpeBRepBuild_FuseFace::LFuseFace()`
     pub fn l_fuse_face(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_fuse_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_l_fuse_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:56 - `TopOpeBRepBuild_FuseFace::LInternEdge()`
     pub fn l_intern_edge(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_intern_edge(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_l_intern_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:58 - `TopOpeBRepBuild_FuseFace::LExternEdge()`
     pub fn l_extern_edge(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_extern_edge(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_l_extern_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:60 - `TopOpeBRepBuild_FuseFace::LModifEdge()`
     pub fn l_modif_edge(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_modif_edge(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_l_modif_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:62 - `TopOpeBRepBuild_FuseFace::LInternVertex()`
     pub fn l_intern_vertex(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_intern_vertex(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FuseFace_l_intern_vertex(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:64 - `TopOpeBRepBuild_FuseFace::LExternVertex()`
     pub fn l_extern_vertex(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_extern_vertex(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_FuseFace_l_extern_vertex(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:66 - `TopOpeBRepBuild_FuseFace::LModifVertex()`
     pub fn l_modif_vertex(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_FuseFace_l_modif_vertex(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_FuseFace_l_modif_vertex(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -6100,44 +8222,68 @@ unsafe impl crate::CppDeletable for GIter {
 impl GIter {
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:34 - `TopOpeBRepBuild_GIter::TopOpeBRepBuild_GIter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GIter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_GIter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:36 - `TopOpeBRepBuild_GIter::TopOpeBRepBuild_GIter()`
     pub fn new_gtopo(G: &GTopo) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GIter_ctor_gtopo(G)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_GIter_ctor_gtopo(G) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:38 - `TopOpeBRepBuild_GIter::Init()`
     pub fn init(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GIter_init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GIter_init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:40 - `TopOpeBRepBuild_GIter::Init()`
     pub fn init_gtopo(&mut self, G: &GTopo) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GIter_init_gtopo(self as *mut Self, G) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GIter_init_gtopo(self as *mut Self, G) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:42 - `TopOpeBRepBuild_GIter::More()`
     pub fn more(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_GIter_more(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_GIter_more(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:44 - `TopOpeBRepBuild_GIter::Next()`
     pub fn next(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GIter_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GIter_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:46 - `TopOpeBRepBuild_GIter::Current()`
     pub fn current(&self, s1: &mut crate::top_abs::State, s2: &mut crate::top_abs::State) {
         let mut s1_i32_: i32 = (*s1).into();
         let mut s2_i32_: i32 = (*s2).into();
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GIter_current(
-                self as *const Self,
-                &mut s1_i32_,
-                &mut s2_i32_,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GIter_current(
+                    self as *const Self,
+                    &mut s1_i32_,
+                    &mut s2_i32_,
+                )
+            };
+            crate::check_exception();
         };
         *s1 = crate::top_abs::State::try_from(s1_i32_).unwrap();
         *s2 = crate::top_abs::State::try_from(s2_i32_).unwrap();
@@ -6145,7 +8291,10 @@ impl GIter {
 
     /// **Source:** `TopOpeBRepBuild_GIter.hxx`:48 - `TopOpeBRepBuild_GIter::Dump()`
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GIter_dump(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GIter_dump(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6166,7 +8315,11 @@ impl GTool {
     /// **Source:** `TopOpeBRepBuild_GTool.hxx` - `TopOpeBRepBuild_GTool::TopOpeBRepBuild_GTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_GTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTool.hxx`:32 - `TopOpeBRepBuild_GTool::GFusUnsh()`
@@ -6174,11 +8327,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_fus_unsh(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_fus_unsh(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6187,11 +8340,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_fus_same(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_fus_same(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6200,11 +8353,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_fus_diff(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_fus_diff(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6213,11 +8366,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_cut_unsh(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_cut_unsh(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6226,11 +8379,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_cut_same(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_cut_same(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6239,11 +8392,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_cut_diff(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_cut_diff(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6252,11 +8405,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_com_unsh(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_com_unsh(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6265,11 +8418,11 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_com_same(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_com_same(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6278,17 +8431,20 @@ impl GTool {
         s1: crate::top_abs::ShapeEnum,
         s2: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTool_g_com_diff(
-                s1.into(),
-                s2.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTool_g_com_diff(s1.into(), s2.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTool.hxx`:59 - `TopOpeBRepBuild_GTool::Dump()`
     pub fn dump(OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTool_dump(OS) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTool_dump(OS) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6308,7 +8464,11 @@ unsafe impl crate::CppDeletable for GTopo {
 impl GTopo {
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:34 - `TopOpeBRepBuild_GTopo::TopOpeBRepBuild_GTopo()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTopo_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_GTopo_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:36 - `TopOpeBRepBuild_GTopo::TopOpeBRepBuild_GTopo()`
@@ -6327,8 +8487,8 @@ impl GTopo {
         C1: crate::top_ope_b_rep_ds::Config,
         C2: crate::top_ope_b_rep_ds::Config,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_GTopo_ctor_bool9_shapeenum2_config2(
                     II,
                     IN,
@@ -6343,14 +8503,19 @@ impl GTopo {
                     t2.into(),
                     C1.into(),
                     C2.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:50 - `TopOpeBRepBuild_GTopo::Reset()`
     pub fn reset(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_reset(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTopo_reset(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:52 - `TopOpeBRepBuild_GTopo::Set()`
@@ -6366,19 +8531,22 @@ impl GTopo {
         ON: bool,
         OO: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_set(
-                self as *mut Self,
-                II,
-                IN,
-                IO,
-                NI,
-                NN,
-                NO,
-                OI,
-                ON,
-                OO,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_set(
+                    self as *mut Self,
+                    II,
+                    IN,
+                    IO,
+                    NI,
+                    NN,
+                    NO,
+                    OI,
+                    ON,
+                    OO,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6386,8 +8554,15 @@ impl GTopo {
     pub fn type_(&self, t1: &mut crate::top_abs::ShapeEnum, t2: &mut crate::top_abs::ShapeEnum) {
         let mut t1_i32_: i32 = (*t1).into();
         let mut t2_i32_: i32 = (*t2).into();
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_type_(self as *const Self, &mut t1_i32_, &mut t2_i32_)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_type_(
+                    self as *const Self,
+                    &mut t1_i32_,
+                    &mut t2_i32_,
+                )
+            };
+            crate::check_exception();
         };
         *t1 = crate::top_abs::ShapeEnum::try_from(t1_i32_).unwrap();
         *t2 = crate::top_abs::ShapeEnum::try_from(t2_i32_).unwrap();
@@ -6395,28 +8570,35 @@ impl GTopo {
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:64 - `TopOpeBRepBuild_GTopo::ChangeType()`
     pub fn change_type(&mut self, t1: crate::top_abs::ShapeEnum, t2: crate::top_abs::ShapeEnum) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_change_type(self as *mut Self, t1.into(), t2.into())
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_change_type(
+                    self as *mut Self,
+                    t1.into(),
+                    t2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:66 - `TopOpeBRepBuild_GTopo::Config1()`
     pub fn config1(&self) -> crate::top_ope_b_rep_ds::Config {
-        unsafe {
-            crate::top_ope_b_rep_ds::Config::try_from(crate::ffi::TopOpeBRepBuild_GTopo_config1(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_config1(self as *const Self) };
+            crate::check_exception();
+            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:68 - `TopOpeBRepBuild_GTopo::Config2()`
     pub fn config2(&self) -> crate::top_ope_b_rep_ds::Config {
-        unsafe {
-            crate::top_ope_b_rep_ds::Config::try_from(crate::ffi::TopOpeBRepBuild_GTopo_config2(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_config2(self as *const Self) };
+            crate::check_exception();
+            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
         }
     }
 
@@ -6426,36 +8608,66 @@ impl GTopo {
         C1: crate::top_ope_b_rep_ds::Config,
         C2: crate::top_ope_b_rep_ds::Config,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_change_config(self as *mut Self, C1.into(), C2.into())
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_change_config(
+                    self as *mut Self,
+                    C1.into(),
+                    C2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:72 - `TopOpeBRepBuild_GTopo::Value()`
     pub fn value_state2(&self, s1: crate::top_abs::State, s2: crate::top_abs::State) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_value_state2(
-                self as *const Self,
-                s1.into(),
-                s2.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_value_state2(
+                    self as *const Self,
+                    s1.into(),
+                    s2.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:74 - `TopOpeBRepBuild_GTopo::Value()`
     pub fn value_int2(&self, I1: i32, I2: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_value_int2(self as *const Self, I1, I2) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_value_int2(self as *const Self, I1, I2)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:77 - `TopOpeBRepBuild_GTopo::Value()`
     pub fn value_int(&self, II: i32) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_value_int(self as *const Self, II) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_value_int(self as *const Self, II) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:79 - `TopOpeBRepBuild_GTopo::ChangeValue()`
     pub fn change_value_int2_bool(&mut self, i1: i32, i2: i32, b: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_change_value_int2_bool(self as *mut Self, i1, i2, b)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_change_value_int2_bool(
+                    self as *mut Self,
+                    i1,
+                    i2,
+                    b,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6466,35 +8678,45 @@ impl GTopo {
         s2: crate::top_abs::State,
         b: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_change_value_state2_bool(
-                self as *mut Self,
-                s1.into(),
-                s2.into(),
-                b,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_change_value_state2_bool(
+                    self as *mut Self,
+                    s1.into(),
+                    s2.into(),
+                    b,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:87 - `TopOpeBRepBuild_GTopo::GIndex()`
     pub fn g_index(&self, S: crate::top_abs::State) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_g_index(self as *const Self, S.into()) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_g_index(self as *const Self, S.into()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:89 - `TopOpeBRepBuild_GTopo::GState()`
     pub fn g_state(&self, I: i32) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_GTopo_g_state(
-                self as *const Self,
-                I,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_g_state(self as *const Self, I) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:91 - `TopOpeBRepBuild_GTopo::Index()`
     pub fn index(&self, II: i32, i1: &mut i32, i2: &mut i32) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_index(self as *const Self, II, i1, i2) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTopo_index(self as *const Self, II, i1, i2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:95 - `TopOpeBRepBuild_GTopo::DumpVal()`
@@ -6504,36 +8726,48 @@ impl GTopo {
         s1: crate::top_abs::State,
         s2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_dump_val(
-                self as *const Self,
-                OS,
-                s1.into(),
-                s2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_dump_val(
+                    self as *const Self,
+                    OS,
+                    s1.into(),
+                    s2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:99 - `TopOpeBRepBuild_GTopo::DumpType()`
     pub fn dump_type(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_type(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_type(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:106 - `TopOpeBRepBuild_GTopo::Dump()`
     pub unsafe fn dump(&self, OS: &mut crate::ffi::Standard_OStream, s: *mut std::ffi::c_void) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump(self as *const Self, OS, s) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump(self as *const Self, OS, s) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:108 - `TopOpeBRepBuild_GTopo::StatesON()`
     pub fn states_on(&self, s1: &mut crate::top_abs::State, s2: &mut crate::top_abs::State) {
         let mut s1_i32_: i32 = (*s1).into();
         let mut s2_i32_: i32 = (*s2).into();
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_GTopo_states_on(
-                self as *const Self,
-                &mut s1_i32_,
-                &mut s2_i32_,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_GTopo_states_on(
+                    self as *const Self,
+                    &mut s1_i32_,
+                    &mut s2_i32_,
+                )
+            };
+            crate::check_exception();
         };
         *s1 = crate::top_abs::State::try_from(s1_i32_).unwrap();
         *s2 = crate::top_abs::State::try_from(s2_i32_).unwrap();
@@ -6541,30 +8775,49 @@ impl GTopo {
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:110 - `TopOpeBRepBuild_GTopo::IsToReverse1()`
     pub fn is_to_reverse1(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_is_to_reverse1(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_is_to_reverse1(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:112 - `TopOpeBRepBuild_GTopo::IsToReverse2()`
     pub fn is_to_reverse2(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_is_to_reverse2(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_is_to_reverse2(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:114 - `TopOpeBRepBuild_GTopo::SetReverse()`
     pub fn set_reverse(&mut self, rev: bool) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_set_reverse(self as *mut Self, rev) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTopo_set_reverse(self as *mut Self, rev) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:116 - `TopOpeBRepBuild_GTopo::Reverse()`
     pub fn reverse(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_reverse(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_reverse(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:118 - `TopOpeBRepBuild_GTopo::CopyPermuted()`
     pub fn copy_permuted(&self) -> crate::OwnedPtr<GTopo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_GTopo_copy_permuted(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_GTopo_copy_permuted(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6575,7 +8828,10 @@ impl GTopo {
         s2: crate::top_abs::State,
         b: bool,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_ssb(OS, s1.into(), s2.into(), b) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_GTopo_dump_ssb(OS, s1.into(), s2.into(), b) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6602,14 +8858,21 @@ unsafe impl crate::CppDeletable for HBuilder {
 impl HBuilder {
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:50 - `TopOpeBRepBuild_HBuilder::TopOpeBRepBuild_HBuilder()`
     pub fn new_buildtool(BT: &crate::top_ope_b_rep_ds::BuildTool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_HBuilder_ctor_buildtool(BT))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_ctor_buildtool(BT) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:52 - `TopOpeBRepBuild_HBuilder::BuildTool()`
     pub fn build_tool(&self) -> &crate::top_ope_b_rep_ds::BuildTool {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_build_tool(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_build_tool(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:56 - `TopOpeBRepBuild_HBuilder::Perform()`
@@ -6619,11 +8882,14 @@ impl HBuilder {
         &mut self,
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_perform_handletopopebrepdshdatastructure(
-                self as *mut Self,
-                HDS,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_perform_handletopopebrepdshdatastructure(
+                    self as *mut Self,
+                    HDS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6636,13 +8902,16 @@ impl HBuilder {
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_perform_handletopopebrepdshdatastructure_shape2(
-                self as *mut Self,
-                HDS,
-                S1,
-                S2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_perform_handletopopebrepdshdatastructure_shape2(
+                    self as *mut Self,
+                    HDS,
+                    S1,
+                    S2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6650,22 +8919,32 @@ impl HBuilder {
     /// Removes all split and merge already performed.
     /// Does NOT clear the handled DS.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:69 - `TopOpeBRepBuild_HBuilder::DataStructure()`
     /// returns the DS handled by this builder
     pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_HBuilder_data_structure(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_data_structure(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:71 - `TopOpeBRepBuild_HBuilder::ChangeBuildTool()`
     pub fn change_build_tool(&mut self) -> &mut crate::top_ope_b_rep_ds::BuildTool {
-        unsafe { &mut *(crate::ffi::TopOpeBRepBuild_HBuilder_change_build_tool(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_change_build_tool(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:75 - `TopOpeBRepBuild_HBuilder::MergeShapes()`
@@ -6678,14 +8957,17 @@ impl HBuilder {
         S2: &crate::topo_ds::Shape,
         TB2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_merge_shapes(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_merge_shapes(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6699,14 +8981,17 @@ impl HBuilder {
         S2: &crate::topo_ds::Shape,
         TB2: crate::top_abs::State,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_merge_solids(
-                self as *mut Self,
-                S1,
-                TB1.into(),
-                S2,
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_merge_solids(
+                    self as *mut Self,
+                    S1,
+                    TB1.into(),
+                    S2,
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6714,14 +8999,27 @@ impl HBuilder {
     /// Merges the solid <S>  keeping the
     /// parts of state <TB>.
     pub fn merge_solid(&mut self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_merge_solid(self as *mut Self, S, TB.into()) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_merge_solid(self as *mut Self, S, TB.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:92 - `TopOpeBRepBuild_HBuilder::IsSplit()`
     /// Returns True if the shape <S> has been split.
     pub fn is_split(&self, S: &crate::topo_ds::Shape, ToBuild: crate::top_abs::State) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_is_split(self as *const Self, S, ToBuild.into())
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_is_split(
+                    self as *const Self,
+                    S,
+                    ToBuild.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6738,16 +9036,28 @@ impl HBuilder {
         S: &crate::topo_ds::Shape,
         ToBuild: crate::top_abs::State,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_HBuilder_splits(self as *const Self, S, ToBuild.into()))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_splits(self as *const Self, S, ToBuild.into())
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:99 - `TopOpeBRepBuild_HBuilder::IsMerged()`
     /// Returns True if the shape <S> has been merged.
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, ToBuild: crate::top_abs::State) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_is_merged(self as *const Self, S, ToBuild.into())
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_is_merged(
+                    self as *const Self,
+                    S,
+                    ToBuild.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6764,77 +9074,129 @@ impl HBuilder {
         S: &crate::topo_ds::Shape,
         ToBuild: crate::top_abs::State,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_HBuilder_merged(self as *const Self, S, ToBuild.into()))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_merged(self as *const Self, S, ToBuild.into())
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:107 - `TopOpeBRepBuild_HBuilder::NewVertex()`
     /// Returns the vertex created on point <I>.
     pub fn new_vertex(&self, I: i32) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_new_vertex(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_new_vertex(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:110 - `TopOpeBRepBuild_HBuilder::NewEdges()`
     /// Returns the edges created on curve <I>.
     pub fn new_edges(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_new_edges(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_new_edges(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:113 - `TopOpeBRepBuild_HBuilder::ChangeNewEdges()`
     /// Returns the edges created on curve <I>.
     pub fn change_new_edges(&mut self, I: i32) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_HBuilder_change_new_edges(self as *mut Self, I))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_change_new_edges(self as *mut Self, I)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:116 - `TopOpeBRepBuild_HBuilder::NewFaces()`
     /// Returns the faces created on surface <I>.
     pub fn new_faces(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_new_faces(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_new_faces(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:118 - `TopOpeBRepBuild_HBuilder::Section()`
     pub fn section(&mut self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_section(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_section(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:120 - `TopOpeBRepBuild_HBuilder::InitExtendedSectionDS()`
     pub fn init_extended_section_ds(&mut self, k: i32) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_init_extended_section_ds(self as *mut Self, k)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_init_extended_section_ds(self as *mut Self, k)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:122 - `TopOpeBRepBuild_HBuilder::InitSection()`
     pub fn init_section(&mut self, k: i32) {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_init_section(self as *mut Self, k) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_init_section(self as *mut Self, k) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:124 - `TopOpeBRepBuild_HBuilder::MoreSection()`
     pub fn more_section(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_more_section(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_more_section(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:126 - `TopOpeBRepBuild_HBuilder::NextSection()`
     pub fn next_section(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_next_section(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_next_section(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:128 - `TopOpeBRepBuild_HBuilder::CurrentSection()`
     pub fn current_section(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_current_section(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_current_section(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:130 - `TopOpeBRepBuild_HBuilder::GetDSEdgeFromSectEdge()`
     pub fn get_ds_edge_from_sect_edge(&mut self, E: &crate::topo_ds::Shape, rank: i32) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_edge_from_sect_edge(
-                self as *mut Self,
-                E,
-                rank,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_edge_from_sect_edge(
+                    self as *mut Self,
+                    E,
+                    rank,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6844,43 +9206,59 @@ impl HBuilder {
         indexEdg: i32,
         rank: i32,
     ) -> &mut crate::ffi::TColStd_ListOfInteger {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_edge(
-                self as *mut Self,
-                indexEdg,
-                rank,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_edge(
+                    self as *mut Self,
+                    indexEdg,
+                    rank,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:136 - `TopOpeBRepBuild_HBuilder::GetDSCurveFromSectEdge()`
     pub fn get_ds_curve_from_sect_edge(&mut self, SectEdge: &crate::topo_ds::Shape) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_curve_from_sect_edge(
-                self as *mut Self,
-                SectEdge,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_curve_from_sect_edge(
+                    self as *mut Self,
+                    SectEdge,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:138 - `TopOpeBRepBuild_HBuilder::GetDSFaceFromDSCurve()`
     pub fn get_ds_face_from_ds_curve(&mut self, indexCur: i32, rank: i32) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_curve(
-                self as *mut Self,
-                indexCur,
-                rank,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_curve(
+                    self as *mut Self,
+                    indexCur,
+                    rank,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:141 - `TopOpeBRepBuild_HBuilder::GetDSPointFromNewVertex()`
     pub fn get_ds_point_from_new_vertex(&mut self, NewVert: &crate::topo_ds::Shape) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_point_from_new_vertex(
-                self as *mut Self,
-                NewVert,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_get_ds_point_from_new_vertex(
+                    self as *mut Self,
+                    NewVert,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6898,14 +9276,18 @@ impl HBuilder {
         F2: &mut crate::topo_ds::Shape,
         IC: &mut i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_edge_curve_ancestors(
-                self as *mut Self,
-                E,
-                F1,
-                F2,
-                IC,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_edge_curve_ancestors(
+                    self as *mut Self,
+                    E,
+                    F1,
+                    F2,
+                    IC,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6926,72 +9308,104 @@ impl HBuilder {
         LE1: &mut crate::ffi::TopTools_ListOfShape,
         LE2: &mut crate::ffi::TopTools_ListOfShape,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_edge_section_ancestors(
-                self as *mut Self,
-                E,
-                LF1,
-                LF2,
-                LE1,
-                LE2,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_edge_section_ancestors(
+                    self as *mut Self,
+                    E,
+                    LF1,
+                    LF2,
+                    LE1,
+                    LE2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:169 - `TopOpeBRepBuild_HBuilder::IsKPart()`
     /// Returns 0 is standard operation, != 0 if particular case
     pub fn is_k_part(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_is_k_part(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_is_k_part(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:171 - `TopOpeBRepBuild_HBuilder::MergeKPart()`
     pub fn merge_k_part(&mut self, TB1: crate::top_abs::State, TB2: crate::top_abs::State) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_merge_k_part(
-                self as *mut Self,
-                TB1.into(),
-                TB2.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_merge_k_part(
+                    self as *mut Self,
+                    TB1.into(),
+                    TB2.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:173 - `TopOpeBRepBuild_HBuilder::ChangeBuilder()`
     pub fn change_builder(&mut self) -> &mut Builder {
-        unsafe { &mut *(crate::ffi::TopOpeBRepBuild_HBuilder_change_builder(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_change_builder(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepBuild_HBuilder_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_HBuilder_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_HBuilder_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_HBuilder_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -6999,62 +9413,95 @@ impl HBuilder {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_HBuilder_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_HBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_HBuilder_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_HBuilder_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7069,22 +9516,34 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildHBuilder {
 impl HandleTopOpeBRepBuildHBuilder {
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_HBuilder
     pub fn get(&self) -> &crate::ffi::TopOpeBRepBuild_HBuilder {
-        unsafe { &*(crate::ffi::HandleTopOpeBRepBuildHBuilder_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTopOpeBRepBuildHBuilder_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepBuild_HBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepBuild_HBuilder {
-        unsafe { &mut *(crate::ffi::HandleTopOpeBRepBuildHBuilder_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTopOpeBRepBuildHBuilder_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_HBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTopOpeBRepBuildHBuilder_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7108,64 +9567,106 @@ unsafe impl crate::CppDeletable for Loop {
 impl Loop {
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:37 - `TopOpeBRepBuild_Loop::TopOpeBRepBuild_Loop()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Loop_ctor_shape(S)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Loop_ctor_shape(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:39 - `TopOpeBRepBuild_Loop::TopOpeBRepBuild_Loop()`
     pub fn new_blockiterator(BI: &BlockIterator) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Loop_ctor_blockiterator(BI))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Loop_ctor_blockiterator(BI) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:41 - `TopOpeBRepBuild_Loop::IsShape()`
     pub fn is_shape(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_is_shape(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Loop_is_shape(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:43 - `TopOpeBRepBuild_Loop::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Loop_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Loop_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:45 - `TopOpeBRepBuild_Loop::BlockIterator()`
     pub fn block_iterator(&self) -> &BlockIterator {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Loop_block_iterator(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Loop_block_iterator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:47 - `TopOpeBRepBuild_Loop::Dump()`
     pub fn dump(&self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Loop_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Loop_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Loop_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepBuild_Loop_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Loop_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Loop_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Loop_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Loop_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Loop_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7173,54 +9674,87 @@ impl Loop {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildLoop> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Loop_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Loop_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Loop_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Loop_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Loop_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7235,22 +9769,34 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildLoop {
 impl HandleTopOpeBRepBuildLoop {
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_Loop
     pub fn get(&self) -> &crate::ffi::TopOpeBRepBuild_Loop {
-        unsafe { &*(crate::ffi::HandleTopOpeBRepBuildLoop_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTopOpeBRepBuildLoop_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepBuild_Loop
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepBuild_Loop {
-        unsafe { &mut *(crate::ffi::HandleTopOpeBRepBuildLoop_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTopOpeBRepBuildLoop_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_Loop> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTopOpeBRepBuildLoop_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7265,6 +9811,7 @@ impl HandleTopOpeBRepBuildLoop {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7295,13 +9842,12 @@ impl LoopClassifier {
         L1: &crate::ffi::HandleTopOpeBRepBuildLoop,
         L2: &crate::ffi::HandleTopOpeBRepBuildLoop,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_LoopClassifier_compare(
-                self as *mut Self,
-                L1,
-                L2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_LoopClassifier_compare(self as *mut Self, L1, L2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 }
@@ -7322,37 +9868,57 @@ unsafe impl crate::CppDeletable for LoopSet {
 impl LoopSet {
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:35 - `TopOpeBRepBuild_LoopSet::TopOpeBRepBuild_LoopSet()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_LoopSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
     pub fn change_list_of_loop(&mut self) -> &mut crate::ffi::TopOpeBRepBuild_ListOfLoop {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_LoopSet_change_list_of_loop(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_LoopSet_change_list_of_loop(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:41 - `TopOpeBRepBuild_LoopSet::InitLoop()`
     pub fn init_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_init_loop(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_init_loop(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:43 - `TopOpeBRepBuild_LoopSet::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_more_loop(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_more_loop(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:45 - `TopOpeBRepBuild_LoopSet::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_next_loop(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_next_loop(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:47 - `TopOpeBRepBuild_LoopSet::Loop()`
     pub fn loop_(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildLoop> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_LoopSet_loop_(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_LoopSet_loop_(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7380,116 +9946,193 @@ impl Pave {
         P: f64,
         bound: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Pave_ctor_shape_real_bool(
-                V, P, bound,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_ctor_shape_real_bool(V, P, bound) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:41 - `TopOpeBRepBuild_Pave::HasSameDomain()`
     pub fn has_same_domain_bool(&mut self, b: bool) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_has_same_domain_bool(self as *mut Self, b) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Pave_has_same_domain_bool(self as *mut Self, b) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:43 - `TopOpeBRepBuild_Pave::SameDomain()`
     pub fn same_domain_shape(&mut self, VSD: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_same_domain_shape(self as *mut Self, VSD) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Pave_same_domain_shape(self as *mut Self, VSD) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:45 - `TopOpeBRepBuild_Pave::HasSameDomain()`
     pub fn has_same_domain(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_has_same_domain(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_has_same_domain(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:47 - `TopOpeBRepBuild_Pave::SameDomain()`
     pub fn same_domain(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_same_domain(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_same_domain(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:49 - `TopOpeBRepBuild_Pave::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_vertex(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Pave_vertex(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:51 - `TopOpeBRepBuild_Pave::ChangeVertex()`
     pub fn change_vertex(&mut self) -> &mut crate::topo_ds::Shape {
-        unsafe { &mut *(crate::ffi::TopOpeBRepBuild_Pave_change_vertex(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_change_vertex(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:53 - `TopOpeBRepBuild_Pave::Parameter()`
     pub fn parameter(&self) -> f64 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:55 - `TopOpeBRepBuild_Pave::Parameter()`
     pub fn parameter_real(&mut self, Par: f64) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_parameter_real(self as *mut Self, Par) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Pave_parameter_real(self as *mut Self, Par) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:57 - `TopOpeBRepBuild_Pave::InterferenceType()`
     pub fn interference_type(&mut self) -> &mut crate::top_ope_b_rep_ds::Kind {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Pave_interference_type(self as *mut Self)
-                as *mut crate::top_ope_b_rep_ds::Kind)
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_interference_type(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result as *mut crate::top_ope_b_rep_ds::Kind) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:59 - `TopOpeBRepBuild_Pave::IsShape()`
     pub fn is_shape(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_is_shape(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_is_shape(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:61 - `TopOpeBRepBuild_Pave::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Pave_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:63 - `TopOpeBRepBuild_Pave::Dump()`
     pub fn dump(&self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Pave_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Pave_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TopOpeBRepBuild_Pave_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Pave_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Pave_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_Loop
     pub fn as_loop(&self) -> &Loop {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_as_TopOpeBRepBuild_Loop(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_as_TopOpeBRepBuild_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_Loop (mutable)
     pub fn as_loop_mut(&mut self) -> &mut Loop {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Pave_as_TopOpeBRepBuild_Loop_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_as_TopOpeBRepBuild_Loop_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_Pave_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7497,59 +10140,98 @@ impl Pave {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildPave> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Pave_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Pave_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Loop.hxx`:45 - `TopOpeBRepBuild_Loop::BlockIterator()`
     pub fn block_iterator(&self) -> &BlockIterator {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_Pave_inherited_BlockIterator(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_inherited_BlockIterator(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Pave_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Pave_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Pave_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7564,33 +10246,47 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildPave {
 impl HandleTopOpeBRepBuildPave {
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_Pave
     pub fn get(&self) -> &crate::ffi::TopOpeBRepBuild_Pave {
-        unsafe { &*(crate::ffi::HandleTopOpeBRepBuildPave_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTopOpeBRepBuildPave_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepBuild_Pave
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepBuild_Pave {
-        unsafe { &mut *(crate::ffi::HandleTopOpeBRepBuildPave_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTopOpeBRepBuildPave_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_Pave> to Handle<TopOpeBRepBuild_Loop>
     pub fn to_handle_loop(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildLoop> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTopOpeBRepBuildPave_to_HandleTopOpeBRepBuildLoop(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_Pave> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTopOpeBRepBuildPave_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7621,8 +10317,10 @@ impl PaveClassifier {
     /// **Source:** `TopOpeBRepBuild_PaveClassifier.hxx`:47 - `TopOpeBRepBuild_PaveClassifier::TopOpeBRepBuild_PaveClassifier()`
     /// Create a Pave classifier to compare vertices on edge <E>.
     pub fn new_shape(E: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_PaveClassifier_ctor_shape(E))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_PaveClassifier_ctor_shape(E) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7633,26 +10331,33 @@ impl PaveClassifier {
         L1: &crate::ffi::HandleTopOpeBRepBuildLoop,
         L2: &crate::ffi::HandleTopOpeBRepBuildLoop,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_PaveClassifier_compare(
-                self as *mut Self,
-                L1,
-                L2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveClassifier_compare(self as *mut Self, L1, L2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveClassifier.hxx`:53 - `TopOpeBRepBuild_PaveClassifier::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, P: f64) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_PaveClassifier_set_first_parameter(self as *mut Self, P)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveClassifier_set_first_parameter(self as *mut Self, P)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveClassifier.hxx`:55 - `TopOpeBRepBuild_PaveClassifier::ClosedVertices()`
     pub fn closed_vertices(&mut self, B: bool) {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveClassifier_closed_vertices(self as *mut Self, B) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveClassifier_closed_vertices(self as *mut Self, B)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveClassifier.hxx`:57 - `TopOpeBRepBuild_PaveClassifier::AdjustCase()`
@@ -7664,33 +10369,45 @@ impl PaveClassifier {
         tol: f64,
         cas: &mut i32,
     ) -> f64 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_PaveClassifier_adjust_case(
-                p1,
-                o.into(),
-                first,
-                period,
-                tol,
-                cas,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveClassifier_adjust_case(
+                    p1,
+                    o.into(),
+                    first,
+                    period,
+                    tol,
+                    cas,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier
     pub fn as_loop_classifier(&self) -> &LoopClassifier {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_PaveClassifier_as_TopOpeBRepBuild_LoopClassifier(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveClassifier_as_TopOpeBRepBuild_LoopClassifier(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier (mutable)
     pub fn as_loop_classifier_mut(&mut self) -> &mut LoopClassifier {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_PaveClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -7714,62 +10431,105 @@ impl PaveSet {
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:39 - `TopOpeBRepBuild_PaveSet::TopOpeBRepBuild_PaveSet()`
     /// Create a Pave set on edge <E>. It contains <E> vertices.
     pub fn new_shape(E: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_PaveSet_ctor_shape(E)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_ctor_shape(E) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:41 - `TopOpeBRepBuild_PaveSet::RemovePV()`
     pub fn remove_pv(&mut self, B: bool) {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_remove_pv(self as *mut Self, B) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_remove_pv(self as *mut Self, B) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:44 - `TopOpeBRepBuild_PaveSet::Append()`
     /// Add <PV> in the Pave set.
     pub fn append(&mut self, PV: &crate::ffi::HandleTopOpeBRepBuildPave) {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_append(self as *mut Self, PV) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_append(self as *mut Self, PV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:46 - `TopOpeBRepBuild_PaveSet::InitLoop()`
     pub fn init_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_init_loop(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_init_loop(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:48 - `TopOpeBRepBuild_PaveSet::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_more_loop(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_more_loop(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:50 - `TopOpeBRepBuild_PaveSet::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_next_loop(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_next_loop(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:52 - `TopOpeBRepBuild_PaveSet::Loop()`
     pub fn loop_(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildLoop> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_PaveSet_loop_(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_loop_(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:54 - `TopOpeBRepBuild_PaveSet::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_PaveSet_edge(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:56 - `TopOpeBRepBuild_PaveSet::HasEqualParameters()`
     pub fn has_equal_parameters(&mut self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_has_equal_parameters(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveSet_has_equal_parameters(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:58 - `TopOpeBRepBuild_PaveSet::EqualParameters()`
     pub fn equal_parameters(&self) -> f64 {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_equal_parameters(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveSet_equal_parameters(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:60 - `TopOpeBRepBuild_PaveSet::ClosedVertices()`
     pub fn closed_vertices(&mut self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_closed_vertices(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_closed_vertices(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:62 - `TopOpeBRepBuild_PaveSet::SortPave()`
@@ -7777,31 +10537,44 @@ impl PaveSet {
         Lin: &crate::ffi::TopOpeBRepBuild_ListOfPave,
         Lout: &mut crate::ffi::TopOpeBRepBuild_ListOfPave,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_sort_pave(Lin, Lout) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_PaveSet_sort_pave(Lin, Lout) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopSet
     pub fn as_loop_set(&self) -> &LoopSet {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopSet (mutable)
     pub fn as_loop_set_mut(&mut self) -> &mut LoopSet {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
     pub fn change_list_of_loop(&mut self) -> &mut crate::ffi::TopOpeBRepBuild_ListOfLoop {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 }
@@ -7823,13 +10596,19 @@ unsafe impl crate::CppDeletable for ShapeListOfShape {
 impl ShapeListOfShape {
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:33 - `TopOpeBRepBuild_ShapeListOfShape::TopOpeBRepBuild_ShapeListOfShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShapeListOfShape_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_ShapeListOfShape_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:35 - `TopOpeBRepBuild_ShapeListOfShape::TopOpeBRepBuild_ShapeListOfShape()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShapeListOfShape_ctor_shape(S))
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_ShapeListOfShape_ctor_shape(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7838,34 +10617,54 @@ impl ShapeListOfShape {
         S: &crate::topo_ds::Shape,
         L: &crate::ffi::TopTools_ListOfShape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TopOpeBRepBuild_ShapeListOfShape_ctor_shape_listofshape(S, L),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeListOfShape_ctor_shape_listofshape(S, L)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:40 - `TopOpeBRepBuild_ShapeListOfShape::List()`
     pub fn list(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeListOfShape_list(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeListOfShape_list(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:42 - `TopOpeBRepBuild_ShapeListOfShape::ChangeList()`
     pub fn change_list(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShapeListOfShape_change_list(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeListOfShape_change_list(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:44 - `TopOpeBRepBuild_ShapeListOfShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeListOfShape_shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeListOfShape_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:46 - `TopOpeBRepBuild_ShapeListOfShape::ChangeShape()`
     pub fn change_shape(&mut self) -> &mut crate::topo_ds::Shape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShapeListOfShape_change_shape(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeListOfShape_change_shape(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 }
@@ -7913,11 +10712,15 @@ impl ShapeSet {
         SubShapeType: crate::top_abs::ShapeEnum,
         checkshape: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShapeSet_ctor_shapeenum_bool(
-                SubShapeType.into(),
-                checkshape,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_ctor_shapeenum_bool(
+                    SubShapeType.into(),
+                    checkshape,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7932,7 +10735,10 @@ impl ShapeSet {
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:68 - `TopOpeBRepBuild_ShapeSet::AddShape()`
     /// Adds <S> to the list of shapes. (wires or shells).
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_add_shape(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_add_shape(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:73 - `TopOpeBRepBuild_ShapeSet::AddStartElement()`
@@ -7940,7 +10746,10 @@ impl ShapeSet {
     /// Add S to the list of starting shapes used for reconstructions.
     /// apply AddElement(S).
     pub fn add_start_element(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_add_start_element(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_add_start_element(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:78 - `TopOpeBRepBuild_ShapeSet::AddElement()`
@@ -7948,79 +10757,140 @@ impl ShapeSet {
     /// - Add subshapes of S to the map of subshapes (mySubShapeMap)
     /// - Add S to the list of shape incident to subshapes of S.
     pub fn add_element(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_add_element(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_add_element(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:81 - `TopOpeBRepBuild_ShapeSet::StartElements()`
     /// return a reference on myStartShapes
     pub fn start_elements(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeSet_start_elements(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_start_elements(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:83 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
     pub fn init_shapes(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_init_shapes(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_init_shapes(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:85 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
     pub fn more_shapes(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_more_shapes(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_more_shapes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:87 - `TopOpeBRepBuild_ShapeSet::NextShape()`
     pub fn next_shape(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_next_shape(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_next_shape(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:89 - `TopOpeBRepBuild_ShapeSet::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeSet_shape(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:91 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
     pub fn init_start_elements(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_init_start_elements(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_init_start_elements(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:93 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
     pub fn more_start_elements(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_more_start_elements(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_more_start_elements(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:95 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
     pub fn next_start_element(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_next_start_element(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_next_start_element(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:97 - `TopOpeBRepBuild_ShapeSet::StartElement()`
     pub fn start_element(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeSet_start_element(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_start_element(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:99 - `TopOpeBRepBuild_ShapeSet::InitNeighbours()`
     pub fn init_neighbours(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_init_neighbours(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_init_neighbours(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:101 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
     pub fn more_neighbours(&mut self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_more_neighbours(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_more_neighbours(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:103 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
     pub fn next_neighbour(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_next_neighbour(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_next_neighbour(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:105 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
     pub fn neighbour(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeSet_neighbour(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_neighbour(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:107 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
     pub fn change_start_shapes(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShapeSet_change_start_shapes(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_change_start_shapes(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
@@ -8029,7 +10899,10 @@ impl ShapeSet {
     /// (neighbour shapes and myCurrentShapes are of type t)
     /// Initialize myIncidentShapesIter on neighbour shapes.
     pub fn find_neighbours(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_find_neighbours(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_find_neighbours(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:114 - `TopOpeBRepBuild_ShapeSet::MakeNeighboursList()`
@@ -8044,38 +10917,58 @@ impl ShapeSet {
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShapeSet_make_neighbours_list(self as *mut Self, E, V))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_make_neighbours_list(self as *mut Self, E, V)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:117 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
     pub fn max_number_sub_shape(&mut self, Shape: &crate::topo_ds::Shape) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShapeSet_max_number_sub_shape(self as *mut Self, Shape)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_max_number_sub_shape(self as *mut Self, Shape)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape_bool(&mut self, checkshape: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShapeSet_check_shape_bool(self as *mut Self, checkshape)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_check_shape_bool(self as *mut Self, checkshape)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:121 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_check_shape(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_check_shape(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:123 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape_shape_bool(&mut self, S: &crate::topo_ds::Shape, checkgeom: bool) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShapeSet_check_shape_shape_bool(
-                self as *mut Self,
-                S,
-                checkgeom,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_check_shape_shape_bool(
+                    self as *mut Self,
+                    S,
+                    checkgeom,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8085,7 +10978,10 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         str: &crate::t_collection::AsciiString,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_name(self as *const Self, OS, str) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_name(self as *const Self, OS, str) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
@@ -8096,39 +10992,72 @@ impl ShapeSet {
         S: &crate::topo_ds::Shape,
         chk: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShapeSet_dump_check(self as *const Self, OS, str, S, chk)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_dump_check(
+                    self as *const Self,
+                    OS,
+                    str,
+                    S,
+                    chk,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:133 - `TopOpeBRepBuild_ShapeSet::DumpSS()`
     pub fn dump_ss(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_ss(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_ss(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:135 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
     pub fn dump_bb(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_bb(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_dump_bb(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:137 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name_asciistring(&mut self, N: &crate::t_collection::AsciiString) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_deb_name_asciistring(self as *mut Self, N) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShapeSet_deb_name_asciistring(self as *mut Self, N)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:139 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShapeSet_deb_name(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_deb_name(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:141 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number_int(&mut self, I: i32) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_deb_number_int(self as *mut Self, I) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_deb_number_int(self as *mut Self, I) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:143 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_deb_number(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShapeSet_deb_number(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:145 - `TopOpeBRepBuild_ShapeSet::SName()`
@@ -8138,15 +11067,17 @@ impl ShapeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShapeSet_s_name_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8157,15 +11088,17 @@ impl ShapeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShapeSet_s_nameori_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8176,15 +11109,17 @@ impl ShapeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShapeSet_s_name_listofshape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8195,15 +11130,17 @@ impl ShapeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShapeSet_s_nameori_listofshape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8230,16 +11167,20 @@ impl ShellFaceClassifier {
     /// a shell with a set of faces
     /// a shell with a shell
     pub fn new_blockbuilder(BB: &BlockBuilder) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_ctor_blockbuilder(BB),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_ctor_blockbuilder(BB) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:44 - `TopOpeBRepBuild_ShellFaceClassifier::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:47 - `TopOpeBRepBuild_ShellFaceClassifier::CompareShapes()`
@@ -8249,15 +11190,16 @@ impl ShellFaceClassifier {
         B1: &crate::topo_ds::Shape,
         B2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_compare_shapes(
                     self as *mut Self,
                     B1,
                     B2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -8268,15 +11210,16 @@ impl ShellFaceClassifier {
         F: &crate::topo_ds::Shape,
         S: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_compare_element_to_shape(
                     self as *mut Self,
                     F,
                     S,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -8284,15 +11227,23 @@ impl ShellFaceClassifier {
     /// prepare classification involving shell <S>
     /// calls ResetElement on first face of <S>
     pub fn reset_shape(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_reset_shape(self as *mut Self, S) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_reset_shape(self as *mut Self, S)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:58 - `TopOpeBRepBuild_ShellFaceClassifier::ResetElement()`
     /// prepare classification involving face <F>
     /// define 3D point (later used in Compare()) on first vertex of face <F>.
     pub fn reset_element(&mut self, F: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_reset_element(self as *mut Self, F)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_reset_element(self as *mut Self, F)
+            };
+            crate::check_exception();
         }
     }
 
@@ -8301,8 +11252,15 @@ impl ShellFaceClassifier {
     /// classification. Returns FALSE if the face <F> has been already
     /// added to the set of faces, otherwise returns TRUE.
     pub fn compare_element(&mut self, F: &crate::topo_ds::Shape) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_compare_element(self as *mut Self, F)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_compare_element(
+                    self as *mut Self,
+                    F,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8310,41 +11268,57 @@ impl ShellFaceClassifier {
     /// Returns state of classification of 3D point, defined by
     /// ResetElement, with the current set of faces, defined by Compare.
     pub fn state(&mut self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_state(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_state(self as *mut Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// Upcast to TopOpeBRepBuild_CompositeClassifier
     pub fn as_composite_classifier(&self) -> &CompositeClassifier {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_CompositeClassifier(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_CompositeClassifier(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_CompositeClassifier (mutable)
     pub fn as_composite_classifier_mut(&mut self) -> &mut CompositeClassifier {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_CompositeClassifier_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_CompositeClassifier_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier
     pub fn as_loop_classifier(&self) -> &LoopClassifier {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_LoopClassifier(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_LoopClassifier(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier (mutable)
     pub fn as_loop_classifier_mut(&mut self) -> &mut LoopClassifier {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8354,15 +11328,16 @@ impl ShellFaceClassifier {
         L1: &crate::ffi::HandleTopOpeBRepBuildLoop,
         L2: &crate::ffi::HandleTopOpeBRepBuildLoop,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceClassifier_inherited_Compare(
                     self as *mut Self,
                     L1,
                     L2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 }
@@ -8390,7 +11365,11 @@ impl ShellFaceSet {
     /// Creates a ShellFaceSet to build blocks of faces
     /// connected by edges.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:46 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
@@ -8400,36 +11379,56 @@ impl ShellFaceSet {
         S: &crate::topo_ds::Shape,
         Addr: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor_shape_address(
-                S, Addr,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_ctor_shape_address(S, Addr) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:49 - `TopOpeBRepBuild_ShellFaceSet::Solid()`
     pub fn solid(&self) -> &crate::topo_ds::Solid {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_solid(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_solid(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:51 - `TopOpeBRepBuild_ShellFaceSet::AddShape()`
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_add_shape(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_add_shape(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:53 - `TopOpeBRepBuild_ShellFaceSet::AddStartElement()`
     pub fn add_start_element(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_add_start_element(self as *mut Self, S) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_add_start_element(self as *mut Self, S)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:55 - `TopOpeBRepBuild_ShellFaceSet::AddElement()`
     pub fn add_element(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_add_element(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_add_element(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:57 - `TopOpeBRepBuild_ShellFaceSet::DumpSS()`
     pub fn dump_ss(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_dump_ss(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_dump_ss(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:59 - `TopOpeBRepBuild_ShellFaceSet::SName()`
@@ -8439,15 +11438,17 @@ impl ShellFaceSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceSet_s_name_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8458,15 +11459,17 @@ impl ShellFaceSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceSet_s_name_listofshape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8477,15 +11480,17 @@ impl ShellFaceSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceSet_s_nameori_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8496,158 +11501,241 @@ impl ShellFaceSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_ShellFaceSet_s_nameori_listofshape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_ShapeSet
     pub fn as_shape_set(&self) -> &ShapeSet {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_as_TopOpeBRepBuild_ShapeSet(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_as_TopOpeBRepBuild_ShapeSet(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_ShapeSet (mutable)
     pub fn as_shape_set_mut(&mut self) -> &mut ShapeSet {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShellFaceSet_as_TopOpeBRepBuild_ShapeSet_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_as_TopOpeBRepBuild_ShapeSet_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:81 - `TopOpeBRepBuild_ShapeSet::StartElements()`
     pub fn start_elements(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_StartElements(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_StartElements(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:83 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
     pub fn init_shapes(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_InitShapes(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_InitShapes(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:85 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
     pub fn more_shapes(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MoreShapes(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MoreShapes(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:87 - `TopOpeBRepBuild_ShapeSet::NextShape()`
     pub fn next_shape(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_NextShape(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_NextShape(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:89 - `TopOpeBRepBuild_ShapeSet::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_Shape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_Shape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:91 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
     pub fn init_start_elements(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_InitStartElements(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_InitStartElements(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:93 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
     pub fn more_start_elements(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MoreStartElements(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MoreStartElements(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:95 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
     pub fn next_start_element(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_NextStartElement(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_NextStartElement(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:97 - `TopOpeBRepBuild_ShapeSet::StartElement()`
     pub fn start_element(&self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_StartElement(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_StartElement(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:99 - `TopOpeBRepBuild_ShapeSet::InitNeighbours()`
     pub fn init_neighbours(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_InitNeighbours(self as *mut Self, S)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_InitNeighbours(
+                    self as *mut Self,
+                    S,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:101 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
     pub fn more_neighbours(&mut self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MoreNeighbours(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MoreNeighbours(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:103 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
     pub fn next_neighbour(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_NextNeighbour(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_NextNeighbour(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:105 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
     pub fn neighbour(&self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_Neighbour(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_Neighbour(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:107 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
     pub fn change_start_shapes(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_ChangeStartShapes(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_ChangeStartShapes(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:112 - `TopOpeBRepBuild_ShapeSet::FindNeighbours()`
     pub fn find_neighbours(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_FindNeighbours(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_FindNeighbours(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:117 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
     pub fn max_number_sub_shape(&mut self, Shape: &crate::topo_ds::Shape) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MaxNumberSubShape(
-                self as *mut Self,
-                Shape,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_MaxNumberSubShape(
+                    self as *mut Self,
+                    Shape,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape(&mut self, checkshape: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_CheckShape(
-                self as *mut Self,
-                checkshape,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_CheckShape(
+                    self as *mut Self,
+                    checkshape,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8657,12 +11745,15 @@ impl ShellFaceSet {
         OS: &mut crate::ffi::Standard_OStream,
         str: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpName(
-                self as *const Self,
-                OS,
-                str,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpName(
+                    self as *const Self,
+                    OS,
+                    str,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8674,31 +11765,45 @@ impl ShellFaceSet {
         S: &crate::topo_ds::Shape,
         chk: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpCheck(
-                self as *const Self,
-                OS,
-                str,
-                S,
-                chk,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpCheck(
+                    self as *const Self,
+                    OS,
+                    str,
+                    S,
+                    chk,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:135 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
     pub fn dump_bb(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpBB(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DumpBB(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:137 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name(&mut self, N: &crate::t_collection::AsciiString) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DEBName(self as *mut Self, N) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DEBName(self as *mut Self, N)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:141 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number(&mut self, I: i32) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DEBNumber(self as *mut Self, I)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellFaceSet_inherited_DEBNumber(self as *mut Self, I)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -8720,17 +11825,27 @@ unsafe impl crate::CppDeletable for ShellToSolid {
 impl ShellToSolid {
     /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:33 - `TopOpeBRepBuild_ShellToSolid::TopOpeBRepBuild_ShellToSolid()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_ShellToSolid_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_ShellToSolid_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:35 - `TopOpeBRepBuild_ShellToSolid::Init()`
     pub fn init(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellToSolid_init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellToSolid_init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:37 - `TopOpeBRepBuild_ShellToSolid::AddShell()`
     pub fn add_shell(&mut self, Sh: &crate::topo_ds::Shell) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellToSolid_add_shell(self as *mut Self, Sh) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_ShellToSolid_add_shell(self as *mut Self, Sh) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:39 - `TopOpeBRepBuild_ShellToSolid::MakeSolids()`
@@ -8739,7 +11854,12 @@ impl ShellToSolid {
         So: &crate::topo_ds::Solid,
         LSo: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_ShellToSolid_make_solids(self as *mut Self, So, LSo) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_ShellToSolid_make_solids(self as *mut Self, So, LSo)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8767,7 +11887,11 @@ unsafe impl crate::CppDeletable for SolidAreaBuilder {
 impl SolidAreaBuilder {
     /// **Source:** `TopOpeBRepBuild_SolidAreaBuilder.hxx`:40 - `TopOpeBRepBuild_SolidAreaBuilder::TopOpeBRepBuild_SolidAreaBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidAreaBuilder.hxx`:44 - `TopOpeBRepBuild_SolidAreaBuilder::TopOpeBRepBuild_SolidAreaBuilder()`
@@ -8778,12 +11902,14 @@ impl SolidAreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_ctor_loopset_loopclassifier_bool(
                     LS, LC, ForceClass,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8804,47 +11930,68 @@ impl SolidAreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_init_solid_area_builder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_init_solid_area_builder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to TopOpeBRepBuild_Area3dBuilder
     pub fn as_area3d_builder(&self) -> &Area3dBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_Area3dBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_Area3dBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_Area3dBuilder (mutable)
     pub fn as_area3d_builder_mut(&mut self) -> &mut Area3dBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_Area3dBuilder_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_Area3dBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_AreaBuilder(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_AreaBuilder(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_AreaBuilder (mutable)
     pub fn as_area_builder_mut(&mut self) -> &mut AreaBuilder {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8855,62 +12002,91 @@ impl SolidAreaBuilder {
         LC: &mut LoopClassifier,
         ForceClass: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitAreaBuilder(
-                self as *mut Self,
-                LS,
-                LC,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitAreaBuilder(
+                    self as *mut Self,
+                    LS,
+                    LC,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitArea(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitArea(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_MoreArea(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_MoreArea(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_NextArea(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_NextArea(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitLoop(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitLoop(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_MoreLoop(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_MoreLoop(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_NextLoop(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_NextLoop(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     pub fn loop_(&self) -> &crate::ffi::HandleTopOpeBRepBuildLoop {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -8921,13 +12097,16 @@ impl SolidAreaBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                    self as *const Self,
+                    L,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8938,13 +12117,16 @@ impl SolidAreaBuilder {
         LOL: &mut crate::ffi::TopOpeBRepBuild_ListOfLoop,
         s: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
+                    self as *const Self,
+                    ITLOL,
+                    LOL,
+                    s,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8957,15 +12139,18 @@ impl SolidAreaBuilder {
         s1: *mut std::ffi::c_void,
         s2: *mut std::ffi::c_void,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+                    self as *const Self,
+                    LOL1,
+                    LOL2,
+                    s,
+                    s1,
+                    s2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -8986,17 +12171,23 @@ unsafe impl crate::CppDeletable for SolidBuilder {
 impl SolidBuilder {
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:37 - `TopOpeBRepBuild_SolidBuilder::TopOpeBRepBuild_SolidBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_SolidBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:41 - `TopOpeBRepBuild_SolidBuilder::TopOpeBRepBuild_SolidBuilder()`
     /// Create a SolidBuilder to build the areas on
     /// the shapes (shells, blocks of faces) described by <LS>.
     pub fn new_shellfaceset_bool(FS: &mut ShellFaceSet, ForceClass: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TopOpeBRepBuild_SolidBuilder_ctor_shellfaceset_bool(FS, ForceClass),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidBuilder_ctor_shellfaceset_bool(FS, ForceClass)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9009,48 +12200,83 @@ impl SolidBuilder {
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:44 - `TopOpeBRepBuild_SolidBuilder::InitSolidBuilder()`
     pub fn init_solid_builder(&mut self, FS: &mut ShellFaceSet, ForceClass: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_SolidBuilder_init_solid_builder(
-                self as *mut Self,
-                FS,
-                ForceClass,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidBuilder_init_solid_builder(
+                    self as *mut Self,
+                    FS,
+                    ForceClass,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:47 - `TopOpeBRepBuild_SolidBuilder::InitSolid()`
     pub fn init_solid(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_init_solid(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_init_solid(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:49 - `TopOpeBRepBuild_SolidBuilder::MoreSolid()`
     pub fn more_solid(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_more_solid(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_more_solid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:51 - `TopOpeBRepBuild_SolidBuilder::NextSolid()`
     pub fn next_solid(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_next_solid(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_next_solid(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:53 - `TopOpeBRepBuild_SolidBuilder::InitShell()`
     pub fn init_shell(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_init_shell(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_init_shell(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:55 - `TopOpeBRepBuild_SolidBuilder::MoreShell()`
     pub fn more_shell(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_more_shell(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_more_shell(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:57 - `TopOpeBRepBuild_SolidBuilder::NextShell()`
     pub fn next_shell(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_next_shell(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_next_shell(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:59 - `TopOpeBRepBuild_SolidBuilder::IsOldShell()`
     pub fn is_old_shell(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_is_old_shell(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_SolidBuilder_is_old_shell(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:65 - `TopOpeBRepBuild_SolidBuilder::OldShell()`
@@ -9059,28 +12285,51 @@ impl SolidBuilder {
     /// * an old shell OldShell(), which has not been reconstructed;
     /// * a new shell made of faces described by ...NewFace() methods.
     pub fn old_shell(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_SolidBuilder_old_shell(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_old_shell(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:67 - `TopOpeBRepBuild_SolidBuilder::InitFace()`
     pub fn init_face(&mut self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_init_face(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_init_face(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:69 - `TopOpeBRepBuild_SolidBuilder::MoreFace()`
     pub fn more_face(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_more_face(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_more_face(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:71 - `TopOpeBRepBuild_SolidBuilder::NextFace()`
     pub fn next_face(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_next_face(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_next_face(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:74 - `TopOpeBRepBuild_SolidBuilder::Face()`
     /// Returns current new face of current new shell.
     pub fn face(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_SolidBuilder_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_SolidBuilder_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -9102,7 +12351,11 @@ impl Tools {
     /// **Source:** `TopOpeBRepBuild_Tools.hxx` - `TopOpeBRepBuild_Tools::TopOpeBRepBuild_Tools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Tools_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Tools_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:46 - `TopOpeBRepBuild_Tools::FindState()`
@@ -9114,15 +12367,18 @@ impl Tools {
         aMapProcessedVertices: &mut crate::ffi::TopTools_MapOfShape,
         aMapVs: &mut crate::ffi::TopOpeBRepDS_DataMapOfShapeState,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_find_state(
-                aVertex,
-                aState.into(),
-                aShapeEnum.into(),
-                aMapVertexEdges,
-                aMapProcessedVertices,
-                aMapVs,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_find_state(
+                    aVertex,
+                    aState.into(),
+                    aShapeEnum.into(),
+                    aMapVertexEdges,
+                    aMapProcessedVertices,
+                    aMapVs,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9136,16 +12392,19 @@ impl Tools {
         aMapOfShapeWithState: &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
         anUnkStateShapes: &crate::ffi::TopTools_MapOfShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_propagate_state(
-                aSplEdgesState,
-                anEdgesToRestMap,
-                aShapeEnum1.into(),
-                aShapeEnum2.into(),
-                aShapeClassifier,
-                aMapOfShapeWithState,
-                anUnkStateShapes,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_propagate_state(
+                    aSplEdgesState,
+                    anEdgesToRestMap,
+                    aShapeEnum1.into(),
+                    aShapeEnum2.into(),
+                    aShapeClassifier,
+                    aMapOfShapeWithState,
+                    anUnkStateShapes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9156,16 +12415,17 @@ impl Tools {
         aMapOfShapeWithState: &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
         anAvoidSubshMap: &crate::ffi::TopTools_MapOfShape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_Tools_find_state_through_vertex(
                     aShape,
                     aShapeClassifier,
                     aMapOfShapeWithState,
                     anAvoidSubshMap,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -9174,11 +12434,14 @@ impl Tools {
         aFacesToRestMap: &crate::ffi::TopTools_IndexedMapOfShape,
         aMapOfShapeWithState: &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_propagate_state_for_wires(
-                aFacesToRestMap,
-                aMapOfShapeWithState,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_propagate_state_for_wires(
+                    aFacesToRestMap,
+                    aMapOfShapeWithState,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9188,12 +12451,15 @@ impl Tools {
         aState: crate::top_abs::State,
         aMapOfShapeWithState: &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_spread_state_to_child(
-                aShape,
-                aState.into(),
-                aMapOfShapeWithState,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_spread_state_to_child(
+                    aShape,
+                    aState.into(),
+                    aMapOfShapeWithState,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9205,14 +12471,17 @@ impl Tools {
         aMapProcessedVertices: &mut crate::ffi::TopTools_MapOfShape,
         aMapVs: &mut crate::ffi::TopOpeBRepDS_DataMapOfShapeState,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_find_state1(
-                anEdge,
-                aState.into(),
-                aMapEdgesFaces,
-                aMapProcessedVertices,
-                aMapVs,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_find_state1(
+                    anEdge,
+                    aState.into(),
+                    aMapEdgesFaces,
+                    aMapProcessedVertices,
+                    aMapVs,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9224,14 +12493,17 @@ impl Tools {
         aMapProcessedEdges: &mut crate::ffi::TopTools_MapOfShape,
         aMapVs: &mut crate::ffi::TopOpeBRepDS_DataMapOfShapeState,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_find_state2(
-                anEdge,
-                aState.into(),
-                aMapEdgesFaces,
-                aMapProcessedEdges,
-                aMapVs,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_find_state2(
+                    anEdge,
+                    aState.into(),
+                    aMapEdgesFaces,
+                    aMapProcessedEdges,
+                    aMapVs,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9242,13 +12514,17 @@ impl Tools {
         anEdgeFaceMap: &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
         anAdjFaceObj: &mut crate::topo_ds::Shape,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_get_adjacent_face(
-                aFaceObj,
-                anEObj,
-                anEdgeFaceMap,
-                anAdjFaceObj,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_get_adjacent_face(
+                    aFaceObj,
+                    anEObj,
+                    anEdgeFaceMap,
+                    anAdjFaceObj,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9258,10 +12534,13 @@ impl Tools {
         anEdgeObj: &crate::topo_ds::Edge,
         aDirNormal: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_get_normal_to_face_on_edge(
-                aFObj, anEdgeObj, aDirNormal,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_get_normal_to_face_on_edge(
+                    aFObj, anEdgeObj, aDirNormal,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9274,8 +12553,13 @@ impl Tools {
         anEdge: &crate::topo_ds::Edge,
         aNormal: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_get_normal_in_nearest_point(aFace, anEdge, aNormal)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_get_normal_in_nearest_point(
+                    aFace, anEdge, aNormal,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9286,10 +12570,14 @@ impl Tools {
         aOriEObj: &crate::topo_ds::Edge,
         aTangent: &mut crate::gp::Vec,
     ) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_get_tangent_to_edge_edge(
-                aFObj, anEdgeObj, aOriEObj, aTangent,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_get_tangent_to_edge_edge(
+                    aFObj, anEdgeObj, aOriEObj, aTangent,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9298,7 +12586,13 @@ impl Tools {
         anEdgeObj: &crate::topo_ds::Edge,
         aTangent: &mut crate::gp::Vec,
     ) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_get_tangent_to_edge(anEdgeObj, aTangent) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_get_tangent_to_edge(anEdgeObj, aTangent)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:118 - `TopOpeBRepBuild_Tools::UpdatePCurves()`
@@ -9308,7 +12602,10 @@ impl Tools {
         fromFace: &crate::topo_ds::Face,
         toFace: &crate::topo_ds::Face,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_update_p_curves(aWire, fromFace, toFace) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools_update_p_curves(aWire, fromFace, toFace) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:123 - `TopOpeBRepBuild_Tools::UpdateEdgeOnPeriodicalFace()`
@@ -9318,12 +12615,15 @@ impl Tools {
         OldFace: &crate::topo_ds::Face,
         NewFace: &crate::topo_ds::Face,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_update_edge_on_periodical_face(
-                aEdgeToUpdate,
-                OldFace,
-                NewFace,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_update_edge_on_periodical_face(
+                    aEdgeToUpdate,
+                    OldFace,
+                    NewFace,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9334,8 +12634,15 @@ impl Tools {
         OldFace: &crate::topo_ds::Face,
         NewFace: &crate::topo_ds::Face,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_update_edge_on_face(aEdgeToUpdate, OldFace, NewFace)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_update_edge_on_face(
+                    aEdgeToUpdate,
+                    OldFace,
+                    NewFace,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9344,14 +12651,22 @@ impl Tools {
         anE1: &crate::topo_ds::Shape,
         anE2: &crate::topo_ds::Shape,
     ) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_is_deg_edges_the_same(anE1, anE2) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Tools_is_deg_edges_the_same(anE1, anE2) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:137 - `TopOpeBRepBuild_Tools::NormalizeFace()`
     /// test  if  <oldFace>  does  not  contain  INTERNAL  or  EXTERNAL  edges
     /// and  remove  such  edges  in  case  of  its  presence.  The  result  is  stored  in <corrFace>
     pub fn normalize_face(oldFace: &crate::topo_ds::Shape, corrFace: &mut crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_normalize_face(oldFace, corrFace) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools_normalize_face(oldFace, corrFace) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:145 - `TopOpeBRepBuild_Tools::CorrectFace2d()`
@@ -9367,35 +12682,52 @@ impl Tools {
         aSourceShapes: &crate::ffi::TopTools_IndexedMapOfOrientedShape,
         aMapOfCorrect2dEdges: &mut crate::ffi::TopTools_IndexedDataMapOfShapeShape,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_Tools_correct_face2d(
-                oldFace,
-                corrFace,
-                aSourceShapes,
-                aMapOfCorrect2dEdges,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools_correct_face2d(
+                    oldFace,
+                    corrFace,
+                    aSourceShapes,
+                    aMapOfCorrect2dEdges,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:151 - `TopOpeBRepBuild_Tools::CorrectTolerances()`
     pub fn correct_tolerances(aS: &crate::topo_ds::Shape, aTolMax: f64) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_correct_tolerances(aS, aTolMax) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools_correct_tolerances(aS, aTolMax) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:154 - `TopOpeBRepBuild_Tools::CorrectCurveOnSurface()`
     pub fn correct_curve_on_surface(aS: &crate::topo_ds::Shape, aTolMax: f64) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_correct_curve_on_surface(aS, aTolMax) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools_correct_curve_on_surface(aS, aTolMax) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:157 - `TopOpeBRepBuild_Tools::CorrectPointOnCurve()`
     pub fn correct_point_on_curve(aS: &crate::topo_ds::Shape, aTolMax: f64) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_correct_point_on_curve(aS, aTolMax) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools_correct_point_on_curve(aS, aTolMax) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools.hxx`:161 - `TopOpeBRepBuild_Tools::CheckFaceClosed2d()`
     /// Checks if <theFace> has the properly closed in 2D boundary(ies)
     pub fn check_face_closed2d(theFace: &crate::topo_ds::Face) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools_check_face_closed2d(theFace) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_Tools_check_face_closed2d(theFace) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -9416,7 +12748,11 @@ impl Tools2d {
     /// **Source:** `TopOpeBRepBuild_Tools2d.hxx` - `TopOpeBRepBuild_Tools2d::TopOpeBRepBuild_Tools2d()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_Tools2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_Tools2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:32 - `TopOpeBRepBuild_Tools2d::MakeMapOfShapeVertexInfo()`
@@ -9424,19 +12760,30 @@ impl Tools2d {
         aWire: &crate::topo_ds::Wire,
         aMap: &mut crate::ffi::TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools2d_make_map_of_shape_vertex_info(aWire, aMap) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_Tools2d_make_map_of_shape_vertex_info(aWire, aMap)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:36 - `TopOpeBRepBuild_Tools2d::DumpMapOfShapeVertexInfo()`
     pub fn dump_map_of_shape_vertex_info(
         aMap: &crate::ffi::TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools2d_dump_map_of_shape_vertex_info(aMap) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools2d_dump_map_of_shape_vertex_info(aMap) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:39 - `TopOpeBRepBuild_Tools2d::Path()`
     pub fn path(aWire: &crate::topo_ds::Wire, aResList: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_Tools2d_path(aWire, aResList) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_Tools2d_path(aWire, aResList) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -9456,99 +12803,176 @@ unsafe impl crate::CppDeletable for VertexInfo {
 impl VertexInfo {
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:34 - `TopOpeBRepBuild_VertexInfo::TopOpeBRepBuild_VertexInfo()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_VertexInfo_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:36 - `TopOpeBRepBuild_VertexInfo::SetVertex()`
     pub fn set_vertex(&mut self, aV: &crate::topo_ds::Vertex) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_set_vertex(self as *mut Self, aV) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_set_vertex(self as *mut Self, aV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:38 - `TopOpeBRepBuild_VertexInfo::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_VertexInfo_vertex(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_vertex(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:40 - `TopOpeBRepBuild_VertexInfo::SetSmart()`
     pub fn set_smart(&mut self, aFlag: bool) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_set_smart(self as *mut Self, aFlag) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_set_smart(self as *mut Self, aFlag) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:42 - `TopOpeBRepBuild_VertexInfo::Smart()`
     pub fn smart(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_smart(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_smart(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:44 - `TopOpeBRepBuild_VertexInfo::NbCases()`
     pub fn nb_cases(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_nb_cases(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_nb_cases(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:46 - `TopOpeBRepBuild_VertexInfo::FoundOut()`
     pub fn found_out(&self) -> i32 {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_found_out(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_found_out(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:48 - `TopOpeBRepBuild_VertexInfo::AddIn()`
     pub fn add_in(&mut self, anE: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_add_in(self as *mut Self, anE) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_add_in(self as *mut Self, anE) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:50 - `TopOpeBRepBuild_VertexInfo::AddOut()`
     pub fn add_out(&mut self, anE: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_add_out(self as *mut Self, anE) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_add_out(self as *mut Self, anE) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:52 - `TopOpeBRepBuild_VertexInfo::SetCurrentIn()`
     pub fn set_current_in(&mut self, anE: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_set_current_in(self as *mut Self, anE) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_VertexInfo_set_current_in(self as *mut Self, anE)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:54 - `TopOpeBRepBuild_VertexInfo::EdgesIn()`
     pub fn edges_in(&self) -> &crate::ffi::TopTools_IndexedMapOfOrientedShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_VertexInfo_edges_in(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_edges_in(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:56 - `TopOpeBRepBuild_VertexInfo::EdgesOut()`
     pub fn edges_out(&self) -> &crate::ffi::TopTools_IndexedMapOfOrientedShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_VertexInfo_edges_out(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_edges_out(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:58 - `TopOpeBRepBuild_VertexInfo::ChangeEdgesOut()`
     pub fn change_edges_out(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfOrientedShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_VertexInfo_change_edges_out(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_VertexInfo_change_edges_out(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:60 - `TopOpeBRepBuild_VertexInfo::Dump()`
     pub fn dump(&self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_dump(self as *const Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_dump(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:62 - `TopOpeBRepBuild_VertexInfo::CurrentOut()`
     pub fn current_out(&mut self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_VertexInfo_current_out(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_current_out(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:64 - `TopOpeBRepBuild_VertexInfo::AppendPassed()`
     pub fn append_passed(&mut self, anE: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_append_passed(self as *mut Self, anE) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_append_passed(self as *mut Self, anE) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:66 - `TopOpeBRepBuild_VertexInfo::RemovePassed()`
     pub fn remove_passed(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_remove_passed(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_remove_passed(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:68 - `TopOpeBRepBuild_VertexInfo::ListPassed()`
     pub fn list_passed(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_VertexInfo_list_passed(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_list_passed(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:70 - `TopOpeBRepBuild_VertexInfo::Prepare()`
     pub fn prepare(&mut self, aL: &crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_prepare(self as *mut Self, aL) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_VertexInfo_prepare(self as *mut Self, aL) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -9575,10 +12999,12 @@ impl WireEdgeClassifier {
         F: &crate::topo_ds::Shape,
         BB: &BlockBuilder,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_ctor_shape_blockbuilder(F, BB),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_ctor_shape_blockbuilder(F, BB)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9588,13 +13014,12 @@ impl WireEdgeClassifier {
         L1: &crate::ffi::HandleTopOpeBRepBuildLoop,
         L2: &crate::ffi::HandleTopOpeBRepBuildLoop,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_compare(
-                self as *mut Self,
-                L1,
-                L2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_compare(self as *mut Self, L1, L2)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -9603,11 +13028,12 @@ impl WireEdgeClassifier {
         &mut self,
         L: &crate::ffi::HandleTopOpeBRepBuildLoop,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_loop_to_shape(
-                self as *mut Self,
-                L,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_loop_to_shape(self as *mut Self, L)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9618,15 +13044,16 @@ impl WireEdgeClassifier {
         B1: &crate::topo_ds::Shape,
         B2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_compare_shapes(
                     self as *mut Self,
                     B1,
                     B2,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -9637,15 +13064,16 @@ impl WireEdgeClassifier {
         E: &crate::topo_ds::Shape,
         B: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_compare_element_to_shape(
                     self as *mut Self,
                     E,
                     B,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -9653,15 +13081,23 @@ impl WireEdgeClassifier {
     /// prepare classification involving wire <B>
     /// calls ResetElement on first edge of <B>
     pub fn reset_shape(&mut self, B: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_reset_shape(self as *mut Self, B) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_reset_shape(self as *mut Self, B)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:66 - `TopOpeBRepBuild_WireEdgeClassifier::ResetElement()`
     /// prepare classification involving edge <E>
     /// define 2D point (later used in Compare()) on first vertex of edge <E>.
     pub fn reset_element(&mut self, E: &crate::topo_ds::Shape) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_reset_element(self as *mut Self, E)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_reset_element(self as *mut Self, E)
+            };
+            crate::check_exception();
         }
     }
 
@@ -9669,8 +13105,12 @@ impl WireEdgeClassifier {
     /// Add the edge <E> in the set of edges used in 2D point
     /// classification.
     pub fn compare_element(&mut self, E: &crate::topo_ds::Shape) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_compare_element(self as *mut Self, E)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_compare_element(self as *mut Self, E)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9678,41 +13118,59 @@ impl WireEdgeClassifier {
     /// Returns state of classification of 2D point, defined by
     /// ResetElement, with the current set of edges, defined by Compare.
     pub fn state(&mut self) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_state(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_state(self as *mut Self) };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
     /// Upcast to TopOpeBRepBuild_CompositeClassifier
     pub fn as_composite_classifier(&self) -> &CompositeClassifier {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_CompositeClassifier(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_CompositeClassifier(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_CompositeClassifier (mutable)
     pub fn as_composite_classifier_mut(&mut self) -> &mut CompositeClassifier {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_CompositeClassifier_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_CompositeClassifier_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier
     pub fn as_loop_classifier(&self) -> &LoopClassifier {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_LoopClassifier(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_LoopClassifier(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_LoopClassifier (mutable)
     pub fn as_loop_classifier_mut(&mut self) -> &mut LoopClassifier {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeClassifier_as_TopOpeBRepBuild_LoopClassifier_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -9744,44 +13202,69 @@ impl WireEdgeSet {
         F: &crate::topo_ds::Shape,
         Addr: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_WireEdgeSet_ctor_shape_address(
-                F, Addr,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_ctor_shape_address(F, Addr) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:52 - `TopOpeBRepBuild_WireEdgeSet::Face()`
     /// value of field myFace
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:54 - `TopOpeBRepBuild_WireEdgeSet::AddShape()`
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_add_shape(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_add_shape(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:56 - `TopOpeBRepBuild_WireEdgeSet::AddStartElement()`
     pub fn add_start_element(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_add_start_element(self as *mut Self, S) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_add_start_element(self as *mut Self, S)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:58 - `TopOpeBRepBuild_WireEdgeSet::AddElement()`
     pub fn add_element(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_add_element(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_add_element(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:60 - `TopOpeBRepBuild_WireEdgeSet::InitNeighbours()`
     pub fn init_neighbours(&mut self, E: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_init_neighbours(self as *mut Self, E) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_init_neighbours(self as *mut Self, E)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:64 - `TopOpeBRepBuild_WireEdgeSet::FindNeighbours()`
     /// Build the list of neighbour edges of edge myCurrentShape
     /// Initialize iterator of neighbour edges to edge myCurrentShape
     pub fn find_neighbours(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_find_neighbours(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_find_neighbours(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:66 - `TopOpeBRepBuild_WireEdgeSet::MakeNeighboursList()`
@@ -9796,18 +13279,25 @@ impl WireEdgeSet {
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_make_neighbours_list(
-                self as *mut Self,
-                E,
-                V,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_make_neighbours_list(
+                    self as *mut Self,
+                    E,
+                    V,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:75 - `TopOpeBRepBuild_WireEdgeSet::DumpSS()`
     pub fn dump_ss(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_dump_ss(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_dump_ss(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:77 - `TopOpeBRepBuild_WireEdgeSet::SName()`
@@ -9817,15 +13307,17 @@ impl WireEdgeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_WireEdgeSet_s_name_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9836,15 +13328,17 @@ impl WireEdgeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_WireEdgeSet_s_name_listofshape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9855,15 +13349,17 @@ impl WireEdgeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_WireEdgeSet_s_nameori_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9874,15 +13370,17 @@ impl WireEdgeSet {
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TopOpeBRepBuild_WireEdgeSet_s_nameori_listofshape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
                     sa,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9893,129 +13391,208 @@ impl WireEdgeSet {
         uiso: &mut bool,
         viso: &mut bool,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_is_uviso(E, F, uiso, viso) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_is_uviso(E, F, uiso, viso) };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to TopOpeBRepBuild_ShapeSet
     pub fn as_shape_set(&self) -> &ShapeSet {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_as_TopOpeBRepBuild_ShapeSet(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_as_TopOpeBRepBuild_ShapeSet(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to TopOpeBRepBuild_ShapeSet (mutable)
     pub fn as_shape_set_mut(&mut self) -> &mut ShapeSet {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_WireEdgeSet_as_TopOpeBRepBuild_ShapeSet_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_as_TopOpeBRepBuild_ShapeSet_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:81 - `TopOpeBRepBuild_ShapeSet::StartElements()`
     pub fn start_elements(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_StartElements(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_StartElements(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:83 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
     pub fn init_shapes(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_InitShapes(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_InitShapes(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:85 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
     pub fn more_shapes(&self) -> bool {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MoreShapes(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MoreShapes(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:87 - `TopOpeBRepBuild_ShapeSet::NextShape()`
     pub fn next_shape(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_NextShape(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_NextShape(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:89 - `TopOpeBRepBuild_ShapeSet::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_Shape(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_Shape(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:91 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
     pub fn init_start_elements(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_InitStartElements(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_InitStartElements(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:93 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
     pub fn more_start_elements(&self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MoreStartElements(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MoreStartElements(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:95 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
     pub fn next_start_element(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_NextStartElement(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_NextStartElement(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:97 - `TopOpeBRepBuild_ShapeSet::StartElement()`
     pub fn start_element(&self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_StartElement(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_StartElement(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:101 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
     pub fn more_neighbours(&mut self) -> bool {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MoreNeighbours(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MoreNeighbours(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:103 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
     pub fn next_neighbour(&mut self) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_NextNeighbour(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_NextNeighbour(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:105 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
     pub fn neighbour(&self) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_Neighbour(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_Neighbour(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:107 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
     pub fn change_start_shapes(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &mut *(crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_ChangeStartShapes(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_ChangeStartShapes(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:117 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
     pub fn max_number_sub_shape(&mut self, Shape: &crate::topo_ds::Shape) -> i32 {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MaxNumberSubShape(
-                self as *mut Self,
-                Shape,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_MaxNumberSubShape(
+                    self as *mut Self,
+                    Shape,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape(&mut self, checkshape: bool) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_CheckShape(
-                self as *mut Self,
-                checkshape,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_CheckShape(
+                    self as *mut Self,
+                    checkshape,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10025,8 +13602,15 @@ impl WireEdgeSet {
         OS: &mut crate::ffi::Standard_OStream,
         str: &crate::t_collection::AsciiString,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpName(self as *const Self, OS, str)
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpName(
+                    self as *const Self,
+                    OS,
+                    str,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10038,30 +13622,46 @@ impl WireEdgeSet {
         S: &crate::topo_ds::Shape,
         chk: bool,
     ) {
-        unsafe {
-            crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpCheck(
-                self as *const Self,
-                OS,
-                str,
-                S,
-                chk,
-            )
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpCheck(
+                    self as *const Self,
+                    OS,
+                    str,
+                    S,
+                    chk,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:135 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
     pub fn dump_bb(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpBB(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DumpBB(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:137 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name(&mut self, N: &crate::t_collection::AsciiString) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DEBName(self as *mut Self, N) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DEBName(self as *mut Self, N)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:141 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number(&mut self, I: i32) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DEBNumber(self as *mut Self, I) }
+        {
+            unsafe {
+                crate::ffi::TopOpeBRepBuild_WireEdgeSet_inherited_DEBNumber(self as *mut Self, I)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -10085,17 +13685,27 @@ unsafe impl crate::CppDeletable for WireToFace {
 impl WireToFace {
     /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:36 - `TopOpeBRepBuild_WireToFace::TopOpeBRepBuild_WireToFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepBuild_WireToFace_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:38 - `TopOpeBRepBuild_WireToFace::Init()`
     pub fn init(&mut self) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:40 - `TopOpeBRepBuild_WireToFace::AddWire()`
     pub fn add_wire(&mut self, W: &crate::topo_ds::Wire) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_add_wire(self as *mut Self, W) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_add_wire(self as *mut Self, W) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:42 - `TopOpeBRepBuild_WireToFace::MakeFaces()`
@@ -10104,7 +13714,10 @@ impl WireToFace {
         F: &crate::topo_ds::Face,
         LF: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_make_faces(self as *mut Self, F, LF) }
+        {
+            unsafe { crate::ffi::TopOpeBRepBuild_WireToFace_make_faces(self as *mut Self, F, LF) };
+            crate::check_exception();
+        }
     }
 }
 

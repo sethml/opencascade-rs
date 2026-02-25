@@ -56,7 +56,11 @@ impl DistShapeShape {
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:37 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     /// create empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_DistShapeShape_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:46 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
@@ -74,16 +78,18 @@ impl DistShapeShape {
         A: crate::extrema::ExtAlgo,
         theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_DistShapeShape_ctor_shape2_extflag_extalgo_progressrange(
                     Shape1,
                     Shape2,
                     F,
                     A.into(),
                     theRange,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -104,29 +110,45 @@ impl DistShapeShape {
         A: crate::extrema::ExtAlgo,
         theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_ctor_shape2_real_extflag_extalgo_progressrange(Shape1, Shape2, theDeflection, F, A.into(), theRange))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_ctor_shape2_real_extflag_extalgo_progressrange(Shape1, Shape2, theDeflection, F, A.into(), theRange)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:69 - `BRepExtrema_DistShapeShape::SetDeflection()`
     /// Sets deflection to computation of the minimum distance <br>
     pub fn set_deflection(&mut self, theDeflection: f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_DistShapeShape_set_deflection(self as *mut Self, theDeflection)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_set_deflection(
+                    self as *mut Self,
+                    theDeflection,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:72 - `BRepExtrema_DistShapeShape::LoadS1()`
     /// load first shape into extrema <br>
     pub fn load_s1(&mut self, Shape1: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_load_s1(self as *mut Self, Shape1) }
+        {
+            unsafe { crate::ffi::BRepExtrema_DistShapeShape_load_s1(self as *mut Self, Shape1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:75 - `BRepExtrema_DistShapeShape::LoadS2()`
     /// load second shape into extrema <br>
     pub fn load_s2(&mut self, Shape1: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_load_s2(self as *mut Self, Shape1) }
+        {
+            unsafe { crate::ffi::BRepExtrema_DistShapeShape_load_s2(self as *mut Self, Shape1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:84 - `BRepExtrema_DistShapeShape::Perform()`
@@ -137,47 +159,82 @@ impl DistShapeShape {
     /// Returns IsDone status. <br>
     /// theRange - the progress indicator of algorithm
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) -> bool {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_perform(self as *mut Self, theRange) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_perform(self as *mut Self, theRange)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:87 - `BRepExtrema_DistShapeShape::IsDone()`
     /// True if the minimum distance is found. <br>
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistShapeShape_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:90 - `BRepExtrema_DistShapeShape::NbSolution()`
     /// Returns the number of solutions satisfying the minimum distance. <br>
     pub fn nb_solution(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_nb_solution(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistShapeShape_nb_solution(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:93 - `BRepExtrema_DistShapeShape::Value()`
     /// Returns the value of the minimum distance. <br>
     pub fn value(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistShapeShape_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:97 - `BRepExtrema_DistShapeShape::InnerSolution()`
     /// True if one of the shapes is a solid and the other shape <br>
     /// is completely or partially inside the solid. <br>
     pub fn inner_solution(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_inner_solution(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_inner_solution(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:100 - `BRepExtrema_DistShapeShape::PointOnShape1()`
     /// Returns the Point corresponding to the <N>th solution on the first Shape <br>
     pub fn point_on_shape1(&self, N: i32) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_DistShapeShape_point_on_shape1(self as *const Self, N))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_point_on_shape1(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:106 - `BRepExtrema_DistShapeShape::PointOnShape2()`
     /// Returns the Point corresponding to the <N>th solution on the second Shape <br>
     pub fn point_on_shape2(&self, N: i32) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_DistShapeShape_point_on_shape2(self as *const Self, N))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_point_on_shape2(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -188,11 +245,12 @@ impl DistShapeShape {
     /// IsInFace => the Nth solution on the first shape is inside a face <br>
     /// the corresponding support is obtained by the method SupportOnShape1 <br>
     pub fn support_type_shape1(&self, N: i32) -> crate::b_rep_extrema::SupportType {
-        unsafe {
-            crate::b_rep_extrema::SupportType::try_from(
-                crate::ffi::BRepExtrema_DistShapeShape_support_type_shape1(self as *const Self, N),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_support_type_shape1(self as *const Self, N)
+            };
+            crate::check_exception();
+            crate::b_rep_extrema::SupportType::try_from(__result).unwrap()
         }
     }
 
@@ -203,11 +261,12 @@ impl DistShapeShape {
     /// IsInFace => the Nth solution on the second shape is inside a face <br>
     /// the corresponding support is obtained by the method SupportOnShape2 <br>
     pub fn support_type_shape2(&self, N: i32) -> crate::b_rep_extrema::SupportType {
-        unsafe {
-            crate::b_rep_extrema::SupportType::try_from(
-                crate::ffi::BRepExtrema_DistShapeShape_support_type_shape2(self as *const Self, N),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_support_type_shape2(self as *const Self, N)
+            };
+            crate::check_exception();
+            crate::b_rep_extrema::SupportType::try_from(__result).unwrap()
         }
     }
 
@@ -215,11 +274,12 @@ impl DistShapeShape {
     /// gives the support where the Nth solution on the first shape is situated. <br>
     /// This support can be a Vertex, an Edge or a Face. <br>
     pub fn support_on_shape1(&self, N: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_support_on_shape1(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_support_on_shape1(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -227,11 +287,12 @@ impl DistShapeShape {
     /// gives the support where the Nth solution on the second shape is situated. <br>
     /// This support can be a Vertex, an Edge or a Face. <br>
     pub fn support_on_shape2(&self, N: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_support_on_shape2(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_support_on_shape2(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -239,22 +300,35 @@ impl DistShapeShape {
     /// gives the corresponding parameter t if the Nth solution <br>
     /// is situated on an Edge of the first shape <br>
     pub fn par_on_edge_s1(&self, N: i32, t: &mut f64) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_par_on_edge_s1(self as *const Self, N, t) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_par_on_edge_s1(self as *const Self, N, t)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:145 - `BRepExtrema_DistShapeShape::ParOnEdgeS2()`
     /// gives the corresponding parameter t if the Nth solution <br>
     /// is situated on an Edge of the first shape <br>
     pub fn par_on_edge_s2(&self, N: i32, t: &mut f64) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_par_on_edge_s2(self as *const Self, N, t) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_par_on_edge_s2(self as *const Self, N, t)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:149 - `BRepExtrema_DistShapeShape::ParOnFaceS1()`
     /// gives the corresponding parameters (U,V) if the Nth solution <br>
     /// is situated on an face of the first shape <br>
     pub fn par_on_face_s1(&self, N: i32, u: &mut f64, v: &mut f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_DistShapeShape_par_on_face_s1(self as *const Self, N, u, v)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_par_on_face_s1(self as *const Self, N, u, v)
+            };
+            crate::check_exception();
         }
     }
 
@@ -262,39 +336,54 @@ impl DistShapeShape {
     /// gives the corresponding parameters (U,V) if the Nth solution <br>
     /// is situated on an Face of the second shape <br>
     pub fn par_on_face_s2(&self, N: i32, u: &mut f64, v: &mut f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_DistShapeShape_par_on_face_s2(self as *const Self, N, u, v)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_par_on_face_s2(self as *const Self, N, u, v)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:160 - `BRepExtrema_DistShapeShape::Dump()`
     /// Prints on the stream o information on the current state of the object. <br>
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::BRepExtrema_DistShapeShape_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:164 - `BRepExtrema_DistShapeShape::SetFlag()`
     /// Sets unused parameter
     /// Obsolete
     pub fn set_flag(&mut self, F: i32) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_set_flag(self as *mut Self, F) }
+        {
+            unsafe { crate::ffi::BRepExtrema_DistShapeShape_set_flag(self as *mut Self, F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:168 - `BRepExtrema_DistShapeShape::SetAlgo()`
     /// Sets unused parameter
     /// Obsolete
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_set_algo(self as *mut Self, A.into()) }
+        {
+            unsafe { crate::ffi::BRepExtrema_DistShapeShape_set_algo(self as *mut Self, A.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:171 - `BRepExtrema_DistShapeShape::SetMultiThread()`
     /// If isMultiThread == Standard_True then computation will be performed in parallel.
     pub fn set_multi_thread(&mut self, theIsMultiThread: bool) {
-        unsafe {
-            crate::ffi::BRepExtrema_DistShapeShape_set_multi_thread(
-                self as *mut Self,
-                theIsMultiThread,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_set_multi_thread(
+                    self as *mut Self,
+                    theIsMultiThread,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -302,7 +391,13 @@ impl DistShapeShape {
     /// Returns Standard_True then computation will be performed in parallel
     /// Default value is Standard_False
     pub fn is_multi_thread(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_DistShapeShape_is_multi_thread(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_DistShapeShape_is_multi_thread(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -346,8 +441,8 @@ impl DistanceSS {
         theExtFlag: i32,
         theExtAlgo: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_DistanceSS_ctor_shape2_box2_real2_extflag_extalgo(
                     theS1,
                     theS2,
@@ -357,8 +452,10 @@ impl DistanceSS {
                     theDeflection,
                     theExtFlag,
                     theExtAlgo.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -366,25 +463,45 @@ impl DistanceSS {
     /// @name Results
     /// Returns true if the distance has been computed, false otherwise.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_DistanceSS_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistanceSS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistanceSS.hxx`:71 - `BRepExtrema_DistanceSS::DistValue()`
     /// Returns the distance value.
     pub fn dist_value(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_DistanceSS_dist_value(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistanceSS_dist_value(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_DistanceSS.hxx`:74 - `BRepExtrema_DistanceSS::Seq1Value()`
     /// Returns the list of solutions on the first shape.
     pub fn seq1_value(&self) -> &crate::ffi::BRepExtrema_SeqOfSolution {
-        unsafe { &*(crate::ffi::BRepExtrema_DistanceSS_seq1_value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistanceSS_seq1_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_DistanceSS.hxx`:77 - `BRepExtrema_DistanceSS::Seq2Value()`
     /// Returns the list of solutions on the second shape.
     pub fn seq2_value(&self) -> &crate::ffi::BRepExtrema_SeqOfSolution {
-        unsafe { &*(crate::ffi::BRepExtrema_DistanceSS_seq2_value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_DistanceSS_seq2_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -407,7 +524,11 @@ impl ElementFilter {
     /// **Source:** `BRepExtrema_ElementFilter.hxx` - `BRepExtrema_ElementFilter::BRepExtrema_ElementFilter()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ElementFilter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ElementFilter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ElementFilter.hxx`:41 - `BRepExtrema_ElementFilter::PreCheckElements()`
@@ -418,12 +539,16 @@ impl ElementFilter {
         arg0: i32,
         arg1: i32,
     ) -> crate::OwnedPtr<crate::ffi::BRepExtrema_ElementFilter_FilterResult> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ElementFilter_pre_check_elements(
-                self as *mut Self,
-                arg0,
-                arg1,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ElementFilter_pre_check_elements(
+                    self as *mut Self,
+                    arg0,
+                    arg1,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -444,7 +569,11 @@ unsafe impl crate::CppDeletable for ExtCC {
 impl ExtCC {
     /// **Source:** `BRepExtrema_ExtCC.hxx`:29 - `BRepExtrema_ExtCC::BRepExtrema_ExtCC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:32 - `BRepExtrema_ExtCC::BRepExtrema_ExtCC()`
@@ -453,75 +582,113 @@ impl ExtCC {
         E1: &crate::topo_ds::Edge,
         E2: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_ctor_edge2(E1, E2)) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCC_ctor_edge2(E1, E2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:34 - `BRepExtrema_ExtCC::Initialize()`
     pub fn initialize(&mut self, E2: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_initialize(self as *mut Self, E2) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtCC_initialize(self as *mut Self, E2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:36 - `BRepExtrema_ExtCC::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     pub fn perform(&mut self, E1: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_perform(self as *mut Self, E1) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtCC_perform(self as *mut Self, E1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:39 - `BRepExtrema_ExtCC::IsDone()`
     /// True if the distances are found. <br>
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:42 - `BRepExtrema_ExtCC::NbExt()`
     /// Returns the number of extremum distances. <br>
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:45 - `BRepExtrema_ExtCC::IsParallel()`
     /// Returns True if E1 and E2 are parallel. <br>
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_is_parallel(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCC_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:48 - `BRepExtrema_ExtCC::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance. <br>
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:51 - `BRepExtrema_ExtCC::ParameterOnE1()`
     /// Returns the parameter on the first edge of the <N>th extremum distance. <br>
     pub fn parameter_on_e1(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_parameter_on_e1(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCC_parameter_on_e1(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:53 - `BRepExtrema_ExtCC::PointOnE1()`
     /// Returns the Point of the <N>th extremum distance on the edge E1. <br>
     pub fn point_on_e1(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_point_on_e1(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCC_point_on_e1(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:55 - `BRepExtrema_ExtCC::ParameterOnE2()`
     /// Returns the parameter on the second edge of the <N>th extremum distance. <br>
     pub fn parameter_on_e2(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtCC_parameter_on_e2(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCC_parameter_on_e2(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:57 - `BRepExtrema_ExtCC::PointOnE2()`
     /// Returns the Point of the <N>th extremum distance on the edge E2. <br>
     pub fn point_on_e2(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_point_on_e2(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCC_point_on_e2(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -541,18 +708,21 @@ impl ExtCC {
         P21: &mut crate::gp::Pnt,
         P22: &mut crate::gp::Pnt,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ExtCC_trimmed_square_distances(
-                self as *const Self,
-                dist11,
-                distP12,
-                distP21,
-                distP22,
-                P11,
-                P12,
-                P21,
-                P22,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ExtCC_trimmed_square_distances(
+                    self as *const Self,
+                    dist11,
+                    distP12,
+                    distP21,
+                    distP22,
+                    P11,
+                    P12,
+                    P21,
+                    P22,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -573,7 +743,11 @@ unsafe impl crate::CppDeletable for ExtCF {
 impl ExtCF {
     /// **Source:** `BRepExtrema_ExtCF.hxx`:34 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCF_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:37 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
@@ -582,76 +756,114 @@ impl ExtCF {
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_ctor_edge_face(E, F)) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCF_ctor_edge_face(E, F) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:39 - `BRepExtrema_ExtCF::Initialize()`
     pub fn initialize(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_initialize(self as *mut Self, E, F) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtCF_initialize(self as *mut Self, E, F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:42 - `BRepExtrema_ExtCF::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     /// Be careful: this method uses the Face only for classify not for the fields. <br>
     pub fn perform(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_perform(self as *mut Self, E, F) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtCF_perform(self as *mut Self, E, F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:45 - `BRepExtrema_ExtCF::IsDone()`
     /// True if the distances are found. <br>
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCF_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:48 - `BRepExtrema_ExtCF::NbExt()`
     /// Returns the number of extremum distances. <br>
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtCF_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:51 - `BRepExtrema_ExtCF::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance. <br>
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCF_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:54 - `BRepExtrema_ExtCF::IsParallel()`
     /// Returns True if the curve is on a parallel surface. <br>
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_is_parallel(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCF_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:57 - `BRepExtrema_ExtCF::ParameterOnEdge()`
     /// Returns the parameters on the Edge of the <N>th extremum distance. <br>
     pub fn parameter_on_edge(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_parameter_on_edge(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCF_parameter_on_edge(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:63 - `BRepExtrema_ExtCF::ParameterOnFace()`
     /// Returns the parameters on the Face of the <N>th extremum distance. <br>
     pub fn parameter_on_face(&self, N: i32, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::BRepExtrema_ExtCF_parameter_on_face(self as *const Self, N, U, V) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ExtCF_parameter_on_face(self as *const Self, N, U, V)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:69 - `BRepExtrema_ExtCF::PointOnEdge()`
     /// Returns the Point of the <N>th extremum distance. <br>
     pub fn point_on_edge(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_point_on_edge(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCF_point_on_edge(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:72 - `BRepExtrema_ExtCF::PointOnFace()`
     /// Returns the Point of the <N>th extremum distance. <br>
     pub fn point_on_face(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_point_on_face(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtCF_point_on_face(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -672,7 +884,11 @@ unsafe impl crate::CppDeletable for ExtFF {
 impl ExtFF {
     /// **Source:** `BRepExtrema_ExtFF.hxx`:31 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtFF_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:34 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
@@ -681,76 +897,114 @@ impl ExtFF {
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_ctor_face2(F1, F2)) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtFF_ctor_face2(F1, F2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:36 - `BRepExtrema_ExtFF::Initialize()`
     pub fn initialize(&mut self, F2: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_initialize(self as *mut Self, F2) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtFF_initialize(self as *mut Self, F2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:39 - `BRepExtrema_ExtFF::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     /// Be careful: this method uses the Face F2 only for classify, not for the fields. <br>
     pub fn perform(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_perform(self as *mut Self, F1, F2) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtFF_perform(self as *mut Self, F1, F2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:42 - `BRepExtrema_ExtFF::IsDone()`
     /// True if the distances are found. <br>
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtFF_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:45 - `BRepExtrema_ExtFF::IsParallel()`
     /// Returns True if the surfaces are parallel. <br>
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_is_parallel(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtFF_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:48 - `BRepExtrema_ExtFF::NbExt()`
     /// Returns the number of extremum distances. <br>
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtFF_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:51 - `BRepExtrema_ExtFF::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance. <br>
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtFF_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:54 - `BRepExtrema_ExtFF::ParameterOnFace1()`
     /// Returns the parameters on the Face F1 of the <N>th extremum distance. <br>
     pub fn parameter_on_face1(&self, N: i32, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_parameter_on_face1(self as *const Self, N, U, V) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ExtFF_parameter_on_face1(self as *const Self, N, U, V)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:60 - `BRepExtrema_ExtFF::ParameterOnFace2()`
     /// Returns the parameters on the Face F2 of the <N>th extremum distance. <br>
     pub fn parameter_on_face2(&self, N: i32, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::BRepExtrema_ExtFF_parameter_on_face2(self as *const Self, N, U, V) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ExtFF_parameter_on_face2(self as *const Self, N, U, V)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:66 - `BRepExtrema_ExtFF::PointOnFace1()`
     /// Returns the Point of the <N>th extremum distance. <br>
     pub fn point_on_face1(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_point_on_face1(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtFF_point_on_face1(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:69 - `BRepExtrema_ExtFF::PointOnFace2()`
     /// Returns the Point of the <N>th extremum distance. <br>
     pub fn point_on_face2(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_point_on_face2(
-                self as *const Self,
-                N,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtFF_point_on_face2(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -771,7 +1025,11 @@ unsafe impl crate::CppDeletable for ExtPC {
 impl ExtPC {
     /// **Source:** `BRepExtrema_ExtPC.hxx`:29 - `BRepExtrema_ExtPC::BRepExtrema_ExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:32 - `BRepExtrema_ExtPC::BRepExtrema_ExtPC()`
@@ -780,55 +1038,89 @@ impl ExtPC {
         V: &crate::topo_ds::Vertex,
         E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPC_ctor_vertex_edge(V, E)) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPC_ctor_vertex_edge(V, E) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:34 - `BRepExtrema_ExtPC::Initialize()`
     pub fn initialize(&mut self, E: &crate::topo_ds::Edge) {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_initialize(self as *mut Self, E) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtPC_initialize(self as *mut Self, E) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:36 - `BRepExtrema_ExtPC::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     pub fn perform(&mut self, V: &crate::topo_ds::Vertex) {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_perform(self as *mut Self, V) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtPC_perform(self as *mut Self, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:39 - `BRepExtrema_ExtPC::IsDone()`
     /// True if the distances are found. <br>
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:42 - `BRepExtrema_ExtPC::NbExt()`
     /// Returns the number of extremum distances. <br>
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:45 - `BRepExtrema_ExtPC::IsMin()`
     /// Returns True if the <N>th extremum distance is a minimum. <br>
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPC_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:48 - `BRepExtrema_ExtPC::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance. <br>
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtPC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:51 - `BRepExtrema_ExtPC::Parameter()`
     /// Returns the parameter on the edge of the <N>th extremum distance. <br>
     pub fn parameter(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtPC_parameter(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtPC_parameter(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:54 - `BRepExtrema_ExtPC::Point()`
     /// Returns the Point of the <N>th extremum distance. <br>
     pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPC_point(self as *const Self, N))
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -845,14 +1137,17 @@ impl ExtPC {
         pnt1: &mut crate::gp::Pnt,
         pnt2: &mut crate::gp::Pnt,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ExtPC_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                pnt1,
-                pnt2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ExtPC_trimmed_square_distances(
+                    self as *const Self,
+                    dist1,
+                    dist2,
+                    pnt1,
+                    pnt2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -873,7 +1168,11 @@ unsafe impl crate::CppDeletable for ExtPF {
 impl ExtPF {
     /// **Source:** `BRepExtrema_ExtPF.hxx`:32 - `BRepExtrema_ExtPF::BRepExtrema_ExtPF()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPF_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPF_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:35 - `BRepExtrema_ExtPF::BRepExtrema_ExtPF()`
@@ -884,15 +1183,17 @@ impl ExtPF {
         TheFlag: i32,
         TheAlgo: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_ExtPF_ctor_vertex_face_extflag_extalgo(
                     TheVertex,
                     TheFace,
                     TheFlag,
                     TheAlgo.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -903,13 +1204,16 @@ impl ExtPF {
         TheFlag: i32,
         TheAlgo: crate::extrema::ExtAlgo,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ExtPF_initialize(
-                self as *mut Self,
-                TheFace,
-                TheFlag,
-                TheAlgo.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ExtPF_initialize(
+                    self as *mut Self,
+                    TheFace,
+                    TheFlag,
+                    TheAlgo.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -917,49 +1221,76 @@ impl ExtPF {
     /// An exception is raised if the fields have not been initialized. <br>
     /// Be careful: this method uses the Face only for classify not for the fields. <br>
     pub fn perform(&mut self, TheVertex: &crate::topo_ds::Vertex, TheFace: &crate::topo_ds::Face) {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_perform(self as *mut Self, TheVertex, TheFace) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtPF_perform(self as *mut Self, TheVertex, TheFace) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:49 - `BRepExtrema_ExtPF::IsDone()`
     /// True if the distances are found. <br>
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPF_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:52 - `BRepExtrema_ExtPF::NbExt()`
     /// Returns the number of extremum distances. <br>
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPF_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:55 - `BRepExtrema_ExtPF::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance. <br>
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ExtPF_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:58 - `BRepExtrema_ExtPF::Parameter()`
     /// Returns the parameters on the Face of the <N>th extremum distance. <br>
     pub fn parameter(&self, N: i32, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_parameter(self as *const Self, N, U, V) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtPF_parameter(self as *const Self, N, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:64 - `BRepExtrema_ExtPF::Point()`
     /// Returns the Point of the <N>th extremum distance. <br>
     pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPF_point(self as *const Self, N))
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ExtPF_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:66 - `BRepExtrema_ExtPF::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_set_flag(self as *mut Self, F) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtPF_set_flag(self as *mut Self, F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:68 - `BRepExtrema_ExtPF::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
-        unsafe { crate::ffi::BRepExtrema_ExtPF_set_algo(self as *mut Self, A.into()) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ExtPF_set_algo(self as *mut Self, A.into()) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -991,7 +1322,11 @@ impl OverlapTool {
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:42 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
     /// Creates new uninitialized overlap tool.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_OverlapTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_OverlapTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
@@ -1000,12 +1335,14 @@ impl OverlapTool {
         theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
         theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_OverlapTool_ctor_handlebrepextrematriangleset2(
                     theSet1, theSet2,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1016,53 +1353,82 @@ impl OverlapTool {
         theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
         theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_OverlapTool_load_triangle_sets(
-                self as *mut Self,
-                theSet1,
-                theSet2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_OverlapTool_load_triangle_sets(
+                    self as *mut Self,
+                    theSet1,
+                    theSet2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:54 - `BRepExtrema_OverlapTool::Perform()`
     /// Performs searching of overlapped mesh elements.
     pub fn perform(&mut self, theTolerance: f64) {
-        unsafe { crate::ffi::BRepExtrema_OverlapTool_perform(self as *mut Self, theTolerance) }
+        {
+            unsafe { crate::ffi::BRepExtrema_OverlapTool_perform(self as *mut Self, theTolerance) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:57 - `BRepExtrema_OverlapTool::IsDone()`
     /// Is overlap test completed?
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_OverlapTool_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_OverlapTool_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:60 - `BRepExtrema_OverlapTool::MarkDirty()`
     /// Marks test results as outdated.
     pub fn mark_dirty(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_OverlapTool_mark_dirty(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_OverlapTool_mark_dirty(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:63 - `BRepExtrema_OverlapTool::OverlapSubShapes1()`
     /// Returns set of overlapped sub-shapes of 1st shape (currently only faces are detected).
     pub fn overlap_sub_shapes1(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
-        unsafe { &*(crate::ffi::BRepExtrema_OverlapTool_overlap_sub_shapes1(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_OverlapTool_overlap_sub_shapes1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:69 - `BRepExtrema_OverlapTool::OverlapSubShapes2()`
     /// Returns set of overlapped sub-shapes of 2nd shape (currently only faces are detected).
     pub fn overlap_sub_shapes2(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
-        unsafe { &*(crate::ffi::BRepExtrema_OverlapTool_overlap_sub_shapes2(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_OverlapTool_overlap_sub_shapes2(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter()`
     /// Sets filtering tool for preliminary checking pairs of mesh elements.
     pub fn set_element_filter(&mut self, theFilter: &mut ElementFilter) {
-        unsafe {
-            crate::ffi::BRepExtrema_OverlapTool_set_element_filter(
-                self as *mut Self,
-                theFilter as *mut _,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_OverlapTool_set_element_filter(
+                    self as *mut Self,
+                    theFilter as *mut _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1077,22 +1443,32 @@ impl OverlapTool {
         theCornerMax2: &crate::ffi::BVH_Vec3d,
         arg4: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepExtrema_OverlapTool_reject_node(
-                self as *const Self,
-                theCornerMin1,
-                theCornerMax1,
-                theCornerMin2,
-                theCornerMax2,
-                arg4,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_OverlapTool_reject_node(
+                    self as *const Self,
+                    theCornerMin1,
+                    theCornerMax1,
+                    theCornerMin2,
+                    theCornerMax2,
+                    arg4,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:93 - `BRepExtrema_OverlapTool::Accept()`
     /// Defines the rules for leaf acceptance
     pub fn accept(&mut self, theLeaf1: i32, theLeaf2: i32) -> bool {
-        unsafe { crate::ffi::BRepExtrema_OverlapTool_accept(self as *mut Self, theLeaf1, theLeaf2) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_OverlapTool_accept(self as *mut Self, theLeaf1, theLeaf2)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1113,7 +1489,11 @@ impl Poly {
     /// **Source:** `BRepExtrema_Poly.hxx` - `BRepExtrema_Poly::BRepExtrema_Poly()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_Poly_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_Poly_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_Poly.hxx`:26 - `BRepExtrema_Poly::Distance()`
@@ -1125,7 +1505,11 @@ impl Poly {
         P2: &mut crate::gp::Pnt,
         dist: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::BRepExtrema_Poly_distance(S1, S2, P1, P2, dist) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_Poly_distance(S1, S2, P1, P2, dist) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1156,7 +1540,11 @@ impl ProximityDistTool {
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:92 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
     /// Creates new uninitialized tool.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ProximityDistTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
@@ -1170,8 +1558,12 @@ impl ProximityDistTool {
         theShapeList1: &crate::ffi::BRepExtrema_ShapeList,
         theShapeList2: &crate::ffi::BRepExtrema_ShapeList,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(theSet1, theNbSamples1, theAddVertices1, theAddStatus1, theSet2, theShapeList1, theShapeList2))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(theSet1, theNbSamples1, theAddVertices1, theAddStatus1, theSet2, theShapeList1, theShapeList2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1182,12 +1574,15 @@ impl ProximityDistTool {
         theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
         theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_load_triangle_sets(
-                self as *mut Self,
-                theSet1,
-                theSet2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_load_triangle_sets(
+                    self as *mut Self,
+                    theSet1,
+                    theSet2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1198,12 +1593,15 @@ impl ProximityDistTool {
         theShapeList1: &crate::ffi::BRepExtrema_ShapeList,
         theShapeList2: &crate::ffi::BRepExtrema_ShapeList,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_load_shape_lists(
-                self as *mut Self,
-                theShapeList1,
-                theShapeList2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_load_shape_lists(
+                    self as *mut Self,
+                    theShapeList1,
+                    theShapeList2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1214,19 +1612,25 @@ impl ProximityDistTool {
         theAddVertices1: &crate::ffi::BVH_Array3d,
         theAddStatus1: &crate::ffi::NCollection_Vector_ProxPnt_Status,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_load_additional_points_first_set(
-                self as *mut Self,
-                theAddVertices1,
-                theAddStatus1,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_load_additional_points_first_set(
+                    self as *mut Self,
+                    theAddVertices1,
+                    theAddStatus1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:118 - `BRepExtrema_ProximityDistTool::Perform()`
     /// Performs searching of the proximity distance.
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_ProximityDistTool_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ProximityDistTool_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:122 - `BRepExtrema_ProximityDistTool::RejectNode()`
@@ -1238,21 +1642,29 @@ impl ProximityDistTool {
         theCornerMax: &crate::ffi::BVH_Vec3d,
         theMetric: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_reject_node(
-                self as *const Self,
-                theCornerMin,
-                theCornerMax,
-                theMetric,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_reject_node(
+                    self as *const Self,
+                    theCornerMin,
+                    theCornerMax,
+                    theMetric,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:128 - `BRepExtrema_ProximityDistTool::Accept()`
     /// Defines the rules for leaf acceptance.
     pub fn accept(&mut self, theSgmIdx: i32, arg1: &f64) -> bool {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_accept(self as *mut Self, theSgmIdx, arg1)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_accept(self as *mut Self, theSgmIdx, arg1)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1263,12 +1675,15 @@ impl ProximityDistTool {
         thePoint1: &mut crate::ffi::BVH_Vec3d,
         thePoint2: &mut crate::ffi::BVH_Vec3d,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_proximity_points(
-                self as *const Self,
-                thePoint1,
-                thePoint2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_proximity_points(
+                    self as *const Self,
+                    thePoint1,
+                    thePoint2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1279,25 +1694,40 @@ impl ProximityDistTool {
         thePointStatus1: &mut crate::ffi::BRepExtrema_ProximityDistTool_ProxPnt_Status,
         thePointStatus2: &mut crate::ffi::BRepExtrema_ProximityDistTool_ProxPnt_Status,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_proximity_points_status(
-                self as *const Self,
-                thePointStatus1,
-                thePointStatus2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_proximity_points_status(
+                    self as *const Self,
+                    thePointStatus1,
+                    thePointStatus2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:159 - `BRepExtrema_ProximityDistTool::ProximityDistance()`
     /// Returns the computed distance
     pub fn proximity_distance(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ProximityDistTool_proximity_distance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_proximity_distance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:133 - `BRepExtrema_ProximityDistTool::IsNodeOnBorder()`
     /// Returns true if the node is on the boarder.
     pub fn is_node_on_border(theNodeIdx: i32, theTr: &crate::ffi::HandlePolyTriangulation) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ProximityDistTool_is_node_on_border(theNodeIdx, theTr) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_is_node_on_border(theNodeIdx, theTr)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:137 - `BRepExtrema_ProximityDistTool::IsEdgeOnBorder()`
@@ -1308,13 +1738,17 @@ impl ProximityDistTool {
         theSecondEdgeNodeIdx: i32,
         theTr: &crate::ffi::HandlePolyTriangulation,
     ) -> bool {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_is_edge_on_border(
-                theTrgIdx,
-                theFirstEdgeNodeIdx,
-                theSecondEdgeNodeIdx,
-                theTr,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_is_edge_on_border(
+                    theTrgIdx,
+                    theFirstEdgeNodeIdx,
+                    theSecondEdgeNodeIdx,
+                    theTr,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1333,8 +1767,10 @@ unsafe impl crate::CppDeletable for ProximityDistTool_PrjState {
 impl ProximityDistTool_PrjState {
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:54 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_PrjState_ctor())
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ProximityDistTool_PrjState_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1345,22 +1781,28 @@ impl ProximityDistTool_PrjState {
         theNumberOfFirstNode: i32,
         theNumberOfLastNode: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_ProximityDistTool_PrjState_ctor_int_prjstate_int2(
                     theTrgIdx,
                     thePrjState,
                     theNumberOfFirstNode,
                     theNumberOfLastNode,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:73 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
     pub fn get_trg_idx(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_trg_idx(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_trg_idx(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1368,30 +1810,40 @@ impl ProximityDistTool_PrjState {
     pub fn get_prj_state(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::BRepExtrema_ProximityDistTool_BVH_PrjState> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_prj_state(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:77 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfFirstNode()`
     pub fn get_number_of_first_node(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_number_of_first_node(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_number_of_first_node(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:79 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfLastNode()`
     pub fn get_number_of_last_node(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_number_of_last_node(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_number_of_last_node(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1422,7 +1874,11 @@ impl ProximityValueTool {
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:85 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
     /// Creates new uninitialized proximity tool.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityValueTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_ProximityValueTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:88 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
@@ -1433,8 +1889,12 @@ impl ProximityValueTool {
         theShapeList1: &crate::ffi::BRepExtrema_ShapeList,
         theShapeList2: &crate::ffi::BRepExtrema_ShapeList,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_shapelist2(theSet1, theSet2, theShapeList1, theShapeList2))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_shapelist2(theSet1, theSet2, theShapeList1, theShapeList2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1445,12 +1905,15 @@ impl ProximityValueTool {
         theSet1: &crate::ffi::HandleBRepExtremaTriangleSet,
         theSet2: &crate::ffi::HandleBRepExtremaTriangleSet,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityValueTool_load_triangle_sets(
-                self as *mut Self,
-                theSet1,
-                theSet2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityValueTool_load_triangle_sets(
+                    self as *mut Self,
+                    theSet1,
+                    theSet2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1461,12 +1924,15 @@ impl ProximityValueTool {
         theShapeList1: &crate::ffi::BRepExtrema_ShapeList,
         theShapeList2: &crate::ffi::BRepExtrema_ShapeList,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityValueTool_load_shape_lists(
-                self as *mut Self,
-                theShapeList1,
-                theShapeList2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityValueTool_load_shape_lists(
+                    self as *mut Self,
+                    theShapeList1,
+                    theShapeList2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1474,50 +1940,72 @@ impl ProximityValueTool {
     /// Sets number of sample points used for proximity calculation for each shape.
     /// If number is less or equal zero, all triangulation nodes are used.
     pub fn set_nb_sample_points(&mut self, theSamples1: i32, theSamples2: i32) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityValueTool_set_nb_sample_points(
-                self as *mut Self,
-                theSamples1,
-                theSamples2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityValueTool_set_nb_sample_points(
+                    self as *mut Self,
+                    theSamples1,
+                    theSamples2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:108 - `BRepExtrema_ProximityValueTool::Perform()`
     /// Performs the computation of the proximity value.
     pub fn perform(&mut self, theTolerance: &mut f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityValueTool_perform(self as *mut Self, theTolerance)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityValueTool_perform(self as *mut Self, theTolerance)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:111 - `BRepExtrema_ProximityValueTool::IsDone()`
     /// Is proximity test completed?
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ProximityValueTool_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ProximityValueTool_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:114 - `BRepExtrema_ProximityValueTool::MarkDirty()`
     /// Marks test results as outdated.
     pub fn mark_dirty(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_ProximityValueTool_mark_dirty(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ProximityValueTool_mark_dirty(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:117 - `BRepExtrema_ProximityValueTool::Distance()`
     /// Returns the computed distance.
     pub fn distance(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ProximityValueTool_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ProximityValueTool_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:120 - `BRepExtrema_ProximityValueTool::ProximityPoints()`
     /// Returns points on triangles sets, which provide the proximity distance.
     pub fn proximity_points(&self, thePoint1: &mut crate::gp::Pnt, thePoint2: &mut crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityValueTool_proximity_points(
-                self as *const Self,
-                thePoint1,
-                thePoint2,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ProximityValueTool_proximity_points(
+                    self as *const Self,
+                    thePoint1,
+                    thePoint2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1557,10 +2045,11 @@ impl SelfIntersection {
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:40 - `BRepExtrema_SelfIntersection::BRepExtrema_SelfIntersection()`
     /// Creates uninitialized self-intersection tool.
     pub fn new_real(theTolerance: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_SelfIntersection_ctor_real(
-                theTolerance,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SelfIntersection_ctor_real(theTolerance) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1570,11 +2059,12 @@ impl SelfIntersection {
         theShape: &crate::topo_ds::Shape,
         theTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_SelfIntersection_ctor_shape_real(
-                theShape,
-                theTolerance,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_ctor_shape_real(theShape, theTolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1593,72 +2083,119 @@ impl SelfIntersection {
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:48 - `BRepExtrema_SelfIntersection::Tolerance()`
     /// Returns tolerance value used for self-intersection test.
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_SelfIntersection_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SelfIntersection_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:51 - `BRepExtrema_SelfIntersection::SetTolerance()`
     /// Sets tolerance value used for self-intersection test.
     pub fn set_tolerance(&mut self, theTolerance: f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_SelfIntersection_set_tolerance(self as *mut Self, theTolerance)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_set_tolerance(
+                    self as *mut Self,
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:54 - `BRepExtrema_SelfIntersection::LoadShape()`
     /// Loads shape for detection of self-intersections.
     pub fn load_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::BRepExtrema_SelfIntersection_load_shape(self as *mut Self, theShape) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_load_shape(self as *mut Self, theShape)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:57 - `BRepExtrema_SelfIntersection::Perform()`
     /// Performs detection of self-intersections.
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_SelfIntersection_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_SelfIntersection_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:60 - `BRepExtrema_SelfIntersection::IsDone()`
     /// True if the detection is completed.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_SelfIntersection_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SelfIntersection_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:63 - `BRepExtrema_SelfIntersection::OverlapElements()`
     /// Returns set of IDs of overlapped sub-shapes (started from 0).
     pub fn overlap_elements(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_SelfIntersection_overlap_elements(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_overlap_elements(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:69 - `BRepExtrema_SelfIntersection::GetSubShape()`
     /// Returns sub-shape from the shape for the given index (started from 0).
     pub fn get_sub_shape(&self, theID: i32) -> &crate::topo_ds::Face {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_SelfIntersection_get_sub_shape(self as *const Self, theID))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_get_sub_shape(self as *const Self, theID)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet()`
     /// Returns set of all the face triangles of the shape.
     pub fn element_set(&self) -> &crate::ffi::HandleBRepExtremaTriangleSet {
-        unsafe { &*(crate::ffi::BRepExtrema_SelfIntersection_element_set(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_element_set(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to BRepExtrema_ElementFilter
     pub fn as_element_filter(&self) -> &ElementFilter {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BRepExtrema_ElementFilter (mutable)
     pub fn as_element_filter_mut(&mut self) -> &mut ElementFilter {
-        unsafe {
-            &mut *(crate::ffi::BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -1701,10 +2238,11 @@ impl ShapeProximity {
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:53 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
     /// Creates empty proximity tool.
     pub fn new_real(theTolerance: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ShapeProximity_ctor_real(
-                theTolerance,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ShapeProximity_ctor_real(theTolerance) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1715,53 +2253,91 @@ impl ShapeProximity {
         theShape2: &crate::topo_ds::Shape,
         theTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ShapeProximity_ctor_shape2_real(
-                theShape1,
-                theShape2,
-                theTolerance,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_ctor_shape2_real(
+                    theShape1,
+                    theShape2,
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:64 - `BRepExtrema_ShapeProximity::Tolerance()`
     /// Returns tolerance value for overlap test (distance between shapes).
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ShapeProximity_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ShapeProximity_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:67 - `BRepExtrema_ShapeProximity::SetTolerance()`
     /// Sets tolerance value for overlap test (distance between shapes).
     pub fn set_tolerance(&mut self, theTolerance: f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_ShapeProximity_set_tolerance(self as *mut Self, theTolerance)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_set_tolerance(
+                    self as *mut Self,
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:70 - `BRepExtrema_ShapeProximity::Proximity()`
     /// Returns proximity value calculated for the whole input shapes.
     pub fn proximity(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_ShapeProximity_proximity(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ShapeProximity_proximity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:73 - `BRepExtrema_ShapeProximity::LoadShape1()`
     /// Loads 1st shape into proximity tool.
     pub fn load_shape1(&mut self, theShape1: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ShapeProximity_load_shape1(self as *mut Self, theShape1) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_load_shape1(self as *mut Self, theShape1)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:76 - `BRepExtrema_ShapeProximity::LoadShape2()`
     /// Loads 2nd shape into proximity tool.
     pub fn load_shape2(&mut self, theShape2: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ShapeProximity_load_shape2(self as *mut Self, theShape2) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_load_shape2(self as *mut Self, theShape2)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:80 - `BRepExtrema_ShapeProximity::SetNbSamples1()`
     /// Set number of sample points on the 1st shape used to compute the proximity value.
     /// In case of 0, all triangulation nodes will be used.
     pub fn set_nb_samples1(&mut self, theNbSamples: i32) {
-        unsafe {
-            crate::ffi::BRepExtrema_ShapeProximity_set_nb_samples1(self as *mut Self, theNbSamples)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_set_nb_samples1(
+                    self as *mut Self,
+                    theNbSamples,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1769,79 +2345,131 @@ impl ShapeProximity {
     /// Set number of sample points on the 2nd shape used to compute the proximity value.
     /// In case of 0, all triangulation nodes will be used.
     pub fn set_nb_samples2(&mut self, theNbSamples: i32) {
-        unsafe {
-            crate::ffi::BRepExtrema_ShapeProximity_set_nb_samples2(self as *mut Self, theNbSamples)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_set_nb_samples2(
+                    self as *mut Self,
+                    theNbSamples,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:87 - `BRepExtrema_ShapeProximity::Perform()`
     /// Performs search of overlapped faces.
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_ShapeProximity_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_ShapeProximity_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:90 - `BRepExtrema_ShapeProximity::IsDone()`
     /// True if the search is completed.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepExtrema_ShapeProximity_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ShapeProximity_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:93 - `BRepExtrema_ShapeProximity::OverlapSubShapes1()`
     /// Returns set of IDs of overlapped faces of 1st shape (started from 0).
     pub fn overlap_sub_shapes1(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_ShapeProximity_overlap_sub_shapes1(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_overlap_sub_shapes1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:99 - `BRepExtrema_ShapeProximity::OverlapSubShapes2()`
     /// Returns set of IDs of overlapped faces of 2nd shape (started from 0).
     pub fn overlap_sub_shapes2(&self) -> &crate::ffi::BRepExtrema_MapOfIntegerPackedMapOfInteger {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_ShapeProximity_overlap_sub_shapes2(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_overlap_sub_shapes2(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:105 - `BRepExtrema_ShapeProximity::GetSubShape1()`
     /// Returns sub-shape from 1st shape with the given index (started from 0).
     pub fn get_sub_shape1(&self, theID: i32) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_ShapeProximity_get_sub_shape1(self as *const Self, theID))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_get_sub_shape1(self as *const Self, theID)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:111 - `BRepExtrema_ShapeProximity::GetSubShape2()`
     /// Returns sub-shape from 1st shape with the given index (started from 0).
     pub fn get_sub_shape2(&self, theID: i32) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_ShapeProximity_get_sub_shape2(self as *const Self, theID))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_get_sub_shape2(self as *const Self, theID)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1()`
     /// Returns set of all the face triangles of the 1st shape.
     pub fn element_set1(&self) -> &crate::ffi::HandleBRepExtremaTriangleSet {
-        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_element_set1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ShapeProximity_element_set1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ElementSet2()`
     /// Returns set of all the face triangles of the 2nd shape.
     pub fn element_set2(&self) -> &crate::ffi::HandleBRepExtremaTriangleSet {
-        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_element_set2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_ShapeProximity_element_set2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:124 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
     /// Returns the point on the 1st shape, which could be used as a reference point
     /// for the value of the proximity.
     pub fn proximity_point1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_proximity_point1(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_proximity_point1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_ShapeProximity.hxx`:128 - `BRepExtrema_ShapeProximity::ProximityPoint2()`
     /// Returns the point on the 2nd shape, which could be used as a reference point
     /// for the value of the proximity.
     pub fn proximity_point2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_proximity_point2(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_ShapeProximity_proximity_point2(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1877,7 +2505,11 @@ impl SolutionElem {
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:30 - `BRepExtrema_SolutionElem::BRepExtrema_SolutionElem()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_SolutionElem_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_SolutionElem_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:45 - `BRepExtrema_SolutionElem::BRepExtrema_SolutionElem()`
@@ -1893,15 +2525,17 @@ impl SolutionElem {
         theSolType: crate::b_rep_extrema::SupportType,
         theVertex: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_SolutionElem_ctor_real_pnt_supporttype_vertex(
                     theDist,
                     thePoint,
                     theSolType.into(),
                     theVertex,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1920,16 +2554,18 @@ impl SolutionElem {
         theEdge: &crate::topo_ds::Edge,
         theParam: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_SolutionElem_ctor_real_pnt_supporttype_edge_real(
                     theDist,
                     thePoint,
                     theSolType.into(),
                     theEdge,
                     theParam,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1950,8 +2586,8 @@ impl SolutionElem {
         theU: f64,
         theV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_SolutionElem_ctor_real_pnt_supporttype_face_real2(
                     theDist,
                     thePoint,
@@ -1959,21 +2595,33 @@ impl SolutionElem {
                     theFace,
                     theU,
                     theV,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:103 - `BRepExtrema_SolutionElem::Dist()`
     /// Returns the value of the minimum distance.
     pub fn dist(&self) -> f64 {
-        unsafe { crate::ffi::BRepExtrema_SolutionElem_dist(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SolutionElem_dist(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:106 - `BRepExtrema_SolutionElem::Point()`
     /// Returns the solution point.
     pub fn point(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_point(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SolutionElem_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:112 - `BRepExtrema_SolutionElem::SupportKind()`
@@ -1982,45 +2630,66 @@ impl SolutionElem {
     /// IsOnEdge => The solution belongs to an Edge.
     /// IsInFace => The solution is inside a Face.
     pub fn support_kind(&self) -> crate::b_rep_extrema::SupportType {
-        unsafe {
-            crate::b_rep_extrema::SupportType::try_from(
-                crate::ffi::BRepExtrema_SolutionElem_support_kind(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SolutionElem_support_kind(self as *const Self) };
+            crate::check_exception();
+            crate::b_rep_extrema::SupportType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:115 - `BRepExtrema_SolutionElem::Vertex()`
     /// Returns the vertex if the solution is a Vertex.
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
-        unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_vertex(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SolutionElem_vertex(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:118 - `BRepExtrema_SolutionElem::Edge()`
     /// Returns the vertex if the solution is an Edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_edge(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SolutionElem_edge(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:121 - `BRepExtrema_SolutionElem::Face()`
     /// Returns the vertex if the solution is an Face.
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_face(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_SolutionElem_face(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:124 - `BRepExtrema_SolutionElem::EdgeParameter()`
     /// Returns the parameter value if the solution is on Edge.
     pub fn edge_parameter(&self, theParam: &mut f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_SolutionElem_edge_parameter(self as *const Self, theParam)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_SolutionElem_edge_parameter(self as *const Self, theParam)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:127 - `BRepExtrema_SolutionElem::FaceParameter()`
     /// Returns the parameters U and V if the solution is in a Face.
     pub fn face_parameter(&self, theU: &mut f64, theV: &mut f64) {
-        unsafe {
-            crate::ffi::BRepExtrema_SolutionElem_face_parameter(self as *const Self, theU, theV)
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_SolutionElem_face_parameter(self as *const Self, theU, theV)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -2043,14 +2712,20 @@ impl TriangleSet {
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:33 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
     /// Creates empty triangle set.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_TriangleSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:36 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
     /// Creates triangle set from the given face.
     pub fn new_shapelist(theFaces: &crate::ffi::BRepExtrema_ShapeList) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_ctor_shapelist(theFaces))
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_TriangleSet_ctor_shapelist(theFaces) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2058,50 +2733,76 @@ impl TriangleSet {
     /// @name methods implementing BVH set interface
     /// Returns total number of triangles.
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_TriangleSet_size(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_TriangleSet_size(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box()`
     /// Returns AABB of the given triangle.
     pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_box_(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_TriangleSet_box_(self as *const Self, theIndex) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:53 - `BRepExtrema_TriangleSet::Center()`
     /// Returns centroid position along specified axis.
     pub fn center(&self, theIndex: i32, theAxis: i32) -> f64 {
-        unsafe {
-            crate::ffi::BRepExtrema_TriangleSet_center(self as *const Self, theIndex, theAxis)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_center(self as *const Self, theIndex, theAxis)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:57 - `BRepExtrema_TriangleSet::Swap()`
     /// Swaps indices of two specified triangles.
     pub fn swap(&mut self, theIndex1: i32, theIndex2: i32) {
-        unsafe { crate::ffi::BRepExtrema_TriangleSet_swap(self as *mut Self, theIndex1, theIndex2) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_swap(self as *mut Self, theIndex1, theIndex2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:62 - `BRepExtrema_TriangleSet::Clear()`
     /// Clears triangle set data.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_TriangleSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_TriangleSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:65 - `BRepExtrema_TriangleSet::Init()`
     /// Initializes triangle set.
     pub fn init(&mut self, theShapes: &crate::ffi::BRepExtrema_ShapeList) -> bool {
-        unsafe { crate::ffi::BRepExtrema_TriangleSet_init(self as *mut Self, theShapes) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_TriangleSet_init(self as *mut Self, theShapes) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:68 - `BRepExtrema_TriangleSet::GetVertices()`
     /// Returns all vertices.
     pub fn get_vertices(&self) -> &crate::ffi::BVH_Array3d {
-        unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_get_vertices(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_TriangleSet_get_vertices(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:71 - `BRepExtrema_TriangleSet::GetVertices()`
@@ -2113,14 +2814,17 @@ impl TriangleSet {
         theVertex2: &mut crate::ffi::BVH_Vec3d,
         theVertex3: &mut crate::ffi::BVH_Vec3d,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_TriangleSet_get_vertices_int_vec3d3(
-                self as *const Self,
-                theIndex,
-                theVertex1,
-                theVertex2,
-                theVertex3,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_get_vertices_int_vec3d3(
+                    self as *const Self,
+                    theIndex,
+                    theVertex1,
+                    theVertex2,
+                    theVertex3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2131,26 +2835,42 @@ impl TriangleSet {
         theIndex: i32,
         theVtxIndices: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
-        unsafe {
-            crate::ffi::BRepExtrema_TriangleSet_get_vtx_indices(
-                self as *const Self,
-                theIndex,
-                theVtxIndices,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_get_vtx_indices(
+                    self as *const Self,
+                    theIndex,
+                    theVtxIndices,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:81 - `BRepExtrema_TriangleSet::GetFaceID()`
     /// Returns face ID of the given triangle.
     pub fn get_face_id(&self, theIndex: i32) -> i32 {
-        unsafe { crate::ffi::BRepExtrema_TriangleSet_get_face_id(self as *const Self, theIndex) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_get_face_id(self as *const Self, theIndex)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:84 - `BRepExtrema_TriangleSet::GetShapeIDOfVtx()`
     /// Returns shape ID of the given vertex index.
     pub fn get_shape_id_of_vtx(&self, theIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_TriangleSet_get_shape_id_of_vtx(self as *const Self, theIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_get_shape_id_of_vtx(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2158,8 +2878,15 @@ impl TriangleSet {
     /// Returns vertex index in tringulation of the shape, which vertex belongs,
     /// with the given vtx ID in whole set.
     pub fn get_vtx_idx_in_shape(&self, theIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_TriangleSet_get_vtx_idx_in_shape(self as *const Self, theIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_get_vtx_idx_in_shape(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2167,36 +2894,54 @@ impl TriangleSet {
     /// Returns triangle index (before swapping) in tringulation of the shape, which triangle belongs,
     /// with the given trg ID in whole set (after swapping).
     pub fn get_trg_idx_in_shape(&self, theIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_TriangleSet_get_trg_idx_in_shape(self as *const Self, theIndex)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_TriangleSet_get_trg_idx_in_shape(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_TriangleSet_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepExtrema_TriangleSet_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_TriangleSet_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_TriangleSet_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepExtremaTriangleSet> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_TriangleSet_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2212,12 +2957,22 @@ unsafe impl crate::CppDeletable for HandleBRepExtremaTriangleSet {
 impl HandleBRepExtremaTriangleSet {
     /// Dereference this Handle to access the underlying BRepExtrema_TriangleSet
     pub fn get(&self) -> &crate::ffi::BRepExtrema_TriangleSet {
-        unsafe { &*(crate::ffi::HandleBRepExtremaTriangleSet_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepExtremaTriangleSet_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepExtrema_TriangleSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepExtrema_TriangleSet {
-        unsafe { &mut *(crate::ffi::HandleBRepExtremaTriangleSet_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepExtremaTriangleSet_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 }
 
@@ -2237,16 +2992,22 @@ unsafe impl crate::CppDeletable for UnCompatibleShape {
 impl UnCompatibleShape {
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_UnCompatibleShape_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_UnCompatibleShape_ctor_charptr(
-                c_theMessage.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_ctor_charptr(c_theMessage.as_ptr())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2254,28 +3015,46 @@ impl UnCompatibleShape {
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_UnCompatibleShape_ctor_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepExtrema_UnCompatibleShape_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_raise_charptr(c_theMessage.as_ptr()) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_raise_charptr(c_theMessage.as_ptr())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_raise_sstream(theMessage) }
+        {
+            unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_raise_sstream(theMessage) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance()`
@@ -2283,12 +3062,14 @@ impl UnCompatibleShape {
         theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepExtremaUnCompatibleShape> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_UnCompatibleShape_new_instance_charptr(
                     c_theMessage.as_ptr(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2299,77 +3080,106 @@ impl UnCompatibleShape {
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepExtremaUnCompatibleShape> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_UnCompatibleShape_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::BRepExtrema_UnCompatibleShape_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::BRepExtrema_UnCompatibleShape_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_DomainError(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_DomainError(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        unsafe {
-            &mut *(crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_DomainError_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Failure(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Failure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        unsafe {
-            &mut *(crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Failure_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2377,92 +3187,132 @@ impl UnCompatibleShape {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepExtremaUnCompatibleShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_UnCompatibleShape_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
-        unsafe {
-            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Print(
-                self as *const Self,
-                theStream,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Print(
+                    self as *const Self,
+                    theStream,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Reraise(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Reraise(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
-        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Jump(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Jump(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BRepExtrema_UnCompatibleShape_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::BRepExtrema_UnCompatibleShape_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::BRepExtrema_UnCompatibleShape_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2477,44 +3327,61 @@ unsafe impl crate::CppDeletable for HandleBRepExtremaUnCompatibleShape {
 impl HandleBRepExtremaUnCompatibleShape {
     /// Dereference this Handle to access the underlying BRepExtrema_UnCompatibleShape
     pub fn get(&self) -> &crate::ffi::BRepExtrema_UnCompatibleShape {
-        unsafe { &*(crate::ffi::HandleBRepExtremaUnCompatibleShape_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleBRepExtremaUnCompatibleShape_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepExtrema_UnCompatibleShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepExtrema_UnCompatibleShape {
-        unsafe { &mut *(crate::ffi::HandleBRepExtremaUnCompatibleShape_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleBRepExtremaUnCompatibleShape_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepExtremaUnCompatibleShape_to_HandleStandardDomainError(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepExtremaUnCompatibleShape_to_HandleStandardFailure(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleBRepExtremaUnCompatibleShape_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

@@ -364,6 +364,10 @@ impl ReturnTypeBinding {
             "int32_t*".to_string()
         } else if self.enum_cpp_name.is_some() {
             "int32_t".to_string()
+        } else if self.cpp_type.contains('&') {
+            // Convert reference returns to pointer returns for exception safety.
+            // At the ABI level, C++ references and pointers are identical.
+            self.cpp_type.replace('&', "*")
         } else {
             self.cpp_type.clone()
         }
@@ -375,26 +379,26 @@ impl ReturnTypeBinding {
     /// When `assign_to_variable` is true, generates `auto result_ = <expr>;`
     /// instead of `return <expr>;` (used in multi-statement wrappers).
     pub fn format_cpp_return_stmt(&self, call_expr: &str, assign_to_variable: bool) -> String {
+        let is_ref_return = !self.needs_unique_ptr
+            && !self.is_mut_ref_enum_return
+            && self.enum_cpp_name.is_none()
+            && self.cpp_type.contains('&');
+
         let expr = if self.is_mut_ref_enum_return {
             format!("reinterpret_cast<int32_t*>(&({}))", call_expr)
         } else if self.needs_unique_ptr {
             format!("new {}({})", self.cpp_type, call_expr)
         } else if self.enum_cpp_name.is_some() {
             format!("static_cast<int32_t>({})", call_expr)
+        } else if is_ref_return {
+            // Reference return converted to pointer: take address of result
+            format!("&({})", call_expr)
         } else {
             call_expr.to_string()
         };
 
         if assign_to_variable {
-            let auto_kw = if !self.is_mut_ref_enum_return && !self.needs_unique_ptr
-                && !self.enum_cpp_name.is_some()
-                && self.cpp_type.ends_with('&')
-            {
-                "auto&"
-            } else {
-                "auto"
-            };
-            format!("{} result_ = {};", auto_kw, expr)
+            format!("auto result_ = {};", expr)
         } else {
             format!("return {};", expr)
         }
@@ -3773,6 +3777,21 @@ pub fn compute_all_function_bindings(
 
 // ── Emit functions ──────────────────────────────────────────────────────────
 
+/// Compute the default C++ return value for error paths in exception handling.
+/// Returns `None` for void functions.
+pub(super) fn cpp_error_return_value(cpp_return_type: &str) -> Option<&'static str> {
+    if cpp_return_type == "void" {
+        None
+    } else if cpp_return_type.contains('*') {
+        Some("nullptr")
+    } else if cpp_return_type == "bool" {
+        Some("false")
+    } else {
+        // Covers int32_t, double, float, size_t, Standard_Real, etc.
+        Some("0")
+    }
+}
+
 /// Emit C++ wrapper code for a single class from pre-computed ClassBindings.
 ///
 /// Produces C++ wrapper code for a class
@@ -3819,9 +3838,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         .unwrap();
         writeln!(
             output,
-            "    return new {cn}({args_str});"
+            "    try {{ return new {cn}({args_str}); }}"
         )
         .unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
@@ -3862,10 +3883,12 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         .unwrap();
         writeln!(
             output,
-            "    return new {ret_cpp}(self_->{method}({args_str}));",
+            "    try {{ return new {ret_cpp}(self_->{method}({args_str})); }}",
             method = wm.cpp_method_name
         )
         .unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
@@ -3916,46 +3939,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .collect::<Vec<_>>()
             .join(", ");
 
-        // Determine return behaviour
-        let returns_cstring = wm
-            .return_type
-            .as_ref()
-            .map(|rt| rt.cpp_type == "const char*")
-            .unwrap_or(false);
-        let returns_reference = wm
-            .return_type
-            .as_ref()
-            .map(|rt| rt.cpp_type.contains('&'))
-            .unwrap_or(false);
-
-        if returns_cstring {
-            writeln!(
-                output,
-                "extern \"C\" const char* {fn_name}({params}) {{",
-                fn_name = wm.ffi_fn_name
-            )
-            .unwrap();
-            writeln!(
-                output,
-                "    return self_->{method}({args_str});",
-                method = wm.cpp_method_name
-            )
-            .unwrap();
-        } else if returns_reference {
-            let ret_cpp = &wm.return_type.as_ref().unwrap().cpp_type;
-            writeln!(
-                output,
-                "extern \"C\" {ret_cpp} {fn_name}({params}) {{",
-                fn_name = wm.ffi_fn_name
-            )
-            .unwrap();
-            writeln!(
-                output,
-                "    return self_->{method}({args_str});",
-                method = wm.cpp_method_name
-            )
-            .unwrap();
-        } else if wm.return_type.is_none() {
+        // Determine return behaviour and emit with exception handling
+        if wm.return_type.is_none() {
             writeln!(
                 output,
                 "extern \"C\" void {fn_name}({params}) {{",
@@ -3964,21 +3949,26 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .unwrap();
             writeln!(
                 output,
-                "    self_->{method}({args_str});",
+                "    try {{ self_->{method}({args_str}); }}",
                 method = wm.cpp_method_name
             )
             .unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
         } else {
             let rt = wm.return_type.as_ref().unwrap();
-            let ret_cpp = &rt.cpp_type;
+            let ret_type_cpp = rt.ffi_cpp_return_type();
             writeln!(
                 output,
-                "extern \"C\" {ret_cpp} {fn_name}({params}) {{",
+                "extern \"C\" {ret_type_cpp} {fn_name}({params}) {{",
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
             let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
-            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    try {{ {} }}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         }
         writeln!(output, "}}").unwrap();
     }
@@ -4021,10 +4011,12 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         .unwrap();
         writeln!(
             output,
-            "    return self_->{method}({args_str});",
+            "    try {{ return self_->{method}({args_str}); }}",
             method = wm.cpp_method_name
         )
         .unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
@@ -4068,7 +4060,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    try {{ {} }}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         } else {
             // Void return, enum params only
             writeln!(
@@ -4077,7 +4073,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            writeln!(output, "    {call_expr};").unwrap();
+            writeln!(output, "    try {{ {call_expr}; }}").unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
         }
         writeln!(output, "}}").unwrap();
     }
@@ -4122,7 +4119,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             )
             .unwrap();
             let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
-            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    try {{ {} }}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -4132,10 +4133,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .unwrap();
             writeln!(
                 output,
-                "    self_->{method}({args_str});",
+                "    try {{ self_->{method}({args_str}); }}",
                 method = wm.cpp_method_name
             )
             .unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
         }
         writeln!(output, "}}").unwrap();
     }
@@ -4178,7 +4180,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             )
             .unwrap();
             let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
-            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    try {{ {} }}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -4188,10 +4194,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .unwrap();
             writeln!(
                 output,
-                "    self_->{method}({args_str});",
+                "    try {{ self_->{method}({args_str}); }}",
                 method = wm.cpp_method_name
             )
             .unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
         }
         writeln!(output, "}}").unwrap();
     }
@@ -4237,6 +4244,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             fn_name = wm.ffi_fn_name
         )
         .unwrap();
+
+        writeln!(output, "    try {{").unwrap();
 
         // Emit preamble: create local enum variables from int32_t input values
         for p in &wm.params {
@@ -4289,6 +4298,12 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             writeln!(output, "    return result_;").unwrap();
         }
 
+        writeln!(output, "    }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+            writeln!(output, "    return {};", default).unwrap();
+        }
+
         writeln!(output, "}}").unwrap();
     }
 
@@ -4331,7 +4346,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             )
             .unwrap();
             let call_expr = format!("self_->{}({})", wm.cpp_method_name, args_str);
-            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    try {{ {} }}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -4341,10 +4360,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .unwrap();
             writeln!(
                 output,
-                "    self_->{method}({args_str});",
+                "    try {{ self_->{method}({args_str}); }}",
                 method = wm.cpp_method_name
             )
             .unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
         }
         writeln!(output, "}}").unwrap();
     }
@@ -4367,7 +4387,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         let has_mut_ref_enum = sm.params.iter().any(|p| p.mut_ref_enum_cpp_name.is_some());
 
         // Check for c_string return (const char* -> const char*)
-        let returns_cstring = sm.return_type.as_ref()
+        let _returns_cstring = sm.return_type.as_ref()
             .map(|rt| rt.cpp_type == "const char*")
             .unwrap_or(false);
 
@@ -4384,6 +4404,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 fn_name = sm.ffi_fn_name
             )
             .unwrap();
+
+            writeln!(output, "    try {{").unwrap();
 
             // Preamble: create local enum vars
             for p in &sm.params {
@@ -4428,19 +4450,12 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             if sm.return_type.is_some() {
                 writeln!(output, "    return result_;").unwrap();
             }
-        } else if returns_cstring {
-            writeln!(
-                output,
-                "extern \"C\" const char* {fn_name}({params_str}) {{",
-                fn_name = sm.ffi_fn_name
-            )
-            .unwrap();
-            writeln!(
-                output,
-                "    return {cn}::{method}({args_str});",
-                method = sm.cpp_method_name
-            )
-            .unwrap();
+
+            writeln!(output, "    }}").unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         } else if let Some(ref rt) = sm.return_type {
             let ret_type_cpp = rt.ffi_cpp_return_type();
             writeln!(
@@ -4450,7 +4465,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             )
             .unwrap();
             let call_expr = format!("{}::{}({})", cn, sm.cpp_method_name, args_str);
-            writeln!(output, "    {}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    try {{ {} }}", rt.format_cpp_return_stmt(&call_expr, false)).unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+            if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+                writeln!(output, "    return {};", default).unwrap();
+            }
         } else {
             writeln!(
                 output,
@@ -4460,10 +4479,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .unwrap();
             writeln!(
                 output,
-                "    {cn}::{method}({args_str});",
+                "    try {{ {cn}::{method}({args_str}); }}",
                 method = sm.cpp_method_name
             )
             .unwrap();
+            writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
         }
         writeln!(output, "}}").unwrap();
     }
@@ -4493,9 +4513,13 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         let fn_name = format!("{ffi_cn}_to_owned");
         writeln!(
             output,
-            "extern \"C\" {cn}* {fn_name}(const {cn}* self_) {{ return new {cn}(*self_); }}"
+            "extern \"C\" {cn}* {fn_name}(const {cn}* self_) {{"
         )
         .unwrap();
+        writeln!(output, "    try {{ return new {cn}(*self_); }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
+        writeln!(output, "}}").unwrap();
     }
 
     // 8. to_handle wrapper
@@ -4507,11 +4531,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             "extern \"C\" {handle_type}* {fn_name}({cn}* obj) {{"
         )
         .unwrap();
-        writeln!(
-            output,
-            "    return new {handle_type}(obj);"
-        )
-        .unwrap();
+        writeln!(output, "    try {{ return new {handle_type}(obj); }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
@@ -4520,14 +4542,22 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         let handle_type = type_mapping::handle_type_name(ffi_cn);
         writeln!(
             output,
-            "extern \"C\" const {cn}* {handle_type}_get(const {handle_type}* handle) {{ return (*handle).get(); }}"
+            "extern \"C\" const {cn}* {handle_type}_get(const {handle_type}* handle) {{"
         )
         .unwrap();
+        writeln!(output, "    try {{ return (*handle).get(); }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
+        writeln!(output, "}}").unwrap();
         writeln!(
             output,
-            "extern \"C\" {cn}* {handle_type}_get_mut({handle_type}* handle) {{ return (*handle).get(); }}"
+            "extern \"C\" {cn}* {handle_type}_get_mut({handle_type}* handle) {{"
         )
         .unwrap();
+        writeln!(output, "    try {{ return (*handle).get(); }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
+        writeln!(output, "}}").unwrap();
     }
 
     // 9. Handle upcast wrappers
@@ -4540,12 +4570,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             derived_handle = hup.derived_handle_name
         )
         .unwrap();
-        writeln!(
-            output,
-            "    return new {base_handle}(*self_);",
-            base_handle = hup.base_handle_name
-        )
-        .unwrap();
+        writeln!(output, "    try {{ return new {base_handle}(*self_); }}", base_handle = hup.base_handle_name).unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
@@ -4559,6 +4586,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             base_handle = hdown.base_handle_name
         )
         .unwrap();
+        writeln!(output, "    try {{").unwrap();
         writeln!(
             output,
             "    opencascade::handle<{derived_class}> result = opencascade::handle<{derived_class}>::DownCast(*self_);",
@@ -4572,6 +4600,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             derived_handle = hdown.derived_handle_name
         )
         .unwrap();
+        writeln!(output, "    }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        writeln!(output, "    return nullptr;").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
@@ -4612,6 +4643,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             fn_name = im.ffi_fn_name
         )
         .unwrap();
+
+        writeln!(output, "    try {{").unwrap();
 
         // Preamble: create local enum variables from int32_t for &mut enum params
         for p in &im.params {
@@ -4669,6 +4702,12 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 )
                 .unwrap();
             }
+        }
+
+        writeln!(output, "    }}").unwrap();
+        writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+        if let Some(default) = cpp_error_return_value(&ret_type_cpp) {
+            writeln!(output, "    return {};", default).unwrap();
         }
 
         writeln!(output, "}}").unwrap();
@@ -4823,41 +4862,51 @@ pub(super) fn build_reexport_body(raw_call: &str, rt: Option<&ReturnTypeBinding>
     let needs_owned_ptr = rt.map_or(false, |r| r.needs_unique_ptr);
     let is_class_ptr_return = rt.map_or(false, |r| r.is_class_ptr_return);
     let is_mut_ref_enum_return = rt.map_or(false, |r| r.is_mut_ref_enum_return);
+
+    // Void return: call, check, done
+    if rt.is_none() || reexport_type.is_none() {
+        return format!("{{ unsafe {{ {} }}; crate::check_exception(); }}", raw_call);
+    }
+
+    // All non-void paths: call the FFI, check for exception, then convert result.
+    // The check_exception() call panics before we use the (potentially garbage) result
+    // if a C++ exception was caught.
+
     if is_mut_ref_enum_return {
         // &mut enum return: FFI returns *mut i32, cast to *mut EnumType and dereference
         if let Some(enum_type) = is_enum {
-            return format!("unsafe {{ &mut *({} as *mut {}) }}", raw_call, enum_type);
+            return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); unsafe {{ &mut *(__result as *mut {}) }} }}", raw_call, enum_type);
         } else {
-            return format!("unsafe {{ &mut *({}) }}", raw_call);
+            return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); unsafe {{ &mut *(__result) }} }}", raw_call);
         }
     }
     if is_class_ptr_return {
         // Class pointer returns are bound as Option<&T> / Option<&mut T>.
         // The FFI returns a raw pointer; we null-check and convert.
-        if let Some(rt) = reexport_type {
-            if rt.starts_with("Option<&mut ") {
-                return format!("{{ let ptr = unsafe {{ {} }}; if ptr.is_null() {{ None }} else {{ Some(unsafe {{ &mut *ptr }}) }} }}", raw_call);
+        if let Some(rty) = reexport_type {
+            if rty.starts_with("Option<&mut ") {
+                return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); if __result.is_null() {{ None }} else {{ Some(unsafe {{ &mut *__result }}) }} }}", raw_call);
             }
         }
-        return format!("{{ let ptr = unsafe {{ {} }}; if ptr.is_null() {{ None }} else {{ Some(unsafe {{ &*ptr }}) }} }}", raw_call);
+        return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); if __result.is_null() {{ None }} else {{ Some(unsafe {{ &*__result }}) }} }}", raw_call);
     }
     if let Some(enum_type) = is_enum {
-        format!("unsafe {{ {}::try_from({}).unwrap() }}", enum_type, raw_call)
-    } else if needs_owned_ptr {
-        format!("unsafe {{ crate::OwnedPtr::from_raw({}) }}", raw_call)
-    } else if let Some(rt) = reexport_type {
-        if rt == "std::string::String" {
-            format!("unsafe {{ std::ffi::CStr::from_ptr({}).to_string_lossy().into_owned() }}", raw_call)
-        } else if rt.starts_with("&mut ") {
-            format!("unsafe {{ &mut *({}) }}", raw_call)
-        } else if rt.starts_with('&') {
-            format!("unsafe {{ &*({}) }}", raw_call)
-        } else {
-            format!("unsafe {{ {} }}", raw_call)
-        }
-    } else {
-        format!("unsafe {{ {} }}", raw_call)
+        return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); {}::try_from(__result).unwrap() }}", raw_call, enum_type);
     }
+    if needs_owned_ptr {
+        return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); unsafe {{ crate::OwnedPtr::from_raw(__result) }} }}", raw_call);
+    }
+    if let Some(rty) = reexport_type {
+        if rty == "std::string::String" {
+            return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); unsafe {{ std::ffi::CStr::from_ptr(__result) }}.to_string_lossy().into_owned() }}", raw_call);
+        } else if rty.starts_with("&mut ") {
+            return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); unsafe {{ &mut *(__result) }} }}", raw_call);
+        } else if rty.starts_with('&') {
+            return format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); unsafe {{ &*(__result) }} }}", raw_call);
+        }
+    }
+    // Simple passthrough (primitives, bool, etc.)
+    format!("{{ let __result = unsafe {{ {} }}; crate::check_exception(); __result }}", raw_call)
 }
 
 pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> String {
@@ -4948,7 +4997,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             let prelude = cstr_prelude_params(&ctor.params, "        ");
             let unsafe_kw = if ctor.is_unsafe { "unsafe " } else { "" };
             impl_methods.push(format!(
-                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}({})) }}\n    }}\n",
+                "{}    pub {}fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        {{\n            let __result = unsafe {{ crate::ffi::{}({}) }};\n            crate::check_exception();\n            unsafe {{ crate::OwnedPtr::from_raw(__result) }}\n        }}\n    }}\n",
                 doc,
                 unsafe_kw,
                 ctor.impl_method_name,
@@ -5148,12 +5197,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         };
 
         impl_methods.push(format!(
-            "    /// Upcast to {}\n    pub fn {}(&self) -> &{} {{\n        unsafe {{ &*(crate::ffi::{}(self as *const Self)) }}\n    }}\n",
+            "    /// Upcast to {}\n    pub fn {}(&self) -> &{} {{\n        {{\n            let __result = unsafe {{ crate::ffi::{}(self as *const Self) }};\n            crate::check_exception();\n            unsafe {{ &*__result }}\n        }}\n    }}\n",
             up.base_class, up.impl_method_name, ret_type, up.ffi_fn_name
         ));
 
         impl_methods.push(format!(
-            "    /// Upcast to {} (mutable)\n    pub fn {}_mut(&mut self) -> &mut {} {{\n        unsafe {{ &mut *(crate::ffi::{}(self as *mut Self)) }}\n    }}\n",
+            "    /// Upcast to {} (mutable)\n    pub fn {}_mut(&mut self) -> &mut {} {{\n        {{\n            let __result = unsafe {{ crate::ffi::{}(self as *mut Self) }};\n            crate::check_exception();\n            unsafe {{ &mut *__result }}\n        }}\n    }}\n",
             up.base_class, up.impl_method_name, ret_type, up.ffi_fn_name_mut
         ));
     }
@@ -5162,7 +5211,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     if bindings.has_to_owned {
         let ffi_fn_name = format!("{}_to_owned", cn);
         impl_methods.push(format!(
-            "    /// Clone into a new OwnedPtr via copy constructor\n    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}(self as *const Self)) }}\n    }}\n",
+            "    /// Clone into a new OwnedPtr via copy constructor\n    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {{\n        {{\n            let __result = unsafe {{ crate::ffi::{}(self as *const Self) }};\n            crate::check_exception();\n            unsafe {{ crate::OwnedPtr::from_raw(__result) }}\n        }}\n    }}\n",
             ffi_fn_name
         ));
     }
@@ -5172,7 +5221,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let ffi_fn_name = format!("{}_to_handle", cn);
         let handle_type_name = type_mapping::handle_type_name(cn);
         impl_methods.push(format!(
-            "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}(obj.into_raw())) }}\n    }}\n",
+            "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::{}> {{\n        {{\n            let __result = unsafe {{ crate::ffi::{}(obj.into_raw()) }};\n            crate::check_exception();\n            unsafe {{ crate::OwnedPtr::from_raw(__result) }}\n        }}\n    }}\n",
             handle_type_name, ffi_fn_name
         ));
     }
@@ -5273,12 +5322,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         output.push_str(&format!("impl {} {{\n", handle_type_name));
         // get() - dereference handle to &T
         output.push_str(&format!(
-            "    /// Dereference this Handle to access the underlying {}\n    pub fn get(&self) -> &crate::ffi::{} {{\n        unsafe {{ &*(crate::ffi::{}_get(self as *const Self)) }}\n    }}\n",
+            "    /// Dereference this Handle to access the underlying {}\n    pub fn get(&self) -> &crate::ffi::{} {{\n        {{\n            let __result = unsafe {{ crate::ffi::{}_get(self as *const Self) }};\n            crate::check_exception();\n            unsafe {{ &*__result }}\n        }}\n    }}\n",
             cn, cn, handle_type_name
         ));
         // get_mut() - dereference handle to &mut T
         output.push_str(&format!(
-            "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{} {{\n        unsafe {{ &mut *(crate::ffi::{}_get_mut(self as *mut Self)) }}\n    }}\n",
+            "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{} {{\n        {{\n            let __result = unsafe {{ crate::ffi::{}_get_mut(self as *mut Self) }};\n            crate::check_exception();\n            unsafe {{ &mut *__result }}\n        }}\n    }}\n",
             cn, cn, handle_type_name
         ));
         // Build upcast method names with robust deduplication.
@@ -5292,7 +5341,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         for (i, hu) in bindings.handle_upcasts.iter().enumerate() {
             output.push_str(&format!(
-                "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> crate::OwnedPtr<crate::ffi::{base_handle}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{ffi_fn}(self as *const Self)) }}\n    }}\n",
+                "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> crate::OwnedPtr<crate::ffi::{base_handle}> {{\n        {{\n            let __result = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }};\n            crate::check_exception();\n            unsafe {{ crate::OwnedPtr::from_raw(__result) }}\n        }}\n    }}\n",
                 cn = cn,
                 base = hu.base_class,
                 method = upcast_method_names[i],
@@ -5311,7 +5360,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         for (i, hd) in bindings.handle_downcasts.iter().enumerate() {
             output.push_str(&format!(
-                "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let ptr = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }};\n        if ptr.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }}) }}\n    }}\n",
+                "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let ptr = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }};\n        crate::check_exception();\n        if ptr.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }}) }}\n    }}\n",
                 cn = cn,
                 derived = hd.derived_class,
                 method = downcast_method_names[i],

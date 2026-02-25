@@ -22,7 +22,10 @@ pub fn make_transition(
     TFirst: &mut Transition,
     TSecond: &mut Transition,
 ) {
-    unsafe { crate::ffi::IntSurf_make_transition(TgFirst, TgSecond, Normal, TFirst, TSecond) }
+    {
+        unsafe { crate::ffi::IntSurf_make_transition(TgFirst, TgSecond, Normal, TFirst, TSecond) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `IntSurf.hxx`:56 - `IntSurf::SetPeriod`
 /// Fills theArrOfPeriod array by the period values of theFirstSurf and theSecondSurf.
@@ -38,8 +41,11 @@ pub fn set_period(
     theSecondSurf: &crate::ffi::HandleAdaptor3dSurface,
     theArrOfPeriod: &mut [f64; 4],
 ) {
-    unsafe {
-        crate::ffi::IntSurf_set_period(theFirstSurf, theSecondSurf, theArrOfPeriod.as_mut_ptr())
+    {
+        unsafe {
+            crate::ffi::IntSurf_set_period(theFirstSurf, theSecondSurf, theArrOfPeriod.as_mut_ptr())
+        };
+        crate::check_exception();
     }
 }
 
@@ -121,24 +127,40 @@ unsafe impl crate::CppDeletable for Couple {
 impl Couple {
     /// **Source:** `IntSurf_Couple.hxx`:31 - `IntSurf_Couple::IntSurf_Couple()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Couple_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Couple_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Couple.hxx`:33 - `IntSurf_Couple::IntSurf_Couple()`
     pub fn new_int2(Index1: i32, Index2: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Couple_ctor_int2(Index1, Index2)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Couple_ctor_int2(Index1, Index2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Couple.hxx`:36 - `IntSurf_Couple::First()`
     /// returns the first element
     pub fn first(&self) -> i32 {
-        unsafe { crate::ffi::IntSurf_Couple_first(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Couple_first(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_Couple.hxx`:39 - `IntSurf_Couple::Second()`
     /// returns the Second element
     pub fn second(&self) -> i32 {
-        unsafe { crate::ffi::IntSurf_Couple_second(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Couple_second(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -164,7 +186,11 @@ unsafe impl crate::CppDeletable for InteriorPoint {
 impl InteriorPoint {
     /// **Source:** `IntSurf_InteriorPoint.hxx`:38 - `IntSurf_InteriorPoint::IntSurf_InteriorPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPoint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_InteriorPoint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:40 - `IntSurf_InteriorPoint::IntSurf_InteriorPoint()`
@@ -175,10 +201,12 @@ impl InteriorPoint {
         Direc: &crate::gp::Vec,
         Direc2d: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPoint_ctor_pnt_real2_vec_vec2d(
-                P, U, V, Direc, Direc2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_InteriorPoint_ctor_pnt_real2_vec_vec2d(P, U, V, Direc, Direc2d)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -191,50 +219,87 @@ impl InteriorPoint {
         Direc: &crate::gp::Vec,
         Direc2d: &crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::IntSurf_InteriorPoint_set_value(self as *mut Self, P, U, V, Direc, Direc2d)
+        {
+            unsafe {
+                crate::ffi::IntSurf_InteriorPoint_set_value(
+                    self as *mut Self,
+                    P,
+                    U,
+                    V,
+                    Direc,
+                    Direc2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:53 - `IntSurf_InteriorPoint::Value()`
     /// Returns the 3d coordinates of the interior point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::IntSurf_InteriorPoint_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_InteriorPoint_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:57 - `IntSurf_InteriorPoint::Parameters()`
     /// Returns the parameters of the interior point on the
     /// parametric surface.
     pub fn parameters(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_InteriorPoint_parameters(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_InteriorPoint_parameters(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:61 - `IntSurf_InteriorPoint::UParameter()`
     /// Returns the first parameter of the interior point on the
     /// parametric surface.
     pub fn u_parameter(&self) -> f64 {
-        unsafe { crate::ffi::IntSurf_InteriorPoint_u_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_InteriorPoint_u_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:65 - `IntSurf_InteriorPoint::VParameter()`
     /// Returns the second parameter of the interior point on the
     /// parametric surface.
     pub fn v_parameter(&self) -> f64 {
-        unsafe { crate::ffi::IntSurf_InteriorPoint_v_parameter(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_InteriorPoint_v_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:69 - `IntSurf_InteriorPoint::Direction()`
     /// Returns the tangent at the intersection in 3d space
     /// associated to the interior point.
     pub fn direction(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::IntSurf_InteriorPoint_direction(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_InteriorPoint_direction(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPoint.hxx`:73 - `IntSurf_InteriorPoint::Direction2d()`
     /// Returns the tangent at the intersection in the parametric
     /// space of the parametric surface.
     pub fn direction2d(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::IntSurf_InteriorPoint_direction2d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_InteriorPoint_direction2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -258,13 +323,21 @@ impl InteriorPointTool {
     /// **Source:** `IntSurf_InteriorPointTool.hxx` - `IntSurf_InteriorPointTool::IntSurf_InteriorPointTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPointTool.hxx`:37 - `IntSurf_InteriorPointTool::Value3d()`
     /// Returns the 3d coordinates of the starting point.
     pub fn value3d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_value3d(PStart)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_value3d(PStart) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPointTool.hxx`:42 - `IntSurf_InteriorPointTool::Value2d()`
@@ -272,15 +345,20 @@ impl InteriorPointTool {
     /// with <P>
     /// it's the parameters which start the marching algorithm
     pub fn value2d(PStart: &InteriorPoint, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_InteriorPointTool_value2d(PStart, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_InteriorPointTool_value2d(PStart, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_InteriorPointTool.hxx`:46 - `IntSurf_InteriorPointTool::Direction3d()`
     /// returns the tangent at the intersection in 3d space
     /// associated to <P>
     pub fn direction3d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_direction3d(PStart))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_direction3d(PStart) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -289,8 +367,10 @@ impl InteriorPointTool {
     /// parametric space of the parametrized surface.This tangent
     /// is associated to the value2d
     pub fn direction2d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Dir2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_InteriorPointTool_direction2d(PStart))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_direction2d(PStart) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -313,176 +393,285 @@ impl LineOn2S {
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntSurf_LineOn2S_ctor_handlencollectionbaseallocator(theAllocator),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_LineOn2S_ctor_handlencollectionbaseallocator(theAllocator)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:41 - `IntSurf_LineOn2S::Add()`
     /// Adds a point in the line.
     pub fn add(&mut self, P: &PntOn2S) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_add(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_add(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:44 - `IntSurf_LineOn2S::NbPoints()`
     /// Returns the number of points in the line.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::IntSurf_LineOn2S_nb_points(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_LineOn2S_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:47 - `IntSurf_LineOn2S::Value()`
     /// Returns the point of range Index in the line.
     pub fn value_int(&self, Index: i32) -> &PntOn2S {
-        unsafe { &*(crate::ffi::IntSurf_LineOn2S_value_int(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_value_int(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:50 - `IntSurf_LineOn2S::Reverse()`
     /// Reverses the order of points of the line.
     pub fn reverse(&mut self) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_reverse(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_reverse(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:54 - `IntSurf_LineOn2S::Split()`
     /// Keeps in <me> the points 1 to Index-1, and returns
     /// the items Index to the end.
     pub fn split(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_split(self as *mut Self, Index))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_LineOn2S_split(self as *mut Self, Index) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:57 - `IntSurf_LineOn2S::Value()`
     /// Replaces the point of range Index in the line.
     pub fn value_int_pnton2s(&mut self, Index: i32, P: &PntOn2S) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_value_int_pnton2s(self as *mut Self, Index, P) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_value_int_pnton2s(self as *mut Self, Index, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:60 - `IntSurf_LineOn2S::SetPoint()`
     /// Sets the 3D point of the Index-th PntOn2S
     pub fn set_point(&mut self, Index: i32, thePnt: &crate::gp::Pnt) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_set_point(self as *mut Self, Index, thePnt) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_set_point(self as *mut Self, Index, thePnt) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:64 - `IntSurf_LineOn2S::SetUV()`
     /// Sets the parametric coordinates on one of the surfaces
     /// of the point of range Index in the line.
     pub fn set_uv(&mut self, Index: i32, OnFirst: bool, U: f64, V: f64) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_set_uv(self as *mut Self, Index, OnFirst, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_set_uv(self as *mut Self, Index, OnFirst, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:69 - `IntSurf_LineOn2S::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:71 - `IntSurf_LineOn2S::InsertBefore()`
     pub fn insert_before(&mut self, I: i32, P: &PntOn2S) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_insert_before(self as *mut Self, I, P) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_insert_before(self as *mut Self, I, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:73 - `IntSurf_LineOn2S::RemovePoint()`
     pub fn remove_point(&mut self, I: i32) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_remove_point(self as *mut Self, I) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_remove_point(self as *mut Self, I) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:77 - `IntSurf_LineOn2S::IsOutSurf1Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 1st surface
     pub fn is_out_surf1_box(&mut self, theP: &crate::gp::Pnt2d) -> bool {
-        unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf1_box(self as *mut Self, theP) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf1_box(self as *mut Self, theP) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:81 - `IntSurf_LineOn2S::IsOutSurf2Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 2nd surface
     pub fn is_out_surf2_box(&mut self, theP: &crate::gp::Pnt2d) -> bool {
-        unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf2_box(self as *mut Self, theP) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf2_box(self as *mut Self, theP) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:84 - `IntSurf_LineOn2S::IsOutBox()`
     /// Returns TRUE if theP is out of the box built from 3D-points.
     pub fn is_out_box(&mut self, theP: &crate::gp::Pnt) -> bool {
-        unsafe { crate::ffi::IntSurf_LineOn2S_is_out_box(self as *mut Self, theP) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_is_out_box(self as *mut Self, theP) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntSurf_LineOn2S_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::IntSurf_LineOn2S_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::IntSurf_LineOn2S_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::IntSurf_LineOn2S_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_LineOn2S_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::IntSurf_LineOn2S_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::IntSurf_LineOn2S_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_LineOn2S_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_LineOn2S_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IntSurf_LineOn2S_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_LineOn2S_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::IntSurf_LineOn2S_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_LineOn2S_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::IntSurf_LineOn2S_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::IntSurf_LineOn2S_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_LineOn2S_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::IntSurf_LineOn2S_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::IntSurf_LineOn2S_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_LineOn2S_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::IntSurf_LineOn2S_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::IntSurf_LineOn2S_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -497,20 +686,30 @@ unsafe impl crate::CppDeletable for HandleIntSurfLineOn2S {
 impl HandleIntSurfLineOn2S {
     /// Dereference this Handle to access the underlying IntSurf_LineOn2S
     pub fn get(&self) -> &crate::ffi::IntSurf_LineOn2S {
-        unsafe { &*(crate::ffi::HandleIntSurfLineOn2S_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIntSurfLineOn2S_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IntSurf_LineOn2S
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntSurf_LineOn2S {
-        unsafe { &mut *(crate::ffi::HandleIntSurfLineOn2S_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleIntSurfLineOn2S_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<IntSurf_LineOn2S> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleIntSurfLineOn2S_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleIntSurfLineOn2S_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -531,77 +730,134 @@ unsafe impl crate::CppDeletable for PathPoint {
 impl PathPoint {
     /// **Source:** `IntSurf_PathPoint.hxx`:35 - `IntSurf_PathPoint::IntSurf_PathPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPoint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPoint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:37 - `IntSurf_PathPoint::IntSurf_PathPoint()`
     pub fn new_pnt_real2(P: &crate::gp::Pnt, U: f64, V: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPoint_ctor_pnt_real2(P, U, V)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPoint_ctor_pnt_real2(P, U, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:39 - `IntSurf_PathPoint::SetValue()`
     pub fn set_value(&mut self, P: &crate::gp::Pnt, U: f64, V: f64) {
-        unsafe { crate::ffi::IntSurf_PathPoint_set_value(self as *mut Self, P, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_set_value(self as *mut Self, P, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:41 - `IntSurf_PathPoint::AddUV()`
     pub fn add_uv(&mut self, U: f64, V: f64) {
-        unsafe { crate::ffi::IntSurf_PathPoint_add_uv(self as *mut Self, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_add_uv(self as *mut Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:43 - `IntSurf_PathPoint::SetDirections()`
     pub fn set_directions(&mut self, V: &crate::gp::Vec, D: &crate::gp::Dir2d) {
-        unsafe { crate::ffi::IntSurf_PathPoint_set_directions(self as *mut Self, V, D) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_set_directions(self as *mut Self, V, D) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:45 - `IntSurf_PathPoint::SetTangency()`
     pub fn set_tangency(&mut self, Tang: bool) {
-        unsafe { crate::ffi::IntSurf_PathPoint_set_tangency(self as *mut Self, Tang) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_set_tangency(self as *mut Self, Tang) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:47 - `IntSurf_PathPoint::SetPassing()`
     pub fn set_passing(&mut self, Pass: bool) {
-        unsafe { crate::ffi::IntSurf_PathPoint_set_passing(self as *mut Self, Pass) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_set_passing(self as *mut Self, Pass) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:49 - `IntSurf_PathPoint::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::IntSurf_PathPoint_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPoint_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:51 - `IntSurf_PathPoint::Value2d()`
     pub fn value2d(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PathPoint_value2d(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_value2d(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:53 - `IntSurf_PathPoint::IsPassingPnt()`
     pub fn is_passing_pnt(&self) -> bool {
-        unsafe { crate::ffi::IntSurf_PathPoint_is_passing_pnt(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_PathPoint_is_passing_pnt(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:55 - `IntSurf_PathPoint::IsTangent()`
     pub fn is_tangent(&self) -> bool {
-        unsafe { crate::ffi::IntSurf_PathPoint_is_tangent(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPoint_is_tangent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:57 - `IntSurf_PathPoint::Direction3d()`
     pub fn direction3d(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::IntSurf_PathPoint_direction3d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_PathPoint_direction3d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:59 - `IntSurf_PathPoint::Direction2d()`
     pub fn direction2d(&self) -> &crate::gp::Dir2d {
-        unsafe { &*(crate::ffi::IntSurf_PathPoint_direction2d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_PathPoint_direction2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:61 - `IntSurf_PathPoint::Multiplicity()`
     pub fn multiplicity(&self) -> i32 {
-        unsafe { crate::ffi::IntSurf_PathPoint_multiplicity(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_PathPoint_multiplicity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:63 - `IntSurf_PathPoint::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PathPoint_parameters(self as *const Self, Index, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPoint_parameters(self as *const Self, Index, U, V) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -622,13 +878,21 @@ impl PathPointTool {
     /// **Source:** `IntSurf_PathPointTool.hxx` - `IntSurf_PathPointTool::IntSurf_PathPointTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:37 - `IntSurf_PathPointTool::Value3d()`
     /// Returns the 3d coordinates of the starting point.
     pub fn value3d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_value3d(PStart)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_value3d(PStart) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:42 - `IntSurf_PathPointTool::Value2d()`
@@ -636,7 +900,10 @@ impl PathPointTool {
     /// with <P>
     /// it's the parameters which start the marching algorithm
     pub fn value2d(PStart: &PathPoint, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PathPointTool_value2d(PStart, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPointTool_value2d(PStart, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:48 - `IntSurf_PathPointTool::IsPassingPnt()`
@@ -645,7 +912,11 @@ impl PathPointTool {
     /// stop at such a point but just go through such a point.
     /// IsPassingPnt is True when IsOnArc is True
     pub fn is_passing_pnt(PStart: &PathPoint) -> bool {
-        unsafe { crate::ffi::IntSurf_PathPointTool_is_passing_pnt(PStart) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_is_passing_pnt(PStart) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:54 - `IntSurf_PathPointTool::IsTangent()`
@@ -654,7 +925,11 @@ impl PathPointTool {
     /// if IsPassingPnt is True and IsTangent is True,this point
     /// is a stopped point.
     pub fn is_tangent(PStart: &PathPoint) -> bool {
-        unsafe { crate::ffi::IntSurf_PathPointTool_is_tangent(PStart) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_is_tangent(PStart) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:59 - `IntSurf_PathPointTool::Direction3d()`
@@ -662,7 +937,11 @@ impl PathPointTool {
     /// associated to <P>
     /// an exception is raised if IsTangent is true.
     pub fn direction3d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_direction3d(PStart)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_direction3d(PStart) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:67 - `IntSurf_PathPointTool::Direction2d()`
@@ -673,7 +952,11 @@ impl PathPointTool {
     /// ement)
     /// an exception is raised if IsTangent is true.
     pub fn direction2d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Dir2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PathPointTool_direction2d(PStart)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_direction2d(PStart) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:72 - `IntSurf_PathPointTool::Multiplicity()`
@@ -681,14 +964,21 @@ impl PathPointTool {
     /// the number of auxillar parameters associated to the
     /// point which the principal parameters are given by Value2d
     pub fn multiplicity(PStart: &PathPoint) -> i32 {
-        unsafe { crate::ffi::IntSurf_PathPointTool_multiplicity(PStart) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PathPointTool_multiplicity(PStart) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_PathPointTool.hxx`:76 - `IntSurf_PathPointTool::Parameters()`
     /// Parametric coordinates associated to the multiplicity.
     /// An exception is raised if Mult<=0 or Mult>multiplicity.
     pub fn parameters(PStart: &PathPoint, Mult: i32, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PathPointTool_parameters(PStart, Mult, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_PathPointTool_parameters(PStart, Mult, U, V) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -713,27 +1003,37 @@ impl PntOn2S {
     /// **Source:** `IntSurf_PntOn2S.hxx`:38 - `IntSurf_PntOn2S::IntSurf_PntOn2S()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PntOn2S_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PntOn2S_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:41 - `IntSurf_PntOn2S::SetValue()`
     /// Sets the value of the point in 3d space.
     pub fn set_value_pnt(&mut self, Pt: &crate::gp::Pnt) {
-        unsafe { crate::ffi::IntSurf_PntOn2S_set_value_pnt(self as *mut Self, Pt) }
+        {
+            unsafe { crate::ffi::IntSurf_PntOn2S_set_value_pnt(self as *mut Self, Pt) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:45 - `IntSurf_PntOn2S::SetValue()`
     /// Sets the values of the point in 3d space, and
     /// in the parametric space of one of the surface.
     pub fn set_value_pnt_bool_real2(&mut self, Pt: &crate::gp::Pnt, OnFirst: bool, U: f64, V: f64) {
-        unsafe {
-            crate::ffi::IntSurf_PntOn2S_set_value_pnt_bool_real2(
-                self as *mut Self,
-                Pt,
-                OnFirst,
-                U,
-                V,
-            )
+        {
+            unsafe {
+                crate::ffi::IntSurf_PntOn2S_set_value_pnt_bool_real2(
+                    self as *mut Self,
+                    Pt,
+                    OnFirst,
+                    U,
+                    V,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -741,8 +1041,18 @@ impl PntOn2S {
     /// Sets the values of the point in 3d space, and
     /// in the parametric space of each surface.
     pub fn set_value_pnt_real4(&mut self, Pt: &crate::gp::Pnt, U1: f64, V1: f64, U2: f64, V2: f64) {
-        unsafe {
-            crate::ffi::IntSurf_PntOn2S_set_value_pnt_real4(self as *mut Self, Pt, U1, V1, U2, V2)
+        {
+            unsafe {
+                crate::ffi::IntSurf_PntOn2S_set_value_pnt_real4(
+                    self as *mut Self,
+                    Pt,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -750,8 +1060,11 @@ impl PntOn2S {
     /// Set the values of the point in the parametric
     /// space of one of the surface.
     pub fn set_value_bool_real2(&mut self, OnFirst: bool, U: f64, V: f64) {
-        unsafe {
-            crate::ffi::IntSurf_PntOn2S_set_value_bool_real2(self as *mut Self, OnFirst, U, V)
+        {
+            unsafe {
+                crate::ffi::IntSurf_PntOn2S_set_value_bool_real2(self as *mut Self, OnFirst, U, V)
+            };
+            crate::check_exception();
         }
     }
 
@@ -759,51 +1072,78 @@ impl PntOn2S {
     /// Set the values of the point in the parametric
     /// space of one of the surface.
     pub fn set_value_real4(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
-        unsafe { crate::ffi::IntSurf_PntOn2S_set_value_real4(self as *mut Self, U1, V1, U2, V2) }
+        {
+            unsafe {
+                crate::ffi::IntSurf_PntOn2S_set_value_real4(self as *mut Self, U1, V1, U2, V2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:72 - `IntSurf_PntOn2S::Value()`
     /// Returns the point in 3d space.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::IntSurf_PntOn2S_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_PntOn2S_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:75 - `IntSurf_PntOn2S::ValueOnSurface()`
     /// Returns the point in 2d space of one of the surfaces.
     pub fn value_on_surface(&self, OnFirst: bool) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PntOn2S_value_on_surface(
-                self as *const Self,
-                OnFirst,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_PntOn2S_value_on_surface(self as *const Self, OnFirst)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:78 - `IntSurf_PntOn2S::ParametersOnS1()`
     /// Returns the parameters of the point on the first surface.
     pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s1(self as *const Self, U1, V1) }
+        {
+            unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s1(self as *const Self, U1, V1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:81 - `IntSurf_PntOn2S::ParametersOnS2()`
     /// Returns the parameters of the point on the second surface.
     pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s2(self as *const Self, U2, V2) }
+        {
+            unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s2(self as *const Self, U2, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:85 - `IntSurf_PntOn2S::ParametersOnSurface()`
     /// Returns the parameters of the point in the
     /// parametric space of one of the surface.
     pub fn parameters_on_surface(&self, OnFirst: bool, U: &mut f64, V: &mut f64) {
-        unsafe {
-            crate::ffi::IntSurf_PntOn2S_parameters_on_surface(self as *const Self, OnFirst, U, V)
+        {
+            unsafe {
+                crate::ffi::IntSurf_PntOn2S_parameters_on_surface(
+                    self as *const Self,
+                    OnFirst,
+                    U,
+                    V,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:90 - `IntSurf_PntOn2S::Parameters()`
     /// Returns the parameters of the point on both surfaces.
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
-        unsafe { crate::ffi::IntSurf_PntOn2S_parameters(self as *const Self, U1, V1, U2, V2) }
+        {
+            unsafe { crate::ffi::IntSurf_PntOn2S_parameters(self as *const Self, U1, V1, U2, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_PntOn2S.hxx`:95 - `IntSurf_PntOn2S::IsSame()`
@@ -811,13 +1151,17 @@ impl PntOn2S {
     /// corresponding coordinates of me (with given tolerance).
     /// If theTol2D < 0.0 we will compare 3D-points only.
     pub fn is_same(&self, theOtherPoint: &PntOn2S, theTol3D: f64, theTol2D: f64) -> bool {
-        unsafe {
-            crate::ffi::IntSurf_PntOn2S_is_same(
-                self as *const Self,
-                theOtherPoint,
-                theTol3D,
-                theTol2D,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_PntOn2S_is_same(
+                    self as *const Self,
+                    theOtherPoint,
+                    theTol3D,
+                    theTol2D,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -838,119 +1182,184 @@ unsafe impl crate::CppDeletable for Quadric {
 impl Quadric {
     /// **Source:** `IntSurf_Quadric.hxx`:45 - `IntSurf_Quadric::IntSurf_Quadric()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:47 - `IntSurf_Quadric::IntSurf_Quadric()`
     pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_pln(P)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_pln(P) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:49 - `IntSurf_Quadric::IntSurf_Quadric()`
     pub fn new_cylinder(C: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_cylinder(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_cylinder(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:51 - `IntSurf_Quadric::IntSurf_Quadric()`
     pub fn new_sphere(S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_sphere(S)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_sphere(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:53 - `IntSurf_Quadric::IntSurf_Quadric()`
     pub fn new_cone(C: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_cone(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_cone(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:55 - `IntSurf_Quadric::IntSurf_Quadric()`
     pub fn new_torus(T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_torus(T)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_torus(T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:57 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_pln(&mut self, P: &crate::gp::Pln) {
-        unsafe { crate::ffi::IntSurf_Quadric_set_value_pln(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_set_value_pln(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:59 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_cylinder(&mut self, C: &crate::gp::Cylinder) {
-        unsafe { crate::ffi::IntSurf_Quadric_set_value_cylinder(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_set_value_cylinder(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:61 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_sphere(&mut self, S: &crate::gp::Sphere) {
-        unsafe { crate::ffi::IntSurf_Quadric_set_value_sphere(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_set_value_sphere(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:63 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_cone(&mut self, C: &crate::gp::Cone) {
-        unsafe { crate::ffi::IntSurf_Quadric_set_value_cone(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_set_value_cone(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:65 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_torus(&mut self, T: &crate::gp::Torus) {
-        unsafe { crate::ffi::IntSurf_Quadric_set_value_torus(self as *mut Self, T) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_set_value_torus(self as *mut Self, T) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:67 - `IntSurf_Quadric::Distance()`
     pub fn distance(&self, P: &crate::gp::Pnt) -> f64 {
-        unsafe { crate::ffi::IntSurf_Quadric_distance(self as *const Self, P) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_distance(self as *const Self, P) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:69 - `IntSurf_Quadric::Gradient()`
     pub fn gradient(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_gradient(self as *const Self, P))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_gradient(self as *const Self, P) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:71 - `IntSurf_Quadric::ValAndGrad()`
     pub fn val_and_grad(&self, P: &crate::gp::Pnt, Dist: &mut f64, Grad: &mut crate::gp::Vec) {
-        unsafe { crate::ffi::IntSurf_Quadric_val_and_grad(self as *const Self, P, Dist, Grad) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_val_and_grad(self as *const Self, P, Dist, Grad) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:73 - `IntSurf_Quadric::TypeQuadric()`
     pub fn type_quadric(&self) -> crate::geom_abs::SurfaceType {
-        unsafe {
-            crate::geom_abs::SurfaceType::try_from(crate::ffi::IntSurf_Quadric_type_quadric(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_type_quadric(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:75 - `IntSurf_Quadric::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_plane(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_plane(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:77 - `IntSurf_Quadric::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_sphere(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_sphere(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:79 - `IntSurf_Quadric::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_cylinder(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_cylinder(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:81 - `IntSurf_Quadric::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_cone(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_cone(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:83 - `IntSurf_Quadric::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_torus(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_torus(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:85 - `IntSurf_Quadric::Value()`
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_value(self as *const Self, U, V))
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Quadric_value(self as *const Self, U, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -963,45 +1372,47 @@ impl Quadric {
         D1U: &mut crate::gp::Vec,
         D1V: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::IntSurf_Quadric_d1(self as *const Self, U, V, P, D1U, D1V) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_d1(self as *const Self, U, V, P, D1U, D1V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:93 - `IntSurf_Quadric::DN()`
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_dn(
-                self as *const Self,
-                U,
-                V,
-                Nu,
-                Nv,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Quadric_dn(self as *const Self, U, V, Nu, Nv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:98 - `IntSurf_Quadric::Normale()`
     pub fn normale_real2(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_normale_real2(
-                self as *const Self,
-                U,
-                V,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Quadric_normale_real2(self as *const Self, U, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:100 - `IntSurf_Quadric::Parameters()`
     pub fn parameters(&self, P: &crate::gp::Pnt, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::IntSurf_Quadric_parameters(self as *const Self, P, U, V) }
+        {
+            unsafe { crate::ffi::IntSurf_Quadric_parameters(self as *const Self, P, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:102 - `IntSurf_Quadric::Normale()`
     pub fn normale_pnt(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_normale_pnt(
-                self as *const Self,
-                P,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Quadric_normale_pnt(self as *const Self, P) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1027,19 +1438,30 @@ impl QuadricTool {
     /// **Source:** `IntSurf_QuadricTool.hxx` - `IntSurf_QuadricTool::IntSurf_QuadricTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_QuadricTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_QuadricTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_QuadricTool.hxx`:38 - `IntSurf_QuadricTool::Value()`
     /// Returns the value of the function.
     pub fn value(Quad: &Quadric, X: f64, Y: f64, Z: f64) -> f64 {
-        unsafe { crate::ffi::IntSurf_QuadricTool_value(Quad, X, Y, Z) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_QuadricTool_value(Quad, X, Y, Z) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_QuadricTool.hxx`:44 - `IntSurf_QuadricTool::Gradient()`
     /// Returns the gradient of the function.
     pub fn gradient(Quad: &Quadric, X: f64, Y: f64, Z: f64, V: &mut crate::gp::Vec) {
-        unsafe { crate::ffi::IntSurf_QuadricTool_gradient(Quad, X, Y, Z, V) }
+        {
+            unsafe { crate::ffi::IntSurf_QuadricTool_gradient(Quad, X, Y, Z, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_QuadricTool.hxx`:51 - `IntSurf_QuadricTool::ValueAndGradient()`
@@ -1052,13 +1474,20 @@ impl QuadricTool {
         Val: &mut f64,
         Grad: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::IntSurf_QuadricTool_value_and_gradient(Quad, X, Y, Z, Val, Grad) }
+        {
+            unsafe { crate::ffi::IntSurf_QuadricTool_value_and_gradient(Quad, X, Y, Z, Val, Grad) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_QuadricTool.hxx`:59 - `IntSurf_QuadricTool::Tolerance()`
     /// returns the tolerance of the zero of the implicit function
     pub fn tolerance(Quad: &Quadric) -> f64 {
-        unsafe { crate::ffi::IntSurf_QuadricTool_tolerance(Quad) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_QuadricTool_tolerance(Quad) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1082,7 +1511,11 @@ impl Transition {
     /// **Source:** `IntSurf_Transition.hxx`:37 - `IntSurf_Transition::IntSurf_Transition()`
     /// Empty constructor. Creates an UNDECIDED transition.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Transition_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntSurf_Transition.hxx`:40 - `IntSurf_Transition::IntSurf_Transition()`
@@ -1091,11 +1524,11 @@ impl Transition {
         Tangent: bool,
         Type: crate::int_surf::TypeTrans,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor_bool_typetrans(
-                Tangent,
-                Type.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Transition_ctor_bool_typetrans(Tangent, Type.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1106,24 +1539,27 @@ impl Transition {
         Situ: crate::int_surf::Situation,
         Oppos: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(
-                Tangent,
-                Situ.into(),
-                Oppos,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(Tangent, Situ.into(), Oppos)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntSurf_Transition.hxx`:48 - `IntSurf_Transition::SetValue()`
     /// Set the values of an IN or OUT transition.
     pub fn set_value_bool_typetrans(&mut self, Tangent: bool, Type: crate::int_surf::TypeTrans) {
-        unsafe {
-            crate::ffi::IntSurf_Transition_set_value_bool_typetrans(
-                self as *mut Self,
-                Tangent,
-                Type.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::IntSurf_Transition_set_value_bool_typetrans(
+                    self as *mut Self,
+                    Tangent,
+                    Type.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1135,20 +1571,26 @@ impl Transition {
         Situ: crate::int_surf::Situation,
         Oppos: bool,
     ) {
-        unsafe {
-            crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(
-                self as *mut Self,
-                Tangent,
-                Situ.into(),
-                Oppos,
-            )
+        {
+            unsafe {
+                crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(
+                    self as *mut Self,
+                    Tangent,
+                    Situ.into(),
+                    Oppos,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntSurf_Transition.hxx`:56 - `IntSurf_Transition::SetValue()`
     /// Set the values of an UNDECIDED transition.
     pub fn set_value(&mut self) {
-        unsafe { crate::ffi::IntSurf_Transition_set_value(self as *mut Self) }
+        {
+            unsafe { crate::ffi::IntSurf_Transition_set_value(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntSurf_Transition.hxx`:64 - `IntSurf_Transition::TransitionType()`
@@ -1159,11 +1601,11 @@ impl Transition {
     /// means that the intersection line goes inside the
     /// part of plane limited by the arc of restriction.
     pub fn transition_type(&self) -> crate::int_surf::TypeTrans {
-        unsafe {
-            crate::int_surf::TypeTrans::try_from(crate::ffi::IntSurf_Transition_transition_type(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Transition_transition_type(self as *const Self) };
+            crate::check_exception();
+            crate::int_surf::TypeTrans::try_from(__result).unwrap()
         }
     }
 
@@ -1172,7 +1614,12 @@ impl Transition {
     /// given by Value.
     /// An exception is raised if TransitionType returns UNDECIDED.
     pub fn is_tangent(&self) -> bool {
-        unsafe { crate::ffi::IntSurf_Transition_is_tangent(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Transition_is_tangent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntSurf_Transition.hxx`:78 - `IntSurf_Transition::Situation()`
@@ -1184,11 +1631,10 @@ impl Transition {
     /// If TransitionType returns IN, or OUT, or UNDECIDED, a
     /// exception is raised.
     pub fn situation(&self) -> crate::int_surf::Situation {
-        unsafe {
-            crate::int_surf::Situation::try_from(crate::ffi::IntSurf_Transition_situation(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::IntSurf_Transition_situation(self as *const Self) };
+            crate::check_exception();
+            crate::int_surf::Situation::try_from(__result).unwrap()
         }
     }
 
@@ -1201,7 +1647,12 @@ impl Transition {
     /// If TransitionType returns IN or OUT or UNDECIDED, an
     /// exception is raised.
     pub fn is_opposite(&self) -> bool {
-        unsafe { crate::ffi::IntSurf_Transition_is_opposite(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntSurf_Transition_is_opposite(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 

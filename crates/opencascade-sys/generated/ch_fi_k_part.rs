@@ -31,7 +31,11 @@ impl ComputeData {
     /// **Source:** `ChFiKPart_ComputeData.hxx` - `ChFiKPart_ComputeData::ChFiKPart_ComputeData()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiKPart_ComputeData_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::ChFiKPart_ComputeData_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `ChFiKPart_ComputeData.hxx`:43 - `ChFiKPart_ComputeData::Compute()`
@@ -47,17 +51,21 @@ impl ComputeData {
         Sp: &crate::ffi::HandleChFiDSSpine,
         Iedge: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute(
-                DStr,
-                Data,
-                S1,
-                S2,
-                Or1.into(),
-                Or2.into(),
-                Sp,
-                Iedge,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::ChFiKPart_ComputeData_compute(
+                    DStr,
+                    Data,
+                    S1,
+                    S2,
+                    Or1.into(),
+                    Or2.into(),
+                    Sp,
+                    Iedge,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -79,8 +87,12 @@ impl ComputeData {
         P1S2: &crate::gp::Pnt2d,
         P2S2: &crate::gp::Pnt2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
+        {
+            let __result = unsafe {
+                crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -100,8 +112,12 @@ impl ComputeData {
         P1S2: &crate::gp::Pnt2d,
         P2S2: &crate::gp::Pnt2d,
     ) -> bool {
-        unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
+        {
+            let __result = unsafe {
+                crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -119,8 +135,12 @@ impl ComputeData {
         OS2: crate::top_abs::Orientation,
         Radius: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
+        {
+            let __result = unsafe {
+                crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }

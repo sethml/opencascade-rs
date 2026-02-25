@@ -110,7 +110,11 @@ impl MakeCirc {
     /// It is not forbidden to create a circle with Radius = 0.0
     /// The status is "NegativeRadius" if Radius < 0.0
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_ax2_real(A2, Radius)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_ctor_ax2_real(A2, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:63 - `gce_MakeCirc::gce_MakeCirc()`
@@ -120,14 +124,22 @@ impl MakeCirc {
     /// the circle <Circ>, else the result is enclosed by the
     /// circle <Circ>.
     pub fn new_circ_real(Circ: &crate::gp::Circ, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_circ_real(Circ, Dist)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_ctor_circ_real(Circ, Dist) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:67 - `gce_MakeCirc::gce_MakeCirc()`
     /// Makes a Circ from gp <TheCirc> coaxial to another
     /// Circ <Circ> and passing through a Pnt2d <Point>.
     pub fn new_circ_pnt(Circ: &crate::gp::Circ, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_circ_pnt(Circ, Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_ctor_circ_pnt(Circ, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:71 - `gce_MakeCirc::gce_MakeCirc()`
@@ -138,7 +150,11 @@ impl MakeCirc {
         P2: &crate::gp::Pnt,
         P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_pnt3(P1, P2, P3)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_ctor_pnt3(P1, P2, P3) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:76 - `gce_MakeCirc::gce_MakeCirc()`
@@ -150,10 +166,11 @@ impl MakeCirc {
         Norm: &crate::gp::Dir,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_pnt_dir_real(
-                Center, Norm, Radius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc_ctor_pnt_dir_real(Center, Norm, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -166,10 +183,11 @@ impl MakeCirc {
         Plane: &crate::gp::Pln,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_pnt_pln_real(
-                Center, Plane, Radius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc_ctor_pnt_pln_real(Center, Plane, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -182,10 +200,11 @@ impl MakeCirc {
         Ptaxis: &crate::gp::Pnt,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_pnt2_real(
-                Center, Ptaxis, Radius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc_ctor_pnt2_real(Center, Ptaxis, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -207,43 +226,68 @@ impl MakeCirc {
     /// P1, P2 and P3 are coincident; or
     /// -   gce_NullAxis if Center and Ptaxis are coincident.
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_ax1_real(Axis, Radius)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_ctor_ax1_real(Axis, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:114 - `gce_MakeCirc::Value()`
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
     pub fn value(&self) -> &crate::gp::Circ {
-        unsafe { &*(crate::ffi::gce_MakeCirc_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:116 - `gce_MakeCirc::Operator()`
     pub fn operator(&self) -> &crate::gp::Circ {
-        unsafe { &*(crate::ffi::gce_MakeCirc_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeCirc_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeCirc_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeCirc_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeCirc_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -286,10 +330,11 @@ impl MakeCirc2d {
         Radius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_ax2d_real_bool(
-                XAxis, Radius, Sense,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc2d_ctor_ax2d_real_bool(XAxis, Radius, Sense) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -298,8 +343,10 @@ impl MakeCirc2d {
     /// Warnings :
     /// It is not forbidden to create a circle with Radius = 0.0
     pub fn new_ax22d_real(Axis: &crate::gp::Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_ax22d_real(Axis, Radius))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_ctor_ax22d_real(Axis, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -312,8 +359,10 @@ impl MakeCirc2d {
     /// The local coordinate system of the solution is the
     /// same as Circ.
     pub fn new_circ2d_real(Circ: &crate::gp::Circ2d, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_circ2d_real(Circ, Dist))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_ctor_circ2d_real(Circ, Dist) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -326,8 +375,10 @@ impl MakeCirc2d {
         Circ: &crate::gp::Circ2d,
         Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_circ2d_pnt2d(Circ, Point))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_ctor_circ2d_pnt2d(Circ, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -341,7 +392,11 @@ impl MakeCirc2d {
         P2: &crate::gp::Pnt2d,
         P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_pnt2d3(P1, P2, P3)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_ctor_pnt2d3(P1, P2, P3) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc2d.hxx`:86 - `gce_MakeCirc2d::gce_MakeCirc2d()`
@@ -354,10 +409,11 @@ impl MakeCirc2d {
         Radius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_pnt2d_real_bool(
-                Center, Radius, Sense,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc2d_ctor_pnt2d_real_bool(Center, Radius, Sense) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -371,10 +427,11 @@ impl MakeCirc2d {
         Point: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_pnt2d2_bool(
-                Center, Point, Sense,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc2d_ctor_pnt2d2_bool(Center, Point, Sense) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -414,36 +471,57 @@ impl MakeCirc2d {
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
     pub fn value(&self) -> &crate::gp::Circ2d {
-        unsafe { &*(crate::ffi::gce_MakeCirc2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCirc2d.hxx`:102 - `gce_MakeCirc2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Circ2d {
-        unsafe { &*(crate::ffi::gce_MakeCirc2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeCirc2d_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeCirc2d_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCirc2d_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeCirc2d_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc2d_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeCirc2d_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCirc2d_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -482,8 +560,10 @@ impl MakeCone {
     /// If Radius is lower than 0.0 the status is "
     /// If Ang < Resolution from gp  or Ang >= (PI/2) - Resolution.
     pub fn new_ax2_real2(A2: &crate::gp::Ax2, Ang: f64, Radius: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_ax2_real2(A2, Ang, Radius))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_ax2_real2(A2, Ang, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -491,7 +571,11 @@ impl MakeCone {
     /// Makes a Cone from gp <TheCone> coaxial to another
     /// Cone <Cone> and passing through a Pnt <Point>.
     pub fn new_cone_pnt(Cone: &crate::gp::Cone, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_cone_pnt(Cone, Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_cone_pnt(Cone, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:65 - `gce_MakeCone::gce_MakeCone()`
@@ -499,7 +583,11 @@ impl MakeCone {
     /// Cone <Cone> at the distance <Dist> which can
     /// be greater or lower than zero.
     pub fn new_cone_real(Cone: &crate::gp::Cone, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_cone_real(Cone, Dist)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_cone_real(Cone, Dist) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:81 - `gce_MakeCone::gce_MakeCone()`
@@ -523,7 +611,11 @@ impl MakeCone {
         P3: &crate::gp::Pnt,
         P4: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_pnt4(P1, P2, P3, P4)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_pnt4(P1, P2, P3, P4) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:97 - `gce_MakeCone::gce_MakeCone()`
@@ -543,7 +635,11 @@ impl MakeCone {
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_ax1_pnt2(Axis, P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_ax1_pnt2(Axis, P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:110 - `gce_MakeCone::gce_MakeCone()`
@@ -563,7 +659,11 @@ impl MakeCone {
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_lin_pnt2(Axis, P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_lin_pnt2(Axis, P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:135 - `gce_MakeCone::gce_MakeCone()`
@@ -596,8 +696,10 @@ impl MakeCone {
         R1: f64,
         R2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_pnt2_real2(P1, P2, R1, R2))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_ctor_pnt2_real2(P1, P2, R1, R2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -605,36 +707,57 @@ impl MakeCone {
     /// Returns the constructed cone.
     /// Exceptions StdFail_NotDone if no cone is constructed.
     pub fn value(&self) -> &crate::gp::Cone {
-        unsafe { &*(crate::ffi::gce_MakeCone_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:144 - `gce_MakeCone::Operator()`
     pub fn operator(&self) -> &crate::gp::Cone {
-        unsafe { &*(crate::ffi::gce_MakeCone_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeCone_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeCone_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCone_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeCone_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCone_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeCone_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCone_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -666,7 +789,11 @@ impl MakeCylinder {
     /// <A2> is the local cartesian coordinate system of <me>.
     /// The status is "NegativeRadius" if R < 0.0
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_ax2_real(A2, Radius)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_ctor_ax2_real(A2, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:51 - `gce_MakeCylinder::gce_MakeCylinder()`
@@ -676,8 +803,10 @@ impl MakeCylinder {
         Cyl: &crate::gp::Cylinder,
         Point: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_cylinder_pnt(Cyl, Point))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_ctor_cylinder_pnt(Cyl, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -688,8 +817,10 @@ impl MakeCylinder {
     /// The radius of the result is the absolute value of the
     /// radius of <Cyl> plus <Dist>
     pub fn new_cylinder_real(Cyl: &crate::gp::Cylinder, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_cylinder_real(Cyl, Dist))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_ctor_cylinder_real(Cyl, Dist) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -703,14 +834,20 @@ impl MakeCylinder {
         P2: &crate::gp::Pnt,
         P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_pnt3(P1, P2, P3)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_ctor_pnt3(P1, P2, P3) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:67 - `gce_MakeCylinder::gce_MakeCylinder()`
     /// Makes a Cylinder by its axis <Axis> and radius <Radius>.
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_ax1_real(Axis, Radius))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_ctor_ax1_real(Axis, Radius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -725,43 +862,69 @@ impl MakeCylinder {
     /// which is greater than the radius of Cyl; or
     /// -   gce_ConfusedPoints if points P1 and P2 are coincident.
     pub fn new_circ(Circ: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_circ(Circ)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_ctor_circ(Circ) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:82 - `gce_MakeCylinder::Value()`
     /// Returns the constructed cylinder.
     /// Exceptions StdFail_NotDone if no cylinder is constructed.
     pub fn value(&self) -> &crate::gp::Cylinder {
-        unsafe { &*(crate::ffi::gce_MakeCylinder_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:84 - `gce_MakeCylinder::Operator()`
     pub fn operator(&self) -> &crate::gp::Cylinder {
-        unsafe { &*(crate::ffi::gce_MakeCylinder_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeCylinder_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeCylinder_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeCylinder_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCylinder_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeCylinder_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCylinder_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeCylinder_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeCylinder_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -791,7 +954,11 @@ impl MakeDir {
     /// Normalizes the vector V and creates a direction.
     /// Status is "NullVector" if V.Magnitude() <= Resolution.
     pub fn new_vec(V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_vec(V)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_ctor_vec(V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:49 - `gce_MakeDir::gce_MakeDir()`
@@ -799,7 +966,11 @@ impl MakeDir {
     /// Status is "NullVector" if Coord.Modulus() <=
     /// Resolution from gp.
     pub fn new_xyz(Coord: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_xyz(Coord)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_ctor_xyz(Coord) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:54 - `gce_MakeDir::gce_MakeDir()`
@@ -807,7 +978,11 @@ impl MakeDir {
     /// Status is "NullVector" if Sqrt(Xv*Xv + Yv*Yv + Zv*Zv)
     /// <= Resolution
     pub fn new_real3(Xv: f64, Yv: f64, Zv: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_real3(Xv, Yv, Zv)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_ctor_real3(Xv, Yv, Zv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:70 - `gce_MakeDir::gce_MakeDir()`
@@ -824,43 +999,66 @@ impl MakeDir {
     /// -   the modulus of Coord,
     /// -   Sqrt(Xv*Xv + Yv*Yv + Zv*Zv).
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_pnt2(P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_ctor_pnt2(P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:74 - `gce_MakeDir::Value()`
     /// Returns the constructed unit vector.
     /// Exceptions StdFail_NotDone if no unit vector is constructed.
     pub fn value(&self) -> &crate::gp::Dir {
-        unsafe { &*(crate::ffi::gce_MakeDir_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:76 - `gce_MakeDir::Operator()`
     pub fn operator(&self) -> &crate::gp::Dir {
-        unsafe { &*(crate::ffi::gce_MakeDir_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeDir_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeDir_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeDir_inherited_IsDone(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeDir_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -889,7 +1087,11 @@ impl MakeDir2d {
     /// Normalizes the vector V and creates a direction.
     /// Status is "NullVector" if V.Magnitude() <= Resolution.
     pub fn new_vec2d(V: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_vec2d(V)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_ctor_vec2d(V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:48 - `gce_MakeDir2d::gce_MakeDir2d()`
@@ -897,7 +1099,11 @@ impl MakeDir2d {
     /// Status is "NullVector" if Coord.Modulus() <=
     /// Resolution from gp.
     pub fn new_xy(Coord: &crate::gp::XY) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_xy(Coord)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_ctor_xy(Coord) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:53 - `gce_MakeDir2d::gce_MakeDir2d()`
@@ -905,7 +1111,11 @@ impl MakeDir2d {
     /// Status is "NullVector" if Sqrt(Xv*Xv + Yv*Yv )
     /// <= Resolution
     pub fn new_real2(Xv: f64, Yv: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_real2(Xv, Yv)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_ctor_real2(Xv, Yv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:67 - `gce_MakeDir2d::gce_MakeDir2d()`
@@ -922,43 +1132,68 @@ impl MakeDir2d {
     /// -   the modulus of Coord,
     /// -   Sqrt(Xv*Xv + Yv*Yv).
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_pnt2d2(P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_ctor_pnt2d2(P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:71 - `gce_MakeDir2d::Value()`
     /// Returns the constructed unit vector.
     /// Exceptions StdFail_NotDone if no unit vector is constructed.
     pub fn value(&self) -> &crate::gp::Dir2d {
-        unsafe { &*(crate::ffi::gce_MakeDir2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:73 - `gce_MakeDir2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Dir2d {
-        unsafe { &*(crate::ffi::gce_MakeDir2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeDir2d_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeDir2d_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeDir2d_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeDir2d_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeDir2d_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeDir2d_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeDir2d_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -996,12 +1231,11 @@ impl MakeElips {
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips_ctor_ax2_real2(
-                A2,
-                MajorRadius,
-                MinorRadius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeElips_ctor_ax2_real2(A2, MajorRadius, MinorRadius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1025,43 +1259,68 @@ impl MakeElips {
         S2: &crate::gp::Pnt,
         Center: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips_ctor_pnt3(S1, S2, Center)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips_ctor_pnt3(S1, S2, Center) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeElips.hxx`:69 - `gce_MakeElips::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
     pub fn value(&self) -> &crate::gp::Elips {
-        unsafe { &*(crate::ffi::gce_MakeElips_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeElips.hxx`:71 - `gce_MakeElips::Operator()`
     pub fn operator(&self) -> &crate::gp::Elips {
-        unsafe { &*(crate::ffi::gce_MakeElips_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeElips_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeElips_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeElips_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeElips_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeElips_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeElips_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1102,13 +1361,17 @@ impl MakeElips2d {
         MinorRadius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips2d_ctor_ax2d_real2_bool(
-                MajorAxis,
-                MajorRadius,
-                MinorRadius,
-                Sense,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::gce_MakeElips2d_ctor_ax2d_real2_bool(
+                    MajorAxis,
+                    MajorRadius,
+                    MinorRadius,
+                    Sense,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1126,12 +1389,12 @@ impl MakeElips2d {
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips2d_ctor_ax22d_real2(
-                A,
-                MajorRadius,
-                MinorRadius,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::gce_MakeElips2d_ctor_ax22d_real2(A, MajorRadius, MinorRadius)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1161,8 +1424,10 @@ impl MakeElips2d {
         S2: &crate::gp::Pnt2d,
         Center: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips2d_ctor_pnt2d3(S1, S2, Center))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips2d_ctor_pnt2d3(S1, S2, Center) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1186,36 +1451,58 @@ impl MakeElips2d {
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
     pub fn value(&self) -> &crate::gp::Elips2d {
-        unsafe { &*(crate::ffi::gce_MakeElips2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeElips2d.hxx`:94 - `gce_MakeElips2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Elips2d {
-        unsafe { &*(crate::ffi::gce_MakeElips2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeElips2d_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeElips2d_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeElips2d_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeElips2d_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeElips2d_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeElips2d_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeElips2d_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeElips2d_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1287,12 +1574,11 @@ impl MakeHypr {
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr_ctor_ax2_real2(
-                A2,
-                MajorRadius,
-                MinorRadius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeHypr_ctor_ax2_real2(A2, MajorRadius, MinorRadius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1317,43 +1603,68 @@ impl MakeHypr {
         S2: &crate::gp::Pnt,
         Center: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr_ctor_pnt3(S1, S2, Center)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr_ctor_pnt3(S1, S2, Center) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeHypr.hxx`:104 - `gce_MakeHypr::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
     pub fn value(&self) -> &crate::gp::Hypr {
-        unsafe { &*(crate::ffi::gce_MakeHypr_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeHypr.hxx`:106 - `gce_MakeHypr::Operator()`
     pub fn operator(&self) -> &crate::gp::Hypr {
-        unsafe { &*(crate::ffi::gce_MakeHypr_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeHypr_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeHypr_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeHypr_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeHypr_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeHypr_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeHypr_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1415,7 +1726,11 @@ impl MakeHypr2d {
         S2: &crate::gp::Pnt2d,
         Center: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr2d_ctor_pnt2d3(S1, S2, Center)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr2d_ctor_pnt2d3(S1, S2, Center) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeHypr2d.hxx`:84 - `gce_MakeHypr2d::gce_MakeHypr2d()`
@@ -1434,13 +1749,17 @@ impl MakeHypr2d {
         MinorRadius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr2d_ctor_ax2d_real2_bool(
-                MajorAxis,
-                MajorRadius,
-                MinorRadius,
-                Sense,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::gce_MakeHypr2d_ctor_ax2d_real2_bool(
+                    MajorAxis,
+                    MajorRadius,
+                    MinorRadius,
+                    Sense,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1454,12 +1773,11 @@ impl MakeHypr2d {
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr2d_ctor_ax22d_real2(
-                A,
-                MajorRadius,
-                MinorRadius,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeHypr2d_ctor_ax22d_real2(A, MajorRadius, MinorRadius) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1467,36 +1785,57 @@ impl MakeHypr2d {
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
     pub fn value(&self) -> &crate::gp::Hypr2d {
-        unsafe { &*(crate::ffi::gce_MakeHypr2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeHypr2d.hxx`:101 - `gce_MakeHypr2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Hypr2d {
-        unsafe { &*(crate::ffi::gce_MakeHypr2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeHypr2d_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr2d_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeHypr2d_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeHypr2d_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeHypr2d_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeHypr2d_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeHypr2d_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeHypr2d_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1525,21 +1864,33 @@ impl MakeLin {
     /// **Source:** `gce_MakeLin.hxx`:43 - `gce_MakeLin::gce_MakeLin()`
     /// Creates a line located along the axis A1.
     pub fn new_ax1(A1: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_ax1(A1)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_ctor_ax1(A1) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:47 - `gce_MakeLin::gce_MakeLin()`
     /// <P> is the location point (origin) of the line and
     /// <V> is the direction of the line.
     pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_pnt_dir(P, V)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_ctor_pnt_dir(P, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:51 - `gce_MakeLin::gce_MakeLin()`
     /// Make a Lin from gp <TheLin> parallel to another
     /// Lin <Lin> and passing through a Pnt <Point>.
     pub fn new_lin_pnt(Lin: &crate::gp::Lin, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_lin_pnt(Lin, Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_ctor_lin_pnt(Lin, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:56 - `gce_MakeLin::gce_MakeLin()`
@@ -1547,43 +1898,66 @@ impl MakeLin {
     /// Pnt <P1>,<P2>.
     /// It returns false if <p1> and <P2> are confused.
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_pnt2(P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_ctor_pnt2(P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:60 - `gce_MakeLin::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone is raised if no line is constructed.
     pub fn value(&self) -> &crate::gp::Lin {
-        unsafe { &*(crate::ffi::gce_MakeLin_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:62 - `gce_MakeLin::Operator()`
     pub fn operator(&self) -> &crate::gp::Lin {
-        unsafe { &*(crate::ffi::gce_MakeLin_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeLin_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeLin_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeLin_inherited_IsDone(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeLin_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1616,21 +1990,33 @@ impl MakeLin2d {
     /// **Source:** `gce_MakeLin2d.hxx`:47 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// Creates a line located with A.
     pub fn new_ax2d(A: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_ax2d(A)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_ctor_ax2d(A) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:51 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// <P> is the location point (origin) of the line and
     /// <V> is the direction of the line.
     pub fn new_pnt2d_dir2d(P: &crate::gp::Pnt2d, V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_pnt2d_dir2d(P, V)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_ctor_pnt2d_dir2d(P, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:55 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// Creates the line from the equation A*X + B*Y + C = 0.0
     /// the status is "NullAxis"if Sqrt(A*A + B*B) <= Resolution from gp.
     pub fn new_real3(A: f64, B: f64, C: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_real3(A, B, C)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_ctor_real3(A, B, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:64 - `gce_MakeLin2d::gce_MakeLin2d()`
@@ -1640,7 +2026,11 @@ impl MakeLin2d {
     /// right of the Line <Lin>, else the result is on the
     /// left of the Line <Lin>.
     pub fn new_lin2d_real(Lin: &crate::gp::Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_lin2d_real(Lin, Dist)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_ctor_lin2d_real(Lin, Dist) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:68 - `gce_MakeLin2d::gce_MakeLin2d()`
@@ -1650,7 +2040,11 @@ impl MakeLin2d {
         Lin: &crate::gp::Lin2d,
         Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_lin2d_pnt2d(Lin, Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_ctor_lin2d_pnt2d(Lin, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:79 - `gce_MakeLin2d::gce_MakeLin2d()`
@@ -1664,45 +2058,68 @@ impl MakeLin2d {
     /// than or equal to gp::Resolution(), or
     /// -   gce_ConfusedPoints if points P1 and P2 are coincident.
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_pnt2d2(P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_ctor_pnt2d2(P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:83 - `gce_MakeLin2d::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
     pub fn value(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:85 - `gce_MakeLin2d::Operator()`
     pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_operator(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeLin2d_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeLin2d_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeLin2d_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeLin2d_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeLin2d_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeLin2d_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeLin2d_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1730,47 +2147,79 @@ unsafe impl crate::CppDeletable for MakeMirror {
 impl MakeMirror {
     /// **Source:** `gce_MakeMirror.hxx`:44 - `gce_MakeMirror::gce_MakeMirror()`
     pub fn new_pnt(Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_pnt(Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_ctor_pnt(Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:46 - `gce_MakeMirror::gce_MakeMirror()`
     pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_ax1(Axis)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_ctor_ax1(Axis) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:48 - `gce_MakeMirror::gce_MakeMirror()`
     pub fn new_lin(Line: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_lin(Line)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_ctor_lin(Line) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:52 - `gce_MakeMirror::gce_MakeMirror()`
     /// Makes a symmetry transformation af axis defined by
     /// <Point> and <Direc>.
     pub fn new_pnt_dir(Point: &crate::gp::Pnt, Direc: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_pnt_dir(Point, Direc)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_ctor_pnt_dir(Point, Direc) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:55 - `gce_MakeMirror::gce_MakeMirror()`
     /// Makes a symmetry transformation of plane <Plane>.
     pub fn new_pln(Plane: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_pln(Plane)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_ctor_pln(Plane) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:58 - `gce_MakeMirror::gce_MakeMirror()`
     /// Makes a symmetry transformation of plane <Plane>.
     pub fn new_ax2(Plane: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_ax2(Plane)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_ctor_ax2(Plane) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:61 - `gce_MakeMirror::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeMirror_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:63 - `gce_MakeMirror::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeMirror_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1796,17 +2245,29 @@ unsafe impl crate::CppDeletable for MakeMirror2d {
 impl MakeMirror2d {
     /// **Source:** `gce_MakeMirror2d.hxx`:41 - `gce_MakeMirror2d::gce_MakeMirror2d()`
     pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_pnt2d(Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror2d_ctor_pnt2d(Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:43 - `gce_MakeMirror2d::gce_MakeMirror2d()`
     pub fn new_ax2d(Axis: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_ax2d(Axis)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror2d_ctor_ax2d(Axis) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:45 - `gce_MakeMirror2d::gce_MakeMirror2d()`
     pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_lin2d(Line)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror2d_ctor_lin2d(Line) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:49 - `gce_MakeMirror2d::gce_MakeMirror2d()`
@@ -1816,20 +2277,30 @@ impl MakeMirror2d {
         Point: &crate::gp::Pnt2d,
         Direc: &crate::gp::Dir2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_pnt2d_dir2d(Point, Direc))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror2d_ctor_pnt2d_dir2d(Point, Direc) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:52 - `gce_MakeMirror2d::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeMirror2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:54 - `gce_MakeMirror2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeMirror2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeMirror2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1884,7 +2355,11 @@ impl MakeParab {
     /// the parabola
     /// The status is "NullFocusLength" if Focal < 0.0
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Focal: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab_ctor_ax2_real(A2, Focal)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab_ctor_ax2_real(A2, Focal) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeParab.hxx`:80 - `gce_MakeParab::gce_MakeParab()`
@@ -1897,43 +2372,68 @@ impl MakeParab {
     /// of the parabola is the cross product between the XAxis and the
     /// YAxis.
     pub fn new_ax1_pnt(D: &crate::gp::Ax1, F: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab_ctor_ax1_pnt(D, F)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab_ctor_ax1_pnt(D, F) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeParab.hxx`:84 - `gce_MakeParab::Value()`
     /// Returns the constructed parabola.
     /// Exceptions StdFail_NotDone if no parabola is constructed.
     pub fn value(&self) -> &crate::gp::Parab {
-        unsafe { &*(crate::ffi::gce_MakeParab_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeParab.hxx`:86 - `gce_MakeParab::Operator()`
     pub fn operator(&self) -> &crate::gp::Parab {
-        unsafe { &*(crate::ffi::gce_MakeParab_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeParab_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeParab_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeParab_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeParab_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeParab_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeParab_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -1985,10 +2485,12 @@ impl MakeParab2d {
         Focal: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab2d_ctor_ax2d_real_bool(
-                MirrorAxis, Focal, Sense,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::gce_MakeParab2d_ctor_ax2d_real_bool(MirrorAxis, Focal, Sense)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1998,7 +2500,11 @@ impl MakeParab2d {
     /// Warnings : It is possible to have Focal = 0.
     /// The status is "NullFocalLength" Raised if Focal < 0.0
     pub fn new_ax22d_real(A: &crate::gp::Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab2d_ctor_ax22d_real(A, Focal)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab2d_ctor_ax22d_real(A, Focal) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeParab2d.hxx`:75 - `gce_MakeParab2d::gce_MakeParab2d()`
@@ -2009,8 +2515,10 @@ impl MakeParab2d {
         F: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab2d_ctor_ax2d_pnt2d_bool(D, F, Sense))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab2d_ctor_ax2d_pnt2d_bool(D, F, Sense) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2029,10 +2537,11 @@ impl MakeParab2d {
         Center: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab2d_ctor_pnt2d2_bool(
-                S1, Center, Sense,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeParab2d_ctor_pnt2d2_bool(S1, Center, Sense) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2070,36 +2579,58 @@ impl MakeParab2d {
     /// Returns the constructed parabola.
     /// Exceptions StdFail_NotDone if no parabola is constructed.
     pub fn value(&self) -> &crate::gp::Parab2d {
-        unsafe { &*(crate::ffi::gce_MakeParab2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeParab2d.hxx`:96 - `gce_MakeParab2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Parab2d {
-        unsafe { &*(crate::ffi::gce_MakeParab2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakeParab2d_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeParab2d_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakeParab2d_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeParab2d_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakeParab2d_inherited_IsDone(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeParab2d_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakeParab2d_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeParab2d_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -2143,14 +2674,22 @@ impl MakePln {
     /// The "XDirection" and "YDirection" of A2 define the "XAxis" and
     /// the "YAxis" of the plane used to parametrize the plane.
     pub fn new_ax2(A2: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_ax2(A2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_ax2(A2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:63 - `gce_MakePln::gce_MakePln()`
     /// Creates a plane with the  "Location" point <P>
     /// and the normal direction <V>.
     pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pnt_dir(P, V)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_pnt_dir(P, V) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:70 - `gce_MakePln::gce_MakePln()`
@@ -2160,14 +2699,22 @@ impl MakePln {
     /// the status is "BadEquation" if Sqrt (A*A + B*B + C*C) <=
     /// Resolution from gp.
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_real4(A, B, C, D)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_real4(A, B, C, D) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:77 - `gce_MakePln::gce_MakePln()`
     /// Make a Pln from gp <ThePln> parallel to another
     /// Pln <Pln> and passing through a Pnt <Point>.
     pub fn new_pln_pnt(Pln: &crate::gp::Pln, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pln_pnt(Pln, Point)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_pln_pnt(Pln, Point) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:86 - `gce_MakePln::gce_MakePln()`
@@ -2179,7 +2726,11 @@ impl MakePln {
     /// normal to <Pln>.
     /// Otherwise it is in the opposite direction.
     pub fn new_pln_real(Pln: &crate::gp::Pln, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pln_real(Pln, Dist)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_pln_real(Pln, Dist) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:91 - `gce_MakePln::gce_MakePln()`
@@ -2191,7 +2742,11 @@ impl MakePln {
         P2: &crate::gp::Pnt,
         P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pnt3(P1, P2, P3)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_pnt3(P1, P2, P3) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:96 - `gce_MakePln::gce_MakePln()`
@@ -2199,7 +2754,11 @@ impl MakePln {
     /// passing through <P1>,<P2>.
     /// The status is "ConfusedPoints" if <P1> <P2> are confused.
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pnt2(P1, P2)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_pnt2(P1, P2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:106 - `gce_MakePln::gce_MakePln()`
@@ -2212,43 +2771,66 @@ impl MakePln {
     /// -   gce_ConfusedPoints if P1 and P2 are coincident, or
     /// -   gce_ColinearPoints if P1, P2 and P3 are collinear.
     pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_ax1(Axis)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_ctor_ax1(Axis) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:110 - `gce_MakePln::Value()`
     /// Returns the constructed plane.
     /// Exceptions StdFail_NotDone if no plane is constructed.
     pub fn value(&self) -> &crate::gp::Pln {
-        unsafe { &*(crate::ffi::gce_MakePln_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakePln.hxx`:112 - `gce_MakePln::Operator()`
     pub fn operator(&self) -> &crate::gp::Pln {
-        unsafe { &*(crate::ffi::gce_MakePln_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to gce_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*(crate::ffi::gce_MakePln_as_gce_Root(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_as_gce_Root(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to gce_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe { &mut *(crate::ffi::gce_MakePln_as_gce_Root_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_as_gce_Root_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_MakePln_inherited_IsDone(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_inherited_IsDone(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_MakePln_inherited_Status(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::gce_MakePln_inherited_Status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }
@@ -2276,16 +2858,20 @@ impl MakeRotation {
     /// **Source:** `gce_MakeRotation.hxx`:42 - `gce_MakeRotation::gce_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis defined by the line Line.
     pub fn new_lin_real(Line: &crate::gp::Lin, Angle: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation_ctor_lin_real(Line, Angle))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation_ctor_lin_real(Line, Angle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeRotation.hxx`:45 - `gce_MakeRotation::gce_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis defined by the axis Axis.
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation_ctor_ax1_real(Axis, Angle))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation_ctor_ax1_real(Axis, Angle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2297,22 +2883,31 @@ impl MakeRotation {
         Direc: &crate::gp::Dir,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation_ctor_pnt_dir_real(
-                Point, Direc, Angle,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeRotation_ctor_pnt_dir_real(Point, Direc, Angle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeRotation.hxx`:54 - `gce_MakeRotation::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeRotation_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeRotation.hxx`:56 - `gce_MakeRotation::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeRotation_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2339,20 +2934,30 @@ impl MakeRotation2d {
     /// **Source:** `gce_MakeRotation2d.hxx`:39 - `gce_MakeRotation2d::gce_MakeRotation2d()`
     /// Constructs a rotation through angle Angle about the center Point.
     pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation2d_ctor_pnt2d_real(Point, Angle))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation2d_ctor_pnt2d_real(Point, Angle) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeRotation2d.hxx`:42 - `gce_MakeRotation2d::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeRotation2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeRotation2d.hxx`:44 - `gce_MakeRotation2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeRotation2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeRotation2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2381,18 +2986,30 @@ impl MakeScale {
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
     pub fn new_pnt_real(Point: &crate::gp::Pnt, Scale: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeScale_ctor_pnt_real(Point, Scale)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeScale_ctor_pnt_real(Point, Scale) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeScale.hxx`:44 - `gce_MakeScale::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeScale_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeScale_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeScale.hxx`:46 - `gce_MakeScale::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeScale_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeScale_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2421,20 +3038,30 @@ impl MakeScale2d {
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
     pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Scale: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeScale2d_ctor_pnt2d_real(Point, Scale))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeScale2d_ctor_pnt2d_real(Point, Scale) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeScale2d.hxx`:44 - `gce_MakeScale2d::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeScale2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeScale2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeScale2d.hxx`:46 - `gce_MakeScale2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeScale2d_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeScale2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2461,27 +3088,41 @@ impl MakeTranslation {
     /// **Source:** `gce_MakeTranslation.hxx`:40 - `gce_MakeTranslation::gce_MakeTranslation()`
     /// Constructs a translation along the vector " Vect"
     pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation_ctor_vec(Vect)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation_ctor_vec(Vect) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeTranslation.hxx`:44 - `gce_MakeTranslation::gce_MakeTranslation()`
     /// Constructs a translation along the vector
     /// (Point1,Point2) defined from the point Point1 to the point Point2.
     pub fn new_pnt2(Point1: &crate::gp::Pnt, Point2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation_ctor_pnt2(Point1, Point2))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation_ctor_pnt2(Point1, Point2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeTranslation.hxx`:47 - `gce_MakeTranslation::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeTranslation_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeTranslation.hxx`:49 - `gce_MakeTranslation::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::gce_MakeTranslation_operator(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2508,7 +3149,11 @@ impl MakeTranslation2d {
     /// **Source:** `gce_MakeTranslation2d.hxx`:40 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
     /// Constructs a translation along the vector Vect.
     pub fn new_vec2d(Vect: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation2d_ctor_vec2d(Vect)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation2d_ctor_vec2d(Vect) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeTranslation2d.hxx`:44 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
@@ -2518,20 +3163,31 @@ impl MakeTranslation2d {
         Point1: &crate::gp::Pnt2d,
         Point2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation2d_ctor_pnt2d2(Point1, Point2))
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation2d_ctor_pnt2d2(Point1, Point2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `gce_MakeTranslation2d.hxx`:47 - `gce_MakeTranslation2d::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeTranslation2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::gce_MakeTranslation2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `gce_MakeTranslation2d.hxx`:49 - `gce_MakeTranslation2d::Operator()`
     pub fn operator(&self) -> &crate::gp::Trsf2d {
-        unsafe { &*(crate::ffi::gce_MakeTranslation2d_operator(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::gce_MakeTranslation2d_operator(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2554,13 +3210,21 @@ impl Root {
     /// **Source:** `gce_Root.hxx` - `gce_Root::gce_Root()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_Root_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::gce_Root_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
     /// Returns true if the construction is successful.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::gce_Root_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::gce_Root_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
@@ -2569,9 +3233,10 @@ impl Root {
     /// -   another value of the gce_ErrorType enumeration
     /// indicating why the construction failed.
     pub fn status(&self) -> crate::gce::ErrorType {
-        unsafe {
-            crate::gce::ErrorType::try_from(crate::ffi::gce_Root_status(self as *const Self))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::gce_Root_status(self as *const Self) };
+            crate::check_exception();
+            crate::gce::ErrorType::try_from(__result).unwrap()
         }
     }
 }

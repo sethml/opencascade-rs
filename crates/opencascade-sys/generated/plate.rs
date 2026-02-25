@@ -27,22 +27,38 @@ unsafe impl crate::CppDeletable for D1 {
 impl D1 {
     /// **Source:** `Plate_D1.hxx`:33 - `Plate_D1::Plate_D1()`
     pub fn new_xyz2(du: &crate::gp::XYZ, dv: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_ctor_xyz2(du, dv)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D1_ctor_xyz2(du, dv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Plate_D1.hxx`:37 - `Plate_D1::DU()`
     pub fn du(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::Plate_D1_du(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D1_du(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_D1.hxx`:39 - `Plate_D1::DV()`
     pub fn dv(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::Plate_D1_dv(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D1_dv(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_to_owned(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D1_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -68,12 +84,20 @@ impl D2 {
         duv: &crate::gp::XYZ,
         dvv: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_ctor_xyz3(duu, duv, dvv)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D2_ctor_xyz3(duu, duv, dvv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_to_owned(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D2_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -100,12 +124,20 @@ impl D3 {
         duvv: &crate::gp::XYZ,
         dvvv: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_to_owned(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_D3_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -133,14 +165,18 @@ impl FreeGtoCConstraint {
         IncrementalLoad: f64,
         orientation: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_real_int(
-                point2d,
-                D1S,
-                D1T,
-                IncrementalLoad,
-                orientation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_real_int(
+                    point2d,
+                    D1S,
+                    D1T,
+                    IncrementalLoad,
+                    orientation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -154,8 +190,8 @@ impl FreeGtoCConstraint {
         IncrementalLoad: f64,
         orientation: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_d22_real_int(
                     point2d,
                     D1S,
@@ -164,8 +200,10 @@ impl FreeGtoCConstraint {
                     D2T,
                     IncrementalLoad,
                     orientation,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -181,8 +219,8 @@ impl FreeGtoCConstraint {
         IncrementalLoad: f64,
         orientation: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_d22_d32_real_int(
                     point2d,
                     D1S,
@@ -193,8 +231,10 @@ impl FreeGtoCConstraint {
                     D3T,
                     IncrementalLoad,
                     orientation,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -265,22 +305,42 @@ impl FreeGtoCConstraint {
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:61 - `Plate_FreeGtoCConstraint::nb_PPC()`
     pub fn nb_ppc(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_nb_ppc(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_FreeGtoCConstraint_nb_ppc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:63 - `Plate_FreeGtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
-        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_get_ppc(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_FreeGtoCConstraint_get_ppc(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:65 - `Plate_FreeGtoCConstraint::nb_LSC()`
     pub fn nb_lsc(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_nb_lsc(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_FreeGtoCConstraint_nb_lsc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:67 - `Plate_FreeGtoCConstraint::LSC()`
     pub fn lsc(&self, Index: i32) -> &LinearScalarConstraint {
-        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_lsc(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_FreeGtoCConstraint_lsc(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -301,16 +361,22 @@ unsafe impl crate::CppDeletable for GlobalTranslationConstraint {
 impl GlobalTranslationConstraint {
     /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:33 - `Plate_GlobalTranslationConstraint::Plate_GlobalTranslationConstraint()`
     pub fn new_sequenceofxy(SOfXY: &crate::ffi::TColgp_SequenceOfXY) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Plate_GlobalTranslationConstraint_ctor_sequenceofxy(SOfXY),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GlobalTranslationConstraint_ctor_sequenceofxy(SOfXY) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:35 - `Plate_GlobalTranslationConstraint::LXYZC()`
     pub fn lxyzc(&self) -> &LinearXYZConstraint {
-        unsafe { &*(crate::ffi::Plate_GlobalTranslationConstraint_lxyzc(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GlobalTranslationConstraint_lxyzc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -331,10 +397,11 @@ unsafe impl crate::CppDeletable for GtoCConstraint {
 impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:39 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12(point2d: &crate::gp::XY, D1S: &D1, D1T: &D1) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12(
-                point2d, D1S, D1T,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GtoCConstraint_ctor_xy_d12(point2d, D1S, D1T) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -345,10 +412,11 @@ impl GtoCConstraint {
         D1T: &D1,
         nP: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_xyz(
-                point2d, D1S, D1T, nP,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_xyz(point2d, D1S, D1T, nP) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -360,10 +428,12 @@ impl GtoCConstraint {
         D2S: &D2,
         D2T: &D2,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22(
-                point2d, D1S, D1T, D2S, D2T,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22(point2d, D1S, D1T, D2S, D2T)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -376,10 +446,14 @@ impl GtoCConstraint {
         D2T: &D2,
         nP: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_xyz(
-                point2d, D1S, D1T, D2S, D2T, nP,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_xyz(
+                    point2d, D1S, D1T, D2S, D2T, nP,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -393,10 +467,14 @@ impl GtoCConstraint {
         D3S: &D3,
         D3T: &D3,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32(
-                point2d, D1S, D1T, D2S, D2T, D3S, D3T,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32(
+                    point2d, D1S, D1T, D2S, D2T, D3S, D3T,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -411,34 +489,53 @@ impl GtoCConstraint {
         D3T: &D3,
         nP: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32_xyz(
-                point2d, D1S, D1T, D2S, D2T, D3S, D3T, nP,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32_xyz(
+                    point2d, D1S, D1T, D2S, D2T, D3S, D3T, nP,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:78 - `Plate_GtoCConstraint::nb_PPC()`
     pub fn nb_ppc(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_GtoCConstraint_nb_ppc(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_GtoCConstraint_nb_ppc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:80 - `Plate_GtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
-        unsafe { &*(crate::ffi::Plate_GtoCConstraint_get_ppc(self as *const Self, Index)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GtoCConstraint_get_ppc(self as *const Self, Index) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:82 - `Plate_GtoCConstraint::D1SurfInit()`
     pub fn d1_surf_init(&self) -> &D1 {
-        unsafe { &*(crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_to_owned(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_GtoCConstraint_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -459,15 +556,21 @@ unsafe impl crate::CppDeletable for HArray1OfPinpointConstraint {
 impl HArray1OfPinpointConstraint {
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -477,12 +580,14 @@ impl HArray1OfPinpointConstraint {
         theUpper: i32,
         theValue: &PinpointConstraint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -493,12 +598,14 @@ impl HArray1OfPinpointConstraint {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -506,63 +613,92 @@ impl HArray1OfPinpointConstraint {
     pub fn new_array1ofpinpointconstraint(
         theOther: &crate::ffi::Plate_Array1OfPinpointConstraint,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(
                     theOther,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Array1()`
     pub fn array1(&self) -> &crate::ffi::Plate_Array1OfPinpointConstraint {
-        unsafe { &*(crate::ffi::Plate_HArray1OfPinpointConstraint_array1(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_array1(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::Plate_Array1OfPinpointConstraint {
-        unsafe {
-            &mut *(crate::ffi::Plate_HArray1OfPinpointConstraint_change_array1(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::Plate_HArray1OfPinpointConstraint_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -570,76 +706,102 @@ impl HArray1OfPinpointConstraint {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePlateHArray1OfPinpointConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -655,24 +817,36 @@ unsafe impl crate::CppDeletable for HandlePlateHArray1OfPinpointConstraint {
 impl HandlePlateHArray1OfPinpointConstraint {
     /// Dereference this Handle to access the underlying Plate_HArray1OfPinpointConstraint
     pub fn get(&self) -> &crate::ffi::Plate_HArray1OfPinpointConstraint {
-        unsafe { &*(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Plate_HArray1OfPinpointConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::Plate_HArray1OfPinpointConstraint {
-        unsafe {
-            &mut *(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<Plate_HArray1OfPinpointConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandlePlateHArray1OfPinpointConstraint_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -699,10 +873,11 @@ impl LineConstraint {
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LineConstraint_ctor_xy_lin_int2(
-                point2d, lin, iu, iv,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LineConstraint_ctor_xy_lin_int2(point2d, lin, iu, iv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -722,7 +897,11 @@ impl LineConstraint {
 
     /// **Source:** `Plate_LineConstraint.hxx`:39 - `Plate_LineConstraint::LSC()`
     pub fn lsc(&self) -> &LinearScalarConstraint {
-        unsafe { &*(crate::ffi::Plate_LineConstraint_lsc(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_LineConstraint_lsc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -744,7 +923,11 @@ unsafe impl crate::CppDeletable for LinearScalarConstraint {
 impl LinearScalarConstraint {
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:40 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Plate_LinearScalarConstraint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:42 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
@@ -752,12 +935,14 @@ impl LinearScalarConstraint {
         thePPC1: &PinpointConstraint,
         theCoeff: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_LinearScalarConstraint_ctor_pinpointconstraint_xyz(
                     thePPC1, theCoeff,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -766,8 +951,14 @@ impl LinearScalarConstraint {
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColgp_Array1OfXYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(thePPC, theCoeff))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(
+                    thePPC, theCoeff,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -776,28 +967,45 @@ impl LinearScalarConstraint {
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColgp_Array2OfXYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(thePPC, theCoeff))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(
+                    thePPC, theCoeff,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:51 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
     pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_int2(
-                ColLen, RowLen,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LinearScalarConstraint_ctor_int2(ColLen, RowLen) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:54 - `Plate_LinearScalarConstraint::GetPPC()`
     pub fn get_ppc(&self) -> &crate::ffi::Plate_Array1OfPinpointConstraint {
-        unsafe { &*(crate::ffi::Plate_LinearScalarConstraint_get_ppc(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LinearScalarConstraint_get_ppc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:56 - `Plate_LinearScalarConstraint::Coeff()`
     pub fn coeff(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
-        unsafe { &*(crate::ffi::Plate_LinearScalarConstraint_coeff(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LinearScalarConstraint_coeff(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:61 - `Plate_LinearScalarConstraint::SetPPC()`
@@ -805,7 +1013,12 @@ impl LinearScalarConstraint {
     /// Value raise if Index is greater than the length of
     /// PPC or the Row length of coeff or lower  than 1
     pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
-        unsafe { crate::ffi::Plate_LinearScalarConstraint_set_ppc(self as *mut Self, Index, Value) }
+        {
+            unsafe {
+                crate::ffi::Plate_LinearScalarConstraint_set_ppc(self as *mut Self, Index, Value)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:66 - `Plate_LinearScalarConstraint::SetCoeff()`
@@ -813,8 +1026,16 @@ impl LinearScalarConstraint {
     /// raise if  Row (respectively Col)  is greater than the
     /// Row (respectively Column) length of coeff
     pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: &crate::gp::XYZ) {
-        unsafe {
-            crate::ffi::Plate_LinearScalarConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+        {
+            unsafe {
+                crate::ffi::Plate_LinearScalarConstraint_set_coeff(
+                    self as *mut Self,
+                    Row,
+                    Col,
+                    Value,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -838,7 +1059,11 @@ unsafe impl crate::CppDeletable for LinearXYZConstraint {
 impl LinearXYZConstraint {
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:41 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearXYZConstraint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Plate_LinearXYZConstraint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:43 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
@@ -846,12 +1071,14 @@ impl LinearXYZConstraint {
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(
                     thePPC, theCoeff,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -860,32 +1087,45 @@ impl LinearXYZConstraint {
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColStd_Array2OfReal,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(
                     thePPC, theCoeff,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:49 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
     pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearXYZConstraint_ctor_int2(
-                ColLen, RowLen,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LinearXYZConstraint_ctor_int2(ColLen, RowLen) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:52 - `Plate_LinearXYZConstraint::GetPPC()`
     pub fn get_ppc(&self) -> &crate::ffi::Plate_Array1OfPinpointConstraint {
-        unsafe { &*(crate::ffi::Plate_LinearXYZConstraint_get_ppc(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LinearXYZConstraint_get_ppc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:54 - `Plate_LinearXYZConstraint::Coeff()`
     pub fn coeff(&self) -> &crate::ffi::TColStd_Array2OfReal {
-        unsafe { &*(crate::ffi::Plate_LinearXYZConstraint_coeff(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_LinearXYZConstraint_coeff(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:59 - `Plate_LinearXYZConstraint::SetPPC()`
@@ -893,7 +1133,12 @@ impl LinearXYZConstraint {
     /// Value raise if Index is greater than the length of
     /// PPC or the Row length of coeff or lower  than 1
     pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
-        unsafe { crate::ffi::Plate_LinearXYZConstraint_set_ppc(self as *mut Self, Index, Value) }
+        {
+            unsafe {
+                crate::ffi::Plate_LinearXYZConstraint_set_ppc(self as *mut Self, Index, Value)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:64 - `Plate_LinearXYZConstraint::SetCoeff()`
@@ -901,8 +1146,11 @@ impl LinearXYZConstraint {
     /// raise if  Row (respectively Col)  is greater than the
     /// Row (respectively Column) length of coeff
     pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: f64) {
-        unsafe {
-            crate::ffi::Plate_LinearXYZConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+        {
+            unsafe {
+                crate::ffi::Plate_LinearXYZConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -924,7 +1172,11 @@ unsafe impl crate::CppDeletable for PinpointConstraint {
 impl PinpointConstraint {
     /// **Source:** `Plate_PinpointConstraint.hxx`:33 - `Plate_PinpointConstraint::Plate_PinpointConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_PinpointConstraint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Plate_PinpointConstraint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:35 - `Plate_PinpointConstraint::Plate_PinpointConstraint()`
@@ -934,13 +1186,12 @@ impl PinpointConstraint {
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_PinpointConstraint_ctor_xy_xyz_int2(
-                point2d,
-                ImposedValue,
-                iu,
-                iv,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_PinpointConstraint_ctor_xy_xyz_int2(point2d, ImposedValue, iu, iv)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -963,22 +1214,40 @@ impl PinpointConstraint {
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:40 - `Plate_PinpointConstraint::Pnt2d()`
     pub fn pnt2d(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:42 - `Plate_PinpointConstraint::Idu()`
     pub fn idu(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idu(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_PinpointConstraint_idu(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:44 - `Plate_PinpointConstraint::Idv()`
     pub fn idv(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idv(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_PinpointConstraint_idv(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:46 - `Plate_PinpointConstraint::Value()`
     pub fn value(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::ffi::Plate_PinpointConstraint_value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_PinpointConstraint_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1004,10 +1273,11 @@ impl PlaneConstraint {
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_PlaneConstraint_ctor_xy_pln_int2(
-                point2d, pln, iu, iv,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_PlaneConstraint_ctor_xy_pln_int2(point2d, pln, iu, iv) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1027,7 +1297,11 @@ impl PlaneConstraint {
 
     /// **Source:** `Plate_PlaneConstraint.hxx`:39 - `Plate_PlaneConstraint::LSC()`
     pub fn lsc(&self) -> &LinearScalarConstraint {
-        unsafe { &*(crate::ffi::Plate_PlaneConstraint_lsc(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_PlaneConstraint_lsc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1050,7 +1324,11 @@ unsafe impl crate::CppDeletable for Plate {
 impl Plate {
     /// **Source:** `Plate_Plate.hxx`:53 - `Plate_Plate::Plate_Plate()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Plate_Plate_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:57 - `Plate_Plate::Copy()`
@@ -1061,56 +1339,93 @@ impl Plate {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&mut self, Ref: &Plate) -> &mut Plate {
-        unsafe { &mut *(crate::ffi::Plate_Plate_copy(self as *mut Self, Ref)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_Plate_copy(self as *mut Self, Ref) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:61 - `Plate_Plate::Load()`
     pub fn load_pinpointconstraint(&mut self, PConst: &PinpointConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) }
+        {
+            unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:63 - `Plate_Plate::Load()`
     pub fn load_linearxyzconstraint(&mut self, LXYZConst: &LinearXYZConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_linearxyzconstraint(self as *mut Self, LXYZConst) }
+        {
+            unsafe {
+                crate::ffi::Plate_Plate_load_linearxyzconstraint(self as *mut Self, LXYZConst)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:65 - `Plate_Plate::Load()`
     pub fn load_linearscalarconstraint(&mut self, LScalarConst: &LinearScalarConstraint) {
-        unsafe {
-            crate::ffi::Plate_Plate_load_linearscalarconstraint(self as *mut Self, LScalarConst)
+        {
+            unsafe {
+                crate::ffi::Plate_Plate_load_linearscalarconstraint(self as *mut Self, LScalarConst)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:67 - `Plate_Plate::Load()`
     pub fn load_globaltranslationconstraint(&mut self, GTConst: &GlobalTranslationConstraint) {
-        unsafe {
-            crate::ffi::Plate_Plate_load_globaltranslationconstraint(self as *mut Self, GTConst)
+        {
+            unsafe {
+                crate::ffi::Plate_Plate_load_globaltranslationconstraint(self as *mut Self, GTConst)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:69 - `Plate_Plate::Load()`
     pub fn load_lineconstraint(&mut self, LConst: &LineConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_lineconstraint(self as *mut Self, LConst) }
+        {
+            unsafe { crate::ffi::Plate_Plate_load_lineconstraint(self as *mut Self, LConst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:71 - `Plate_Plate::Load()`
     pub fn load_planeconstraint(&mut self, PConst: &PlaneConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_planeconstraint(self as *mut Self, PConst) }
+        {
+            unsafe { crate::ffi::Plate_Plate_load_planeconstraint(self as *mut Self, PConst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:73 - `Plate_Plate::Load()`
     pub fn load_sampledcurveconstraint(&mut self, SCConst: &SampledCurveConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_sampledcurveconstraint(self as *mut Self, SCConst) }
+        {
+            unsafe {
+                crate::ffi::Plate_Plate_load_sampledcurveconstraint(self as *mut Self, SCConst)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:75 - `Plate_Plate::Load()`
     pub fn load_gtocconstraint(&mut self, GtoCConst: &GtoCConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_gtocconstraint(self as *mut Self, GtoCConst) }
+        {
+            unsafe { crate::ffi::Plate_Plate_load_gtocconstraint(self as *mut Self, GtoCConst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:77 - `Plate_Plate::Load()`
     pub fn load_freegtocconstraint(&mut self, FGtoCConst: &FreeGtoCConstraint) {
-        unsafe { crate::ffi::Plate_Plate_load_freegtocconstraint(self as *mut Self, FGtoCConst) }
+        {
+            unsafe {
+                crate::ffi::Plate_Plate_load_freegtocconstraint(self as *mut Self, FGtoCConst)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:79 - `Plate_Plate::SolveTI()`
@@ -1120,36 +1435,49 @@ impl Plate {
         anisotropie: f64,
         theProgress: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::Plate_Plate_solve_ti(self as *mut Self, ord, anisotropie, theProgress)
+        {
+            unsafe {
+                crate::ffi::Plate_Plate_solve_ti(self as *mut Self, ord, anisotropie, theProgress)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:84 - `Plate_Plate::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Plate_Plate_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Plate_Plate_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:86 - `Plate_Plate::destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::Plate_Plate_destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Plate_Plate_destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:92 - `Plate_Plate::Init()`
     /// reset the Plate in the initial state
     /// ( same as after Create())
     pub fn init(&mut self) {
-        unsafe { crate::ffi::Plate_Plate_init(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Plate_Plate_init(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:94 - `Plate_Plate::Evaluate()`
     pub fn evaluate(&self, point2d: &crate::gp::XY) -> crate::OwnedPtr<crate::gp::XYZ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_evaluate(
-                self as *const Self,
-                point2d,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_Plate_evaluate(self as *const Self, point2d) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1160,44 +1488,63 @@ impl Plate {
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<crate::gp::XYZ> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_evaluate_derivative(
-                self as *const Self,
-                point2d,
-                iu,
-                iv,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Plate_Plate_evaluate_derivative(self as *const Self, point2d, iu, iv)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:100 - `Plate_Plate::CoefPol()`
     pub fn coef_pol(&self, Coefs: &mut crate::ffi::HandleTColgpHArray2OfXYZ) {
-        unsafe { crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs) }
+        {
+            unsafe { crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:102 - `Plate_Plate::SetPolynomialPartOnly()`
     pub fn set_polynomial_part_only(&mut self, PPOnly: bool) {
-        unsafe { crate::ffi::Plate_Plate_set_polynomial_part_only(self as *mut Self, PPOnly) }
+        {
+            unsafe { crate::ffi::Plate_Plate_set_polynomial_part_only(self as *mut Self, PPOnly) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:104 - `Plate_Plate::Continuity()`
     pub fn continuity(&self) -> i32 {
-        unsafe { crate::ffi::Plate_Plate_continuity(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Plate_Plate_continuity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:106 - `Plate_Plate::UVBox()`
     pub fn uv_box(&self, UMin: &mut f64, UMax: &mut f64, VMin: &mut f64, VMax: &mut f64) {
-        unsafe { crate::ffi::Plate_Plate_uv_box(self as *const Self, UMin, UMax, VMin, VMax) }
+        {
+            unsafe { crate::ffi::Plate_Plate_uv_box(self as *const Self, UMin, UMax, VMin, VMax) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:111 - `Plate_Plate::UVConstraints()`
     pub fn uv_constraints(&self, Seq: &mut crate::ffi::TColgp_SequenceOfXY) {
-        unsafe { crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq) }
+        {
+            unsafe { crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq) };
+            crate::check_exception();
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_to_owned(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Plate_Plate_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -1221,18 +1568,25 @@ impl SampledCurveConstraint {
         SOPPC: &crate::ffi::Plate_SequenceOfPinpointConstraint,
         n: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Plate_SampledCurveConstraint_ctor_sequenceofpinpointconstraint_int(
                     SOPPC, n,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Plate_SampledCurveConstraint.hxx`:36 - `Plate_SampledCurveConstraint::LXYZC()`
     pub fn lxyzc(&self) -> &LinearXYZConstraint {
-        unsafe { &*(crate::ffi::Plate_SampledCurveConstraint_lxyzc(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Plate_SampledCurveConstraint_lxyzc(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 

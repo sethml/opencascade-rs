@@ -189,15 +189,24 @@ fn generate_function_wrappers(
                 let return_stmt = rt.format_cpp_return_stmt(&call, false);
                 writeln!(
                     output,
-                    "extern \"C\" {} {}({}) {{ {} }}",
-                    ret_type_cpp, wrapper_name, params_str, return_stmt
+                    "extern \"C\" {} {}({}) {{",
+                    ret_type_cpp, wrapper_name, params_str
                 ).unwrap();
+                writeln!(output, "    try {{ {} }}", return_stmt).unwrap();
+                writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+                if let Some(default) = super::bindings::cpp_error_return_value(&ret_type_cpp) {
+                    writeln!(output, "    return {};", default).unwrap();
+                }
+                writeln!(output, "}}").unwrap();
             } else {
                 writeln!(
                     output,
-                    "extern \"C\" void {}({}) {{ {}; }}",
-                    wrapper_name, params_str, call
+                    "extern \"C\" void {}({}) {{",
+                    wrapper_name, params_str
                 ).unwrap();
+                writeln!(output, "    try {{ {}; }}", call).unwrap();
+                writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+                writeln!(output, "}}").unwrap();
             }
         }
         writeln!(output).unwrap();
@@ -262,7 +271,7 @@ pub fn generate_wrappers(
         &mut headers,
         super::collections::collect_collection_headers(collections),
     );
-    extend_unique_headers(&mut headers, ["cstdint".to_string(), "new".to_string()]);
+    extend_unique_headers(&mut headers, ["cstdint".to_string(), "new".to_string(), "typeinfo".to_string(), "cstring".to_string()]);
 
     // Add headers needed for template instantiations
     for inst in template_instantiations.values() {
@@ -281,6 +290,78 @@ pub fn generate_wrappers(
         writeln!(output, "#include <{}>", header).unwrap();
     }
     writeln!(output).unwrap();
+
+    // Exception handling infrastructure.
+    // Thread-local storage for C++ exception info, checked by Rust after each FFI call.
+    output.push_str(r#"
+// ========================
+// Exception handling
+// ========================
+
+#include <cxxabi.h>
+
+namespace {
+struct OcctExceptionInfo {
+    bool pending = false;
+    char message[2048] = {};
+    char type_name[256] = {};
+};
+thread_local OcctExceptionInfo occt_last_exception;
+}
+
+static void occt_store_exception(const char* msg, const char* type_name) {
+    auto& ex = occt_last_exception;
+    ex.pending = true;
+    if (msg) {
+        std::strncpy(ex.message, msg, sizeof(ex.message) - 1);
+        ex.message[sizeof(ex.message) - 1] = '\0';
+    } else {
+        ex.message[0] = '\0';
+    }
+    // Demangle C++ type name for readable panic messages
+    if (type_name) {
+        int status = 0;
+        char* demangled = abi::__cxa_demangle(type_name, nullptr, nullptr, &status);
+        if (status == 0 && demangled) {
+            std::strncpy(ex.type_name, demangled, sizeof(ex.type_name) - 1);
+            ex.type_name[sizeof(ex.type_name) - 1] = '\0';
+            std::free(demangled);
+        } else {
+            std::strncpy(ex.type_name, type_name, sizeof(ex.type_name) - 1);
+            ex.type_name[sizeof(ex.type_name) - 1] = '\0';
+            std::free(demangled);
+        }
+    } else {
+        ex.type_name[0] = '\0';
+    }
+}
+
+extern "C" bool occt_has_pending_exception() {
+    return occt_last_exception.pending;
+}
+
+extern "C" const char* occt_pending_exception_message() {
+    return occt_last_exception.message;
+}
+
+extern "C" const char* occt_pending_exception_type() {
+    return occt_last_exception.type_name;
+}
+
+extern "C" void occt_clear_exception() {
+    occt_last_exception.pending = false;
+}
+
+#define OCCT_CATCH_AND_STORE \
+    catch (const Standard_Failure& e) { \
+        occt_store_exception(e.GetMessageString(), typeid(e).name()); \
+    } catch (const std::exception& e) { \
+        occt_store_exception(e.what(), typeid(e).name()); \
+    } catch (...) { \
+        occt_store_exception("unknown C++ exception", "unknown"); \
+    }
+
+"#);
 
     // Generate typedefs for template instantiation aliases.
     // These MUST come before Handle typedefs since handles reference the alias names.

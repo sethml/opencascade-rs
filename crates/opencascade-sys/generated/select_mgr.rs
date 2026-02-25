@@ -14,8 +14,11 @@ pub fn compute_sensitive_prs(
     theLoc: &crate::gp::Trsf,
     theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
 ) {
-    unsafe {
-        crate::ffi::SelectMgr_compute_sensitive_prs(theStructure, theSel, theLoc, theTrsfPers)
+    {
+        unsafe {
+            crate::ffi::SelectMgr_compute_sensitive_prs(theStructure, theSel, theLoc, theTrsfPers)
+        };
+        crate::check_exception();
     }
 }
 
@@ -305,70 +308,115 @@ impl AndFilter {
     /// Constructs an empty selection filter object for two or
     /// more types of entity.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AndFilter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndFilter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:40 - `SelectMgr_AndFilter::IsOk()`
     pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndFilter_is_ok(self as *const Self, anobj) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndFilter_is_ok(self as *const Self, anobj) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:42 - `SelectMgr_AndFilter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_AndFilter_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndFilter_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:42 - `SelectMgr_AndFilter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_AndFilter_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndFilter_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:42 - `SelectMgr_AndFilter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_AndFilter_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndFilter_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to SelectMgr_CompositionFilter
     pub fn as_composition_filter(&self) -> &CompositionFilter {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_CompositionFilter (mutable)
     pub fn as_composition_filter_mut(&mut self) -> &mut CompositionFilter {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
-        unsafe { &*(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_Filter(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndFilter_as_SelectMgr_Filter(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_Filter_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_as_SelectMgr_Filter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_AndFilter_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AndFilter_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -376,94 +424,157 @@ impl AndFilter {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrAndFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AndFilter_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndFilter_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
     pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Add(self as *mut Self, afilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Add(self as *mut Self, afilter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
     pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Remove(self as *mut Self, aFilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Remove(self as *mut Self, aFilter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_IsEmpty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndFilter_inherited_IsEmpty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
     pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_IsIn(self as *const Self, aFilter) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_IsIn(self as *const Self, aFilter)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
     pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
-        unsafe { &*(crate::ffi::SelectMgr_AndFilter_inherited_StoredFilters(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_StoredFilters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_ActsOn(
-                self as *const Self,
-                aStandardMode.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_ActsOn(
+                    self as *const Self,
+                    aStandardMode.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_AndFilter_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndFilter_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndFilter_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -478,44 +589,57 @@ unsafe impl crate::CppDeletable for HandleSelectMgrAndFilter {
 impl HandleSelectMgrAndFilter {
     /// Dereference this Handle to access the underlying SelectMgr_AndFilter
     pub fn get(&self) -> &crate::ffi::SelectMgr_AndFilter {
-        unsafe { &*(crate::ffi::HandleSelectMgrAndFilter_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleSelectMgrAndFilter_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_AndFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_AndFilter {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrAndFilter_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrAndFilter_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_AndFilter> to Handle<SelectMgr_CompositionFilter>
     pub fn to_handle_composition_filter(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrAndFilter_to_HandleSelectMgrCompositionFilter(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_AndFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleSelectMgrAndFilter_to_HandleSelectMgrFilter(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrAndFilter_to_HandleSelectMgrFilter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_AndFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleSelectMgrAndFilter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrAndFilter_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -540,27 +664,33 @@ impl AndOrFilter {
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:34 - `SelectMgr_AndOrFilter::SelectMgr_AndOrFilter()`
     /// Constructs an empty selection filter.
     pub fn new_filtertype(theFilterType: crate::select_mgr::FilterType) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AndOrFilter_ctor_filtertype(
-                theFilterType.into(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndOrFilter_ctor_filtertype(theFilterType.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:37 - `SelectMgr_AndOrFilter::IsOk()`
     /// Indicates that the selected Interactive Object passes the filter.
     pub fn is_ok(&self, theObj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_is_ok(self as *const Self, theObj) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndOrFilter_is_ok(self as *const Self, theObj) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:44 - `SelectMgr_AndOrFilter::FilterType()`
     /// @return a selection filter type (@sa SelectMgr_FilterType).
     pub fn filter_type(&self) -> crate::select_mgr::FilterType {
-        unsafe {
-            crate::select_mgr::FilterType::try_from(crate::ffi::SelectMgr_AndOrFilter_filter_type(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndOrFilter_filter_type(self as *const Self) };
+            crate::check_exception();
+            crate::select_mgr::FilterType::try_from(__result).unwrap()
         }
     }
 
@@ -569,72 +699,112 @@ impl AndOrFilter {
     /// SelectMgr_FilterType_OR selection filter is used be default.
     /// @param theFilterType the filter type.
     pub fn set_filter_type(&mut self, theFilterType: crate::select_mgr::FilterType) {
-        unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_set_filter_type(
-                self as *mut Self,
-                theFilterType.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_set_filter_type(
+                    self as *mut Self,
+                    theFilterType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:51 - `SelectMgr_AndOrFilter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_AndOrFilter_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndOrFilter_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:51 - `SelectMgr_AndOrFilter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_AndOrFilter_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndOrFilter_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:51 - `SelectMgr_AndOrFilter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_AndOrFilter_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndOrFilter_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to SelectMgr_CompositionFilter
     pub fn as_composition_filter(&self) -> &CompositionFilter {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_CompositionFilter (mutable)
     pub fn as_composition_filter_mut(&mut self) -> &mut CompositionFilter {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
-        unsafe { &*(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_Filter(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_Filter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_Filter_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_Filter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_AndOrFilter_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AndOrFilter_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -642,100 +812,159 @@ impl AndOrFilter {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrAndOrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AndOrFilter_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AndOrFilter_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
     pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Add(self as *mut Self, afilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Add(self as *mut Self, afilter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
     pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Remove(self as *mut Self, aFilter) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_Remove(self as *mut Self, aFilter)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_IsEmpty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_IsEmpty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
     pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_IsIn(self as *const Self, aFilter) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_IsIn(self as *const Self, aFilter)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
     pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AndOrFilter_inherited_StoredFilters(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_StoredFilters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_ActsOn(
-                self as *const Self,
-                aStandardMode.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_ActsOn(
+                    self as *const Self,
+                    aStandardMode.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AndOrFilter_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_AndOrFilter_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -750,46 +979,60 @@ unsafe impl crate::CppDeletable for HandleSelectMgrAndOrFilter {
 impl HandleSelectMgrAndOrFilter {
     /// Dereference this Handle to access the underlying SelectMgr_AndOrFilter
     pub fn get(&self) -> &crate::ffi::SelectMgr_AndOrFilter {
-        unsafe { &*(crate::ffi::HandleSelectMgrAndOrFilter_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrAndOrFilter_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_AndOrFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_AndOrFilter {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrAndOrFilter_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrAndOrFilter_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_AndOrFilter> to Handle<SelectMgr_CompositionFilter>
     pub fn to_handle_composition_filter(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrAndOrFilter_to_HandleSelectMgrCompositionFilter(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_AndOrFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleSelectMgrAndOrFilter_to_HandleSelectMgrFilter(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrAndOrFilter_to_HandleSelectMgrFilter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_AndOrFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrAndOrFilter_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -820,33 +1063,53 @@ impl AxisIntersector {
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:27 - `SelectMgr_AxisIntersector::SelectMgr_AxisIntersector()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AxisIntersector_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_AxisIntersector_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:33 - `SelectMgr_AxisIntersector::Init()`
     /// Initializes selecting axis according to the input one
     pub fn init(&mut self, theAxis: &crate::gp::Ax1) {
-        unsafe { crate::ffi::SelectMgr_AxisIntersector_init(self as *mut Self, theAxis) }
+        {
+            unsafe { crate::ffi::SelectMgr_AxisIntersector_init(self as *mut Self, theAxis) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:37 - `SelectMgr_AxisIntersector::Build()`
     /// Builds axis according to internal parameters.
     /// NOTE: it should be called after Init() method
     pub fn build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_AxisIntersector_build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_AxisIntersector_build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:41 - `SelectMgr_AxisIntersector::SetCamera()`
     /// Saves camera definition.
     /// Do nothing for axis intersector (not applicable to this volume).
     pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe { crate::ffi::SelectMgr_AxisIntersector_set_camera(self as *mut Self, theCamera) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_set_camera(self as *mut Self, theCamera)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:45 - `SelectMgr_AxisIntersector::IsScalable()`
     /// Returns FALSE (not applicable to this volume).
     pub fn is_scalable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_AxisIntersector_is_scalable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AxisIntersector_is_scalable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:51 - `SelectMgr_AxisIntersector::ScaleAndTransform()`
@@ -860,13 +1123,17 @@ impl AxisIntersector {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AxisIntersector_scale_and_transform(
-                self as *const Self,
-                theScaleFactor,
-                theTrsf,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_scale_and_transform(
+                    self as *const Self,
+                    theScaleFactor,
+                    theTrsf,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -878,11 +1145,15 @@ impl AxisIntersector {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AxisIntersector_copy_with_builder(
-                self as *const Self,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_copy_with_builder(
+                    self as *const Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -895,14 +1166,18 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_box_vec32_viewcliprange_pickresult(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -915,13 +1190,17 @@ impl AxisIntersector {
         theBoxMax: &crate::ffi::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_box_vec32_boolptr(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_box_vec32_boolptr(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -933,21 +1212,32 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_point_pnt_viewcliprange_pickresult(
+                    self as *const Self,
+                    thePnt,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:84 - `SelectMgr_AxisIntersector::OverlapsPoint()`
     /// Intersection test between defined axis and given point
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_point_pnt(self as *const Self, thePnt)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_point_pnt(
+                    self as *const Self,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -962,14 +1252,18 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_polygon(
-                self as *const Self,
-                theArrayOfPnts,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_polygon(
+                    self as *const Self,
+                    theArrayOfPnts,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -982,14 +1276,18 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_segment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_segment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1006,16 +1304,20 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_triangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_triangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1028,13 +1330,17 @@ impl AxisIntersector {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_boolptr(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1048,14 +1354,12 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1072,8 +1376,12 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1089,16 +1397,20 @@ impl AxisIntersector {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTopRad,
+                    theHeight,
+                    theTrsf,
+                    theIsHollow,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1115,8 +1427,12 @@ impl AxisIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1132,25 +1448,33 @@ impl AxisIntersector {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theRadius,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_boolptr(
+                    self as *const Self,
+                    theRadius,
+                    theTrsf,
+                    theIsFilled,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:173 - `SelectMgr_AxisIntersector::DistToGeometryCenter()`
     /// Measures distance between start axis point and given point theCOG.
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_dist_to_geometry_center(
-                self as *const Self,
-                theCOG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_dist_to_geometry_center(
+                    self as *const Self,
+                    theCOG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1158,65 +1482,94 @@ impl AxisIntersector {
     /// Calculates the point on a axis ray that was detected during the run of selection algo by given
     /// depth
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AxisIntersector_detected_point(
-                self as *const Self,
-                theDepth,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_detected_point(self as *const Self, theDepth)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:182 - `SelectMgr_AxisIntersector::GetNearPnt()`
     /// Returns near point along axis.
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_AxisIntersector_get_near_pnt(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AxisIntersector_get_near_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:185 - `SelectMgr_AxisIntersector::GetFarPnt()`
     /// Returns far point along axis (infinite).
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_AxisIntersector_get_far_pnt(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AxisIntersector_get_far_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:188 - `SelectMgr_AxisIntersector::GetViewRayDirection()`
     /// Returns axis direction.
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AxisIntersector_get_view_ray_direction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_get_view_ray_direction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector
     pub fn as_base_intersector(&self) -> &BaseIntersector {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector (mutable)
     pub fn as_base_intersector_mut(&mut self) -> &mut BaseIntersector {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AxisIntersector_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_AxisIntersector_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1224,81 +1577,105 @@ impl AxisIntersector {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrAxisIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_AxisIntersector_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_AxisIntersector_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
-        unsafe {
-            crate::select_mgr::SelectionType::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_AxisIntersector_inherited_GetSelectionType(
                     self as *const Self,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::select_mgr::SelectionType::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:59 - `SelectMgr_BaseIntersector::SetPixelTolerance()`
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_SetPixelTolerance(
-                self as *mut Self,
-                theTol,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_SetPixelTolerance(
+                    self as *mut Self,
+                    theTol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
     pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::ffi::SelectMgr_AxisIntersector_inherited_Camera(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_Camera(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:92 - `SelectMgr_BaseIntersector::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_WindowSize(
-                self as *const Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_WindowSize(
+                    self as *const Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:97 - `SelectMgr_BaseIntersector::SetWindowSize()`
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_SetWindowSize(
-                self as *mut Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_SetWindowSize(
+                    self as *mut Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:102 - `SelectMgr_BaseIntersector::SetViewport()`
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_SetViewport(
-                self as *mut Self,
-                theX,
-                theY,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_SetViewport(
+                    self as *mut Self,
+                    theX,
+                    theY,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:121 - `SelectMgr_BaseIntersector::GetMousePosition()`
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AxisIntersector_inherited_GetMousePosition(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_GetMousePosition(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1307,11 +1684,14 @@ impl AxisIntersector {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_GetPlanes(
-                self as *const Self,
-                thePlaneEquations,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_GetPlanes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1325,16 +1705,20 @@ impl AxisIntersector {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_RaySphereIntersection(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_RaySphereIntersection(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1350,18 +1734,22 @@ impl AxisIntersector {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_RayCylinderIntersection(
-                self as *const Self,
-                theBottomRadius,
-                theTopRadius,
-                theHeight,
-                theLoc,
-                theRayDir,
-                theIsHollow,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_RayCylinderIntersection(
+                    self as *const Self,
+                    theBottomRadius,
+                    theTopRadius,
+                    theHeight,
+                    theLoc,
+                    theRayDir,
+                    theIsHollow,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1374,75 +1762,115 @@ impl AxisIntersector {
         theIsFilled: bool,
         theTime: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_RayCircleIntersection(
-                self as *const Self,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theIsFilled,
-                theTime,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_RayCircleIntersection(
+                    self as *const Self,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theIsFilled,
+                    theTime,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::SelectMgr_AxisIntersector_inherited_DynamicType(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_DynamicType(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_AxisIntersector_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_AxisIntersector_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_AxisIntersector_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_AxisIntersector_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_AxisIntersector_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1457,35 +1885,49 @@ unsafe impl crate::CppDeletable for HandleSelectMgrAxisIntersector {
 impl HandleSelectMgrAxisIntersector {
     /// Dereference this Handle to access the underlying SelectMgr_AxisIntersector
     pub fn get(&self) -> &crate::ffi::SelectMgr_AxisIntersector {
-        unsafe { &*(crate::ffi::HandleSelectMgrAxisIntersector_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrAxisIntersector_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_AxisIntersector
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_AxisIntersector {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrAxisIntersector_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrAxisIntersector_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_AxisIntersector> to Handle<SelectMgr_BaseIntersector>
     pub fn to_handle_base_intersector(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrAxisIntersector_to_HandleSelectMgrBaseIntersector(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_AxisIntersector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrAxisIntersector_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1509,59 +1951,87 @@ impl BVHThreadPool {
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:31 - `SelectMgr_BVHThreadPool::SelectMgr_BVHThreadPool()`
     /// Main constructor
     pub fn new_int(theNbThreads: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BVHThreadPool_ctor_int(theNbThreads))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BVHThreadPool_ctor_int(theNbThreads) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:28 - `SelectMgr_BVHThreadPool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_BVHThreadPool_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BVHThreadPool_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:92 - `SelectMgr_BVHThreadPool::AddEntity()`
     /// Queue a sensitive entity to build its BVH
     pub fn add_entity(&mut self, theEntity: &crate::ffi::HandleSelect3DSensitiveEntity) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_add_entity(self as *mut Self, theEntity) }
+        {
+            unsafe { crate::ffi::SelectMgr_BVHThreadPool_add_entity(self as *mut Self, theEntity) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:95 - `SelectMgr_BVHThreadPool::StopThreads()`
     /// Stops threads
     pub fn stop_threads(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_stop_threads(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BVHThreadPool_stop_threads(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:98 - `SelectMgr_BVHThreadPool::WaitThreads()`
     /// Waits for all threads finish their jobs
     pub fn wait_threads(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_wait_threads(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BVHThreadPool_wait_threads(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:28 - `SelectMgr_BVHThreadPool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_BVHThreadPool_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BVHThreadPool_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:28 - `SelectMgr_BVHThreadPool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_BVHThreadPool_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BVHThreadPool_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BVHThreadPool_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_BVHThreadPool_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1569,60 +2039,90 @@ impl BVHThreadPool {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBVHThreadPool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BVHThreadPool_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BVHThreadPool_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_BVHThreadPool_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BVHThreadPool_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1637,22 +2137,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrBVHThreadPool {
 impl HandleSelectMgrBVHThreadPool {
     /// Dereference this Handle to access the underlying SelectMgr_BVHThreadPool
     pub fn get(&self) -> &crate::ffi::SelectMgr_BVHThreadPool {
-        unsafe { &*(crate::ffi::HandleSelectMgrBVHThreadPool_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrBVHThreadPool_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_BVHThreadPool
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_BVHThreadPool {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrBVHThreadPool_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrBVHThreadPool_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_BVHThreadPool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrBVHThreadPool_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1677,83 +2189,126 @@ unsafe impl crate::CppDeletable for BVHThreadPool_BVHThread {
 impl BVHThreadPool_BVHThread {
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:43 - `SelectMgr_BVHThreadPool_BVHThread::SelectMgr_BVHThreadPool_BVHThread()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BVHThreadPool_BVHThread_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:60 - `SelectMgr_BVHThreadPool_BVHThread::BVHMutex()`
     /// Returns mutex used for BVH building
     pub fn bvh_mutex(&mut self) -> &mut crate::standard::Mutex {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_bvh_mutex(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_bvh_mutex(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:70 - `SelectMgr_BVHThreadPool_BVHThread::Assign()`
     /// Assignment operator.
     pub fn assign(&mut self, theCopy: &BVHThreadPool_BVHThread) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_BVHThread_assign(self as *mut Self, theCopy) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_assign(self as *mut Self, theCopy)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Upcast to OSD_Thread
     pub fn as_osd_thread(&self) -> &crate::osd::Thread {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to OSD_Thread (mutable)
     pub fn as_osd_thread_mut(&mut self) -> &mut crate::osd::Thread {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_to_owned(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_to_owned(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:55 - `OSD_Thread::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_SetPriority(
-                self as *mut Self,
-                thePriority,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_SetPriority(
+                    self as *mut Self,
+                    thePriority,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:70 - `OSD_Thread::Run()`
     pub unsafe fn run(&mut self, data: *mut std::ffi::c_void, WNTStackSize: i32) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Run(
-                self as *mut Self,
-                data,
-                WNTStackSize,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Run(
+                    self as *mut Self,
+                    data,
+                    WNTStackSize,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:80 - `OSD_Thread::Detach()`
     pub fn detach(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Detach(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Detach(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:83 - `OSD_Thread::Wait()`
     pub fn wait(&mut self) -> bool {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Wait(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Wait(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId()`
     pub fn get_id(&self) -> std::ffi::c_ulong {
-        unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_GetId(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_GetId(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1774,33 +2329,42 @@ impl BVHThreadPool_Sentry {
     pub fn new_handleselectmgrbvhthreadpool(
         thePool: &crate::ffi::HandleSelectMgrBVHThreadPool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_BVHThreadPool_Sentry_ctor_handleselectmgrbvhthreadpool(
                     thePool,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:119 - `SelectMgr_BVHThreadPool_Sentry::Lock()`
     /// Lock list of mutexes
     pub fn lock(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_Sentry_lock(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BVHThreadPool_Sentry_lock(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:131 - `SelectMgr_BVHThreadPool_Sentry::Unlock()`
     /// Unlock list of mutexes
     pub fn unlock(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BVHThreadPool_Sentry_unlock(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BVHThreadPool_Sentry_unlock(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BVHThreadPool_Sentry_to_owned(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BVHThreadPool_Sentry_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1827,49 +2391,73 @@ impl BaseFrustum {
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:37 - `SelectMgr_BaseFrustum::SetBuilder()`
     /// Nullifies the builder created in the constructor and copies the pointer given
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder) {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_set_builder(self as *mut Self, theBuilder) }
+        {
+            unsafe { crate::ffi::SelectMgr_BaseFrustum_set_builder(self as *mut Self, theBuilder) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:40 - `SelectMgr_BaseFrustum::SetCamera()`
     /// Saves camera definition and passes it to builder
     pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_set_camera(self as *mut Self, theCamera) }
+        {
+            unsafe { crate::ffi::SelectMgr_BaseFrustum_set_camera(self as *mut Self, theCamera) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:43 - `SelectMgr_BaseFrustum::SetPixelTolerance()`
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_set_pixel_tolerance(self as *mut Self, theTol) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_set_pixel_tolerance(self as *mut Self, theTol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:45 - `SelectMgr_BaseFrustum::SetWindowSize()`
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_window_size(
-                self as *mut Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_set_window_size(
+                    self as *mut Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:48 - `SelectMgr_BaseFrustum::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_window_size(self as *const Self, theWidth, theHeight)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_window_size(
+                    self as *const Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:52 - `SelectMgr_BaseFrustum::SetViewport()`
     /// Passes viewport parameters to builder
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_viewport(
-                self as *mut Self,
-                theX,
-                theY,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_set_viewport(
+                    self as *mut Self,
+                    theX,
+                    theY,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1884,83 +2472,124 @@ impl BaseFrustum {
         theBoundaries: &crate::ffi::TColgp_Array1OfPnt,
         theBoundaryInside: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_is_boundary_intersect_sphere(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                thePlaneNormal,
-                theBoundaries,
-                theBoundaryInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_is_boundary_intersect_sphere(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    thePlaneNormal,
+                    theBoundaries,
+                    theBoundaryInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_BaseFrustum_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseFrustum_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_BaseFrustum_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BaseFrustum_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_BaseFrustum_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BaseFrustum_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to SelectMgr_BaseIntersector
     pub fn as_base_intersector(&self) -> &BaseIntersector {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector (mutable)
     pub fn as_base_intersector_mut(&mut self) -> &mut BaseIntersector {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_BaseFrustum_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_BaseFrustum_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:47 - `SelectMgr_BaseIntersector::Build()`
     pub fn build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_Build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_Build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
-        unsafe {
-            crate::select_mgr::SelectionType::try_from(
-                crate::ffi::SelectMgr_BaseFrustum_inherited_GetSelectionType(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetSelectionType(self as *const Self)
+            };
+            crate::check_exception();
+            crate::select_mgr::SelectionType::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:54 - `SelectMgr_BaseIntersector::IsScalable()`
     pub fn is_scalable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_IsScalable(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_IsScalable(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:71 - `SelectMgr_BaseIntersector::ScaleAndTransform()`
@@ -1970,15 +2599,17 @@ impl BaseFrustum {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_BaseFrustum_inherited_ScaleAndTransform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
                     theBuilder,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1987,40 +2618,69 @@ impl BaseFrustum {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BaseFrustum_inherited_CopyWithBuilder(
-                self as *const Self,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_CopyWithBuilder(
+                    self as *const Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
     pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::ffi::SelectMgr_BaseFrustum_inherited_Camera(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_Camera(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:109 - `SelectMgr_BaseIntersector::GetNearPnt()`
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_BaseFrustum_inherited_GetNearPnt(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetNearPnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:113 - `SelectMgr_BaseIntersector::GetFarPnt()`
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_BaseFrustum_inherited_GetFarPnt(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetFarPnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:117 - `SelectMgr_BaseIntersector::GetViewRayDirection()`
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BaseFrustum_inherited_GetViewRayDirection(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetViewRayDirection(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:121 - `SelectMgr_BaseIntersector::GetMousePosition()`
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BaseFrustum_inherited_GetMousePosition(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetMousePosition(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2029,11 +2689,14 @@ impl BaseFrustum {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_GetPlanes(
-                self as *const Self,
-                thePlaneEquations,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetPlanes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2045,14 +2708,18 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsBox(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsBox(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2063,13 +2730,17 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsPoint(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsPoint(
+                    self as *const Self,
+                    thePnt,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2081,14 +2752,18 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsPolygon(
-                self as *const Self,
-                theArrayOfPnts,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsPolygon(
+                    self as *const Self,
+                    theArrayOfPnts,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2100,14 +2775,18 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsSegment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsSegment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2121,16 +2800,20 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsTriangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsTriangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2141,13 +2824,17 @@ impl BaseFrustum {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsSphere(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsSphere(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2162,17 +2849,21 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsCylinder(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsCylinder(
+                    self as *const Self,
+                    theBottomRad,
+                    theTopRad,
+                    theHeight,
+                    theTrsf,
+                    theIsHollow,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2185,35 +2876,47 @@ impl BaseFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsCircle(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsCircle(
+                    self as *const Self,
+                    theBottomRad,
+                    theTrsf,
+                    theIsFilled,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:237 - `SelectMgr_BaseIntersector::DistToGeometryCenter()`
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_DistToGeometryCenter(
-                self as *const Self,
-                theCOG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_DistToGeometryCenter(
+                    self as *const Self,
+                    theCOG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:242 - `SelectMgr_BaseIntersector::DetectedPoint()`
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BaseFrustum_inherited_DetectedPoint(
-                self as *const Self,
-                theDepth,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_DetectedPoint(
+                    self as *const Self,
+                    theDepth,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2227,16 +2930,20 @@ impl BaseFrustum {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_RaySphereIntersection(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_RaySphereIntersection(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2252,18 +2959,22 @@ impl BaseFrustum {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_RayCylinderIntersection(
-                self as *const Self,
-                theBottomRadius,
-                theTopRadius,
-                theHeight,
-                theLoc,
-                theRayDir,
-                theIsHollow,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_RayCylinderIntersection(
+                    self as *const Self,
+                    theBottomRadius,
+                    theTopRadius,
+                    theHeight,
+                    theLoc,
+                    theRayDir,
+                    theIsHollow,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2276,65 +2987,96 @@ impl BaseFrustum {
         theIsFilled: bool,
         theTime: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_RayCircleIntersection(
-                self as *const Self,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theIsFilled,
-                theTime,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_RayCircleIntersection(
+                    self as *const Self,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theIsFilled,
+                    theTime,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseFrustum_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BaseFrustum_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2349,35 +3091,49 @@ unsafe impl crate::CppDeletable for HandleSelectMgrBaseFrustum {
 impl HandleSelectMgrBaseFrustum {
     /// Dereference this Handle to access the underlying SelectMgr_BaseFrustum
     pub fn get(&self) -> &crate::ffi::SelectMgr_BaseFrustum {
-        unsafe { &*(crate::ffi::HandleSelectMgrBaseFrustum_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrBaseFrustum_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_BaseFrustum
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_BaseFrustum {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrBaseFrustum_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrBaseFrustum_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_BaseFrustum> to Handle<SelectMgr_BaseIntersector>
     pub fn to_handle_base_intersector(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrBaseFrustum_to_HandleSelectMgrBaseIntersector(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_BaseFrustum> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrBaseFrustum_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2392,6 +3148,7 @@ impl HandleSelectMgrBaseFrustum {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2422,24 +3179,33 @@ impl BaseIntersector {
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:47 - `SelectMgr_BaseIntersector::Build()`
     /// Builds intersector according to internal parameters
     pub fn build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_BaseIntersector_build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BaseIntersector_build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     /// Returns selection type of this intersector
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
-        unsafe {
-            crate::select_mgr::SelectionType::try_from(
-                crate::ffi::SelectMgr_BaseIntersector_get_selection_type(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_get_selection_type(self as *const Self)
+            };
+            crate::check_exception();
+            crate::select_mgr::SelectionType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:54 - `SelectMgr_BaseIntersector::IsScalable()`
     /// Checks if it is possible to scale this intersector.
     pub fn is_scalable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_BaseIntersector_is_scalable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseIntersector_is_scalable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:59 - `SelectMgr_BaseIntersector::SetPixelTolerance()`
@@ -2447,8 +3213,11 @@ impl BaseIntersector {
     /// It makes sense only for scalable intersectors (built on a single point).
     /// This method does nothing for the base class.
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_pixel_tolerance(self as *mut Self, theTol)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_set_pixel_tolerance(self as *mut Self, theTol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2469,13 +3238,17 @@ impl BaseIntersector {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BaseIntersector_scale_and_transform(
-                self as *const Self,
-                theScaleFactor,
-                theTrsf,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_scale_and_transform(
+                    self as *const Self,
+                    theScaleFactor,
+                    theTrsf,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2488,36 +3261,53 @@ impl BaseIntersector {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BaseIntersector_copy_with_builder(
-                self as *const Self,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_copy_with_builder(
+                    self as *const Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
     /// Return camera definition.
     pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_camera(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseIntersector_camera(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:88 - `SelectMgr_BaseIntersector::SetCamera()`
     /// Saves camera definition.
     pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe { crate::ffi::SelectMgr_BaseIntersector_set_camera(self as *mut Self, theCamera) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_set_camera(self as *mut Self, theCamera)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:92 - `SelectMgr_BaseIntersector::WindowSize()`
     /// Returns current window size.
     /// This method doesn't set any output values for the base class.
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_window_size(
-                self as *const Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_window_size(
+                    self as *const Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2525,12 +3315,15 @@ impl BaseIntersector {
     /// Sets current window size.
     /// This method does nothing for the base class.
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_window_size(
-                self as *mut Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_set_window_size(
+                    self as *mut Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2538,14 +3331,17 @@ impl BaseIntersector {
     /// Sets viewport parameters.
     /// This method does nothing for the base class.
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_viewport(
-                self as *mut Self,
-                theX,
-                theY,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_set_viewport(
+                    self as *mut Self,
+                    theX,
+                    theY,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2553,22 +3349,36 @@ impl BaseIntersector {
     /// Returns near point of intersector.
     /// This method returns zero point for the base class.
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_get_near_pnt(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseIntersector_get_near_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:113 - `SelectMgr_BaseIntersector::GetFarPnt()`
     /// Returns far point of intersector.
     /// This method returns zero point for the base class.
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_get_far_pnt(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseIntersector_get_far_pnt(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:117 - `SelectMgr_BaseIntersector::GetViewRayDirection()`
     /// Returns direction ray of intersector.
     /// This method returns zero direction for the base class.
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BaseIntersector_get_view_ray_direction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_get_view_ray_direction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -2576,7 +3386,13 @@ impl BaseIntersector {
     /// Returns current mouse coordinates.
     /// This method returns infinite point for the base class.
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_get_mouse_position(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_get_mouse_position(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes()`
@@ -2587,8 +3403,14 @@ impl BaseIntersector {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_get_planes(self as *const Self, thePlaneEquations)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_get_planes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2601,14 +3423,18 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_box_vec32_viewcliprange_pickresult(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2621,13 +3447,17 @@ impl BaseIntersector {
         theBoxMax: &crate::ffi::SelectMgr_Vec3,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_box_vec32_boolptr(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_box_vec32_boolptr(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2639,13 +3469,17 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_point_pnt_viewcliprange_pickresult(
+                    self as *const Self,
+                    thePnt,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2655,8 +3489,15 @@ impl BaseIntersector {
     /// test. Therefore, its implementation makes sense only for rectangular frustum with box
     /// selection mode activated.
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_point_pnt(self as *const Self, thePnt)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_point_pnt(
+                    self as *const Self,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2671,14 +3512,18 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_polygon(
-                self as *const Self,
-                theArrayOfPnts,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_polygon(
+                    self as *const Self,
+                    theArrayOfPnts,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2691,14 +3536,18 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_segment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_segment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2715,16 +3564,20 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_triangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_triangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2737,13 +3590,17 @@ impl BaseIntersector {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_boolptr(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2757,14 +3614,12 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2781,8 +3636,12 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2798,16 +3657,20 @@ impl BaseIntersector {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTopRad,
+                    theHeight,
+                    theTrsf,
+                    theIsHollow,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2824,8 +3687,12 @@ impl BaseIntersector {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2841,14 +3708,18 @@ impl BaseIntersector {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTrsf,
+                    theIsFilled,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2858,11 +3729,15 @@ impl BaseIntersector {
     /// It makes sense only for intersectors built on a single point.
     /// This method returns infinite value for the base class.
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_dist_to_geometry_center(
-                self as *const Self,
-                theCOG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_dist_to_geometry_center(
+                    self as *const Self,
+                    theCOG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2871,11 +3746,12 @@ impl BaseIntersector {
     /// depth. It makes sense only for intersectors built on a single point. This method returns
     /// infinite point for the base class.
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_BaseIntersector_detected_point(
-                self as *const Self,
-                theDepth,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_detected_point(self as *const Self, theDepth)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2891,16 +3767,20 @@ impl BaseIntersector {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_ray_sphere_intersection(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_ray_sphere_intersection(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2926,18 +3806,22 @@ impl BaseIntersector {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_ray_cylinder_intersection(
-                self as *const Self,
-                theBottomRadius,
-                theTopRadius,
-                theHeight,
-                theLoc,
-                theRayDir,
-                theIsHollow,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_ray_cylinder_intersection(
+                    self as *const Self,
+                    theBottomRadius,
+                    theTopRadius,
+                    theHeight,
+                    theLoc,
+                    theRayDir,
+                    theIsHollow,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2957,103 +3841,154 @@ impl BaseIntersector {
         theIsFilled: bool,
         theTime: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_ray_circle_intersection(
-                self as *const Self,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theIsFilled,
-                theTime,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_ray_circle_intersection(
+                    self as *const Self,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theIsFilled,
+                    theTime,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_BaseIntersector_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_BaseIntersector_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BaseIntersector_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_BaseIntersector_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_BaseIntersector_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_BaseIntersector_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_BaseIntersector_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_BaseIntersector_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_BaseIntersector_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_BaseIntersector_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_BaseIntersector_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_BaseIntersector_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3068,22 +4003,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrBaseIntersector {
 impl HandleSelectMgrBaseIntersector {
     /// Dereference this Handle to access the underlying SelectMgr_BaseIntersector
     pub fn get(&self) -> &crate::ffi::SelectMgr_BaseIntersector {
-        unsafe { &*(crate::ffi::HandleSelectMgrBaseIntersector_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrBaseIntersector_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_BaseIntersector
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_BaseIntersector {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrBaseIntersector_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrBaseIntersector_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_BaseIntersector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrBaseIntersector_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3098,6 +4045,7 @@ impl HandleSelectMgrBaseIntersector {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3116,6 +4064,7 @@ impl HandleSelectMgrBaseIntersector {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3132,6 +4081,7 @@ impl HandleSelectMgrBaseIntersector {
         let ptr = unsafe {
             crate::ffi::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrTriangularFrustumSet(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3160,162 +4110,250 @@ impl CompositionFilter {
     /// Adds the filter afilter to a filter object created by a
     /// filter class inheriting this framework.
     pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_CompositionFilter_add(self as *mut Self, afilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_CompositionFilter_add(self as *mut Self, afilter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
     /// Removes the filter aFilter from this framework.
     pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_CompositionFilter_remove(self as *mut Self, aFilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_CompositionFilter_remove(self as *mut Self, aFilter) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     /// Returns true if this framework is empty.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_CompositionFilter_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_CompositionFilter_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
     /// Returns true if the filter aFilter is in this framework.
     pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
-        unsafe { crate::ffi::SelectMgr_CompositionFilter_is_in(self as *const Self, aFilter) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_is_in(self as *const Self, aFilter)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
     /// Returns the list of stored filters from this framework.
     pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
-        unsafe { &*(crate::ffi::SelectMgr_CompositionFilter_stored_filters(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_stored_filters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     /// Clears the filters used in this framework.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_CompositionFilter_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_CompositionFilter_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_acts_on(
-                self as *const Self,
-                aStandardMode.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_acts_on(
+                    self as *const Self,
+                    aStandardMode.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:54 - `SelectMgr_CompositionFilter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_CompositionFilter_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:54 - `SelectMgr_CompositionFilter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_CompositionFilter_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_CompositionFilter_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:54 - `SelectMgr_CompositionFilter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_CompositionFilter_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_CompositionFilter_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
-        unsafe {
-            &*(crate::ffi::SelectMgr_CompositionFilter_as_SelectMgr_Filter(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_as_SelectMgr_Filter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_CompositionFilter_as_SelectMgr_Filter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_as_SelectMgr_Filter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_CompositionFilter_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_CompositionFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_Filter.hxx`:57 - `SelectMgr_Filter::IsOk()`
     pub fn is_ok(&self, anObj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IsOk(self as *const Self, anObj)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_IsOk(self as *const Self, anObj)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_CompositionFilter_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_CompositionFilter_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_CompositionFilter_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3330,33 +4368,47 @@ unsafe impl crate::CppDeletable for HandleSelectMgrCompositionFilter {
 impl HandleSelectMgrCompositionFilter {
     /// Dereference this Handle to access the underlying SelectMgr_CompositionFilter
     pub fn get(&self) -> &crate::ffi::SelectMgr_CompositionFilter {
-        unsafe { &*(crate::ffi::HandleSelectMgrCompositionFilter_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrCompositionFilter_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_CompositionFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_CompositionFilter {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrCompositionFilter_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrCompositionFilter_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_CompositionFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrCompositionFilter_to_HandleSelectMgrFilter(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_CompositionFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrCompositionFilter_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3371,6 +4423,7 @@ impl HandleSelectMgrCompositionFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3389,6 +4442,7 @@ impl HandleSelectMgrCompositionFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3407,6 +4461,7 @@ impl HandleSelectMgrCompositionFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3436,7 +4491,11 @@ impl EntityOwner {
     /// **Source:** `SelectMgr_EntityOwner.hxx`:37 - `SelectMgr_EntityOwner::SelectMgr_EntityOwner()`
     /// Initializes the selection priority aPriority.
     pub fn new_int(aPriority: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_EntityOwner_ctor_int(aPriority)) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_EntityOwner_ctor_int(aPriority) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:41 - `SelectMgr_EntityOwner::SelectMgr_EntityOwner()`
@@ -3446,12 +4505,14 @@ impl EntityOwner {
         aSO: &crate::ffi::HandleSelectMgrSelectableObject,
         aPriority: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_EntityOwner_ctor_handleselectmgrselectableobject_int(
                     aSO, aPriority,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3462,12 +4523,14 @@ impl EntityOwner {
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
         aPriority: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_EntityOwner_ctor_handleselectmgrentityowner_int(
                     theOwner, aPriority,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3497,7 +4560,12 @@ impl EntityOwner {
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:34 - `SelectMgr_EntityOwner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_EntityOwner_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:54 - `SelectMgr_EntityOwner::Priority()`
@@ -3507,35 +4575,56 @@ impl EntityOwner {
     /// [2] faces [1] shape [0], so that if during selection one vertex one edge and one face are
     /// simultaneously detected, the vertex will only be hilighted.
     pub fn priority(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_priority(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_priority(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:57 - `SelectMgr_EntityOwner::SetPriority()`
     /// Sets the selectable priority of the owner within range [0-9].
     pub fn set_priority(&mut self, thePriority: i32) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_set_priority(self as *mut Self, thePriority) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_set_priority(self as *mut Self, thePriority)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:60 - `SelectMgr_EntityOwner::HasSelectable()`
     /// Returns true if there is a selectable object to serve as an owner.
     pub fn has_selectable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_has_selectable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_has_selectable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:63 - `SelectMgr_EntityOwner::Selectable()`
     /// Returns a selectable object detected in the working context.
     pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_EntityOwner_selectable(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_selectable(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:66 - `SelectMgr_EntityOwner::SetSelectable()`
     /// Sets the selectable object.
     pub fn set_selectable(&mut self, theSelObj: &crate::ffi::HandleSelectMgrSelectableObject) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_set_selectable(self as *mut Self, theSelObj) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_set_selectable(self as *mut Self, theSelObj)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:78 - `SelectMgr_EntityOwner::HandleMouseClick()`
@@ -3553,14 +4642,18 @@ impl EntityOwner {
         theModifiers: u32,
         theIsDoubleClick: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_handle_mouse_click(
-                self as *mut Self,
-                thePoint,
-                theButton,
-                theModifiers,
-                theIsDoubleClick,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_handle_mouse_click(
+                    self as *mut Self,
+                    thePoint,
+                    theButton,
+                    theModifiers,
+                    theIsDoubleClick,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3572,8 +4665,16 @@ impl EntityOwner {
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_hilighted(self as *const Self, thePrsMgr, theMode)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_is_hilighted(
+                    self as *const Self,
+                    thePrsMgr,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3588,13 +4689,16 @@ impl EntityOwner {
         theStyle: &crate::ffi::HandlePrs3dDrawer,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_hilight_with_color(
-                self as *mut Self,
-                thePrsMgr,
-                theStyle,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_hilight_with_color(
+                    self as *mut Self,
+                    thePrsMgr,
+                    theStyle,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3608,8 +4712,11 @@ impl EntityOwner {
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_unhilight(self as *mut Self, thePrsMgr, theMode)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_unhilight(self as *mut Self, thePrsMgr, theMode)
+            };
+            crate::check_exception();
         }
     }
 
@@ -3617,42 +4724,68 @@ impl EntityOwner {
     /// Clears the owners matching the value of the selection
     /// mode aMode from the presentation manager object aPM.
     pub fn clear(&mut self, thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager, theMode: i32) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_clear(self as *mut Self, thePrsMgr, theMode) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_clear(self as *mut Self, thePrsMgr, theMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:130 - `SelectMgr_EntityOwner::HasLocation()`
     /// Returns TRUE if selectable has transformation.
     pub fn has_location(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_has_location(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_has_location(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:136 - `SelectMgr_EntityOwner::Location()`
     /// Returns transformation of selectable.
     pub fn location(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_EntityOwner_location(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_location(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:144 - `SelectMgr_EntityOwner::SetLocation()`
     /// Change owner location (callback for handling change of location of selectable object).
     pub fn set_location(&mut self, theLocation: &crate::top_loc::Location) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_set_location(self as *mut Self, theLocation) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_set_location(self as *mut Self, theLocation)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:147 - `SelectMgr_EntityOwner::IsSelected()`
     /// @return Standard_True if the owner is selected.
     pub fn is_selected(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_is_selected(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_is_selected(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:151 - `SelectMgr_EntityOwner::SetSelected()`
     /// Set the state of the owner.
     /// @param[in] theIsSelected  shows if owner is selected.
     pub fn set_selected(&mut self, theIsSelected: bool) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_set_selected(self as *mut Self, theIsSelected) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_set_selected(self as *mut Self, theIsSelected)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:156 - `SelectMgr_EntityOwner::Select()`
@@ -3660,12 +4793,16 @@ impl EntityOwner {
     /// @param[in] theSelScheme  selection scheme
     /// @param[in] theIsDetected flag of object detection
     pub fn select(&self, theSelScheme: crate::ais::SelectionScheme, theIsDetected: bool) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_select(
-                self as *const Self,
-                theSelScheme.into(),
-                theIsDetected,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_select(
+                    self as *const Self,
+                    theSelScheme.into(),
+                    theIsDetected,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3673,27 +4810,43 @@ impl EntityOwner {
     /// Set the state of the owner.
     /// The method is deprecated. Use SetSelected() instead.
     pub fn state(&mut self, theStatus: i32) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_state(self as *mut Self, theStatus) }
+        {
+            unsafe { crate::ffi::SelectMgr_EntityOwner_state(self as *mut Self, theStatus) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:170 - `SelectMgr_EntityOwner::IsAutoHilight()`
     /// if owner is not auto hilighted, for group contains many such owners will be called one method
     /// HilightSelected of SelectableObject
     pub fn is_auto_hilight(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_is_auto_hilight(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_is_auto_hilight(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:177 - `SelectMgr_EntityOwner::IsForcedHilight()`
     /// if this method returns TRUE the owner will always call method Hilight for SelectableObject
     /// when the owner is detected. By default it always return FALSE.
     pub fn is_forced_hilight(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_is_forced_hilight(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_EntityOwner_is_forced_hilight(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
     /// Set Z layer ID and update all presentations.
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_set_z_layer(self as *mut Self, theLayerId) }
+        {
+            unsafe { crate::ffi::SelectMgr_EntityOwner_set_z_layer(self as *mut Self, theLayerId) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:184 - `SelectMgr_EntityOwner::UpdateHighlightTrsf()`
@@ -3705,13 +4858,16 @@ impl EntityOwner {
         theManager: &crate::ffi::HandlePrsMgrPresentationManager,
         theDispMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_update_highlight_trsf(
-                self as *mut Self,
-                theViewer,
-                theManager,
-                theDispMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_update_highlight_trsf(
+                    self as *mut Self,
+                    theViewer,
+                    theManager,
+                    theDispMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3721,51 +4877,78 @@ impl EntityOwner {
         &self,
         theOther: &crate::ffi::HandleSelectMgrSelectableObject,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_same_selectable(self as *const Self, theOther)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_is_same_selectable(self as *const Self, theOther)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:201 - `SelectMgr_EntityOwner::ComesFromDecomposition()`
     /// Returns TRUE if this owner points to a part of object and FALSE for entire object.
     pub fn comes_from_decomposition(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_comes_from_decomposition(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_comes_from_decomposition(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:204 - `SelectMgr_EntityOwner::SetComesFromDecomposition()`
     /// Sets flag indicating this owner points to a part of object (TRUE) or to entire object (FALSE).
     pub fn set_comes_from_decomposition(&mut self, theIsFromDecomposition: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_comes_from_decomposition(
-                self as *mut Self,
-                theIsFromDecomposition,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_set_comes_from_decomposition(
+                    self as *mut Self,
+                    theIsFromDecomposition,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:34 - `SelectMgr_EntityOwner::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_EntityOwner_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_EntityOwner_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:34 - `SelectMgr_EntityOwner::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_EntityOwner_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_EntityOwner_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_EntityOwner_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_EntityOwner_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3773,58 +4956,87 @@ impl EntityOwner {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_EntityOwner_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_EntityOwner_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_EntityOwner_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_EntityOwner_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_EntityOwner_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_EntityOwner_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_EntityOwner_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3839,22 +5051,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrEntityOwner {
 impl HandleSelectMgrEntityOwner {
     /// Dereference this Handle to access the underlying SelectMgr_EntityOwner
     pub fn get(&self) -> &crate::ffi::SelectMgr_EntityOwner {
-        unsafe { &*(crate::ffi::HandleSelectMgrEntityOwner_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrEntityOwner_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_EntityOwner
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_EntityOwner {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrEntityOwner_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrEntityOwner_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_EntityOwner> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrEntityOwner_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3869,6 +5093,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3887,6 +5112,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3905,6 +5131,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3923,6 +5150,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3941,6 +5169,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3959,6 +5188,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3977,6 +5207,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -3995,6 +5226,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4013,6 +5245,7 @@ impl HandleSelectMgrEntityOwner {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4060,7 +5293,12 @@ impl Filter {
     /// an AIS local context, you will need to implement the
     /// virtual function ActsOn.
     pub fn is_ok(&self, anObj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
-        unsafe { crate::ffi::SelectMgr_Filter_is_ok(self as *const Self, anObj) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Filter_is_ok(self as *const Self, anObj) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_Filter.hxx`:64 - `SelectMgr_Filter::ActsOn()`
@@ -4069,78 +5307,137 @@ impl Filter {
     /// class inheriting this framework.
     /// This function completes IsOk in an AIS local context.
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
-        unsafe { crate::ffi::SelectMgr_Filter_acts_on(self as *const Self, aStandardMode.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Filter_acts_on(self as *const Self, aStandardMode.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_Filter.hxx`:66 - `SelectMgr_Filter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_Filter_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Filter_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_Filter.hxx`:66 - `SelectMgr_Filter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_Filter_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Filter_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_Filter.hxx`:66 - `SelectMgr_Filter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_Filter_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Filter_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_Filter_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Filter_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::SelectMgr_Filter_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Filter_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_Filter_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Filter_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_Filter_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Filter_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::SelectMgr_Filter_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Filter_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_Filter_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Filter_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::SelectMgr_Filter_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_Filter_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_Filter_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Filter_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_Filter_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_Filter_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4155,20 +5452,30 @@ unsafe impl crate::CppDeletable for HandleSelectMgrFilter {
 impl HandleSelectMgrFilter {
     /// Dereference this Handle to access the underlying SelectMgr_Filter
     pub fn get(&self) -> &crate::ffi::SelectMgr_Filter {
-        unsafe { &*(crate::ffi::HandleSelectMgrFilter_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleSelectMgrFilter_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_Filter
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_Filter {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrFilter_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleSelectMgrFilter_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_Filter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleSelectMgrFilter_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrFilter_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4183,6 +5490,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4201,6 +5509,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4219,6 +5528,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4237,6 +5547,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4255,6 +5566,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4271,6 +5583,7 @@ impl HandleSelectMgrFilter {
         let ptr = unsafe {
             crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISTypeFilter(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4289,6 +5602,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4307,6 +5621,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4325,6 +5640,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4343,6 +5659,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4361,6 +5678,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4379,6 +5697,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4397,6 +5716,7 @@ impl HandleSelectMgrFilter {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -4425,60 +5745,86 @@ impl FrustumBuilder {
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:30 - `SelectMgr_FrustumBuilder::SelectMgr_FrustumBuilder()`
     /// Creates new frustum builder with empty matrices
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_FrustumBuilder_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_FrustumBuilder_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:33 - `SelectMgr_FrustumBuilder::Camera()`
     /// Returns current camera
     pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::ffi::SelectMgr_FrustumBuilder_camera(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_FrustumBuilder_camera(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:36 - `SelectMgr_FrustumBuilder::SetCamera()`
     /// Stores current camera
     pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe { crate::ffi::SelectMgr_FrustumBuilder_set_camera(self as *mut Self, theCamera) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_set_camera(self as *mut Self, theCamera)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:39 - `SelectMgr_FrustumBuilder::SetWindowSize()`
     /// Stores current window width and height
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_set_window_size(
-                self as *mut Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_set_window_size(
+                    self as *mut Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:43 - `SelectMgr_FrustumBuilder::SetViewport()`
     /// Stores current viewport coordinates
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_set_viewport(
-                self as *mut Self,
-                theX,
-                theY,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_set_viewport(
+                    self as *mut Self,
+                    theX,
+                    theY,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:48 - `SelectMgr_FrustumBuilder::InvalidateViewport()`
     pub fn invalidate_viewport(&mut self) {
-        unsafe { crate::ffi::SelectMgr_FrustumBuilder_invalidate_viewport(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_FrustumBuilder_invalidate_viewport(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:50 - `SelectMgr_FrustumBuilder::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_window_size(
-                self as *const Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_window_size(
+                    self as *const Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4490,12 +5836,16 @@ impl FrustumBuilder {
         theEq: &crate::ffi::SelectMgr_Vec3,
         thePnt: &crate::ffi::SelectMgr_Vec3,
     ) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_signed_plane_pnt_dist(
-                self as *const Self,
-                theEq,
-                thePnt,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_signed_plane_pnt_dist(
+                    self as *const Self,
+                    theEq,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4509,50 +5859,67 @@ impl FrustumBuilder {
         theY: &f64,
         theZ: &f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_FrustumBuilder_project_pnt_on_view_plane(
                     self as *const Self,
                     theX,
                     theY,
                     theZ,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:64 - `SelectMgr_FrustumBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_FrustumBuilder_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_FrustumBuilder_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:64 - `SelectMgr_FrustumBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_FrustumBuilder_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_FrustumBuilder_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:64 - `SelectMgr_FrustumBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_FrustumBuilder_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_FrustumBuilder_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_FrustumBuilder_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_FrustumBuilder_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4560,62 +5927,95 @@ impl FrustumBuilder {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFrustumBuilder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_FrustumBuilder_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_FrustumBuilder_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_FrustumBuilder_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_FrustumBuilder_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_FrustumBuilder_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_FrustumBuilder_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_FrustumBuilder_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4630,22 +6030,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrFrustumBuilder {
 impl HandleSelectMgrFrustumBuilder {
     /// Dereference this Handle to access the underlying SelectMgr_FrustumBuilder
     pub fn get(&self) -> &crate::ffi::SelectMgr_FrustumBuilder {
-        unsafe { &*(crate::ffi::HandleSelectMgrFrustumBuilder_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrFrustumBuilder_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_FrustumBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_FrustumBuilder {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrFrustumBuilder_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrFrustumBuilder_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_FrustumBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrFrustumBuilder_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4669,68 +6081,113 @@ impl OrFilter {
     /// **Source:** `SelectMgr_OrFilter.hxx`:36 - `SelectMgr_OrFilter::SelectMgr_OrFilter()`
     /// Constructs an empty or selection filter.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_OrFilter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_OrFilter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:39 - `SelectMgr_OrFilter::IsOk()`
     pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
-        unsafe { crate::ffi::SelectMgr_OrFilter_is_ok(self as *const Self, anobj) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_OrFilter_is_ok(self as *const Self, anobj) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:41 - `SelectMgr_OrFilter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_OrFilter_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_OrFilter_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:41 - `SelectMgr_OrFilter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_OrFilter_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_OrFilter_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:41 - `SelectMgr_OrFilter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_OrFilter_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_OrFilter_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to SelectMgr_CompositionFilter
     pub fn as_composition_filter(&self) -> &CompositionFilter {
-        unsafe {
-            &*(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_CompositionFilter (mutable)
     pub fn as_composition_filter_mut(&mut self) -> &mut CompositionFilter {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
-        unsafe { &*(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_Filter(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_OrFilter_as_SelectMgr_Filter(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
-        unsafe { &mut *(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_Filter_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_as_SelectMgr_Filter_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_OrFilter_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_OrFilter_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -4738,91 +6195,157 @@ impl OrFilter {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrOrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_OrFilter_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_OrFilter_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
     pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Add(self as *mut Self, afilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Add(self as *mut Self, afilter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
     pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Remove(self as *mut Self, aFilter) }
+        {
+            unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Remove(self as *mut Self, aFilter) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_IsEmpty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_OrFilter_inherited_IsEmpty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
     pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_IsIn(self as *const Self, aFilter) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_IsIn(self as *const Self, aFilter)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
     pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
-        unsafe { &*(crate::ffi::SelectMgr_OrFilter_inherited_StoredFilters(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_StoredFilters(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_ActsOn(
-                self as *const Self,
-                aStandardMode.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_ActsOn(
+                    self as *const Self,
+                    aStandardMode.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::SelectMgr_OrFilter_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_OrFilter_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_OrFilter_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_OrFilter_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4837,42 +6360,57 @@ unsafe impl crate::CppDeletable for HandleSelectMgrOrFilter {
 impl HandleSelectMgrOrFilter {
     /// Dereference this Handle to access the underlying SelectMgr_OrFilter
     pub fn get(&self) -> &crate::ffi::SelectMgr_OrFilter {
-        unsafe { &*(crate::ffi::HandleSelectMgrOrFilter_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleSelectMgrOrFilter_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_OrFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_OrFilter {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrOrFilter_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrOrFilter_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_OrFilter> to Handle<SelectMgr_CompositionFilter>
     pub fn to_handle_composition_filter(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrOrFilter_to_HandleSelectMgrCompositionFilter(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_OrFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleSelectMgrOrFilter_to_HandleSelectMgrFilter(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrOrFilter_to_HandleSelectMgrFilter(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_OrFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleSelectMgrOrFilter_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrOrFilter_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4905,24 +6443,36 @@ impl RectangularFrustum {
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:67 - `SelectMgr_RectangularFrustum::SelectMgr_RectangularFrustum()`
     /// Creates rectangular selecting frustum.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_RectangularFrustum_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_RectangularFrustum_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:70 - `SelectMgr_RectangularFrustum::Init()`
     /// Initializes volume according to the point and given pixel tolerance
     pub fn init_pnt2d(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::SelectMgr_RectangularFrustum_init_pnt2d(self as *mut Self, thePoint) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_init_pnt2d(self as *mut Self, thePoint)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:73 - `SelectMgr_RectangularFrustum::Init()`
     /// Initializes volume according to the selected rectangle
     pub fn init_pnt2d2(&mut self, theMinPnt: &crate::gp::Pnt2d, theMaxPnt: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_init_pnt2d2(
-                self as *mut Self,
-                theMinPnt,
-                theMaxPnt,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_init_pnt2d2(
+                    self as *mut Self,
+                    theMinPnt,
+                    theMaxPnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4935,14 +6485,18 @@ impl RectangularFrustum {
         theTrsf: &crate::gp::Trsf,
         theVertices: &crate::ffi::TColgp_Array1OfPnt,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_is_intersect_circle(
-                self as *const Self,
-                theRadius,
-                theCenter,
-                theTrsf,
-                theVertices,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_is_intersect_circle(
+                    self as *const Self,
+                    theRadius,
+                    theCenter,
+                    theTrsf,
+                    theVertices,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4955,14 +6509,18 @@ impl RectangularFrustum {
         thePnt1Seg2: &crate::gp::Pnt,
         thePnt2Seg2: &crate::gp::Pnt,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_is_segments_intersect(
-                self as *const Self,
-                thePnt1Seg1,
-                thePnt2Seg1,
-                thePnt1Seg2,
-                thePnt2Seg2,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_is_segments_intersect(
+                    self as *const Self,
+                    thePnt1Seg1,
+                    thePnt2Seg1,
+                    thePnt1Seg2,
+                    thePnt2Seg2,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -4970,14 +6528,23 @@ impl RectangularFrustum {
     /// Builds volume according to internal parameters.
     /// NOTE: it should be called after Init() method
     pub fn build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_RectangularFrustum_build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_RectangularFrustum_build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:93 - `SelectMgr_RectangularFrustum::IsScalable()`
     /// Checks if it is possible to scale this frustum.
     /// It is true for frustum built on a single point.
     pub fn is_scalable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_RectangularFrustum_is_scalable(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_is_scalable(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:104 - `SelectMgr_RectangularFrustum::ScaleAndTransform()`
@@ -4996,13 +6563,17 @@ impl RectangularFrustum {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_RectangularFrustum_scale_and_transform(
-                self as *const Self,
-                theScaleFactor,
-                theTrsf,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_scale_and_transform(
+                    self as *const Self,
+                    theScaleFactor,
+                    theTrsf,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5017,11 +6588,15 @@ impl RectangularFrustum {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_RectangularFrustum_copy_with_builder(
-                self as *const Self,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_copy_with_builder(
+                    self as *const Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5034,14 +6609,18 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5054,13 +6633,17 @@ impl RectangularFrustum {
         theBoxMax: &crate::ffi::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_box_vec32_boolptr(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_box_vec32_boolptr(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5072,21 +6655,32 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(
+                    self as *const Self,
+                    thePnt,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:141 - `SelectMgr_RectangularFrustum::OverlapsPoint()`
     /// Intersection test between defined volume and given point
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_point_pnt(self as *const Self, thePnt)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_point_pnt(
+                    self as *const Self,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5101,14 +6695,18 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_polygon(
-                self as *const Self,
-                theArrayOfPnts,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_polygon(
+                    self as *const Self,
+                    theArrayOfPnts,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5121,14 +6719,18 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_segment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_segment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5145,16 +6747,20 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_triangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_triangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5167,8 +6773,12 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5180,13 +6790,17 @@ impl RectangularFrustum {
         theRadius: f64,
         theInside: *mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_boolptr(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5203,8 +6817,12 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5220,16 +6838,20 @@ impl RectangularFrustum {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTopRad,
+                    theHeight,
+                    theTrsf,
+                    theIsHollow,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5246,8 +6868,12 @@ impl RectangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5263,14 +6889,18 @@ impl RectangularFrustum {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTrsf,
+                    theIsFilled,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5279,11 +6909,15 @@ impl RectangularFrustum {
     /// screen point and given point theCOG.
     /// It makes sense only for frustums built on a single point.
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_dist_to_geometry_center(
-                self as *const Self,
-                theCOG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_dist_to_geometry_center(
+                    self as *const Self,
+                    theCOG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5291,11 +6925,15 @@ impl RectangularFrustum {
     /// Calculates the point on a view ray that was detected during the run of selection algo by given
     /// depth
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_RectangularFrustum_detected_point(
-                self as *const Self,
-                theDepth,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_detected_point(
+                    self as *const Self,
+                    theDepth,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5303,13 +6941,14 @@ impl RectangularFrustum {
     /// A set of helper functions that return rectangular selecting frustum data
     pub fn get_vertices(&self) -> Option<&crate::gp::Pnt> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_RectangularFrustum_get_vertices(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
@@ -5319,7 +6958,13 @@ impl RectangularFrustum {
     /// of center of 2d rectangle (for point and rectangular selection
     /// correspondingly) onto near view frustum plane
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_RectangularFrustum_get_near_pnt(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_get_near_pnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:248 - `SelectMgr_RectangularFrustum::GetFarPnt()`
@@ -5327,22 +6972,36 @@ impl RectangularFrustum {
     /// of center of 2d rectangle (for point and rectangular selection
     /// correspondingly) onto far view frustum plane
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::SelectMgr_RectangularFrustum_get_far_pnt(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_get_far_pnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:251 - `SelectMgr_RectangularFrustum::GetViewRayDirection()`
     /// Returns view ray direction.
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
-        unsafe {
-            &*(crate::ffi::SelectMgr_RectangularFrustum_get_view_ray_direction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_get_view_ray_direction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:254 - `SelectMgr_RectangularFrustum::GetMousePosition()`
     /// Returns current mouse coordinates.
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_RectangularFrustum_get_mouse_position(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_get_mouse_position(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5353,11 +7012,14 @@ impl RectangularFrustum {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_get_planes(
-                self as *const Self,
-                thePlaneEquations,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_get_planes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -5376,67 +7038,89 @@ unsafe impl crate::CppDeletable for RectangularFrustum_SelectionRectangle {
 impl RectangularFrustum_SelectionRectangle {
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:39 - `SelectMgr_RectangularFrustum_SelectionRectangle::SelectMgr_RectangularFrustum_SelectionRectangle()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:45 - `SelectMgr_RectangularFrustum_SelectionRectangle::MousePos()`
     pub fn mouse_pos(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_mouse_pos(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_mouse_pos(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:47 - `SelectMgr_RectangularFrustum_SelectionRectangle::SetMousePos()`
     pub fn set_mouse_pos(&mut self, thePos: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_mouse_pos(
-                self as *mut Self,
-                thePos,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_mouse_pos(
+                    self as *mut Self,
+                    thePos,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:53 - `SelectMgr_RectangularFrustum_SelectionRectangle::MinPnt()`
     pub fn min_pnt(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_min_pnt(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_min_pnt(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:55 - `SelectMgr_RectangularFrustum_SelectionRectangle::SetMinPnt()`
     pub fn set_min_pnt(&mut self, theMinPnt: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_min_pnt(
-                self as *mut Self,
-                theMinPnt,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_min_pnt(
+                    self as *mut Self,
+                    theMinPnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:57 - `SelectMgr_RectangularFrustum_SelectionRectangle::MaxPnt()`
     pub fn max_pnt(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_max_pnt(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_max_pnt(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:59 - `SelectMgr_RectangularFrustum_SelectionRectangle::SetMaxPnt()`
     pub fn set_max_pnt(&mut self, theMaxPnt: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_max_pnt(
-                self as *mut Self,
-                theMaxPnt,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_max_pnt(
+                    self as *mut Self,
+                    theMaxPnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -5474,7 +7158,12 @@ unsafe impl crate::CppDeletable for SelectableObject {
 impl SelectableObject {
     /// **Source:** `SelectMgr_SelectableObject.hxx`:47 - `SelectMgr_SelectableObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SelectableObject_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectableObject_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:58 - `SelectMgr_SelectableObject::ComputeSelection()`
@@ -5487,12 +7176,15 @@ impl SelectableObject {
         theSelection: &crate::ffi::HandleSelectMgrSelection,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_compute_selection(
-                self as *mut Self,
-                theSelection,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_compute_selection(
+                    self as *mut Self,
+                    theSelection,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5500,8 +7192,14 @@ impl SelectableObject {
     /// Informs the graphic context that the interactive Object may be decomposed into sub-shapes for
     /// dynamic selection. The most used Interactive Object is AIS_Shape.
     pub fn accept_shape_decomposition(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_accept_shape_decomposition(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_accept_shape_decomposition(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -5511,7 +7209,12 @@ impl SelectableObject {
     /// This method does not take into account necessary BVH updates, but may invalidate the pointers
     /// it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
     pub fn recompute_primitives(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_recompute_primitives(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_recompute_primitives(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:76 - `SelectMgr_SelectableObject::RecomputePrimitives()`
@@ -5521,11 +7224,14 @@ impl SelectableObject {
     /// updates, but may invalidate the pointers it refers to. TO UPDATE SELECTION properly from
     /// outside classes, use method UpdateSelection.
     pub fn recompute_primitives_int(&mut self, theMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_recompute_primitives_int(
-                self as *mut Self,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_recompute_primitives_int(
+                    self as *mut Self,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5533,12 +7239,15 @@ impl SelectableObject {
     /// Adds the selection aSelection with the selection mode
     /// index aMode to this framework.
     pub fn add_selection(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection, aMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_add_selection(
-                self as *mut Self,
-                aSelection,
-                aMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_add_selection(
+                    self as *mut Self,
+                    aSelection,
+                    aMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5550,16 +7259,23 @@ impl SelectableObject {
     /// object's selection (without redisplaying the object
     /// completely) when some selection mode is activated not for the first time.
     pub fn clear_selections(&mut self, update: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_clear_selections(self as *mut Self, update)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_clear_selections(self as *mut Self, update)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:92 - `SelectMgr_SelectableObject::Selection()`
     /// Returns the selection having specified selection mode or NULL.
     pub fn selection(&self, theMode: i32) -> &crate::ffi::HandleSelectMgrSelection {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_selection(self as *const Self, theMode))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_selection(self as *const Self, theMode)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -5567,37 +7283,59 @@ impl SelectableObject {
     /// Returns true if a selection corresponding to the selection mode theMode was computed for this
     /// object.
     pub fn has_selection(&self, theMode: i32) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_has_selection(self as *const Self, theMode)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_has_selection(self as *const Self, theMode)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:103 - `SelectMgr_SelectableObject::Selections()`
     /// Return the sequence of selections.
     pub fn selections(&self) -> &crate::ffi::SelectMgr_SequenceOfSelection {
-        unsafe { &*(crate::ffi::SelectMgr_SelectableObject_selections(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectableObject_selections(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:105 - `SelectMgr_SelectableObject::ResetTransformation()`
     pub fn reset_transformation(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_reset_transformation(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_reset_transformation(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:108 - `SelectMgr_SelectableObject::UpdateTransformation()`
     /// Recomputes the location of the selection aSelection.
     pub fn update_transformation(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_update_transformation(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_update_transformation(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:112 - `SelectMgr_SelectableObject::UpdateTransformations()`
     /// Updates locations in all sensitive entities from <aSelection>
     /// and in corresponding entity owners.
     pub fn update_transformations(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_update_transformations(
-                self as *mut Self,
-                aSelection,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_update_transformations(
+                    self as *mut Self,
+                    aSelection,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5608,12 +7346,15 @@ impl SelectableObject {
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
         theSeq: &crate::ffi::SelectMgr_SequenceOfOwner,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_hilight_selected(
-                self as *mut Self,
-                thePrsMgr,
-                theSeq,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_hilight_selected(
+                    self as *mut Self,
+                    thePrsMgr,
+                    theSeq,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5621,7 +7362,10 @@ impl SelectableObject {
     /// Method which clear all selected owners belonging
     /// to this selectable object ( for fast presentation draw )
     pub fn clear_selected(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_clear_selected(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectableObject_clear_selected(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:127 - `SelectMgr_SelectableObject::ClearDynamicHighlight()`
@@ -5634,11 +7378,14 @@ impl SelectableObject {
         &mut self,
         theMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_clear_dynamic_highlight(
-                self as *mut Self,
-                theMgr,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_clear_dynamic_highlight(
+                    self as *mut Self,
+                    theMgr,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5651,13 +7398,16 @@ impl SelectableObject {
         theStyle: &crate::ffi::HandlePrs3dDrawer,
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_hilight_owner_with_color(
-                self as *mut Self,
-                thePM,
-                theStyle,
-                theOwner,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_hilight_owner_with_color(
+                    self as *mut Self,
+                    thePM,
+                    theStyle,
+                    theOwner,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5666,17 +7416,26 @@ impl SelectableObject {
     /// Method may be empty). If returns False, the HilightSelected method will be fully responsible
     /// for highlighting selected entity owners belonging to this selectable object.
     pub fn is_auto_hilight(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_is_auto_hilight(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_is_auto_hilight(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:143 - `SelectMgr_SelectableObject::SetAutoHilight()`
     /// Set AutoHilight property to true or false.
     pub fn set_auto_hilight(&mut self, theAutoHilight: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_set_auto_hilight(
-                self as *mut Self,
-                theAutoHilight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_set_auto_hilight(
+                    self as *mut Self,
+                    theAutoHilight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5688,13 +7447,15 @@ impl SelectableObject {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectableObject_get_hilight_presentation(
                     self as *mut Self,
                     thePrsMgr,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5706,24 +7467,29 @@ impl SelectableObject {
         &mut self,
         thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectableObject_get_select_presentation(
                     self as *mut Self,
                     thePrsMgr,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:161 - `SelectMgr_SelectableObject::ErasePresentations()`
     /// Removes presentations returned by GetHilightPresentation() and GetSelectPresentation().
     pub fn erase_presentations(&mut self, theToRemove: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_erase_presentations(
-                self as *mut Self,
-                theToRemove,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_erase_presentations(
+                    self as *mut Self,
+                    theToRemove,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5732,15 +7498,23 @@ impl SelectableObject {
     /// The layers mechanism allows drawing objects in higher layers in overlay of objects in lower
     /// layers.
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_set_z_layer(self as *mut Self, theLayerId) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_set_z_layer(self as *mut Self, theLayerId)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     /// Sets update status FULL to selections of the object. Must be used as the only method of
     /// UpdateSelection from outer classes to prevent BVH structures from being outdated.
     pub fn update_selection(&mut self, theMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_update_selection(self as *mut Self, theMode)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_update_selection(self as *mut Self, theMode)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5751,12 +7525,15 @@ impl SelectableObject {
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_set_assembly_owner(
-                self as *mut Self,
-                theOwner,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_set_assembly_owner(
+                    self as *mut Self,
+                    theOwner,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5767,338 +7544,492 @@ impl SelectableObject {
         &mut self,
         theOwners: &crate::ffi::HandleNCollectionSharedNCollectionIndexedMapopencascadehandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<crate::bnd::Box> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectableObject_bnd_box_of_selected(
-                self as *mut Self,
-                theOwners,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_bnd_box_of_selected(
+                    self as *mut Self,
+                    theOwners,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:181 - `SelectMgr_SelectableObject::GlobalSelectionMode()`
     /// Returns the mode for selection of object as a whole; 0 by default.
     pub fn global_selection_mode(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_global_selection_mode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_global_selection_mode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:184 - `SelectMgr_SelectableObject::GlobalSelOwner()`
     /// Returns the owner of mode for selection of object as a whole
     pub fn global_sel_owner(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectableObject_global_sel_owner(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_global_sel_owner(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:187 - `SelectMgr_SelectableObject::GetAssemblyOwner()`
     /// Returns common entity owner if the object is an assembly
     pub fn get_assembly_owner(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_get_assembly_owner(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_get_assembly_owner(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:47 - `SelectMgr_SelectableObject::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_SelectableObject_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectableObject_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:47 - `SelectMgr_SelectableObject::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SelectableObject_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectableObject_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to PrsMgr_PresentableObject
     pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to PrsMgr_PresentableObject (mutable)
     pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SelectableObject_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SelectableObject_inherited_Presentations(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Presentations(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
     pub fn z_layer(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_ZLayer(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_ZLayer(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
     pub fn is_mutable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_IsMutable(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_IsMutable(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetMutable(
-                self as *mut Self,
-                theIsMutable,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetMutable(
+                    self as *mut Self,
+                    theIsMutable,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:78 - `PrsMgr_PresentableObject::ViewAffinity()`
     pub fn view_affinity(&self) -> &crate::ffi::HandleGraphic3dViewAffinity {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_ViewAffinity(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_ViewAffinity(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:82 - `PrsMgr_PresentableObject::HasDisplayMode()`
     pub fn has_display_mode(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasDisplayMode(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasDisplayMode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:88 - `PrsMgr_PresentableObject::DisplayMode()`
     pub fn display_mode(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_DisplayMode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_DisplayMode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetDisplayMode(
-                self as *mut Self,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetDisplayMode(
+                    self as *mut Self,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     pub fn unset_display_mode(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetDisplayMode(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetDisplayMode(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:107 - `PrsMgr_PresentableObject::HasHilightMode()`
     pub fn has_hilight_mode(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasHilightMode(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasHilightMode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:116 - `PrsMgr_PresentableObject::HilightMode()`
     pub fn hilight_mode(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_HilightMode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HilightMode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
     pub fn set_hilight_mode(&mut self, theMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetHilightMode(
-                self as *mut Self,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetHilightMode(
+                    self as *mut Self,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     pub fn unset_hilight_mode(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetHilightMode(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetHilightMode(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:149 - `PrsMgr_PresentableObject::AcceptDisplayMode()`
     pub fn accept_display_mode(&self, theMode: i32) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AcceptDisplayMode(
-                self as *const Self,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_AcceptDisplayMode(
+                    self as *const Self,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:156 - `PrsMgr_PresentableObject::DefaultDisplayMode()`
     pub fn default_display_mode(&self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_DefaultDisplayMode(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_DefaultDisplayMode(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:161 - `PrsMgr_PresentableObject::ToBeUpdated()`
     pub fn to_be_updated(&self, theToIncludeHidden: bool) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_ToBeUpdated(
-                self as *const Self,
-                theToIncludeHidden,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_ToBeUpdated(
+                    self as *const Self,
+                    theToIncludeHidden,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
     pub fn set_to_update(&mut self, theMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetToUpdate(self as *mut Self, theMode)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetToUpdate(
+                    self as *mut Self,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:175 - `PrsMgr_PresentableObject::IsInfinite()`
     pub fn is_infinite(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_IsInfinite(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_IsInfinite(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetInfiniteState(
-                self as *mut Self,
-                theFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetInfiniteState(
+                    self as *mut Self,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:181 - `PrsMgr_PresentableObject::TypeOfPresentation3d()`
     pub fn type_of_presentation3d(&self) -> crate::prs_mgr::TypeOfPresentation3d {
-        unsafe {
-            crate::prs_mgr::TypeOfPresentation3d::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectableObject_inherited_TypeOfPresentation3d(
                     self as *const Self,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::prs_mgr::TypeOfPresentation3d::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetTypeOfPresentation(
-                self as *mut Self,
-                theType.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetTypeOfPresentation(
+                    self as *mut Self,
+                    theType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:187 - `PrsMgr_PresentableObject::DisplayStatus()`
     pub fn display_status(&self) -> crate::prs_mgr::DisplayStatus {
-        unsafe {
-            crate::prs_mgr::DisplayStatus::try_from(
-                crate::ffi::SelectMgr_SelectableObject_inherited_DisplayStatus(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_DisplayStatus(self as *const Self)
+            };
+            crate::check_exception();
+            crate::prs_mgr::DisplayStatus::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:191 - `PrsMgr_PresentableObject::Attributes()`
     pub fn attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_Attributes(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Attributes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
     pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetAttributes(
-                self as *mut Self,
-                theDrawer,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetAttributes(
+                    self as *mut Self,
+                    theDrawer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:200 - `PrsMgr_PresentableObject::HilightAttributes()`
     pub fn hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_HilightAttributes(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HilightAttributes(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
     pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetHilightAttributes(
-                self as *mut Self,
-                theDrawer,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetHilightAttributes(
+                    self as *mut Self,
+                    theDrawer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:212 - `PrsMgr_PresentableObject::DynamicHilightAttributes()`
     pub fn dynamic_hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_DynamicHilightAttributes(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_DynamicHilightAttributes(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
     pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetDynamicHilightAttributes(
-                self as *mut Self,
-                theDrawer,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetDynamicHilightAttributes(
+                    self as *mut Self,
+                    theDrawer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     pub fn unset_hilight_attributes(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetHilightAttributes(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetHilightAttributes(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
     pub fn synchronize_aspects(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SynchronizeAspects(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SynchronizeAspects(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:236 - `PrsMgr_PresentableObject::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_TransformPersistence(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_TransformPersistence(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -6107,155 +8038,218 @@ impl SelectableObject {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetTransformPersistence(
-                self as *mut Self,
-                theTrsfPers,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetTransformPersistence(
+                    self as *mut Self,
+                    theTrsfPers,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:252 - `PrsMgr_PresentableObject::LocalTransformationGeom()`
     pub fn local_transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_LocalTransformationGeom(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_LocalTransformationGeom(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
     pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetLocalTransformation(
-                self as *mut Self,
-                theTrsf,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetLocalTransformation(
+                    self as *mut Self,
+                    theTrsf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:271 - `PrsMgr_PresentableObject::HasTransformation()`
     pub fn has_transformation(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasTransformation(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasTransformation(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:279 - `PrsMgr_PresentableObject::TransformationGeom()`
     pub fn transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_TransformationGeom(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_TransformationGeom(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:284 - `PrsMgr_PresentableObject::LocalTransformation()`
     pub fn local_transformation(&self) -> &crate::gp::Trsf {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_LocalTransformation(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_LocalTransformation(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:292 - `PrsMgr_PresentableObject::Transformation()`
     pub fn transformation(&self) -> &crate::gp::Trsf {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_Transformation(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Transformation(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:298 - `PrsMgr_PresentableObject::InversedTransformation()`
     pub fn inversed_transformation(&self) -> &crate::gp::GTrsf {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_InversedTransformation(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_InversedTransformation(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:301 - `PrsMgr_PresentableObject::CombinedParentTransformation()`
     pub fn combined_parent_transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_CombinedParentTransformation(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_CombinedParentTransformation(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
     pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RecomputeTransformation(
-                self as *mut Self,
-                theProjector,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_RecomputeTransformation(
+                    self as *mut Self,
+                    theProjector,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:324 - `PrsMgr_PresentableObject::ClipPlanes()`
     pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_ClipPlanes(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_ClipPlanes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetClipPlanes(
-                self as *mut Self,
-                thePlanes,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetClipPlanes(
+                    self as *mut Self,
+                    thePlanes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
     pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AddClipPlane(
-                self as *mut Self,
-                thePlane,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_AddClipPlane(
+                    self as *mut Self,
+                    thePlane,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
     pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RemoveClipPlane(
-                self as *mut Self,
-                thePlane,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_RemoveClipPlane(
+                    self as *mut Self,
+                    thePlane,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:352 - `PrsMgr_PresentableObject::Parent()`
     pub fn parent(&self) -> Option<&crate::prs_mgr::PresentableObject> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectableObject_inherited_Parent(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:355 - `PrsMgr_PresentableObject::Children()`
     pub fn children(&self) -> &crate::ffi::PrsMgr_ListOfPresentableObjects {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObject_inherited_Children(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Children(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
     pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AddChild(self as *mut Self, theObject)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_AddChild(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6264,21 +8258,27 @@ impl SelectableObject {
         &mut self,
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AddChildWithCurrentTransformation(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_AddChildWithCurrentTransformation(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
     pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RemoveChild(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_RemoveChild(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6287,279 +8287,427 @@ impl SelectableObject {
         &mut self,
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RemoveChildWithRestoreTransformation(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_RemoveChildWithRestoreTransformation(self as *mut Self, theObject)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:374 - `PrsMgr_PresentableObject::HasOwnPresentations()`
     pub fn has_own_presentations(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasOwnPresentations(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasOwnPresentations(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:380 - `PrsMgr_PresentableObject::BoundingBox()`
     pub fn bounding_box(&mut self, theBndBox: &mut crate::bnd::Box) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_BoundingBox(
-                self as *mut Self,
-                theBndBox,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_BoundingBox(
+                    self as *mut Self,
+                    theBndBox,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetIsoOnTriangulation(
-                self as *mut Self,
-                theIsEnabled,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetIsoOnTriangulation(
+                    self as *mut Self,
+                    theIsEnabled,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:463 - `PrsMgr_PresentableObject::CurrentFacingModel()`
     pub fn current_facing_model(&self) -> crate::aspect::TypeOfFacingModel {
-        unsafe {
-            crate::aspect::TypeOfFacingModel::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectableObject_inherited_CurrentFacingModel(
                     self as *const Self,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::aspect::TypeOfFacingModel::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetCurrentFacingModel(
-                self as *mut Self,
-                theModel.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetCurrentFacingModel(
+                    self as *mut Self,
+                    theModel.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:474 - `PrsMgr_PresentableObject::HasColor()`
     pub fn has_color(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_HasColor(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasColor(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:477 - `PrsMgr_PresentableObject::Color()`
     pub fn color(&self, theColor: &mut crate::quantity::Color) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Color(self as *const Self, theColor)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Color(
+                    self as *const Self,
+                    theColor,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:483 - `PrsMgr_PresentableObject::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetColor(self as *mut Self, theColor)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetColor(
+                    self as *mut Self,
+                    theColor,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:494 - `PrsMgr_PresentableObject::UnsetColor()`
     pub fn unset_color(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_UnsetColor(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetColor(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:497 - `PrsMgr_PresentableObject::HasWidth()`
     pub fn has_width(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_HasWidth(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasWidth(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:500 - `PrsMgr_PresentableObject::Width()`
     pub fn width(&self) -> f64 {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_Width(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Width(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:504 - `PrsMgr_PresentableObject::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetWidth(self as *mut Self, theWidth)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetWidth(
+                    self as *mut Self,
+                    theWidth,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:507 - `PrsMgr_PresentableObject::UnsetWidth()`
     pub fn unset_width(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_UnsetWidth(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetWidth(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:510 - `PrsMgr_PresentableObject::HasMaterial()`
     pub fn has_material(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_HasMaterial(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasMaterial(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:513 - `PrsMgr_PresentableObject::Material()`
     pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
-        unsafe {
-            crate::graphic3d::NameOfMaterial::try_from(
-                crate::ffi::SelectMgr_SelectableObject_inherited_Material(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Material(self as *const Self)
+            };
+            crate::check_exception();
+            crate::graphic3d::NameOfMaterial::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:519 - `PrsMgr_PresentableObject::SetMaterial()`
     pub fn set_material(&mut self, aName: &crate::graphic3d::MaterialAspect) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetMaterial(self as *mut Self, aName)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetMaterial(
+                    self as *mut Self,
+                    aName,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:522 - `PrsMgr_PresentableObject::UnsetMaterial()`
     pub fn unset_material(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_UnsetMaterial(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetMaterial(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:525 - `PrsMgr_PresentableObject::IsTransparent()`
     pub fn is_transparent(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsTransparent(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_IsTransparent(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:530 - `PrsMgr_PresentableObject::Transparency()`
     pub fn transparency(&self) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Transparency(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_Transparency(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:539 - `PrsMgr_PresentableObject::SetTransparency()`
     pub fn set_transparency(&mut self, aValue: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetTransparency(
-                self as *mut Self,
-                aValue,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetTransparency(
+                    self as *mut Self,
+                    aValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:542 - `PrsMgr_PresentableObject::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetTransparency(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetTransparency(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:545 - `PrsMgr_PresentableObject::HasPolygonOffsets()`
     pub fn has_polygon_offsets(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasPolygonOffsets(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_HasPolygonOffsets(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_PolygonOffsets(
-                self as *const Self,
-                aMode,
-                aFactor,
-                aUnits,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_PolygonOffsets(
+                    self as *const Self,
+                    aMode,
+                    aFactor,
+                    aUnits,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetPolygonOffsets(
-                self as *mut Self,
-                aMode,
-                aFactor,
-                aUnits,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetPolygonOffsets(
+                    self as *mut Self,
+                    aMode,
+                    aFactor,
+                    aUnits,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     pub fn unset_attributes(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetAttributes(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_UnsetAttributes(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:573 - `PrsMgr_PresentableObject::ToPropagateVisualState()`
     pub fn to_propagate_visual_state(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_ToPropagateVisualState(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_ToPropagateVisualState(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetPropagateVisualState(
-                self as *mut Self,
-                theFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_SetPropagateVisualState(
+                    self as *mut Self,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectableObject_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObject_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectableObject_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -6574,35 +8722,49 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSelectableObject {
 impl HandleSelectMgrSelectableObject {
     /// Dereference this Handle to access the underlying SelectMgr_SelectableObject
     pub fn get(&self) -> &crate::ffi::SelectMgr_SelectableObject {
-        unsafe { &*(crate::ffi::HandleSelectMgrSelectableObject_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSelectableObject_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SelectableObject
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SelectableObject {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrSelectableObject_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSelectableObject_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_SelectableObject> to Handle<PrsMgr_PresentableObject>
     pub fn to_handle_presentable_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrSelectableObject_to_HandlePrsMgrPresentableObject(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_SelectableObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrSelectableObject_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6615,6 +8777,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6633,6 +8796,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6649,6 +8813,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6667,6 +8832,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6685,6 +8851,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6703,6 +8870,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6721,6 +8889,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6739,6 +8908,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6755,6 +8925,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6773,6 +8944,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6791,6 +8963,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6807,6 +8980,7 @@ impl HandleSelectMgrSelectableObject {
         let ptr = unsafe {
             crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISMultipleConnectedInteractive(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6823,6 +8997,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6841,6 +9016,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6857,6 +9033,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6875,6 +9052,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6893,6 +9071,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6909,6 +9088,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6927,6 +9107,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6945,6 +9126,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6963,6 +9145,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6979,6 +9162,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -6995,6 +9179,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7013,6 +9198,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7029,6 +9215,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7047,6 +9234,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7065,6 +9253,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7083,6 +9272,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7101,6 +9291,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7119,6 +9310,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7137,6 +9329,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7153,6 +9346,7 @@ impl HandleSelectMgrSelectableObject {
         let ptr = unsafe {
             crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEllipseRadiusDimension(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7169,6 +9363,7 @@ impl HandleSelectMgrSelectableObject {
         let ptr = unsafe {
             crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEqualDistanceRelation(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7187,6 +9382,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7205,6 +9401,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7223,6 +9420,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7241,6 +9439,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7259,6 +9458,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7277,6 +9477,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7295,6 +9496,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7313,6 +9515,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7331,6 +9534,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7347,6 +9551,7 @@ impl HandleSelectMgrSelectableObject {
         let ptr = unsafe {
             crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimPerpendicularRelation(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7365,6 +9570,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7383,6 +9589,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7401,6 +9608,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7419,6 +9627,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7437,6 +9646,7 @@ impl HandleSelectMgrSelectableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -7468,7 +9678,11 @@ impl SelectableObjectSet {
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:122 - `SelectMgr_SelectableObjectSet::SelectMgr_SelectableObjectSet()`
     /// Creates new empty objects set and initializes BVH tree builders for each subset.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectableObjectSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectableObjectSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:132 - `SelectMgr_SelectableObjectSet::Append()`
@@ -7478,7 +9692,13 @@ impl SelectableObjectSet {
     /// @return true if selectable object is added, otherwise returns false (selectable object is
     /// already in the set).
     pub fn append(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObjectSet_append(self as *mut Self, theObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_append(self as *mut Self, theObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:139 - `SelectMgr_SelectableObjectSet::Remove()`
@@ -7488,7 +9708,13 @@ impl SelectableObjectSet {
     /// @return true if selectable object is removed, otherwise returns false (selectable object is
     /// not in the set).
     pub fn remove(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObjectSet_remove(self as *mut Self, theObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_remove(self as *mut Self, theObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:144 - `SelectMgr_SelectableObjectSet::ChangeSubset()`
@@ -7496,8 +9722,14 @@ impl SelectableObjectSet {
     /// This method should be called right after changing transformation persistence flags of the
     /// objects and before updating BVH tree - to provide up-to-date state of the object set.
     pub fn change_subset(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_change_subset(self as *mut Self, theObject)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_change_subset(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7509,33 +9741,48 @@ impl SelectableObjectSet {
         theCam: &crate::ffi::HandleGraphic3dCamera,
         theWinSize: &crate::ffi::Graphic3d_Vec2i,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_update_bvh(
-                self as *mut Self,
-                theCam,
-                theWinSize,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_update_bvh(
+                    self as *mut Self,
+                    theCam,
+                    theWinSize,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:152 - `SelectMgr_SelectableObjectSet::MarkDirty()`
     /// Marks every BVH subset for update.
     pub fn mark_dirty(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObjectSet_mark_dirty(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectableObjectSet_mark_dirty(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:155 - `SelectMgr_SelectableObjectSet::Contains()`
     /// Returns true if this objects set contains theObject given.
     pub fn contains(&self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_contains(self as *const Self, theObject)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_contains(self as *const Self, theObject)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:165 - `SelectMgr_SelectableObjectSet::IsEmpty()`
     /// Returns true if the object set does not contain any selectable objects.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObjectSet_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectableObjectSet_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:174 - `SelectMgr_SelectableObjectSet::IsEmpty()`
@@ -7544,11 +9791,15 @@ impl SelectableObjectSet {
         &self,
         theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_is_empty_bvhsubset(
-                self as *const Self,
-                theSubset,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_is_empty_bvhsubset(
+                    self as *const Self,
+                    theSubset,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7560,12 +9811,16 @@ impl SelectableObjectSet {
         theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
         theIndex: i32,
     ) -> &crate::ffi::HandleSelectMgrSelectableObject {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectableObjectSet_get_object_by_id(
-                self as *const Self,
-                theSubset,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_get_object_by_id(
+                    self as *const Self,
+                    theSubset,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -7575,7 +9830,13 @@ impl SelectableObjectSet {
         &self,
         theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
     ) -> &crate::ffi::HandleBVHTreedouble3 {
-        unsafe { &*(crate::ffi::SelectMgr_SelectableObjectSet_bvh(self as *const Self, theSubset)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_bvh(self as *const Self, theSubset)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -7593,45 +9854,67 @@ impl SelectableObjectSet_Iterator {
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:75 - `SelectMgr_SelectableObjectSet_Iterator::SelectMgr_SelectableObjectSet_Iterator()`
     /// Default constructor without initialization.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectableObjectSet_Iterator_ctor())
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectableObjectSet_Iterator_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:82 - `SelectMgr_SelectableObjectSet_Iterator::SelectMgr_SelectableObjectSet_Iterator()`
     /// Constructs and initializes the iterator.
     pub fn new_selectableobjectset(theSet: &SelectableObjectSet) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_ctor_selectableobjectset(theSet),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_ctor_selectableobjectset(theSet)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:85 - `SelectMgr_SelectableObjectSet_Iterator::Init()`
     /// Initializes the iterator.
     pub fn init(&mut self, theSet: &SelectableObjectSet) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_Iterator_init(self as *mut Self, theSet)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_init(self as *mut Self, theSet)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:94 - `SelectMgr_SelectableObjectSet_Iterator::More()`
     /// Returns false when there is no more objects to iterate over.
     pub fn more(&mut self) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectableObjectSet_Iterator_more(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_more(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:109 - `SelectMgr_SelectableObjectSet_Iterator::Next()`
     /// Steps to next selectable object in the set.
     pub fn next(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectableObjectSet_Iterator_next(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectableObjectSet_Iterator_next(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:112 - `SelectMgr_SelectableObjectSet_Iterator::Value()`
     /// Returns current object.
     pub fn value(&self) -> &crate::ffi::HandleSelectMgrSelectableObject {
-        unsafe { &*(crate::ffi::SelectMgr_SelectableObjectSet_Iterator_value(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_value(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -7662,17 +9945,24 @@ impl SelectingVolumeManager {
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:39 - `SelectMgr_SelectingVolumeManager::SelectMgr_SelectingVolumeManager()`
     /// Creates instances of all available selecting volume types
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectingVolumeManager_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectingVolumeManager_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:44 - `SelectMgr_SelectingVolumeManager::InitPointSelectingVolume()`
     /// Creates, initializes and activates rectangular selecting frustum for point selection
     pub fn init_point_selecting_volume(&mut self, thePoint: &crate::gp::Pnt2d) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_point_selecting_volume(
-                self as *mut Self,
-                thePoint,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_init_point_selecting_volume(
+                    self as *mut Self,
+                    thePoint,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7683,34 +9973,43 @@ impl SelectingVolumeManager {
         theMinPt: &crate::gp::Pnt2d,
         theMaxPt: &crate::gp::Pnt2d,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_box_selecting_volume(
-                self as *mut Self,
-                theMinPt,
-                theMaxPt,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_init_box_selecting_volume(
+                    self as *mut Self,
+                    theMinPt,
+                    theMaxPt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:50 - `SelectMgr_SelectingVolumeManager::InitPolylineSelectingVolume()`
     /// Creates, initializes and activates set of triangular selecting frustums for polyline selection
     pub fn init_polyline_selecting_volume(&mut self, thePoints: &crate::ffi::TColgp_Array1OfPnt2d) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_polyline_selecting_volume(
-                self as *mut Self,
-                thePoints,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_init_polyline_selecting_volume(
+                    self as *mut Self,
+                    thePoints,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:53 - `SelectMgr_SelectingVolumeManager::InitAxisSelectingVolume()`
     /// Creates and activates axis selector for point selection
     pub fn init_axis_selecting_volume(&mut self, theAxis: &crate::gp::Ax1) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_axis_selecting_volume(
-                self as *mut Self,
-                theAxis,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_init_axis_selecting_volume(
+                    self as *mut Self,
+                    theAxis,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7720,19 +10019,27 @@ impl SelectingVolumeManager {
         &mut self,
         theVolume: &crate::ffi::HandleSelectMgrBaseIntersector,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_selecting_volume(
-                self as *mut Self,
-                theVolume,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_init_selecting_volume(
+                    self as *mut Self,
+                    theVolume,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:59 - `SelectMgr_SelectingVolumeManager::BuildSelectingVolume()`
     /// Builds previously initialized selecting volume.
     pub fn build_selecting_volume(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_build_selecting_volume(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_build_selecting_volume(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7740,17 +10047,25 @@ impl SelectingVolumeManager {
     /// Returns active selecting volume that was built during last
     /// run of OCCT selection mechanism
     pub fn active_volume(&self) -> &crate::ffi::HandleSelectMgrBaseIntersector {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectingVolumeManager_active_volume(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_active_volume(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:66 - `SelectMgr_SelectingVolumeManager::GetActiveSelectionType()`
     pub fn get_active_selection_type(&self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_get_active_selection_type(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_get_active_selection_type(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7771,15 +10086,17 @@ impl SelectingVolumeManager {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<SelectingVolumeManager> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectingVolumeManager_scale_and_transform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
                     theBuilder,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7791,20 +10108,27 @@ impl SelectingVolumeManager {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<SelectingVolumeManager> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectingVolumeManager_copy_with_builder(
                     self as *const Self,
                     theBuilder,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:91 - `SelectMgr_SelectingVolumeManager::Camera()`
     /// Returns current camera definition.
     pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::ffi::SelectMgr_SelectingVolumeManager_camera(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectingVolumeManager_camera(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:96 - `SelectMgr_SelectingVolumeManager::SetCamera()`
@@ -7812,8 +10136,14 @@ impl SelectingVolumeManager {
     /// Note: this method should be called after selection volume building
     /// else exception will be thrown
     pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_camera(self as *mut Self, theCamera)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_camera(
+                    self as *mut Self,
+                    theCamera,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7822,14 +10152,17 @@ impl SelectingVolumeManager {
     /// Note: this method should be called after selection volume building
     /// else exception will be thrown
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_viewport(
-                self as *mut Self,
-                theX,
-                theY,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_viewport(
+                    self as *mut Self,
+                    theX,
+                    theY,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7838,23 +10171,29 @@ impl SelectingVolumeManager {
     /// Note: this method should be called after selection volume building
     /// else exception will be thrown
     pub fn set_pixel_tolerance(&mut self, theTolerance: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_pixel_tolerance(
-                self as *mut Self,
-                theTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_pixel_tolerance(
+                    self as *mut Self,
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:112 - `SelectMgr_SelectingVolumeManager::WindowSize()`
     /// Returns window size
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_window_size(
-                self as *const Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_window_size(
+                    self as *const Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7863,12 +10202,15 @@ impl SelectingVolumeManager {
     /// Note: this method should be called after selection volume building
     /// else exception will be thrown
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_window_size(
-                self as *mut Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_window_size(
+                    self as *mut Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -7880,13 +10222,17 @@ impl SelectingVolumeManager {
         theBoxMax: &crate::ffi::SelectMgr_Vec3,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_pickresult(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7899,13 +10245,17 @@ impl SelectingVolumeManager {
         theBoxMax: &crate::ffi::SelectMgr_Vec3,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_boolptr(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_boolptr(
+                    self as *const Self,
+                    theBoxMin,
+                    theBoxMax,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7916,23 +10266,31 @@ impl SelectingVolumeManager {
         thePnt: &crate::gp::Pnt,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_point_pnt_pickresult(
-                self as *const Self,
-                thePnt,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_point_pnt_pickresult(
+                    self as *const Self,
+                    thePnt,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:139 - `SelectMgr_SelectingVolumeManager::OverlapsPoint()`
     /// Intersection test between defined volume and given point
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_point_pnt(
-                self as *const Self,
-                thePnt,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_point_pnt(
+                    self as *const Self,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7946,13 +10304,17 @@ impl SelectingVolumeManager {
         theSensType: i32,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_polygon(
-                self as *const Self,
-                theArrayOfPts,
-                theSensType,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_polygon(
+                    self as *const Self,
+                    theArrayOfPts,
+                    theSensType,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7964,13 +10326,17 @@ impl SelectingVolumeManager {
         thePnt2: &crate::gp::Pnt,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_segment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_segment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7986,15 +10352,19 @@ impl SelectingVolumeManager {
         theSensType: i32,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_triangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_triangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8006,13 +10376,17 @@ impl SelectingVolumeManager {
         theRadius: f64,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8024,13 +10398,17 @@ impl SelectingVolumeManager {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8046,8 +10424,12 @@ impl SelectingVolumeManager {
         theIsHollow: bool,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8063,16 +10445,12 @@ impl SelectingVolumeManager {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8088,14 +10466,12 @@ impl SelectingVolumeManager {
         theIsFilled: bool,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8111,14 +10487,18 @@ impl SelectingVolumeManager {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTrsf,
+                    theIsFilled,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8126,11 +10506,15 @@ impl SelectingVolumeManager {
     /// Measures distance between 3d projection of user-picked
     /// screen point and given point theCOG
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_dist_to_geometry_center(
-                self as *const Self,
-                theCOG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_dist_to_geometry_center(
+                    self as *const Self,
+                    theCOG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8138,11 +10522,15 @@ impl SelectingVolumeManager {
     /// Calculates the point on a view ray that was detected during the run of selection algo by given
     /// depth. Throws exception if active selection type is not Point.
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectingVolumeManager_detected_point(
-                self as *const Self,
-                theDepth,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_detected_point(
+                    self as *const Self,
+                    theDepth,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8150,34 +10538,49 @@ impl SelectingVolumeManager {
     /// If theIsToAllow is false, only fully included sensitives will be detected, otherwise the
     /// algorithm will mark both included and overlapped entities as matched
     pub fn allow_overlap_detection(&mut self, theIsToAllow: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_allow_overlap_detection(
-                self as *mut Self,
-                theIsToAllow,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_allow_overlap_detection(
+                    self as *mut Self,
+                    theIsToAllow,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:232 - `SelectMgr_SelectingVolumeManager::IsOverlapAllowed()`
     pub fn is_overlap_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_is_overlap_allowed(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_is_overlap_allowed(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:235 - `SelectMgr_SelectingVolumeManager::ViewClipping()`
     /// Return view clipping planes.
     pub fn view_clipping(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectingVolumeManager_view_clipping(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_view_clipping(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:238 - `SelectMgr_SelectingVolumeManager::ObjectClipping()`
     /// Return object clipping planes.
     pub fn object_clipping(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectingVolumeManager_object_clipping(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_object_clipping(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -8193,38 +10596,48 @@ impl SelectingVolumeManager {
         theObjPlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane,
         theWorldSelMgr: &SelectingVolumeManager,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clipping_handlegraphic3dsequenceofhclipplane2_selectingvolumemanagerptr(self as *mut Self, theViewPlanes, theObjPlanes, theWorldSelMgr as *const _)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clipping_handlegraphic3dsequenceofhclipplane2_selectingvolumemanagerptr(self as *mut Self, theViewPlanes, theObjPlanes, theWorldSelMgr as *const _)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:253 - `SelectMgr_SelectingVolumeManager::SetViewClipping()`
     /// Copy clipping planes from another volume manager.
     pub fn set_view_clipping_selectingvolumemanager(&mut self, theOther: &SelectingVolumeManager) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clipping_selectingvolumemanager(
-                self as *mut Self,
-                theOther,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clipping_selectingvolumemanager(self as *mut Self, theOther)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:256 - `SelectMgr_SelectingVolumeManager::ViewClipRanges()`
     /// Return clipping range.
     pub fn view_clip_ranges(&self) -> &ViewClipRange {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectingVolumeManager_view_clip_ranges(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_view_clip_ranges(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:259 - `SelectMgr_SelectingVolumeManager::SetViewClipRanges()`
     /// Set clipping range.
     pub fn set_view_clip_ranges(&mut self, theRange: &ViewClipRange) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clip_ranges(
-                self as *mut Self,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clip_ranges(
+                    self as *mut Self,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8232,13 +10645,14 @@ impl SelectingVolumeManager {
     /// A set of helper functions that return rectangular selecting frustum data
     pub fn get_vertices(&self) -> Option<&crate::gp::Pnt> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectingVolumeManager_get_vertices(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
@@ -8249,12 +10663,14 @@ impl SelectingVolumeManager {
     /// of center of 2d rectangle (for point and rectangular selection
     /// correspondingly) onto near view frustum plane
     pub fn get_near_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectingVolumeManager_get_near_picked_pnt(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8264,12 +10680,12 @@ impl SelectingVolumeManager {
     /// of center of 2d rectangle (for point and rectangular selection
     /// correspondingly) onto far view frustum plane
     pub fn get_far_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_far_picked_pnt(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_get_far_picked_pnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8277,22 +10693,28 @@ impl SelectingVolumeManager {
     /// Valid only for point and rectangular selection.
     /// Returns view ray direction
     pub fn get_view_ray_direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectingVolumeManager_get_view_ray_direction(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:281 - `SelectMgr_SelectingVolumeManager::IsScalableActiveVolume()`
     /// Checks if it is possible to scale current active selecting volume
     pub fn is_scalable_active_volume(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_is_scalable_active_volume(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_is_scalable_active_volume(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8301,12 +10723,12 @@ impl SelectingVolumeManager {
     /// @return infinite point in case of unsupport of mouse position for this active selection
     /// volume.
     pub fn get_mouse_position(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_mouse_position(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_get_mouse_position(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8317,11 +10739,14 @@ impl SelectingVolumeManager {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_get_planes(
-                self as *const Self,
-                thePlaneEquations,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_get_planes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8329,10 +10754,14 @@ impl SelectingVolumeManager {
     pub fn as_select_basics_selecting_volume_manager(
         &self,
     ) -> &crate::select_basics::SelectingVolumeManager {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -8340,8 +10769,12 @@ impl SelectingVolumeManager {
     pub fn as_select_basics_selecting_volume_manager_mut(
         &mut self,
     ) -> &mut crate::select_basics::SelectingVolumeManager {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -8399,7 +10832,11 @@ impl Selection {
     /// Constructs a selection object defined by the selection mode IdMode.
     /// The default setting 0 is the selection mode for a shape in its entirety.
     pub fn new_int(theModeIdx: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_Selection_ctor_int(theModeIdx)) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_ctor_int(theModeIdx) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:68 - `SelectMgr_Selection::SelectMgr_Selection()`
@@ -8411,37 +10848,59 @@ impl Selection {
 
     /// **Source:** `SelectMgr_Selection.hxx`:64 - `SelectMgr_Selection::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_Selection_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Selection_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:72 - `SelectMgr_Selection::Destroy()`
     pub fn destroy(&mut self) {
-        unsafe { crate::ffi::SelectMgr_Selection_destroy(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_Selection_destroy(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:76 - `SelectMgr_Selection::Add()`
     /// Adds the sensitive primitive to the list of stored entities in this object.
     /// Raises NullObject if the primitive is a null handle.
     pub fn add(&mut self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) {
-        unsafe { crate::ffi::SelectMgr_Selection_add(self as *mut Self, theSensitive) }
+        {
+            unsafe { crate::ffi::SelectMgr_Selection_add(self as *mut Self, theSensitive) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:79 - `SelectMgr_Selection::Clear()`
     /// empties the selection from all the stored entities
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_Selection_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_Selection_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:82 - `SelectMgr_Selection::IsEmpty()`
     /// returns true if no sensitive entity is stored.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_Selection_is_empty(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:85 - `SelectMgr_Selection::Mode()`
     /// returns the selection mode represented by this selection
     pub fn mode(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_Selection_mode(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:88 - `SelectMgr_Selection::Entities()`
@@ -8449,7 +10908,11 @@ impl Selection {
     pub fn entities(
         &self,
     ) -> &crate::ffi::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
-        unsafe { &*(crate::ffi::SelectMgr_Selection_entities(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_entities(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:94 - `SelectMgr_Selection::ChangeEntities()`
@@ -8457,7 +10920,12 @@ impl Selection {
     pub fn change_entities(
         &mut self,
     ) -> &mut crate::ffi::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
-        unsafe { &mut *(crate::ffi::SelectMgr_Selection_change_entities(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Selection_change_entities(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:102 - `SelectMgr_Selection::UpdateStatus()`
@@ -8468,67 +10936,84 @@ impl Selection {
     /// -   partial, or
     /// -   none.
     pub fn update_status(&self) -> crate::select_mgr::TypeOfUpdate {
-        unsafe {
-            crate::select_mgr::TypeOfUpdate::try_from(
-                crate::ffi::SelectMgr_Selection_update_status(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Selection_update_status(self as *const Self) };
+            crate::check_exception();
+            crate::select_mgr::TypeOfUpdate::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:104 - `SelectMgr_Selection::UpdateStatus()`
     pub fn update_status_typeofupdate(&mut self, theStatus: crate::select_mgr::TypeOfUpdate) {
-        unsafe {
-            crate::ffi::SelectMgr_Selection_update_status_typeofupdate(
-                self as *mut Self,
-                theStatus.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_Selection_update_status_typeofupdate(
+                    self as *mut Self,
+                    theStatus.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:106 - `SelectMgr_Selection::UpdateBVHStatus()`
     pub fn update_bvh_status(&mut self, theStatus: crate::select_mgr::TypeOfBVHUpdate) {
-        unsafe {
-            crate::ffi::SelectMgr_Selection_update_bvh_status(self as *mut Self, theStatus.into())
+        {
+            unsafe {
+                crate::ffi::SelectMgr_Selection_update_bvh_status(
+                    self as *mut Self,
+                    theStatus.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:108 - `SelectMgr_Selection::BVHUpdateStatus()`
     pub fn bvh_update_status(&self) -> crate::select_mgr::TypeOfBVHUpdate {
-        unsafe {
-            crate::select_mgr::TypeOfBVHUpdate::try_from(
-                crate::ffi::SelectMgr_Selection_bvh_update_status(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Selection_bvh_update_status(self as *const Self) };
+            crate::check_exception();
+            crate::select_mgr::TypeOfBVHUpdate::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:111 - `SelectMgr_Selection::GetSelectionState()`
     /// Returns status of selection
     pub fn get_selection_state(&self) -> crate::select_mgr::StateOfSelection {
-        unsafe {
-            crate::select_mgr::StateOfSelection::try_from(
-                crate::ffi::SelectMgr_Selection_get_selection_state(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Selection_get_selection_state(self as *const Self) };
+            crate::check_exception();
+            crate::select_mgr::StateOfSelection::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:114 - `SelectMgr_Selection::SetSelectionState()`
     /// Sets status of selection
     pub fn set_selection_state(&self, theState: crate::select_mgr::StateOfSelection) {
-        unsafe {
-            crate::ffi::SelectMgr_Selection_set_selection_state(
-                self as *const Self,
-                theState.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_Selection_set_selection_state(
+                    self as *const Self,
+                    theState.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:120 - `SelectMgr_Selection::Sensitivity()`
     /// Returns sensitivity of the selection
     pub fn sensitivity(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_Selection_sensitivity(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_Selection_sensitivity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:125 - `SelectMgr_Selection::SetSensitivity()`
@@ -8536,32 +11021,51 @@ impl Selection {
     /// IMPORTANT: This method does not update any outer selection structures, so for
     /// proper updates use SelectMgr_SelectionManager::SetSelectionSensitivity method.
     pub fn set_sensitivity(&mut self, theNewSens: i32) {
-        unsafe { crate::ffi::SelectMgr_Selection_set_sensitivity(self as *mut Self, theNewSens) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_Selection_set_sensitivity(self as *mut Self, theNewSens)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:64 - `SelectMgr_Selection::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_Selection_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:64 - `SelectMgr_Selection::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_Selection_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::SelectMgr_Selection_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Selection_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_Selection_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Selection_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8569,54 +11073,87 @@ impl Selection {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelection> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_Selection_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_Selection_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Selection_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::SelectMgr_Selection_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Selection_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_Selection_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_Selection_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Selection_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::SelectMgr_Selection_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_Selection_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_Selection_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_Selection_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_Selection_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_Selection_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8631,22 +11168,31 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSelection {
 impl HandleSelectMgrSelection {
     /// Dereference this Handle to access the underlying SelectMgr_Selection
     pub fn get(&self) -> &crate::ffi::SelectMgr_Selection {
-        unsafe { &*(crate::ffi::HandleSelectMgrSelection_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleSelectMgrSelection_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_Selection
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_Selection {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrSelection_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSelection_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_Selection> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleSelectMgrSelection_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrSelection_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8670,20 +11216,26 @@ impl SelectionImageFiller {
     /// **Source:** `SelectMgr_SelectionImageFiller.hxx`:44 - `SelectMgr_SelectionImageFiller::Fill()`
     /// Fill pixel at specified position.
     pub fn fill(&mut self, theCol: i32, theRow: i32, thePicked: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_fill(
-                self as *mut Self,
-                theCol,
-                theRow,
-                thePicked,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_fill(
+                    self as *mut Self,
+                    theCol,
+                    theRow,
+                    thePicked,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectionImageFiller.hxx`:49 - `SelectMgr_SelectionImageFiller::Flush()`
     /// Flush results into final image.
     pub fn flush(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SelectionImageFiller_flush(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectionImageFiller_flush(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectionImageFiller.hxx`:30 - `SelectMgr_SelectionImageFiller::CreateFiller()`
@@ -8693,104 +11245,147 @@ impl SelectionImageFiller {
         theSelector: &mut ViewerSelector,
         theType: crate::std_select::TypeOfSelectionImage,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectionImageFiller> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectionImageFiller_create_filler(
-                thePixMap,
-                theSelector as *mut _,
-                theType.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_create_filler(
+                    thePixMap,
+                    theSelector as *mut _,
+                    theType.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectionImageFiller_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SelectionImageFiller_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectionImageFiller_inherited_DynamicType(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_DynamicType(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectionImageFiller_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_SelectionImageFiller_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionImageFiller_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8805,24 +11400,35 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSelectionImageFiller {
 impl HandleSelectMgrSelectionImageFiller {
     /// Dereference this Handle to access the underlying SelectMgr_SelectionImageFiller
     pub fn get(&self) -> &crate::ffi::SelectMgr_SelectionImageFiller {
-        unsafe { &*(crate::ffi::HandleSelectMgrSelectionImageFiller_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSelectionImageFiller_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SelectionImageFiller
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SelectionImageFiller {
-        unsafe {
-            &mut *(crate::ffi::HandleSelectMgrSelectionImageFiller_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrSelectionImageFiller_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<SelectMgr_SelectionImageFiller> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrSelectionImageFiller_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8849,30 +11455,48 @@ impl SelectionManager {
     pub fn new_handleselectmgrviewerselector(
         theSelector: &crate::ffi::HandleSelectMgrViewerSelector,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectionManager_ctor_handleselectmgrviewerselector(
                     theSelector,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:30 - `SelectMgr_SelectionManager::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SelectionManager_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectionManager_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:36 - `SelectMgr_SelectionManager::Selector()`
     /// Return the Selector.
     pub fn selector(&self) -> &crate::ffi::HandleSelectMgrViewerSelector {
-        unsafe { &*(crate::ffi::SelectMgr_SelectionManager_selector(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectionManager_selector(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:40 - `SelectMgr_SelectionManager::Contains()`
     /// Returns true if the manager contains the selectable object theObject.
     pub fn contains(&self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
-        unsafe { crate::ffi::SelectMgr_SelectionManager_contains(self as *const Self, theObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_contains(self as *const Self, theObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:45 - `SelectMgr_SelectionManager::Load()`
@@ -8880,8 +11504,11 @@ impl SelectionManager {
     /// adds selectable object to BVH tree. If the object theObject has an already calculated
     /// selection with mode theMode and it was removed, the selection will be recalculated.
     pub fn load(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject, theMode: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_load(self as *mut Self, theObject, theMode)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_load(self as *mut Self, theObject, theMode)
+            };
+            crate::check_exception();
         }
     }
 
@@ -8889,7 +11516,10 @@ impl SelectionManager {
     /// Removes selectable object theObject from all viewer selectors it was added to previously,
     /// removes it from all contexts and clears all computed selections of theObject.
     pub fn remove(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) {
-        unsafe { crate::ffi::SelectMgr_SelectionManager_remove(self as *mut Self, theObject) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectionManager_remove(self as *mut Self, theObject) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:55 - `SelectMgr_SelectionManager::Activate()`
@@ -8901,8 +11531,15 @@ impl SelectionManager {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_activate(self as *mut Self, theObject, theMode)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_activate(
+                    self as *mut Self,
+                    theObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8915,8 +11552,15 @@ impl SelectionManager {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_deactivate(self as *mut Self, theObject, theMode)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_deactivate(
+                    self as *mut Self,
+                    theObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8929,12 +11573,16 @@ impl SelectionManager {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_is_activated(
-                self as *const Self,
-                theObject,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_is_activated(
+                    self as *const Self,
+                    theObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -8947,12 +11595,15 @@ impl SelectionManager {
         theObj: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_clear_selection_structures(
-                self as *mut Self,
-                theObj,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_clear_selection_structures(
+                    self as *mut Self,
+                    theObj,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8964,12 +11615,15 @@ impl SelectionManager {
         theObj: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_restore_selection_structures(
-                self as *mut Self,
-                theObj,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_restore_selection_structures(
+                    self as *mut Self,
+                    theObj,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8984,13 +11638,16 @@ impl SelectionManager {
         theIsForce: bool,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_recompute_selection(
-                self as *mut Self,
-                theObject,
-                theIsForce,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_recompute_selection(
+                    self as *mut Self,
+                    theObject,
+                    theIsForce,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9002,8 +11659,15 @@ impl SelectionManager {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theIsForce: bool,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_update(self as *mut Self, theObject, theIsForce)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_update(
+                    self as *mut Self,
+                    theObject,
+                    theIsForce,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9014,8 +11678,11 @@ impl SelectionManager {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theType: crate::select_mgr::TypeOfUpdate,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_typeofupdate(self as *mut Self, theObject, theType.into())
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_typeofupdate(self as *mut Self, theObject, theType.into())
+            };
+            crate::check_exception();
         }
     }
 
@@ -9027,8 +11694,11 @@ impl SelectionManager {
         theMode: i32,
         theType: crate::select_mgr::TypeOfUpdate,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_int_typeofupdate(self as *mut Self, theObject, theMode, theType.into())
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_int_typeofupdate(self as *mut Self, theObject, theMode, theType.into())
+            };
+            crate::check_exception();
         }
     }
 
@@ -9042,51 +11712,67 @@ impl SelectionManager {
         theMode: i32,
         theNewSens: i32,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_set_selection_sensitivity(
-                self as *mut Self,
-                theObject,
-                theMode,
-                theNewSens,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_set_selection_sensitivity(
+                    self as *mut Self,
+                    theObject,
+                    theMode,
+                    theNewSens,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:111 - `SelectMgr_SelectionManager::UpdateSelection()`
     /// Re-adds selectable object in BVHs in all viewer selectors.
     pub fn update_selection(&mut self, theObj: &crate::ffi::HandleSelectMgrSelectableObject) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_update_selection(self as *mut Self, theObj)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_update_selection(self as *mut Self, theObj)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:30 - `SelectMgr_SelectionManager::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_SelectionManager_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectionManager_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:30 - `SelectMgr_SelectionManager::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SelectionManager_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SelectionManager_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SelectionManager_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SelectionManager_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -9094,66 +11780,99 @@ impl SelectionManager {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectionManager> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SelectionManager_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SelectionManager_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SelectionManager_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SelectionManager_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SelectionManager_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SelectionManager_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_SelectionManager_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SelectionManager_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -9168,22 +11887,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSelectionManager {
 impl HandleSelectMgrSelectionManager {
     /// Dereference this Handle to access the underlying SelectMgr_SelectionManager
     pub fn get(&self) -> &crate::ffi::SelectMgr_SelectionManager {
-        unsafe { &*(crate::ffi::HandleSelectMgrSelectionManager_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSelectionManager_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SelectionManager
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SelectionManager {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrSelectionManager_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSelectionManager_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_SelectionManager> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrSelectionManager_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -9209,82 +11940,120 @@ impl SensitiveEntity {
     pub fn new_handleselect3dsensitiveentity(
         theEntity: &crate::ffi::HandleSelect3DSensitiveEntity,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_SensitiveEntity_ctor_handleselect3dsensitiveentity(theEntity),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_ctor_handleselect3dsensitiveentity(theEntity)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:34 - `SelectMgr_SensitiveEntity::Clear()`
     /// Clears up all resources and memory
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_SensitiveEntity_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SensitiveEntity_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:37 - `SelectMgr_SensitiveEntity::BaseSensitive()`
     /// Returns related instance of SelectBasics class
     pub fn base_sensitive(&self) -> &crate::ffi::HandleSelect3DSensitiveEntity {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntity_base_sensitive(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_base_sensitive(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:41 - `SelectMgr_SensitiveEntity::IsActiveForSelection()`
     /// Returns true if this entity belongs to the active selection
     /// mode of parent object
     pub fn is_active_for_selection(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_is_active_for_selection(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_is_active_for_selection(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:44 - `SelectMgr_SensitiveEntity::ResetSelectionActiveStatus()`
     /// Marks entity as inactive for selection
     pub fn reset_selection_active_status(&self) {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_reset_selection_active_status(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_reset_selection_active_status(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:47 - `SelectMgr_SensitiveEntity::SetActiveForSelection()`
     /// Marks entity as active for selection
     pub fn set_active_for_selection(&self) {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_set_active_for_selection(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_set_active_for_selection(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:53 - `SelectMgr_SensitiveEntity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntity_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntity_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:53 - `SelectMgr_SensitiveEntity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_SensitiveEntity_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SensitiveEntity_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:53 - `SelectMgr_SensitiveEntity::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntity_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SensitiveEntity_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SensitiveEntity_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_SensitiveEntity_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -9292,63 +12061,96 @@ impl SensitiveEntity {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSensitiveEntity> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SensitiveEntity_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntity_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_SensitiveEntity_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SensitiveEntity_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntity_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_SensitiveEntity_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_SensitiveEntity_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -9363,22 +12165,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSensitiveEntity {
 impl HandleSelectMgrSensitiveEntity {
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntity
     pub fn get(&self) -> &crate::ffi::SelectMgr_SensitiveEntity {
-        unsafe { &*(crate::ffi::HandleSelectMgrSensitiveEntity_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSensitiveEntity_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SensitiveEntity
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SensitiveEntity {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrSensitiveEntity_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSensitiveEntity_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_SensitiveEntity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrSensitiveEntity_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -9405,16 +12219,24 @@ impl SensitiveEntitySet {
     pub fn new_handlebvhbuilderdouble3(
         theBuilder: &crate::ffi::HandleBVHBuilderdouble3,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_SensitiveEntitySet_ctor_handlebvhbuilderdouble3(theBuilder),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_ctor_handlebvhbuilderdouble3(theBuilder)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:33 - `SelectMgr_SensitiveEntitySet::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntitySet_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:41 - `SelectMgr_SensitiveEntitySet::Append()`
@@ -9423,11 +12245,14 @@ impl SensitiveEntitySet {
         &mut self,
         theEntity: &crate::ffi::HandleSelectMgrSensitiveEntity,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_append_handleselectmgrsensitiveentity(
-                self as *mut Self,
-                theEntity,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_append_handleselectmgrsensitiveentity(
+                    self as *mut Self,
+                    theEntity,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9438,11 +12263,14 @@ impl SensitiveEntitySet {
         &mut self,
         theSelection: &crate::ffi::HandleSelectMgrSelection,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_append_handleselectmgrselection(
-                self as *mut Self,
-                theSelection,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_append_handleselectmgrselection(
+                    self as *mut Self,
+                    theSelection,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9450,17 +12278,23 @@ impl SensitiveEntitySet {
     /// Removes every entity of selection theSelection from the set
     /// and marks BVH tree for rebuild
     pub fn remove(&mut self, theSelection: &crate::ffi::HandleSelectMgrSelection) {
-        unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_remove(self as *mut Self, theSelection) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_remove(self as *mut Self, theSelection)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:52 - `SelectMgr_SensitiveEntitySet::Box()`
     /// Returns bounding box of entity with index theIdx
     pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SensitiveEntitySet_box_(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_box_(self as *const Self, theIndex)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9468,23 +12302,43 @@ impl SensitiveEntitySet {
     /// Returns geometry center of sensitive entity index theIdx
     /// along the given axis theAxis
     pub fn center(&self, theIndex: i32, theAxis: i32) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_center(self as *const Self, theIndex, theAxis)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_center(
+                    self as *const Self,
+                    theIndex,
+                    theAxis,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:65 - `SelectMgr_SensitiveEntitySet::Swap()`
     /// Swaps items with indexes theIdx1 and theIdx2
     pub fn swap(&mut self, theIndex1: i32, theIndex2: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_swap(self as *mut Self, theIndex1, theIndex2)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_swap(
+                    self as *mut Self,
+                    theIndex1,
+                    theIndex2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:69 - `SelectMgr_SensitiveEntitySet::Size()`
     /// Returns the amount of entities
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_size(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_size(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:72 - `SelectMgr_SensitiveEntitySet::GetSensitiveById()`
@@ -9493,58 +12347,82 @@ impl SensitiveEntitySet {
         &self,
         theIndex: i32,
     ) -> &crate::ffi::HandleSelectMgrSensitiveEntity {
-        unsafe {
-            &*(crate::ffi::SelectMgr_SensitiveEntitySet_get_sensitive_by_id(
-                self as *const Self,
-                theIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_get_sensitive_by_id(
+                    self as *const Self,
+                    theIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:76 - `SelectMgr_SensitiveEntitySet::Sensitives()`
     /// Returns map of entities.
     pub fn sensitives(&self) -> &crate::ffi::SelectMgr_IndexedMapOfHSensitive {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntitySet_sensitives(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_sensitives(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:79 - `SelectMgr_SensitiveEntitySet::Owners()`
     /// Returns map of owners.
     pub fn owners(&self) -> &crate::ffi::SelectMgr_MapOfOwners {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntitySet_owners(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_owners(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:82 - `SelectMgr_SensitiveEntitySet::HasEntityWithPersistence()`
     /// Returns map of entities.
     pub fn has_entity_with_persistence(&self) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_has_entity_with_persistence(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SensitiveEntitySet_has_entity_with_persistence(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:33 - `SelectMgr_SensitiveEntitySet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_SensitiveEntitySet_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:33 - `SelectMgr_SensitiveEntitySet::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_SensitiveEntitySet_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSensitiveEntitySet> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SensitiveEntitySet_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_SensitiveEntitySet_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -9560,12 +12438,22 @@ unsafe impl crate::CppDeletable for HandleSelectMgrSensitiveEntitySet {
 impl HandleSelectMgrSensitiveEntitySet {
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntitySet
     pub fn get(&self) -> &crate::ffi::SelectMgr_SensitiveEntitySet {
-        unsafe { &*(crate::ffi::HandleSelectMgrSensitiveEntitySet_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSensitiveEntitySet_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SensitiveEntitySet
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SensitiveEntitySet {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrSensitiveEntitySet_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrSensitiveEntitySet_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 }
 
@@ -9588,14 +12476,22 @@ impl SortCriterion {
     /// **Source:** `SelectMgr_SortCriterion.hxx`:47 - `SelectMgr_SortCriterion::SelectMgr_SortCriterion()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_SortCriterion_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_SortCriterion_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_SortCriterion.hxx`:60 - `SelectMgr_SortCriterion::IsCloserDepth()`
     /// Compare with another item by depth, priority and minDist.
     pub fn is_closer_depth(&self, theOther: &SortCriterion) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SortCriterion_is_closer_depth(self as *const Self, theOther)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SortCriterion_is_closer_depth(self as *const Self, theOther)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9603,8 +12499,15 @@ impl SortCriterion {
     /// Compare with another item using old logic (OCCT version <= 6.3.1) with priority considered
     /// preceding depth.
     pub fn is_higher_priority(&self, theOther: &SortCriterion) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_SortCriterion_is_higher_priority(self as *const Self, theOther)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_SortCriterion_is_higher_priority(
+                    self as *const Self,
+                    theOther,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -9631,53 +12534,90 @@ impl ToleranceMap {
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:28 - `SelectMgr_ToleranceMap::SelectMgr_ToleranceMap()`
     /// Sets tolerance values to -1.0
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ToleranceMap_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_ToleranceMap_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:34 - `SelectMgr_ToleranceMap::Add()`
     /// Adds the value given to map, checks if the current tolerance value
     /// should be replaced by theTolerance
     pub fn add(&mut self, theTolerance: &i32) {
-        unsafe { crate::ffi::SelectMgr_ToleranceMap_add(self as *mut Self, theTolerance) }
+        {
+            unsafe { crate::ffi::SelectMgr_ToleranceMap_add(self as *mut Self, theTolerance) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:38 - `SelectMgr_ToleranceMap::Decrement()`
     /// Decrements a counter of the tolerance given, checks if the current tolerance value
     /// should be recalculated
     pub fn decrement(&mut self, theTolerance: &i32) {
-        unsafe { crate::ffi::SelectMgr_ToleranceMap_decrement(self as *mut Self, theTolerance) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ToleranceMap_decrement(self as *mut Self, theTolerance)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:41 - `SelectMgr_ToleranceMap::Tolerance()`
     /// Returns a current tolerance that must be applied
     pub fn tolerance(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_ToleranceMap_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ToleranceMap_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:51 - `SelectMgr_ToleranceMap::SetCustomTolerance()`
     /// Sets tolerance to the given one and disables adaptive checks
     pub fn set_custom_tolerance(&mut self, theTolerance: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_set_custom_tolerance(self as *mut Self, theTolerance)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ToleranceMap_set_custom_tolerance(
+                    self as *mut Self,
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:54 - `SelectMgr_ToleranceMap::ResetDefaults()`
     /// Unsets a custom tolerance and enables adaptive checks
     pub fn reset_defaults(&mut self) {
-        unsafe { crate::ffi::SelectMgr_ToleranceMap_reset_defaults(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ToleranceMap_reset_defaults(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:57 - `SelectMgr_ToleranceMap::CustomTolerance()`
     /// Returns the value of custom tolerance regardless of it validity
     pub fn custom_tolerance(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_ToleranceMap_custom_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ToleranceMap_custom_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ToleranceMap.hxx`:60 - `SelectMgr_ToleranceMap::IsCustomTolSet()`
     /// Returns true if custom tolerance value is greater than zero
     pub fn is_custom_tol_set(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_ToleranceMap_is_custom_tol_set(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ToleranceMap_is_custom_tol_set(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -9708,8 +12648,11 @@ impl TriangularFrustum {
         theP2: &crate::gp::Pnt2d,
         theP3: &crate::gp::Pnt2d,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_init(self as *mut Self, theP1, theP2, theP3)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_init(self as *mut Self, theP1, theP2, theP3)
+            };
+            crate::check_exception();
         }
     }
 
@@ -9718,13 +12661,21 @@ impl TriangularFrustum {
     /// projections onto near and far view frustum planes (only for triangular frustums)
     /// NOTE: it should be called after Init() method
     pub fn build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustum_build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_TriangularFrustum_build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:48 - `SelectMgr_TriangularFrustum::IsScalable()`
     /// Returns FALSE (not applicable to this volume).
     pub fn is_scalable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustum_is_scalable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_TriangularFrustum_is_scalable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:51 - `SelectMgr_TriangularFrustum::ScaleAndTransform()`
@@ -9735,13 +12686,17 @@ impl TriangularFrustum {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustum_scale_and_transform(
-                self as *const Self,
-                theScale,
-                theTrsf,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_scale_and_transform(
+                    self as *const Self,
+                    theScale,
+                    theTrsf,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9756,11 +12711,15 @@ impl TriangularFrustum {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustum_copy_with_builder(
-                self as *const Self,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_copy_with_builder(
+                    self as *const Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9774,14 +12733,18 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theMinPnt,
-                theMaxPnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(
+                    self as *const Self,
+                    theMinPnt,
+                    theMaxPnt,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9794,13 +12757,17 @@ impl TriangularFrustum {
         theMaxPt: &crate::ffi::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_box_vec32_boolptr(
-                self as *const Self,
-                theMinPt,
-                theMaxPt,
-                theInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_box_vec32_boolptr(
+                    self as *const Self,
+                    theMinPt,
+                    theMaxPt,
+                    theInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9812,21 +12779,32 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(
+                    self as *const Self,
+                    thePnt,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:87 - `SelectMgr_TriangularFrustum::OverlapsPoint()`
     /// Always returns FALSE (not applicable to this selector).
     pub fn overlaps_point_pnt(&self, arg0: &crate::gp::Pnt) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_point_pnt(self as *const Self, arg0)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_point_pnt(
+                    self as *const Self,
+                    arg0,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9841,14 +12819,18 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_polygon(
-                self as *const Self,
-                theArrayOfPnts,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_polygon(
+                    self as *const Self,
+                    theArrayOfPnts,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9861,14 +12843,18 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_segment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_segment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9885,16 +12871,20 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_triangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_triangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9907,13 +12897,17 @@ impl TriangularFrustum {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_boolptr(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9927,8 +12921,12 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9945,8 +12943,12 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9962,16 +12964,20 @@ impl TriangularFrustum {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTopRad,
+                    theHeight,
+                    theTrsf,
+                    theIsHollow,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -9988,8 +12994,12 @@ impl TriangularFrustum {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10005,21 +13015,28 @@ impl TriangularFrustum {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theRadius,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_boolptr(
+                    self as *const Self,
+                    theRadius,
+                    theTrsf,
+                    theIsFilled,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:178 - `SelectMgr_TriangularFrustum::Clear()`
     /// Nullifies the handle to corresponding builder instance to prevent memory leaks
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustum_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_TriangularFrustum_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:182 - `SelectMgr_TriangularFrustum::GetPlanes()`
@@ -10029,41 +13046,55 @@ impl TriangularFrustum {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_get_planes(
-                self as *const Self,
-                thePlaneEquations,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_get_planes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:202 - `SelectMgr_TriangularFrustum::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_TriangularFrustum_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustum_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:202 - `SelectMgr_TriangularFrustum::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_TriangularFrustum_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_TriangularFrustum_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:202 - `SelectMgr_TriangularFrustum::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_TriangularFrustum_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_TriangularFrustum_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustum> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustum_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_TriangularFrustum_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -10079,12 +13110,22 @@ unsafe impl crate::CppDeletable for HandleSelectMgrTriangularFrustum {
 impl HandleSelectMgrTriangularFrustum {
     /// Dereference this Handle to access the underlying SelectMgr_TriangularFrustum
     pub fn get(&self) -> &crate::ffi::SelectMgr_TriangularFrustum {
-        unsafe { &*(crate::ffi::HandleSelectMgrTriangularFrustum_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrTriangularFrustum_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_TriangularFrustum
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_TriangularFrustum {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrTriangularFrustum_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrTriangularFrustum_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 }
 
@@ -10102,10 +13143,11 @@ impl TriangularFrustum_SelectionTriangle {
     /// **Source:** `SelectMgr_TriangularFrustum.hxx` - `SelectMgr_TriangularFrustum_SelectionTriangle::SelectMgr_TriangularFrustum_SelectionTriangle()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_TriangularFrustum_SelectionTriangle_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_TriangularFrustum_SelectionTriangle_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -10134,13 +13176,22 @@ impl TriangularFrustumSet {
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:42 - `SelectMgr_TriangularFrustumSet::SelectMgr_TriangularFrustumSet()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustumSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:48 - `SelectMgr_TriangularFrustumSet::Init()`
     /// Initializes set of triangular frustums by polyline
     pub fn init(&mut self, thePoints: &crate::ffi::TColgp_Array1OfPnt2d) {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_init(self as *mut Self, thePoints) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_init(self as *mut Self, thePoints)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:53 - `SelectMgr_TriangularFrustumSet::Build()`
@@ -10148,13 +13199,22 @@ impl TriangularFrustumSet {
     /// where each triangle's projection onto near and far view frustum planes is considered as a
     /// frustum base NOTE: it should be called after Init() method
     pub fn build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:56 - `SelectMgr_TriangularFrustumSet::IsScalable()`
     /// Returns FALSE (not applicable to this volume).
     pub fn is_scalable(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_is_scalable(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_is_scalable(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:59 - `SelectMgr_TriangularFrustumSet::ScaleAndTransform()`
@@ -10165,15 +13225,17 @@ impl TriangularFrustumSet {
         theTrsf: &crate::gp::GTrsf,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_TriangularFrustumSet_scale_and_transform(
                     self as *const Self,
                     theScale,
                     theTrsf,
                     theBuilder,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10188,11 +13250,15 @@ impl TriangularFrustumSet {
         &self,
         theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustumSet_copy_with_builder(
-                self as *const Self,
-                theBuilder,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_copy_with_builder(
+                    self as *const Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10204,14 +13270,12 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theMinPnt,
-                theMaxPnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_viewcliprange_pickresult(self as *const Self, theMinPnt, theMaxPnt, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10222,13 +13286,17 @@ impl TriangularFrustumSet {
         theMaxPnt: &crate::ffi::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_boolptr(
-                self as *const Self,
-                theMinPnt,
-                theMaxPnt,
-                theInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_boolptr(
+                    self as *const Self,
+                    theMinPnt,
+                    theMaxPnt,
+                    theInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10239,21 +13307,27 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_point_pnt_viewcliprange_pickresult(self as *const Self, thePnt, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:91 - `SelectMgr_TriangularFrustumSet::OverlapsPoint()`
     /// Always returns FALSE (not applicable to this selector).
     pub fn overlaps_point_pnt(&self, arg0: &crate::gp::Pnt) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_point_pnt(self as *const Self, arg0)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_point_pnt(
+                    self as *const Self,
+                    arg0,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10265,14 +13339,18 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_polygon(
-                self as *const Self,
-                theArrayOfPnts,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_polygon(
+                    self as *const Self,
+                    theArrayOfPnts,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10284,14 +13362,18 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_segment(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_segment(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10305,16 +13387,20 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_triangle(
-                self as *const Self,
-                thePnt1,
-                thePnt2,
-                thePnt3,
-                theSensType.into(),
-                theClipRange,
-                thePickResult,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_triangle(
+                    self as *const Self,
+                    thePnt1,
+                    thePnt2,
+                    thePnt3,
+                    theSensType.into(),
+                    theClipRange,
+                    thePickResult,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10322,11 +13408,15 @@ impl TriangularFrustumSet {
     /// Calculates the point on a view ray that was detected during the run of selection algo by given
     /// depth
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustumSet_detected_point(
-                self as *const Self,
-                theDepth,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_detected_point(
+                    self as *const Self,
+                    theDepth,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10339,13 +13429,17 @@ impl TriangularFrustumSet {
         theRadius: f64,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_boolptr(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10359,8 +13453,12 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10377,8 +13475,12 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10394,16 +13496,20 @@ impl TriangularFrustumSet {
         theIsHollow: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTopRad,
+                    theHeight,
+                    theTrsf,
+                    theIsHollow,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10418,8 +13524,12 @@ impl TriangularFrustumSet {
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10433,14 +13543,18 @@ impl TriangularFrustumSet {
         theIsFilled: bool,
         theInside: Option<&mut bool>,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_boolptr(
+                    self as *const Self,
+                    theBottomRad,
+                    theTrsf,
+                    theIsFilled,
+                    theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10451,11 +13565,14 @@ impl TriangularFrustumSet {
         &self,
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_get_planes(
-                self as *const Self,
-                thePlaneEquations,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_get_planes(
+                    self as *const Self,
+                    thePlaneEquations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10463,65 +13580,92 @@ impl TriangularFrustumSet {
     /// If theIsToAllow is false, only fully included sensitives will be detected, otherwise the
     /// algorithm will mark both included and overlapped entities as matched
     pub fn set_allow_overlap_detection(&mut self, theIsToAllow: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_set_allow_overlap_detection(
-                self as *mut Self,
-                theIsToAllow,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_set_allow_overlap_detection(
+                    self as *mut Self,
+                    theIsToAllow,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to SelectMgr_BaseFrustum
     pub fn as_base_frustum(&self) -> &BaseFrustum {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_BaseFrustum (mutable)
     pub fn as_base_frustum_mut(&mut self) -> &mut BaseFrustum {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector
     pub fn as_base_intersector(&self) -> &BaseIntersector {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector (mutable)
     pub fn as_base_intersector_mut(&mut self) -> &mut BaseIntersector {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_TriangularFrustumSet_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -10529,75 +13673,94 @@ impl TriangularFrustumSet {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustumSet> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_TriangularFrustumSet_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:37 - `SelectMgr_BaseFrustum::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetBuilder(
-                self as *mut Self,
-                theBuilder,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetBuilder(
+                    self as *mut Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:40 - `SelectMgr_BaseFrustum::SetCamera()`
     pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetCamera(
-                self as *mut Self,
-                theCamera,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetCamera(
+                    self as *mut Self,
+                    theCamera,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:43 - `SelectMgr_BaseFrustum::SetPixelTolerance()`
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetPixelTolerance(
-                self as *mut Self,
-                theTol,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetPixelTolerance(
+                    self as *mut Self,
+                    theTol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:45 - `SelectMgr_BaseFrustum::SetWindowSize()`
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetWindowSize(
-                self as *mut Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetWindowSize(
+                    self as *mut Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:48 - `SelectMgr_BaseFrustum::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_WindowSize(
-                self as *const Self,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_WindowSize(
+                    self as *const Self,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:52 - `SelectMgr_BaseFrustum::SetViewport()`
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetViewport(
-                self as *mut Self,
-                theX,
-                theY,
-                theWidth,
-                theHeight,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetViewport(
+                    self as *mut Self,
+                    theX,
+                    theY,
+                    theWidth,
+                    theHeight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10610,85 +13773,118 @@ impl TriangularFrustumSet {
         theBoundaries: &crate::ffi::TColgp_Array1OfPnt,
         theBoundaryInside: &mut bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsBoundaryIntersectSphere(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                thePlaneNormal,
-                theBoundaries,
-                theBoundaryInside,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsBoundaryIntersectSphere(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    thePlaneNormal,
+                    theBoundaries,
+                    theBoundaryInside,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DynamicType(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DynamicType(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
-        unsafe {
-            crate::select_mgr::SelectionType::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetSelectionType(
                     self as *const Self,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::select_mgr::SelectionType::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
     pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_Camera(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_Camera(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:109 - `SelectMgr_BaseIntersector::GetNearPnt()`
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetNearPnt(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetNearPnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:113 - `SelectMgr_BaseIntersector::GetFarPnt()`
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetFarPnt(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetFarPnt(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:117 - `SelectMgr_BaseIntersector::GetViewRayDirection()`
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetViewRayDirection(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetViewRayDirection(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:121 - `SelectMgr_BaseIntersector::GetMousePosition()`
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
-        unsafe {
-            &*(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetMousePosition(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetMousePosition(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:237 - `SelectMgr_BaseIntersector::DistToGeometryCenter()`
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DistToGeometryCenter(
-                self as *const Self,
-                theCOG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DistToGeometryCenter(
+                    self as *const Self,
+                    theCOG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10702,16 +13898,20 @@ impl TriangularFrustumSet {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RaySphereIntersection(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RaySphereIntersection(
+                    self as *const Self,
+                    theCenter,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10727,18 +13927,22 @@ impl TriangularFrustumSet {
         theTimeEnter: &mut f64,
         theTimeLeave: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RayCylinderIntersection(
-                self as *const Self,
-                theBottomRadius,
-                theTopRadius,
-                theHeight,
-                theLoc,
-                theRayDir,
-                theIsHollow,
-                theTimeEnter,
-                theTimeLeave,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RayCylinderIntersection(
+                    self as *const Self,
+                    theBottomRadius,
+                    theTopRadius,
+                    theHeight,
+                    theLoc,
+                    theRayDir,
+                    theIsHollow,
+                    theTimeEnter,
+                    theTimeLeave,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -10751,80 +13955,111 @@ impl TriangularFrustumSet {
         theIsFilled: bool,
         theTime: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RayCircleIntersection(
-                self as *const Self,
-                theRadius,
-                theLoc,
-                theRayDir,
-                theIsFilled,
-                theTime,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RayCircleIntersection(
+                    self as *const Self,
+                    theRadius,
+                    theLoc,
+                    theRayDir,
+                    theIsFilled,
+                    theTime,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_TriangularFrustumSet_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -10839,13 +14074,22 @@ unsafe impl crate::CppDeletable for HandleSelectMgrTriangularFrustumSet {
 impl HandleSelectMgrTriangularFrustumSet {
     /// Dereference this Handle to access the underlying SelectMgr_TriangularFrustumSet
     pub fn get(&self) -> &crate::ffi::SelectMgr_TriangularFrustumSet {
-        unsafe { &*(crate::ffi::HandleSelectMgrTriangularFrustumSet_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrTriangularFrustumSet_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_TriangularFrustumSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_TriangularFrustumSet {
-        unsafe {
-            &mut *(crate::ffi::HandleSelectMgrTriangularFrustumSet_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleSelectMgrTriangularFrustumSet_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -10853,12 +14097,14 @@ impl HandleSelectMgrTriangularFrustumSet {
     pub fn to_handle_base_frustum(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseFrustum> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrTriangularFrustumSet_to_HandleSelectMgrBaseFrustum(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10866,23 +14112,27 @@ impl HandleSelectMgrTriangularFrustumSet {
     pub fn to_handle_base_intersector(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrTriangularFrustumSet_to_HandleSelectMgrBaseIntersector(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<SelectMgr_TriangularFrustumSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrTriangularFrustumSet_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -10901,10 +14151,11 @@ impl TriangularFrustumSet_SelectionPolyline {
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx` - `SelectMgr_TriangularFrustumSet_SelectionPolyline::SelectMgr_TriangularFrustumSet_SelectionPolyline()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::SelectMgr_TriangularFrustumSet_SelectionPolyline_ctor(),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_TriangularFrustumSet_SelectionPolyline_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -10929,33 +14180,50 @@ impl ViewClipRange {
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:36 - `SelectMgr_ViewClipRange::SelectMgr_ViewClipRange()`
     /// Creates an empty clip range.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewClipRange_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_ViewClipRange_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:40 - `SelectMgr_ViewClipRange::IsClipped()`
     /// Check if the given depth is not within clipping range(s),
     /// e.g. TRUE means depth is clipped.
     pub fn is_clipped(&self, theDepth: f64) -> bool {
-        unsafe { crate::ffi::SelectMgr_ViewClipRange_is_clipped(self as *const Self, theDepth) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewClipRange_is_clipped(self as *const Self, theDepth)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:58 - `SelectMgr_ViewClipRange::GetNearestDepth()`
     /// Calculates the min not clipped value from the range.
     /// Returns FALSE if the whole range is clipped.
     pub fn get_nearest_depth(&self, theRange: &crate::bnd::Range, theDepth: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_get_nearest_depth(
-                self as *const Self,
-                theRange,
-                theDepth,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewClipRange_get_nearest_depth(
+                    self as *const Self,
+                    theRange,
+                    theDepth,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:102 - `SelectMgr_ViewClipRange::SetVoid()`
     /// Clears clipping range.
     pub fn set_void(&mut self) {
-        unsafe { crate::ffi::SelectMgr_ViewClipRange_set_void(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ViewClipRange_set_void(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:109 - `SelectMgr_ViewClipRange::AddClippingPlanes()`
@@ -10965,28 +14233,38 @@ impl ViewClipRange {
         thePlanes: &crate::graphic3d::SequenceOfHClipPlane,
         thePickRay: &crate::gp::Ax1,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_add_clipping_planes(
-                self as *mut Self,
-                thePlanes,
-                thePickRay,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewClipRange_add_clipping_planes(
+                    self as *mut Self,
+                    thePlanes,
+                    thePickRay,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:113 - `SelectMgr_ViewClipRange::ChangeUnclipRange()`
     /// Returns the main unclipped range; [-inf, inf] by default.
     pub fn change_unclip_range(&mut self) -> &mut crate::bnd::Range {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_ViewClipRange_change_unclip_range(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewClipRange_change_unclip_range(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_ViewClipRange.hxx`:116 - `SelectMgr_ViewClipRange::AddClipSubRange()`
     /// Adds a clipping sub-range (for clipping chains).
     pub fn add_clip_sub_range(&mut self, theRange: &crate::bnd::Range) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_add_clip_sub_range(self as *mut Self, theRange)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewClipRange_add_clip_sub_range(self as *mut Self, theRange)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -11038,57 +14316,90 @@ impl ViewerSelector {
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:92 - `SelectMgr_ViewerSelector::SelectMgr_ViewerSelector()`
     /// Constructs an empty selector object.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_ViewerSelector_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:87 - `SelectMgr_ViewerSelector::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_ViewerSelector_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ViewerSelector_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:95 - `SelectMgr_ViewerSelector::CustomPixelTolerance()`
     /// Returns custom pixel tolerance value.
     pub fn custom_pixel_tolerance(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_custom_pixel_tolerance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_custom_pixel_tolerance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:98 - `SelectMgr_ViewerSelector::SetPixelTolerance()`
     /// Sets the pixel tolerance <theTolerance>.
     pub fn set_pixel_tolerance(&mut self, theTolerance: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_pixel_tolerance(
-                self as *mut Self,
-                theTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_set_pixel_tolerance(
+                    self as *mut Self,
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:101 - `SelectMgr_ViewerSelector::Sensitivity()`
     /// Returns the largest sensitivity of picking
     pub fn sensitivity(&self) -> f64 {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_sensitivity(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ViewerSelector_sensitivity(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:104 - `SelectMgr_ViewerSelector::PixelTolerance()`
     /// Returns the largest pixel tolerance.
     pub fn pixel_tolerance(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_pixel_tolerance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_pixel_tolerance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:107 - `SelectMgr_ViewerSelector::SortResult()`
     /// Sorts the detected entities by priority and distance.
     pub fn sort_result(&self) {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_sort_result(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ViewerSelector_sort_result(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:111 - `SelectMgr_ViewerSelector::OnePicked()`
     /// Returns the picked element with the highest priority,
     /// and which is the closest to the last successful mouse position.
     pub fn one_picked(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_one_picked(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ViewerSelector_one_picked(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -11098,17 +14409,26 @@ impl ViewerSelector {
     /// considered only if entities have the same depth  within the tolerance. When flag is FALSE,
     /// entities with higher priority will be in front regardless of their depth (like x-ray).
     pub fn to_pick_closest(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_to_pick_closest(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_to_pick_closest(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:123 - `SelectMgr_ViewerSelector::SetPickClosest()`
     /// Set flag determining precedence of picked depth over entity priority in sorted results.
     pub fn set_pick_closest(&mut self, theToPreferClosest: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_pick_closest(
-                self as *mut Self,
-                theToPreferClosest,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_set_pick_closest(
+                    self as *mut Self,
+                    theToPreferClosest,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11116,11 +14436,12 @@ impl ViewerSelector {
     /// Return the type of tolerance for considering two entities having a similar depth (distance
     /// from eye to entity); SelectMgr_TypeOfDepthTolerance_SensitivityFactor by default.
     pub fn depth_tolerance_type(&self) -> crate::select_mgr::TypeOfDepthTolerance {
-        unsafe {
-            crate::select_mgr::TypeOfDepthTolerance::try_from(
-                crate::ffi::SelectMgr_ViewerSelector_depth_tolerance_type(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_depth_tolerance_type(self as *const Self)
+            };
+            crate::check_exception();
+            crate::select_mgr::TypeOfDepthTolerance::try_from(__result).unwrap()
         }
     }
 
@@ -11128,7 +14449,13 @@ impl ViewerSelector {
     /// Return the tolerance for considering two entities having a similar depth (distance from eye to
     /// entity).
     pub fn depth_tolerance(&self) -> f64 {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_depth_tolerance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_depth_tolerance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:140 - `SelectMgr_ViewerSelector::SetDepthTolerance()`
@@ -11144,42 +14471,57 @@ impl ViewerSelector {
         theType: crate::select_mgr::TypeOfDepthTolerance,
         theTolerance: f64,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_depth_tolerance(
-                self as *mut Self,
-                theType.into(),
-                theTolerance,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_set_depth_tolerance(
+                    self as *mut Self,
+                    theType.into(),
+                    theTolerance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:147 - `SelectMgr_ViewerSelector::NbPicked()`
     /// Returns the number of detected owners.
     pub fn nb_picked(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_nb_picked(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ViewerSelector_nb_picked(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:150 - `SelectMgr_ViewerSelector::ClearPicked()`
     /// Clears picking results.
     pub fn clear_picked(&mut self) {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_clear_picked(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ViewerSelector_clear_picked(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:153 - `SelectMgr_ViewerSelector::Clear()`
     /// Empties all the tables, removes all selections...
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ViewerSelector_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:157 - `SelectMgr_ViewerSelector::Picked()`
     /// Returns the entity Owner for the object picked at specified position.
     /// @param theRank rank of detected object within range 1...NbPicked()
     pub fn picked(&self, theRank: i32) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_picked(
-                self as *const Self,
-                theRank,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_picked(self as *const Self, theRank)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -11187,8 +14529,12 @@ impl ViewerSelector {
     /// Returns the Entity for the object picked at specified position.
     /// @param theRank rank of detected object within range 1...NbPicked()
     pub fn picked_data(&self, theRank: i32) -> &SortCriterion {
-        unsafe {
-            &*(crate::ffi::SelectMgr_ViewerSelector_picked_data(self as *const Self, theRank))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_picked_data(self as *const Self, theRank)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -11196,8 +14542,12 @@ impl ViewerSelector {
     /// Returns the Entity for the object picked at specified position.
     /// @param theRank rank of detected object within range 1...NbPicked()
     pub fn picked_entity(&self, theRank: i32) -> &crate::ffi::HandleSelect3DSensitiveEntity {
-        unsafe {
-            &*(crate::ffi::SelectMgr_ViewerSelector_picked_entity(self as *const Self, theRank))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_picked_entity(self as *const Self, theRank)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -11206,11 +14556,12 @@ impl ViewerSelector {
     /// for the object picked at specified position.
     /// @param theRank rank of detected object within range 1...NbPicked()
     pub fn picked_point(&self, theRank: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_picked_point(
-                self as *const Self,
-                theRank,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_picked_point(self as *const Self, theRank)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -11220,21 +14571,35 @@ impl ViewerSelector {
         &mut self,
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
     ) -> bool {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_remove_picked(self as *mut Self, theObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_remove_picked(self as *mut Self, theObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:180 - `SelectMgr_ViewerSelector::Contains()`
     pub fn contains(&self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_contains(self as *const Self, theObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_contains(self as *const Self, theObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:183 - `SelectMgr_ViewerSelector::EntitySetBuilder()`
     /// Returns the default builder used to construct BVH of entity set.
     pub fn entity_set_builder(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBVHBuilderdouble3> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_entity_set_builder(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_entity_set_builder(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -11243,11 +14608,14 @@ impl ViewerSelector {
     /// The new builder will be also assigned for already defined objects, but computed BVH trees will
     /// not be invalidated.
     pub fn set_entity_set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_entity_set_builder(
-                self as *mut Self,
-                theBuilder,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_set_entity_set_builder(
+                    self as *mut Self,
+                    theBuilder,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11263,13 +14631,17 @@ impl ViewerSelector {
         theModeList: &mut crate::ffi::TColStd_ListOfInteger,
         theWantedState: crate::select_mgr::StateOfSelection,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_modes(
-                self as *const Self,
-                theSelectableObject,
-                theModeList,
-                theWantedState.into(),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_modes(
+                    self as *const Self,
+                    theSelectableObject,
+                    theModeList,
+                    theWantedState.into(),
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -11282,12 +14654,16 @@ impl ViewerSelector {
         theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_is_active(
-                self as *const Self,
-                theSelectableObject,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_is_active(
+                    self as *const Self,
+                    theSelectableObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -11300,12 +14676,16 @@ impl ViewerSelector {
         theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_is_inside(
-                self as *const Self,
-                theSelectableObject,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_is_inside(
+                    self as *const Self,
+                    theSelectableObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -11315,14 +14695,15 @@ impl ViewerSelector {
         &self,
         theSelection: &crate::ffi::HandleSelectMgrSelection,
     ) -> crate::select_mgr::StateOfSelection {
-        unsafe {
-            crate::select_mgr::StateOfSelection::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_ViewerSelector_status_handleselectmgrselection(
                     self as *const Self,
                     theSelection,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::select_mgr::StateOfSelection::try_from(__result).unwrap()
         }
     }
 
@@ -11331,21 +14712,26 @@ impl ViewerSelector {
         &self,
         theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::SelectMgr_ViewerSelector_status_handleselectmgrselectableobject(
                     self as *const Self,
                     theSelectableObject,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:222 - `SelectMgr_ViewerSelector::ActiveOwners()`
     /// Returns the list of active entity owners
     pub fn active_owners(&self, theOwners: &mut crate::ffi::AIS_NListOfEntityOwner) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_active_owners(self as *const Self, theOwners)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_active_owners(self as *const Self, theOwners)
+            };
+            crate::check_exception();
         }
     }
 
@@ -11355,8 +14741,14 @@ impl ViewerSelector {
         &mut self,
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_add_selectable_object(self as *mut Self, theObject)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_add_selectable_object(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11367,12 +14759,15 @@ impl ViewerSelector {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theSelection: &crate::ffi::HandleSelectMgrSelection,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_add_selection_to_object(
-                self as *mut Self,
-                theObject,
-                theSelection,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_add_selection_to_object(
+                    self as *mut Self,
+                    theObject,
+                    theSelection,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11383,11 +14778,14 @@ impl ViewerSelector {
         &mut self,
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_move_selectable_object(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_move_selectable_object(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11397,11 +14795,14 @@ impl ViewerSelector {
         &mut self,
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_remove_selectable_object(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_remove_selectable_object(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11412,12 +14813,15 @@ impl ViewerSelector {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theSelection: &crate::ffi::HandleSelectMgrSelection,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_remove_selection_of_object(
-                self as *mut Self,
-                theObject,
-                theSelection,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_remove_selection_of_object(
+                    self as *mut Self,
+                    theObject,
+                    theSelection,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11425,8 +14829,14 @@ impl ViewerSelector {
     /// Marks BVH of selectable objects for rebuild. Parameter theIsForce set as true
     /// guarantees that 1st level BVH for the viewer selector will be rebuilt during this call
     pub fn rebuild_objects_tree(&mut self, theIsForce: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_rebuild_objects_tree(self as *mut Self, theIsForce)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_rebuild_objects_tree(
+                    self as *mut Self,
+                    theIsForce,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11439,34 +14849,51 @@ impl ViewerSelector {
         theObject: &crate::ffi::HandleSelectMgrSelectableObject,
         theIsForce: bool,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_rebuild_sensitives_tree(
-                self as *mut Self,
-                theObject,
-                theIsForce,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_rebuild_sensitives_tree(
+                    self as *mut Self,
+                    theObject,
+                    theIsForce,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:254 - `SelectMgr_ViewerSelector::GetManager()`
     /// Returns instance of selecting volume manager of the viewer selector
     pub fn get_manager(&mut self) -> &mut SelectingVolumeManager {
-        unsafe { &mut *(crate::ffi::SelectMgr_ViewerSelector_get_manager(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ViewerSelector_get_manager(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:257 - `SelectMgr_ViewerSelector::SelectableObjects()`
     /// Return map of selectable objects.
     pub fn selectable_objects(&self) -> &SelectableObjectSet {
-        unsafe { &*(crate::ffi::SelectMgr_ViewerSelector_selectable_objects(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_selectable_objects(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:260 - `SelectMgr_ViewerSelector::ResetSelectionActivationStatus()`
     /// Marks all added sensitive entities of all objects as non-selectable
     pub fn reset_selection_activation_status(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_reset_selection_activation_status(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_reset_selection_activation_status(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11475,11 +14902,14 @@ impl ViewerSelector {
     /// If theIsToAllow is false, only fully included sensitives will be detected, otherwise the
     /// algorithm will mark both included and overlapped entities as matched
     pub fn allow_overlap_detection(&mut self, theIsToAllow: bool) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_allow_overlap_detection(
-                self as *mut Self,
-                theIsToAllow,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_allow_overlap_detection(
+                    self as *mut Self,
+                    theIsToAllow,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11492,13 +14922,16 @@ impl ViewerSelector {
         theYPix: i32,
         theView: &crate::ffi::HandleV3dView,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_int2_handlev3dview(
-                self as *mut Self,
-                theXPix,
-                theYPix,
-                theView,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_pick_int2_handlev3dview(
+                    self as *mut Self,
+                    theXPix,
+                    theYPix,
+                    theView,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11514,15 +14947,18 @@ impl ViewerSelector {
         theYPMax: i32,
         theView: &crate::ffi::HandleV3dView,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_int4_handlev3dview(
-                self as *mut Self,
-                theXPMin,
-                theYPMin,
-                theXPMax,
-                theYPMax,
-                theView,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_pick_int4_handlev3dview(
+                    self as *mut Self,
+                    theXPMin,
+                    theYPMin,
+                    theXPMax,
+                    theYPMax,
+                    theView,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11533,12 +14969,15 @@ impl ViewerSelector {
         thePolyline: &crate::ffi::TColgp_Array1OfPnt2d,
         theView: &crate::ffi::HandleV3dView,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_array1ofpnt2d_handlev3dview(
-                self as *mut Self,
-                thePolyline,
-                theView,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_pick_array1ofpnt2d_handlev3dview(
+                    self as *mut Self,
+                    thePolyline,
+                    theView,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11551,12 +14990,15 @@ impl ViewerSelector {
         theAxis: &crate::gp::Ax1,
         theView: &crate::ffi::HandleV3dView,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_ax1_handlev3dview(
-                self as *mut Self,
-                theAxis,
-                theView,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_pick_ax1_handlev3dview(
+                    self as *mut Self,
+                    theAxis,
+                    theView,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -11575,31 +15017,43 @@ impl ViewerSelector {
         theType: crate::std_select::TypeOfSelectionImage,
         thePickedIndex: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_to_pix_map(
-                self as *mut Self,
-                theImage,
-                theView,
-                theType.into(),
-                thePickedIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_to_pix_map(
+                    self as *mut Self,
+                    theImage,
+                    theView,
+                    theType.into(),
+                    thePickedIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:306 - `SelectMgr_ViewerSelector::DisplaySensitive()`
     /// Displays sensitives in view <theView>.
     pub fn display_sensitive_handlev3dview(&mut self, theView: &crate::ffi::HandleV3dView) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_display_sensitive_handlev3dview(
-                self as *mut Self,
-                theView,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_display_sensitive_handlev3dview(
+                    self as *mut Self,
+                    theView,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:308 - `SelectMgr_ViewerSelector::ClearSensitive()`
     pub fn clear_sensitive(&mut self, theView: &crate::ffi::HandleV3dView) {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_clear_sensitive(self as *mut Self, theView) }
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_clear_sensitive(self as *mut Self, theView)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:310 - `SelectMgr_ViewerSelector::DisplaySensitive()`
@@ -11610,70 +15064,98 @@ impl ViewerSelector {
         theView: &crate::ffi::HandleV3dView,
         theToClearOthers: bool,
     ) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_display_sensitive_handleselectmgrselection_trsf_handlev3dview_bool(self as *mut Self, theSel, theTrsf, theView, theToClearOthers)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_display_sensitive_handleselectmgrselection_trsf_handlev3dview_bool(self as *mut Self, theSel, theTrsf, theView, theToClearOthers)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:320 - `SelectMgr_ViewerSelector::SetToPrebuildBVH()`
     /// Enables/disables building BVH for sensitives in separate threads
     pub fn set_to_prebuild_bvh(&mut self, theToPrebuild: bool, theThreadsNum: i32) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_to_prebuild_bvh(
-                self as *mut Self,
-                theToPrebuild,
-                theThreadsNum,
-            )
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_set_to_prebuild_bvh(
+                    self as *mut Self,
+                    theToPrebuild,
+                    theThreadsNum,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:324 - `SelectMgr_ViewerSelector::QueueBVHBuild()`
     /// Queues a sensitive entity to build its BVH
     pub fn queue_bvh_build(&mut self, theEntity: &crate::ffi::HandleSelect3DSensitiveEntity) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_queue_bvh_build(self as *mut Self, theEntity)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_queue_bvh_build(self as *mut Self, theEntity)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:327 - `SelectMgr_ViewerSelector::WaitForBVHBuild()`
     /// Waits BVH threads finished building
     pub fn wait_for_bvh_build(&mut self) {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_wait_for_bvh_build(self as *mut Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ViewerSelector_wait_for_bvh_build(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:330 - `SelectMgr_ViewerSelector::ToPrebuildBVH()`
     /// Returns TRUE if building BVH for sensitives in separate threads is enabled
     pub fn to_prebuild_bvh(&self) -> bool {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_to_prebuild_bvh(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_to_prebuild_bvh(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:87 - `SelectMgr_ViewerSelector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::SelectMgr_ViewerSelector_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_ViewerSelector_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:87 - `SelectMgr_ViewerSelector::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::SelectMgr_ViewerSelector_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::SelectMgr_ViewerSelector_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::SelectMgr_ViewerSelector_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::SelectMgr_ViewerSelector_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -11681,62 +15163,95 @@ impl ViewerSelector {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrViewerSelector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SelectMgr_ViewerSelector_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::SelectMgr_ViewerSelector_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::SelectMgr_ViewerSelector_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::SelectMgr_ViewerSelector_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::SelectMgr_ViewerSelector_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::SelectMgr_ViewerSelector_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -11751,22 +15266,34 @@ unsafe impl crate::CppDeletable for HandleSelectMgrViewerSelector {
 impl HandleSelectMgrViewerSelector {
     /// Dereference this Handle to access the underlying SelectMgr_ViewerSelector
     pub fn get(&self) -> &crate::ffi::SelectMgr_ViewerSelector {
-        unsafe { &*(crate::ffi::HandleSelectMgrViewerSelector_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrViewerSelector_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_ViewerSelector
     pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_ViewerSelector {
-        unsafe { &mut *(crate::ffi::HandleSelectMgrViewerSelector_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleSelectMgrViewerSelector_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<SelectMgr_ViewerSelector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleSelectMgrViewerSelector_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

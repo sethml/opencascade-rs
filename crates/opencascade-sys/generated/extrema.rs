@@ -109,7 +109,11 @@ unsafe impl crate::CppDeletable for CCLocFOfLocECC {
 impl CCLocFOfLocECC {
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:44 - `Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC()`
     pub fn new_real(thetol: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CCLocFOfLocECC_ctor_real(thetol)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CCLocFOfLocECC_ctor_real(thetol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:46 - `Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC()`
@@ -118,10 +122,11 @@ impl CCLocFOfLocECC {
         C2: &crate::adaptor3d::Curve,
         thetol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_CCLocFOfLocECC_ctor_curve2_real(
-                C1, C2, thetol,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_ctor_curve2_real(C1, C2, thetol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -140,28 +145,49 @@ impl CCLocFOfLocECC {
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:50 - `Extrema_CCLocFOfLocECC::SetCurve()`
     pub fn set_curve(&mut self, theRank: i32, C1: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_set_curve(self as *mut Self, theRank, C1) }
+        {
+            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_set_curve(self as *mut Self, theRank, C1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:52 - `Extrema_CCLocFOfLocECC::SetTolerance()`
     pub fn set_tolerance(&mut self, theTol: f64) {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_set_tolerance(self as *mut Self, theTol) }
+        {
+            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_set_tolerance(self as *mut Self, theTol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:54 - `Extrema_CCLocFOfLocECC::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:56 - `Extrema_CCLocFOfLocECC::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:59 - `Extrema_CCLocFOfLocECC::Value()`
     /// Calculate Fi(U,V).
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_value(self as *mut Self, UV, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_value(self as *mut Self, UV, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:63 - `Extrema_CCLocFOfLocECC::Derivatives()`
@@ -171,7 +197,13 @@ impl CCLocFOfLocECC {
         UV: &crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_derivatives(self as *mut Self, UV, DF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_derivatives(self as *mut Self, UV, DF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:67 - `Extrema_CCLocFOfLocECC::Values()`
@@ -182,45 +214,80 @@ impl CCLocFOfLocECC {
         F: &mut crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_values(self as *mut Self, UV, F, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_values(self as *mut Self, UV, F, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:72 - `Extrema_CCLocFOfLocECC::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_get_state_number(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_get_state_number(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:75 - `Extrema_CCLocFOfLocECC::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:78 - `Extrema_CCLocFOfLocECC::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_square_distance(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:81 - `Extrema_CCLocFOfLocECC::Points()`
     /// Return the points of the Nth extreme distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr()`
     /// Returns a pointer to the curve specified in the constructor
     /// or in SetCurve() method.
     pub unsafe fn curve_ptr(&self, theRank: i32) -> *mut std::ffi::c_void {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_curve_ptr(self as *const Self, theRank) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_curve_ptr(self as *const Self, theRank)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:91 - `Extrema_CCLocFOfLocECC::Tolerance()`
     /// Returns a tolerance specified in the constructor
     /// or in SetTolerance() method.
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:94 - `Extrema_CCLocFOfLocECC::SubIntervalInitialize()`
@@ -230,12 +297,15 @@ impl CCLocFOfLocECC {
         theUfirst: &crate::ffi::math_Vector,
         theUlast: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Extrema_CCLocFOfLocECC_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -243,17 +313,27 @@ impl CCLocFOfLocECC {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub unsafe fn search_of_tolerance(&mut self, C: *mut std::ffi::c_void) -> f64 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC_search_of_tolerance(self as *mut Self, C) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_search_of_tolerance(self as *mut Self, C)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -261,22 +341,36 @@ impl CCLocFOfLocECC {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -297,7 +391,11 @@ unsafe impl crate::CppDeletable for CCLocFOfLocECC2d {
 impl CCLocFOfLocECC2d {
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:44 - `Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d()`
     pub fn new_real(thetol: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_real(thetol)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_real(thetol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:46 - `Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d()`
@@ -306,10 +404,11 @@ impl CCLocFOfLocECC2d {
         C2: &crate::adaptor2d::Curve2d,
         thetol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_curve2d2_real(
-                C1, C2, thetol,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_curve2d2_real(C1, C2, thetol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -328,28 +427,53 @@ impl CCLocFOfLocECC2d {
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:50 - `Extrema_CCLocFOfLocECC2d::SetCurve()`
     pub fn set_curve(&mut self, theRank: i32, C1: &crate::adaptor2d::Curve2d) {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_set_curve(self as *mut Self, theRank, C1) }
+        {
+            unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_set_curve(self as *mut Self, theRank, C1)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:52 - `Extrema_CCLocFOfLocECC2d::SetTolerance()`
     pub fn set_tolerance(&mut self, theTol: f64) {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_set_tolerance(self as *mut Self, theTol) }
+        {
+            unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_set_tolerance(self as *mut Self, theTol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:54 - `Extrema_CCLocFOfLocECC2d::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:56 - `Extrema_CCLocFOfLocECC2d::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:59 - `Extrema_CCLocFOfLocECC2d::Value()`
     /// Calculate Fi(U,V).
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_value(self as *mut Self, UV, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_value(self as *mut Self, UV, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:63 - `Extrema_CCLocFOfLocECC2d::Derivatives()`
@@ -359,7 +483,13 @@ impl CCLocFOfLocECC2d {
         UV: &crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_derivatives(self as *mut Self, UV, DF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_derivatives(self as *mut Self, UV, DF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:67 - `Extrema_CCLocFOfLocECC2d::Values()`
@@ -370,45 +500,81 @@ impl CCLocFOfLocECC2d {
         F: &mut crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_values(self as *mut Self, UV, F, DF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_values(self as *mut Self, UV, F, DF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:72 - `Extrema_CCLocFOfLocECC2d::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_get_state_number(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_get_state_number(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:75 - `Extrema_CCLocFOfLocECC2d::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:78 - `Extrema_CCLocFOfLocECC2d::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_square_distance(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:81 - `Extrema_CCLocFOfLocECC2d::Points()`
     /// Return the points of the Nth extreme distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr()`
     /// Returns a pointer to the curve specified in the constructor
     /// or in SetCurve() method.
     pub unsafe fn curve_ptr(&self, theRank: i32) -> *mut std::ffi::c_void {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_curve_ptr(self as *const Self, theRank) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_curve_ptr(self as *const Self, theRank)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:91 - `Extrema_CCLocFOfLocECC2d::Tolerance()`
     /// Returns a tolerance specified in the constructor
     /// or in SetTolerance() method.
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_tolerance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:94 - `Extrema_CCLocFOfLocECC2d::SubIntervalInitialize()`
@@ -418,12 +584,15 @@ impl CCLocFOfLocECC2d {
         theUfirst: &crate::ffi::math_Vector,
         theUlast: &crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Extrema_CCLocFOfLocECC2d_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -431,17 +600,27 @@ impl CCLocFOfLocECC2d {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub unsafe fn search_of_tolerance(&mut self, C: *mut std::ffi::c_void) -> f64 {
-        unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_search_of_tolerance(self as *mut Self, C) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_search_of_tolerance(self as *mut Self, C)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -449,22 +628,36 @@ impl CCLocFOfLocECC2d {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -486,23 +679,37 @@ impl Curve2dTool {
     /// **Source:** `Extrema_Curve2dTool.hxx` - `Extrema_Curve2dTool::Extrema_Curve2dTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:47 - `Extrema_Curve2dTool::FirstParameter()`
     pub fn first_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_first_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_first_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:49 - `Extrema_Curve2dTool::LastParameter()`
     pub fn last_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_last_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_last_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:51 - `Extrema_Curve2dTool::Continuity()`
     pub fn continuity(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::Extrema_Curve2dTool_continuity(C)).unwrap()
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_continuity(C) };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
@@ -511,7 +718,11 @@ impl Curve2dTool {
     /// continuity <S>.     And   returns  the  number  of
     /// intervals.
     pub fn nb_intervals(C: &crate::adaptor2d::Curve2d, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S.into()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S.into()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:60 - `Extrema_Curve2dTool::Intervals()`
@@ -522,7 +733,10 @@ impl Curve2dTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
-        unsafe { crate::ffi::Extrema_Curve2dTool_intervals(C, T, S.into()) }
+        {
+            unsafe { crate::ffi::Extrema_Curve2dTool_intervals(C, T, S.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:65 - `Extrema_Curve2dTool::DeflCurvIntervals()`
@@ -531,34 +745,57 @@ impl Curve2dTool {
     pub fn defl_curv_intervals(
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_defl_curv_intervals(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_defl_curv_intervals(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:68 - `Extrema_Curve2dTool::IsClosed()`
     pub fn is_closed(C: &crate::adaptor2d::Curve2d) -> bool {
-        unsafe { crate::ffi::Extrema_Curve2dTool_is_closed(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_is_closed(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:70 - `Extrema_Curve2dTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::adaptor2d::Curve2d) -> bool {
-        unsafe { crate::ffi::Extrema_Curve2dTool_is_periodic(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_is_periodic(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:72 - `Extrema_Curve2dTool::Period()`
     pub fn period(C: &crate::adaptor2d::Curve2d) -> f64 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_period(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_period(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:75 - `Extrema_Curve2dTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(C: &crate::adaptor2d::Curve2d, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_value(C, U)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_value(C, U) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:78 - `Extrema_Curve2dTool::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::adaptor2d::Curve2d, U: f64, P: &mut crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_Curve2dTool_d0(C, U, P) }
+        {
+            unsafe { crate::ffi::Extrema_Curve2dTool_d0(C, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:82 - `Extrema_Curve2dTool::D1()`
@@ -570,7 +807,10 @@ impl Curve2dTool {
         P: &mut crate::gp::Pnt2d,
         V: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Extrema_Curve2dTool_d1(C, U, P, V) }
+        {
+            unsafe { crate::ffi::Extrema_Curve2dTool_d1(C, U, P, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:86 - `Extrema_Curve2dTool::D2()`
@@ -583,7 +823,10 @@ impl Curve2dTool {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Extrema_Curve2dTool_d2(C, U, P, V1, V2) }
+        {
+            unsafe { crate::ffi::Extrema_Curve2dTool_d2(C, U, P, V1, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:94 - `Extrema_Curve2dTool::D3()`
@@ -597,21 +840,32 @@ impl Curve2dTool {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        unsafe { crate::ffi::Extrema_Curve2dTool_d3(C, U, P, V1, V2, V3) }
+        {
+            unsafe { crate::ffi::Extrema_Curve2dTool_d3(C, U, P, V1, V2, V3) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:103 - `Extrema_Curve2dTool::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     pub fn dn(C: &crate::adaptor2d::Curve2d, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_dn(C, U, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_dn(C, U, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:107 - `Extrema_Curve2dTool::Resolution()`
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(C: &crate::adaptor2d::Curve2d, R3d: f64) -> f64 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_resolution(C, R3d) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_resolution(C, R3d) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:112 - `Extrema_Curve2dTool::GetType()`
@@ -619,69 +873,114 @@ impl Curve2dTool {
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::Extrema_Curve2dTool_get_type(C))
-                .unwrap()
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_get_type(C) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:114 - `Extrema_Curve2dTool::Line()`
     pub fn line(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_line(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_line(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:116 - `Extrema_Curve2dTool::Circle()`
     pub fn circle(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_circle(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_circle(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:118 - `Extrema_Curve2dTool::Ellipse()`
     pub fn ellipse(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_ellipse(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_ellipse(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:120 - `Extrema_Curve2dTool::Hyperbola()`
     pub fn hyperbola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_hyperbola(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_hyperbola(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:122 - `Extrema_Curve2dTool::Parabola()`
     pub fn parabola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_parabola(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_parabola(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:124 - `Extrema_Curve2dTool::Degree()`
     pub fn degree(C: &crate::adaptor2d::Curve2d) -> i32 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_degree(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_degree(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:126 - `Extrema_Curve2dTool::IsRational()`
     pub fn is_rational(C: &crate::adaptor2d::Curve2d) -> bool {
-        unsafe { crate::ffi::Extrema_Curve2dTool_is_rational(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_is_rational(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:128 - `Extrema_Curve2dTool::NbPoles()`
     pub fn nb_poles(C: &crate::adaptor2d::Curve2d) -> i32 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_nb_poles(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_nb_poles(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:130 - `Extrema_Curve2dTool::NbKnots()`
     pub fn nb_knots(C: &crate::adaptor2d::Curve2d) -> i32 {
-        unsafe { crate::ffi::Extrema_Curve2dTool_nb_knots(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_nb_knots(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:132 - `Extrema_Curve2dTool::Bezier()`
     pub fn bezier(
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_bezier(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_bezier(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_Curve2dTool.hxx`:134 - `Extrema_Curve2dTool::BSpline()`
     pub fn b_spline(
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_Curve2dTool_b_spline(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_Curve2dTool_b_spline(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -702,23 +1001,37 @@ impl CurveTool {
     /// **Source:** `Extrema_CurveTool.hxx` - `Extrema_CurveTool::Extrema_CurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:47 - `Extrema_CurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::adaptor3d::Curve) -> f64 {
-        unsafe { crate::ffi::Extrema_CurveTool_first_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_first_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:49 - `Extrema_CurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::adaptor3d::Curve) -> f64 {
-        unsafe { crate::ffi::Extrema_CurveTool_last_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_last_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:51 - `Extrema_CurveTool::Continuity()`
     pub fn continuity(C: &crate::adaptor3d::Curve) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::Extrema_CurveTool_continuity(C)).unwrap()
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_continuity(C) };
+            crate::check_exception();
+            crate::geom_abs::Shape::try_from(__result).unwrap()
         }
     }
 
@@ -726,7 +1039,11 @@ impl CurveTool {
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(C: &mut crate::adaptor3d::Curve, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Extrema_CurveTool_nb_intervals(C, S.into()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_nb_intervals(C, S.into()) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:62 - `Extrema_CurveTool::Intervals()`
@@ -740,7 +1057,10 @@ impl CurveTool {
         T: &mut crate::ffi::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
-        unsafe { crate::ffi::Extrema_CurveTool_intervals(C, T, S.into()) }
+        {
+            unsafe { crate::ffi::Extrema_CurveTool_intervals(C, T, S.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:67 - `Extrema_CurveTool::DeflCurvIntervals()`
@@ -749,44 +1069,72 @@ impl CurveTool {
     pub fn defl_curv_intervals(
         C: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_defl_curv_intervals(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_defl_curv_intervals(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:69 - `Extrema_CurveTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::adaptor3d::Curve) -> bool {
-        unsafe { crate::ffi::Extrema_CurveTool_is_periodic(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_is_periodic(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:71 - `Extrema_CurveTool::Period()`
     pub fn period(C: &crate::adaptor3d::Curve) -> f64 {
-        unsafe { crate::ffi::Extrema_CurveTool_period(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_period(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:73 - `Extrema_CurveTool::Resolution()`
     pub fn resolution(C: &crate::adaptor3d::Curve, R3d: f64) -> f64 {
-        unsafe { crate::ffi::Extrema_CurveTool_resolution(C, R3d) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_resolution(C, R3d) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:75 - `Extrema_CurveTool::GetType()`
     pub fn get_type(C: &crate::adaptor3d::Curve) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::Extrema_CurveTool_get_type(C)).unwrap()
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_get_type(C) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:77 - `Extrema_CurveTool::Value()`
     pub fn value(C: &crate::adaptor3d::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_value(C, U)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_value(C, U) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:79 - `Extrema_CurveTool::D0()`
     pub fn d0(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_CurveTool_d0(C, U, P) }
+        {
+            unsafe { crate::ffi::Extrema_CurveTool_d0(C, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:81 - `Extrema_CurveTool::D1()`
     pub fn d1(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        unsafe { crate::ffi::Extrema_CurveTool_d1(C, U, P, V) }
+        {
+            unsafe { crate::ffi::Extrema_CurveTool_d1(C, U, P, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:83 - `Extrema_CurveTool::D2()`
@@ -797,7 +1145,10 @@ impl CurveTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2) }
+        {
+            unsafe { crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:89 - `Extrema_CurveTool::D3()`
@@ -809,71 +1160,122 @@ impl CurveTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3) }
+        {
+            unsafe { crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:96 - `Extrema_CurveTool::DN()`
     pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_dn(C, U, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_dn(C, U, N) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:98 - `Extrema_CurveTool::Line()`
     pub fn line(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Lin> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_line(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_line(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:100 - `Extrema_CurveTool::Circle()`
     pub fn circle(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Circ> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_circle(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_circle(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:102 - `Extrema_CurveTool::Ellipse()`
     pub fn ellipse(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Elips> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_ellipse(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_ellipse(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:104 - `Extrema_CurveTool::Hyperbola()`
     pub fn hyperbola(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Hypr> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_hyperbola(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_hyperbola(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:106 - `Extrema_CurveTool::Parabola()`
     pub fn parabola(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Parab> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_parabola(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_parabola(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:108 - `Extrema_CurveTool::Degree()`
     pub fn degree(C: &crate::adaptor3d::Curve) -> i32 {
-        unsafe { crate::ffi::Extrema_CurveTool_degree(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_degree(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:110 - `Extrema_CurveTool::IsRational()`
     pub fn is_rational(C: &crate::adaptor3d::Curve) -> bool {
-        unsafe { crate::ffi::Extrema_CurveTool_is_rational(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_is_rational(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:112 - `Extrema_CurveTool::NbPoles()`
     pub fn nb_poles(C: &crate::adaptor3d::Curve) -> i32 {
-        unsafe { crate::ffi::Extrema_CurveTool_nb_poles(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_nb_poles(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:114 - `Extrema_CurveTool::NbKnots()`
     pub fn nb_knots(C: &crate::adaptor3d::Curve) -> i32 {
-        unsafe { crate::ffi::Extrema_CurveTool_nb_knots(C) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_nb_knots(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:116 - `Extrema_CurveTool::Bezier()`
     pub fn bezier(
         C: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_bezier(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_bezier(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:118 - `Extrema_CurveTool::BSpline()`
     pub fn b_spline(
         C: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_b_spline(C)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_CurveTool_b_spline(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
@@ -896,7 +1298,11 @@ impl ECC {
     /// between Uinf and Usup for C1 and  between Vinf and Vsup
     /// for C2.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ECC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:48 - `Extrema_ECC::Extrema_ECC()`
@@ -908,7 +1314,11 @@ impl ECC {
         C1: &crate::adaptor3d::Curve,
         C2: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ECC_ctor_curve2(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC_ctor_curve2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:53 - `Extrema_ECC::Extrema_ECC()`
@@ -923,10 +1333,12 @@ impl ECC {
         Vinf: f64,
         Vsup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ECC_ctor_curve2_real4(
-                C1, C2, Uinf, Usup, Vinf, Vsup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ECC_ctor_curve2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -941,68 +1353,113 @@ impl ECC {
         Vinf: f64,
         Vsup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ECC_set_params(self as *mut Self, C1, C2, Uinf, Usup, Vinf, Vsup)
+        {
+            unsafe {
+                crate::ffi::Extrema_ECC_set_params(
+                    self as *mut Self,
+                    C1,
+                    C2,
+                    Uinf,
+                    Usup,
+                    Vinf,
+                    Vsup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:68 - `Extrema_ECC::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ECC_set_tolerance(self as *mut Self, Tol) }
+        {
+            unsafe { crate::ffi::Extrema_ECC_set_tolerance(self as *mut Self, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:71 - `Extrema_ECC::SetSingleSolutionFlag()`
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
-        unsafe {
-            crate::ffi::Extrema_ECC_set_single_solution_flag(
-                self as *mut Self,
-                theSingleSolutionFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ECC_set_single_solution_flag(
+                    self as *mut Self,
+                    theSingleSolutionFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:74 - `Extrema_ECC::GetSingleSolutionFlag()`
     /// Get flag for single extrema computation. Works on parametric solver only.
     pub fn get_single_solution_flag(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ECC_get_single_solution_flag(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ECC_get_single_solution_flag(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:77 - `Extrema_ECC::Perform()`
     /// Performs calculations.
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::Extrema_ECC_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Extrema_ECC_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:80 - `Extrema_ECC::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ECC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:83 - `Extrema_ECC::IsParallel()`
     /// Returns state of myParallel flag.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ECC_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:86 - `Extrema_ECC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ECC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:89 - `Extrema_ECC::SquareDistance()`
     /// Returns the value of the Nth square extremum distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ECC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ECC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:93 - `Extrema_ECC::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
-        unsafe { crate::ffi::Extrema_ECC_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ECC_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1025,7 +1482,11 @@ impl ECC2d {
     /// between Uinf and Usup for C1 and  between Vinf and Vsup
     /// for C2.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ECC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:46 - `Extrema_ECC2d::Extrema_ECC2d()`
@@ -1037,7 +1498,11 @@ impl ECC2d {
         C1: &crate::adaptor2d::Curve2d,
         C2: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ECC2d_ctor_curve2d2(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC2d_ctor_curve2d2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:51 - `Extrema_ECC2d::Extrema_ECC2d()`
@@ -1052,10 +1517,12 @@ impl ECC2d {
         Vinf: f64,
         Vsup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ECC2d_ctor_curve2d2_real4(
-                C1, C2, Uinf, Usup, Vinf, Vsup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ECC2d_ctor_curve2d2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1070,68 +1537,113 @@ impl ECC2d {
         Vinf: f64,
         Vsup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ECC2d_set_params(self as *mut Self, C1, C2, Uinf, Usup, Vinf, Vsup)
+        {
+            unsafe {
+                crate::ffi::Extrema_ECC2d_set_params(
+                    self as *mut Self,
+                    C1,
+                    C2,
+                    Uinf,
+                    Usup,
+                    Vinf,
+                    Vsup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:66 - `Extrema_ECC2d::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ECC2d_set_tolerance(self as *mut Self, Tol) }
+        {
+            unsafe { crate::ffi::Extrema_ECC2d_set_tolerance(self as *mut Self, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:69 - `Extrema_ECC2d::SetSingleSolutionFlag()`
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
-        unsafe {
-            crate::ffi::Extrema_ECC2d_set_single_solution_flag(
-                self as *mut Self,
-                theSingleSolutionFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ECC2d_set_single_solution_flag(
+                    self as *mut Self,
+                    theSingleSolutionFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:72 - `Extrema_ECC2d::GetSingleSolutionFlag()`
     /// Get flag for single extrema computation. Works on parametric solver only.
     pub fn get_single_solution_flag(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ECC2d_get_single_solution_flag(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ECC2d_get_single_solution_flag(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:75 - `Extrema_ECC2d::Perform()`
     /// Performs calculations.
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::Extrema_ECC2d_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Extrema_ECC2d_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:78 - `Extrema_ECC2d::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ECC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:81 - `Extrema_ECC2d::IsParallel()`
     /// Returns state of myParallel flag.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ECC2d_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC2d_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:84 - `Extrema_ECC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ECC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ECC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:87 - `Extrema_ECC2d::SquareDistance()`
     /// Returns the value of the Nth square extremum distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ECC2d_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ECC2d_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:91 - `Extrema_ECC2d::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        unsafe { crate::ffi::Extrema_ECC2d_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ECC2d_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1151,7 +1663,11 @@ unsafe impl crate::CppDeletable for ELPCOfLocateExtPC {
 impl ELPCOfLocateExtPC {
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:48 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ELPCOfLocateExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:59 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
@@ -1171,10 +1687,12 @@ impl ELPCOfLocateExtPC {
         Usup: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real3(
-                P, C, Uinf, Usup, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real3(P, C, Uinf, Usup, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1192,10 +1710,11 @@ impl ELPCOfLocateExtPC {
         C: &crate::adaptor3d::Curve,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real(
-                P, C, TolF,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real(P, C, TolF) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1234,8 +1753,17 @@ impl ELPCOfLocateExtPC {
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:78 - `Extrema_ELPCOfLocateExtPC::Initialize()`
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_ELPCOfLocateExtPC_initialize(self as *mut Self, C, Uinf, Usup, TolF)
+        {
+            unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC_initialize(
+                    self as *mut Self,
+                    C,
+                    Uinf,
+                    Usup,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1243,38 +1771,67 @@ impl ELPCOfLocateExtPC {
     /// An exception is raised if the fields have not been
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:88 - `Extrema_ELPCOfLocateExtPC::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:91 - `Extrema_ELPCOfLocateExtPC::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_square_distance(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:94 - `Extrema_ELPCOfLocateExtPC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:98 - `Extrema_ELPCOfLocateExtPC::IsMin()`
     /// Returns True if the <N>th extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_is_min(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:101 - `Extrema_ELPCOfLocateExtPC::Point()`
     /// Returns the point of the <N>th extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_ELPCOfLocateExtPC_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:108 - `Extrema_ELPCOfLocateExtPC::TrimmedSquareDistances()`
@@ -1290,14 +1847,17 @@ impl ELPCOfLocateExtPC {
         P1: &mut crate::gp::Pnt,
         P2: &mut crate::gp::Pnt,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ELPCOfLocateExtPC_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC_trimmed_square_distances(
+                    self as *const Self,
+                    dist1,
+                    dist2,
+                    P1,
+                    P2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1318,7 +1878,11 @@ unsafe impl crate::CppDeletable for ELPCOfLocateExtPC2d {
 impl ELPCOfLocateExtPC2d {
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:48 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:59 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
@@ -1338,12 +1902,14 @@ impl ELPCOfLocateExtPC2d {
         Usup: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real3(
                     P, C, Uinf, Usup, TolF,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1361,10 +1927,12 @@ impl ELPCOfLocateExtPC2d {
         C: &crate::adaptor2d::Curve2d,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1406,14 +1974,17 @@ impl ELPCOfLocateExtPC2d {
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:78 - `Extrema_ELPCOfLocateExtPC2d::Initialize()`
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Uinf: f64, Usup: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_ELPCOfLocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-                Uinf,
-                Usup,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC2d_initialize(
+                    self as *mut Self,
+                    C,
+                    Uinf,
+                    Usup,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1421,38 +1992,67 @@ impl ELPCOfLocateExtPC2d {
     /// An exception is raised if the fields have not been
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:88 - `Extrema_ELPCOfLocateExtPC2d::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:91 - `Extrema_ELPCOfLocateExtPC2d::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_square_distance(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC2d_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:94 - `Extrema_ELPCOfLocateExtPC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:98 - `Extrema_ELPCOfLocateExtPC2d::IsMin()`
     /// Returns True if the <N>th extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:101 - `Extrema_ELPCOfLocateExtPC2d::Point()`
     /// Returns the point of the <N>th extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_ELPCOfLocateExtPC2d_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:108 - `Extrema_ELPCOfLocateExtPC2d::TrimmedSquareDistances()`
@@ -1468,14 +2068,17 @@ impl ELPCOfLocateExtPC2d {
         P1: &mut crate::gp::Pnt2d,
         P2: &mut crate::gp::Pnt2d,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ELPCOfLocateExtPC2d_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ELPCOfLocateExtPC2d_trimmed_square_distances(
+                    self as *const Self,
+                    dist1,
+                    dist2,
+                    P1,
+                    P2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1496,7 +2099,11 @@ unsafe impl crate::CppDeletable for EPCOfELPCOfLocateExtPC {
 impl EPCOfELPCOfLocateExtPC {
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:40 - `Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:52 - `Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC()`
@@ -1517,12 +2124,14 @@ impl EPCOfELPCOfLocateExtPC {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor_pnt_curve_int_real2(
                     P, C, NbU, TolU, TolF,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1547,12 +2156,14 @@ impl EPCOfELPCOfLocateExtPC {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor_pnt_curve_int_real4(
                     P, C, NbU, Umin, Usup, TolU, TolF,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1565,14 +2176,17 @@ impl EPCOfELPCOfLocateExtPC {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real2(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1587,37 +2201,48 @@ impl EPCOfELPCOfLocateExtPC {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real4(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:92 - `Extrema_EPCOfELPCOfLocateExtPC::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_curve(&mut self, C: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve(self as *mut Self, C) }
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve(self as *mut Self, C)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:95 - `Extrema_EPCOfELPCOfLocateExtPC::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_int_real4(
+                    self as *mut Self,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1626,26 +2251,43 @@ impl EPCOfELPCOfLocateExtPC {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:107 - `Extrema_EPCOfELPCOfLocateExtPC::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:110 - `Extrema_EPCOfELPCOfLocateExtPC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:113 - `Extrema_EPCOfELPCOfLocateExtPC::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_square_distance(self as *const Self, N)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1653,13 +2295,24 @@ impl EPCOfELPCOfLocateExtPC {
     /// Returns True if the Nth extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_is_min(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:120 - `Extrema_EPCOfELPCOfLocateExtPC::Point()`
     /// Returns the point of the Nth extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1679,7 +2332,11 @@ unsafe impl crate::CppDeletable for EPCOfELPCOfLocateExtPC2d {
 impl EPCOfELPCOfLocateExtPC2d {
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:41 - `Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:53 - `Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d()`
@@ -1700,12 +2357,14 @@ impl EPCOfELPCOfLocateExtPC2d {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_int_real2(
                     P, C, NbU, TolU, TolF,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1730,12 +2389,14 @@ impl EPCOfELPCOfLocateExtPC2d {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_int_real4(
                     P, C, NbU, Umin, Usup, TolU, TolF,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1748,14 +2409,17 @@ impl EPCOfELPCOfLocateExtPC2d {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real2(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1770,39 +2434,51 @@ impl EPCOfELPCOfLocateExtPC2d {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real4(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:93 - `Extrema_EPCOfELPCOfLocateExtPC2d::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d(self as *mut Self, C)
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d(
+                    self as *mut Self,
+                    C,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:96 - `Extrema_EPCOfELPCOfLocateExtPC2d::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_int_real4(
+                    self as *mut Self,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1811,26 +2487,44 @@ impl EPCOfELPCOfLocateExtPC2d {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:108 - `Extrema_EPCOfELPCOfLocateExtPC2d::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_is_done(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:111 - `Extrema_EPCOfELPCOfLocateExtPC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:114 - `Extrema_EPCOfELPCOfLocateExtPC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_square_distance(self as *const Self, N)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1838,13 +2532,25 @@ impl EPCOfELPCOfLocateExtPC2d {
     /// Returns True if the Nth extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_is_min(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:121 - `Extrema_EPCOfELPCOfLocateExtPC2d::Point()`
     /// Returns the point of the Nth extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_point(self as *const Self, N)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_point(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1864,7 +2570,11 @@ unsafe impl crate::CppDeletable for EPCOfExtPC {
 impl EPCOfExtPC {
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:40 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_EPCOfExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:52 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
@@ -1885,10 +2595,12 @@ impl EPCOfExtPC {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2(
-                P, C, NbU, TolU, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2(P, C, NbU, TolU, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1913,10 +2625,14 @@ impl EPCOfExtPC {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4(
-                P, C, NbU, Umin, Usup, TolU, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4(
+                    P, C, NbU, Umin, Usup, TolU, TolF,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1929,14 +2645,17 @@ impl EPCOfExtPC {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfExtPC_initialize_curve_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfExtPC_initialize_curve_int_real2(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1951,37 +2670,46 @@ impl EPCOfExtPC {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfExtPC_initialize_curve_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfExtPC_initialize_curve_int_real4(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:92 - `Extrema_EPCOfExtPC::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_curve(&mut self, C: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC_initialize_curve(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Extrema_EPCOfExtPC_initialize_curve(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:95 - `Extrema_EPCOfExtPC::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfExtPC_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfExtPC_initialize_int_real4(
+                    self as *mut Self,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1990,38 +2718,62 @@ impl EPCOfExtPC {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_EPCOfExtPC_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:107 - `Extrema_EPCOfExtPC::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:110 - `Extrema_EPCOfExtPC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:113 - `Extrema_EPCOfExtPC::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfExtPC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:117 - `Extrema_EPCOfExtPC::IsMin()`
     /// Returns True if the Nth extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC.hxx`:120 - `Extrema_EPCOfExtPC::Point()`
     /// Returns the point of the Nth extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_EPCOfExtPC_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2041,7 +2793,11 @@ unsafe impl crate::CppDeletable for EPCOfExtPC2d {
 impl EPCOfExtPC2d {
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:40 - `Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_EPCOfExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:52 - `Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d()`
@@ -2062,12 +2818,12 @@ impl EPCOfExtPC2d {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real2(
-                    P, C, NbU, TolU, TolF,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real2(P, C, NbU, TolU, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2092,12 +2848,14 @@ impl EPCOfExtPC2d {
         TolU: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real4(
                     P, C, NbU, Umin, Usup, TolU, TolF,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2110,14 +2868,17 @@ impl EPCOfExtPC2d {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real2(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2132,37 +2893,46 @@ impl EPCOfExtPC2d {
         TolU: f64,
         TolF: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real4(
+                    self as *mut Self,
+                    C,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:92 - `Extrema_EPCOfExtPC2d::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:95 - `Extrema_EPCOfExtPC2d::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_EPCOfExtPC2d_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_EPCOfExtPC2d_initialize_int_real4(
+                    self as *mut Self,
+                    NbU,
+                    Umin,
+                    Usup,
+                    TolU,
+                    TolF,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2171,38 +2941,64 @@ impl EPCOfExtPC2d {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC2d_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_EPCOfExtPC2d_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:107 - `Extrema_EPCOfExtPC2d::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:110 - `Extrema_EPCOfExtPC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:113 - `Extrema_EPCOfExtPC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC2d_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfExtPC2d_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:117 - `Extrema_EPCOfExtPC2d::IsMin()`
     /// Returns True if the Nth extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_EPCOfExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfExtPC2d_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:120 - `Extrema_EPCOfExtPC2d::Point()`
     /// Returns the point of the Nth extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_EPCOfExtPC2d_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_EPCOfExtPC2d_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2224,7 +3020,11 @@ unsafe impl crate::CppDeletable for ExtCC {
 impl ExtCC {
     /// **Source:** `Extrema_ExtCC.hxx`:39 - `Extrema_ExtCC::Extrema_ExtCC()`
     pub fn new_real2(TolC1: f64, TolC2: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCC_ctor_real2(TolC1, TolC2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC_ctor_real2(TolC1, TolC2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
@@ -2235,10 +3035,11 @@ impl ExtCC {
         TolC1: f64,
         TolC2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCC_ctor_curve2_real2(
-                C1, C2, TolC1, TolC2,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCC_ctor_curve2_real2(C1, C2, TolC1, TolC2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2254,10 +3055,12 @@ impl ExtCC {
         TolC1: f64,
         TolC2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCC_ctor_curve2_real6(
-                C1, C2, U1, U2, V1, V2, TolC1, TolC2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtCC_ctor_curve2_real6(C1, C2, U1, U2, V1, V2, TolC1, TolC2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2326,14 +3129,17 @@ impl ExtCC {
         TolC1: f64,
         TolC2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC_initialize_curve2_real2(
-                self as *mut Self,
-                C1,
-                C2,
-                TolC1,
-                TolC2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC_initialize_curve2_real2(
+                    self as *mut Self,
+                    C1,
+                    C2,
+                    TolC1,
+                    TolC2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2350,24 +3156,30 @@ impl ExtCC {
         TolC1: f64,
         TolC2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC_initialize_curve2_real6(
-                self as *mut Self,
-                C1,
-                C2,
-                U1,
-                U2,
-                V1,
-                V2,
-                TolC1,
-                TolC2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC_initialize_curve2_real6(
+                    self as *mut Self,
+                    C1,
+                    C2,
+                    U1,
+                    U2,
+                    V1,
+                    V2,
+                    TolC1,
+                    TolC2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:74 - `Extrema_ExtCC::SetCurve()`
     pub fn set_curve_int_curve(&mut self, theRank: i32, C: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_ExtCC_set_curve_int_curve(self as *mut Self, theRank, C) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC_set_curve_int_curve(self as *mut Self, theRank, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:76 - `Extrema_ExtCC::SetCurve()`
@@ -2378,61 +3190,93 @@ impl ExtCC {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC_set_curve_int_curve_real2(
-                self as *mut Self,
-                theRank,
-                C,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC_set_curve_int_curve_real2(
+                    self as *mut Self,
+                    theRank,
+                    C,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:81 - `Extrema_ExtCC::SetRange()`
     pub fn set_range(&mut self, theRank: i32, Uinf: f64, Usup: f64) {
-        unsafe { crate::ffi::Extrema_ExtCC_set_range(self as *mut Self, theRank, Uinf, Usup) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC_set_range(self as *mut Self, theRank, Uinf, Usup) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:85 - `Extrema_ExtCC::SetTolerance()`
     pub fn set_tolerance(&mut self, theRank: i32, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ExtCC_set_tolerance(self as *mut Self, theRank, Tol) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC_set_tolerance(self as *mut Self, theRank, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:87 - `Extrema_ExtCC::Perform()`
     pub fn perform(&mut self) {
-        unsafe { crate::ffi::Extrema_ExtCC_perform(self as *mut Self) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC_perform(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:90 - `Extrema_ExtCC::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:93 - `Extrema_ExtCC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtCC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:96 - `Extrema_ExtCC::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCC_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:99 - `Extrema_ExtCC::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtCC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:103 - `Extrema_ExtCC::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
-        unsafe { crate::ffi::Extrema_ExtCC_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:111 - `Extrema_ExtCC::TrimmedSquareDistances()`
@@ -2451,36 +3295,47 @@ impl ExtCC {
         P21: &mut crate::gp::Pnt,
         P22: &mut crate::gp::Pnt,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC_trimmed_square_distances(
-                self as *const Self,
-                dist11,
-                distP12,
-                distP21,
-                distP22,
-                P11,
-                P12,
-                P21,
-                P22,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC_trimmed_square_distances(
+                    self as *const Self,
+                    dist11,
+                    distP12,
+                    distP21,
+                    distP22,
+                    P11,
+                    P12,
+                    P21,
+                    P22,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:121 - `Extrema_ExtCC::SetSingleSolutionFlag()`
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC_set_single_solution_flag(
-                self as *mut Self,
-                theSingleSolutionFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC_set_single_solution_flag(
+                    self as *mut Self,
+                    theSingleSolutionFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:124 - `Extrema_ExtCC::GetSingleSolutionFlag()`
     /// Get flag for single extrema computation. Works on parametric solver only.
     pub fn get_single_solution_flag(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCC_get_single_solution_flag(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCC_get_single_solution_flag(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2502,7 +3357,11 @@ unsafe impl crate::CppDeletable for ExtCC2d {
 impl ExtCC2d {
     /// **Source:** `Extrema_ExtCC2d.hxx`:40 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:43 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
@@ -2513,10 +3372,11 @@ impl ExtCC2d {
         TolC1: f64,
         TolC2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real2(
-                C1, C2, TolC1, TolC2,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real2(C1, C2, TolC1, TolC2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2532,10 +3392,14 @@ impl ExtCC2d {
         TolC1: f64,
         TolC2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real6(
-                C1, C2, U1, U2, V1, V2, TolC1, TolC2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real6(
+                    C1, C2, U1, U2, V1, V2, TolC1, TolC2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2595,45 +3459,71 @@ impl ExtCC2d {
         TolC1: f64,
         TolC2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC2d_initialize(self as *mut Self, C2, V1, V2, TolC1, TolC2)
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC2d_initialize(self as *mut Self, C2, V1, V2, TolC1, TolC2)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:65 - `Extrema_ExtCC2d::Perform()`
     pub fn perform(&mut self, C1: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
-        unsafe { crate::ffi::Extrema_ExtCC2d_perform(self as *mut Self, C1, U1, U2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC2d_perform(self as *mut Self, C1, U1, U2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:70 - `Extrema_ExtCC2d::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:73 - `Extrema_ExtCC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtCC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:76 - `Extrema_ExtCC2d::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCC2d_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCC2d_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:79 - `Extrema_ExtCC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtCC2d_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCC2d_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:83 - `Extrema_ExtCC2d::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        unsafe { crate::ffi::Extrema_ExtCC2d_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCC2d_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:91 - `Extrema_ExtCC2d::TrimmedSquareDistances()`
@@ -2652,36 +3542,48 @@ impl ExtCC2d {
         P21: &mut crate::gp::Pnt2d,
         P22: &mut crate::gp::Pnt2d,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC2d_trimmed_square_distances(
-                self as *const Self,
-                dist11,
-                distP12,
-                distP21,
-                distP22,
-                P11,
-                P12,
-                P21,
-                P22,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC2d_trimmed_square_distances(
+                    self as *const Self,
+                    dist11,
+                    distP12,
+                    distP21,
+                    distP22,
+                    P11,
+                    P12,
+                    P21,
+                    P22,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:101 - `Extrema_ExtCC2d::SetSingleSolutionFlag()`
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
-        unsafe {
-            crate::ffi::Extrema_ExtCC2d_set_single_solution_flag(
-                self as *mut Self,
-                theSingleSolutionFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCC2d_set_single_solution_flag(
+                    self as *mut Self,
+                    theSingleSolutionFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:104 - `Extrema_ExtCC2d::GetSingleSolutionFlag()`
     /// Get flag for single extrema computation. Works on parametric solver only.
     pub fn get_single_solution_flag(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCC2d_get_single_solution_flag(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtCC2d_get_single_solution_flag(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2704,7 +3606,11 @@ unsafe impl crate::CppDeletable for ExtCS {
 impl ExtCS {
     /// **Source:** `Extrema_ExtCS.hxx`:43 - `Extrema_ExtCS::Extrema_ExtCS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtCS.hxx`:46 - `Extrema_ExtCS::Extrema_ExtCS()`
@@ -2715,10 +3621,11 @@ impl ExtCS {
         TolC: f64,
         TolS: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCS_ctor_curve_surface_real2(
-                C, S, TolC, TolS,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCS_ctor_curve_surface_real2(C, S, TolC, TolS) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2738,10 +3645,14 @@ impl ExtCS {
         TolC: f64,
         TolS: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtCS_ctor_curve_surface_real8(
-                C, S, UCinf, UCsup, Uinf, Usup, Vinf, Vsup, TolC, TolS,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtCS_ctor_curve_surface_real8(
+                    C, S, UCinf, UCsup, Uinf, Usup, Vinf, Vsup, TolC, TolS,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2753,8 +3664,11 @@ impl ExtCS {
         TolC: f64,
         TolS: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCS_initialize_surface_real2(self as *mut Self, S, TolC, TolS)
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCS_initialize_surface_real2(self as *mut Self, S, TolC, TolS)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2770,17 +3684,20 @@ impl ExtCS {
         TolC: f64,
         TolS: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtCS_initialize_surface_real6(
-                self as *mut Self,
-                S,
-                Uinf,
-                Usup,
-                Vinf,
-                Vsup,
-                TolC,
-                TolS,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtCS_initialize_surface_real6(
+                    self as *mut Self,
+                    S,
+                    Uinf,
+                    Usup,
+                    Vinf,
+                    Vsup,
+                    TolC,
+                    TolS,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2789,37 +3706,60 @@ impl ExtCS {
     /// An exception is raised if the fields have not been
     /// initialized.
     pub fn perform(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64) {
-        unsafe { crate::ffi::Extrema_ExtCS_perform(self as *mut Self, C, Uinf, Usup) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCS_perform(self as *mut Self, C, Uinf, Usup) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtCS.hxx`:87 - `Extrema_ExtCS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCS.hxx`:90 - `Extrema_ExtCS::IsParallel()`
     /// Returns True if the curve is on a parallel surface.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtCS_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCS_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCS.hxx`:93 - `Extrema_ExtCS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtCS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtCS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCS.hxx`:96 - `Extrema_ExtCS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtCS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtCS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtCS.hxx`:99 - `Extrema_ExtCS::Points()`
     /// Returns the point of the Nth resulting distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnSurf) {
-        unsafe { crate::ffi::Extrema_ExtCS_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtCS_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2842,7 +3782,11 @@ unsafe impl crate::CppDeletable for ExtElC {
 impl ExtElC {
     /// **Source:** `Extrema_ExtElC.hxx`:40 - `Extrema_ExtElC::Extrema_ExtElC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:45 - `Extrema_ExtElC::Extrema_ExtElC()`
@@ -2854,8 +3798,10 @@ impl ExtElC {
         C2: &crate::gp::Lin,
         AngTol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor_lin2_real(C1, C2, AngTol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin2_real(C1, C2, AngTol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2867,8 +3813,10 @@ impl ExtElC {
         C2: &crate::gp::Circ,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor_lin_circ_real(C1, C2, Tol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_circ_real(C1, C2, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2876,59 +3824,95 @@ impl ExtElC {
     /// Calculates the distance between a line and an
     /// ellipse.
     pub fn new_lin_elips(C1: &crate::gp::Lin, C2: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor_lin_elips(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_elips(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:57 - `Extrema_ExtElC::Extrema_ExtElC()`
     /// Calculates the distance between a line and a
     /// hyperbola.
     pub fn new_lin_hypr(C1: &crate::gp::Lin, C2: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor_lin_hypr(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_hypr(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:61 - `Extrema_ExtElC::Extrema_ExtElC()`
     /// Calculates the distance between a line and a
     /// parabola.
     pub fn new_lin_parab(C1: &crate::gp::Lin, C2: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor_lin_parab(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_parab(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:65 - `Extrema_ExtElC::Extrema_ExtElC()`
     /// Calculates the distance between two circles.
     /// The circles can be parallel or identical.
     pub fn new_circ2(C1: &crate::gp::Circ, C2: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC_ctor_circ2(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_circ2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:68 - `Extrema_ExtElC::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:71 - `Extrema_ExtElC::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElC_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:74 - `Extrema_ExtElC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtElC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:77 - `Extrema_ExtElC::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtElC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtElC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC.hxx`:81 - `Extrema_ExtElC::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
-        unsafe { crate::ffi::Extrema_ExtElC_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElC_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2951,7 +3935,11 @@ unsafe impl crate::CppDeletable for ExtElC2d {
 impl ExtElC2d {
     /// **Source:** `Extrema_ExtElC2d.hxx`:40 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:45 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
@@ -2963,8 +3951,10 @@ impl ExtElC2d {
         C2: &crate::gp::Lin2d,
         AngTol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_lin2d2_real(C1, C2, AngTol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d2_real(C1, C2, AngTol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2976,10 +3966,11 @@ impl ExtElC2d {
         C2: &crate::gp::Circ2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_lin2d_circ2d_real(
-                C1, C2, Tol,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_circ2d_real(C1, C2, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2990,8 +3981,10 @@ impl ExtElC2d {
         C1: &crate::gp::Lin2d,
         C2: &crate::gp::Elips2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_lin2d_elips2d(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_elips2d(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3002,7 +3995,11 @@ impl ExtElC2d {
         C1: &crate::gp::Lin2d,
         C2: &crate::gp::Hypr2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_lin2d_hypr2d(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_hypr2d(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:65 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
@@ -3012,8 +4009,10 @@ impl ExtElC2d {
         C1: &crate::gp::Lin2d,
         C2: &crate::gp::Parab2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_lin2d_parab2d(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_parab2d(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3021,7 +4020,11 @@ impl ExtElC2d {
     /// Calculates the distance between two circles.
     /// The circles can be parallel or identical.
     pub fn new_circ2d2(C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_circ2d2(C1, C2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:73 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
@@ -3031,8 +4034,10 @@ impl ExtElC2d {
         C1: &crate::gp::Circ2d,
         C2: &crate::gp::Elips2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_circ2d_elips2d(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d_elips2d(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3043,8 +4048,10 @@ impl ExtElC2d {
         C1: &crate::gp::Circ2d,
         C2: &crate::gp::Hypr2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_circ2d_hypr2d(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d_hypr2d(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3055,40 +4062,62 @@ impl ExtElC2d {
         C1: &crate::gp::Circ2d,
         C2: &crate::gp::Parab2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElC2d_ctor_circ2d_parab2d(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d_parab2d(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:84 - `Extrema_ExtElC2d::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:87 - `Extrema_ExtElC2d::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElC2d_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:90 - `Extrema_ExtElC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtElC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:93 - `Extrema_ExtElC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtElC2d_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtElC2d_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElC2d.hxx`:97 - `Extrema_ExtElC2d::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        unsafe { crate::ffi::Extrema_ExtElC2d_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElC2d_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3111,7 +4140,11 @@ unsafe impl crate::CppDeletable for ExtElCS {
 impl ExtElCS {
     /// **Source:** `Extrema_ExtElCS.hxx`:48 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:53 - `Extrema_ExtElCS::Extrema_ExtElCS()`
@@ -3119,41 +4152,65 @@ impl ExtElCS {
     /// plane. The line can be on the plane or on a parallel
     /// plane.
     pub fn new_lin_pln(C: &crate::gp::Lin, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_lin_pln(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_pln(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:59 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// cylinder.
     pub fn new_lin_cylinder(C: &crate::gp::Lin, S: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_lin_cylinder(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_cylinder(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:64 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a cone.
     pub fn new_lin_cone(C: &crate::gp::Lin, S: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_lin_cone(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_cone(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:70 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// sphere.
     pub fn new_lin_sphere(C: &crate::gp::Lin, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_lin_sphere(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_sphere(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:76 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// torus.
     pub fn new_lin_torus(C: &crate::gp::Lin, S: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_lin_torus(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_torus(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:82 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// plane.
     pub fn new_circ_pln(C: &crate::gp::Circ, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_circ_pln(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_pln(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:88 - `Extrema_ExtElCS::Extrema_ExtElCS()`
@@ -3163,121 +4220,194 @@ impl ExtElCS {
         C: &crate::gp::Circ,
         S: &crate::gp::Cylinder,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_circ_cylinder(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_cylinder(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:94 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// cone.
     pub fn new_circ_cone(C: &crate::gp::Circ, S: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_circ_cone(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_cone(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:100 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// sphere.
     pub fn new_circ_sphere(C: &crate::gp::Circ, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_circ_sphere(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_sphere(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:106 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// torus.
     pub fn new_circ_torus(C: &crate::gp::Circ, S: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_circ_torus(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_torus(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:112 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a hyperbola and a
     /// plane.
     pub fn new_hypr_pln(C: &crate::gp::Hypr, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElCS_ctor_hypr_pln(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_hypr_pln(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:55 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_pln(&mut self, C: &crate::gp::Lin, S: &crate::gp::Pln) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_pln(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_pln(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:61 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_cylinder(&mut self, C: &crate::gp::Lin, S: &crate::gp::Cylinder) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cylinder(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cylinder(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:66 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_cone(&mut self, C: &crate::gp::Lin, S: &crate::gp::Cone) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cone(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cone(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:72 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_sphere(&mut self, C: &crate::gp::Lin, S: &crate::gp::Sphere) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_sphere(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_sphere(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:78 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_torus(&mut self, C: &crate::gp::Lin, S: &crate::gp::Torus) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_torus(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_torus(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:84 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_pln(&mut self, C: &crate::gp::Circ, S: &crate::gp::Pln) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_pln(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_pln(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:90 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_cylinder(&mut self, C: &crate::gp::Circ, S: &crate::gp::Cylinder) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cylinder(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cylinder(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:96 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_cone(&mut self, C: &crate::gp::Circ, S: &crate::gp::Cone) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cone(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cone(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:102 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_sphere(&mut self, C: &crate::gp::Circ, S: &crate::gp::Sphere) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_sphere(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_sphere(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:108 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_torus(&mut self, C: &crate::gp::Circ, S: &crate::gp::Torus) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_torus(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_torus(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:114 - `Extrema_ExtElCS::Perform()`
     pub fn perform_hypr_pln(&mut self, C: &crate::gp::Hypr, S: &crate::gp::Pln) {
-        unsafe { crate::ffi::Extrema_ExtElCS_perform_hypr_pln(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_perform_hypr_pln(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:117 - `Extrema_ExtElCS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElCS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:120 - `Extrema_ExtElCS::IsParallel()`
     /// Returns True if the curve is on a parallel surface.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElCS_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:123 - `Extrema_ExtElCS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtElCS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElCS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:126 - `Extrema_ExtElCS::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtElCS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtElCS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:130 - `Extrema_ExtElCS::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the curve, P2 on the surface.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnSurf) {
-        unsafe { crate::ffi::Extrema_ExtElCS_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElCS_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3300,28 +4430,44 @@ unsafe impl crate::CppDeletable for ExtElSS {
 impl ExtElSS {
     /// **Source:** `Extrema_ExtElSS.hxx`:45 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:49 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between 2 planes.
     /// These planes can be parallel.
     pub fn new_pln2(S1: &crate::gp::Pln, S2: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor_pln2(S1, S2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_pln2(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:55 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between a plane
     /// and a sphere.
     pub fn new_pln_sphere(S1: &crate::gp::Pln, S2: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor_pln_sphere(S1, S2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_pln_sphere(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:61 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between 2 spheres.
     /// These spheres can be parallel.
     pub fn new_sphere2(S1: &crate::gp::Sphere, S2: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor_sphere2(S1, S2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere2(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:67 - `Extrema_ExtElSS::Extrema_ExtElSS()`
@@ -3331,8 +4477,10 @@ impl ExtElSS {
         S1: &crate::gp::Sphere,
         S2: &crate::gp::Cylinder,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor_sphere_cylinder(S1, S2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere_cylinder(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3340,7 +4488,11 @@ impl ExtElSS {
     /// Calculates the distances between a sphere
     /// and a cone.
     pub fn new_sphere_cone(S1: &crate::gp::Sphere, S2: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor_sphere_cone(S1, S2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere_cone(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:79 - `Extrema_ExtElSS::Extrema_ExtElSS()`
@@ -3350,68 +4502,112 @@ impl ExtElSS {
         S1: &crate::gp::Sphere,
         S2: &crate::gp::Torus,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtElSS_ctor_sphere_torus(S1, S2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere_torus(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:51 - `Extrema_ExtElSS::Perform()`
     pub fn perform_pln2(&mut self, S1: &crate::gp::Pln, S2: &crate::gp::Pln) {
-        unsafe { crate::ffi::Extrema_ExtElSS_perform_pln2(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElSS_perform_pln2(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:57 - `Extrema_ExtElSS::Perform()`
     pub fn perform_pln_sphere(&mut self, S1: &crate::gp::Pln, S2: &crate::gp::Sphere) {
-        unsafe { crate::ffi::Extrema_ExtElSS_perform_pln_sphere(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElSS_perform_pln_sphere(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:63 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere2(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Sphere) {
-        unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere2(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere2(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:69 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_cylinder(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Cylinder) {
-        unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_cylinder(self as *mut Self, S1, S2) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtElSS_perform_sphere_cylinder(self as *mut Self, S1, S2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:75 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_cone(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Cone) {
-        unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_cone(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_cone(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:81 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_torus(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Torus) {
-        unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_torus(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_torus(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:84 - `Extrema_ExtElSS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElSS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:87 - `Extrema_ExtElSS::IsParallel()`
     /// Returns True if the two surfaces are parallel.
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtElSS_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:90 - `Extrema_ExtElSS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtElSS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtElSS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:93 - `Extrema_ExtElSS::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtElSS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtElSS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:97 - `Extrema_ExtElSS::Points()`
     /// Returns the points for the Nth resulting distance.
     /// P1 is on the first surface, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnSurf, P2: &mut POnSurf) {
-        unsafe { crate::ffi::Extrema_ExtElSS_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtElSS_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -3431,7 +4627,11 @@ unsafe impl crate::CppDeletable for ExtPC {
 impl ExtPC {
     /// **Source:** `Extrema_ExtPC.hxx`:47 - `Extrema_ExtPC::Extrema_ExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:58 - `Extrema_ExtPC::Extrema_ExtPC()`
@@ -3451,10 +4651,11 @@ impl ExtPC {
         Usup: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real3(
-                P, C, Uinf, Usup, TolF,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real3(P, C, Uinf, Usup, TolF) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3472,8 +4673,10 @@ impl ExtPC {
         C: &crate::adaptor3d::Curve,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real(P, C, TolF))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real(P, C, TolF) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3512,45 +4715,72 @@ impl ExtPC {
     /// **Source:** `Extrema_ExtPC.hxx`:77 - `Extrema_ExtPC::Initialize()`
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64, TolF: f64) {
-        unsafe { crate::ffi::Extrema_ExtPC_initialize(self as *mut Self, C, Uinf, Usup, TolF) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPC_initialize(self as *mut Self, C, Uinf, Usup, TolF) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:84 - `Extrema_ExtPC::Perform()`
     /// An exception is raised if the fields have not been
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_ExtPC_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPC_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:87 - `Extrema_ExtPC::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:90 - `Extrema_ExtPC::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:93 - `Extrema_ExtPC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:97 - `Extrema_ExtPC::IsMin()`
     /// Returns True if the <N>th extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:100 - `Extrema_ExtPC::Point()`
     /// Returns the point of the <N>th extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_ExtPC_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPC.hxx`:107 - `Extrema_ExtPC::TrimmedSquareDistances()`
@@ -3566,14 +4796,17 @@ impl ExtPC {
         P1: &mut crate::gp::Pnt,
         P2: &mut crate::gp::Pnt,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPC_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPC_trimmed_square_distances(
+                    self as *const Self,
+                    dist1,
+                    dist2,
+                    P1,
+                    P2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -3594,7 +4827,11 @@ unsafe impl crate::CppDeletable for ExtPC2d {
 impl ExtPC2d {
     /// **Source:** `Extrema_ExtPC2d.hxx`:47 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:58 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
@@ -3614,10 +4851,12 @@ impl ExtPC2d {
         Usup: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real3(
-                P, C, Uinf, Usup, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real3(P, C, Uinf, Usup, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3635,10 +4874,11 @@ impl ExtPC2d {
         C: &crate::adaptor2d::Curve2d,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real(
-                P, C, TolF,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3680,45 +4920,74 @@ impl ExtPC2d {
     /// **Source:** `Extrema_ExtPC2d.hxx`:77 - `Extrema_ExtPC2d::Initialize()`
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Uinf: f64, Usup: f64, TolF: f64) {
-        unsafe { crate::ffi::Extrema_ExtPC2d_initialize(self as *mut Self, C, Uinf, Usup, TolF) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPC2d_initialize(self as *mut Self, C, Uinf, Usup, TolF)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:84 - `Extrema_ExtPC2d::Perform()`
     /// An exception is raised if the fields have not been
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_ExtPC2d_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPC2d_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:87 - `Extrema_ExtPC2d::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:90 - `Extrema_ExtPC2d::SquareDistance()`
     /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPC2d_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPC2d_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:93 - `Extrema_ExtPC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:97 - `Extrema_ExtPC2d::IsMin()`
     /// Returns True if the <N>th extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC2d_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:100 - `Extrema_ExtPC2d::Point()`
     /// Returns the point of the <N>th extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_ExtPC2d_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPC2d_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPC2d.hxx`:107 - `Extrema_ExtPC2d::TrimmedSquareDistances()`
@@ -3734,14 +5003,17 @@ impl ExtPC2d {
         P1: &mut crate::gp::Pnt2d,
         P2: &mut crate::gp::Pnt2d,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPC2d_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPC2d_trimmed_square_distances(
+                    self as *const Self,
+                    dist1,
+                    dist2,
+                    P1,
+                    P2,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -3765,7 +5037,11 @@ unsafe impl crate::CppDeletable for ExtPElC {
 impl ExtPElC {
     /// **Source:** `Extrema_ExtPElC.hxx`:40 - `Extrema_ExtPElC::Extrema_ExtPElC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC.hxx`:44 - `Extrema_ExtPElC::Extrema_ExtPElC()`
@@ -3778,10 +5054,11 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC_ctor_pnt_lin_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_lin_real3(P, C, Tol, Uinf, Usup) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3804,10 +5081,11 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC_ctor_pnt_circ_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_circ_real3(P, C, Tol, Uinf, Usup) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3831,10 +5109,11 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC_ctor_pnt_elips_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_elips_real3(P, C, Tol, Uinf, Usup) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3852,10 +5131,11 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC_ctor_pnt_hypr_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_hypr_real3(P, C, Tol, Uinf, Usup) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3873,10 +5153,11 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC_ctor_pnt_parab_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_parab_real3(P, C, Tol, Uinf, Usup) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -3889,15 +5170,18 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC_perform_pnt_lin_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC_perform_pnt_lin_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3910,15 +5194,18 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC_perform_pnt_circ_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC_perform_pnt_circ_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3931,15 +5218,18 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC_perform_pnt_elips_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC_perform_pnt_elips_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3952,15 +5242,18 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC_perform_pnt_hypr_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC_perform_pnt_hypr_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3973,47 +5266,71 @@ impl ExtPElC {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC_perform_pnt_parab_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC_perform_pnt_parab_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtPElC.hxx`:140 - `Extrema_ExtPElC::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPElC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC.hxx`:143 - `Extrema_ExtPElC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPElC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC.hxx`:146 - `Extrema_ExtPElC::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPElC_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC.hxx`:150 - `Extrema_ExtPElC::IsMin()`
     /// Returns True if the Nth extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPElC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC.hxx`:153 - `Extrema_ExtPElC::Point()`
     /// Returns the point of the Nth extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_ExtPElC_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -4036,7 +5353,11 @@ unsafe impl crate::CppDeletable for ExtPElC2d {
 impl ExtPElC2d {
     /// **Source:** `Extrema_ExtPElC2d.hxx`:40 - `Extrema_ExtPElC2d::Extrema_ExtPElC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC2d.hxx`:44 - `Extrema_ExtPElC2d::Extrema_ExtPElC2d()`
@@ -4049,10 +5370,12 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_lin2d_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_lin2d_real3(P, C, Tol, Uinf, Usup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4075,10 +5398,12 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_circ2d_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_circ2d_real3(P, C, Tol, Uinf, Usup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4102,10 +5427,12 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_elips2d_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_elips2d_real3(P, C, Tol, Uinf, Usup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4123,10 +5450,12 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_hypr2d_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_hypr2d_real3(P, C, Tol, Uinf, Usup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4144,10 +5473,12 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_parab2d_real3(
-                P, C, Tol, Uinf, Usup,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_parab2d_real3(P, C, Tol, Uinf, Usup)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4160,15 +5491,18 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_lin2d_real3(
-                self as *mut Self,
-                P,
-                L,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_lin2d_real3(
+                    self as *mut Self,
+                    P,
+                    L,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4181,15 +5515,18 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_circ2d_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_circ2d_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4202,15 +5539,18 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_elips2d_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_elips2d_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4223,15 +5563,18 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_hypr2d_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_hypr2d_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -4244,47 +5587,71 @@ impl ExtPElC2d {
         Uinf: f64,
         Usup: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_parab2d_real3(
-                self as *mut Self,
-                P,
-                C,
-                Tol,
-                Uinf,
-                Usup,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_parab2d_real3(
+                    self as *mut Self,
+                    P,
+                    C,
+                    Tol,
+                    Uinf,
+                    Usup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtPElC2d.hxx`:140 - `Extrema_ExtPElC2d::IsDone()`
     /// True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPElC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC2d.hxx`:143 - `Extrema_ExtPElC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPElC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC2d.hxx`:146 - `Extrema_ExtPElC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPElC2d_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElC2d_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC2d.hxx`:150 - `Extrema_ExtPElC2d::IsMin()`
     /// Returns True if the Nth extremum distance is a
     /// minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPElC2d_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElC2d.hxx`:153 - `Extrema_ExtPElC2d::Point()`
     /// Returns the point of the Nth extremum distance.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_ExtPElC2d_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -4307,7 +5674,11 @@ unsafe impl crate::CppDeletable for ExtPElS {
 impl ExtPElS {
     /// **Source:** `Extrema_ExtPElS.hxx`:40 - `Extrema_ExtPElS::Extrema_ExtPElS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:45 - `Extrema_ExtPElS::Extrema_ExtPElS()`
@@ -4319,8 +5690,10 @@ impl ExtPElS {
         S: &crate::gp::Cylinder,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElS_ctor_pnt_cylinder_real(P, S, Tol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_cylinder_real(P, S, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4333,8 +5706,10 @@ impl ExtPElS {
         S: &crate::gp::Pln,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElS_ctor_pnt_pln_real(P, S, Tol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_pln_real(P, S, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4348,8 +5723,10 @@ impl ExtPElS {
         S: &crate::gp::Cone,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElS_ctor_pnt_cone_real(P, S, Tol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_cone_real(P, S, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4362,8 +5739,10 @@ impl ExtPElS {
         S: &crate::gp::Torus,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElS_ctor_pnt_torus_real(P, S, Tol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_torus_real(P, S, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4376,8 +5755,10 @@ impl ExtPElS {
         S: &crate::gp::Sphere,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPElS_ctor_pnt_sphere_real(P, S, Tol))
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_sphere_real(P, S, Tol) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4388,53 +5769,93 @@ impl ExtPElS {
         S: &crate::gp::Cylinder,
         Tol: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPElS_perform_pnt_cylinder_real(self as *mut Self, P, S, Tol)
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElS_perform_pnt_cylinder_real(self as *mut Self, P, S, Tol)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:54 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_pln_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Pln, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ExtPElS_perform_pnt_pln_real(self as *mut Self, P, S, Tol) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElS_perform_pnt_pln_real(self as *mut Self, P, S, Tol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:62 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_cone_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Cone, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ExtPElS_perform_pnt_cone_real(self as *mut Self, P, S, Tol) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElS_perform_pnt_cone_real(self as *mut Self, P, S, Tol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:69 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_torus_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Torus, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ExtPElS_perform_pnt_torus_real(self as *mut Self, P, S, Tol) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElS_perform_pnt_torus_real(self as *mut Self, P, S, Tol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:76 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_sphere_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Sphere, Tol: f64) {
-        unsafe { crate::ffi::Extrema_ExtPElS_perform_pnt_sphere_real(self as *mut Self, P, S, Tol) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPElS_perform_pnt_sphere_real(self as *mut Self, P, S, Tol)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:79 - `Extrema_ExtPElS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPElS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:82 - `Extrema_ExtPElS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPElS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:85 - `Extrema_ExtPElS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPElS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPElS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:88 - `Extrema_ExtPElS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_ExtPElS_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPElS_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -4457,7 +5878,11 @@ unsafe impl crate::CppDeletable for ExtPExtS {
 impl ExtPExtS {
     /// **Source:** `Extrema_ExtPExtS.hxx`:36 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:40 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
@@ -4473,8 +5898,12 @@ impl ExtPExtS {
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(P, S, Umin, Usup, Vmin, Vsup, TolU, TolV))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(P, S, Umin, Usup, Vmin, Vsup, TolU, TolV)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4487,8 +5916,12 @@ impl ExtPExtS {
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(P, S, TolU, TolV))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(P, S, TolU, TolV)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4504,125 +5937,205 @@ impl ExtPExtS {
         TolU: f64,
         TolV: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPExtS_initialize(
-                self as *mut Self,
-                S,
-                Uinf,
-                Usup,
-                Vinf,
-                Vsup,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPExtS_initialize(
+                    self as *mut Self,
+                    S,
+                    Uinf,
+                    Usup,
+                    Vinf,
+                    Vsup,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:65 - `Extrema_ExtPExtS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_ExtPExtS_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPExtS_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:68 - `Extrema_ExtPExtS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPExtS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:71 - `Extrema_ExtPExtS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPExtS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:74 - `Extrema_ExtPExtS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPExtS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPExtS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:77 - `Extrema_ExtPExtS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_ExtPExtS_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_ExtPExtS_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPExtS_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_ExtPExtS_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_ExtPExtS_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Extrema_ExtPExtS_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPExtS_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Extrema_ExtPExtS_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPExtS_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaExtPExtS> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPExtS_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPExtS_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPExtS_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPExtS_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Extrema_ExtPExtS_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPExtS_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPExtS_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPExtS_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Extrema_ExtPExtS_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPExtS_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPExtS_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPExtS_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_ExtPExtS_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPExtS_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4637,20 +6150,30 @@ unsafe impl crate::CppDeletable for HandleExtremaExtPExtS {
 impl HandleExtremaExtPExtS {
     /// Dereference this Handle to access the underlying Extrema_ExtPExtS
     pub fn get(&self) -> &crate::ffi::Extrema_ExtPExtS {
-        unsafe { &*(crate::ffi::HandleExtremaExtPExtS_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleExtremaExtPExtS_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_ExtPExtS
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_ExtPExtS {
-        unsafe { &mut *(crate::ffi::HandleExtremaExtPExtS_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleExtremaExtPExtS_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_ExtPExtS> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleExtremaExtPExtS_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleExtremaExtPExtS_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4674,7 +6197,11 @@ unsafe impl crate::CppDeletable for ExtPRevS {
 impl ExtPRevS {
     /// **Source:** `Extrema_ExtPRevS.hxx`:34 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPRevS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:38 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
@@ -4690,12 +6217,14 @@ impl ExtPRevS {
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_ExtPRevS_ctor_pnt_handlegeomadaptorsurfaceofrevolution_real6(
                     P, S, Umin, Usup, Vmin, Vsup, TolU, TolV,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4708,12 +6237,14 @@ impl ExtPRevS {
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_ExtPRevS_ctor_pnt_handlegeomadaptorsurfaceofrevolution_real2(
                     P, S, TolU, TolV,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4728,125 +6259,205 @@ impl ExtPRevS {
         TolU: f64,
         TolV: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPRevS_initialize(
-                self as *mut Self,
-                S,
-                Umin,
-                Usup,
-                Vmin,
-                Vsup,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPRevS_initialize(
+                    self as *mut Self,
+                    S,
+                    Umin,
+                    Usup,
+                    Vmin,
+                    Vsup,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:62 - `Extrema_ExtPRevS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_ExtPRevS_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPRevS_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:65 - `Extrema_ExtPRevS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPRevS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:68 - `Extrema_ExtPRevS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPRevS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:71 - `Extrema_ExtPRevS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPRevS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPRevS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:74 - `Extrema_ExtPRevS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_ExtPRevS_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_ExtPRevS_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPRevS_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_ExtPRevS_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_ExtPRevS_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::Extrema_ExtPRevS_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPRevS_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::Extrema_ExtPRevS_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPRevS_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaExtPRevS> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPRevS_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPRevS_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPRevS_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPRevS_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPRevS_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::Extrema_ExtPRevS_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPRevS_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPRevS_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPRevS_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::Extrema_ExtPRevS_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPRevS_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPRevS_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtPRevS_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_ExtPRevS_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPRevS_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -4861,20 +6472,30 @@ unsafe impl crate::CppDeletable for HandleExtremaExtPRevS {
 impl HandleExtremaExtPRevS {
     /// Dereference this Handle to access the underlying Extrema_ExtPRevS
     pub fn get(&self) -> &crate::ffi::Extrema_ExtPRevS {
-        unsafe { &*(crate::ffi::HandleExtremaExtPRevS_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleExtremaExtPRevS_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_ExtPRevS
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_ExtPRevS {
-        unsafe { &mut *(crate::ffi::HandleExtremaExtPRevS_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleExtremaExtPRevS_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_ExtPRevS> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleExtremaExtPRevS_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleExtremaExtPRevS_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -4898,7 +6519,11 @@ unsafe impl crate::CppDeletable for ExtPS {
 impl ExtPS {
     /// **Source:** `Extrema_ExtPS.hxx`:46 - `Extrema_ExtPS::Extrema_ExtPS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:56 - `Extrema_ExtPS::Extrema_ExtPS()`
@@ -4918,8 +6543,8 @@ impl ExtPS {
         F: i32,
         A: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2_extflag_extalgo(
                     P,
                     S,
@@ -4927,8 +6552,10 @@ impl ExtPS {
                     TolV,
                     F,
                     A.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4953,8 +6580,8 @@ impl ExtPS {
         F: i32,
         A: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real6_extflag_extalgo(
                     P,
                     S,
@@ -4966,8 +6593,10 @@ impl ExtPS {
                     TolV,
                     F,
                     A.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -4983,17 +6612,20 @@ impl ExtPS {
         TolU: f64,
         TolV: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPS_initialize(
-                self as *mut Self,
-                S,
-                Uinf,
-                Usup,
-                Vinf,
-                Vsup,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPS_initialize(
+                    self as *mut Self,
+                    S,
+                    Uinf,
+                    Usup,
+                    Vinf,
+                    Vsup,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5002,31 +6634,51 @@ impl ExtPS {
     /// An exception is raised if the fields have not been
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_ExtPS_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPS_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:97 - `Extrema_ExtPS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtPS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:100 - `Extrema_ExtPS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtPS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:103 - `Extrema_ExtPS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtPS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtPS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:106 - `Extrema_ExtPS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_ExtPS_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtPS_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:117 - `Extrema_ExtPS::TrimmedSquareDistances()`
@@ -5050,29 +6702,38 @@ impl ExtPS {
         PUlVf: &mut crate::gp::Pnt,
         PUlVl: &mut crate::gp::Pnt,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtPS_trimmed_square_distances(
-                self as *const Self,
-                dUfVf,
-                dUfVl,
-                dUlVf,
-                dUlVl,
-                PUfVf,
-                PUfVl,
-                PUlVf,
-                PUlVl,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtPS_trimmed_square_distances(
+                    self as *const Self,
+                    dUfVf,
+                    dUfVl,
+                    dUlVf,
+                    dUlVl,
+                    PUfVf,
+                    PUfVl,
+                    PUlVf,
+                    PUlVl,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:126 - `Extrema_ExtPS::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
-        unsafe { crate::ffi::Extrema_ExtPS_set_flag(self as *mut Self, F) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPS_set_flag(self as *mut Self, F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:128 - `Extrema_ExtPS::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
-        unsafe { crate::ffi::Extrema_ExtPS_set_algo(self as *mut Self, A.into()) }
+        {
+            unsafe { crate::ffi::Extrema_ExtPS_set_algo(self as *mut Self, A.into()) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5095,7 +6756,11 @@ unsafe impl crate::CppDeletable for ExtSS {
 impl ExtSS {
     /// **Source:** `Extrema_ExtSS.hxx`:39 - `Extrema_ExtSS::Extrema_ExtSS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtSS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtSS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_ExtSS.hxx`:42 - `Extrema_ExtSS::Extrema_ExtSS()`
@@ -5106,10 +6771,11 @@ impl ExtSS {
         TolS1: f64,
         TolS2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtSS_ctor_surface2_real2(
-                S1, S2, TolS1, TolS2,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtSS_ctor_surface2_real2(S1, S2, TolS1, TolS2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5129,10 +6795,14 @@ impl ExtSS {
         TolS1: f64,
         TolS2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtSS_ctor_surface2_real10(
-                S1, S2, Uinf1, Usup1, Vinf1, Vsup1, Uinf2, Usup2, Vinf2, Vsup2, TolS1, TolS2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_ExtSS_ctor_surface2_real10(
+                    S1, S2, Uinf1, Usup1, Vinf1, Vsup1, Uinf2, Usup2, Vinf2, Vsup2, TolS1, TolS2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5147,16 +6817,19 @@ impl ExtSS {
         Vsup2: f64,
         TolS1: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtSS_initialize(
-                self as *mut Self,
-                S2,
-                Uinf2,
-                Usup2,
-                Vinf2,
-                Vsup2,
-                TolS1,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtSS_initialize(
+                    self as *mut Self,
+                    S2,
+                    Uinf2,
+                    Usup2,
+                    Vinf2,
+                    Vsup2,
+                    TolS1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5173,47 +6846,70 @@ impl ExtSS {
         Vsup1: f64,
         TolS1: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_ExtSS_perform(
-                self as *mut Self,
-                S1,
-                Uinf1,
-                Usup1,
-                Vinf1,
-                Vsup1,
-                TolS1,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_ExtSS_perform(
+                    self as *mut Self,
+                    S1,
+                    Uinf1,
+                    Usup1,
+                    Vinf1,
+                    Vsup1,
+                    TolS1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_ExtSS.hxx`:80 - `Extrema_ExtSS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtSS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtSS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtSS.hxx`:83 - `Extrema_ExtSS::IsParallel()`
     /// Returns True if the surfaces are parallel
     pub fn is_parallel(&self) -> bool {
-        unsafe { crate::ffi::Extrema_ExtSS_is_parallel(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtSS_is_parallel(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtSS.hxx`:86 - `Extrema_ExtSS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_ExtSS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_ExtSS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtSS.hxx`:89 - `Extrema_ExtSS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_ExtSS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_ExtSS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_ExtSS.hxx`:92 - `Extrema_ExtSS::Points()`
     /// Returns the point of the Nth resulting distance.
     pub fn points(&self, N: i32, P1: &mut POnSurf, P2: &mut POnSurf) {
-        unsafe { crate::ffi::Extrema_ExtSS_points(self as *const Self, N, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_ExtSS_points(self as *const Self, N, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -5235,7 +6931,11 @@ unsafe impl crate::CppDeletable for FuncExtCS {
 impl FuncExtCS {
     /// **Source:** `Extrema_FuncExtCS.hxx`:42 - `Extrema_FuncExtCS::Extrema_FuncExtCS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncExtCS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtCS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:44 - `Extrema_FuncExtCS::Extrema_FuncExtCS()`
@@ -5243,29 +6943,50 @@ impl FuncExtCS {
         C: &crate::adaptor3d::Curve,
         S: &crate::adaptor3d::Surface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncExtCS_ctor_curve_surface(C, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtCS_ctor_curve_surface(C, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:47 - `Extrema_FuncExtCS::Initialize()`
     /// sets the field mysurf of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, S: &crate::adaptor3d::Surface) {
-        unsafe { crate::ffi::Extrema_FuncExtCS_initialize(self as *mut Self, C, S) }
+        {
+            unsafe { crate::ffi::Extrema_FuncExtCS_initialize(self as *mut Self, C, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:49 - `Extrema_FuncExtCS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtCS_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:51 - `Extrema_FuncExtCS::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtCS_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:54 - `Extrema_FuncExtCS::Value()`
     /// Calculation of Fi(U,V).
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Extrema_FuncExtCS_value(self as *mut Self, UV, F) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtCS_value(self as *mut Self, UV, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:57 - `Extrema_FuncExtCS::Derivatives()`
@@ -5275,7 +6996,12 @@ impl FuncExtCS {
         UV: &crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncExtCS_derivatives(self as *mut Self, UV, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_derivatives(self as *mut Self, UV, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:61 - `Extrema_FuncExtCS::Values()`
@@ -5286,65 +7012,113 @@ impl FuncExtCS {
         F: &mut crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncExtCS_values(self as *mut Self, UV, F, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_values(self as *mut Self, UV, F, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:66 - `Extrema_FuncExtCS::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtCS_get_state_number(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_get_state_number(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:69 - `Extrema_FuncExtCS::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtCS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtCS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:72 - `Extrema_FuncExtCS::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_FuncExtCS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:75 - `Extrema_FuncExtCS::PointOnCurve()`
     /// Returns the Nth extremum on C.
     pub fn point_on_curve(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_FuncExtCS_point_on_curve(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_point_on_curve(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:78 - `Extrema_FuncExtCS::PointOnSurface()`
     /// Return the Nth extremum on S.
     pub fn point_on_surface(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_FuncExtCS_point_on_surface(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_point_on_surface(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:81 - `Extrema_FuncExtCS::SquareDistances()`
     /// Change Sequence of SquareDistance
     pub fn square_distances(&mut self) -> &mut crate::ffi::TColStd_SequenceOfReal {
-        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_square_distances(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_square_distances(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:84 - `Extrema_FuncExtCS::PointsOnCurve()`
     /// Change Sequence of PointOnCurv
     pub fn points_on_curve(&mut self) -> &mut crate::ffi::Extrema_SequenceOfPOnCurv {
-        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_points_on_curve(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_points_on_curve(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtCS.hxx`:87 - `Extrema_FuncExtCS::PointsOnSurf()`
     /// Change Sequence of PointOnSurf
     pub fn points_on_surf(&mut self) -> &mut crate::ffi::Extrema_SequenceOfPOnSurf {
-        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_points_on_surf(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_points_on_surf(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -5352,21 +7126,35 @@ impl FuncExtCS {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 }
 
@@ -5388,7 +7176,11 @@ unsafe impl crate::CppDeletable for FuncExtSS {
 impl FuncExtSS {
     /// **Source:** `Extrema_FuncExtSS.hxx`:39 - `Extrema_FuncExtSS::Extrema_FuncExtSS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncExtSS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtSS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:41 - `Extrema_FuncExtSS::Extrema_FuncExtSS()`
@@ -5396,29 +7188,50 @@ impl FuncExtSS {
         S1: &crate::adaptor3d::Surface,
         S2: &crate::adaptor3d::Surface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncExtSS_ctor_surface2(S1, S2)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtSS_ctor_surface2(S1, S2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:44 - `Extrema_FuncExtSS::Initialize()`
     /// sets the field mysurf of the function.
     pub fn initialize(&mut self, S1: &crate::adaptor3d::Surface, S2: &crate::adaptor3d::Surface) {
-        unsafe { crate::ffi::Extrema_FuncExtSS_initialize(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::Extrema_FuncExtSS_initialize(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:46 - `Extrema_FuncExtSS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtSS_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:48 - `Extrema_FuncExtSS::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtSS_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:51 - `Extrema_FuncExtSS::Value()`
     /// Calculate Fi(U,V).
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Extrema_FuncExtSS_value(self as *mut Self, UV, F) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtSS_value(self as *mut Self, UV, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:54 - `Extrema_FuncExtSS::Derivatives()`
@@ -5428,7 +7241,12 @@ impl FuncExtSS {
         UV: &crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncExtSS_derivatives(self as *mut Self, UV, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_derivatives(self as *mut Self, UV, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:58 - `Extrema_FuncExtSS::Values()`
@@ -5439,47 +7257,80 @@ impl FuncExtSS {
         F: &mut crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncExtSS_values(self as *mut Self, UV, F, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_values(self as *mut Self, UV, F, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:63 - `Extrema_FuncExtSS::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtSS_get_state_number(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_get_state_number(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:66 - `Extrema_FuncExtSS::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncExtSS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncExtSS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:69 - `Extrema_FuncExtSS::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_FuncExtSS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:72 - `Extrema_FuncExtSS::PointOnS1()`
     /// Return the Nth extremum on S1.
     pub fn point_on_s1(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_FuncExtSS_point_on_s1(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_point_on_s1(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncExtSS.hxx`:75 - `Extrema_FuncExtSS::PointOnS2()`
     /// Renvoie le Nieme extremum sur S2.
     pub fn point_on_s2(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_FuncExtSS_point_on_s2(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_point_on_s2(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -5487,21 +7338,35 @@ impl FuncExtSS {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 }
 
@@ -5539,21 +7404,32 @@ impl FuncPSDist {
         theS: &crate::adaptor3d::Surface,
         theP: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncPSDist_ctor_surface_pnt(theS, theP))
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncPSDist_ctor_surface_pnt(theS, theP) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_FuncPSDist.hxx`:55 - `Extrema_FuncPSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncPSDist_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSDist_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSDist.hxx`:58 - `Extrema_FuncPSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_FuncPSDist_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncPSDist_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSDist.hxx`:61 - `Extrema_FuncPSDist::Gradient()`
@@ -5563,7 +7439,12 @@ impl FuncPSDist {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncPSDist_gradient(self as *mut Self, X, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSDist_gradient(self as *mut Self, X, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSDist.hxx`:64 - `Extrema_FuncPSDist::Values()`
@@ -5574,17 +7455,26 @@ impl FuncPSDist {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncPSDist_values(self as *mut Self, X, F, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSDist_values(self as *mut Self, X, F, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -5592,32 +7482,48 @@ impl FuncPSDist {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -5657,7 +7563,11 @@ unsafe impl crate::CppDeletable for FuncPSNorm {
 impl FuncPSNorm {
     /// **Source:** `Extrema_FuncPSNorm.hxx`:59 - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncPSNorm_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:61 - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
@@ -5665,35 +7575,60 @@ impl FuncPSNorm {
         P: &crate::gp::Pnt,
         S: &crate::adaptor3d::Surface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_FuncPSNorm_ctor_pnt_surface(P, S)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_ctor_pnt_surface(P, S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:64 - `Extrema_FuncPSNorm::Initialize()`
     /// sets the field mysurf of the function.
     pub fn initialize(&mut self, S: &crate::adaptor3d::Surface) {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_initialize(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::Extrema_FuncPSNorm_initialize(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:67 - `Extrema_FuncPSNorm::SetPoint()`
     /// sets the field mysurf of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_set_point(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_FuncPSNorm_set_point(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:69 - `Extrema_FuncPSNorm::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:71 - `Extrema_FuncPSNorm::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:74 - `Extrema_FuncPSNorm::Value()`
     /// Calculate Fi(U,V).
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_value(self as *mut Self, UV, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_value(self as *mut Self, UV, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:77 - `Extrema_FuncPSNorm::Derivatives()`
@@ -5703,7 +7638,12 @@ impl FuncPSNorm {
         UV: &crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_derivatives(self as *mut Self, UV, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_derivatives(self as *mut Self, UV, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:81 - `Extrema_FuncPSNorm::Values()`
@@ -5714,41 +7654,68 @@ impl FuncPSNorm {
         F: &mut crate::ffi::math_Vector,
         DF: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_values(self as *mut Self, UV, F, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_values(self as *mut Self, UV, F, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:86 - `Extrema_FuncPSNorm::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_get_state_number(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_get_state_number(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:89 - `Extrema_FuncPSNorm::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:92 - `Extrema_FuncPSNorm::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_FuncPSNorm_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_FuncPSNorm.hxx`:95 - `Extrema_FuncPSNorm::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_FuncPSNorm_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -5756,21 +7723,36 @@ impl FuncPSNorm {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 }
 
@@ -5794,7 +7776,11 @@ impl GenExtCS {
     /// **Source:** `Extrema_GenExtCS.hxx`:37 - `Extrema_GenExtCS::Extrema_GenExtCS()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtCS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtCS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenExtCS.hxx`:49 - `Extrema_GenExtCS::Extrema_GenExtCS()`
@@ -5814,10 +7800,14 @@ impl GenExtCS {
         Tol1: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtCS_ctor_curve_surface_int3_real2(
-                C, S, NbT, NbU, NbV, Tol1, Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenExtCS_ctor_curve_surface_int3_real2(
+                    C, S, NbT, NbU, NbV, Tol1, Tol2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5844,10 +7834,14 @@ impl GenExtCS {
         Tol1: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtCS_ctor_curve_surface_int3_real8(
-                C, S, NbT, NbU, NbV, tmin, tsup, Umin, Usup, Vmin, Vsup, Tol1, Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenExtCS_ctor_curve_surface_int3_real8(
+                    C, S, NbT, NbU, NbV, tmin, tsup, Umin, Usup, Vmin, Vsup, Tol1, Tol2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -5859,14 +7853,17 @@ impl GenExtCS {
         NbV: i32,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtCS_initialize_surface_int2_real(
-                self as *mut Self,
-                S,
-                NbU,
-                NbV,
-                Tol2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtCS_initialize_surface_int2_real(
+                    self as *mut Self,
+                    S,
+                    NbU,
+                    NbV,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5882,18 +7879,21 @@ impl GenExtCS {
         Vsup: f64,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtCS_initialize_surface_int2_real5(
-                self as *mut Self,
-                S,
-                NbU,
-                NbV,
-                Umin,
-                Usup,
-                Vmin,
-                Vsup,
-                Tol2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtCS_initialize_surface_int2_real5(
+                    self as *mut Self,
+                    S,
+                    NbU,
+                    NbV,
+                    Umin,
+                    Usup,
+                    Vmin,
+                    Vsup,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -5902,8 +7902,11 @@ impl GenExtCS {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform_curve_int_real(&mut self, C: &crate::adaptor3d::Curve, NbT: i32, Tol1: f64) {
-        unsafe {
-            crate::ffi::Extrema_GenExtCS_perform_curve_int_real(self as *mut Self, C, NbT, Tol1)
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtCS_perform_curve_int_real(self as *mut Self, C, NbT, Tol1)
+            };
+            crate::check_exception();
         }
     }
 
@@ -5919,46 +7922,72 @@ impl GenExtCS {
         tsup: f64,
         Tol1: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtCS_perform_curve_int_real3(
-                self as *mut Self,
-                C,
-                NbT,
-                tmin,
-                tsup,
-                Tol1,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtCS_perform_curve_int_real3(
+                    self as *mut Self,
+                    C,
+                    NbT,
+                    tmin,
+                    tsup,
+                    Tol1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GenExtCS.hxx`:109 - `Extrema_GenExtCS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_GenExtCS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtCS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtCS.hxx`:112 - `Extrema_GenExtCS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GenExtCS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtCS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtCS.hxx`:115 - `Extrema_GenExtCS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_GenExtCS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtCS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtCS.hxx`:118 - `Extrema_GenExtCS::PointOnCurve()`
     /// Returns the point of the Nth resulting distance.
     pub fn point_on_curve(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_GenExtCS_point_on_curve(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtCS_point_on_curve(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenExtCS.hxx`:121 - `Extrema_GenExtCS::PointOnSurface()`
     /// Returns the point of the Nth resulting distance.
     pub fn point_on_surface(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenExtCS_point_on_surface(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtCS_point_on_surface(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -5982,7 +8011,11 @@ impl GenExtPS {
     /// **Source:** `Extrema_GenExtPS.hxx`:40 - `Extrema_GenExtPS::Extrema_GenExtPS()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtPS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtPS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:57 - `Extrema_GenExtPS::Extrema_GenExtPS()`
@@ -6008,8 +8041,8 @@ impl GenExtPS {
         F: i32,
         A: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag_extalgo(
                     P,
                     S,
@@ -6019,8 +8052,10 @@ impl GenExtPS {
                     TolV,
                     F,
                     A.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6051,8 +8086,8 @@ impl GenExtPS {
         F: i32,
         A: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(
                     P,
                     S,
@@ -6066,8 +8101,10 @@ impl GenExtPS {
                     TolV,
                     F,
                     A.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6080,15 +8117,18 @@ impl GenExtPS {
         TolU: f64,
         TolV: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtPS_initialize_surface_int2_real2(
-                self as *mut Self,
-                S,
-                NbU,
-                NbV,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtPS_initialize_surface_int2_real2(
+                    self as *mut Self,
+                    S,
+                    NbU,
+                    NbV,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6105,19 +8145,22 @@ impl GenExtPS {
         TolU: f64,
         TolV: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtPS_initialize_surface_int2_real6(
-                self as *mut Self,
-                S,
-                NbU,
-                NbV,
-                Umin,
-                Usup,
-                Vmin,
-                Vsup,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtPS_initialize_surface_int2_real6(
+                    self as *mut Self,
+                    S,
+                    NbU,
+                    NbV,
+                    Umin,
+                    Usup,
+                    Vmin,
+                    Vsup,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6126,41 +8169,67 @@ impl GenExtPS {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_GenExtPS_perform(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_GenExtPS_perform(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:112 - `Extrema_GenExtPS::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
-        unsafe { crate::ffi::Extrema_GenExtPS_set_flag(self as *mut Self, F) }
+        {
+            unsafe { crate::ffi::Extrema_GenExtPS_set_flag(self as *mut Self, F) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:114 - `Extrema_GenExtPS::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
-        unsafe { crate::ffi::Extrema_GenExtPS_set_algo(self as *mut Self, A.into()) }
+        {
+            unsafe { crate::ffi::Extrema_GenExtPS_set_algo(self as *mut Self, A.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:117 - `Extrema_GenExtPS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_GenExtPS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtPS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:120 - `Extrema_GenExtPS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GenExtPS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtPS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:123 - `Extrema_GenExtPS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_GenExtPS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtPS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:126 - `Extrema_GenExtPS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenExtPS_point(self as *const Self, N)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtPS_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -6184,7 +8253,11 @@ impl GenExtSS {
     /// **Source:** `Extrema_GenExtSS.hxx`:39 - `Extrema_GenExtSS::Extrema_GenExtSS()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtSS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtSS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:51 - `Extrema_GenExtSS::Extrema_GenExtSS()`
@@ -6203,10 +8276,12 @@ impl GenExtSS {
         Tol1: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real2(
-                S1, S2, NbU, NbV, Tol1, Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real2(S1, S2, NbU, NbV, Tol1, Tol2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6234,11 +8309,15 @@ impl GenExtSS {
         Tol1: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real10(
-                S1, S2, NbU, NbV, U1min, U1sup, V1min, V1sup, U2min, U2sup, V2min, V2sup, Tol1,
-                Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real10(
+                    S1, S2, NbU, NbV, U1min, U1sup, V1min, V1sup, U2min, U2sup, V2min, V2sup, Tol1,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6250,14 +8329,17 @@ impl GenExtSS {
         NbV: i32,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtSS_initialize_surface_int2_real(
-                self as *mut Self,
-                S2,
-                NbU,
-                NbV,
-                Tol2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtSS_initialize_surface_int2_real(
+                    self as *mut Self,
+                    S2,
+                    NbU,
+                    NbV,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6273,18 +8355,21 @@ impl GenExtSS {
         V2sup: f64,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtSS_initialize_surface_int2_real5(
-                self as *mut Self,
-                S2,
-                NbU,
-                NbV,
-                U2min,
-                U2sup,
-                V2min,
-                V2sup,
-                Tol2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtSS_initialize_surface_int2_real5(
+                    self as *mut Self,
+                    S2,
+                    NbU,
+                    NbV,
+                    U2min,
+                    U2sup,
+                    V2min,
+                    V2sup,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -6293,7 +8378,12 @@ impl GenExtSS {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform_surface_real(&mut self, S1: &crate::adaptor3d::Surface, Tol1: f64) {
-        unsafe { crate::ffi::Extrema_GenExtSS_perform_surface_real(self as *mut Self, S1, Tol1) }
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtSS_perform_surface_real(self as *mut Self, S1, Tol1)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:102 - `Extrema_GenExtSS::Perform()`
@@ -6309,47 +8399,73 @@ impl GenExtSS {
         V1sup: f64,
         Tol1: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenExtSS_perform_surface_real5(
-                self as *mut Self,
-                S1,
-                U1min,
-                U1sup,
-                V1min,
-                V1sup,
-                Tol1,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenExtSS_perform_surface_real5(
+                    self as *mut Self,
+                    S1,
+                    U1min,
+                    U1sup,
+                    V1min,
+                    V1sup,
+                    Tol1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:110 - `Extrema_GenExtSS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_GenExtSS_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtSS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:113 - `Extrema_GenExtSS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GenExtSS_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenExtSS_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:116 - `Extrema_GenExtSS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_GenExtSS_square_distance(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtSS_square_distance(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:119 - `Extrema_GenExtSS::PointOnS1()`
     /// Returns the point of the Nth resulting distance.
     pub fn point_on_s1(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenExtSS_point_on_s1(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtSS_point_on_s1(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenExtSS.hxx`:122 - `Extrema_GenExtSS::PointOnS2()`
     /// Returns the point of the Nth resulting distance.
     pub fn point_on_s2(&self, N: i32) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenExtSS_point_on_s2(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenExtSS_point_on_s2(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -6372,7 +8488,11 @@ unsafe impl crate::CppDeletable for GenLocateExtCS {
 impl GenLocateExtCS {
     /// **Source:** `Extrema_GenLocateExtCS.hxx`:36 - `Extrema_GenLocateExtCS::Extrema_GenLocateExtCS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenLocateExtCS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenLocateExtCS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtCS.hxx`:44 - `Extrema_GenLocateExtCS::Extrema_GenLocateExtCS()`
@@ -6391,10 +8511,14 @@ impl GenLocateExtCS {
         Tol1: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenLocateExtCS_ctor_curve_surface_real5(
-                C, S, T, U, V, Tol1, Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenLocateExtCS_ctor_curve_surface_real5(
+                    C, S, T, U, V, Tol1, Tol2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6409,33 +8533,65 @@ impl GenLocateExtCS {
         Tol1: f64,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenLocateExtCS_perform(self as *mut Self, C, S, T, U, V, Tol1, Tol2)
+        {
+            unsafe {
+                crate::ffi::Extrema_GenLocateExtCS_perform(
+                    self as *mut Self,
+                    C,
+                    S,
+                    T,
+                    U,
+                    V,
+                    Tol1,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GenLocateExtCS.hxx`:61 - `Extrema_GenLocateExtCS::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_GenLocateExtCS_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtCS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtCS.hxx`:64 - `Extrema_GenLocateExtCS::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_GenLocateExtCS_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtCS_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtCS.hxx`:67 - `Extrema_GenLocateExtCS::PointOnCurve()`
     /// Returns the point of the extremum distance on C.
     pub fn point_on_curve(&self) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_GenLocateExtCS_point_on_curve(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtCS_point_on_curve(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtCS.hxx`:70 - `Extrema_GenLocateExtCS::PointOnSurface()`
     /// Returns the point of the extremum distance on S.
     pub fn point_on_surface(&self) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenLocateExtCS_point_on_surface(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtCS_point_on_surface(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -6463,10 +8619,12 @@ impl GenLocateExtPS {
         theTolU: f64,
         theTolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenLocateExtPS_ctor_surface_real2(
-                theS, theTolU, theTolV,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenLocateExtPS_ctor_surface_real2(theS, theTolU, theTolV)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6483,33 +8641,50 @@ impl GenLocateExtPS {
         theV0: f64,
         isDistanceCriteria: bool,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenLocateExtPS_perform(
-                self as *mut Self,
-                theP,
-                theU0,
-                theV0,
-                isDistanceCriteria,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenLocateExtPS_perform(
+                    self as *mut Self,
+                    theP,
+                    theU0,
+                    theV0,
+                    isDistanceCriteria,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GenLocateExtPS.hxx`:52 - `Extrema_GenLocateExtPS::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_GenLocateExtPS_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtPS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtPS.hxx`:55 - `Extrema_GenLocateExtPS::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_GenLocateExtPS_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtPS_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtPS.hxx`:58 - `Extrema_GenLocateExtPS::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenLocateExtPS_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenLocateExtPS_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtPS.hxx`:62 - `Extrema_GenLocateExtPS::IsMinDist()`
@@ -6521,7 +8696,12 @@ impl GenLocateExtPS {
         theU0: f64,
         theV0: f64,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_GenLocateExtPS_is_min_dist(theP, theS, theU0, theV0) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtPS_is_min_dist(theP, theS, theU0, theV0) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -6544,7 +8724,11 @@ unsafe impl crate::CppDeletable for GenLocateExtSS {
 impl GenLocateExtSS {
     /// **Source:** `Extrema_GenLocateExtSS.hxx`:34 - `Extrema_GenLocateExtSS::Extrema_GenLocateExtSS()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenLocateExtSS_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_GenLocateExtSS_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtSS.hxx`:42 - `Extrema_GenLocateExtSS::Extrema_GenLocateExtSS()`
@@ -6564,10 +8748,14 @@ impl GenLocateExtSS {
         Tol1: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GenLocateExtSS_ctor_surface2_real6(
-                S1, S2, U1, V1, U2, V2, Tol1, Tol2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GenLocateExtSS_ctor_surface2_real6(
+                    S1, S2, U1, V1, U2, V2, Tol1, Tol2,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6583,43 +8771,66 @@ impl GenLocateExtSS {
         Tol1: f64,
         Tol2: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GenLocateExtSS_perform(
-                self as *mut Self,
-                S1,
-                S2,
-                U1,
-                V1,
-                U2,
-                V2,
-                Tol1,
-                Tol2,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GenLocateExtSS_perform(
+                    self as *mut Self,
+                    S1,
+                    S2,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    Tol1,
+                    Tol2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GenLocateExtSS.hxx`:61 - `Extrema_GenLocateExtSS::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_GenLocateExtSS_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtSS_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtSS.hxx`:64 - `Extrema_GenLocateExtSS::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_GenLocateExtSS_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtSS_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtSS.hxx`:67 - `Extrema_GenLocateExtSS::PointOnS1()`
     /// Returns the point of the extremum distance on S1.
     pub fn point_on_s1(&self) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenLocateExtSS_point_on_s1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtSS_point_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_GenLocateExtSS.hxx`:70 - `Extrema_GenLocateExtSS::PointOnS2()`
     /// Returns the point of the extremum distance on S2.
     pub fn point_on_s2(&self) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_GenLocateExtSS_point_on_s2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GenLocateExtSS_point_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -6644,8 +8855,10 @@ impl GlobOptFuncCCC0 {
         C1: &crate::adaptor3d::Curve,
         C2: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6654,40 +8867,66 @@ impl GlobOptFuncCCC0 {
         C1: &crate::adaptor2d::Curve2d,
         C2: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2d2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2d2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:34 - `Extrema_GlobOptFuncCCC0::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:36 - `Extrema_GlobOptFuncCCC0::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -6708,8 +8947,10 @@ impl GlobOptFuncCCC1 {
         C1: &crate::adaptor3d::Curve,
         C2: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6718,19 +8959,31 @@ impl GlobOptFuncCCC1 {
         C1: &crate::adaptor2d::Curve2d,
         C2: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2d2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2d2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:55 - `Extrema_GlobOptFuncCCC1::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:57 - `Extrema_GlobOptFuncCCC1::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:59 - `Extrema_GlobOptFuncCCC1::Gradient()`
@@ -6739,7 +8992,12 @@ impl GlobOptFuncCCC1 {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_gradient(self as *mut Self, X, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_gradient(self as *mut Self, X, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:61 - `Extrema_GlobOptFuncCCC1::Values()`
@@ -6749,17 +9007,26 @@ impl GlobOptFuncCCC1 {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_values(self as *mut Self, X, F, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_values(self as *mut Self, X, F, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -6767,32 +9034,50 @@ impl GlobOptFuncCCC1 {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -6813,8 +9098,10 @@ impl GlobOptFuncCCC2 {
         C1: &crate::adaptor3d::Curve,
         C2: &crate::adaptor3d::Curve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6823,19 +9110,31 @@ impl GlobOptFuncCCC2 {
         C1: &crate::adaptor2d::Curve2d,
         C2: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2d2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2d2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:82 - `Extrema_GlobOptFuncCCC2::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:84 - `Extrema_GlobOptFuncCCC2::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:86 - `Extrema_GlobOptFuncCCC2::Gradient()`
@@ -6844,7 +9143,12 @@ impl GlobOptFuncCCC2 {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_gradient(self as *mut Self, X, G) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_gradient(self as *mut Self, X, G) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCC.hxx`:88 - `Extrema_GlobOptFuncCCC2::Values()`
@@ -6854,13 +9158,17 @@ impl GlobOptFuncCCC2 {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCCC2_values_vector_real_vector(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_values_vector_real_vector(
+                    self as *mut Self,
+                    X,
+                    F,
+                    G,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6872,14 +9180,18 @@ impl GlobOptFuncCCC2 {
         G: &mut crate::ffi::math_Vector,
         H: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCCC2_values_vector_real_vector_matrix(
-                self as *mut Self,
-                X,
-                F,
-                G,
-                H,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_values_vector_real_vector_matrix(
+                    self as *mut Self,
+                    X,
+                    F,
+                    G,
+                    H,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -6887,10 +9199,14 @@ impl GlobOptFuncCCC2 {
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -6898,10 +9214,14 @@ impl GlobOptFuncCCC2 {
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -6909,10 +9229,14 @@ impl GlobOptFuncCCC2 {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -6920,32 +9244,50 @@ impl GlobOptFuncCCC2 {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -6968,10 +9310,11 @@ impl GlobOptFuncCQuadric {
     /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:32 - `Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric()`
     /// Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCQuadric.
     pub fn new_curveptr(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr(
-                C as *const _,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr(C as *const _) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6981,12 +9324,16 @@ impl GlobOptFuncCQuadric {
         theTf: f64,
         theTl: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr_real2(
-                C as *const _,
-                theTf,
-                theTl,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr_real2(
+                    C as *const _,
+                    theTf,
+                    theTl,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -6995,13 +9342,15 @@ impl GlobOptFuncCQuadric {
         C: &crate::adaptor3d::Curve,
         S: &crate::adaptor3d::Surface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr_surfaceptr(
                     C as *const _,
                     S as *const _,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7014,26 +9363,41 @@ impl GlobOptFuncCQuadric {
         theVf: f64,
         theVl: f64,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCQuadric_load_quad(
-                self as *mut Self,
-                S as *const _,
-                theUf,
-                theUl,
-                theVf,
-                theVl,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_load_quad(
+                    self as *mut Self,
+                    S as *const _,
+                    theUf,
+                    theUl,
+                    theVf,
+                    theVl,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:46 - `Extrema_GlobOptFuncCQuadric::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_nb_variables(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:48 - `Extrema_GlobOptFuncCQuadric::Value()`
     pub fn value(&mut self, theX: &crate::ffi::math_Vector, theF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_value(self as *mut Self, theX, theF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_value(self as *mut Self, theX, theF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCQuadric.hxx`:50 - `Extrema_GlobOptFuncCQuadric::QuadricParameters()`
@@ -7043,37 +9407,52 @@ impl GlobOptFuncCQuadric {
         theCT: &crate::ffi::math_Vector,
         theUV: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCQuadric_quadric_parameters(
-                self as *const Self,
-                theCT,
-                theUV,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_quadric_parameters(
+                    self as *const Self,
+                    theCT,
+                    theUV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -7100,22 +9479,36 @@ impl GlobOptFuncCS {
         C: &crate::adaptor3d::Curve,
         S: &crate::adaptor3d::Surface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncCS_ctor_curveptr_surfaceptr(
-                C as *const _,
-                S as *const _,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_ctor_curveptr_surfaceptr(
+                    C as *const _,
+                    S as *const _,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCS.hxx`:32 - `Extrema_GlobOptFuncCS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCS_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCS_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCS.hxx`:34 - `Extrema_GlobOptFuncCS::Value()`
     pub fn value(&mut self, theX: &crate::ffi::math_Vector, theF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCS_value(self as *mut Self, theX, theF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncCS_value(self as *mut Self, theX, theF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCS.hxx`:36 - `Extrema_GlobOptFuncCS::Gradient()`
@@ -7124,7 +9517,13 @@ impl GlobOptFuncCS {
         theX: &crate::ffi::math_Vector,
         theG: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCS_gradient(self as *mut Self, theX, theG) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_gradient(self as *mut Self, theX, theG)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncCS.hxx`:38 - `Extrema_GlobOptFuncCS::Values()`
@@ -7134,13 +9533,17 @@ impl GlobOptFuncCS {
         theF: &mut f64,
         theG: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCS_values_vector_real_vector(
-                self as *mut Self,
-                theX,
-                theF,
-                theG,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_values_vector_real_vector(
+                    self as *mut Self,
+                    theX,
+                    theF,
+                    theG,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7152,14 +9555,18 @@ impl GlobOptFuncCS {
         theG: &mut crate::ffi::math_Vector,
         theH: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncCS_values_vector_real_vector_matrix(
-                self as *mut Self,
-                theX,
-                theF,
-                theG,
-                theH,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_values_vector_real_vector_matrix(
+                    self as *mut Self,
+                    theX,
+                    theF,
+                    theG,
+                    theH,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -7167,10 +9574,14 @@ impl GlobOptFuncCS {
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -7178,10 +9589,14 @@ impl GlobOptFuncCS {
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7189,10 +9604,14 @@ impl GlobOptFuncCS {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -7200,32 +9619,48 @@ impl GlobOptFuncCS {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -7251,22 +9686,25 @@ impl GlobOptFuncConicS {
         C: &crate::adaptor3d::Curve,
         S: &crate::adaptor3d::Surface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncConicS_ctor_curveptr_surfaceptr(
                     C as *const _,
                     S as *const _,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:35 - `Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS()`
     pub fn new_surfaceptr(S: &crate::adaptor3d::Surface) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr(
-                S as *const _,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr(S as *const _) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7278,66 +9716,104 @@ impl GlobOptFuncConicS {
         theVf: f64,
         theVl: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr_real4(
-                S as *const _,
-                theUf,
-                theUl,
-                theVf,
-                theVl,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr_real4(
+                    S as *const _,
+                    theUf,
+                    theUl,
+                    theVf,
+                    theVl,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:43 - `Extrema_GlobOptFuncConicS::LoadConic()`
     pub fn load_conic(&mut self, S: &crate::adaptor3d::Curve, theTf: f64, theTl: f64) {
-        unsafe {
-            crate::ffi::Extrema_GlobOptFuncConicS_load_conic(
-                self as *mut Self,
-                S as *const _,
-                theTf,
-                theTl,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_load_conic(
+                    self as *mut Self,
+                    S as *const _,
+                    theTf,
+                    theTl,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:47 - `Extrema_GlobOptFuncConicS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_GlobOptFuncConicS_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:49 - `Extrema_GlobOptFuncConicS::Value()`
     pub fn value(&mut self, theX: &crate::ffi::math_Vector, theF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_value(self as *mut Self, theX, theF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_value(self as *mut Self, theX, theF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:52 - `Extrema_GlobOptFuncConicS::ConicParameter()`
     /// Parameter of conic for point on surface defined by theUV
     pub fn conic_parameter(&self, theUV: &crate::ffi::math_Vector) -> f64 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_conic_parameter(self as *const Self, theUV) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_conic_parameter(self as *const Self, theUV)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -7357,15 +9833,20 @@ unsafe impl crate::CppDeletable for HArray1OfPOnCurv {
 impl HArray1OfPOnCurv {
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2(theLower, theUpper) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7375,10 +9856,12 @@ impl HArray1OfPOnCurv {
         theUpper: i32,
         theValue: &POnCurv,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2_poncurv(
-                theLower, theUpper, theValue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2_poncurv(theLower, theUpper, theValue)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7389,10 +9872,14 @@ impl HArray1OfPOnCurv {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_poncurv_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_ctor_poncurv_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7400,55 +9887,81 @@ impl HArray1OfPOnCurv {
     pub fn new_array1ofponcurv(
         theOther: &crate::ffi::Extrema_Array1OfPOnCurv,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Array1()`
     pub fn array1(&self) -> &crate::ffi::Extrema_Array1OfPOnCurv {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::Extrema_Array1OfPOnCurv {
-        unsafe { &mut *(crate::ffi::Extrema_HArray1OfPOnCurv_change_array1(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_change_array1(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray1OfPOnCurv_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7456,62 +9969,95 @@ impl HArray1OfPOnCurv {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray1OfPOnCurv> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7526,22 +10072,34 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv {
 impl HandleExtremaHArray1OfPOnCurv {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv
     pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnCurv {
-        unsafe { &*(crate::ffi::HandleExtremaHArray1OfPOnCurv_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray1OfPOnCurv {
-        unsafe { &mut *(crate::ffi::HandleExtremaHArray1OfPOnCurv_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_HArray1OfPOnCurv> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleExtremaHArray1OfPOnCurv_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7562,15 +10120,20 @@ unsafe impl crate::CppDeletable for HArray1OfPOnCurv2d {
 impl HArray1OfPOnCurv2d {
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2(theLower, theUpper) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7580,10 +10143,14 @@ impl HArray1OfPOnCurv2d {
         theUpper: i32,
         theValue: &POnCurv2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2_poncurv2d(
-                theLower, theUpper, theValue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2_poncurv2d(
+                    theLower, theUpper, theValue,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7594,12 +10161,14 @@ impl HArray1OfPOnCurv2d {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_poncurv2d_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7607,55 +10176,81 @@ impl HArray1OfPOnCurv2d {
     pub fn new_array1ofponcurv2d(
         theOther: &crate::ffi::Extrema_Array1OfPOnCurv2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(theOther),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Array1()`
     pub fn array1(&self) -> &crate::ffi::Extrema_Array1OfPOnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv2d_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::Extrema_Array1OfPOnCurv2d {
-        unsafe { &mut *(crate::ffi::Extrema_HArray1OfPOnCurv2d_change_array1(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_change_array1(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv2d_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7663,66 +10258,99 @@ impl HArray1OfPOnCurv2d {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray1OfPOnCurv2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv2d_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7737,22 +10365,34 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv2d {
 impl HandleExtremaHArray1OfPOnCurv2d {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnCurv2d {
-        unsafe { &*(crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray1OfPOnCurv2d {
-        unsafe { &mut *(crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_HArray1OfPOnCurv2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleExtremaHArray1OfPOnCurv2d_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7773,15 +10413,20 @@ unsafe impl crate::CppDeletable for HArray1OfPOnSurf {
 impl HArray1OfPOnSurf {
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2(theLower, theUpper) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7791,10 +10436,12 @@ impl HArray1OfPOnSurf {
         theUpper: i32,
         theValue: &POnSurf,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2_ponsurf(
-                theLower, theUpper, theValue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2_ponsurf(theLower, theUpper, theValue)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7805,10 +10452,14 @@ impl HArray1OfPOnSurf {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_ponsurf_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_ctor_ponsurf_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7816,55 +10467,81 @@ impl HArray1OfPOnSurf {
     pub fn new_array1ofponsurf(
         theOther: &crate::ffi::Extrema_Array1OfPOnSurf,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Array1()`
     pub fn array1(&self) -> &crate::ffi::Extrema_Array1OfPOnSurf {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnSurf_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::Extrema_Array1OfPOnSurf {
-        unsafe { &mut *(crate::ffi::Extrema_HArray1OfPOnSurf_change_array1(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_change_array1(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnSurf_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray1OfPOnSurf_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnSurf_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -7872,62 +10549,95 @@ impl HArray1OfPOnSurf {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray1OfPOnSurf> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_HArray1OfPOnSurf_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -7942,22 +10652,34 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnSurf {
 impl HandleExtremaHArray1OfPOnSurf {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnSurf
     pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnSurf {
-        unsafe { &*(crate::ffi::HandleExtremaHArray1OfPOnSurf_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray1OfPOnSurf_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnSurf
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray1OfPOnSurf {
-        unsafe { &mut *(crate::ffi::HandleExtremaHArray1OfPOnSurf_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray1OfPOnSurf_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_HArray1OfPOnSurf> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleExtremaHArray1OfPOnSurf_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -7983,10 +10705,14 @@ impl HArray2OfPOnCurv {
         theColLow: i32,
         theColUpp: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4(
-                theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4(
+                    theRowLow, theRowUpp, theColLow, theColUpp,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -7998,10 +10724,14 @@ impl HArray2OfPOnCurv {
         theColUpp: i32,
         theValue: &POnCurv,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4_poncurv(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4_poncurv(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8009,55 +10739,81 @@ impl HArray2OfPOnCurv {
     pub fn new_array2ofponcurv(
         theOther: &crate::ffi::Extrema_Array2OfPOnCurv,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Array2()`
     pub fn array2(&self) -> &crate::ffi::Extrema_Array2OfPOnCurv {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv_array2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_array2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::ChangeArray2()`
     pub fn change_array2(&mut self) -> &mut crate::ffi::Extrema_Array2OfPOnCurv {
-        unsafe { &mut *(crate::ffi::Extrema_HArray2OfPOnCurv_change_array2(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_change_array2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray2OfPOnCurv_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8065,62 +10821,95 @@ impl HArray2OfPOnCurv {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnCurv> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8135,22 +10924,34 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv {
 impl HandleExtremaHArray2OfPOnCurv {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv
     pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnCurv {
-        unsafe { &*(crate::ffi::HandleExtremaHArray2OfPOnCurv_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray2OfPOnCurv {
-        unsafe { &mut *(crate::ffi::HandleExtremaHArray2OfPOnCurv_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_HArray2OfPOnCurv> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleExtremaHArray2OfPOnCurv_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8176,10 +10977,14 @@ impl HArray2OfPOnCurv2d {
         theColLow: i32,
         theColUpp: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4(
-                theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4(
+                    theRowLow, theRowUpp, theColLow, theColUpp,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8191,10 +10996,14 @@ impl HArray2OfPOnCurv2d {
         theColUpp: i32,
         theValue: &POnCurv2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4_poncurv2d(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4_poncurv2d(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8202,55 +11011,81 @@ impl HArray2OfPOnCurv2d {
     pub fn new_array2ofponcurv2d(
         theOther: &crate::ffi::Extrema_Array2OfPOnCurv2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(theOther),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Array2()`
     pub fn array2(&self) -> &crate::ffi::Extrema_Array2OfPOnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv2d_array2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_array2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::ChangeArray2()`
     pub fn change_array2(&mut self) -> &mut crate::ffi::Extrema_Array2OfPOnCurv2d {
-        unsafe { &mut *(crate::ffi::Extrema_HArray2OfPOnCurv2d_change_array2(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_change_array2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv2d_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8258,66 +11093,99 @@ impl HArray2OfPOnCurv2d {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnCurv2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv2d_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8332,22 +11200,34 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv2d {
 impl HandleExtremaHArray2OfPOnCurv2d {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnCurv2d {
-        unsafe { &*(crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray2OfPOnCurv2d {
-        unsafe { &mut *(crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_HArray2OfPOnCurv2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleExtremaHArray2OfPOnCurv2d_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8373,10 +11253,14 @@ impl HArray2OfPOnSurf {
         theColLow: i32,
         theColUpp: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4(
-                theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4(
+                    theRowLow, theRowUpp, theColLow, theColUpp,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8388,10 +11272,14 @@ impl HArray2OfPOnSurf {
         theColUpp: i32,
         theValue: &POnSurf,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4_ponsurf(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4_ponsurf(
+                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8399,55 +11287,81 @@ impl HArray2OfPOnSurf {
     pub fn new_array2ofponsurf(
         theOther: &crate::ffi::Extrema_Array2OfPOnSurf,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Array2()`
     pub fn array2(&self) -> &crate::ffi::Extrema_Array2OfPOnSurf {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnSurf_array2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_array2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::ChangeArray2()`
     pub fn change_array2(&mut self) -> &mut crate::ffi::Extrema_Array2OfPOnSurf {
-        unsafe { &mut *(crate::ffi::Extrema_HArray2OfPOnSurf_change_array2(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_change_array2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnSurf_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Extrema_HArray2OfPOnSurf_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnSurf_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -8455,62 +11369,95 @@ impl HArray2OfPOnSurf {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnSurf> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnSurf_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_HArray2OfPOnSurf_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8525,22 +11472,34 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnSurf {
 impl HandleExtremaHArray2OfPOnSurf {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnSurf
     pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnSurf {
-        unsafe { &*(crate::ffi::HandleExtremaHArray2OfPOnSurf_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray2OfPOnSurf_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnSurf
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray2OfPOnSurf {
-        unsafe { &mut *(crate::ffi::HandleExtremaHArray2OfPOnSurf_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleExtremaHArray2OfPOnSurf_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<Extrema_HArray2OfPOnSurf> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleExtremaHArray2OfPOnSurf_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -8574,30 +11533,43 @@ impl LocECC {
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocECC_ctor_curve2_real4(
-                C1, C2, U0, V0, TolU, TolV,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocECC_ctor_curve2_real4(C1, C2, U0, V0, TolU, TolV) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocECC.hxx`:53 - `Extrema_LocECC::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocECC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocECC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocECC.hxx`:56 - `Extrema_LocECC::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocECC_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocECC_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocECC.hxx`:60 - `Extrema_LocECC::Point()`
     /// Returns the points of the extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv, P2: &mut POnCurv) {
-        unsafe { crate::ffi::Extrema_LocECC_point(self as *const Self, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_LocECC_point(self as *const Self, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8630,30 +11602,44 @@ impl LocECC2d {
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocECC2d_ctor_curve2d2_real4(
-                C1, C2, U0, V0, TolU, TolV,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocECC2d_ctor_curve2d2_real4(C1, C2, U0, V0, TolU, TolV)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocECC2d.hxx`:53 - `Extrema_LocECC2d::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocECC2d_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocECC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocECC2d.hxx`:56 - `Extrema_LocECC2d::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocECC2d_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocECC2d_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocECC2d.hxx`:60 - `Extrema_LocECC2d::Point()`
     /// Returns the points of the extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        unsafe { crate::ffi::Extrema_LocECC2d_point(self as *const Self, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_LocECC2d_point(self as *const Self, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8673,7 +11659,11 @@ unsafe impl crate::CppDeletable for LocEPCOfLocateExtPC {
 impl LocEPCOfLocateExtPC {
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:39 - `Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:50 - `Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC()`
@@ -8692,10 +11682,12 @@ impl LocEPCOfLocateExtPC {
         U0: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real2(
-                P, C, U0, TolU,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real2(P, C, U0, TolU)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8718,24 +11710,31 @@ impl LocEPCOfLocateExtPC {
         Usup: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real4(
-                P, C, U0, Umin, Usup, TolU,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real4(
+                    P, C, U0, Umin, Usup, TolU,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:73 - `Extrema_LocEPCOfLocateExtPC::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Umin: f64, Usup: f64, TolU: f64) {
-        unsafe {
-            crate::ffi::Extrema_LocEPCOfLocateExtPC_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolU,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC_initialize(
+                    self as *mut Self,
+                    C,
+                    Umin,
+                    Usup,
+                    TolU,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8744,31 +11743,55 @@ impl LocEPCOfLocateExtPC {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt, U0: f64) {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_perform(self as *mut Self, P, U0) }
+        {
+            unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_perform(self as *mut Self, P, U0) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:84 - `Extrema_LocEPCOfLocateExtPC::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:87 - `Extrema_LocEPCOfLocateExtPC::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_square_distance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC_square_distance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:90 - `Extrema_LocEPCOfLocateExtPC::IsMin()`
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_is_min(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_is_min(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:93 - `Extrema_LocEPCOfLocateExtPC::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_LocEPCOfLocateExtPC_point(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -8788,7 +11811,11 @@ unsafe impl crate::CppDeletable for LocEPCOfLocateExtPC2d {
 impl LocEPCOfLocateExtPC2d {
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:41 - `Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:52 - `Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d()`
@@ -8807,10 +11834,12 @@ impl LocEPCOfLocateExtPC2d {
         U0: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolU),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolU)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -8833,26 +11862,31 @@ impl LocEPCOfLocateExtPC2d {
         Usup: f64,
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real4(
                     P, C, U0, Umin, Usup, TolU,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:75 - `Extrema_LocEPCOfLocateExtPC2d::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolU: f64) {
-        unsafe {
-            crate::ffi::Extrema_LocEPCOfLocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolU,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC2d_initialize(
+                    self as *mut Self,
+                    C,
+                    Umin,
+                    Usup,
+                    TolU,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -8861,31 +11895,55 @@ impl LocEPCOfLocateExtPC2d {
     /// An exception is raised if the fields have not
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_perform(self as *mut Self, P, U0) }
+        {
+            unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_perform(self as *mut Self, P, U0) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:86 - `Extrema_LocEPCOfLocateExtPC2d::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:89 - `Extrema_LocEPCOfLocateExtPC2d::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_square_distance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC2d_square_distance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:92 - `Extrema_LocEPCOfLocateExtPC2d::IsMin()`
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_is_min(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_is_min(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:95 - `Extrema_LocEPCOfLocateExtPC2d::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_LocEPCOfLocateExtPC2d_point(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -8919,30 +11977,43 @@ impl LocateExtCC {
         U0: f64,
         V0: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtCC_ctor_curve2_real2(
-                C1, C2, U0, V0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtCC_ctor_curve2_real2(C1, C2, U0, V0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocateExtCC.hxx`:46 - `Extrema_LocateExtCC::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocateExtCC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtCC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtCC.hxx`:49 - `Extrema_LocateExtCC::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocateExtCC_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtCC_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtCC.hxx`:53 - `Extrema_LocateExtCC::Point()`
     /// Returns the points of the extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv, P2: &mut POnCurv) {
-        unsafe { crate::ffi::Extrema_LocateExtCC_point(self as *const Self, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_LocateExtCC_point(self as *const Self, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -8976,30 +12047,44 @@ impl LocateExtCC2d {
         U0: f64,
         V0: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtCC2d_ctor_curve2d2_real2(
-                C1, C2, U0, V0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtCC2d_ctor_curve2d2_real2(C1, C2, U0, V0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocateExtCC2d.hxx`:48 - `Extrema_LocateExtCC2d::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocateExtCC2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtCC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtCC2d.hxx`:51 - `Extrema_LocateExtCC2d::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocateExtCC2d_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtCC2d_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtCC2d.hxx`:55 - `Extrema_LocateExtCC2d::Point()`
     /// Returns the points of the extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        unsafe { crate::ffi::Extrema_LocateExtCC2d_point(self as *const Self, P1, P2) }
+        {
+            unsafe { crate::ffi::Extrema_LocateExtCC2d_point(self as *const Self, P1, P2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -9019,7 +12104,11 @@ unsafe impl crate::CppDeletable for LocateExtPC {
 impl LocateExtPC {
     /// **Source:** `Extrema_LocateExtPC.hxx`:45 - `Extrema_LocateExtPC::Extrema_LocateExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:56 - `Extrema_LocateExtPC::Extrema_LocateExtPC()`
@@ -9038,10 +12127,11 @@ impl LocateExtPC {
         U0: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real2(
-                P, C, U0, TolF,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real2(P, C, U0, TolF) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9064,48 +12154,73 @@ impl LocateExtPC {
         Usup: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real4(
-                P, C, U0, Umin, Usup, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real4(P, C, U0, Umin, Usup, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:79 - `Extrema_LocateExtPC::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Umin: f64, Usup: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_LocateExtPC_initialize(self as *mut Self, C, Umin, Usup, TolF)
+        {
+            unsafe {
+                crate::ffi::Extrema_LocateExtPC_initialize(self as *mut Self, C, Umin, Usup, TolF)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:84 - `Extrema_LocateExtPC::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt, U0: f64) {
-        unsafe { crate::ffi::Extrema_LocateExtPC_perform(self as *mut Self, P, U0) }
+        {
+            unsafe { crate::ffi::Extrema_LocateExtPC_perform(self as *mut Self, P, U0) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:87 - `Extrema_LocateExtPC::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocateExtPC_is_done(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:90 - `Extrema_LocateExtPC::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocateExtPC_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtPC_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:93 - `Extrema_LocateExtPC::IsMin()`
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocateExtPC_is_min(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC_is_min(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:96 - `Extrema_LocateExtPC::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_LocateExtPC_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -9125,7 +12240,11 @@ unsafe impl crate::CppDeletable for LocateExtPC2d {
 impl LocateExtPC2d {
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:47 - `Extrema_LocateExtPC2d::Extrema_LocateExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:58 - `Extrema_LocateExtPC2d::Extrema_LocateExtPC2d()`
@@ -9144,10 +12263,12 @@ impl LocateExtPC2d {
         U0: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real2(
-                P, C, U0, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolF)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9170,48 +12291,76 @@ impl LocateExtPC2d {
         Usup: f64,
         TolF: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real4(
-                P, C, U0, Umin, Usup, TolF,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real4(
+                    P, C, U0, Umin, Usup, TolF,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:81 - `Extrema_LocateExtPC2d::Initialize()`
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolF: f64) {
-        unsafe {
-            crate::ffi::Extrema_LocateExtPC2d_initialize(self as *mut Self, C, Umin, Usup, TolF)
+        {
+            unsafe {
+                crate::ffi::Extrema_LocateExtPC2d_initialize(self as *mut Self, C, Umin, Usup, TolF)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:86 - `Extrema_LocateExtPC2d::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
-        unsafe { crate::ffi::Extrema_LocateExtPC2d_perform(self as *mut Self, P, U0) }
+        {
+            unsafe { crate::ffi::Extrema_LocateExtPC2d_perform(self as *mut Self, P, U0) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:89 - `Extrema_LocateExtPC2d::IsDone()`
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocateExtPC2d_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtPC2d_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:92 - `Extrema_LocateExtPC2d::SquareDistance()`
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_LocateExtPC2d_square_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_LocateExtPC2d_square_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:95 - `Extrema_LocateExtPC2d::IsMin()`
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
-        unsafe { crate::ffi::Extrema_LocateExtPC2d_is_min(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC2d_is_min(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:98 - `Extrema_LocateExtPC2d::Point()`
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_LocateExtPC2d_point(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_LocateExtPC2d_point(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -9231,95 +12380,156 @@ unsafe impl crate::CppDeletable for PCFOfEPCOfELPCOfLocateExtPC {
 impl PCFOfEPCOfELPCOfLocateExtPC {
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:42 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Extrema_PCFOfEPCOfELPCOfLocateExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:44 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Extrema_PCFOfEPCOfELPCOfLocateExtPC()`
     pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor_pnt_curve(P, C),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor_pnt_curve(P, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:47 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_initialize(self as *mut Self, C) }
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_initialize(self as *mut Self, C)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:50 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_set_point(self as *mut Self, P) }
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_set_point(self as *mut Self, P)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:53 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_value(self as *mut Self, U, F) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_value(self as *mut Self, U, F)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:56 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_derivative(self as *mut Self, U, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_derivative(self as *mut Self, U, DF)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:60 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_values(self as *mut Self, U, F, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_values(self as *mut Self, U, F, DF)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:65 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_get_state_number(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_get_state_number(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:68 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_nb_ext(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:71 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_square_distance(self as *const Self, N)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_square_distance(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:74 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_is_min(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:77 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_point(self as *const Self, N)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_point(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:80 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9327,17 +12537,27 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_search_of_tolerance(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_search_of_tolerance(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -9345,26 +12565,40 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -9385,8 +12619,10 @@ unsafe impl crate::CppDeletable for PCFOfEPCOfELPCOfLocateExtPC2d {
 impl PCFOfEPCOfELPCOfLocateExtPC2d {
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:43 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor())
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9395,97 +12631,159 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
         P: &crate::gp::Pnt2d,
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:49 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_initialize(self as *mut Self, C)
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_initialize(self as *mut Self, C)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:52 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_set_point(self as *mut Self, P) }
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_set_point(self as *mut Self, P)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:55 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_value(self as *mut Self, U, F) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_value(self as *mut Self, U, F)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:58 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_derivative(self as *mut Self, U, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_derivative(
+                    self as *mut Self,
+                    U,
+                    DF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:62 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_values(self as *mut Self, U, F, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_values(
+                    self as *mut Self,
+                    U,
+                    F,
+                    DF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:67 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_get_state_number(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_get_state_number(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:70 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_nb_ext(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:73 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_square_distance(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:76 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_is_min(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:79 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_point(self as *const Self, N))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_point(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:82 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9493,17 +12791,27 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_search_of_tolerance(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_search_of_tolerance(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -9511,26 +12819,40 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -9551,85 +12873,141 @@ unsafe impl crate::CppDeletable for PCFOfEPCOfExtPC {
 impl PCFOfEPCOfExtPC {
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:42 - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:44 - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
     pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(P, C))
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(P, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:47 - `Extrema_PCFOfEPCOfExtPC::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_initialize(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_initialize(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:50 - `Extrema_PCFOfEPCOfExtPC::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_set_point(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_set_point(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:53 - `Extrema_PCFOfEPCOfExtPC::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_value(self as *mut Self, U, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_value(self as *mut Self, U, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:56 - `Extrema_PCFOfEPCOfExtPC::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_derivative(self as *mut Self, U, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_derivative(self as *mut Self, U, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:60 - `Extrema_PCFOfEPCOfExtPC::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_values(self as *mut Self, U, F, DF) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_values(self as *mut Self, U, F, DF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:65 - `Extrema_PCFOfEPCOfExtPC::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_get_state_number(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_get_state_number(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:68 - `Extrema_PCFOfEPCOfExtPC::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:71 - `Extrema_PCFOfEPCOfExtPC::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_square_distance(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:74 - `Extrema_PCFOfEPCOfExtPC::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_is_min(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:77 - `Extrema_PCFOfEPCOfExtPC::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfExtPC_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:80 - `Extrema_PCFOfEPCOfExtPC::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfExtPC_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9637,15 +13015,25 @@ impl PCFOfEPCOfExtPC {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_search_of_tolerance(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_search_of_tolerance(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -9653,22 +13041,36 @@ impl PCFOfEPCOfExtPC {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -9689,7 +13091,11 @@ unsafe impl crate::CppDeletable for PCFOfEPCOfExtPC2d {
 impl PCFOfEPCOfExtPC2d {
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:42 - `Extrema_PCFOfEPCOfExtPC2d::Extrema_PCFOfEPCOfExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:44 - `Extrema_PCFOfEPCOfExtPC2d::Extrema_PCFOfEPCOfExtPC2d()`
@@ -9697,82 +13103,136 @@ impl PCFOfEPCOfExtPC2d {
         P: &crate::gp::Pnt2d,
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor_pnt2d_curve2d(
-                P, C,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor_pnt2d_curve2d(P, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:47 - `Extrema_PCFOfEPCOfExtPC2d::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_initialize(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_initialize(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:50 - `Extrema_PCFOfEPCOfExtPC2d::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_set_point(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_set_point(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:53 - `Extrema_PCFOfEPCOfExtPC2d::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_value(self as *mut Self, U, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_value(self as *mut Self, U, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:56 - `Extrema_PCFOfEPCOfExtPC2d::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_derivative(self as *mut Self, U, DF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_derivative(self as *mut Self, U, DF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:60 - `Extrema_PCFOfEPCOfExtPC2d::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_values(self as *mut Self, U, F, DF) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_values(self as *mut Self, U, F, DF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:65 - `Extrema_PCFOfEPCOfExtPC2d::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_get_state_number(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_get_state_number(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:68 - `Extrema_PCFOfEPCOfExtPC2d::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_nb_ext(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:71 - `Extrema_PCFOfEPCOfExtPC2d::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_square_distance(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_square_distance(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:74 - `Extrema_PCFOfEPCOfExtPC2d::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_is_min(self as *const Self, N) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:77 - `Extrema_PCFOfEPCOfExtPC2d::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:80 - `Extrema_PCFOfEPCOfExtPC2d::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Extrema_PCFOfEPCOfExtPC2d_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9780,15 +13240,25 @@ impl PCFOfEPCOfExtPC2d {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_search_of_tolerance(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_search_of_tolerance(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -9796,22 +13266,36 @@ impl PCFOfEPCOfExtPC2d {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -9832,95 +13316,156 @@ unsafe impl crate::CppDeletable for PCLocFOfLocEPCOfLocateExtPC {
 impl PCLocFOfLocEPCOfLocateExtPC {
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:42 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Extrema_PCLocFOfLocEPCOfLocateExtPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:44 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Extrema_PCLocFOfLocEPCOfLocateExtPC()`
     pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor_pnt_curve(P, C),
-            )
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor_pnt_curve(P, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:47 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_initialize(self as *mut Self, C) }
+        {
+            unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_initialize(self as *mut Self, C)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:50 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_set_point(self as *mut Self, P) }
+        {
+            unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_set_point(self as *mut Self, P)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:53 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_value(self as *mut Self, U, F) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_value(self as *mut Self, U, F)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:56 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_derivative(self as *mut Self, U, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_derivative(self as *mut Self, U, DF)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:60 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_values(self as *mut Self, U, F, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_values(self as *mut Self, U, F, DF)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:65 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_get_state_number(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_get_state_number(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:68 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_nb_ext(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:71 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_square_distance(self as *const Self, N)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_square_distance(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:74 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_is_min(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:77 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe { &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_point(self as *const Self, N)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_point(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:80 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -9928,17 +13473,27 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_search_of_tolerance(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_search_of_tolerance(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -9946,26 +13501,40 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -9986,8 +13555,10 @@ unsafe impl crate::CppDeletable for PCLocFOfLocEPCOfLocateExtPC2d {
 impl PCLocFOfLocEPCOfLocateExtPC2d {
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:43 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Extrema_PCLocFOfLocEPCOfLocateExtPC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor())
+        {
+            let __result = unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -9996,97 +13567,159 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
         P: &crate::gp::Pnt2d,
         C: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:49 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Initialize()`
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_initialize(self as *mut Self, C)
+        {
+            unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_initialize(self as *mut Self, C)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:52 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SetPoint()`
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_set_point(self as *mut Self, P) }
+        {
+            unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_set_point(self as *mut Self, P)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:55 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Value()`
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_value(self as *mut Self, U, F) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_value(self as *mut Self, U, F)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:58 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Derivative()`
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_derivative(self as *mut Self, U, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_derivative(
+                    self as *mut Self,
+                    U,
+                    DF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:62 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Values()`
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_values(self as *mut Self, U, F, DF)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_values(
+                    self as *mut Self,
+                    U,
+                    F,
+                    DF,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:67 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_get_state_number(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_get_state_number(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:70 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_nb_ext(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_nb_ext(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:73 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SquareDistance()`
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_square_distance(
+                    self as *const Self,
+                    N,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:76 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::IsMin()`
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
-        unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_is_min(self as *const Self, N) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_is_min(self as *const Self, N)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:79 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_point(self as *const Self, N))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_point(self as *const Self, N)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:82 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SubIntervalInitialize()`
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_sub_interval_initialize(
+                    self as *mut Self,
+                    theUfirst,
+                    theUlast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10094,17 +13727,27 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     /// Computes a Tol value. If 1st derivative of curve
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
-        unsafe {
-            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_search_of_tolerance(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_search_of_tolerance(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -10112,26 +13755,40 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -10153,32 +13810,51 @@ impl POnCurv {
     /// **Source:** `Extrema_POnCurv.hxx`:33 - `Extrema_POnCurv::Extrema_POnCurv()`
     /// Creation of an indefinite point on curve.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnCurv_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnCurv.hxx`:37 - `Extrema_POnCurv::Extrema_POnCurv()`
     /// Creation of a point on curve with a parameter
     /// value on the curve and a Pnt from gp.
     pub fn new_real_pnt(U: f64, P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnCurv_ctor_real_pnt(U, P)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv_ctor_real_pnt(U, P) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnCurv.hxx`:40 - `Extrema_POnCurv::SetValues()`
     /// sets the point and parameter values.
     pub fn set_values(&mut self, U: f64, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_POnCurv_set_values(self as *mut Self, U, P) }
+        {
+            unsafe { crate::ffi::Extrema_POnCurv_set_values(self as *mut Self, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_POnCurv.hxx`:43 - `Extrema_POnCurv::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Extrema_POnCurv_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnCurv.hxx`:46 - `Extrema_POnCurv::Parameter()`
     /// Returns the parameter on the curve.
     pub fn parameter(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_POnCurv_parameter(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -10199,32 +13875,51 @@ impl POnCurv2d {
     /// **Source:** `Extrema_POnCurv2d.hxx`:32 - `Extrema_POnCurv2d::Extrema_POnCurv2d()`
     /// Creation of an indefinite point on curve.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnCurv2d_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv2d_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnCurv2d.hxx`:36 - `Extrema_POnCurv2d::Extrema_POnCurv2d()`
     /// Creation of a point on curve with a parameter
     /// value on the curve and a Pnt from gp.
     pub fn new_real_pnt2d(U: f64, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnCurv2d_ctor_real_pnt2d(U, P)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv2d_ctor_real_pnt2d(U, P) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnCurv2d.hxx`:39 - `Extrema_POnCurv2d::SetValues()`
     /// sets the point and parameter values.
     pub fn set_values(&mut self, U: f64, P: &crate::gp::Pnt2d) {
-        unsafe { crate::ffi::Extrema_POnCurv2d_set_values(self as *mut Self, U, P) }
+        {
+            unsafe { crate::ffi::Extrema_POnCurv2d_set_values(self as *mut Self, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_POnCurv2d.hxx`:42 - `Extrema_POnCurv2d::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Extrema_POnCurv2d_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv2d_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnCurv2d.hxx`:45 - `Extrema_POnCurv2d::Parameter()`
     /// Returns the parameter on the curve.
     pub fn parameter(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_POnCurv2d_parameter(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnCurv2d_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -10246,33 +13941,53 @@ impl POnSurf {
     /// **Source:** `Extrema_POnSurf.hxx`:33 - `Extrema_POnSurf::Extrema_POnSurf()`
     /// Creation of an indefinite point on surface.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnSurf_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnSurf_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnSurf.hxx`:37 - `Extrema_POnSurf::Extrema_POnSurf()`
     /// Creation of a point on surface with parameter
     /// values on the surface and a Pnt from gp.
     pub fn new_real2_pnt(U: f64, V: f64, P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnSurf_ctor_real2_pnt(U, V, P)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnSurf_ctor_real2_pnt(U, V, P) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
     /// Returns the 3d point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Extrema_POnSurf_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnSurf_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
     /// Sets the params of current POnSurf instance.
     /// (e.g. to the point to be projected).
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Extrema_POnSurf_set_parameters(self as *mut Self, theU, theV, thePnt) }
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurf_set_parameters(self as *mut Self, theU, theV, thePnt)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
     /// Returns the parameter values on the surface.
     pub fn parameter(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::Extrema_POnSurf_parameter(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::Extrema_POnSurf_parameter(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -10296,17 +14011,22 @@ impl POnSurfParams {
     /// **Source:** `Extrema_POnSurfParams.hxx`:36 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
     /// empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnSurfParams_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Extrema_POnSurfParams_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Extrema_POnSurfParams.hxx`:40 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
     /// Creation of a point on surface with parameter
     /// values on the surface and a Pnt from gp.
     pub fn new_real2_pnt(theU: f64, theV: f64, thePnt: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Extrema_POnSurfParams_ctor_real2_pnt(
-                theU, theV, thePnt,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_POnSurfParams_ctor_real2_pnt(theU, theV, thePnt) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -10314,36 +14034,50 @@ impl POnSurfParams {
     /// Sets the square distance from this point to another one
     /// (e.g. to the point to be projected).
     pub fn set_sqr_distance(&mut self, theSqrDistance: f64) {
-        unsafe {
-            crate::ffi::Extrema_POnSurfParams_set_sqr_distance(self as *mut Self, theSqrDistance)
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurfParams_set_sqr_distance(
+                    self as *mut Self,
+                    theSqrDistance,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_POnSurfParams.hxx`:47 - `Extrema_POnSurfParams::GetSqrDistance()`
     /// Query the square distance from this point to another one.
     pub fn get_sqr_distance(&self) -> f64 {
-        unsafe { crate::ffi::Extrema_POnSurfParams_get_sqr_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_POnSurfParams_get_sqr_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Extrema_POnSurfParams.hxx`:50 - `Extrema_POnSurfParams::SetElementType()`
     /// Sets the element type on which this point is situated.
     pub fn set_element_type(&mut self, theElementType: crate::extrema::ElementType) {
-        unsafe {
-            crate::ffi::Extrema_POnSurfParams_set_element_type(
-                self as *mut Self,
-                theElementType.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurfParams_set_element_type(
+                    self as *mut Self,
+                    theElementType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Extrema_POnSurfParams.hxx`:53 - `Extrema_POnSurfParams::GetElementType()`
     /// Query the element type on which this point is situated.
     pub fn get_element_type(&self) -> crate::extrema::ElementType {
-        unsafe {
-            crate::extrema::ElementType::try_from(
-                crate::ffi::Extrema_POnSurfParams_get_element_type(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_POnSurfParams_get_element_type(self as *const Self) };
+            crate::check_exception();
+            crate::extrema::ElementType::try_from(__result).unwrap()
         }
     }
 
@@ -10351,8 +14085,15 @@ impl POnSurfParams {
     /// Sets the U and V indices of an element that contains
     /// this point.
     pub fn set_indices(&mut self, theIndexU: i32, theIndexV: i32) {
-        unsafe {
-            crate::ffi::Extrema_POnSurfParams_set_indices(self as *mut Self, theIndexU, theIndexV)
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurfParams_set_indices(
+                    self as *mut Self,
+                    theIndexU,
+                    theIndexV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -10360,43 +14101,73 @@ impl POnSurfParams {
     /// Query the U and V indices of an element that contains
     /// this point.
     pub fn get_indices(&self, theIndexU: &mut i32, theIndexV: &mut i32) {
-        unsafe {
-            crate::ffi::Extrema_POnSurfParams_get_indices(self as *const Self, theIndexU, theIndexV)
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurfParams_get_indices(
+                    self as *const Self,
+                    theIndexU,
+                    theIndexV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to Extrema_POnSurf
     pub fn as_p_on_surf(&self) -> &POnSurf {
-        unsafe { &*(crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Extrema_POnSurf (mutable)
     pub fn as_p_on_surf_mut(&mut self) -> &mut POnSurf {
-        unsafe {
-            &mut *(crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Extrema_POnSurfParams_inherited_Value(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Extrema_POnSurfParams_inherited_Value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::gp::Pnt) {
-        unsafe {
-            crate::ffi::Extrema_POnSurfParams_inherited_SetParameters(
-                self as *mut Self,
-                theU,
-                theV,
-                thePnt,
-            )
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurfParams_inherited_SetParameters(
+                    self as *mut Self,
+                    theU,
+                    theV,
+                    thePnt,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
     pub fn parameter(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self as *const Self, U, V) }
+        {
+            unsafe {
+                crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self as *const Self, U, V)
+            };
+            crate::check_exception();
+        }
     }
 }
 

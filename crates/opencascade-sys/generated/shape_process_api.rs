@@ -27,11 +27,15 @@ impl ApplySequence {
     pub fn new_charptr2(rscName: &str, seqName: &str) -> crate::OwnedPtr<Self> {
         let c_rscName = std::ffi::CString::new(rscName).unwrap();
         let c_seqName = std::ffi::CString::new(seqName).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcessAPI_ApplySequence_ctor_charptr2(
-                c_rscName.as_ptr(),
-                c_seqName.as_ptr(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeProcessAPI_ApplySequence_ctor_charptr2(
+                    c_rscName.as_ptr(),
+                    c_seqName.as_ptr(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -39,7 +43,12 @@ impl ApplySequence {
     /// Returns object for managing resource file and sequence of
     /// operators.
     pub fn context(&mut self) -> &mut crate::ffi::HandleShapeProcessShapeContext {
-        unsafe { &mut *(crate::ffi::ShapeProcessAPI_ApplySequence_context(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_context(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:53 - `ShapeProcessAPI_ApplySequence::PrepareShape()`
@@ -54,27 +63,39 @@ impl ApplySequence {
         until: crate::top_abs::ShapeEnum,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcessAPI_ApplySequence_prepare_shape(
-                self as *mut Self,
-                shape,
-                fillmap,
-                until.into(),
-                theProgress,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::ShapeProcessAPI_ApplySequence_prepare_shape(
+                    self as *mut Self,
+                    shape,
+                    fillmap,
+                    until.into(),
+                    theProgress,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:59 - `ShapeProcessAPI_ApplySequence::ClearMap()`
     /// Clears myMap with accumulated history.
     pub fn clear_map(&mut self) {
-        unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self) }
+        {
+            unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:62 - `ShapeProcessAPI_ApplySequence::Map()`
     /// Returns myMap with accumulated history.
     pub fn map(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
-        unsafe { &*(crate::ffi::ShapeProcessAPI_ApplySequence_map(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_map(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:67 - `ShapeProcessAPI_ApplySequence::PrintPreparationResult()`
@@ -82,8 +103,13 @@ impl ApplySequence {
     /// Note that results can be accumulated from previous preparations
     /// it method ClearMap was not called before PrepareShape.
     pub fn print_preparation_result(&self) {
-        unsafe {
-            crate::ffi::ShapeProcessAPI_ApplySequence_print_preparation_result(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::ShapeProcessAPI_ApplySequence_print_preparation_result(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 }

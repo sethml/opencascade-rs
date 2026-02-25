@@ -17,7 +17,11 @@ pub unsafe fn put_real<'a>(
     OS: &'a mut crate::ffi::Standard_OStream,
     theValue: &'a f64,
 ) -> &'a mut crate::ffi::Standard_OStream {
-    unsafe { &mut *(crate::ffi::BinTools_put_real(OS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_put_real(OS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:38 - `BinTools::PutShortReal`
 ///
@@ -30,28 +34,44 @@ pub unsafe fn put_short_real<'a>(
     OS: &'a mut crate::ffi::Standard_OStream,
     theValue: &'a f32,
 ) -> &'a mut crate::ffi::Standard_OStream {
-    unsafe { &mut *(crate::ffi::BinTools_put_short_real(OS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_put_short_real(OS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:41 - `BinTools::PutInteger`
 pub fn put_integer(
     OS: &mut crate::ffi::Standard_OStream,
     theValue: i32,
 ) -> &mut crate::ffi::Standard_OStream {
-    unsafe { &mut *(crate::ffi::BinTools_put_integer(OS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_put_integer(OS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:44 - `BinTools::PutBool`
 pub fn put_bool(
     OS: &mut crate::ffi::Standard_OStream,
     theValue: bool,
 ) -> &mut crate::ffi::Standard_OStream {
-    unsafe { &mut *(crate::ffi::BinTools_put_bool(OS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_put_bool(OS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:47 - `BinTools::PutExtChar`
 pub fn put_ext_char(
     OS: &mut crate::ffi::Standard_OStream,
     theValue: u16,
 ) -> &mut crate::ffi::Standard_OStream {
-    unsafe { &mut *(crate::ffi::BinTools_put_ext_char(OS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_put_ext_char(OS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:50 - `BinTools::GetReal`
 ///
@@ -64,7 +84,11 @@ pub unsafe fn get_real_mut<'a>(
     IS: &'a mut crate::ffi::Standard_IStream,
     theValue: &'a mut f64,
 ) -> &'a mut crate::ffi::Standard_IStream {
-    unsafe { &mut *(crate::ffi::BinTools_get_real_mut(IS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_get_real_mut(IS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:52 - `BinTools::GetShortReal`
 ///
@@ -77,7 +101,11 @@ pub unsafe fn get_short_real<'a>(
     IS: &'a mut crate::ffi::Standard_IStream,
     theValue: &'a mut f32,
 ) -> &'a mut crate::ffi::Standard_IStream {
-    unsafe { &mut *(crate::ffi::BinTools_get_short_real(IS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_get_short_real(IS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:55 - `BinTools::GetInteger`
 ///
@@ -90,7 +118,11 @@ pub unsafe fn get_integer<'a>(
     IS: &'a mut crate::ffi::Standard_IStream,
     theValue: &'a mut i32,
 ) -> &'a mut crate::ffi::Standard_IStream {
-    unsafe { &mut *(crate::ffi::BinTools_get_integer(IS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_get_integer(IS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:58 - `BinTools::GetBool`
 ///
@@ -103,7 +135,11 @@ pub unsafe fn get_bool<'a>(
     IS: &'a mut crate::ffi::Standard_IStream,
     theValue: &'a mut bool,
 ) -> &'a mut crate::ffi::Standard_IStream {
-    unsafe { &mut *(crate::ffi::BinTools_get_bool(IS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_get_bool(IS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:61 - `BinTools::GetExtChar`
 ///
@@ -116,7 +152,11 @@ pub unsafe fn get_ext_char<'a>(
     IS: &'a mut crate::ffi::Standard_IStream,
     theValue: &'a mut u16,
 ) -> &'a mut crate::ffi::Standard_IStream {
-    unsafe { &mut *(crate::ffi::BinTools_get_ext_char(IS, theValue)) }
+    {
+        let __result = unsafe { crate::ffi::BinTools_get_ext_char(IS, theValue) };
+        crate::check_exception();
+        unsafe { &mut *(__result) }
+    }
 }
 /// **Source:** `BinTools.hxx`:69 - `BinTools::Write`
 /// Writes the shape to the stream in binary format BinTools_FormatVersion_CURRENT.
@@ -129,7 +169,10 @@ pub fn write_mut(
     theStream: &mut crate::ffi::Standard_OStream,
     theRange: &crate::message::ProgressRange,
 ) {
-    unsafe { crate::ffi::BinTools_write_mut(theShape, theStream, theRange) }
+    {
+        unsafe { crate::ffi::BinTools_write_mut(theShape, theStream, theRange) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BinTools.hxx`:92 - `BinTools::Write`
 /// Writes the shape to the stream in binary format of specified version.
@@ -151,15 +194,18 @@ pub fn write_shape_ostream_bool2_formatversion_progressrange_2(
     theVersion: crate::bin_tools::FormatVersion,
     theRange: &crate::message::ProgressRange,
 ) {
-    unsafe {
-        crate::ffi::BinTools_write_shape_ostream_bool2_formatversion_progressrange_2(
-            theShape,
-            theStream,
-            theWithTriangles,
-            theWithNormals,
-            theVersion.into(),
-            theRange,
-        )
+    {
+        unsafe {
+            crate::ffi::BinTools_write_shape_ostream_bool2_formatversion_progressrange_2(
+                theShape,
+                theStream,
+                theWithTriangles,
+                theWithNormals,
+                theVersion.into(),
+                theRange,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `BinTools.hxx`:101 - `BinTools::Read`
@@ -169,7 +215,12 @@ pub fn read_shape_istream_progressrange(
     theStream: &mut crate::ffi::Standard_IStream,
     theRange: &crate::message::ProgressRange,
 ) {
-    unsafe { crate::ffi::BinTools_read_shape_istream_progressrange(theShape, theStream, theRange) }
+    {
+        unsafe {
+            crate::ffi::BinTools_read_shape_istream_progressrange(theShape, theStream, theRange)
+        };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BinTools.hxx`:109 - `BinTools::Write`
 /// Writes the shape to the file in binary format BinTools_FormatVersion_CURRENT.
@@ -182,12 +233,16 @@ pub fn write_shape_charptr_progressrange_2(
     theRange: &crate::message::ProgressRange,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    unsafe {
-        crate::ffi::BinTools_write_shape_charptr_progressrange_2(
-            theShape,
-            c_theFile.as_ptr(),
-            theRange,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BinTools_write_shape_charptr_progressrange_2(
+                theShape,
+                c_theFile.as_ptr(),
+                theRange,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BinTools.hxx`:132 - `BinTools::Write`
@@ -211,15 +266,19 @@ pub fn write_shape_charptr_bool2_formatversion_progressrange_2(
     theRange: &crate::message::ProgressRange,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    unsafe {
-        crate::ffi::BinTools_write_shape_charptr_bool2_formatversion_progressrange_2(
-            theShape,
-            c_theFile.as_ptr(),
-            theWithTriangles,
-            theWithNormals,
-            theVersion.into(),
-            theRange,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BinTools_write_shape_charptr_bool2_formatversion_progressrange_2(
+                theShape,
+                c_theFile.as_ptr(),
+                theWithTriangles,
+                theWithNormals,
+                theVersion.into(),
+                theRange,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 /// **Source:** `BinTools.hxx`:141 - `BinTools::Read`
@@ -230,12 +289,16 @@ pub fn read_shape_charptr_progressrange(
     theRange: &crate::message::ProgressRange,
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
-    unsafe {
-        crate::ffi::BinTools_read_shape_charptr_progressrange(
-            theShape,
-            c_theFile.as_ptr(),
-            theRange,
-        )
+    {
+        let __result = unsafe {
+            crate::ffi::BinTools_read_shape_charptr_progressrange(
+                theShape,
+                c_theFile.as_ptr(),
+                theRange,
+            )
+        };
+        crate::check_exception();
+        __result
     }
 }
 
@@ -367,43 +430,61 @@ impl Curve2dSet {
     /// **Source:** `BinTools_Curve2dSet.hxx`:40 - `BinTools_Curve2dSet::BinTools_Curve2dSet()`
     /// Returns an empty set of Curves.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_Curve2dSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_Curve2dSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:43 - `BinTools_Curve2dSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_Curve2dSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_Curve2dSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:47 - `BinTools_Curve2dSet::Add()`
     /// Incorporate a new Curve in the  set and returns
     /// its index.
     pub fn add(&mut self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
-        unsafe { crate::ffi::BinTools_Curve2dSet_add(self as *mut Self, C) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_Curve2dSet_add(self as *mut Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:50 - `BinTools_Curve2dSet::Curve2d()`
     /// Returns the Curve of index <I>.
     pub fn curve2d(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinTools_Curve2dSet_curve2d(
-                self as *const Self,
-                I,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_Curve2dSet_curve2d(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:53 - `BinTools_Curve2dSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
-        unsafe { crate::ffi::BinTools_Curve2dSet_index(self as *const Self, C) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_Curve2dSet_index(self as *const Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:56 - `BinTools_Curve2dSet::Dump()`
     /// Dumps the content of me on the stream <OS>.
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::BinTools_Curve2dSet_dump(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::BinTools_Curve2dSet_dump(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:60 - `BinTools_Curve2dSet::Write()`
@@ -414,7 +495,10 @@ impl Curve2dSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_Curve2dSet_write(self as *const Self, OS, theRange) }
+        {
+            unsafe { crate::ffi::BinTools_Curve2dSet_write(self as *const Self, OS, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:65 - `BinTools_Curve2dSet::Read()`
@@ -425,13 +509,19 @@ impl Curve2dSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_Curve2dSet_read(self as *mut Self, IS, theRange) }
+        {
+            unsafe { crate::ffi::BinTools_Curve2dSet_read(self as *mut Self, IS, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:69 - `BinTools_Curve2dSet::WriteCurve2d()`
     /// Dumps the curve on the binary stream, that can be read back.
     pub fn write_curve2d(C: &crate::ffi::HandleGeom2dCurve, OS: &mut OStream) {
-        unsafe { crate::ffi::BinTools_Curve2dSet_write_curve2d(C, OS) }
+        {
+            unsafe { crate::ffi::BinTools_Curve2dSet_write_curve2d(C, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_Curve2dSet.hxx`:74 - `BinTools_Curve2dSet::ReadCurve2d()`
@@ -442,7 +532,11 @@ impl Curve2dSet {
         IS: &mut crate::ffi::Standard_IStream,
         C: &mut crate::ffi::HandleGeom2dCurve,
     ) -> &'static mut crate::ffi::Standard_IStream {
-        unsafe { &mut *(crate::ffi::BinTools_Curve2dSet_read_curve2d(IS, C)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_Curve2dSet_read_curve2d(IS, C) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 }
 
@@ -464,34 +558,51 @@ impl CurveSet {
     /// **Source:** `BinTools_CurveSet.hxx`:40 - `BinTools_CurveSet::BinTools_CurveSet()`
     /// Returns an empty set of Curves.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_CurveSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_CurveSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:43 - `BinTools_CurveSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_CurveSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_CurveSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:47 - `BinTools_CurveSet::Add()`
     /// Incorporate a new Curve in the  set and returns
     /// its index.
     pub fn add(&mut self, C: &crate::ffi::HandleGeomCurve) -> i32 {
-        unsafe { crate::ffi::BinTools_CurveSet_add(self as *mut Self, C) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_CurveSet_add(self as *mut Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:50 - `BinTools_CurveSet::Curve()`
     /// Returns the Curve of index <I>.
     pub fn curve(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinTools_CurveSet_curve(self as *const Self, I))
+        {
+            let __result = unsafe { crate::ffi::BinTools_CurveSet_curve(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:53 - `BinTools_CurveSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, C: &crate::ffi::HandleGeomCurve) -> i32 {
-        unsafe { crate::ffi::BinTools_CurveSet_index(self as *const Self, C) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_CurveSet_index(self as *const Self, C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:57 - `BinTools_CurveSet::Write()`
@@ -502,7 +613,10 @@ impl CurveSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_CurveSet_write(self as *const Self, OS, theRange) }
+        {
+            unsafe { crate::ffi::BinTools_CurveSet_write(self as *const Self, OS, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:62 - `BinTools_CurveSet::Read()`
@@ -513,14 +627,20 @@ impl CurveSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_CurveSet_read(self as *mut Self, IS, theRange) }
+        {
+            unsafe { crate::ffi::BinTools_CurveSet_read(self as *mut Self, IS, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:67 - `BinTools_CurveSet::WriteCurve()`
     /// Dumps the curve on the stream in binary format
     /// that can be read back.
     pub fn write_curve(C: &crate::ffi::HandleGeomCurve, OS: &mut OStream) {
-        unsafe { crate::ffi::BinTools_CurveSet_write_curve(C, OS) }
+        {
+            unsafe { crate::ffi::BinTools_CurveSet_write_curve(C, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_CurveSet.hxx`:72 - `BinTools_CurveSet::ReadCurve()`
@@ -531,7 +651,11 @@ impl CurveSet {
         IS: &mut crate::ffi::Standard_IStream,
         C: &mut crate::ffi::HandleGeomCurve,
     ) -> &'static mut crate::ffi::Standard_IStream {
-        unsafe { &mut *(crate::ffi::BinTools_CurveSet_read_curve(IS, C)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_CurveSet_read_curve(IS, C) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 }
 
@@ -554,125 +678,172 @@ impl IStream {
     /// **Source:** `BinTools_IStream.hxx`:29 - `BinTools_IStream::BinTools_IStream()`
     /// Creates IStream using the current stream IStream.
     pub fn new_istream(theStream: &mut crate::ffi::Standard_IStream) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_IStream_ctor_istream(theStream)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_ctor_istream(theStream) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:32 - `BinTools_IStream::ReadType()`
     /// Reads and returns the type.
     pub fn read_type(&mut self) -> crate::bin_tools::ObjectType {
-        unsafe {
-            crate::bin_tools::ObjectType::try_from(crate::ffi::BinTools_IStream_read_type(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_read_type(self as *mut Self) };
+            crate::check_exception();
+            crate::bin_tools::ObjectType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:35 - `BinTools_IStream::LastType()`
     /// Returns the last read type.
     pub fn last_type(&mut self) -> crate::bin_tools::ObjectType {
-        unsafe {
-            crate::bin_tools::ObjectType::try_from(crate::ffi::BinTools_IStream_last_type(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_last_type(self as *mut Self) };
+            crate::check_exception();
+            crate::bin_tools::ObjectType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:38 - `BinTools_IStream::ShapeType()`
     /// Returns the shape type by the last retrieved type.
     pub fn shape_type(&mut self) -> crate::top_abs::ShapeEnum {
-        unsafe {
-            crate::top_abs::ShapeEnum::try_from(crate::ffi::BinTools_IStream_shape_type(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_shape_type(self as *mut Self) };
+            crate::check_exception();
+            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:40 - `BinTools_IStream::ShapeOrientation()`
     /// Returns the shape orientation by the last retrieved type.
     pub fn shape_orientation(&mut self) -> crate::top_abs::Orientation {
-        unsafe {
-            crate::top_abs::Orientation::try_from(crate::ffi::BinTools_IStream_shape_orientation(
-                self as *mut Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_IStream_shape_orientation(self as *mut Self) };
+            crate::check_exception();
+            crate::top_abs::Orientation::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:43 - `BinTools_IStream::Position()`
     /// Returns the current position in the stream.
     pub fn position(&mut self) -> u64 {
-        unsafe { crate::ffi::BinTools_IStream_position(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_position(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:46 - `BinTools_IStream::GoTo()`
     /// Moves the current stream position to the given one.
     pub fn go_to(&mut self, thePosition: &u64) {
-        unsafe { crate::ffi::BinTools_IStream_go_to(self as *mut Self, thePosition) }
+        {
+            unsafe { crate::ffi::BinTools_IStream_go_to(self as *mut Self, thePosition) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:49 - `BinTools_IStream::IsReference()`
     /// Returns true if the last restored type is one of a reference
     pub fn is_reference(&mut self) -> bool {
-        unsafe { crate::ffi::BinTools_IStream_is_reference(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_is_reference(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:51 - `BinTools_IStream::ReadReference()`
     /// Reads a reference IStream using the last restored type.
     pub fn read_reference(&mut self) -> u64 {
-        unsafe { crate::ffi::BinTools_IStream_read_reference(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_IStream_read_reference(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:54 - `BinTools_IStream::Stream()`
     /// Returns the original IStream.
     pub fn stream(&mut self) -> &mut crate::ffi::Standard_IStream {
-        unsafe { &mut *(crate::ffi::BinTools_IStream_stream(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_stream(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:57 - `BinTools_IStream::UpdatePosition()`
     /// Makes up to date the myPosition because myStream was used outside and position is changed.
     pub fn update_position(&mut self) {
-        unsafe { crate::ffi::BinTools_IStream_update_position(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_IStream_update_position(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:63 - `BinTools_IStream::ReadReal()`
     /// Reads real value from the stream.
     pub fn read_real(&mut self) -> f64 {
-        unsafe { crate::ffi::BinTools_IStream_read_real(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_read_real(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:73 - `BinTools_IStream::ReadInteger()`
     /// Reads integer value from the stream.
     pub fn read_integer(&mut self) -> i32 {
-        unsafe { crate::ffi::BinTools_IStream_read_integer(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_read_integer(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:83 - `BinTools_IStream::ReadPnt()`
     /// Reads point coordinates value from the stream.
     pub fn read_pnt(&mut self) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinTools_IStream_read_pnt(self as *mut Self))
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_read_pnt(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:93 - `BinTools_IStream::ReadByte()`
     /// Reads byte value from the stream.
     pub fn read_byte(&mut self) -> u8 {
-        unsafe { crate::ffi::BinTools_IStream_read_byte(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_read_byte(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:103 - `BinTools_IStream::ReadBool()`
     /// Reads boolean value from the stream (stored as one byte).
     pub fn read_bool(&mut self) -> bool {
-        unsafe { crate::ffi::BinTools_IStream_read_bool(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_IStream_read_bool(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:112 - `BinTools_IStream::ReadShortReal()`
     /// Reads short real value from the stream.
     pub fn read_short_real(&mut self) -> f32 {
-        unsafe { crate::ffi::BinTools_IStream_read_short_real(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_IStream_read_short_real(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_IStream.hxx`:123 - `BinTools_IStream::ReadBools()`
@@ -683,13 +854,16 @@ impl IStream {
         theBool2: &mut bool,
         theBool3: &mut bool,
     ) {
-        unsafe {
-            crate::ffi::BinTools_IStream_read_bools_bool3(
-                self as *mut Self,
-                theBool1,
-                theBool2,
-                theBool3,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_IStream_read_bools_bool3(
+                    self as *mut Self,
+                    theBool1,
+                    theBool2,
+                    theBool3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -705,17 +879,20 @@ impl IStream {
         theBool6: &mut bool,
         theBool7: &mut bool,
     ) {
-        unsafe {
-            crate::ffi::BinTools_IStream_read_bools_bool7(
-                self as *mut Self,
-                theBool1,
-                theBool2,
-                theBool3,
-                theBool4,
-                theBool5,
-                theBool6,
-                theBool7,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_IStream_read_bools_bool7(
+                    self as *mut Self,
+                    theBool1,
+                    theBool2,
+                    theBool3,
+                    theBool4,
+                    theBool5,
+                    theBool6,
+                    theBool7,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -743,52 +920,84 @@ impl LocationSet {
     /// **Source:** `BinTools_LocationSet.hxx`:43 - `BinTools_LocationSet::BinTools_LocationSet()`
     /// Returns an empty set of locations.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_LocationSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_LocationSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:46 - `BinTools_LocationSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_LocationSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_LocationSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:50 - `BinTools_LocationSet::Add()`
     /// Incorporate a new Location in the  set and returns
     /// its index.
     pub fn add(&mut self, L: &crate::top_loc::Location) -> i32 {
-        unsafe { crate::ffi::BinTools_LocationSet_add(self as *mut Self, L) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_LocationSet_add(self as *mut Self, L) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:53 - `BinTools_LocationSet::Location()`
     /// Returns the location of index <I>.
     pub fn location(&self, I: i32) -> &crate::top_loc::Location {
-        unsafe { &*(crate::ffi::BinTools_LocationSet_location(self as *const Self, I)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_LocationSet_location(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:56 - `BinTools_LocationSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, L: &crate::top_loc::Location) -> i32 {
-        unsafe { crate::ffi::BinTools_LocationSet_index(self as *const Self, L) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_LocationSet_index(self as *const Self, L) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:59 - `BinTools_LocationSet::NbLocations()`
     /// Returns number of locations.
     pub fn nb_locations(&self) -> i32 {
-        unsafe { crate::ffi::BinTools_LocationSet_nb_locations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_LocationSet_nb_locations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:63 - `BinTools_LocationSet::Write()`
     /// Writes the content of  me  on the stream <OS> in a
     /// format that can be read back by Read.
     pub fn write(&self, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::BinTools_LocationSet_write(self as *const Self, OS) }
+        {
+            unsafe { crate::ffi::BinTools_LocationSet_write(self as *const Self, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_LocationSet.hxx`:67 - `BinTools_LocationSet::Read()`
     /// Reads the content of me from the  stream  <IS>. me
     /// is first cleared.
     pub fn read(&mut self, IS: &mut crate::ffi::Standard_IStream) {
-        unsafe { crate::ffi::BinTools_LocationSet_read(self as *mut Self, IS) }
+        {
+            unsafe { crate::ffi::BinTools_LocationSet_read(self as *mut Self, IS) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -811,19 +1020,30 @@ impl OStream {
     /// **Source:** `BinTools_OStream.hxx`:31 - `BinTools_OStream::BinTools_OStream()`
     /// Creates OStream using the current stream OStream.
     pub fn new_ostream(theStream: &mut crate::ffi::Standard_OStream) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_OStream_ctor_ostream(theStream)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_OStream_ctor_ostream(theStream) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_OStream.hxx`:34 - `BinTools_OStream::Position()`
     /// Returns the current position of the stream
     pub fn position(&mut self) -> &u64 {
-        unsafe { &*(crate::ffi::BinTools_OStream_position(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_OStream_position(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinTools_OStream.hxx`:37 - `BinTools_OStream::WriteReference()`
     /// Writes the reference to the given position (an offset between the current and the given one).
     pub fn write_reference(&mut self, thePosition: &u64) {
-        unsafe { crate::ffi::BinTools_OStream_write_reference(self as *mut Self, thePosition) }
+        {
+            unsafe { crate::ffi::BinTools_OStream_write_reference(self as *mut Self, thePosition) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_OStream.hxx`:39 - `BinTools_OStream::WriteShape()`
@@ -833,25 +1053,31 @@ impl OStream {
         theType: crate::top_abs::ShapeEnum,
         theOrientation: crate::top_abs::Orientation,
     ) {
-        unsafe {
-            crate::ffi::BinTools_OStream_write_shape(
-                self as *mut Self,
-                theType.into(),
-                theOrientation.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_OStream_write_shape(
+                    self as *mut Self,
+                    theType.into(),
+                    theOrientation.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinTools_OStream.hxx`:70 - `BinTools_OStream::PutBools()`
     /// Writes 3 booleans as one byte to the stream.
     pub fn put_bools_bool3(&mut self, theValue1: bool, theValue2: bool, theValue3: bool) {
-        unsafe {
-            crate::ffi::BinTools_OStream_put_bools_bool3(
-                self as *mut Self,
-                theValue1,
-                theValue2,
-                theValue3,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_OStream_put_bools_bool3(
+                    self as *mut Self,
+                    theValue1,
+                    theValue2,
+                    theValue3,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -867,17 +1093,20 @@ impl OStream {
         theValue6: bool,
         theValue7: bool,
     ) {
-        unsafe {
-            crate::ffi::BinTools_OStream_put_bools_bool7(
-                self as *mut Self,
-                theValue1,
-                theValue2,
-                theValue3,
-                theValue4,
-                theValue5,
-                theValue6,
-                theValue7,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_OStream_put_bools_bool7(
+                    self as *mut Self,
+                    theValue1,
+                    theValue2,
+                    theValue3,
+                    theValue4,
+                    theValue5,
+                    theValue6,
+                    theValue7,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -901,13 +1130,20 @@ impl ShapeReader {
     /// **Source:** `BinTools_ShapeReader.hxx`:38 - `BinTools_ShapeReader::BinTools_ShapeReader()`
     /// Initializes a shape reader.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_ShapeReader_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeReader_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeReader.hxx`:43 - `BinTools_ShapeReader::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_ShapeReader_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeReader_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeReader.hxx`:46 - `BinTools_ShapeReader::Read()`
@@ -917,78 +1153,121 @@ impl ShapeReader {
         theStream: &mut crate::ffi::Standard_IStream,
         theShape: &mut crate::topo_ds::Shape,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeReader_read(self as *mut Self, theStream, theShape) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeReader_read(self as *mut Self, theStream, theShape)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeReader.hxx`:49 - `BinTools_ShapeReader::ReadLocation()`
     /// Reads location from the stream.
     pub fn read_location(&mut self, theStream: &mut IStream) -> Option<&crate::top_loc::Location> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::BinTools_ShapeReader_read_location(self as *mut Self, theStream)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Upcast to BinTools_ShapeSetBase
     pub fn as_shape_set_base(&self) -> &ShapeSetBase {
-        unsafe {
-            &*(crate::ffi::BinTools_ShapeReader_as_BinTools_ShapeSetBase(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeReader_as_BinTools_ShapeSetBase(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BinTools_ShapeSetBase (mutable)
     pub fn as_shape_set_base_mut(&mut self) -> &mut ShapeSetBase {
-        unsafe {
-            &mut *(crate::ffi::BinTools_ShapeReader_as_BinTools_ShapeSetBase_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeReader_as_BinTools_ShapeSetBase_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:44 - `BinTools_ShapeSetBase::IsWithTriangles()`
     pub fn is_with_triangles(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeReader_inherited_IsWithTriangles(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeReader_inherited_IsWithTriangles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:47 - `BinTools_ShapeSetBase::IsWithNormals()`
     pub fn is_with_normals(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeReader_inherited_IsWithNormals(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeReader_inherited_IsWithNormals(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:51 - `BinTools_ShapeSetBase::SetWithTriangles()`
     pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeReader_inherited_SetWithTriangles(
-                self as *mut Self,
-                theWithTriangles,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeReader_inherited_SetWithTriangles(
+                    self as *mut Self,
+                    theWithTriangles,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:58 - `BinTools_ShapeSetBase::SetWithNormals()`
     pub fn set_with_normals(&mut self, theWithNormals: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeReader_inherited_SetWithNormals(
-                self as *mut Self,
-                theWithNormals,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeReader_inherited_SetWithNormals(
+                    self as *mut Self,
+                    theWithNormals,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:61 - `BinTools_ShapeSetBase::SetFormatNb()`
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
-        unsafe {
-            crate::ffi::BinTools_ShapeReader_inherited_SetFormatNb(self as *mut Self, theFormatNb)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeReader_inherited_SetFormatNb(
+                    self as *mut Self,
+                    theFormatNb,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:64 - `BinTools_ShapeSetBase::FormatNb()`
     pub fn format_nb(&self) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeReader_inherited_FormatNb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeReader_inherited_FormatNb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:81 - `BinTools_ShapeSetBase::Write()`
@@ -997,7 +1276,12 @@ impl ShapeReader {
         arg0: &mut crate::ffi::Standard_OStream,
         arg1: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeReader_inherited_Write(self as *mut Self, arg0, arg1) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeReader_inherited_Write(self as *mut Self, arg0, arg1)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1020,48 +1304,80 @@ impl ShapeSet {
     /// Builds an empty ShapeSet.
     /// @param[in] theWithTriangles  flag to write triangulation data
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_ShapeSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:44 - `BinTools_ShapeSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_ShapeSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:48 - `BinTools_ShapeSet::Add()`
     /// Stores <S> and its sub-shape. Returns the index of <S>.
     /// The method AddGeometry is called on each sub-shape.
     pub fn add(&mut self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeSet_add(self as *mut Self, S) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSet_add(self as *mut Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:51 - `BinTools_ShapeSet::Shape()`
     /// Returns the sub-shape of index <I>.
     pub fn shape(&mut self, I: i32) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BinTools_ShapeSet_shape(self as *mut Self, I)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSet_shape(self as *mut Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:54 - `BinTools_ShapeSet::Index()`
     /// Returns the index of <S>.
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeSet_index(self as *const Self, S) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSet_index(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:56 - `BinTools_ShapeSet::Locations()`
     pub fn locations(&self) -> &LocationSet {
-        unsafe { &*(crate::ffi::BinTools_ShapeSet_locations(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSet_locations(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:58 - `BinTools_ShapeSet::ChangeLocations()`
     pub fn change_locations(&mut self) -> &mut LocationSet {
-        unsafe { &mut *(crate::ffi::BinTools_ShapeSet_change_locations(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeSet_change_locations(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:61 - `BinTools_ShapeSet::NbShapes()`
     /// Returns number of shapes read from file.
     pub fn nb_shapes(&self) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeSet_nb_shapes(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSet_nb_shapes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:75 - `BinTools_ShapeSet::Write()`
@@ -1082,12 +1398,15 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_write_ostream_progressrange(
-                self as *mut Self,
-                OS,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_write_ostream_progressrange(
+                    self as *mut Self,
+                    OS,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1109,12 +1428,15 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_read_istream_progressrange(
-                self as *mut Self,
-                IS,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_read_istream_progressrange(
+                    self as *mut Self,
+                    IS,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1127,7 +1449,10 @@ impl ShapeSet {
         S: &crate::topo_ds::Shape,
         OS: &mut crate::ffi::Standard_OStream,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_write_shape_ostream(self as *mut Self, S, OS) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_write_shape_ostream(self as *mut Self, S, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:102 - `BinTools_ShapeSet::WriteGeometry()`
@@ -1138,7 +1463,12 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_write_geometry(self as *const Self, OS, theRange) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_write_geometry(self as *const Self, OS, theRange)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:107 - `BinTools_ShapeSet::ReadGeometry()`
@@ -1148,7 +1478,10 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_read_geometry(self as *mut Self, IS, theRange) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_read_geometry(self as *mut Self, IS, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:112 - `BinTools_ShapeSet::ReadFlagsAndSubs()`
@@ -1160,14 +1493,17 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         NbShapes: i32,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_read_flags_and_subs(
-                self as *mut Self,
-                S,
-                T.into(),
-                IS,
-                NbShapes,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_read_flags_and_subs(
+                    self as *mut Self,
+                    S,
+                    T.into(),
+                    IS,
+                    NbShapes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1180,7 +1516,10 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         NbShapes: i32,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_read_subs(self as *mut Self, S, IS, NbShapes) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_read_subs(self as *mut Self, S, IS, NbShapes) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:124 - `BinTools_ShapeSet::Read()`
@@ -1190,14 +1529,22 @@ impl ShapeSet {
         arg0: &mut crate::ffi::Standard_IStream,
         arg1: &mut crate::topo_ds::Shape,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_read_istream_shape(self as *mut Self, arg0, arg1) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_read_istream_shape(self as *mut Self, arg0, arg1)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:128 - `BinTools_ShapeSet::WriteShape()`
     /// Writes the shape <S> on the stream <OS> in a
     /// binary format that can be read back by Read.
     pub fn write_shape(&self, S: &crate::topo_ds::Shape, OS: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::BinTools_ShapeSet_write_shape(self as *const Self, S, OS) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_write_shape(self as *const Self, S, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:131 - `BinTools_ShapeSet::ReadShape()`
@@ -1208,19 +1555,28 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         S: &mut crate::topo_ds::Shape,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_read_shape(self as *mut Self, T.into(), IS, S) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_read_shape(self as *mut Self, T.into(), IS, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:136 - `BinTools_ShapeSet::AddShape()`
     /// Stores the shape <S>.
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BinTools_ShapeSet_add_shape(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_add_shape(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:139 - `BinTools_ShapeSet::AddShapes()`
     /// Inserts  the shape <S2> in the shape <S1>.
     pub fn add_shapes(&mut self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BinTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:143 - `BinTools_ShapeSet::ReadPolygon3D()`
@@ -1231,7 +1587,12 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_read_polygon3_d(self as *mut Self, IS, theRange) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_read_polygon3_d(self as *mut Self, IS, theRange)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:150 - `BinTools_ShapeSet::WritePolygon3D()`
@@ -1243,7 +1604,12 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_write_polygon3_d(self as *const Self, OS, theRange) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_write_polygon3_d(self as *const Self, OS, theRange)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:156 - `BinTools_ShapeSet::ReadTriangulation()`
@@ -1254,7 +1620,12 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeSet_read_triangulation(self as *mut Self, IS, theRange) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_read_triangulation(self as *mut Self, IS, theRange)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSet.hxx`:163 - `BinTools_ShapeSet::WriteTriangulation()`
@@ -1266,8 +1637,11 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_write_triangulation(self as *const Self, OS, theRange)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_write_triangulation(self as *const Self, OS, theRange)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1279,12 +1653,15 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_read_polygon_on_triangulation(
-                self as *mut Self,
-                IS,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_read_polygon_on_triangulation(
+                    self as *mut Self,
+                    IS,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1297,67 +1674,106 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_write_polygon_on_triangulation(
-                self as *const Self,
-                OS,
-                theRange,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_write_polygon_on_triangulation(
+                    self as *const Self,
+                    OS,
+                    theRange,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to BinTools_ShapeSetBase
     pub fn as_shape_set_base(&self) -> &ShapeSetBase {
-        unsafe { &*(crate::ffi::BinTools_ShapeSet_as_BinTools_ShapeSetBase(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeSet_as_BinTools_ShapeSetBase(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to BinTools_ShapeSetBase (mutable)
     pub fn as_shape_set_base_mut(&mut self) -> &mut ShapeSetBase {
-        unsafe {
-            &mut *(crate::ffi::BinTools_ShapeSet_as_BinTools_ShapeSetBase_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeSet_as_BinTools_ShapeSetBase_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:44 - `BinTools_ShapeSetBase::IsWithTriangles()`
     pub fn is_with_triangles(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeSet_inherited_IsWithTriangles(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeSet_inherited_IsWithTriangles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:47 - `BinTools_ShapeSetBase::IsWithNormals()`
     pub fn is_with_normals(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeSet_inherited_IsWithNormals(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeSet_inherited_IsWithNormals(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:51 - `BinTools_ShapeSetBase::SetWithTriangles()`
     pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_inherited_SetWithTriangles(
-                self as *mut Self,
-                theWithTriangles,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_inherited_SetWithTriangles(
+                    self as *mut Self,
+                    theWithTriangles,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:58 - `BinTools_ShapeSetBase::SetWithNormals()`
     pub fn set_with_normals(&mut self, theWithNormals: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_inherited_SetWithNormals(
-                self as *mut Self,
-                theWithNormals,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_inherited_SetWithNormals(
+                    self as *mut Self,
+                    theWithNormals,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:61 - `BinTools_ShapeSetBase::SetFormatNb()`
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSet_inherited_SetFormatNb(self as *mut Self, theFormatNb)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSet_inherited_SetFormatNb(self as *mut Self, theFormatNb)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:64 - `BinTools_ShapeSetBase::FormatNb()`
     pub fn format_nb(&self) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeSet_inherited_FormatNb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeSet_inherited_FormatNb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1379,30 +1795,47 @@ impl ShapeSetBase {
     /// **Source:** `BinTools_ShapeSetBase.hxx`:39 - `BinTools_ShapeSetBase::BinTools_ShapeSetBase()`
     /// A default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_ShapeSetBase_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeSetBase_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:44 - `BinTools_ShapeSetBase::IsWithTriangles()`
     /// Return true if shape should be stored with triangles.
     pub fn is_with_triangles(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeSetBase_is_with_triangles(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeSetBase_is_with_triangles(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:47 - `BinTools_ShapeSetBase::IsWithNormals()`
     /// Return true if shape should be stored triangulation with normals.
     pub fn is_with_normals(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeSetBase_is_with_normals(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeSetBase_is_with_normals(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:51 - `BinTools_ShapeSetBase::SetWithTriangles()`
     /// Define if shape will be stored with triangles.
     /// Ignored (always written) if face defines only triangulation (no surface).
     pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSetBase_set_with_triangles(
-                self as *mut Self,
-                theWithTriangles,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_set_with_triangles(
+                    self as *mut Self,
+                    theWithTriangles,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1410,27 +1843,46 @@ impl ShapeSetBase {
     /// Define if shape will be stored triangulation with normals.
     /// Ignored (always written) if face defines only triangulation (no surface).
     pub fn set_with_normals(&mut self, theWithNormals: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSetBase_set_with_normals(self as *mut Self, theWithNormals)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_set_with_normals(
+                    self as *mut Self,
+                    theWithNormals,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:61 - `BinTools_ShapeSetBase::SetFormatNb()`
     /// Sets the BinTools_FormatVersion.
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
-        unsafe { crate::ffi::BinTools_ShapeSetBase_set_format_nb(self as *mut Self, theFormatNb) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_set_format_nb(self as *mut Self, theFormatNb)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:64 - `BinTools_ShapeSetBase::FormatNb()`
     /// Returns the BinTools_FormatVersion.
     pub fn format_nb(&self) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeSetBase_format_nb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeSetBase_format_nb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:67 - `BinTools_ShapeSetBase::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_ShapeSetBase_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeSetBase_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeSetBase.hxx`:81 - `BinTools_ShapeSetBase::Write()`
@@ -1451,12 +1903,15 @@ impl ShapeSetBase {
         arg0: &mut crate::ffi::Standard_OStream,
         arg1: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSetBase_write_ostream_progressrange(
-                self as *mut Self,
-                arg0,
-                arg1,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_write_ostream_progressrange(
+                    self as *mut Self,
+                    arg0,
+                    arg1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1478,12 +1933,15 @@ impl ShapeSetBase {
         arg0: &mut crate::ffi::Standard_IStream,
         arg1: &crate::message::ProgressRange,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSetBase_read_istream_progressrange(
-                self as *mut Self,
-                arg0,
-                arg1,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_read_istream_progressrange(
+                    self as *mut Self,
+                    arg0,
+                    arg1,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1496,8 +1954,11 @@ impl ShapeSetBase {
         arg0: &crate::topo_ds::Shape,
         arg1: &mut crate::ffi::Standard_OStream,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSetBase_write_shape_ostream(self as *mut Self, arg0, arg1)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_write_shape_ostream(self as *mut Self, arg0, arg1)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1508,8 +1969,11 @@ impl ShapeSetBase {
         arg0: &mut crate::ffi::Standard_IStream,
         arg1: &mut crate::topo_ds::Shape,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeSetBase_read_istream_shape(self as *mut Self, arg0, arg1)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeSetBase_read_istream_shape(self as *mut Self, arg0, arg1)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1534,13 +1998,20 @@ impl ShapeWriter {
     /// Builds an empty ShapeSet.
     /// Parameter <theWithTriangles> is added for XML Persistence
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_ShapeWriter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_ShapeWriter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_ShapeWriter.hxx`:43 - `BinTools_ShapeWriter::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_ShapeWriter_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_ShapeWriter_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeWriter.hxx`:46 - `BinTools_ShapeWriter::Write()`
@@ -1550,7 +2021,12 @@ impl ShapeWriter {
         theShape: &crate::topo_ds::Shape,
         theStream: &mut crate::ffi::Standard_OStream,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeWriter_write(self as *mut Self, theShape, theStream) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeWriter_write(self as *mut Self, theShape, theStream)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_ShapeWriter.hxx`:51 - `BinTools_ShapeWriter::WriteLocation()`
@@ -1561,69 +2037,109 @@ impl ShapeWriter {
         theStream: &mut OStream,
         theLocation: &crate::top_loc::Location,
     ) {
-        unsafe {
-            crate::ffi::BinTools_ShapeWriter_write_location(
-                self as *mut Self,
-                theStream,
-                theLocation,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeWriter_write_location(
+                    self as *mut Self,
+                    theStream,
+                    theLocation,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to BinTools_ShapeSetBase
     pub fn as_shape_set_base(&self) -> &ShapeSetBase {
-        unsafe {
-            &*(crate::ffi::BinTools_ShapeWriter_as_BinTools_ShapeSetBase(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeWriter_as_BinTools_ShapeSetBase(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to BinTools_ShapeSetBase (mutable)
     pub fn as_shape_set_base_mut(&mut self) -> &mut ShapeSetBase {
-        unsafe {
-            &mut *(crate::ffi::BinTools_ShapeWriter_as_BinTools_ShapeSetBase_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeWriter_as_BinTools_ShapeSetBase_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:44 - `BinTools_ShapeSetBase::IsWithTriangles()`
     pub fn is_with_triangles(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeWriter_inherited_IsWithTriangles(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeWriter_inherited_IsWithTriangles(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:47 - `BinTools_ShapeSetBase::IsWithNormals()`
     pub fn is_with_normals(&self) -> bool {
-        unsafe { crate::ffi::BinTools_ShapeWriter_inherited_IsWithNormals(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::BinTools_ShapeWriter_inherited_IsWithNormals(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:51 - `BinTools_ShapeSetBase::SetWithTriangles()`
     pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeWriter_inherited_SetWithTriangles(
-                self as *mut Self,
-                theWithTriangles,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeWriter_inherited_SetWithTriangles(
+                    self as *mut Self,
+                    theWithTriangles,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:58 - `BinTools_ShapeSetBase::SetWithNormals()`
     pub fn set_with_normals(&mut self, theWithNormals: bool) {
-        unsafe {
-            crate::ffi::BinTools_ShapeWriter_inherited_SetWithNormals(
-                self as *mut Self,
-                theWithNormals,
-            )
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeWriter_inherited_SetWithNormals(
+                    self as *mut Self,
+                    theWithNormals,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:61 - `BinTools_ShapeSetBase::SetFormatNb()`
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
-        unsafe {
-            crate::ffi::BinTools_ShapeWriter_inherited_SetFormatNb(self as *mut Self, theFormatNb)
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeWriter_inherited_SetFormatNb(
+                    self as *mut Self,
+                    theFormatNb,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:64 - `BinTools_ShapeSetBase::FormatNb()`
     pub fn format_nb(&self) -> i32 {
-        unsafe { crate::ffi::BinTools_ShapeWriter_inherited_FormatNb(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_ShapeWriter_inherited_FormatNb(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `BinTools_ShapeSetBase.hxx`:99 - `BinTools_ShapeSetBase::Read()`
@@ -1632,7 +2148,12 @@ impl ShapeWriter {
         arg0: &mut crate::ffi::Standard_IStream,
         arg1: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_ShapeWriter_inherited_Read(self as *mut Self, arg0, arg1) }
+        {
+            unsafe {
+                crate::ffi::BinTools_ShapeWriter_inherited_Read(self as *mut Self, arg0, arg1)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1654,37 +2175,52 @@ impl SurfaceSet {
     /// **Source:** `BinTools_SurfaceSet.hxx`:40 - `BinTools_SurfaceSet::BinTools_SurfaceSet()`
     /// Returns an empty set of Surfaces.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BinTools_SurfaceSet_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_SurfaceSet_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:43 - `BinTools_SurfaceSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::BinTools_SurfaceSet_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::BinTools_SurfaceSet_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:47 - `BinTools_SurfaceSet::Add()`
     /// Incorporate a new Surface in the  set and returns
     /// its index.
     pub fn add(&mut self, S: &crate::ffi::HandleGeomSurface) -> i32 {
-        unsafe { crate::ffi::BinTools_SurfaceSet_add(self as *mut Self, S) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_SurfaceSet_add(self as *mut Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:50 - `BinTools_SurfaceSet::Surface()`
     /// Returns the Surface of index <I>.
     pub fn surface(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BinTools_SurfaceSet_surface(
-                self as *const Self,
-                I,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::BinTools_SurfaceSet_surface(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:53 - `BinTools_SurfaceSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, S: &crate::ffi::HandleGeomSurface) -> i32 {
-        unsafe { crate::ffi::BinTools_SurfaceSet_index(self as *const Self, S) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_SurfaceSet_index(self as *const Self, S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:57 - `BinTools_SurfaceSet::Write()`
@@ -1695,7 +2231,10 @@ impl SurfaceSet {
         OS: &mut crate::ffi::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_SurfaceSet_write(self as *const Self, OS, theRange) }
+        {
+            unsafe { crate::ffi::BinTools_SurfaceSet_write(self as *const Self, OS, theRange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:62 - `BinTools_SurfaceSet::Read()`
@@ -1706,14 +2245,20 @@ impl SurfaceSet {
         IS: &mut crate::ffi::Standard_IStream,
         therange: &crate::message::ProgressRange,
     ) {
-        unsafe { crate::ffi::BinTools_SurfaceSet_read(self as *mut Self, IS, therange) }
+        {
+            unsafe { crate::ffi::BinTools_SurfaceSet_read(self as *mut Self, IS, therange) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:67 - `BinTools_SurfaceSet::WriteSurface()`
     /// Dumps the surface on the stream in binary
     /// format that can be read back.
     pub fn write_surface(S: &crate::ffi::HandleGeomSurface, OS: &mut OStream) {
-        unsafe { crate::ffi::BinTools_SurfaceSet_write_surface(S, OS) }
+        {
+            unsafe { crate::ffi::BinTools_SurfaceSet_write_surface(S, OS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BinTools_SurfaceSet.hxx`:72 - `BinTools_SurfaceSet::ReadSurface()`
@@ -1724,6 +2269,10 @@ impl SurfaceSet {
         IS: &mut crate::ffi::Standard_IStream,
         S: &mut crate::ffi::HandleGeomSurface,
     ) -> &'static mut crate::ffi::Standard_IStream {
-        unsafe { &mut *(crate::ffi::BinTools_SurfaceSet_read_surface(IS, S)) }
+        {
+            let __result = unsafe { crate::ffi::BinTools_SurfaceSet_read_surface(IS, S) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 }

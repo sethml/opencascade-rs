@@ -11,11 +11,19 @@
 /// cones, cylinders, spheres and tori), computes the point
 /// of parameters (U, V).
 pub fn value_real2_pln(U: f64, V: f64, Pl: &crate::gp::Pln) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_value_real2_pln(U, V, Pl)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_value_real2_pln(U, V, Pl) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:65 - `ElSLib::Value`
 pub fn value_real2_cone(U: f64, V: f64, C: &crate::gp::Cone) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_value_real2_cone(U, V, C)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_value_real2_cone(U, V, C) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:67 - `ElSLib::Value`
 pub fn value_real2_cylinder(
@@ -23,7 +31,11 @@ pub fn value_real2_cylinder(
     V: f64,
     C: &crate::gp::Cylinder,
 ) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_value_real2_cylinder(U, V, C)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_value_real2_cylinder(U, V, C) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:69 - `ElSLib::Value`
 pub fn value_real2_sphere(
@@ -31,11 +43,19 @@ pub fn value_real2_sphere(
     V: f64,
     S: &crate::gp::Sphere,
 ) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_value_real2_sphere(U, V, S)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_value_real2_sphere(U, V, S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:71 - `ElSLib::Value`
 pub fn value_real2_torus(U: f64, V: f64, T: &crate::gp::Torus) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_value_real2_torus(U, V, T)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_value_real2_torus(U, V, T) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:78 - `ElSLib::DN`
 /// For elementary surfaces from the gp package (planes,
@@ -50,7 +70,11 @@ pub fn dn_real2_pln_int2(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_pln_int2(U, V, Pl, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_dn_real2_pln_int2(U, V, Pl, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:84 - `ElSLib::DN`
 pub fn dn_real2_cone_int2(
@@ -60,7 +84,11 @@ pub fn dn_real2_cone_int2(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_cone_int2(U, V, C, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_dn_real2_cone_int2(U, V, C, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:90 - `ElSLib::DN`
 pub fn dn_real2_cylinder_int2(
@@ -70,7 +98,11 @@ pub fn dn_real2_cylinder_int2(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_cylinder_int2(U, V, C, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_dn_real2_cylinder_int2(U, V, C, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:96 - `ElSLib::DN`
 pub fn dn_real2_sphere_int2(
@@ -80,7 +112,11 @@ pub fn dn_real2_sphere_int2(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_sphere_int2(U, V, S, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_dn_real2_sphere_int2(U, V, S, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:102 - `ElSLib::DN`
 pub fn dn_real2_torus_int2(
@@ -90,30 +126,49 @@ pub fn dn_real2_torus_int2(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_torus_int2(U, V, T, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_dn_real2_torus_int2(U, V, T, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:111 - `ElSLib::D0`
 /// For elementary surfaces from the gp package (planes,
 /// cones, cylinders, spheres and tori), computes the point P
 /// of parameters (U, V).inline
 pub fn d0_real2_pln_pnt(U: f64, V: f64, Pl: &crate::gp::Pln, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_d0_real2_pln_pnt(U, V, Pl, P) }
+    {
+        unsafe { crate::ffi::ElSLib_d0_real2_pln_pnt(U, V, Pl, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:113 - `ElSLib::D0`
 pub fn d0_real2_cone_pnt(U: f64, V: f64, C: &crate::gp::Cone, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_d0_real2_cone_pnt(U, V, C, P) }
+    {
+        unsafe { crate::ffi::ElSLib_d0_real2_cone_pnt(U, V, C, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:115 - `ElSLib::D0`
 pub fn d0_real2_cylinder_pnt(U: f64, V: f64, C: &crate::gp::Cylinder, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_d0_real2_cylinder_pnt(U, V, C, P) }
+    {
+        unsafe { crate::ffi::ElSLib_d0_real2_cylinder_pnt(U, V, C, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:117 - `ElSLib::D0`
 pub fn d0_real2_sphere_pnt(U: f64, V: f64, S: &crate::gp::Sphere, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_d0_real2_sphere_pnt(U, V, S, P) }
+    {
+        unsafe { crate::ffi::ElSLib_d0_real2_sphere_pnt(U, V, S, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:119 - `ElSLib::D0`
 pub fn d0_real2_torus_pnt(U: f64, V: f64, T: &crate::gp::Torus, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_d0_real2_torus_pnt(U, V, T, P) }
+    {
+        unsafe { crate::ffi::ElSLib_d0_real2_torus_pnt(U, V, T, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:126 - `ElSLib::D1`
 /// For elementary surfaces from the gp package (planes,
@@ -129,7 +184,10 @@ pub fn d1_real2_pln_pnt_vec2(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d1_real2_pln_pnt_vec2(U, V, Pl, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_d1_real2_pln_pnt_vec2(U, V, Pl, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:133 - `ElSLib::D1`
 pub fn d1_real2_cone_pnt_vec2(
@@ -140,7 +198,10 @@ pub fn d1_real2_cone_pnt_vec2(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d1_real2_cone_pnt_vec2(U, V, C, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_d1_real2_cone_pnt_vec2(U, V, C, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:140 - `ElSLib::D1`
 pub fn d1_real2_cylinder_pnt_vec2(
@@ -151,7 +212,10 @@ pub fn d1_real2_cylinder_pnt_vec2(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d1_real2_cylinder_pnt_vec2(U, V, C, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_d1_real2_cylinder_pnt_vec2(U, V, C, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:147 - `ElSLib::D1`
 pub fn d1_real2_sphere_pnt_vec2(
@@ -162,7 +226,10 @@ pub fn d1_real2_sphere_pnt_vec2(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d1_real2_sphere_pnt_vec2(U, V, S, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_d1_real2_sphere_pnt_vec2(U, V, S, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:154 - `ElSLib::D1`
 pub fn d1_real2_torus_pnt_vec2(
@@ -173,7 +240,10 @@ pub fn d1_real2_torus_pnt_vec2(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d1_real2_torus_pnt_vec2(U, V, T, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_d1_real2_torus_pnt_vec2(U, V, T, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:167 - `ElSLib::D2`
 /// For elementary surfaces from the gp package (cones,
@@ -193,7 +263,10 @@ pub fn d2_real2_cone_pnt_vec5(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d2_real2_cone_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_d2_real2_cone_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:177 - `ElSLib::D2`
 pub fn d2_real2_cylinder_pnt_vec5(
@@ -207,7 +280,10 @@ pub fn d2_real2_cylinder_pnt_vec5(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d2_real2_cylinder_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_d2_real2_cylinder_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:187 - `ElSLib::D2`
 pub fn d2_real2_sphere_pnt_vec5(
@@ -221,7 +297,10 @@ pub fn d2_real2_sphere_pnt_vec5(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d2_real2_sphere_pnt_vec5(U, V, S, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_d2_real2_sphere_pnt_vec5(U, V, S, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:197 - `ElSLib::D2`
 pub fn d2_real2_torus_pnt_vec5(
@@ -235,7 +314,10 @@ pub fn d2_real2_torus_pnt_vec5(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_d2_real2_torus_pnt_vec5(U, V, T, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_d2_real2_torus_pnt_vec5(U, V, T, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:216 - `ElSLib::D3`
 /// For elementary surfaces from the gp package (cones,
@@ -262,10 +344,13 @@ pub fn d3_real2_cone_pnt_vec9(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_d3_real2_cone_pnt_vec9(
-            U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_d3_real2_cone_pnt_vec9(
+                U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:230 - `ElSLib::D3`
@@ -284,10 +369,13 @@ pub fn d3_real2_cylinder_pnt_vec9(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_d3_real2_cylinder_pnt_vec9(
-            U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_d3_real2_cylinder_pnt_vec9(
+                U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:244 - `ElSLib::D3`
@@ -306,10 +394,13 @@ pub fn d3_real2_sphere_pnt_vec9(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_d3_real2_sphere_pnt_vec9(
-            U, V, S, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_d3_real2_sphere_pnt_vec9(
+                U, V, S, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:266 - `ElSLib::D3`
@@ -336,15 +427,22 @@ pub fn d3_real2_torus_pnt_vec9(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_d3_real2_torus_pnt_vec9(
-            U, V, T, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_d3_real2_torus_pnt_vec9(
+                U, V, T, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:280 - `ElSLib::PlaneValue`
 pub fn plane_value(U: f64, V: f64, Pos: &crate::gp::Ax3) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_plane_value(U, V, Pos)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_plane_value(U, V, Pos) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:284 - `ElSLib::CylinderValue`
 pub fn cylinder_value(
@@ -353,7 +451,11 @@ pub fn cylinder_value(
     Pos: &crate::gp::Ax3,
     Radius: f64,
 ) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cylinder_value(U, V, Pos, Radius)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cylinder_value(U, V, Pos, Radius) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:289 - `ElSLib::ConeValue`
 pub fn cone_value(
@@ -363,7 +465,11 @@ pub fn cone_value(
     Radius: f64,
     SAngle: f64,
 ) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cone_value(U, V, Pos, Radius, SAngle)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cone_value(U, V, Pos, Radius, SAngle) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:295 - `ElSLib::SphereValue`
 pub fn sphere_value(
@@ -372,7 +478,11 @@ pub fn sphere_value(
     Pos: &crate::gp::Ax3,
     Radius: f64,
 ) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_sphere_value(U, V, Pos, Radius)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_sphere_value(U, V, Pos, Radius) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:300 - `ElSLib::TorusValue`
 pub fn torus_value(
@@ -382,14 +492,11 @@ pub fn torus_value(
     MajorRadius: f64,
     MinorRadius: f64,
 ) -> crate::OwnedPtr<crate::gp::Pnt> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ElSLib_torus_value(
-            U,
-            V,
-            Pos,
-            MajorRadius,
-            MinorRadius,
-        ))
+    {
+        let __result =
+            unsafe { crate::ffi::ElSLib_torus_value(U, V, Pos, MajorRadius, MinorRadius) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ElSLib.hxx`:306 - `ElSLib::PlaneDN`
@@ -400,7 +507,11 @@ pub fn plane_dn(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_plane_dn(U, V, Pos, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_plane_dn(U, V, Pos, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:312 - `ElSLib::CylinderDN`
 pub fn cylinder_dn(
@@ -411,7 +522,11 @@ pub fn cylinder_dn(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cylinder_dn(U, V, Pos, Radius, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cylinder_dn(U, V, Pos, Radius, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:319 - `ElSLib::ConeDN`
 pub fn cone_dn(
@@ -423,8 +538,10 @@ pub fn cone_dn(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cone_dn(U, V, Pos, Radius, SAngle, Nu, Nv))
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cone_dn(U, V, Pos, Radius, SAngle, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ElSLib.hxx`:327 - `ElSLib::SphereDN`
@@ -436,7 +553,11 @@ pub fn sphere_dn(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_sphere_dn(U, V, Pos, Radius, Nu, Nv)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_sphere_dn(U, V, Pos, Radius, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:334 - `ElSLib::TorusDN`
 pub fn torus_dn(
@@ -448,21 +569,19 @@ pub fn torus_dn(
     Nu: i32,
     Nv: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ElSLib_torus_dn(
-            U,
-            V,
-            Pos,
-            MajorRadius,
-            MinorRadius,
-            Nu,
-            Nv,
-        ))
+    {
+        let __result =
+            unsafe { crate::ffi::ElSLib_torus_dn(U, V, Pos, MajorRadius, MinorRadius, Nu, Nv) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ElSLib.hxx`:342 - `ElSLib::PlaneD0`
 pub fn plane_d0(U: f64, V: f64, Pos: &crate::gp::Ax3, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_plane_d0(U, V, Pos, P) }
+    {
+        unsafe { crate::ffi::ElSLib_plane_d0(U, V, Pos, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:347 - `ElSLib::ConeD0`
 pub fn cone_d0(
@@ -473,15 +592,24 @@ pub fn cone_d0(
     SAngle: f64,
     P: &mut crate::gp::Pnt,
 ) {
-    unsafe { crate::ffi::ElSLib_cone_d0(U, V, Pos, Radius, SAngle, P) }
+    {
+        unsafe { crate::ffi::ElSLib_cone_d0(U, V, Pos, Radius, SAngle, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:354 - `ElSLib::CylinderD0`
 pub fn cylinder_d0(U: f64, V: f64, Pos: &crate::gp::Ax3, Radius: f64, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_cylinder_d0(U, V, Pos, Radius, P) }
+    {
+        unsafe { crate::ffi::ElSLib_cylinder_d0(U, V, Pos, Radius, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:360 - `ElSLib::SphereD0`
 pub fn sphere_d0(U: f64, V: f64, Pos: &crate::gp::Ax3, Radius: f64, P: &mut crate::gp::Pnt) {
-    unsafe { crate::ffi::ElSLib_sphere_d0(U, V, Pos, Radius, P) }
+    {
+        unsafe { crate::ffi::ElSLib_sphere_d0(U, V, Pos, Radius, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:366 - `ElSLib::TorusD0`
 pub fn torus_d0(
@@ -492,7 +620,10 @@ pub fn torus_d0(
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
 ) {
-    unsafe { crate::ffi::ElSLib_torus_d0(U, V, Pos, MajorRadius, MinorRadius, P) }
+    {
+        unsafe { crate::ffi::ElSLib_torus_d0(U, V, Pos, MajorRadius, MinorRadius, P) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:373 - `ElSLib::PlaneD1`
 pub fn plane_d1(
@@ -503,7 +634,10 @@ pub fn plane_d1(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_plane_d1(U, V, Pos, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_plane_d1(U, V, Pos, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:380 - `ElSLib::ConeD1`
 pub fn cone_d1(
@@ -516,7 +650,10 @@ pub fn cone_d1(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_cone_d1(U, V, Pos, Radius, SAngle, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_cone_d1(U, V, Pos, Radius, SAngle, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:389 - `ElSLib::CylinderD1`
 pub fn cylinder_d1(
@@ -528,7 +665,10 @@ pub fn cylinder_d1(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_cylinder_d1(U, V, Pos, Radius, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_cylinder_d1(U, V, Pos, Radius, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:397 - `ElSLib::SphereD1`
 pub fn sphere_d1(
@@ -540,7 +680,10 @@ pub fn sphere_d1(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_sphere_d1(U, V, Pos, Radius, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_sphere_d1(U, V, Pos, Radius, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:405 - `ElSLib::TorusD1`
 pub fn torus_d1(
@@ -553,7 +696,10 @@ pub fn torus_d1(
     Vu: &mut crate::gp::Vec,
     Vv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_torus_d1(U, V, Pos, MajorRadius, MinorRadius, P, Vu, Vv) }
+    {
+        unsafe { crate::ffi::ElSLib_torus_d1(U, V, Pos, MajorRadius, MinorRadius, P, Vu, Vv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:414 - `ElSLib::ConeD2`
 pub fn cone_d2(
@@ -569,7 +715,10 @@ pub fn cone_d2(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_cone_d2(U, V, Pos, Radius, SAngle, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_cone_d2(U, V, Pos, Radius, SAngle, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:426 - `ElSLib::CylinderD2`
 pub fn cylinder_d2(
@@ -584,7 +733,10 @@ pub fn cylinder_d2(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_cylinder_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_cylinder_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:437 - `ElSLib::SphereD2`
 pub fn sphere_d2(
@@ -599,7 +751,10 @@ pub fn sphere_d2(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe { crate::ffi::ElSLib_sphere_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv) }
+    {
+        unsafe { crate::ffi::ElSLib_sphere_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:448 - `ElSLib::TorusD2`
 pub fn torus_d2(
@@ -615,8 +770,23 @@ pub fn torus_d2(
     Vvv: &mut crate::gp::Vec,
     Vuv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_torus_d2(U, V, Pos, MajorRadius, MinorRadius, P, Vu, Vv, Vuu, Vvv, Vuv)
+    {
+        unsafe {
+            crate::ffi::ElSLib_torus_d2(
+                U,
+                V,
+                Pos,
+                MajorRadius,
+                MinorRadius,
+                P,
+                Vu,
+                Vv,
+                Vuu,
+                Vvv,
+                Vuv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:460 - `ElSLib::ConeD3`
@@ -637,10 +807,13 @@ pub fn cone_d3(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_cone_d3(
-            U, V, Pos, Radius, SAngle, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_cone_d3(
+                U, V, Pos, Radius, SAngle, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:476 - `ElSLib::CylinderD3`
@@ -660,10 +833,13 @@ pub fn cylinder_d3(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_cylinder_d3(
-            U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_cylinder_d3(
+                U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:491 - `ElSLib::SphereD3`
@@ -683,10 +859,13 @@ pub fn sphere_d3(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_sphere_d3(
-            U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_sphere_d3(
+                U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv, Vuuu, Vvvv, Vuuv, Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:509 - `ElSLib::TorusD3`
@@ -710,24 +889,27 @@ pub fn torus_d3(
     Vuuv: &mut crate::gp::Vec,
     Vuvv: &mut crate::gp::Vec,
 ) {
-    unsafe {
-        crate::ffi::ElSLib_torus_d3(
-            U,
-            V,
-            Pos,
-            MajorRadius,
-            MinorRadius,
-            P,
-            Vu,
-            Vv,
-            Vuu,
-            Vvv,
-            Vuv,
-            Vuuu,
-            Vvvv,
-            Vuuv,
-            Vuvv,
-        )
+    {
+        unsafe {
+            crate::ffi::ElSLib_torus_d3(
+                U,
+                V,
+                Pos,
+                MajorRadius,
+                MinorRadius,
+                P,
+                Vu,
+                Vv,
+                Vuu,
+                Vvv,
+                Vuv,
+                Vuuu,
+                Vvvv,
+                Vuuv,
+                Vuvv,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `ElSLib.hxx`:528 - `ElSLib::Parameters`
@@ -735,7 +917,10 @@ pub fn torus_d3(
 /// P (U, V) =
 /// Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()
 pub fn parameters_pln_pnt_real2(Pl: &crate::gp::Pln, P: &crate::gp::Pnt, U: &mut f64, V: &mut f64) {
-    unsafe { crate::ffi::ElSLib_parameters_pln_pnt_real2(Pl, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_parameters_pln_pnt_real2(Pl, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:533 - `ElSLib::Parameters`
 /// parametrization
@@ -747,7 +932,10 @@ pub fn parameters_cylinder_pnt_real2(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_parameters_cylinder_pnt_real2(C, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_parameters_cylinder_pnt_real2(C, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:539 - `ElSLib::Parameters`
 /// parametrization
@@ -760,7 +948,10 @@ pub fn parameters_cone_pnt_real2(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_parameters_cone_pnt_real2(C, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_parameters_cone_pnt_real2(C, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:545 - `ElSLib::Parameters`
 /// parametrization
@@ -773,7 +964,10 @@ pub fn parameters_sphere_pnt_real2(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_parameters_sphere_pnt_real2(S, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_parameters_sphere_pnt_real2(S, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:552 - `ElSLib::Parameters`
 /// parametrization
@@ -787,14 +981,20 @@ pub fn parameters_torus_pnt_real2(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_parameters_torus_pnt_real2(T, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_parameters_torus_pnt_real2(T, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:557 - `ElSLib::PlaneParameters`
 /// parametrization
 /// P (U, V) =
 /// Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()
 pub fn plane_parameters(Pos: &crate::gp::Ax3, P: &crate::gp::Pnt, U: &mut f64, V: &mut f64) {
-    unsafe { crate::ffi::ElSLib_plane_parameters(Pos, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_plane_parameters(Pos, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:565 - `ElSLib::CylinderParameters`
 /// parametrization
@@ -807,7 +1007,10 @@ pub fn cylinder_parameters(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_cylinder_parameters(Pos, Radius, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_cylinder_parameters(Pos, Radius, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:575 - `ElSLib::ConeParameters`
 /// parametrization
@@ -822,7 +1025,10 @@ pub fn cone_parameters(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_cone_parameters(Pos, Radius, SAngle, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_cone_parameters(Pos, Radius, SAngle, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:586 - `ElSLib::SphereParameters`
 /// parametrization
@@ -836,7 +1042,10 @@ pub fn sphere_parameters(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_sphere_parameters(Pos, Radius, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_sphere_parameters(Pos, Radius, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:597 - `ElSLib::TorusParameters`
 /// parametrization
@@ -852,12 +1061,19 @@ pub fn torus_parameters(
     U: &mut f64,
     V: &mut f64,
 ) {
-    unsafe { crate::ffi::ElSLib_torus_parameters(Pos, MajorRadius, MinorRadius, P, U, V) }
+    {
+        unsafe { crate::ffi::ElSLib_torus_parameters(Pos, MajorRadius, MinorRadius, P, U, V) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `ElSLib.hxx`:605 - `ElSLib::PlaneUIso`
 /// compute the U Isoparametric gp_Lin of the plane.
 pub fn plane_u_iso(Pos: &crate::gp::Ax3, U: f64) -> crate::OwnedPtr<crate::gp::Lin> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_plane_u_iso(Pos, U)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_plane_u_iso(Pos, U) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:608 - `ElSLib::CylinderUIso`
 /// compute the U Isoparametric gp_Lin of the cylinder.
@@ -866,7 +1082,11 @@ pub fn cylinder_u_iso(
     Radius: f64,
     U: f64,
 ) -> crate::OwnedPtr<crate::gp::Lin> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cylinder_u_iso(Pos, Radius, U)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cylinder_u_iso(Pos, Radius, U) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:613 - `ElSLib::ConeUIso`
 /// compute the U Isoparametric gp_Lin of the cone.
@@ -876,13 +1096,21 @@ pub fn cone_u_iso(
     SAngle: f64,
     U: f64,
 ) -> crate::OwnedPtr<crate::gp::Lin> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cone_u_iso(Pos, Radius, SAngle, U)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cone_u_iso(Pos, Radius, SAngle, U) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:620 - `ElSLib::SphereUIso`
 /// compute the U Isoparametric gp_Circ of the sphere,
 /// (the meridian is not trimmed).
 pub fn sphere_u_iso(Pos: &crate::gp::Ax3, Radius: f64, U: f64) -> crate::OwnedPtr<crate::gp::Circ> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_sphere_u_iso(Pos, Radius, U)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_sphere_u_iso(Pos, Radius, U) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:625 - `ElSLib::TorusUIso`
 /// compute the U Isoparametric gp_Circ of the torus.
@@ -892,14 +1120,20 @@ pub fn torus_u_iso(
     MinorRadius: f64,
     U: f64,
 ) -> crate::OwnedPtr<crate::gp::Circ> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ElSLib_torus_u_iso(Pos, MajorRadius, MinorRadius, U))
+    {
+        let __result = unsafe { crate::ffi::ElSLib_torus_u_iso(Pos, MajorRadius, MinorRadius, U) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `ElSLib.hxx`:631 - `ElSLib::PlaneVIso`
 /// compute the V Isoparametric gp_Lin of the plane.
 pub fn plane_v_iso(Pos: &crate::gp::Ax3, V: f64) -> crate::OwnedPtr<crate::gp::Lin> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_plane_v_iso(Pos, V)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_plane_v_iso(Pos, V) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:634 - `ElSLib::CylinderVIso`
 /// compute the V Isoparametric gp_Circ of the cylinder.
@@ -908,7 +1142,11 @@ pub fn cylinder_v_iso(
     Radius: f64,
     V: f64,
 ) -> crate::OwnedPtr<crate::gp::Circ> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cylinder_v_iso(Pos, Radius, V)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cylinder_v_iso(Pos, Radius, V) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:639 - `ElSLib::ConeVIso`
 /// compute the V Isoparametric gp_Circ of the cone.
@@ -918,13 +1156,21 @@ pub fn cone_v_iso(
     SAngle: f64,
     V: f64,
 ) -> crate::OwnedPtr<crate::gp::Circ> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cone_v_iso(Pos, Radius, SAngle, V)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_cone_v_iso(Pos, Radius, SAngle, V) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:646 - `ElSLib::SphereVIso`
 /// compute the V Isoparametric gp_Circ of the sphere,
 /// (the meridian is not trimmed).
 pub fn sphere_v_iso(Pos: &crate::gp::Ax3, Radius: f64, V: f64) -> crate::OwnedPtr<crate::gp::Circ> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_sphere_v_iso(Pos, Radius, V)) }
+    {
+        let __result = unsafe { crate::ffi::ElSLib_sphere_v_iso(Pos, Radius, V) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `ElSLib.hxx`:651 - `ElSLib::TorusVIso`
 /// compute the V Isoparametric gp_Circ of the torus.
@@ -934,7 +1180,9 @@ pub fn torus_v_iso(
     MinorRadius: f64,
     V: f64,
 ) -> crate::OwnedPtr<crate::gp::Circ> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ElSLib_torus_v_iso(Pos, MajorRadius, MinorRadius, V))
+    {
+        let __result = unsafe { crate::ffi::ElSLib_torus_v_iso(Pos, MajorRadius, MinorRadius, V) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }

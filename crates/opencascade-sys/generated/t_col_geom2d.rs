@@ -25,15 +25,21 @@ unsafe impl crate::CppDeletable for HArray1OfBSplineCurve {
 impl HArray1OfBSplineCurve {
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -43,12 +49,14 @@ impl HArray1OfBSplineCurve {
         theUpper: i32,
         theValue: &crate::ffi::HandleGeom2dBSplineCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_int2_handlegeom2dbsplinecurve(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -59,8 +67,14 @@ impl HArray1OfBSplineCurve {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_handlegeom2dbsplinecurve_int2_bool(theBegin, theLower, theUpper, arg3))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_handlegeom2dbsplinecurve_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -68,61 +82,89 @@ impl HArray1OfBSplineCurve {
     pub fn new_array1ofbsplinecurve(
         theOther: &crate::ffi::TColGeom2d_Array1OfBSplineCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_array1ofbsplinecurve(theOther),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_array1ofbsplinecurve(theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::Array1()`
     pub fn array1(&self) -> &crate::ffi::TColGeom2d_Array1OfBSplineCurve {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfBSplineCurve_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::TColGeom2d_Array1OfBSplineCurve {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_change_array1(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfBSplineCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfBSplineCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -130,76 +172,102 @@ impl HArray1OfBSplineCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfBSplineCurve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -215,24 +283,36 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfBSplineCurve {
 impl HandleTColGeom2dHArray1OfBSplineCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HArray1OfBSplineCurve
     pub fn get(&self) -> &crate::ffi::TColGeom2d_HArray1OfBSplineCurve {
-        unsafe { &*(crate::ffi::HandleTColGeom2dHArray1OfBSplineCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTColGeom2dHArray1OfBSplineCurve_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TColGeom2d_HArray1OfBSplineCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom2d_HArray1OfBSplineCurve {
-        unsafe {
-            &mut *(crate::ffi::HandleTColGeom2dHArray1OfBSplineCurve_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTColGeom2dHArray1OfBSplineCurve_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<TColGeom2d_HArray1OfBSplineCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTColGeom2dHArray1OfBSplineCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -253,15 +333,21 @@ unsafe impl crate::CppDeletable for HArray1OfBezierCurve {
 impl HArray1OfBezierCurve {
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2(theLower, theUpper)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -271,12 +357,14 @@ impl HArray1OfBezierCurve {
         theUpper: i32,
         theValue: &crate::ffi::HandleGeom2dBezierCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2_handlegeom2dbeziercurve(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -287,12 +375,14 @@ impl HArray1OfBezierCurve {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_handlegeom2dbeziercurve_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -300,59 +390,89 @@ impl HArray1OfBezierCurve {
     pub fn new_array1ofbeziercurve(
         theOther: &crate::ffi::TColGeom2d_Array1OfBezierCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_array1ofbeziercurve(theOther),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_array1ofbeziercurve(theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::Array1()`
     pub fn array1(&self) -> &crate::ffi::TColGeom2d_Array1OfBezierCurve {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBezierCurve_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfBezierCurve_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::TColGeom2d_Array1OfBezierCurve {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HArray1OfBezierCurve_change_array1(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_change_array1(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBezierCurve_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HArray1OfBezierCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfBezierCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBezierCurve_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfBezierCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HArray1OfBezierCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HArray1OfBezierCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -360,75 +480,103 @@ impl HArray1OfBezierCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfBezierCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBezierCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfBezierCurve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -443,24 +591,36 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfBezierCurve {
 impl HandleTColGeom2dHArray1OfBezierCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HArray1OfBezierCurve
     pub fn get(&self) -> &crate::ffi::TColGeom2d_HArray1OfBezierCurve {
-        unsafe { &*(crate::ffi::HandleTColGeom2dHArray1OfBezierCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTColGeom2dHArray1OfBezierCurve_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TColGeom2d_HArray1OfBezierCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom2d_HArray1OfBezierCurve {
-        unsafe {
-            &mut *(crate::ffi::HandleTColGeom2dHArray1OfBezierCurve_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTColGeom2dHArray1OfBezierCurve_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<TColGeom2d_HArray1OfBezierCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTColGeom2dHArray1OfBezierCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -481,15 +641,20 @@ unsafe impl crate::CppDeletable for HArray1OfCurve {
 impl HArray1OfCurve {
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_int2(
-                theLower, theUpper,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_ctor_int2(theLower, theUpper) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -499,12 +664,14 @@ impl HArray1OfCurve {
         theUpper: i32,
         theValue: &crate::ffi::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfCurve_ctor_int2_handlegeom2dcurve(
                     theLower, theUpper, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -515,12 +682,14 @@ impl HArray1OfCurve {
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfCurve_ctor_handlegeom2dcurve_int2_bool(
                     theBegin, theLower, theUpper, arg3,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -528,55 +697,81 @@ impl HArray1OfCurve {
     pub fn new_array1ofcurve(
         theOther: &crate::ffi::TColGeom2d_Array1OfCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_array1ofcurve(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_ctor_array1ofcurve(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::Array1()`
     pub fn array1(&self) -> &crate::ffi::TColGeom2d_Array1OfCurve {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfCurve_array1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_array1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::ChangeArray1()`
     pub fn change_array1(&mut self) -> &mut crate::ffi::TColGeom2d_Array1OfCurve {
-        unsafe { &mut *(crate::ffi::TColGeom2d_HArray1OfCurve_change_array1(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_change_array1(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfCurve_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HArray1OfCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfCurve_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HArray1OfCurve_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HArray1OfCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -584,63 +779,96 @@ impl HArray1OfCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfCurve_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfCurve_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HArray1OfCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfCurve_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HArray1OfCurve_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HArray1OfCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TColGeom2d_HArray1OfCurve_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -655,22 +883,34 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHArray1OfCurve {
 impl HandleTColGeom2dHArray1OfCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi::TColGeom2d_HArray1OfCurve {
-        unsafe { &*(crate::ffi::HandleTColGeom2dHArray1OfCurve_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTColGeom2dHArray1OfCurve_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TColGeom2d_HArray1OfCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom2d_HArray1OfCurve {
-        unsafe { &mut *(crate::ffi::HandleTColGeom2dHArray1OfCurve_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTColGeom2dHArray1OfCurve_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TColGeom2d_HArray1OfCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTColGeom2dHArray1OfCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -691,25 +931,35 @@ unsafe impl crate::CppDeletable for HSequenceOfBoundedCurve {
 impl HSequenceOfBoundedCurve {
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::TColGeom2d_HSequenceOfBoundedCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::TColGeom2d_HSequenceOfBoundedCurve()`
     pub fn new_sequenceofboundedcurve(
         theOther: &crate::ffi::TColGeom2d_SequenceOfBoundedCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(
-                    theOther,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(theOther)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::TColGeom2d_SequenceOfBoundedCurve {
-        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_sequence(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_sequence(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append()`
@@ -717,11 +967,14 @@ impl HSequenceOfBoundedCurve {
         &mut self,
         theItem: &crate::ffi::HandleGeom2dBoundedCurve,
     ) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_handlegeom2dboundedcurve(
-                self as *mut Self,
-                theItem,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_handlegeom2dboundedcurve(
+                    self as *mut Self,
+                    theItem,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -730,59 +983,82 @@ impl HSequenceOfBoundedCurve {
         &mut self,
         theSequence: &mut crate::ffi::TColGeom2d_SequenceOfBoundedCurve,
     ) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_sequenceofboundedcurve(
-                self as *mut Self,
-                theSequence,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_sequenceofboundedcurve(
+                    self as *mut Self,
+                    theSequence,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::TColGeom2d_SequenceOfBoundedCurve {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_change_sequence(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_change_sequence(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_dynamic_type(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_get_type_descriptor()) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_as_Standard_Transient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -790,78 +1066,102 @@ impl HSequenceOfBoundedCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_GetRefCount(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_GetRefCount(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_Delete(self as *const Self)
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -877,24 +1177,36 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHSequenceOfBoundedCurve {
 impl HandleTColGeom2dHSequenceOfBoundedCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HSequenceOfBoundedCurve
     pub fn get(&self) -> &crate::ffi::TColGeom2d_HSequenceOfBoundedCurve {
-        unsafe { &*(crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve_get(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TColGeom2d_HSequenceOfBoundedCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom2d_HSequenceOfBoundedCurve {
-        unsafe {
-            &mut *(crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve_get_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve_get_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast Handle<TColGeom2d_HSequenceOfBoundedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -915,32 +1227,45 @@ unsafe impl crate::CppDeletable for HSequenceOfCurve {
 impl HSequenceOfCurve {
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::TColGeom2d_HSequenceOfCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::TColGeom2d_HSequenceOfCurve()`
     pub fn new_sequenceofcurve(
         theOther: &crate::ffi::TColGeom2d_SequenceOfCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfCurve_ctor_sequenceofcurve(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_ctor_sequenceofcurve(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::TColGeom2d_SequenceOfCurve {
-        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfCurve_sequence(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_sequence(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append()`
     pub fn append_handlegeom2dcurve(&mut self, theItem: &crate::ffi::HandleGeom2dCurve) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_append_handlegeom2dcurve(
-                self as *mut Self,
-                theItem,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_append_handlegeom2dcurve(
+                    self as *mut Self,
+                    theItem,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -949,53 +1274,76 @@ impl HSequenceOfCurve {
         &mut self,
         theSequence: &mut crate::ffi::TColGeom2d_SequenceOfCurve,
     ) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_append_sequenceofcurve(
-                self as *mut Self,
-                theSequence,
-            )
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_append_sequenceofcurve(
+                    self as *mut Self,
+                    theSequence,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::TColGeom2d_SequenceOfCurve {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HSequenceOfCurve_change_sequence(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_change_sequence(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfCurve_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TColGeom2d_HSequenceOfCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfCurve_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TColGeom2d_HSequenceOfCurve_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TColGeom2d_HSequenceOfCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1003,68 +1351,101 @@ impl HSequenceOfCurve {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHSequenceOfCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfCurve_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::TColGeom2d_HSequenceOfCurve_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1079,22 +1460,34 @@ unsafe impl crate::CppDeletable for HandleTColGeom2dHSequenceOfCurve {
 impl HandleTColGeom2dHSequenceOfCurve {
     /// Dereference this Handle to access the underlying TColGeom2d_HSequenceOfCurve
     pub fn get(&self) -> &crate::ffi::TColGeom2d_HSequenceOfCurve {
-        unsafe { &*(crate::ffi::HandleTColGeom2dHSequenceOfCurve_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTColGeom2dHSequenceOfCurve_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TColGeom2d_HSequenceOfCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom2d_HSequenceOfCurve {
-        unsafe { &mut *(crate::ffi::HandleTColGeom2dHSequenceOfCurve_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTColGeom2dHSequenceOfCurve_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TColGeom2d_HSequenceOfCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTColGeom2dHSequenceOfCurve_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

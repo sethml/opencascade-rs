@@ -29,19 +29,24 @@ impl Assembly {
         Dependence: &crate::ffi::TColStd_Array2OfInteger,
         Table: &crate::ffi::HandleFEmToolHAssemblyTable,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::FEmTool_Assembly_ctor_array2ofinteger_handlefemtoolhassemblytable(
                     Dependence, Table,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:44 - `FEmTool_Assembly::NullifyMatrix()`
     /// Nullify all Matrix 's Coefficient
     pub fn nullify_matrix(&mut self) {
-        unsafe { crate::ffi::FEmTool_Assembly_nullify_matrix(self as *mut Self) }
+        {
+            unsafe { crate::ffi::FEmTool_Assembly_nullify_matrix(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:48 - `FEmTool_Assembly::AddMatrix()`
@@ -54,41 +59,56 @@ impl Assembly {
         Dimension2: i32,
         Mat: &crate::math::Matrix,
     ) {
-        unsafe {
-            crate::ffi::FEmTool_Assembly_add_matrix(
-                self as *mut Self,
-                Element,
-                Dimension1,
-                Dimension2,
-                Mat,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_Assembly_add_matrix(
+                    self as *mut Self,
+                    Element,
+                    Dimension1,
+                    Dimension2,
+                    Mat,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:54 - `FEmTool_Assembly::NullifyVector()`
     /// Nullify  all  Coordinate of  assembly  Vector (second member)
     pub fn nullify_vector(&mut self) {
-        unsafe { crate::ffi::FEmTool_Assembly_nullify_vector(self as *mut Self) }
+        {
+            unsafe { crate::ffi::FEmTool_Assembly_nullify_vector(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:57 - `FEmTool_Assembly::AddVector()`
     /// Add an elementary Vector in the assembly Vector (second member)
     pub fn add_vector(&mut self, Element: i32, Dimension: i32, Vec: &crate::ffi::math_Vector) {
-        unsafe {
-            crate::ffi::FEmTool_Assembly_add_vector(self as *mut Self, Element, Dimension, Vec)
+        {
+            unsafe {
+                crate::ffi::FEmTool_Assembly_add_vector(self as *mut Self, Element, Dimension, Vec)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:62 - `FEmTool_Assembly::ResetConstraint()`
     /// Delete all Constraints.
     pub fn reset_constraint(&mut self) {
-        unsafe { crate::ffi::FEmTool_Assembly_reset_constraint(self as *mut Self) }
+        {
+            unsafe { crate::ffi::FEmTool_Assembly_reset_constraint(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:65 - `FEmTool_Assembly::NullifyConstraint()`
     /// Nullify all Constraints.
     pub fn nullify_constraint(&mut self) {
-        unsafe { crate::ffi::FEmTool_Assembly_nullify_constraint(self as *mut Self) }
+        {
+            unsafe { crate::ffi::FEmTool_Assembly_nullify_constraint(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:67 - `FEmTool_Assembly::AddConstraint()`
@@ -100,15 +120,18 @@ impl Assembly {
         LinearForm: &crate::ffi::math_Vector,
         Value: f64,
     ) {
-        unsafe {
-            crate::ffi::FEmTool_Assembly_add_constraint(
-                self as *mut Self,
-                IndexofConstraint,
-                Element,
-                Dimension,
-                LinearForm,
-                Value,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_Assembly_add_constraint(
+                    self as *mut Self,
+                    IndexofConstraint,
+                    Element,
+                    Dimension,
+                    LinearForm,
+                    Value,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -116,22 +139,38 @@ impl Assembly {
     /// Solve the assembly system
     /// Returns Standard_False if the computation failed.
     pub fn solve(&mut self) -> bool {
-        unsafe { crate::ffi::FEmTool_Assembly_solve(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Assembly_solve(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:77 - `FEmTool_Assembly::Solution()`
     pub fn solution(&self, Solution: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_Assembly_solution(self as *const Self, Solution) }
+        {
+            unsafe { crate::ffi::FEmTool_Assembly_solution(self as *const Self, Solution) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:79 - `FEmTool_Assembly::NbGlobVar()`
     pub fn nb_glob_var(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_Assembly_nb_glob_var(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Assembly_nb_glob_var(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:81 - `FEmTool_Assembly::GetAssemblyTable()`
     pub fn get_assembly_table(&self, AssTable: &mut crate::ffi::HandleFEmToolHAssemblyTable) {
-        unsafe { crate::ffi::FEmTool_Assembly_get_assembly_table(self as *const Self, AssTable) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_Assembly_get_assembly_table(self as *const Self, AssTable)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -157,41 +196,66 @@ impl Curve {
         TheBase: &crate::ffi::HandlePLibBase,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_Curve_ctor_int2_handleplibbase_real(
-                Dimension, NbElements, TheBase, Tolerance,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_Curve_ctor_int2_handleplibbase_real(
+                    Dimension, NbElements, TheBase, Tolerance,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:45 - `FEmTool_Curve::Knots()`
     pub fn knots(&mut self) -> &mut crate::ffi::TColStd_Array1OfReal {
-        unsafe { &mut *(crate::ffi::FEmTool_Curve_knots(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_knots(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:47 - `FEmTool_Curve::SetElement()`
     pub fn set_element(&mut self, IndexOfElement: i32, Coeffs: &crate::ffi::TColStd_Array2OfReal) {
-        unsafe { crate::ffi::FEmTool_Curve_set_element(self as *mut Self, IndexOfElement, Coeffs) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_Curve_set_element(self as *mut Self, IndexOfElement, Coeffs)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:50 - `FEmTool_Curve::D0()`
     pub fn d0(&mut self, U: f64, Pnt: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::FEmTool_Curve_d0(self as *mut Self, U, Pnt) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_d0(self as *mut Self, U, Pnt) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:52 - `FEmTool_Curve::D1()`
     pub fn d1(&mut self, U: f64, Vec: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::FEmTool_Curve_d1(self as *mut Self, U, Vec) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_d1(self as *mut Self, U, Vec) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:54 - `FEmTool_Curve::D2()`
     pub fn d2(&mut self, U: f64, Vec: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::FEmTool_Curve_d2(self as *mut Self, U, Vec) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_d2(self as *mut Self, U, Vec) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:56 - `FEmTool_Curve::Length()`
     pub fn length(&mut self, FirstU: f64, LastU: f64, Length: &mut f64) {
-        unsafe { crate::ffi::FEmTool_Curve_length(self as *mut Self, FirstU, LastU, Length) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_length(self as *mut Self, FirstU, LastU, Length) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:60 - `FEmTool_Curve::GetElement()`
@@ -200,38 +264,68 @@ impl Curve {
         IndexOfElement: i32,
         Coeffs: &mut crate::ffi::TColStd_Array2OfReal,
     ) {
-        unsafe { crate::ffi::FEmTool_Curve_get_element(self as *mut Self, IndexOfElement, Coeffs) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_Curve_get_element(self as *mut Self, IndexOfElement, Coeffs)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:64 - `FEmTool_Curve::GetPolynom()`
     /// returns  coefficients  of  all  elements  in  canonical  base.
     pub fn get_polynom(&mut self, Coeffs: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::FEmTool_Curve_get_polynom(self as *mut Self, Coeffs) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_get_polynom(self as *mut Self, Coeffs) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:66 - `FEmTool_Curve::NbElements()`
     pub fn nb_elements(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_Curve_nb_elements(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_nb_elements(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:68 - `FEmTool_Curve::Dimension()`
     pub fn dimension(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_Curve_dimension(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_dimension(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:70 - `FEmTool_Curve::Base()`
     pub fn base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::FEmTool_Curve_base(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_base(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:72 - `FEmTool_Curve::Degree()`
     pub fn degree(&self, IndexOfElement: i32) -> i32 {
-        unsafe { crate::ffi::FEmTool_Curve_degree(self as *const Self, IndexOfElement) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_Curve_degree(self as *const Self, IndexOfElement) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:74 - `FEmTool_Curve::SetDegree()`
     pub fn set_degree(&mut self, IndexOfElement: i32, Degree: i32) {
-        unsafe { crate::ffi::FEmTool_Curve_set_degree(self as *mut Self, IndexOfElement, Degree) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_Curve_set_degree(self as *mut Self, IndexOfElement, Degree)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:77 - `FEmTool_Curve::ReduceDegree()`
@@ -242,93 +336,147 @@ impl Curve {
         NewDegree: &mut i32,
         MaxError: &mut f64,
     ) {
-        unsafe {
-            crate::ffi::FEmTool_Curve_reduce_degree(
-                self as *mut Self,
-                IndexOfElement,
-                Tol,
-                NewDegree,
-                MaxError,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_Curve_reduce_degree(
+                    self as *mut Self,
+                    IndexOfElement,
+                    Tol,
+                    NewDegree,
+                    MaxError,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_Curve_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_Curve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_Curve_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_Curve_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_Curve_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::FEmTool_Curve_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_Curve_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::FEmTool_Curve_to_handle(obj.into_raw())) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_Curve_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_Curve_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_Curve_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_Curve_inherited_IsKind(self as *const Self, theType) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::FEmTool_Curve_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result = unsafe { crate::ffi::FEmTool_Curve_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_Curve_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_Curve_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::FEmTool_Curve_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::FEmTool_Curve_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_Curve_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_Curve_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_Curve_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -343,20 +491,30 @@ unsafe impl crate::CppDeletable for HandleFEmToolCurve {
 impl HandleFEmToolCurve {
     /// Dereference this Handle to access the underlying FEmTool_Curve
     pub fn get(&self) -> &crate::ffi::FEmTool_Curve {
-        unsafe { &*(crate::ffi::HandleFEmToolCurve_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleFEmToolCurve_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_Curve {
-        unsafe { &mut *(crate::ffi::HandleFEmToolCurve_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleFEmToolCurve_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleFEmToolCurve_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleFEmToolCurve_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -382,40 +540,53 @@ impl ElementaryCriterion {
         &mut self,
         Coeff: &crate::ffi::HandleTColStdHArray2OfReal,
     ) {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_set_handletcolstdharray2ofreal(
-                self as *mut Self,
-                Coeff,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_set_handletcolstdharray2ofreal(
+                    self as *mut Self,
+                    Coeff,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:45 - `FEmTool_ElementaryCriterion::Set()`
     /// Set the definition interval of the Element
     pub fn set_real2(&mut self, FirstKnot: f64, LastKnot: f64) {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_set_real2(
-                self as *mut Self,
-                FirstKnot,
-                LastKnot,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_set_real2(
+                    self as *mut Self,
+                    FirstKnot,
+                    LastKnot,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:48 - `FEmTool_ElementaryCriterion::DependenceTable()`
     /// To know if two dimension are independent.
     pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_ElementaryCriterion_dependence_table(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_dependence_table(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:51 - `FEmTool_ElementaryCriterion::Value()`
     /// To Compute J(E) where E  is the current Element
     pub fn value(&mut self) -> f64 {
-        unsafe { crate::ffi::FEmTool_ElementaryCriterion_value(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ElementaryCriterion_value(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:57 - `FEmTool_ElementaryCriterion::Hessian()`
@@ -424,106 +595,162 @@ impl ElementaryCriterion {
     /// and  <Dim2>.
     /// If DependenceTable(Dimension1,Dimension2) is False
     pub fn hessian(&mut self, Dim1: i32, Dim2: i32, H: &mut crate::math::Matrix) {
-        unsafe { crate::ffi::FEmTool_ElementaryCriterion_hessian(self as *mut Self, Dim1, Dim2, H) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_hessian(self as *mut Self, Dim1, Dim2, H)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:63 - `FEmTool_ElementaryCriterion::Gradient()`
     /// To Compute the  coefficients in the dimension <dim>
     /// of  the  J(E)'s  Gradient where E  is  the current  Element
     pub fn gradient(&mut self, Dim: i32, G: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_ElementaryCriterion_gradient(self as *mut Self, Dim, G) }
+        {
+            unsafe { crate::ffi::FEmTool_ElementaryCriterion_gradient(self as *mut Self, Dim, G) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_ElementaryCriterion_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_dynamic_type(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_ElementaryCriterion_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_ElementaryCriterion_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_ElementaryCriterion_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_ElementaryCriterion_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::FEmTool_ElementaryCriterion_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_ElementaryCriterion_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::FEmTool_ElementaryCriterion_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_GetRefCount(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_ElementaryCriterion_inherited_Delete(self as *const Self) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_Delete(self as *const Self)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -538,22 +765,34 @@ unsafe impl crate::CppDeletable for HandleFEmToolElementaryCriterion {
 impl HandleFEmToolElementaryCriterion {
     /// Dereference this Handle to access the underlying FEmTool_ElementaryCriterion
     pub fn get(&self) -> &crate::ffi::FEmTool_ElementaryCriterion {
-        unsafe { &*(crate::ffi::HandleFEmToolElementaryCriterion_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolElementaryCriterion_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_ElementaryCriterion
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_ElementaryCriterion {
-        unsafe { &mut *(crate::ffi::HandleFEmToolElementaryCriterion_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolElementaryCriterion_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_ElementaryCriterion> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolElementaryCriterion_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -568,6 +807,7 @@ impl HandleFEmToolElementaryCriterion {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -586,6 +826,7 @@ impl HandleFEmToolElementaryCriterion {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -604,6 +845,7 @@ impl HandleFEmToolElementaryCriterion {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -638,10 +880,12 @@ impl ElementsOfRefMatrix {
         TheBase: &crate::ffi::HandlePLibBase,
         DerOrder: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::FEmTool_ElementsOfRefMatrix_ctor_handleplibbase_int(TheBase, DerOrder),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementsOfRefMatrix_ctor_handleplibbase_int(TheBase, DerOrder)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -649,13 +893,25 @@ impl ElementsOfRefMatrix {
     /// returns the number of variables of the function.
     /// It  is  supposed  that  NbVariables  =  1.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_ElementsOfRefMatrix_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementsOfRefMatrix_nb_variables(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ElementsOfRefMatrix.hxx`:49 - `FEmTool_ElementsOfRefMatrix::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_ElementsOfRefMatrix_nb_equations(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementsOfRefMatrix_nb_equations(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ElementsOfRefMatrix.hxx`:58 - `FEmTool_ElementsOfRefMatrix::Value()`
@@ -667,29 +923,44 @@ impl ElementsOfRefMatrix {
     /// P0*P0,  P0*P1,  P0*P2...  P1*P1,  P1*P2,...  (upper  triangle of
     /// matrix  {PiPj})
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::FEmTool_ElementsOfRefMatrix_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ElementsOfRefMatrix_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_ElementsOfRefMatrix_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ElementsOfRefMatrix_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -715,10 +986,14 @@ impl HAssemblyTable {
         theColLow: i32,
         theColUpp: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_HAssemblyTable_ctor_int4(
-                theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_ctor_int4(
+                    theRowLow, theRowUpp, theColLow, theColUpp,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -730,12 +1005,14 @@ impl HAssemblyTable {
         theColUpp: i32,
         theValue: &crate::ffi::HandleTColStdHArray1OfInteger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::FEmTool_HAssemblyTable_ctor_int4_handletcolstdharray1ofinteger(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -743,51 +1020,81 @@ impl HAssemblyTable {
     pub fn new_assemblytable(
         theOther: &crate::ffi::FEmTool_AssemblyTable,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_HAssemblyTable_ctor_assemblytable(
-                theOther,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_HAssemblyTable_ctor_assemblytable(theOther) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::Array2()`
     pub fn array2(&self) -> &crate::ffi::FEmTool_AssemblyTable {
-        unsafe { &*(crate::ffi::FEmTool_HAssemblyTable_array2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_HAssemblyTable_array2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::ChangeArray2()`
     pub fn change_array2(&mut self) -> &mut crate::ffi::FEmTool_AssemblyTable {
-        unsafe { &mut *(crate::ffi::FEmTool_HAssemblyTable_change_array2(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_HAssemblyTable_change_array2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_HAssemblyTable_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_HAssemblyTable_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_HAssemblyTable_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_HAssemblyTable_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_HAssemblyTable_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_HAssemblyTable_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_HAssemblyTable_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_HAssemblyTable_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -795,58 +1102,90 @@ impl HAssemblyTable {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_HAssemblyTable_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::FEmTool_HAssemblyTable_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_HAssemblyTable_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -861,22 +1200,34 @@ unsafe impl crate::CppDeletable for HandleFEmToolHAssemblyTable {
 impl HandleFEmToolHAssemblyTable {
     /// Dereference this Handle to access the underlying FEmTool_HAssemblyTable
     pub fn get(&self) -> &crate::ffi::FEmTool_HAssemblyTable {
-        unsafe { &*(crate::ffi::HandleFEmToolHAssemblyTable_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolHAssemblyTable_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_HAssemblyTable
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_HAssemblyTable {
-        unsafe { &mut *(crate::ffi::HandleFEmToolHAssemblyTable_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolHAssemblyTable_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_HAssemblyTable> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolHAssemblyTable_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -901,86 +1252,130 @@ impl LinearFlexion {
         WorkDegree: i32,
         ConstraintOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearFlexion_ctor_int_shape(
-                WorkDegree,
-                ConstraintOrder.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_ctor_int_shape(WorkDegree, ConstraintOrder.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:41 - `FEmTool_LinearFlexion::DependenceTable()`
     pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearFlexion_dependence_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearFlexion_dependence_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:44 - `FEmTool_LinearFlexion::Value()`
     pub fn value(&mut self) -> f64 {
-        unsafe { crate::ffi::FEmTool_LinearFlexion_value(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearFlexion_value(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:46 - `FEmTool_LinearFlexion::Hessian()`
     pub fn hessian(&mut self, Dimension1: i32, Dimension2: i32, H: &mut crate::math::Matrix) {
-        unsafe {
-            crate::ffi::FEmTool_LinearFlexion_hessian(self as *mut Self, Dimension1, Dimension2, H)
+        {
+            unsafe {
+                crate::ffi::FEmTool_LinearFlexion_hessian(
+                    self as *mut Self,
+                    Dimension1,
+                    Dimension2,
+                    H,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:50 - `FEmTool_LinearFlexion::Gradient()`
     pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_LinearFlexion_gradient(self as *mut Self, Dimension, G) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearFlexion_gradient(self as *mut Self, Dimension, G) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_LinearFlexion_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearFlexion_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_LinearFlexion_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearFlexion_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_LinearFlexion_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearFlexion_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion
     pub fn as_elementary_criterion(&self) -> &ElementaryCriterion {
-        unsafe {
-            &*(crate::ffi::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion (mutable)
     pub fn as_elementary_criterion_mut(&mut self) -> &mut ElementaryCriterion {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_LinearFlexion_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_LinearFlexion_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -988,63 +1383,95 @@ impl LinearFlexion {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolLinearFlexion> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearFlexion_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearFlexion_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `FEmTool_ElementaryCriterion.hxx`:42 - `FEmTool_ElementaryCriterion::Set()`
     pub fn set(&mut self, Coeff: &crate::ffi::HandleTColStdHArray2OfReal) {
-        unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_Set(self as *mut Self, Coeff) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_Set(self as *mut Self, Coeff) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::FEmTool_LinearFlexion_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearFlexion_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1059,35 +1486,49 @@ unsafe impl crate::CppDeletable for HandleFEmToolLinearFlexion {
 impl HandleFEmToolLinearFlexion {
     /// Dereference this Handle to access the underlying FEmTool_LinearFlexion
     pub fn get(&self) -> &crate::ffi::FEmTool_LinearFlexion {
-        unsafe { &*(crate::ffi::HandleFEmToolLinearFlexion_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolLinearFlexion_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_LinearFlexion
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_LinearFlexion {
-        unsafe { &mut *(crate::ffi::HandleFEmToolLinearFlexion_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolLinearFlexion_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_LinearFlexion> to Handle<FEmTool_ElementaryCriterion>
     pub fn to_handle_elementary_criterion(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolElementaryCriterion> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolLinearFlexion_to_HandleFEmToolElementaryCriterion(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<FEmTool_LinearFlexion> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolLinearFlexion_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1112,84 +1553,121 @@ impl LinearJerk {
         WorkDegree: i32,
         ConstraintOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearJerk_ctor_int_shape(
-                WorkDegree,
-                ConstraintOrder.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_ctor_int_shape(WorkDegree, ConstraintOrder.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:41 - `FEmTool_LinearJerk::DependenceTable()`
     pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearJerk_dependence_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearJerk_dependence_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:44 - `FEmTool_LinearJerk::Value()`
     pub fn value(&mut self) -> f64 {
-        unsafe { crate::ffi::FEmTool_LinearJerk_value(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearJerk_value(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:46 - `FEmTool_LinearJerk::Hessian()`
     pub fn hessian(&mut self, Dimension1: i32, Dimension2: i32, H: &mut crate::math::Matrix) {
-        unsafe {
-            crate::ffi::FEmTool_LinearJerk_hessian(self as *mut Self, Dimension1, Dimension2, H)
+        {
+            unsafe {
+                crate::ffi::FEmTool_LinearJerk_hessian(self as *mut Self, Dimension1, Dimension2, H)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:50 - `FEmTool_LinearJerk::Gradient()`
     pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_LinearJerk_gradient(self as *mut Self, Dimension, G) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearJerk_gradient(self as *mut Self, Dimension, G) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_LinearJerk_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearJerk_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_LinearJerk_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearJerk_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_LinearJerk_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearJerk_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion
     pub fn as_elementary_criterion(&self) -> &ElementaryCriterion {
-        unsafe {
-            &*(crate::ffi::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion (mutable)
     pub fn as_elementary_criterion_mut(&mut self) -> &mut ElementaryCriterion {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_LinearJerk_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_LinearJerk_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1197,56 +1675,95 @@ impl LinearJerk {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolLinearJerk> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearJerk_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearJerk_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `FEmTool_ElementaryCriterion.hxx`:42 - `FEmTool_ElementaryCriterion::Set()`
     pub fn set(&mut self, Coeff: &crate::ffi::HandleTColStdHArray2OfReal) {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_Set(self as *mut Self, Coeff) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearJerk_inherited_Set(self as *mut Self, Coeff) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::FEmTool_LinearJerk_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearJerk_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_LinearJerk_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearJerk_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_LinearJerk_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearJerk_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1261,33 +1778,46 @@ unsafe impl crate::CppDeletable for HandleFEmToolLinearJerk {
 impl HandleFEmToolLinearJerk {
     /// Dereference this Handle to access the underlying FEmTool_LinearJerk
     pub fn get(&self) -> &crate::ffi::FEmTool_LinearJerk {
-        unsafe { &*(crate::ffi::HandleFEmToolLinearJerk_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleFEmToolLinearJerk_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_LinearJerk
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_LinearJerk {
-        unsafe { &mut *(crate::ffi::HandleFEmToolLinearJerk_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolLinearJerk_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_LinearJerk> to Handle<FEmTool_ElementaryCriterion>
     pub fn to_handle_elementary_criterion(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolElementaryCriterion> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolLinearJerk_to_HandleFEmToolElementaryCriterion(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<FEmTool_LinearJerk> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleFEmToolLinearJerk_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleFEmToolLinearJerk_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1312,86 +1842,130 @@ impl LinearTension {
         WorkDegree: i32,
         ConstraintOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearTension_ctor_int_shape(
-                WorkDegree,
-                ConstraintOrder.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_ctor_int_shape(WorkDegree, ConstraintOrder.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:41 - `FEmTool_LinearTension::DependenceTable()`
     pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearTension_dependence_table(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearTension_dependence_table(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:44 - `FEmTool_LinearTension::Value()`
     pub fn value(&mut self) -> f64 {
-        unsafe { crate::ffi::FEmTool_LinearTension_value(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearTension_value(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:46 - `FEmTool_LinearTension::Hessian()`
     pub fn hessian(&mut self, Dimension1: i32, Dimension2: i32, H: &mut crate::math::Matrix) {
-        unsafe {
-            crate::ffi::FEmTool_LinearTension_hessian(self as *mut Self, Dimension1, Dimension2, H)
+        {
+            unsafe {
+                crate::ffi::FEmTool_LinearTension_hessian(
+                    self as *mut Self,
+                    Dimension1,
+                    Dimension2,
+                    H,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:50 - `FEmTool_LinearTension::Gradient()`
     pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_LinearTension_gradient(self as *mut Self, Dimension, G) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearTension_gradient(self as *mut Self, Dimension, G) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_LinearTension_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_LinearTension_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_LinearTension_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearTension_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_LinearTension_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearTension_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion
     pub fn as_elementary_criterion(&self) -> &ElementaryCriterion {
-        unsafe {
-            &*(crate::ffi::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion (mutable)
     pub fn as_elementary_criterion_mut(&mut self) -> &mut ElementaryCriterion {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_LinearTension_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_LinearTension_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1399,63 +1973,95 @@ impl LinearTension {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolLinearTension> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_LinearTension_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::FEmTool_LinearTension_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `FEmTool_ElementaryCriterion.hxx`:42 - `FEmTool_ElementaryCriterion::Set()`
     pub fn set(&mut self, Coeff: &crate::ffi::HandleTColStdHArray2OfReal) {
-        unsafe { crate::ffi::FEmTool_LinearTension_inherited_Set(self as *mut Self, Coeff) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearTension_inherited_Set(self as *mut Self, Coeff) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_LinearTension_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::FEmTool_LinearTension_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_LinearTension_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::FEmTool_LinearTension_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_LinearTension_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_LinearTension_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_LinearTension_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1470,35 +2076,49 @@ unsafe impl crate::CppDeletable for HandleFEmToolLinearTension {
 impl HandleFEmToolLinearTension {
     /// Dereference this Handle to access the underlying FEmTool_LinearTension
     pub fn get(&self) -> &crate::ffi::FEmTool_LinearTension {
-        unsafe { &*(crate::ffi::HandleFEmToolLinearTension_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolLinearTension_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_LinearTension
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_LinearTension {
-        unsafe { &mut *(crate::ffi::HandleFEmToolLinearTension_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolLinearTension_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_LinearTension> to Handle<FEmTool_ElementaryCriterion>
     pub fn to_handle_elementary_criterion(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolElementaryCriterion> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolLinearTension_to_HandleFEmToolElementaryCriterion(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<FEmTool_LinearTension> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolLinearTension_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1523,39 +2143,60 @@ impl ProfileMatrix {
     pub fn new_array1ofinteger(
         FirstIndexes: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_ProfileMatrix_ctor_array1ofinteger(
-                FirstIndexes,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_ctor_array1ofinteger(FirstIndexes) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:42 - `FEmTool_ProfileMatrix::Init()`
     pub fn init(&mut self, Value: f64) {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_init(self as *mut Self, Value) }
+        {
+            unsafe { crate::ffi::FEmTool_ProfileMatrix_init(self as *mut Self, Value) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:44 - `FEmTool_ProfileMatrix::ChangeValue()`
     pub fn change_value(&mut self, I: i32, J: i32) -> &mut f64 {
-        unsafe { &mut *(crate::ffi::FEmTool_ProfileMatrix_change_value(self as *mut Self, I, J)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_change_value(self as *mut Self, I, J) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:48 - `FEmTool_ProfileMatrix::Decompose()`
     /// To make a Factorization of <me>
     pub fn decompose(&mut self) -> bool {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_decompose(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_decompose(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:51 - `FEmTool_ProfileMatrix::Solve()`
     /// Direct Solve of AX = B
     pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_solve_vector2(self as *const Self, B, X) }
+        {
+            unsafe { crate::ffi::FEmTool_ProfileMatrix_solve_vector2(self as *const Self, B, X) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:54 - `FEmTool_ProfileMatrix::Prepare()`
     /// Make Preparation to iterative solve
     pub fn prepare(&mut self) -> bool {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_prepare(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_ProfileMatrix_prepare(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:57 - `FEmTool_ProfileMatrix::Solve()`
@@ -1569,16 +2210,19 @@ impl ProfileMatrix {
         Tolerance: f64,
         NbIterations: i32,
     ) {
-        unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_solve_vector4_real_int(
-                self as *const Self,
-                B,
-                Init,
-                X,
-                Residual,
-                Tolerance,
-                NbIterations,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_solve_vector4_real_int(
+                    self as *const Self,
+                    B,
+                    Init,
+                    X,
+                    Residual,
+                    Tolerance,
+                    NbIterations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1586,78 +2230,130 @@ impl ProfileMatrix {
     /// returns the product of a SparseMatrix by a vector.
     /// An exception is raised if the dimensions are different
     pub fn multiplied(&self, X: &crate::ffi::math_Vector, MX: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_multiplied(self as *const Self, X, MX) }
+        {
+            unsafe { crate::ffi::FEmTool_ProfileMatrix_multiplied(self as *const Self, X, MX) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:69 - `FEmTool_ProfileMatrix::RowNumber()`
     /// returns the row range of a matrix.
     pub fn row_number(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_row_number(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_row_number(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:72 - `FEmTool_ProfileMatrix::ColNumber()`
     /// returns the column range of the matrix.
     pub fn col_number(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_col_number(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_col_number(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:74 - `FEmTool_ProfileMatrix::IsInProfile()`
     pub fn is_in_profile(&self, i: i32, j: i32) -> bool {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_is_in_profile(self as *const Self, i, j) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_is_in_profile(self as *const Self, i, j)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:77 - `FEmTool_ProfileMatrix::OutM()`
     pub fn out_m(&self) {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_out_m(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_ProfileMatrix_out_m(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:79 - `FEmTool_ProfileMatrix::OutS()`
     pub fn out_s(&self) {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_out_s(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_ProfileMatrix_out_s(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:81 - `FEmTool_ProfileMatrix::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_ProfileMatrix_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:81 - `FEmTool_ProfileMatrix::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_ProfileMatrix_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_ProfileMatrix_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:81 - `FEmTool_ProfileMatrix::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_ProfileMatrix_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_ProfileMatrix_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to FEmTool_SparseMatrix
     pub fn as_sparse_matrix(&self) -> &SparseMatrix {
-        unsafe {
-            &*(crate::ffi::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to FEmTool_SparseMatrix (mutable)
     pub fn as_sparse_matrix_mut(&mut self) -> &mut SparseMatrix {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_ProfileMatrix_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_ProfileMatrix_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1665,58 +2361,87 @@ impl ProfileMatrix {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolProfileMatrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FEmTool_ProfileMatrix_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::FEmTool_ProfileMatrix_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_ProfileMatrix_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1731,35 +2456,49 @@ unsafe impl crate::CppDeletable for HandleFEmToolProfileMatrix {
 impl HandleFEmToolProfileMatrix {
     /// Dereference this Handle to access the underlying FEmTool_ProfileMatrix
     pub fn get(&self) -> &crate::ffi::FEmTool_ProfileMatrix {
-        unsafe { &*(crate::ffi::HandleFEmToolProfileMatrix_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolProfileMatrix_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_ProfileMatrix
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_ProfileMatrix {
-        unsafe { &mut *(crate::ffi::HandleFEmToolProfileMatrix_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolProfileMatrix_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_ProfileMatrix> to Handle<FEmTool_SparseMatrix>
     pub fn to_handle_sparse_matrix(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolSparseMatrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolProfileMatrix_to_HandleFEmToolSparseMatrix(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<FEmTool_ProfileMatrix> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolProfileMatrix_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1781,30 +2520,49 @@ unsafe impl crate::CppDeletable for SparseMatrix {
 impl SparseMatrix {
     /// **Source:** `FEmTool_SparseMatrix.hxx`:35 - `FEmTool_SparseMatrix::Init()`
     pub fn init(&mut self, Value: f64) {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_init(self as *mut Self, Value) }
+        {
+            unsafe { crate::ffi::FEmTool_SparseMatrix_init(self as *mut Self, Value) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:37 - `FEmTool_SparseMatrix::ChangeValue()`
     pub fn change_value(&mut self, I: i32, J: i32) -> &mut f64 {
-        unsafe { &mut *(crate::ffi::FEmTool_SparseMatrix_change_value(self as *mut Self, I, J)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_SparseMatrix_change_value(self as *mut Self, I, J) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:41 - `FEmTool_SparseMatrix::Decompose()`
     /// To make a Factorization of <me>
     pub fn decompose(&mut self) -> bool {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_decompose(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_SparseMatrix_decompose(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:44 - `FEmTool_SparseMatrix::Solve()`
     /// Direct Solve of AX = B
     pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_solve_vector2(self as *const Self, B, X) }
+        {
+            unsafe { crate::ffi::FEmTool_SparseMatrix_solve_vector2(self as *const Self, B, X) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:47 - `FEmTool_SparseMatrix::Prepare()`
     /// Make Preparation to iterative solve
     pub fn prepare(&mut self) -> bool {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_prepare(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_SparseMatrix_prepare(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:50 - `FEmTool_SparseMatrix::Solve()`
@@ -1818,16 +2576,19 @@ impl SparseMatrix {
         Tolerance: f64,
         NbIterations: i32,
     ) {
-        unsafe {
-            crate::ffi::FEmTool_SparseMatrix_solve_vector4_real_int(
-                self as *const Self,
-                B,
-                Init,
-                X,
-                Residual,
-                Tolerance,
-                NbIterations,
-            )
+        {
+            unsafe {
+                crate::ffi::FEmTool_SparseMatrix_solve_vector4_real_int(
+                    self as *const Self,
+                    B,
+                    Init,
+                    X,
+                    Residual,
+                    Tolerance,
+                    NbIterations,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1835,95 +2596,158 @@ impl SparseMatrix {
     /// returns the product of a SparseMatrix by a vector.
     /// An exception is raised if the dimensions are different
     pub fn multiplied(&self, X: &crate::ffi::math_Vector, MX: &mut crate::ffi::math_Vector) {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_multiplied(self as *const Self, X, MX) }
+        {
+            unsafe { crate::ffi::FEmTool_SparseMatrix_multiplied(self as *const Self, X, MX) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:62 - `FEmTool_SparseMatrix::RowNumber()`
     /// returns the row range of a matrix.
     pub fn row_number(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_row_number(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_SparseMatrix_row_number(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:65 - `FEmTool_SparseMatrix::ColNumber()`
     /// returns the column range of the matrix.
     pub fn col_number(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_col_number(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_SparseMatrix_col_number(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:67 - `FEmTool_SparseMatrix::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_SparseMatrix_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::FEmTool_SparseMatrix_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:67 - `FEmTool_SparseMatrix::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::FEmTool_SparseMatrix_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::FEmTool_SparseMatrix_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:67 - `FEmTool_SparseMatrix::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::FEmTool_SparseMatrix_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::FEmTool_SparseMatrix_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::FEmTool_SparseMatrix_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_SparseMatrix_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::FEmTool_SparseMatrix_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_SparseMatrix_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_SparseMatrix_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_SparseMatrix_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_SparseMatrix_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::FEmTool_SparseMatrix_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::FEmTool_SparseMatrix_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1938,22 +2762,34 @@ unsafe impl crate::CppDeletable for HandleFEmToolSparseMatrix {
 impl HandleFEmToolSparseMatrix {
     /// Dereference this Handle to access the underlying FEmTool_SparseMatrix
     pub fn get(&self) -> &crate::ffi::FEmTool_SparseMatrix {
-        unsafe { &*(crate::ffi::HandleFEmToolSparseMatrix_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolSparseMatrix_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_SparseMatrix
     pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_SparseMatrix {
-        unsafe { &mut *(crate::ffi::HandleFEmToolSparseMatrix_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleFEmToolSparseMatrix_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<FEmTool_SparseMatrix> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleFEmToolSparseMatrix_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1968,6 +2804,7 @@ impl HandleFEmToolSparseMatrix {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {

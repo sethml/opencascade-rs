@@ -22,18 +22,32 @@ unsafe impl crate::CppDeletable for LDOMParser {
 impl LDOMParser {
     /// **Source:** `LDOMParser.hxx`:36 - `LDOMParser::LDOMParser()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOMParser_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::LDOMParser_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `LDOMParser.hxx`:47 - `LDOMParser::getDocument()`
     pub fn get_document(&mut self) -> crate::OwnedPtr<crate::ldom::Document> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOMParser_get_document(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::LDOMParser_get_document(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `LDOMParser.hxx`:50 - `LDOMParser::parse()`
     pub fn parse_charptr(&mut self, aFileName: &str) -> bool {
         let c_aFileName = std::ffi::CString::new(aFileName).unwrap();
-        unsafe { crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr()) }
+        {
+            let __result = unsafe {
+                crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `LDOMParser.hxx`:54 - `LDOMParser::parse()`
@@ -43,13 +57,17 @@ impl LDOMParser {
         theTagPerStep: bool,
         theWithoutRoot: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::LDOMParser_parse_istream_bool2(
-                self as *mut Self,
-                anInput,
-                theTagPerStep,
-                theWithoutRoot,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::LDOMParser_parse_istream_bool2(
+                    self as *mut Self,
+                    anInput,
+                    theTagPerStep,
+                    theWithoutRoot,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -64,11 +82,19 @@ impl LDOMParser {
         &self,
         aData: &mut crate::t_collection::AsciiString,
     ) -> &crate::t_collection::AsciiString {
-        unsafe { &*(crate::ffi::LDOMParser_get_error(self as *const Self, aData)) }
+        {
+            let __result = unsafe { crate::ffi::LDOMParser_get_error(self as *const Self, aData) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `LDOMParser.hxx`:70 - `LDOMParser::GetBOM()`
     pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi::LDOM_OSStream_BOMType> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LDOMParser_get_bom(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::LDOMParser_get_bom(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }

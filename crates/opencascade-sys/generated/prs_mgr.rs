@@ -114,19 +114,34 @@ pub use crate::ffi::PrsMgr_PresentableObject as PresentableObject;
 impl PresentableObject {
     /// **Source:** `PrsMgr_PresentableObject.hxx`:53 - `PrsMgr_PresentableObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
     /// Return presentations.
     pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
-        unsafe { &mut *(crate::ffi::PrsMgr_PresentableObject_presentations(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_presentations(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
     /// Get ID of Z layer for main presentation.
     pub fn z_layer(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_z_layer(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_z_layer(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:67 - `PrsMgr_PresentableObject::SetZLayer()`
@@ -134,34 +149,60 @@ impl PresentableObject {
     /// The layers mechanism allows drawing objects in higher layers in overlay of objects in lower
     /// layers.
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_z_layer(self as *mut Self, theLayerId) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_z_layer(self as *mut Self, theLayerId)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
     /// Returns true if object has mutable nature (content or location are be changed regularly).
     /// Mutable object will be managed in different way than static onces (another optimizations).
     pub fn is_mutable(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_is_mutable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_is_mutable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     /// Sets if the object has mutable nature (content or location will be changed regularly).
     /// This method should be called before object displaying to take effect.
     pub fn set_mutable(&mut self, theIsMutable: bool) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_mutable(self as *mut Self, theIsMutable) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_mutable(self as *mut Self, theIsMutable)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:78 - `PrsMgr_PresentableObject::ViewAffinity()`
     /// Return view affinity mask.
     pub fn view_affinity(&self) -> &crate::ffi::HandleGraphic3dViewAffinity {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_view_affinity(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_view_affinity(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:82 - `PrsMgr_PresentableObject::HasDisplayMode()`
     /// Returns true if the Interactive Object has display mode setting overriding global setting
     /// (within Interactive Context).
     pub fn has_display_mode(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_display_mode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_has_display_mode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:88 - `PrsMgr_PresentableObject::DisplayMode()`
@@ -170,7 +211,12 @@ impl PresentableObject {
     /// filtered by AccepDisplayMode().
     /// @sa AcceptDisplayMode()
     pub fn display_mode(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_display_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_display_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
@@ -179,20 +225,34 @@ impl PresentableObject {
     /// the interactive context.
     /// @sa AcceptDisplayMode()
     pub fn set_display_mode(&mut self, theMode: i32) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_display_mode(self as *mut Self, theMode) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_display_mode(self as *mut Self, theMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     /// Removes display mode settings from the interactive object.
     pub fn unset_display_mode(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_display_mode(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_display_mode(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:107 - `PrsMgr_PresentableObject::HasHilightMode()`
     /// Returns true if the Interactive Object is in highlight mode.
     /// @sa HilightAttributes()
     pub fn has_hilight_mode(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_hilight_mode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_has_hilight_mode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:116 - `PrsMgr_PresentableObject::HilightMode()`
@@ -201,7 +261,12 @@ impl PresentableObject {
     /// ::DynamicHilightAttributes() instead.
     /// @sa HilightAttributes()
     pub fn hilight_mode(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_hilight_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_hilight_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
@@ -210,14 +275,22 @@ impl PresentableObject {
     /// ::DynamicHilightAttributes() instead.
     /// @sa HilightAttributes()
     pub fn set_hilight_mode(&mut self, theMode: i32) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_hilight_mode(self as *mut Self, theMode) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_hilight_mode(self as *mut Self, theMode)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     /// Unsets highlight display mode.
     /// @sa HilightAttributes()
     pub fn unset_hilight_mode(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_hilight_mode(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_hilight_mode(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:149 - `PrsMgr_PresentableObject::AcceptDisplayMode()`
@@ -230,26 +303,43 @@ impl PresentableObject {
     /// which is usually an enumeration for one object or objects class sharing similar list of
     /// display modes.
     pub fn accept_display_mode(&self, theMode: i32) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_accept_display_mode(self as *const Self, theMode)
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_accept_display_mode(
+                    self as *const Self,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:156 - `PrsMgr_PresentableObject::DefaultDisplayMode()`
     /// Returns the default display mode.
     pub fn default_display_mode(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_default_display_mode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_default_display_mode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:161 - `PrsMgr_PresentableObject::ToBeUpdated()`
     /// Returns TRUE if any active presentation has invalidation flag.
     /// @param theToIncludeHidden when TRUE, also checks hidden presentations
     pub fn to_be_updated(&self, theToIncludeHidden: bool) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_to_be_updated(
-                self as *const Self,
-                theToIncludeHidden,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_to_be_updated(
+                    self as *const Self,
+                    theToIncludeHidden,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -257,15 +347,21 @@ impl PresentableObject {
     /// Flags presentation to be updated; UpdatePresentations() will recompute these presentations.
     /// @param theMode presentation (display mode) to invalidate, or -1 to invalidate them all
     pub fn set_to_update_int(&mut self, theMode: i32) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_to_update_int(self as *mut Self, theMode)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_to_update_int(self as *mut Self, theMode)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:168 - `PrsMgr_PresentableObject::SetToUpdate()`
     /// flags all the Presentations to be Updated.
     pub fn set_to_update(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_to_update(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_set_to_update(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:175 - `PrsMgr_PresentableObject::IsInfinite()`
@@ -275,47 +371,59 @@ impl PresentableObject {
     /// does not necessarily means that object is actually infinite, auxiliary objects might be also
     /// marked with this flag to achieve desired behavior.
     pub fn is_infinite(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_is_infinite(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_is_infinite(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     /// Sets if object should be considered as infinite.
     pub fn set_infinite_state(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_infinite_state(self as *mut Self, theFlag)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_infinite_state(self as *mut Self, theFlag)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:181 - `PrsMgr_PresentableObject::TypeOfPresentation3d()`
     /// Returns information on whether the object accepts display in HLR mode or not.
     pub fn type_of_presentation3d(&self) -> crate::prs_mgr::TypeOfPresentation3d {
-        unsafe {
-            crate::prs_mgr::TypeOfPresentation3d::try_from(
-                crate::ffi::PrsMgr_PresentableObject_type_of_presentation3d(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_type_of_presentation3d(self as *const Self)
+            };
+            crate::check_exception();
+            crate::prs_mgr::TypeOfPresentation3d::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     /// Set type of presentation.
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_type_of_presentation(
-                self as *mut Self,
-                theType.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_type_of_presentation(
+                    self as *mut Self,
+                    theType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:187 - `PrsMgr_PresentableObject::DisplayStatus()`
     /// Return presentation display status; PrsMgr_DisplayStatus_None by default.
     pub fn display_status(&self) -> crate::prs_mgr::DisplayStatus {
-        unsafe {
-            crate::prs_mgr::DisplayStatus::try_from(
-                crate::ffi::PrsMgr_PresentableObject_display_status(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_display_status(self as *const Self) };
+            crate::check_exception();
+            crate::prs_mgr::DisplayStatus::try_from(__result).unwrap()
         }
     }
 
@@ -323,13 +431,23 @@ impl PresentableObject {
     /// @name presentation attributes
     /// Returns the attributes settings.
     pub fn attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_attributes(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_attributes(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
     /// Initializes the drawing tool theDrawer.
     pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_attributes(self as *mut Self, theDrawer) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_attributes(self as *mut Self, theDrawer)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:200 - `PrsMgr_PresentableObject::HilightAttributes()`
@@ -338,17 +456,26 @@ impl PresentableObject {
     /// Prs3d_TypeOfHighlight_Selected defined within AIS_InteractiveContext::HighlightStyle().
     /// @sa AIS_InteractiveContext::HighlightStyle()
     pub fn hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_hilight_attributes(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_hilight_attributes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
     /// Initializes the hilight drawing tool theDrawer.
     pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_hilight_attributes(
-                self as *mut Self,
-                theDrawer,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_hilight_attributes(
+                    self as *mut Self,
+                    theDrawer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -358,26 +485,38 @@ impl PresentableObject {
     /// Prs3d_TypeOfHighlight_Dynamic defined within AIS_InteractiveContext::HighlightStyle().
     /// @sa AIS_InteractiveContext::HighlightStyle()
     pub fn dynamic_hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_dynamic_hilight_attributes(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_dynamic_hilight_attributes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
     /// Initializes the dynamic hilight drawing tool.
     pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_dynamic_hilight_attributes(
-                self as *mut Self,
-                theDrawer,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_dynamic_hilight_attributes(
+                    self as *mut Self,
+                    theDrawer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     /// Clears settings provided by the hilight drawing tool theDrawer.
     pub fn unset_hilight_attributes(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_hilight_attributes(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_unset_hilight_attributes(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
@@ -387,7 +526,10 @@ impl PresentableObject {
     /// shader) so that modifications will take effect on already computed presentation groups (thus
     /// avoiding re-displaying the object).
     pub fn synchronize_aspects(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_synchronize_aspects(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_synchronize_aspects(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:236 - `PrsMgr_PresentableObject::TransformPersistence()`
@@ -398,8 +540,12 @@ impl PresentableObject {
     /// bounding box of the object.
     /// @sa Graphic3d_TransformPers class description
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_transform_persistence(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_transform_persistence(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -413,11 +559,14 @@ impl PresentableObject {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_transform_persistence(
-                self as *mut Self,
-                theTrsfPers,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_transform_persistence(
+                    self as *mut Self,
+                    theTrsfPers,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -426,8 +575,12 @@ impl PresentableObject {
     /// Note that the local transformation of the object having Transformation Persistence
     /// is applied within Local Coordinate system defined by this Persistence.
     pub fn local_transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_local_transformation_geom(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_local_transformation_geom(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -436,11 +589,14 @@ impl PresentableObject {
     /// Note that the local transformation of the object having Transformation Persistence
     /// is applied within Local Coordinate system defined by this Persistence.
     pub fn set_local_transformation_trsf(&mut self, theTrsf: &crate::gp::Trsf) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_local_transformation_trsf(
-                self as *mut Self,
-                theTrsf,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_local_transformation_trsf(
+                    self as *mut Self,
+                    theTrsf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -452,18 +608,27 @@ impl PresentableObject {
         &mut self,
         theTrsf: &crate::ffi::HandleTopLocDatum3D,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_local_transformation_handletoplocdatum3d(
-                self as *mut Self,
-                theTrsf,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_local_transformation_handletoplocdatum3d(
+                    self as *mut Self,
+                    theTrsf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:271 - `PrsMgr_PresentableObject::HasTransformation()`
     /// Returns true if object has a transformation that is different from the identity.
     pub fn has_transformation(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_transformation(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_has_transformation(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:279 - `PrsMgr_PresentableObject::TransformationGeom()`
@@ -471,7 +636,13 @@ impl PresentableObject {
     /// Note that the local transformation of the object having Transformation Persistence
     /// is applied within Local Coordinate system defined by this Persistence.
     pub fn transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_transformation_geom(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_transformation_geom(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:284 - `PrsMgr_PresentableObject::LocalTransformation()`
@@ -479,8 +650,12 @@ impl PresentableObject {
     /// Note that the local transformation of the object having Transformation Persistence
     /// is applied within Local Coordinate system defined by this Persistence.
     pub fn local_transformation(&self) -> &crate::gp::Trsf {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_local_transformation(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_local_transformation(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -489,37 +664,58 @@ impl PresentableObject {
     /// Note that the local transformation of the object having Transformation Persistence
     /// is applied within Local Coordinate system defined by this Persistence.
     pub fn transformation(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_transformation(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_transformation(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:298 - `PrsMgr_PresentableObject::InversedTransformation()`
     /// Return inversed transformation.
     pub fn inversed_transformation(&self) -> &crate::gp::GTrsf {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_inversed_transformation(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_inversed_transformation(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:301 - `PrsMgr_PresentableObject::CombinedParentTransformation()`
     /// Return combined parent transformation.
     pub fn combined_parent_transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_combined_parent_transformation(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_combined_parent_transformation(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:307 - `PrsMgr_PresentableObject::ResetTransformation()`
     /// resets local transformation to identity.
     pub fn reset_transformation(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_reset_transformation(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_reset_transformation(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:310 - `PrsMgr_PresentableObject::UpdateTransformation()`
     /// Updates final transformation (parent + local) of presentable object and its presentations.
     pub fn update_transformation(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_update_transformation(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_update_transformation(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
@@ -528,11 +724,14 @@ impl PresentableObject {
     /// recalculation.
     /// @param theProjector [in] view orientation
     pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_recompute_transformation(
-                self as *mut Self,
-                theProjector,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_recompute_transformation(
+                    self as *mut Self,
+                    theProjector,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -541,7 +740,12 @@ impl PresentableObject {
     /// Get clip planes.
     /// @return set of previously added clip planes for all display mode presentations.
     pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_clip_planes(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_clip_planes(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
@@ -553,8 +757,11 @@ impl PresentableObject {
     /// the number of these planes should be subtracted from limit to predict the maximum
     /// possible number of object clipping planes.
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_clip_planes(self as *mut Self, thePlanes)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_clip_planes(self as *mut Self, thePlanes)
+            };
+            crate::check_exception();
         }
     }
 
@@ -568,15 +775,23 @@ impl PresentableObject {
     /// to predict the maximum possible number of object clipping planes.
     /// @param[in] thePlane  the clip plane to be appended to map of clip planes.
     pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_add_clip_plane(self as *mut Self, thePlane) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_add_clip_plane(self as *mut Self, thePlane)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
     /// Removes previously added clip plane.
     /// @param[in] thePlane  the clip plane to be removed from map of clip planes.
     pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_remove_clip_plane(self as *mut Self, thePlane)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_remove_clip_plane(self as *mut Self, thePlane)
+            };
+            crate::check_exception();
         }
     }
 
@@ -585,11 +800,13 @@ impl PresentableObject {
     /// Returns parent of current object in scene hierarchy.
     pub fn parent(&self) -> Option<&PresentableObject> {
         {
-            let ptr = unsafe { crate::ffi::PrsMgr_PresentableObject_parent(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_parent(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
@@ -597,13 +814,21 @@ impl PresentableObject {
     /// **Source:** `PrsMgr_PresentableObject.hxx`:355 - `PrsMgr_PresentableObject::Children()`
     /// Returns children of the current object.
     pub fn children(&self) -> &crate::ffi::PrsMgr_ListOfPresentableObjects {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_children(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_children(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
     /// Makes theObject child of current object in scene hierarchy.
     pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_add_child(self as *mut Self, theObject) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_add_child(self as *mut Self, theObject) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:362 - `PrsMgr_PresentableObject::AddChildWithCurrentTransformation()`
@@ -613,18 +838,26 @@ impl PresentableObject {
         &mut self,
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_add_child_with_current_transformation(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_add_child_with_current_transformation(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
     /// Removes theObject from children of current object in scene hierarchy.
     pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_remove_child(self as *mut Self, theObject) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_remove_child(self as *mut Self, theObject)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:370 - `PrsMgr_PresentableObject::RemoveChildWithRestoreTransformation()`
@@ -634,18 +867,27 @@ impl PresentableObject {
         &mut self,
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_remove_child_with_restore_transformation(
-                self as *mut Self,
-                theObject,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_remove_child_with_restore_transformation(
+                    self as *mut Self,
+                    theObject,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:374 - `PrsMgr_PresentableObject::HasOwnPresentations()`
     /// Returns true if object should have own presentations.
     pub fn has_own_presentations(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_own_presentations(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_has_own_presentations(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:380 - `PrsMgr_PresentableObject::BoundingBox()`
@@ -654,29 +896,38 @@ impl PresentableObject {
     /// presentation structures, which are supposed to be same/close amongst different display modes
     /// of this object.
     pub fn bounding_box(&mut self, theBndBox: &mut crate::bnd::Box) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_bounding_box(self as *mut Self, theBndBox) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_bounding_box(self as *mut Self, theBndBox)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     /// @name simplified presentation properties API
     /// Enables or disables on-triangulation build of isolines according to the flag given.
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_iso_on_triangulation(
-                self as *mut Self,
-                theIsEnabled,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_iso_on_triangulation(
+                    self as *mut Self,
+                    theIsEnabled,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:463 - `PrsMgr_PresentableObject::CurrentFacingModel()`
     /// Returns the current facing model which is in effect.
     pub fn current_facing_model(&self) -> crate::aspect::TypeOfFacingModel {
-        unsafe {
-            crate::aspect::TypeOfFacingModel::try_from(
-                crate::ffi::PrsMgr_PresentableObject_current_facing_model(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_current_facing_model(self as *const Self)
+            };
+            crate::check_exception();
+            crate::aspect::TypeOfFacingModel::try_from(__result).unwrap()
         }
     }
 
@@ -685,24 +936,35 @@ impl PresentableObject {
     /// SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes
     /// is applying both on the front and back face.
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_current_facing_model(
-                self as *mut Self,
-                theModel.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_current_facing_model(
+                    self as *mut Self,
+                    theModel.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:474 - `PrsMgr_PresentableObject::HasColor()`
     /// Returns true if the Interactive Object has color.
     pub fn has_color(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_color(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_has_color(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:477 - `PrsMgr_PresentableObject::Color()`
     /// Returns the color setting of the Interactive Object.
     pub fn color(&self, theColor: &mut crate::quantity::Color) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_color(self as *const Self, theColor) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_color(self as *const Self, theColor) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:483 - `PrsMgr_PresentableObject::SetColor()`
@@ -711,7 +973,10 @@ impl PresentableObject {
     /// aspect field is affected by the color). WARNING : Do not forget to set the corresponding
     /// fields here (hasOwnColor and myDrawer->SetColor())
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_color(self as *mut Self, theColor) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_set_color(self as *mut Self, theColor) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:494 - `PrsMgr_PresentableObject::UnsetColor()`
@@ -721,48 +986,72 @@ impl PresentableObject {
     /// attribute affected. For a vertex, however, only point
     /// aspect is affected by the color setting.
     pub fn unset_color(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_color(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_color(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:497 - `PrsMgr_PresentableObject::HasWidth()`
     /// Returns true if the Interactive Object has width.
     pub fn has_width(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_width(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_has_width(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:500 - `PrsMgr_PresentableObject::Width()`
     /// Returns the width setting of the Interactive Object.
     pub fn width(&self) -> f64 {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_width(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_width(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:504 - `PrsMgr_PresentableObject::SetWidth()`
     /// Allows you to provide the setting aValue for width.
     /// Only the Interactive Object knows which Drawer attribute is affected by the width setting.
     pub fn set_width(&mut self, theWidth: f64) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_width(self as *mut Self, theWidth) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_set_width(self as *mut Self, theWidth) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:507 - `PrsMgr_PresentableObject::UnsetWidth()`
     /// Reset width to default value.
     pub fn unset_width(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_width(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_width(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:510 - `PrsMgr_PresentableObject::HasMaterial()`
     /// Returns true if the Interactive Object has a setting for material.
     pub fn has_material(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_material(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_has_material(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:513 - `PrsMgr_PresentableObject::Material()`
     /// Returns the current material setting as enumeration value.
     pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
-        unsafe {
-            crate::graphic3d::NameOfMaterial::try_from(
-                crate::ffi::PrsMgr_PresentableObject_material(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_material(self as *const Self) };
+            crate::check_exception();
+            crate::graphic3d::NameOfMaterial::try_from(__result).unwrap()
         }
     }
 
@@ -772,19 +1061,30 @@ impl PresentableObject {
     /// Material aspect determines shading aspect, color and
     /// transparency of visible entities.
     pub fn set_material(&mut self, aName: &crate::graphic3d::MaterialAspect) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_material(self as *mut Self, aName) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_set_material(self as *mut Self, aName) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:522 - `PrsMgr_PresentableObject::UnsetMaterial()`
     /// Removes the setting for material.
     pub fn unset_material(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_material(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_material(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:525 - `PrsMgr_PresentableObject::IsTransparent()`
     /// Returns true if there is a transparency setting.
     pub fn is_transparent(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_is_transparent(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_is_transparent(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:530 - `PrsMgr_PresentableObject::Transparency()`
@@ -792,7 +1092,12 @@ impl PresentableObject {
     /// This will be between 0.0 and 1.0.
     /// At 0.0 an object will be totally opaque, and at 1.0, fully transparent.
     pub fn transparency(&self) -> f64 {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_transparency(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentableObject_transparency(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:539 - `PrsMgr_PresentableObject::SetTransparency()`
@@ -801,31 +1106,48 @@ impl PresentableObject {
     /// At 0.0 an object will be totally opaque, and at 1.0, fully transparent.
     /// Warning At a value of 1.0, there may be nothing visible.
     pub fn set_transparency(&mut self, aValue: f64) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_set_transparency(self as *mut Self, aValue) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_transparency(self as *mut Self, aValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:542 - `PrsMgr_PresentableObject::UnsetTransparency()`
     /// Removes the transparency setting. The object is opaque by default.
     pub fn unset_transparency(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_transparency(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_transparency(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:545 - `PrsMgr_PresentableObject::HasPolygonOffsets()`
     /// Returns Standard_True if <myDrawer> has non-null shading aspect
     pub fn has_polygon_offsets(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_has_polygon_offsets(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_has_polygon_offsets(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     /// Retrieves current polygon offsets settings from <myDrawer>.
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_polygon_offsets(
-                self as *const Self,
-                aMode,
-                aFactor,
-                aUnits,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_polygon_offsets(
+                    self as *const Self,
+                    aMode,
+                    aFactor,
+                    aUnits,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -833,20 +1155,26 @@ impl PresentableObject {
     /// Sets up polygon offsets for this object.
     /// @sa Graphic3d_Aspects::SetPolygonOffsets()
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_polygon_offsets(
-                self as *mut Self,
-                aMode,
-                aFactor,
-                aUnits,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_polygon_offsets(
+                    self as *mut Self,
+                    aMode,
+                    aFactor,
+                    aUnits,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     /// Clears settings provided by the drawing tool aDrawer.
     pub fn unset_attributes(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentableObject_unset_attributes(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentableObject_unset_attributes(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:573 - `PrsMgr_PresentableObject::ToPropagateVisualState()`
@@ -854,49 +1182,66 @@ impl PresentableObject {
     /// It means that the display/erase/color visual state is propagated automatically to all
     /// children; by default, the flag is true
     pub fn to_propagate_visual_state(&self) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_to_propagate_visual_state(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_to_propagate_visual_state(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     /// Change the value of the flag "propagate visual state"
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentableObject_set_propagate_visual_state(
-                self as *mut Self,
-                theFlag,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentableObject_set_propagate_visual_state(
+                    self as *mut Self,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:53 - `PrsMgr_PresentableObject::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::PrsMgr_PresentableObject_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_PresentableObject_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `PrsMgr_PresentableObject.hxx`:53 - `PrsMgr_PresentableObject::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::PrsMgr_PresentableObject_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_PresentableObject_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentableObject_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::PrsMgr_PresentableObject_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentableObject_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 }
@@ -912,22 +1257,34 @@ unsafe impl crate::CppDeletable for HandlePrsMgrPresentableObject {
 impl HandlePrsMgrPresentableObject {
     /// Dereference this Handle to access the underlying PrsMgr_PresentableObject
     pub fn get(&self) -> &crate::ffi::PrsMgr_PresentableObject {
-        unsafe { &*(crate::ffi::HandlePrsMgrPresentableObject_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandlePrsMgrPresentableObject_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PrsMgr_PresentableObject
     pub fn get_mut(&mut self) -> &mut crate::ffi::PrsMgr_PresentableObject {
-        unsafe { &mut *(crate::ffi::HandlePrsMgrPresentableObject_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandlePrsMgrPresentableObject_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<PrsMgr_PresentableObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandlePrsMgrPresentableObject_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -938,6 +1295,7 @@ impl HandlePrsMgrPresentableObject {
         let ptr = unsafe {
             crate::ffi::HandlePrsMgrPresentableObject_downcast_to_HandleAISAxis(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -956,6 +1314,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -972,6 +1331,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -990,6 +1350,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1008,6 +1369,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1026,6 +1388,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1044,6 +1407,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1062,6 +1426,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1076,6 +1441,7 @@ impl HandlePrsMgrPresentableObject {
         let ptr = unsafe {
             crate::ffi::HandlePrsMgrPresentableObject_downcast_to_HandleAISLine(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1094,6 +1460,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1112,6 +1479,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1128,6 +1496,7 @@ impl HandlePrsMgrPresentableObject {
         let ptr = unsafe {
             crate::ffi::HandlePrsMgrPresentableObject_downcast_to_HandleAISMultipleConnectedInteractive(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1144,6 +1513,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1162,6 +1532,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1178,6 +1549,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1196,6 +1568,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1214,6 +1587,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1230,6 +1604,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1248,6 +1623,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1266,6 +1642,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1284,6 +1661,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1300,6 +1678,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1316,6 +1695,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1334,6 +1714,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1350,6 +1731,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1368,6 +1750,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1386,6 +1769,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1404,6 +1788,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1422,6 +1807,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1440,6 +1826,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1458,6 +1845,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1476,6 +1864,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1494,6 +1883,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1512,6 +1902,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1530,6 +1921,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1548,6 +1940,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1566,6 +1959,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1584,6 +1978,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1602,6 +1997,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1620,6 +2016,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1638,6 +2035,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1656,6 +2054,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1674,6 +2073,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1692,6 +2092,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1710,6 +2111,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1728,6 +2130,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1746,6 +2149,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1764,6 +2168,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1782,6 +2187,7 @@ impl HandlePrsMgrPresentableObject {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1806,111 +2212,184 @@ unsafe impl crate::CppDeletable for Presentation {
 impl Presentation {
     /// **Source:** `PrsMgr_Presentation.hxx`:31 - `PrsMgr_Presentation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:44 - `PrsMgr_Presentation::PresentationManager()`
     /// returns the PresentationManager in which the presentation has been created.
     pub fn presentation_manager(&self) -> &crate::ffi::HandlePrsMgrPresentationManager {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_presentation_manager(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_presentation_manager(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:49 - `PrsMgr_Presentation::SetUpdateStatus()`
     pub fn set_update_status(&mut self, theUpdateStatus: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_set_update_status(self as *mut Self, theUpdateStatus)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_set_update_status(
+                    self as *mut Self,
+                    theUpdateStatus,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:54 - `PrsMgr_Presentation::MustBeUpdated()`
     pub fn must_be_updated(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_must_be_updated(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_must_be_updated(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:57 - `PrsMgr_Presentation::Mode()`
     /// Return display mode index.
     pub fn mode(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_Presentation_mode(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_Presentation_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:60 - `PrsMgr_Presentation::Display()`
     /// Display structure.
     pub fn display(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_display(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_display(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:63 - `PrsMgr_Presentation::Erase()`
     /// Remove structure.
     pub fn erase(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_erase(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_erase(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:66 - `PrsMgr_Presentation::Highlight()`
     /// Highlight structure.
     pub fn highlight(&mut self, theStyle: &crate::ffi::HandlePrs3dDrawer) {
-        unsafe { crate::ffi::PrsMgr_Presentation_highlight(self as *mut Self, theStyle) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_highlight(self as *mut Self, theStyle) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:69 - `PrsMgr_Presentation::Unhighlight()`
     /// Unhighlight structure.
     pub fn unhighlight(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_unhighlight(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_unhighlight(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:72 - `PrsMgr_Presentation::IsDisplayed()`
     /// Return TRUE if structure has been displayed and in no hidden state.
     pub fn is_displayed(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_is_displayed(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_is_displayed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:79 - `PrsMgr_Presentation::Clear()`
     /// removes the whole content of the presentation.
     /// Does not remove the other connected presentations.
     pub fn clear(&mut self, theWithDestruction: bool) {
-        unsafe { crate::ffi::PrsMgr_Presentation_clear(self as *mut Self, theWithDestruction) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_clear(self as *mut Self, theWithDestruction) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:83 - `PrsMgr_Presentation::Compute()`
     /// Compute structure using presentation manager.
     pub fn compute(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_compute(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_compute(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:31 - `PrsMgr_Presentation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::PrsMgr_Presentation_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_Presentation_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `PrsMgr_Presentation.hxx`:31 - `PrsMgr_Presentation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_Presentation_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Graphic3d_Structure
     pub fn as_graphic3d_structure(&self) -> &crate::graphic3d::Structure {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_as_Graphic3d_Structure(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_as_Graphic3d_Structure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Graphic3d_Structure (mutable)
     pub fn as_graphic3d_structure_mut(&mut self) -> &mut crate::graphic3d::Structure {
-        unsafe {
-            &mut *(crate::ffi::PrsMgr_Presentation_as_Graphic3d_Structure_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_as_Graphic3d_Structure_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::PrsMgr_Presentation_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1918,181 +2397,302 @@ impl Presentation {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::PrsMgr_Presentation_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_Presentation_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:77 - `Graphic3d_Structure::DisplayPriority()`
     pub fn display_priority(&self) -> crate::graphic3d::DisplayPriority {
-        unsafe {
-            crate::graphic3d::DisplayPriority::try_from(
-                crate::ffi::PrsMgr_Presentation_inherited_DisplayPriority(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_DisplayPriority(self as *const Self)
+            };
+            crate::check_exception();
+            crate::graphic3d::DisplayPriority::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:87 - `Graphic3d_Structure::SetDisplayPriority()`
     pub fn set_display_priority(&mut self, thePriority: crate::graphic3d::DisplayPriority) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetDisplayPriority(
-                self as *mut Self,
-                thePriority.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetDisplayPriority(
+                    self as *mut Self,
+                    thePriority.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:100 - `Graphic3d_Structure::ResetDisplayPriority()`
     pub fn reset_display_priority(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_ResetDisplayPriority(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_ResetDisplayPriority(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:116 - `Graphic3d_Structure::Remove()`
     pub fn remove(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_Remove(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_inherited_Remove(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:119 - `Graphic3d_Structure::CalculateBoundBox()`
     pub fn calculate_bound_box(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_CalculateBoundBox(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_CalculateBoundBox(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:126 - `Graphic3d_Structure::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theToSet: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetInfiniteState(self as *mut Self, theToSet)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetInfiniteState(
+                    self as *mut Self,
+                    theToSet,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetZLayer(self as *mut Self, theLayerId)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetZLayer(self as *mut Self, theLayerId)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:142 - `Graphic3d_Structure::GetZLayer()`
     pub fn get_z_layer(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_GetZLayer(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_GetZLayer(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:146 - `Graphic3d_Structure::SetClipPlanes()`
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetClipPlanes(self as *mut Self, thePlanes)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetClipPlanes(
+                    self as *mut Self,
+                    thePlanes,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:156 - `Graphic3d_Structure::ClipPlanes()`
     pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_inherited_ClipPlanes(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_ClipPlanes(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:165 - `Graphic3d_Structure::SetVisible()`
     pub fn set_visible(&mut self, AValue: bool) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_SetVisible(self as *mut Self, AValue) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetVisible(self as *mut Self, AValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:168 - `Graphic3d_Structure::SetVisual()`
     pub fn set_visual(&mut self, AVisual: crate::graphic3d::TypeOfStructure) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetVisual(self as *mut Self, AVisual.into())
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetVisual(
+                    self as *mut Self,
+                    AVisual.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:177 - `Graphic3d_Structure::SetZoomLimit()`
     pub fn set_zoom_limit(&mut self, LimitInf: f64, LimitSup: f64) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetZoomLimit(
-                self as *mut Self,
-                LimitInf,
-                LimitSup,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetZoomLimit(
+                    self as *mut Self,
+                    LimitInf,
+                    LimitSup,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:181 - `Graphic3d_Structure::SetIsForHighlight()`
     pub fn set_is_for_highlight(&mut self, isForHighlight: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetIsForHighlight(
-                self as *mut Self,
-                isForHighlight,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetIsForHighlight(
+                    self as *mut Self,
+                    isForHighlight,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:191 - `Graphic3d_Structure::UnHighlight()`
     pub fn un_highlight(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_UnHighlight(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_inherited_UnHighlight(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:214 - `Graphic3d_Structure::ReCompute()`
     pub fn re_compute(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_ReCompute(self as *mut Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_inherited_ReCompute(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:221 - `Graphic3d_Structure::Groups()`
     pub fn groups(&self) -> &crate::ffi::Graphic3d_SequenceOfGroup {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_inherited_Groups(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_Groups(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:224 - `Graphic3d_Structure::NumberOfGroups()`
     pub fn number_of_groups(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_NumberOfGroups(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_NumberOfGroups(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:227 - `Graphic3d_Structure::NewGroup()`
     pub fn new_group(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dGroup> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::PrsMgr_Presentation_inherited_NewGroup(
-                self as *mut Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_NewGroup(self as *mut Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:230 - `Graphic3d_Structure::CurrentGroup()`
     pub fn current_group(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dGroup> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::PrsMgr_Presentation_inherited_CurrentGroup(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_CurrentGroup(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:240 - `Graphic3d_Structure::HighlightStyle()`
     pub fn highlight_style(&self) -> &crate::ffi::HandleGraphic3dPresentationAttributes {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_inherited_HighlightStyle(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_HighlightStyle(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:246 - `Graphic3d_Structure::IsDeleted()`
     pub fn is_deleted(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsDeleted(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsDeleted(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:259 - `Graphic3d_Structure::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsEmpty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsEmpty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:262 - `Graphic3d_Structure::IsInfinite()`
     pub fn is_infinite(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsInfinite(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_IsInfinite(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:265 - `Graphic3d_Structure::IsHighlighted()`
     pub fn is_highlighted(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsHighlighted(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_IsHighlighted(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:271 - `Graphic3d_Structure::IsTransformed()`
     pub fn is_transformed(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsTransformed(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_IsTransformed(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:278 - `Graphic3d_Structure::IsVisible()`
     pub fn is_visible(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsVisible(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsVisible(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:293 - `Graphic3d_Structure::MinMaxValues()`
@@ -2100,27 +2700,34 @@ impl Presentation {
         &self,
         theToIgnoreInfiniteFlag: bool,
     ) -> crate::OwnedPtr<crate::bnd::Box> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::PrsMgr_Presentation_inherited_MinMaxValues(
-                self as *const Self,
-                theToIgnoreInfiniteFlag,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_MinMaxValues(
+                    self as *const Self,
+                    theToIgnoreInfiniteFlag,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:296 - `Graphic3d_Structure::Visual()`
     pub fn visual(&self) -> crate::graphic3d::TypeOfStructure {
-        unsafe {
-            crate::graphic3d::TypeOfStructure::try_from(
-                crate::ffi::PrsMgr_Presentation_inherited_Visual(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_Visual(self as *const Self) };
+            crate::check_exception();
+            crate::graphic3d::TypeOfStructure::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:316 - `Graphic3d_Structure::Ancestors()`
     pub fn ancestors(&self, SG: &mut crate::ffi::Graphic3d_MapOfStructure) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_Ancestors(self as *const Self, SG) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_inherited_Ancestors(self as *const Self, SG) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:326 - `Graphic3d_Structure::Connect()`
@@ -2130,64 +2737,110 @@ impl Presentation {
         theType: crate::graphic3d::TypeOfConnection,
         theWithCheck: bool,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_Connect(
-                self as *mut Self,
-                theStructure as *mut _,
-                theType.into(),
-                theWithCheck,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_Connect(
+                    self as *mut Self,
+                    theStructure as *mut _,
+                    theType.into(),
+                    theWithCheck,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:338 - `Graphic3d_Structure::Descendants()`
     pub fn descendants(&self, SG: &mut crate::ffi::Graphic3d_MapOfStructure) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_Descendants(self as *const Self, SG) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_Descendants(self as *const Self, SG)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:341 - `Graphic3d_Structure::Disconnect()`
     pub fn disconnect(&mut self, theStructure: &mut crate::graphic3d::Structure) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_Disconnect(
-                self as *mut Self,
-                theStructure as *mut _,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_Disconnect(
+                    self as *mut Self,
+                    theStructure as *mut _,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:351 - `Graphic3d_Structure::DisconnectAll()`
     pub fn disconnect_all(&mut self, AType: crate::graphic3d::TypeOfConnection) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_DisconnectAll(self as *mut Self, AType.into())
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_DisconnectAll(
+                    self as *mut Self,
+                    AType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:366 - `Graphic3d_Structure::SetOwner()`
     pub unsafe fn set_owner(&mut self, theOwner: *mut std::ffi::c_void) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_SetOwner(self as *mut Self, theOwner) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetOwner(self as *mut Self, theOwner)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:370 - `Graphic3d_Structure::SetHLRValidation()`
     pub fn set_hlr_validation(&mut self, theFlag: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetHLRValidation(self as *mut Self, theFlag)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetHLRValidation(
+                    self as *mut Self,
+                    theFlag,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:381 - `Graphic3d_Structure::HLRValidation()`
     pub fn hlr_validation(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_HLRValidation(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_HLRValidation(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:387 - `Graphic3d_Structure::Transformation()`
     pub fn transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_inherited_Transformation(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_Transformation(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:390 - `Graphic3d_Structure::SetTransformation()`
     pub fn set_transformation(&mut self, theTrsf: &crate::ffi::HandleTopLocDatum3D) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetTransformation(self as *mut Self, theTrsf)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetTransformation(
+                    self as *mut Self,
+                    theTrsf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2196,140 +2849,223 @@ impl Presentation {
         &mut self,
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetTransformPersistence(
-                self as *mut Self,
-                theTrsfPers,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetTransformPersistence(
+                    self as *mut Self,
+                    theTrsfPers,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:396 - `Graphic3d_Structure::TransformPersistence()`
     pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
-        unsafe {
-            &*(crate::ffi::PrsMgr_Presentation_inherited_TransformPersistence(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_TransformPersistence(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:403 - `Graphic3d_Structure::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetMutable(self as *mut Self, theIsMutable)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetMutable(
+                    self as *mut Self,
+                    theIsMutable,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:413 - `Graphic3d_Structure::IsMutable()`
     pub fn is_mutable(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsMutable(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsMutable(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:415 - `Graphic3d_Structure::ComputeVisual()`
     pub fn compute_visual(&self) -> crate::graphic3d::TypeOfStructure {
-        unsafe {
-            crate::graphic3d::TypeOfStructure::try_from(
-                crate::ffi::PrsMgr_Presentation_inherited_ComputeVisual(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_ComputeVisual(self as *const Self)
+            };
+            crate::check_exception();
+            crate::graphic3d::TypeOfStructure::try_from(__result).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:418 - `Graphic3d_Structure::GraphicClear()`
     pub fn graphic_clear(&mut self, WithDestruction: bool) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_GraphicClear(
-                self as *mut Self,
-                WithDestruction,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_GraphicClear(
+                    self as *mut Self,
+                    WithDestruction,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:420 - `Graphic3d_Structure::GraphicConnect()`
     pub fn graphic_connect(&mut self, theDaughter: &crate::ffi::HandleGraphic3dStructure) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_GraphicConnect(self as *mut Self, theDaughter)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_GraphicConnect(
+                    self as *mut Self,
+                    theDaughter,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:428 - `Graphic3d_Structure::GraphicDisconnect()`
     pub fn graphic_disconnect(&mut self, theDaughter: &crate::ffi::HandleGraphic3dStructure) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_GraphicDisconnect(
-                self as *mut Self,
-                theDaughter,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_GraphicDisconnect(
+                    self as *mut Self,
+                    theDaughter,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:437 - `Graphic3d_Structure::GraphicTransform()`
     pub fn graphic_transform(&mut self, theTrsf: &crate::ffi::HandleTopLocDatum3D) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_GraphicTransform(self as *mut Self, theTrsf)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_GraphicTransform(
+                    self as *mut Self,
+                    theTrsf,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:446 - `Graphic3d_Structure::Identification()`
     pub fn identification(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_Identification(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_Identification(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:457 - `Graphic3d_Structure::SetComputeVisual()`
     pub fn set_compute_visual(&mut self, theVisual: crate::graphic3d::TypeOfStructure) {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_SetComputeVisual(
-                self as *mut Self,
-                theVisual.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_SetComputeVisual(
+                    self as *mut Self,
+                    theVisual.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:478 - `Graphic3d_Structure::CStructure()`
     pub fn c_structure(&self) -> &crate::ffi::HandleGraphic3dCStructure {
-        unsafe { &*(crate::ffi::PrsMgr_Presentation_inherited_CStructure(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_CStructure(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_Presentation_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::PrsMgr_Presentation_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_Presentation_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::PrsMgr_Presentation_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_Presentation_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2344,33 +3080,44 @@ unsafe impl crate::CppDeletable for HandlePrsMgrPresentation {
 impl HandlePrsMgrPresentation {
     /// Dereference this Handle to access the underlying PrsMgr_Presentation
     pub fn get(&self) -> &crate::ffi::PrsMgr_Presentation {
-        unsafe { &*(crate::ffi::HandlePrsMgrPresentation_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandlePrsMgrPresentation_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PrsMgr_Presentation
     pub fn get_mut(&mut self) -> &mut crate::ffi::PrsMgr_Presentation {
-        unsafe { &mut *(crate::ffi::HandlePrsMgrPresentation_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandlePrsMgrPresentation_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<PrsMgr_Presentation> to Handle<Graphic3d_Structure>
     pub fn to_handle_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandlePrsMgrPresentation_to_HandleGraphic3dStructure(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<PrsMgr_Presentation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandlePrsMgrPresentation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandlePrsMgrPresentation_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2400,18 +3147,25 @@ impl PresentationManager {
     pub fn new_handlegraphic3dstructuremanager(
         theStructureManager: &crate::ffi::HandleGraphic3dStructureManager,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::PrsMgr_PresentationManager_ctor_handlegraphic3dstructuremanager(
                     theStructureManager,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:42 - `PrsMgr_PresentationManager::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::PrsMgr_PresentationManager_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentationManager_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:51 - `PrsMgr_PresentationManager::Display()`
@@ -2422,8 +3176,15 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_display(self as *mut Self, thePrsObject, theMode)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_display(
+                    self as *mut Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2436,8 +3197,15 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_erase(self as *mut Self, thePrsObject, theMode)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_erase(
+                    self as *mut Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2449,8 +3217,15 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_clear(self as *mut Self, thePrsObject, theMode)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_clear(
+                    self as *mut Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2462,21 +3237,27 @@ impl PresentationManager {
         theMode: i32,
         theValue: bool,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_set_visibility(
-                self as *mut Self,
-                thePrsObject,
-                theMode,
-                theValue,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_set_visibility(
+                    self as *mut Self,
+                    thePrsObject,
+                    theMode,
+                    theValue,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:71 - `PrsMgr_PresentationManager::Unhighlight()`
     /// Removes highlighting from the presentation of the presentable object.
     pub fn unhighlight(&mut self, thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_unhighlight(self as *mut Self, thePrsObject)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_unhighlight(self as *mut Self, thePrsObject)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2489,13 +3270,16 @@ impl PresentationManager {
         theMode: i32,
         theNewPrior: crate::graphic3d::DisplayPriority,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_set_display_priority(
-                self as *const Self,
-                thePrsObject,
-                theMode,
-                theNewPrior.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_set_display_priority(
+                    self as *const Self,
+                    thePrsObject,
+                    theMode,
+                    theNewPrior.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2507,15 +3291,16 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) -> crate::graphic3d::DisplayPriority {
-        unsafe {
-            crate::graphic3d::DisplayPriority::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::PrsMgr_PresentationManager_display_priority(
                     self as *const Self,
                     thePrsObject,
                     theMode,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::graphic3d::DisplayPriority::try_from(__result).unwrap()
         }
     }
 
@@ -2526,12 +3311,15 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theLayerId: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_set_z_layer(
-                self as *mut Self,
-                thePrsObject,
-                theLayerId,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_set_z_layer(
+                    self as *mut Self,
+                    thePrsObject,
+                    theLayerId,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2540,8 +3328,15 @@ impl PresentationManager {
     /// Method returns -1 value if object has no presentations and is
     /// impossible to get layer index.
     pub fn get_z_layer(&self, thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject) -> i32 {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_get_z_layer(self as *const Self, thePrsObject)
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_get_z_layer(
+                    self as *const Self,
+                    thePrsObject,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2551,12 +3346,16 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_is_displayed(
-                self as *const Self,
-                thePrsObject,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_is_displayed(
+                    self as *const Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2568,12 +3367,16 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_is_highlighted(
-                self as *const Self,
-                thePrsObject,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_is_highlighted(
+                    self as *const Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2581,12 +3384,15 @@ impl PresentationManager {
     /// Updates the presentation of the presentable object
     /// thePrsObject in this framework with the display mode theMode.
     pub fn update(&self, thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject, theMode: i32) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_update(
-                self as *const Self,
-                thePrsObject,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_update(
+                    self as *const Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2595,21 +3401,37 @@ impl PresentationManager {
     /// and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight()
     /// calls.
     pub fn begin_immediate_draw(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentationManager_begin_immediate_draw(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_begin_immediate_draw(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:115 - `PrsMgr_PresentationManager::ClearImmediateDraw()`
     /// Resets the transient list of presentations previously displayed in immediate mode.
     pub fn clear_immediate_draw(&mut self) {
-        unsafe { crate::ffi::PrsMgr_PresentationManager_clear_immediate_draw(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_clear_immediate_draw(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:119 - `PrsMgr_PresentationManager::AddToImmediateList()`
     /// Stores thePrs in the transient list of presentations to be displayed in immediate mode.
     /// Will be taken in account in EndImmediateDraw method.
     pub fn add_to_immediate_list(&mut self, thePrs: &crate::ffi::HandleGraphic3dStructure) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_add_to_immediate_list(self as *mut Self, thePrs)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_add_to_immediate_list(
+                    self as *mut Self,
+                    thePrs,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2617,16 +3439,28 @@ impl PresentationManager {
     /// Allows rapid drawing of the each view in theViewer by avoiding an update of the whole
     /// background.
     pub fn end_immediate_draw(&mut self, theViewer: &crate::ffi::HandleV3dViewer) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_end_immediate_draw(self as *mut Self, theViewer)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_end_immediate_draw(
+                    self as *mut Self,
+                    theViewer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:126 - `PrsMgr_PresentationManager::RedrawImmediate()`
     /// Clears and redisplays immediate structures of the viewer taking into account its affinity.
     pub fn redraw_immediate(&mut self, theViewer: &crate::ffi::HandleV3dViewer) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_redraw_immediate(self as *mut Self, theViewer)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_redraw_immediate(
+                    self as *mut Self,
+                    theViewer,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2634,7 +3468,13 @@ impl PresentationManager {
     /// Returns true if Presentation Manager is accumulating transient list of presentations to be
     /// displayed in immediate mode.
     pub fn is_immediate_mode_on(&self) -> bool {
-        unsafe { crate::ffi::PrsMgr_PresentationManager_is_immediate_mode_on(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_is_immediate_mode_on(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:135 - `PrsMgr_PresentationManager::Color()`
@@ -2649,15 +3489,18 @@ impl PresentationManager {
         theSelObj: &crate::ffi::HandlePrsMgrPresentableObject,
         theImmediateStructLayerId: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_color(
-                self as *mut Self,
-                thePrsObject,
-                theStyle,
-                theMode,
-                theSelObj,
-                theImmediateStructLayerId,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_color(
+                    self as *mut Self,
+                    thePrsObject,
+                    theStyle,
+                    theMode,
+                    theSelObj,
+                    theImmediateStructLayerId,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2669,14 +3512,17 @@ impl PresentationManager {
         theMode: i32,
         theOtherMode: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_connect(
-                self as *mut Self,
-                thePrsObject,
-                theOtherObject,
-                theMode,
-                theOtherMode,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_connect(
+                    self as *mut Self,
+                    thePrsObject,
+                    theOtherObject,
+                    theMode,
+                    theOtherMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2690,20 +3536,29 @@ impl PresentationManager {
         theTransformation: &crate::ffi::HandleTopLocDatum3D,
         theMode: i32,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_transform(
-                self as *mut Self,
-                thePrsObject,
-                theTransformation,
-                theMode,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_transform(
+                    self as *mut Self,
+                    thePrsObject,
+                    theTransformation,
+                    theMode,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:155 - `PrsMgr_PresentationManager::StructureManager()`
     /// Returns the structure manager.
     pub fn structure_manager(&self) -> &crate::ffi::HandleGraphic3dStructureManager {
-        unsafe { &*(crate::ffi::PrsMgr_PresentationManager_structure_manager(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_structure_manager(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:161 - `PrsMgr_PresentationManager::HasPresentation()`
@@ -2715,12 +3570,16 @@ impl PresentationManager {
         thePrsObject: &crate::ffi::HandlePrsMgrPresentableObject,
         theMode: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_has_presentation(
-                self as *const Self,
-                thePrsObject,
-                theMode,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_has_presentation(
+                    self as *const Self,
+                    thePrsObject,
+                    theMode,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2736,14 +3595,18 @@ impl PresentationManager {
         theToCreate: bool,
         theSelObj: &crate::ffi::HandlePrsMgrPresentableObject,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::PrsMgr_PresentationManager_presentation(
-                self as *const Self,
-                thePrsObject,
-                theMode,
-                theToCreate,
-                theSelObj,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_presentation(
+                    self as *const Self,
+                    thePrsObject,
+                    theMode,
+                    theToCreate,
+                    theSelObj,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2761,44 +3624,57 @@ impl PresentationManager {
         theMode: i32,
         theSelObj: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_update_highlight_trsf(
-                self as *mut Self,
-                theViewer,
-                theObj,
-                theMode,
-                theSelObj,
-            )
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_update_highlight_trsf(
+                    self as *mut Self,
+                    theViewer,
+                    theObj,
+                    theMode,
+                    theSelObj,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:42 - `PrsMgr_PresentationManager::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::PrsMgr_PresentationManager_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_PresentationManager_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `PrsMgr_PresentationManager.hxx`:42 - `PrsMgr_PresentationManager::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::PrsMgr_PresentationManager_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::PrsMgr_PresentationManager_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::PrsMgr_PresentationManager_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::PrsMgr_PresentationManager_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2806,66 +3682,99 @@ impl PresentationManager {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentationManager> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::PrsMgr_PresentationManager_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::PrsMgr_PresentationManager_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_inherited_IsKind(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe {
+            let __result = unsafe {
                 crate::ffi::PrsMgr_PresentationManager_inherited_This(self as *const Self)
             };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::PrsMgr_PresentationManager_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::PrsMgr_PresentationManager_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::PrsMgr_PresentationManager_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::PrsMgr_PresentationManager_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::PrsMgr_PresentationManager_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::PrsMgr_PresentationManager_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2880,22 +3789,34 @@ unsafe impl crate::CppDeletable for HandlePrsMgrPresentationManager {
 impl HandlePrsMgrPresentationManager {
     /// Dereference this Handle to access the underlying PrsMgr_PresentationManager
     pub fn get(&self) -> &crate::ffi::PrsMgr_PresentationManager {
-        unsafe { &*(crate::ffi::HandlePrsMgrPresentationManager_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandlePrsMgrPresentationManager_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PrsMgr_PresentationManager
     pub fn get_mut(&mut self) -> &mut crate::ffi::PrsMgr_PresentationManager {
-        unsafe { &mut *(crate::ffi::HandlePrsMgrPresentationManager_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandlePrsMgrPresentationManager_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<PrsMgr_PresentationManager> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandlePrsMgrPresentationManager_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

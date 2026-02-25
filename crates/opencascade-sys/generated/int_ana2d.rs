@@ -31,135 +31,190 @@ impl AnaIntersection {
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:46 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Empty constructor. IsDone returns False.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:49 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between two lines.
     pub fn new_lin2d2(L1: &crate::gp::Lin2d, L2: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d2(L1, L2))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d2(L1, L2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:52 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between two circles.
     pub fn new_circ2d2(C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d2(C1, C2))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d2(C1, C2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:55 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between a line and a circle.
     pub fn new_lin2d_circ2d(L: &crate::gp::Lin2d, C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_circ2d(L, C))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_circ2d(L, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:58 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between a line and a conic.
     pub fn new_lin2d_conic(L: &crate::gp::Lin2d, C: &Conic) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_conic(L, C))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_conic(L, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:61 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between a circle and another conic.
     pub fn new_circ2d_conic(C: &crate::gp::Circ2d, Co: &Conic) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d_conic(C, Co))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d_conic(C, Co) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:64 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between an ellipse and another conic.
     pub fn new_elips2d_conic(E: &crate::gp::Elips2d, C: &Conic) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_elips2d_conic(E, C))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_elips2d_conic(E, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:67 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between a parabola and another conic.
     pub fn new_parab2d_conic(P: &crate::gp::Parab2d, C: &Conic) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_parab2d_conic(P, C))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_parab2d_conic(P, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:70 - `IntAna2d_AnaIntersection::IntAna2d_AnaIntersection()`
     /// Intersection between an hyperbola and another conic.
     pub fn new_hypr2d_conic(H: &crate::gp::Hypr2d, C: &Conic) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_AnaIntersection_ctor_hypr2d_conic(H, C))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_hypr2d_conic(H, C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:73 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between two lines.
     pub fn perform_lin2d2(&mut self, L1: &crate::gp::Lin2d, L2: &crate::gp::Lin2d) {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_perform_lin2d2(self as *mut Self, L1, L2) }
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_lin2d2(self as *mut Self, L1, L2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:76 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between two circles.
     pub fn perform_circ2d2(&mut self, C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_perform_circ2d2(self as *mut Self, C1, C2) }
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_circ2d2(self as *mut Self, C1, C2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:79 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between a line and a circle.
     pub fn perform_lin2d_circ2d(&mut self, L: &crate::gp::Lin2d, C: &crate::gp::Circ2d) {
-        unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_circ2d(self as *mut Self, L, C)
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_circ2d(self as *mut Self, L, C)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:82 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between a line and a conic.
     pub fn perform_lin2d_conic(&mut self, L: &crate::gp::Lin2d, C: &Conic) {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_conic(self as *mut Self, L, C) }
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_conic(self as *mut Self, L, C)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:85 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between a circle and another conic.
     pub fn perform_circ2d_conic(&mut self, C: &crate::gp::Circ2d, Co: &Conic) {
-        unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_circ2d_conic(self as *mut Self, C, Co)
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_circ2d_conic(self as *mut Self, C, Co)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:88 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between an ellipse and another conic.
     pub fn perform_elips2d_conic(&mut self, E: &crate::gp::Elips2d, C: &Conic) {
-        unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_elips2d_conic(self as *mut Self, E, C)
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_elips2d_conic(self as *mut Self, E, C)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:91 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between a parabola and another conic.
     pub fn perform_parab2d_conic(&mut self, P: &crate::gp::Parab2d, C: &Conic) {
-        unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_parab2d_conic(self as *mut Self, P, C)
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_parab2d_conic(self as *mut Self, P, C)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:94 - `IntAna2d_AnaIntersection::Perform()`
     /// Intersection between an hyperbola and another conic.
     pub fn perform_hypr2d_conic(&mut self, H: &crate::gp::Hypr2d, C: &Conic) {
-        unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_hypr2d_conic(self as *mut Self, H, C)
+        {
+            unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_perform_hypr2d_conic(self as *mut Self, H, C)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:97 - `IntAna2d_AnaIntersection::IsDone()`
     /// Returns TRUE if the computation was successful.
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_AnaIntersection_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:103 - `IntAna2d_AnaIntersection::IsEmpty()`
@@ -168,7 +223,12 @@ impl AnaIntersection {
     /// - the elements are not identical.
     /// The element may be parallel in this case.
     pub fn is_empty(&self) -> bool {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_is_empty(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_AnaIntersection_is_empty(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:111 - `IntAna2d_AnaIntersection::IdenticalElements()`
@@ -179,7 +239,13 @@ impl AnaIntersection {
     /// result will be TRUE if the elements are identical.
     /// The function returns FALSE in all the other cases.
     pub fn identical_elements(&self) -> bool {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_identical_elements(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_identical_elements(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:116 - `IntAna2d_AnaIntersection::ParallelElements()`
@@ -187,20 +253,36 @@ impl AnaIntersection {
     /// the function returns TRUE if the elements are parallel.
     /// The function returns FALSE in all the other cases.
     pub fn parallel_elements(&self) -> bool {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_parallel_elements(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::IntAna2d_AnaIntersection_parallel_elements(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:119 - `IntAna2d_AnaIntersection::NbPoints()`
     /// returns the number of IntPoint between the 2 curves.
     pub fn nb_points(&self) -> i32 {
-        unsafe { crate::ffi::IntAna2d_AnaIntersection_nb_points(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_AnaIntersection_nb_points(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_AnaIntersection.hxx`:123 - `IntAna2d_AnaIntersection::Point()`
     /// returns the intersection point of range N;
     /// If (N<=0) or (N>NbPoints), an exception is raised.
     pub fn point(&self, N: i32) -> &IntPoint {
-        unsafe { &*(crate::ffi::IntAna2d_AnaIntersection_point(self as *const Self, N)) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_AnaIntersection_point(self as *const Self, N) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -222,40 +304,66 @@ unsafe impl crate::CppDeletable for Conic {
 impl Conic {
     /// **Source:** `IntAna2d_Conic.hxx`:38 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_Conic_ctor_circ2d(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_circ2d(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:40 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_lin2d(C: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_Conic_ctor_lin2d(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_lin2d(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:42 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_parab2d(C: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_Conic_ctor_parab2d(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_parab2d(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:44 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_hypr2d(C: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_Conic_ctor_hypr2d(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_hypr2d(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:46 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_elips2d(C: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_Conic_ctor_elips2d(C)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_elips2d(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:49 - `IntAna2d_Conic::Value()`
     /// value of the function F at the point X,Y.
     pub fn value(&self, X: f64, Y: f64) -> f64 {
-        unsafe { crate::ffi::IntAna2d_Conic_value(self as *const Self, X, Y) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_value(self as *const Self, X, Y) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:52 - `IntAna2d_Conic::Grad()`
     /// returns the value of the gradient of F at the point X,Y.
     pub fn grad(&self, X: f64, Y: f64) -> crate::OwnedPtr<crate::gp::XY> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_Conic_grad(self as *const Self, X, Y))
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_Conic_grad(self as *const Self, X, Y) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -263,7 +371,10 @@ impl Conic {
     /// Returns the value of the function and its gradient at
     /// the point X,Y.
     pub fn val_and_grad(&self, X: f64, Y: f64, Val: &mut f64, Grd: &mut crate::gp::XY) {
-        unsafe { crate::ffi::IntAna2d_Conic_val_and_grad(self as *const Self, X, Y, Val, Grd) }
+        {
+            unsafe { crate::ffi::IntAna2d_Conic_val_and_grad(self as *const Self, X, Y, Val, Grd) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:64 - `IntAna2d_Conic::Coefficients()`
@@ -279,7 +390,12 @@ impl Conic {
         E: &mut f64,
         F: &mut f64,
     ) {
-        unsafe { crate::ffi::IntAna2d_Conic_coefficients(self as *const Self, A, B, C, D, E, F) }
+        {
+            unsafe {
+                crate::ffi::IntAna2d_Conic_coefficients(self as *const Self, A, B, C, D, E, F)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:75 - `IntAna2d_Conic::NewCoefficients()`
@@ -297,8 +413,20 @@ impl Conic {
         F: &mut f64,
         Axis: &crate::gp::Ax2d,
     ) {
-        unsafe {
-            crate::ffi::IntAna2d_Conic_new_coefficients(self as *const Self, A, B, C, D, E, F, Axis)
+        {
+            unsafe {
+                crate::ffi::IntAna2d_Conic_new_coefficients(
+                    self as *const Self,
+                    A,
+                    B,
+                    C,
+                    D,
+                    E,
+                    F,
+                    Axis,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -323,7 +451,11 @@ impl IntPoint {
     /// X,Y are the coordinate of the point. U1 is the parameter
     /// on the first element, U2 the parameter on the second one.
     pub fn new_real4(X: f64, Y: f64, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_IntPoint_ctor_real4(X, Y, U1, U2)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_IntPoint_ctor_real4(X, Y, U1, U2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:47 - `IntAna2d_IntPoint::IntAna2d_IntPoint()`
@@ -334,42 +466,72 @@ impl IntPoint {
     /// Empty constructor. It's necessary to use one of
     /// the SetValue method after this one.
     pub fn new_real3(X: f64, Y: f64, U1: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_IntPoint_ctor_real3(X, Y, U1)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_IntPoint_ctor_real3(X, Y, U1) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:51 - `IntAna2d_IntPoint::IntAna2d_IntPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna2d_IntPoint_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_IntPoint_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:54 - `IntAna2d_IntPoint::SetValue()`
     /// Set the values for a "non-implicit" point.
     pub fn set_value_real4(&mut self, X: f64, Y: f64, U1: f64, U2: f64) {
-        unsafe { crate::ffi::IntAna2d_IntPoint_set_value_real4(self as *mut Self, X, Y, U1, U2) }
+        {
+            unsafe {
+                crate::ffi::IntAna2d_IntPoint_set_value_real4(self as *mut Self, X, Y, U1, U2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:60 - `IntAna2d_IntPoint::SetValue()`
     /// Set the values for an "implicit" point.
     pub fn set_value_real3(&mut self, X: f64, Y: f64, U1: f64) {
-        unsafe { crate::ffi::IntAna2d_IntPoint_set_value_real3(self as *mut Self, X, Y, U1) }
+        {
+            unsafe { crate::ffi::IntAna2d_IntPoint_set_value_real3(self as *mut Self, X, Y, U1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:65 - `IntAna2d_IntPoint::Value()`
     /// Returns the geometric point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::IntAna2d_IntPoint_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::IntAna2d_IntPoint_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:68 - `IntAna2d_IntPoint::SecondIsImplicit()`
     /// Returns True if the second curve is implicit.
     pub fn second_is_implicit(&self) -> bool {
-        unsafe { crate::ffi::IntAna2d_IntPoint_second_is_implicit(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_IntPoint_second_is_implicit(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:71 - `IntAna2d_IntPoint::ParamOnFirst()`
     /// Returns the parameter on the first element.
     pub fn param_on_first(&self) -> f64 {
-        unsafe { crate::ffi::IntAna2d_IntPoint_param_on_first(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_IntPoint_param_on_first(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:76 - `IntAna2d_IntPoint::ParamOnSecond()`
@@ -377,7 +539,12 @@ impl IntPoint {
     /// If the second element is an implicit curve, an exception
     /// is raised.
     pub fn param_on_second(&self) -> f64 {
-        unsafe { crate::ffi::IntAna2d_IntPoint_param_on_second(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::IntAna2d_IntPoint_param_on_second(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -397,37 +564,60 @@ unsafe impl crate::CppDeletable for MyDirectPolynomialRoots {
 impl MyDirectPolynomialRoots {
     /// **Source:** `IntAna2d_Outils.hxx`:27 - `MyDirectPolynomialRoots::MyDirectPolynomialRoots()`
     pub fn new_real5(A4: f64, A3: f64, A2: f64, A1: f64, A0: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::MyDirectPolynomialRoots_ctor_real5(
-                A4, A3, A2, A1, A0,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::MyDirectPolynomialRoots_ctor_real5(A4, A3, A2, A1, A0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:33 - `MyDirectPolynomialRoots::MyDirectPolynomialRoots()`
     pub fn new_real3(A2: f64, A1: f64, A0: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::MyDirectPolynomialRoots_ctor_real3(A2, A1, A0))
+        {
+            let __result = unsafe { crate::ffi::MyDirectPolynomialRoots_ctor_real3(A2, A1, A0) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:35 - `MyDirectPolynomialRoots::NbSolutions()`
     pub fn nb_solutions(&self) -> i32 {
-        unsafe { crate::ffi::MyDirectPolynomialRoots_nb_solutions(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::MyDirectPolynomialRoots_nb_solutions(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:37 - `MyDirectPolynomialRoots::Value()`
     pub fn value(&self, i: i32) -> f64 {
-        unsafe { crate::ffi::MyDirectPolynomialRoots_value(self as *const Self, i) }
+        {
+            let __result =
+                unsafe { crate::ffi::MyDirectPolynomialRoots_value(self as *const Self, i) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:39 - `MyDirectPolynomialRoots::IsDone()`
     pub fn is_done(&self) -> f64 {
-        unsafe { crate::ffi::MyDirectPolynomialRoots_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::MyDirectPolynomialRoots_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:41 - `MyDirectPolynomialRoots::InfiniteRoots()`
     pub fn infinite_roots(&self) -> bool {
-        unsafe { crate::ffi::MyDirectPolynomialRoots_infinite_roots(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::MyDirectPolynomialRoots_infinite_roots(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }

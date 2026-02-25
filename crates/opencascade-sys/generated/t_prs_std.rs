@@ -33,12 +33,19 @@ unsafe impl crate::CppDeletable for AISPresentation {
 impl AISPresentation {
     /// **Source:** `TPrsStd_AISPresentation.hxx`:68 - `TPrsStd_AISPresentation::TPrsStd_AISPresentation()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:70 - `TPrsStd_AISPresentation::SetDisplayed()`
     pub fn set_displayed(&mut self, B: bool) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_displayed(self as *mut Self, B) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_set_displayed(self as *mut Self, B) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:75 - `TPrsStd_AISPresentation::Display()`
@@ -46,7 +53,10 @@ impl AISPresentation {
     /// If <update> = True then AISObject is recomputed and all
     /// the visualization settings are applied
     pub fn display(&mut self, update: bool) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_display(self as *mut Self, update) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_display(self as *mut Self, update) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:81 - `TPrsStd_AISPresentation::Erase()`
@@ -55,72 +65,102 @@ impl AISPresentation {
     /// If remove is true, this AIS presentation attribute
     /// is removed from the interactive context.
     pub fn erase(&mut self, remove: bool) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_erase(self as *mut Self, remove) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_erase(self as *mut Self, remove) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:84 - `TPrsStd_AISPresentation::Update()`
     /// Recompute presentation of object and apply the visualization settings
     pub fn update(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_update(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_update(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:86 - `TPrsStd_AISPresentation::GetDriverGUID()`
     pub fn get_driver_guid(&self) -> crate::OwnedPtr<crate::standard::GUID> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_get_driver_guid(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_get_driver_guid(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:88 - `TPrsStd_AISPresentation::SetDriverGUID()`
     pub fn set_driver_guid(&mut self, guid: &crate::standard::GUID) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_driver_guid(self as *mut Self, guid) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_set_driver_guid(self as *mut Self, guid) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:91 - `TPrsStd_AISPresentation::IsDisplayed()`
     /// Returns true if this AIS presentation attribute is displayed.
     pub fn is_displayed(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_is_displayed(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_is_displayed(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:94 - `TPrsStd_AISPresentation::GetAIS()`
     /// Returns AIS_InteractiveObject stored in the presentation attribute
     pub fn get_ais(&self) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_get_ais(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_get_ais(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:97 - `TPrsStd_AISPresentation::Material()`
     /// Returns the material setting for this presentation attribute.
     pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
-        unsafe {
-            crate::graphic3d::NameOfMaterial::try_from(
-                crate::ffi::TPrsStd_AISPresentation_material(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_material(self as *const Self) };
+            crate::check_exception();
+            crate::graphic3d::NameOfMaterial::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:100 - `TPrsStd_AISPresentation::SetMaterial()`
     /// Sets the material aName for this presentation  attribute.
     pub fn set_material(&mut self, aName: crate::graphic3d::NameOfMaterial) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_material(self as *mut Self, aName.into()) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_set_material(self as *mut Self, aName.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:103 - `TPrsStd_AISPresentation::HasOwnMaterial()`
     /// Returns true if this presentation attribute already has a material setting.
     pub fn has_own_material(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_material(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_has_own_material(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:106 - `TPrsStd_AISPresentation::UnsetMaterial()`
     /// Removes the material setting from this presentation attribute.
     pub fn unset_material(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset_material(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset_material(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:111 - `TPrsStd_AISPresentation::SetTransparency()`
@@ -128,107 +168,182 @@ impl AISPresentation {
     /// presentation attribute.
     /// This value is 0.6 by default.
     pub fn set_transparency(&mut self, aValue: f64) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_transparency(self as *mut Self, aValue) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_set_transparency(self as *mut Self, aValue)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:113 - `TPrsStd_AISPresentation::Transparency()`
     pub fn transparency(&self) -> f64 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_transparency(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_transparency(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:116 - `TPrsStd_AISPresentation::HasOwnTransparency()`
     /// Returns true if this presentation attribute already has a transparency setting.
     pub fn has_own_transparency(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_transparency(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_has_own_transparency(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:119 - `TPrsStd_AISPresentation::UnsetTransparency()`
     /// Removes the transparency setting from this presentation attribute.
     pub fn unset_transparency(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset_transparency(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset_transparency(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:121 - `TPrsStd_AISPresentation::Color()`
     pub fn color(&self) -> crate::quantity::NameOfColor {
-        unsafe {
-            crate::quantity::NameOfColor::try_from(crate::ffi::TPrsStd_AISPresentation_color(
-                self as *const Self,
-            ))
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_color(self as *const Self) };
+            crate::check_exception();
+            crate::quantity::NameOfColor::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:124 - `TPrsStd_AISPresentation::SetColor()`
     /// Sets the color aColor for this presentation attribute.
     pub fn set_color(&mut self, aColor: crate::quantity::NameOfColor) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_color(self as *mut Self, aColor.into()) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_set_color(self as *mut Self, aColor.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:127 - `TPrsStd_AISPresentation::HasOwnColor()`
     /// Returns true if this presentation attribute already has a color setting.
     pub fn has_own_color(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_color(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_color(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:130 - `TPrsStd_AISPresentation::UnsetColor()`
     /// Removes the color setting from this presentation attribute.
     pub fn unset_color(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset_color(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset_color(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:132 - `TPrsStd_AISPresentation::Width()`
     pub fn width(&self) -> f64 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_width(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_width(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:135 - `TPrsStd_AISPresentation::SetWidth()`
     /// Sets the width aWidth for this presentation attribute.
     pub fn set_width(&mut self, aWidth: f64) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_width(self as *mut Self, aWidth) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_set_width(self as *mut Self, aWidth) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:138 - `TPrsStd_AISPresentation::HasOwnWidth()`
     /// Returns true if this presentation attribute already has a width setting.
     pub fn has_own_width(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_width(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_width(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:141 - `TPrsStd_AISPresentation::UnsetWidth()`
     /// Removes the width setting from this presentation attribute.
     pub fn unset_width(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset_width(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset_width(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:143 - `TPrsStd_AISPresentation::Mode()`
     pub fn mode(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_mode(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:145 - `TPrsStd_AISPresentation::SetMode()`
     pub fn set_mode(&mut self, theMode: i32) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_set_mode(self as *mut Self, theMode) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_set_mode(self as *mut Self, theMode) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:147 - `TPrsStd_AISPresentation::HasOwnMode()`
     pub fn has_own_mode(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_mode(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_mode(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:149 - `TPrsStd_AISPresentation::UnsetMode()`
     pub fn unset_mode(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset_mode(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset_mode(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:153 - `TPrsStd_AISPresentation::GetNbSelectionModes()`
     /// Returns selection mode(s) of the attribute.
     /// It starts with 1 .. GetNbSelectionModes().
     pub fn get_nb_selection_modes(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_get_nb_selection_modes(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_get_nb_selection_modes(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:154 - `TPrsStd_AISPresentation::SelectionMode()`
     pub fn selection_mode(&self, index: i32) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_selection_mode(self as *const Self, index) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_selection_mode(self as *const Self, index)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:161 - `TPrsStd_AISPresentation::SetSelectionMode()`
@@ -238,54 +353,77 @@ impl AISPresentation {
     /// modification). Certainly, if any other data of the attribute is modified (display mode, color,
     /// ...), the attribute will be included into undo/redo.
     pub fn set_selection_mode(&mut self, theSelectionMode: i32, theTransaction: bool) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_set_selection_mode(
-                self as *mut Self,
-                theSelectionMode,
-                theTransaction,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_set_selection_mode(
+                    self as *mut Self,
+                    theSelectionMode,
+                    theTransaction,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:163 - `TPrsStd_AISPresentation::AddSelectionMode()`
     pub fn add_selection_mode(&mut self, theSelectionMode: i32, theTransaction: bool) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_add_selection_mode(
-                self as *mut Self,
-                theSelectionMode,
-                theTransaction,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_add_selection_mode(
+                    self as *mut Self,
+                    theSelectionMode,
+                    theTransaction,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:166 - `TPrsStd_AISPresentation::HasOwnSelectionMode()`
     pub fn has_own_selection_mode(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_has_own_selection_mode(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_has_own_selection_mode(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:169 - `TPrsStd_AISPresentation::UnsetSelectionMode()`
     /// Clears all selection modes of the attribute.
     pub fn unset_selection_mode(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset_selection_mode(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset_selection_mode(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:171 - `TPrsStd_AISPresentation::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::ffi::TPrsStd_AISPresentation_id(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_id(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:173 - `TPrsStd_AISPresentation::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_new_empty(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:175 - `TPrsStd_AISPresentation::Restore()`
     pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_restore(self as *mut Self, with) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_restore(self as *mut Self, with) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:177 - `TPrsStd_AISPresentation::Paste()`
@@ -294,36 +432,52 @@ impl AISPresentation {
         into: &crate::ffi::HandleTDFAttribute,
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_paste(self as *const Self, into, RT) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_paste(self as *const Self, into, RT) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:180 - `TPrsStd_AISPresentation::BackupCopy()`
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_backup_copy(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_backup_copy(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:182 - `TPrsStd_AISPresentation::AfterAddition()`
     pub fn after_addition(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_after_addition(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_after_addition(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:184 - `TPrsStd_AISPresentation::BeforeRemoval()`
     pub fn before_removal(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_before_removal(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_before_removal(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:186 - `TPrsStd_AISPresentation::BeforeForget()`
     pub fn before_forget(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_before_forget(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_before_forget(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:188 - `TPrsStd_AISPresentation::AfterResume()`
     pub fn after_resume(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_after_resume(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_after_resume(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:190 - `TPrsStd_AISPresentation::BeforeUndo()`
@@ -332,8 +486,16 @@ impl AISPresentation {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_before_undo(self as *mut Self, anAttDelta, forceIt)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_before_undo(
+                    self as *mut Self,
+                    anAttDelta,
+                    forceIt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -344,20 +506,37 @@ impl AISPresentation {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_after_undo(self as *mut Self, anAttDelta, forceIt)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_after_undo(
+                    self as *mut Self,
+                    anAttDelta,
+                    forceIt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_AISPresentation_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:52 - `TPrsStd_AISPresentation::GetID()`
     /// Returns the GUID for TPrsStd_AISPresentation attributes.
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::ffi::TPrsStd_AISPresentation_get_id()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_get_id() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:56 - `TPrsStd_AISPresentation::Set()`
@@ -367,15 +546,20 @@ impl AISPresentation {
         L: &crate::tdf::Label,
         driver: &crate::standard::GUID,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAISPresentation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_set_label_guid(L, driver))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_set_label_guid(L, driver) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:60 - `TPrsStd_AISPresentation::Unset()`
     /// Delete (if exist) the presentation attribute associated to the label <L>.
     pub fn unset(L: &crate::tdf::Label) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_unset(L) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_unset(L) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:66 - `TPrsStd_AISPresentation::Set()`
@@ -386,50 +570,73 @@ impl AISPresentation {
     pub fn set_handletdfattribute(
         master: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAISPresentation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_set_handletdfattribute(
-                master,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_set_handletdfattribute(master) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_AISPresentation_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_AISPresentation_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::TPrsStd_AISPresentation_as_TDF_Attribute(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_as_TDF_Attribute(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_AISPresentation_as_TDF_Attribute_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_as_TDF_Attribute_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TPrsStd_AISPresentation_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_AISPresentation_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -437,56 +644,93 @@ impl AISPresentation {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAISPresentation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISPresentation_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_SetID(self as *mut Self, arg0) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_SetID(self as *mut Self, arg0) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_inherited_Label(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_Label(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_Transaction(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_Transaction(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_UntilTransaction(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_UntilTransaction(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_IsValid(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IsValid(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_IsNew(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_IsNew(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_IsForgotten(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IsForgotten(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_IsAttribute(self as *const Self, anID)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IsAttribute(self as *const Self, anID)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -496,90 +740,134 @@ impl AISPresentation {
         anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_FindAttribute(
-                self as *const Self,
-                anID,
-                anAttribute,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_FindAttribute(
+                    self as *const Self,
+                    anID,
+                    anAttribute,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_AddAttribute(self as *const Self, other)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_AddAttribute(
+                    self as *const Self,
+                    other,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_ForgetAttribute(
-                self as *const Self,
-                aguid,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_ForgetAttribute(
+                    self as *const Self,
+                    aguid,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_ForgetAllAttributes(
-                self as *const Self,
-                clearChildren,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_ForgetAllAttributes(
+                    self as *const Self,
+                    clearChildren,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_AfterRetrieval(
+                    self as *mut Self,
+                    forceIt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_BeforeCommitTransaction(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_BeforeCommitTransaction(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_Backup(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_Backup(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_IsBackuped(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IsBackuped(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
     pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnAddition(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnAddition(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
     pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnForget(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnForget(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
     pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnResume(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnResume(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -588,29 +876,39 @@ impl AISPresentation {
         &self,
         anOldAttribute: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnRemoval(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_DeltaOnRemoval(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_References(self as *const Self, aDataSet)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_References(
+                    self as *const Self,
+                    aDataSet,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -621,72 +919,109 @@ impl AISPresentation {
         aFilter: &crate::tdf::IDFilter,
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_ExtendedDump(
-                self as *const Self,
-                anOS,
-                aFilter,
-                aMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_ExtendedDump(
+                    self as *const Self,
+                    anOS,
+                    aFilter,
+                    aMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_Forget(self as *mut Self, aTransaction)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_Forget(
+                    self as *mut Self,
+                    aTransaction,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TPrsStd_AISPresentation_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISPresentation_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISPresentation_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -701,31 +1036,45 @@ unsafe impl crate::CppDeletable for HandleTPrsStdAISPresentation {
 impl HandleTPrsStdAISPresentation {
     /// Dereference this Handle to access the underlying TPrsStd_AISPresentation
     pub fn get(&self) -> &crate::ffi::TPrsStd_AISPresentation {
-        unsafe { &*(crate::ffi::HandleTPrsStdAISPresentation_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdAISPresentation_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_AISPresentation
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_AISPresentation {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdAISPresentation_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdAISPresentation_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_AISPresentation> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdAISPresentation_to_HandleTDFAttribute(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdAISPresentation_to_HandleTDFAttribute(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_AISPresentation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTPrsStdAISPresentation_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -749,20 +1098,32 @@ unsafe impl crate::CppDeletable for AISViewer {
 impl AISViewer {
     /// **Source:** `TPrsStd_AISViewer.hxx`:74 - `TPrsStd_AISViewer::TPrsStd_AISViewer()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:78 - `TPrsStd_AISViewer::Update()`
     /// Updates the viewer at the label access.
     /// access is the root of the data framework.
     pub fn update(&self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_update(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_update(self as *const Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:81 - `TPrsStd_AISViewer::SetInteractiveContext()`
     /// Sets the interactive context ctx for this attribute.
     pub fn set_interactive_context(&mut self, ctx: &crate::ffi::HandleAISInteractiveContext) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_set_interactive_context(self as *mut Self, ctx) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_set_interactive_context(self as *mut Self, ctx)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:84 - `TPrsStd_AISViewer::GetInteractiveContext()`
@@ -770,27 +1131,38 @@ impl AISViewer {
     pub fn get_interactive_context(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveContext> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_get_interactive_context(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_get_interactive_context(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:86 - `TPrsStd_AISViewer::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::ffi::TPrsStd_AISViewer_id(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_id(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:88 - `TPrsStd_AISViewer::Restore()`
     pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_restore(self as *mut Self, with) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_restore(self as *mut Self, with) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:90 - `TPrsStd_AISViewer::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_new_empty(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_new_empty(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -800,26 +1172,42 @@ impl AISViewer {
         into: &crate::ffi::HandleTDFAttribute,
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_paste(self as *const Self, into, RT) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_paste(self as *const Self, into, RT) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_AISViewer_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:42 - `TPrsStd_AISViewer::GetID()`
     /// class methods
     /// =============
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::ffi::TPrsStd_AISViewer_get_id()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_get_id() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:46 - `TPrsStd_AISViewer::Has()`
     /// returns True if   there is an AISViewer attribute  in
     /// <acces> Data Framework.
     pub fn has(acces: &crate::tdf::Label) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_has(acces) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_has(acces) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:50 - `TPrsStd_AISViewer::New()`
@@ -829,12 +1217,14 @@ impl AISViewer {
         access: &crate::tdf::Label,
         selector: &crate::ffi::HandleAISInteractiveContext,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAISViewer> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::TPrsStd_AISViewer_new_label_handleaisinteractivecontext(
                     access, selector,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -846,10 +1236,11 @@ impl AISViewer {
         acces: &crate::tdf::Label,
         viewer: &crate::ffi::HandleV3dViewer,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAISViewer> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_new_label_handlev3dviewer(
-                acces, viewer,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_new_label_handlev3dviewer(acces, viewer) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -860,7 +1251,13 @@ impl AISViewer {
         acces: &crate::tdf::Label,
         A: &mut crate::ffi::HandleTPrsStdAISViewer,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_find_label_handletprsstdaisviewer(acces, A) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_find_label_handletprsstdaisviewer(acces, A)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:65 - `TPrsStd_AISViewer::Find()`
@@ -868,7 +1265,13 @@ impl AISViewer {
         acces: &crate::tdf::Label,
         IC: &mut crate::ffi::HandleAISInteractiveContext,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_find_label_handleaisinteractivecontext(acces, IC) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_find_label_handleaisinteractivecontext(acces, IC)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:68 - `TPrsStd_AISViewer::Find()`
@@ -876,49 +1279,80 @@ impl AISViewer {
         acces: &crate::tdf::Label,
         V: &mut crate::ffi::HandleV3dViewer,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_find_label_handlev3dviewer(acces, V) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_find_label_handlev3dviewer(acces, V) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:72 - `TPrsStd_AISViewer::Update()`
     /// AISViewer methods
     /// =================
     pub fn update_label(acces: &crate::tdf::Label) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_update_label(acces) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_update_label(acces) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_AISViewer_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_AISViewer_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::TPrsStd_AISViewer_as_TDF_Attribute(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_as_TDF_Attribute(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::TPrsStd_AISViewer_as_TDF_Attribute_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_as_TDF_Attribute_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_AISViewer_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_AISViewer_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -926,53 +1360,91 @@ impl AISViewer {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAISViewer> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AISViewer_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_SetID(self as *mut Self, arg0) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_SetID(self as *mut Self, arg0) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_Label(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Label(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Transaction(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Transaction(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_UntilTransaction(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_UntilTransaction(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsValid(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsValid(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsNew(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsNew(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsForgotten(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsForgotten(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsAttribute(self as *const Self, anID) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_IsAttribute(self as *const Self, anID)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
@@ -981,61 +1453,93 @@ impl AISViewer {
         anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_FindAttribute(
-                self as *const Self,
-                anID,
-                anAttribute,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_FindAttribute(
+                    self as *const Self,
+                    anID,
+                    anAttribute,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_AddAttribute(self as *const Self, other) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_AddAttribute(self as *const Self, other)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_ForgetAttribute(self as *const Self, aguid)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_ForgetAttribute(self as *const Self, aguid)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_ForgetAllAttributes(
-                self as *const Self,
-                clearChildren,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_ForgetAllAttributes(
+                    self as *const Self,
+                    clearChildren,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_AfterAddition(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_AfterAddition(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_BeforeRemoval(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_BeforeRemoval(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_BeforeForget(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_BeforeForget(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_AfterResume(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_AfterResume(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1045,12 +1549,16 @@ impl AISViewer {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_BeforeUndo(
-                self as *mut Self,
-                anAttDelta,
-                forceIt,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_BeforeUndo(
+                    self as *mut Self,
+                    anAttDelta,
+                    forceIt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1060,65 +1568,87 @@ impl AISViewer {
         anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_AfterUndo(
-                self as *mut Self,
-                anAttDelta,
-                forceIt,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_AfterUndo(
+                    self as *mut Self,
+                    anAttDelta,
+                    forceIt,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_BeforeCommitTransaction(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_BeforeCommitTransaction(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Backup(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Backup(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsBackuped(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsBackuped(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_BackupCopy(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_BackupCopy(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
     pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnAddition(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnAddition(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
     pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnForget(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnForget(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
     pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnResume(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnResume(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1127,26 +1657,37 @@ impl AISViewer {
         &self,
         anOldAttribute: &crate::ffi::HandleTDFAttribute,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnModification(
-                self as *const Self,
-                anOldAttribute,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnRemoval(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_DeltaOnRemoval(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_References(self as *const Self, aDataSet) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_References(self as *const Self, aDataSet)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
@@ -1156,61 +1697,102 @@ impl AISViewer {
         aFilter: &crate::tdf::IDFilter,
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
-        unsafe {
-            crate::ffi::TPrsStd_AISViewer_inherited_ExtendedDump(
-                self as *const Self,
-                anOS,
-                aFilter,
-                aMap,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_ExtendedDump(
+                    self as *const Self,
+                    anOS,
+                    aFilter,
+                    aMap,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Forget(self as *mut Self, aTransaction) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::TPrsStd_AISViewer_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AISViewer_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AISViewer_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AISViewer_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1225,29 +1807,41 @@ unsafe impl crate::CppDeletable for HandleTPrsStdAISViewer {
 impl HandleTPrsStdAISViewer {
     /// Dereference this Handle to access the underlying TPrsStd_AISViewer
     pub fn get(&self) -> &crate::ffi::TPrsStd_AISViewer {
-        unsafe { &*(crate::ffi::HandleTPrsStdAISViewer_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdAISViewer_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_AISViewer
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_AISViewer {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdAISViewer_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdAISViewer_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_AISViewer> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleTPrsStdAISViewer_to_HandleTDFAttribute(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdAISViewer_to_HandleTDFAttribute(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_AISViewer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdAISViewer_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdAISViewer_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1270,7 +1864,11 @@ impl AxisDriver {
     /// **Source:** `TPrsStd_AxisDriver.hxx`:36 - `TPrsStd_AxisDriver::TPrsStd_AxisDriver()`
     /// Constructs an empty axis driver.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AxisDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AxisDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::Update()`
@@ -1283,47 +1881,82 @@ impl AxisDriver {
         aLabel: &crate::tdf::Label,
         anAISObject: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_update(self as *mut Self, aLabel, anAISObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_update(self as *mut Self, aLabel, anAISObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_AxisDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AxisDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_AxisDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AxisDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_AxisDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AxisDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_driver(&self) -> &Driver {
-        unsafe { &*(crate::ffi::TPrsStd_AxisDriver_as_TPrsStd_Driver(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AxisDriver_as_TPrsStd_Driver(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_driver_mut(&mut self) -> &mut Driver {
-        unsafe { &mut *(crate::ffi::TPrsStd_AxisDriver_as_TPrsStd_Driver_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AxisDriver_as_TPrsStd_Driver_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_AxisDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_AxisDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1331,51 +1964,87 @@ impl AxisDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdAxisDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_AxisDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_AxisDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_AxisDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_AxisDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_AxisDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1390,29 +2059,42 @@ unsafe impl crate::CppDeletable for HandleTPrsStdAxisDriver {
 impl HandleTPrsStdAxisDriver {
     /// Dereference this Handle to access the underlying TPrsStd_AxisDriver
     pub fn get(&self) -> &crate::ffi::TPrsStd_AxisDriver {
-        unsafe { &*(crate::ffi::HandleTPrsStdAxisDriver_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdAxisDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_AxisDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_AxisDriver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdAxisDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdAxisDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_AxisDriver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleTPrsStdAxisDriver_to_HandleTPrsStdDriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdAxisDriver_to_HandleTPrsStdDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_AxisDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdAxisDriver_to_HandleStandardTransient(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdAxisDriver_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1435,7 +2117,11 @@ impl ConstraintDriver {
     /// **Source:** `TPrsStd_ConstraintDriver.hxx`:36 - `TPrsStd_ConstraintDriver::TPrsStd_ConstraintDriver()`
     /// Constructs an empty constraint driver.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_ConstraintDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_ConstraintDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::Update()`
@@ -1448,55 +2134,84 @@ impl ConstraintDriver {
         aLabel: &crate::tdf::Label,
         anAISObject: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_ConstraintDriver_update(self as *mut Self, aLabel, anAISObject)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_update(self as *mut Self, aLabel, anAISObject)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_ConstraintDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_ConstraintDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_ConstraintDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_ConstraintDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_ConstraintDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_ConstraintDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_driver(&self) -> &Driver {
-        unsafe { &*(crate::ffi::TPrsStd_ConstraintDriver_as_TPrsStd_Driver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_as_TPrsStd_Driver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_driver_mut(&mut self) -> &mut Driver {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_ConstraintDriver_as_TPrsStd_Driver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_as_TPrsStd_Driver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TPrsStd_ConstraintDriver_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_ConstraintDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -1504,62 +2219,95 @@ impl ConstraintDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdConstraintDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_ConstraintDriver_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_ConstraintDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_ConstraintDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_ConstraintDriver_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_ConstraintDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_ConstraintDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TPrsStd_ConstraintDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TPrsStd_ConstraintDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_ConstraintDriver_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_ConstraintDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1574,33 +2322,47 @@ unsafe impl crate::CppDeletable for HandleTPrsStdConstraintDriver {
 impl HandleTPrsStdConstraintDriver {
     /// Dereference this Handle to access the underlying TPrsStd_ConstraintDriver
     pub fn get(&self) -> &crate::ffi::TPrsStd_ConstraintDriver {
-        unsafe { &*(crate::ffi::HandleTPrsStdConstraintDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdConstraintDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_ConstraintDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_ConstraintDriver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdConstraintDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdConstraintDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_ConstraintDriver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTPrsStdConstraintDriver_to_HandleTPrsStdDriver(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_ConstraintDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTPrsStdConstraintDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -1622,7 +2384,11 @@ impl ConstraintTools {
     /// **Source:** `TPrsStd_ConstraintTools.hxx` - `TPrsStd_ConstraintTools::TPrsStd_ConstraintTools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_ConstraintTools_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_ConstraintTools_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:37 - `TPrsStd_ConstraintTools::UpdateOnlyValue()`
@@ -1630,7 +2396,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_update_only_value(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_update_only_value(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:40 - `TPrsStd_ConstraintTools::ComputeDistance()`
@@ -1638,7 +2407,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_distance(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_distance(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:43 - `TPrsStd_ConstraintTools::ComputeParallel()`
@@ -1646,7 +2418,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_parallel(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_parallel(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:46 - `TPrsStd_ConstraintTools::ComputeTangent()`
@@ -1654,7 +2429,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_tangent(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_tangent(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:49 - `TPrsStd_ConstraintTools::ComputePerpendicular()`
@@ -1662,7 +2440,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_perpendicular(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_perpendicular(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:52 - `TPrsStd_ConstraintTools::ComputeConcentric()`
@@ -1670,7 +2451,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_concentric(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_concentric(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:55 - `TPrsStd_ConstraintTools::ComputeSymmetry()`
@@ -1678,7 +2462,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_symmetry(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_symmetry(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:58 - `TPrsStd_ConstraintTools::ComputeMidPoint()`
@@ -1686,7 +2473,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_mid_point(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_mid_point(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:61 - `TPrsStd_ConstraintTools::ComputeAngle()`
@@ -1694,7 +2484,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_angle(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_angle(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:64 - `TPrsStd_ConstraintTools::ComputeRadius()`
@@ -1702,7 +2495,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_radius(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_radius(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:67 - `TPrsStd_ConstraintTools::ComputeMinRadius()`
@@ -1710,7 +2506,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_min_radius(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_min_radius(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:70 - `TPrsStd_ConstraintTools::ComputeMaxRadius()`
@@ -1718,7 +2517,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_max_radius(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_max_radius(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:73 - `TPrsStd_ConstraintTools::ComputeEqualDistance()`
@@ -1726,7 +2528,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_equal_distance(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_equal_distance(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:76 - `TPrsStd_ConstraintTools::ComputeEqualRadius()`
@@ -1734,7 +2539,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_equal_radius(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_equal_radius(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:79 - `TPrsStd_ConstraintTools::ComputeFix()`
@@ -1742,7 +2550,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_fix(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_fix(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:82 - `TPrsStd_ConstraintTools::ComputeDiameter()`
@@ -1750,7 +2561,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_diameter(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_diameter(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:85 - `TPrsStd_ConstraintTools::ComputeOffset()`
@@ -1758,7 +2572,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_offset(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_offset(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:88 - `TPrsStd_ConstraintTools::ComputePlacement()`
@@ -1766,7 +2583,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_placement(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_placement(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:91 - `TPrsStd_ConstraintTools::ComputeCoincident()`
@@ -1774,7 +2594,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_coincident(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_coincident(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:94 - `TPrsStd_ConstraintTools::ComputeRound()`
@@ -1782,7 +2605,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_round(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_round(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:97 - `TPrsStd_ConstraintTools::ComputeOthers()`
@@ -1790,7 +2616,10 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_others(aConst, anAIS) }
+        {
+            unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_others(aConst, anAIS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:100 - `TPrsStd_ConstraintTools::ComputeTextAndValue()`
@@ -1800,10 +2629,13 @@ impl ConstraintTools {
         aText: &mut crate::t_collection::ExtendedString,
         anIsAngle: bool,
     ) {
-        unsafe {
-            crate::ffi::TPrsStd_ConstraintTools_compute_text_and_value(
-                aConst, aValue, aText, anIsAngle,
-            )
+        {
+            unsafe {
+                crate::ffi::TPrsStd_ConstraintTools_compute_text_and_value(
+                    aConst, aValue, aText, anIsAngle,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1812,7 +2644,12 @@ impl ConstraintTools {
         aConst: &crate::ffi::HandleTDataXtdConstraint,
         anAIS: &mut crate::ffi::HandleAISInteractiveObject,
     ) {
-        unsafe { crate::ffi::TPrsStd_ConstraintTools_compute_angle_for_one_face(aConst, anAIS) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_ConstraintTools_compute_angle_for_one_face(aConst, anAIS)
+            };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1853,78 +2690,131 @@ impl Driver {
         L: &crate::tdf::Label,
         ais: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_Driver_update(self as *mut Self, L, ais) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_Driver_update(self as *mut Self, L, ais) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_Driver_dynamic_type(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_Driver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_Driver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_Driver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_Driver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_Driver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_Driver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_Driver_as_Standard_Transient(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe { &mut *(crate::ffi::TPrsStd_Driver_as_Standard_Transient_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_Driver_as_Standard_Transient_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_Driver_inherited_IsInstance(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_Driver_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_Driver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_Driver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr = unsafe { crate::ffi::TPrsStd_Driver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_Driver_inherited_This(self as *const Self) };
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_Driver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_Driver_inherited_GetRefCount(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TPrsStd_Driver_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_Driver_inherited_IncrementRefCounter(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_Driver_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_Driver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_Driver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_Driver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1939,20 +2829,30 @@ unsafe impl crate::CppDeletable for HandleTPrsStdDriver {
 impl HandleTPrsStdDriver {
     /// Dereference this Handle to access the underlying TPrsStd_Driver
     pub fn get(&self) -> &crate::ffi::TPrsStd_Driver {
-        unsafe { &*(crate::ffi::HandleTPrsStdDriver_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_Driver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_Driver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdDriver_get_mut(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_Driver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleTPrsStdDriver_to_HandleStandardTransient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdDriver_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1965,6 +2865,7 @@ impl HandleTPrsStdDriver {
         let ptr = unsafe {
             crate::ffi::HandleTPrsStdDriver_downcast_to_HandleTPrsStdAxisDriver(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -1983,6 +2884,7 @@ impl HandleTPrsStdDriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2001,6 +2903,7 @@ impl HandleTPrsStdDriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2019,6 +2922,7 @@ impl HandleTPrsStdDriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2037,6 +2941,7 @@ impl HandleTPrsStdDriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2055,6 +2960,7 @@ impl HandleTPrsStdDriver {
                 self as *const Self,
             )
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2069,6 +2975,7 @@ impl HandleTPrsStdDriver {
         let ptr = unsafe {
             crate::ffi::HandleTPrsStdDriver_downcast_to_HandleXCAFPrsDriver(self as *const Self)
         };
+        crate::check_exception();
         if ptr.is_null() {
             None
         } else {
@@ -2098,13 +3005,20 @@ impl DriverTable {
     /// **Source:** `TPrsStd_DriverTable.hxx`:44 - `TPrsStd_DriverTable::TPrsStd_DriverTable()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_DriverTable_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_DriverTable_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:47 - `TPrsStd_DriverTable::InitStandardDrivers()`
     /// Fills the table with standard drivers
     pub fn init_standard_drivers(&mut self) {
-        unsafe { crate::ffi::TPrsStd_DriverTable_init_standard_drivers(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_DriverTable_init_standard_drivers(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:50 - `TPrsStd_DriverTable::AddDriver()`
@@ -2114,7 +3028,13 @@ impl DriverTable {
         guid: &crate::standard::GUID,
         driver: &crate::ffi::HandleTPrsStdDriver,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_DriverTable_add_driver(self as *mut Self, guid, driver) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_add_driver(self as *mut Self, guid, driver)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:54 - `TPrsStd_DriverTable::FindDriver()`
@@ -2124,14 +3044,25 @@ impl DriverTable {
         guid: &crate::standard::GUID,
         driver: &mut crate::ffi::HandleTPrsStdDriver,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_DriverTable_find_driver(self as *const Self, guid, driver) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_find_driver(self as *const Self, guid, driver)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:59 - `TPrsStd_DriverTable::RemoveDriver()`
     /// Removes a driver with the given GUID.
     /// Returns true if the driver has been removed successfully.
     pub fn remove_driver(&mut self, guid: &crate::standard::GUID) -> bool {
-        unsafe { crate::ffi::TPrsStd_DriverTable_remove_driver(self as *mut Self, guid) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_DriverTable_remove_driver(self as *mut Self, guid) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:65 - `TPrsStd_DriverTable::Clear()`
@@ -2140,44 +3071,70 @@ impl DriverTable {
     /// If this method is used, the InitStandardDrivers method should be
     /// called to fill the table with standard drivers.
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TPrsStd_DriverTable_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_DriverTable_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_DriverTable_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_DriverTable_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:41 - `TPrsStd_DriverTable::Get()`
     /// Returns the static table.
     /// If it does not exist, creates it and fills it with standard drivers.
     pub fn get() -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriverTable> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_DriverTable_get()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_DriverTable_get() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_DriverTable_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_DriverTable_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_DriverTable_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_DriverTable_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_DriverTable_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_DriverTable_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2185,54 +3142,87 @@ impl DriverTable {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriverTable> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_DriverTable_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_DriverTable_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_DriverTable_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_DriverTable_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_DriverTable_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_DriverTable_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TPrsStd_DriverTable_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_DriverTable_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_DriverTable_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_DriverTable_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_DriverTable_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_DriverTable_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2247,22 +3237,31 @@ unsafe impl crate::CppDeletable for HandleTPrsStdDriverTable {
 impl HandleTPrsStdDriverTable {
     /// Dereference this Handle to access the underlying TPrsStd_DriverTable
     pub fn get(&self) -> &crate::ffi::TPrsStd_DriverTable {
-        unsafe { &*(crate::ffi::HandleTPrsStdDriverTable_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdDriverTable_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_DriverTable
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_DriverTable {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdDriverTable_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdDriverTable_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_DriverTable> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdDriverTable_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdDriverTable_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2285,7 +3284,11 @@ impl GeometryDriver {
     /// **Source:** `TPrsStd_GeometryDriver.hxx`:36 - `TPrsStd_GeometryDriver::TPrsStd_GeometryDriver()`
     /// Constructs an empty geometry driver.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_GeometryDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_GeometryDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::Update()`
@@ -2298,49 +3301,84 @@ impl GeometryDriver {
         aLabel: &crate::tdf::Label,
         anAISObject: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_GeometryDriver_update(self as *mut Self, aLabel, anAISObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_update(self as *mut Self, aLabel, anAISObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_GeometryDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_GeometryDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_GeometryDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_GeometryDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_GeometryDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_GeometryDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_driver(&self) -> &Driver {
-        unsafe { &*(crate::ffi::TPrsStd_GeometryDriver_as_TPrsStd_Driver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_as_TPrsStd_Driver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_driver_mut(&mut self) -> &mut Driver {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_GeometryDriver_as_TPrsStd_Driver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_as_TPrsStd_Driver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_GeometryDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_GeometryDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2348,58 +3386,90 @@ impl GeometryDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdGeometryDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_GeometryDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_GeometryDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_GeometryDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_GeometryDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_GeometryDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_GeometryDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TPrsStd_GeometryDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TPrsStd_GeometryDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_GeometryDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_GeometryDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_GeometryDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2414,31 +3484,45 @@ unsafe impl crate::CppDeletable for HandleTPrsStdGeometryDriver {
 impl HandleTPrsStdGeometryDriver {
     /// Dereference this Handle to access the underlying TPrsStd_GeometryDriver
     pub fn get(&self) -> &crate::ffi::TPrsStd_GeometryDriver {
-        unsafe { &*(crate::ffi::HandleTPrsStdGeometryDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdGeometryDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_GeometryDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_GeometryDriver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdGeometryDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdGeometryDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_GeometryDriver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdGeometryDriver_to_HandleTPrsStdDriver(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdGeometryDriver_to_HandleTPrsStdDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_GeometryDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTPrsStdGeometryDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2461,7 +3545,11 @@ impl NamedShapeDriver {
     /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:36 - `TPrsStd_NamedShapeDriver::TPrsStd_NamedShapeDriver()`
     /// Constructs an empty named shape driver.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_NamedShapeDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_NamedShapeDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::Update()`
@@ -2474,55 +3562,84 @@ impl NamedShapeDriver {
         aLabel: &crate::tdf::Label,
         anAISObject: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_NamedShapeDriver_update(self as *mut Self, aLabel, anAISObject)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_update(self as *mut Self, aLabel, anAISObject)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_NamedShapeDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_NamedShapeDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_NamedShapeDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_NamedShapeDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_NamedShapeDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_NamedShapeDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_driver(&self) -> &Driver {
-        unsafe { &*(crate::ffi::TPrsStd_NamedShapeDriver_as_TPrsStd_Driver(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_as_TPrsStd_Driver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_driver_mut(&mut self) -> &mut Driver {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_NamedShapeDriver_as_TPrsStd_Driver_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_as_TPrsStd_Driver_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*(crate::ffi::TPrsStd_NamedShapeDriver_as_Standard_Transient(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_NamedShapeDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2530,62 +3647,95 @@ impl NamedShapeDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdNamedShapeDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_NamedShapeDriver_to_handle(
-                obj.into_raw(),
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_NamedShapeDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_NamedShapeDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_inherited_IsInstance(
+                    self as *const Self,
+                    theType,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_NamedShapeDriver_inherited_IsKind(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_NamedShapeDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_NamedShapeDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe {
-            crate::ffi::TPrsStd_NamedShapeDriver_inherited_IncrementRefCounter(self as *mut Self)
+        {
+            unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_inherited_IncrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::TPrsStd_NamedShapeDriver_inherited_DecrementRefCounter(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_NamedShapeDriver_inherited_DecrementRefCounter(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_NamedShapeDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_NamedShapeDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2600,33 +3750,47 @@ unsafe impl crate::CppDeletable for HandleTPrsStdNamedShapeDriver {
 impl HandleTPrsStdNamedShapeDriver {
     /// Dereference this Handle to access the underlying TPrsStd_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi::TPrsStd_NamedShapeDriver {
-        unsafe { &*(crate::ffi::HandleTPrsStdNamedShapeDriver_get(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdNamedShapeDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_NamedShapeDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_NamedShapeDriver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdNamedShapeDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdNamedShapeDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_NamedShapeDriver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTPrsStdNamedShapeDriver_to_HandleTPrsStdDriver(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_NamedShapeDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::HandleTPrsStdNamedShapeDriver_to_HandleStandardTransient(
                     self as *const Self,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2649,7 +3813,11 @@ impl PlaneDriver {
     /// **Source:** `TPrsStd_PlaneDriver.hxx`:36 - `TPrsStd_PlaneDriver::TPrsStd_PlaneDriver()`
     /// Constructs an empty plane driver.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_PlaneDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PlaneDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::Update()`
@@ -2662,47 +3830,82 @@ impl PlaneDriver {
         aLabel: &crate::tdf::Label,
         anAISObject: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_PlaneDriver_update(self as *mut Self, aLabel, anAISObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_update(self as *mut Self, aLabel, anAISObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_PlaneDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_PlaneDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_PlaneDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PlaneDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_PlaneDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PlaneDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_driver(&self) -> &Driver {
-        unsafe { &*(crate::ffi::TPrsStd_PlaneDriver_as_TPrsStd_Driver(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_PlaneDriver_as_TPrsStd_Driver(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_driver_mut(&mut self) -> &mut Driver {
-        unsafe { &mut *(crate::ffi::TPrsStd_PlaneDriver_as_TPrsStd_Driver_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_PlaneDriver_as_TPrsStd_Driver_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_PlaneDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_PlaneDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2710,54 +3913,87 @@ impl PlaneDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdPlaneDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_PlaneDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PlaneDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_PlaneDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PlaneDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_PlaneDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2772,31 +4008,42 @@ unsafe impl crate::CppDeletable for HandleTPrsStdPlaneDriver {
 impl HandleTPrsStdPlaneDriver {
     /// Dereference this Handle to access the underlying TPrsStd_PlaneDriver
     pub fn get(&self) -> &crate::ffi::TPrsStd_PlaneDriver {
-        unsafe { &*(crate::ffi::HandleTPrsStdPlaneDriver_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdPlaneDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_PlaneDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_PlaneDriver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdPlaneDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdPlaneDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_PlaneDriver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleTPrsStdPlaneDriver_to_HandleTPrsStdDriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdPlaneDriver_to_HandleTPrsStdDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_PlaneDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdPlaneDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdPlaneDriver_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }
@@ -2819,7 +4066,11 @@ impl PointDriver {
     /// **Source:** `TPrsStd_PointDriver.hxx`:36 - `TPrsStd_PointDriver::TPrsStd_PointDriver()`
     /// Constructs an empty point driver.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_PointDriver_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PointDriver_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::Update()`
@@ -2832,47 +4083,82 @@ impl PointDriver {
         aLabel: &crate::tdf::Label,
         anAISObject: &mut crate::ffi::HandleAISInteractiveObject,
     ) -> bool {
-        unsafe { crate::ffi::TPrsStd_PointDriver_update(self as *mut Self, aLabel, anAISObject) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_update(self as *mut Self, aLabel, anAISObject)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_PointDriver_dynamic_type(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_PointDriver_dynamic_type(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::TPrsStd_PointDriver_get_type_name())
-                .to_string_lossy()
-                .into_owned()
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PointDriver_get_type_name() };
+            crate::check_exception();
+            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
         }
     }
 
     /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::TPrsStd_PointDriver_get_type_descriptor()) }
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PointDriver_get_type_descriptor() };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_driver(&self) -> &Driver {
-        unsafe { &*(crate::ffi::TPrsStd_PointDriver_as_TPrsStd_Driver(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_PointDriver_as_TPrsStd_Driver(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_driver_mut(&mut self) -> &mut Driver {
-        unsafe { &mut *(crate::ffi::TPrsStd_PointDriver_as_TPrsStd_Driver_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::TPrsStd_PointDriver_as_TPrsStd_Driver_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe { &*(crate::ffi::TPrsStd_PointDriver_as_Standard_Transient(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_as_Standard_Transient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *(crate::ffi::TPrsStd_PointDriver_as_Standard_Transient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_as_Standard_Transient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2880,54 +4166,87 @@ impl PointDriver {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdPointDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TPrsStd_PointDriver_to_handle(obj.into_raw()))
+        {
+            let __result = unsafe { crate::ffi::TPrsStd_PointDriver_to_handle(obj.into_raw()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe {
-            crate::ffi::TPrsStd_PointDriver_inherited_IsInstance(self as *const Self, theType)
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_inherited_IsInstance(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        unsafe { crate::ffi::TPrsStd_PointDriver_inherited_IsKind(self as *const Self, theType) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_inherited_IsKind(self as *const Self, theType)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
-            let ptr =
+            let __result =
                 unsafe { crate::ffi::TPrsStd_PointDriver_inherited_This(self as *const Self) };
-            if ptr.is_null() {
+            crate::check_exception();
+            if __result.is_null() {
                 None
             } else {
-                Some(unsafe { &*ptr })
+                Some(unsafe { &*__result })
             }
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_PointDriver_inherited_GetRefCount(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_inherited_GetRefCount(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
-        unsafe { crate::ffi::TPrsStd_PointDriver_inherited_IncrementRefCounter(self as *mut Self) }
+        {
+            unsafe {
+                crate::ffi::TPrsStd_PointDriver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
-        unsafe { crate::ffi::TPrsStd_PointDriver_inherited_DecrementRefCounter(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::TPrsStd_PointDriver_inherited_DecrementRefCounter(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
-        unsafe { crate::ffi::TPrsStd_PointDriver_inherited_Delete(self as *const Self) }
+        {
+            unsafe { crate::ffi::TPrsStd_PointDriver_inherited_Delete(self as *const Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -2942,31 +4261,42 @@ unsafe impl crate::CppDeletable for HandleTPrsStdPointDriver {
 impl HandleTPrsStdPointDriver {
     /// Dereference this Handle to access the underlying TPrsStd_PointDriver
     pub fn get(&self) -> &crate::ffi::TPrsStd_PointDriver {
-        unsafe { &*(crate::ffi::HandleTPrsStdPointDriver_get(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::HandleTPrsStdPointDriver_get(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TPrsStd_PointDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::TPrsStd_PointDriver {
-        unsafe { &mut *(crate::ffi::HandleTPrsStdPointDriver_get_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::HandleTPrsStdPointDriver_get_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast Handle<TPrsStd_PointDriver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleTPrsStdPointDriver_to_HandleTPrsStdDriver(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdPointDriver_to_HandleTPrsStdDriver(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// Upcast Handle<TPrsStd_PointDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleTPrsStdPointDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::HandleTPrsStdPointDriver_to_HandleStandardTransient(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 }

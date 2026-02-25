@@ -86,8 +86,10 @@ impl Hatcher {
     /// Returns a empty  hatcher.  <Tol> is the  tolerance
     /// for intersections.
     pub fn new_real_bool(Tol: f64, Oriented: bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Hatch_Hatcher_ctor_real_bool(Tol, Oriented))
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_ctor_real_bool(Tol, Oriented) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -100,12 +102,19 @@ impl Hatcher {
 
     /// **Source:** `Hatch_Hatcher.hxx`:73 - `Hatch_Hatcher::Tolerance()`
     pub fn tolerance_real(&mut self, Tol: f64) {
-        unsafe { crate::ffi::Hatch_Hatcher_tolerance_real(self as *mut Self, Tol) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_tolerance_real(self as *mut Self, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:75 - `Hatch_Hatcher::Tolerance()`
     pub fn tolerance(&self) -> f64 {
-        unsafe { crate::ffi::Hatch_Hatcher_tolerance(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_tolerance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:80 - `Hatch_Hatcher::AddLine()`
@@ -113,7 +122,12 @@ impl Hatcher {
     /// only kept from information. It is not used  in the
     /// computation.
     pub fn add_line_lin2d_lineform(&mut self, L: &crate::gp::Lin2d, T: crate::hatch::LineForm) {
-        unsafe { crate::ffi::Hatch_Hatcher_add_line_lin2d_lineform(self as *mut Self, L, T.into()) }
+        {
+            unsafe {
+                crate::ffi::Hatch_Hatcher_add_line_lin2d_lineform(self as *mut Self, L, T.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:93 - `Hatch_Hatcher::AddLine()`
@@ -129,35 +143,56 @@ impl Hatcher {
     /// The parameter of P on the line is
     /// OP dot D
     pub fn add_line_dir2d_real(&mut self, D: &crate::gp::Dir2d, Dist: f64) {
-        unsafe { crate::ffi::Hatch_Hatcher_add_line_dir2d_real(self as *mut Self, D, Dist) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_add_line_dir2d_real(self as *mut Self, D, Dist) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:97 - `Hatch_Hatcher::AddXLine()`
     /// Add an infinite line   parallel to the Y-axis   at
     /// abciss <X>.
     pub fn add_x_line(&mut self, X: f64) {
-        unsafe { crate::ffi::Hatch_Hatcher_add_x_line(self as *mut Self, X) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_add_x_line(self as *mut Self, X) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:101 - `Hatch_Hatcher::AddYLine()`
     /// Add an infinite line   parallel to the X-axis   at
     /// ordinate <Y>.
     pub fn add_y_line(&mut self, Y: f64) {
-        unsafe { crate::ffi::Hatch_Hatcher_add_y_line(self as *mut Self, Y) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_add_y_line(self as *mut Self, Y) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:104 - `Hatch_Hatcher::Trim()`
     /// Trims the lines at intersections with  <L>.
     pub fn trim_lin2d_int(&mut self, L: &crate::gp::Lin2d, Index: i32) {
-        unsafe { crate::ffi::Hatch_Hatcher_trim_lin2d_int(self as *mut Self, L, Index) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_trim_lin2d_int(self as *mut Self, L, Index) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:108 - `Hatch_Hatcher::Trim()`
     /// Trims the lines at intersections  with <L>  in the
     /// parameter range <Start>, <End>
     pub fn trim_lin2d_real2_int(&mut self, L: &crate::gp::Lin2d, Start: f64, End: f64, Index: i32) {
-        unsafe {
-            crate::ffi::Hatch_Hatcher_trim_lin2d_real2_int(self as *mut Self, L, Start, End, Index)
+        {
+            unsafe {
+                crate::ffi::Hatch_Hatcher_trim_lin2d_real2_int(
+                    self as *mut Self,
+                    L,
+                    Start,
+                    End,
+                    Index,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -165,37 +200,50 @@ impl Hatcher {
     /// Trims the line at  intersection with  the oriented
     /// segment P1,P2.
     pub fn trim_pnt2d2_int(&mut self, P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d, Index: i32) {
-        unsafe { crate::ffi::Hatch_Hatcher_trim_pnt2d2_int(self as *mut Self, P1, P2, Index) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_trim_pnt2d2_int(self as *mut Self, P1, P2, Index) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:121 - `Hatch_Hatcher::NbIntervals()`
     /// Returns the total number  of intervals on  all the
     /// lines.
     pub fn nb_intervals(&self) -> i32 {
-        unsafe { crate::ffi::Hatch_Hatcher_nb_intervals(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_nb_intervals(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:124 - `Hatch_Hatcher::NbLines()`
     /// Returns the number of lines.
     pub fn nb_lines(&self) -> i32 {
-        unsafe { crate::ffi::Hatch_Hatcher_nb_lines(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_nb_lines(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:127 - `Hatch_Hatcher::Line()`
     /// Returns the line of index <I>.
     pub fn line(&self, I: i32) -> &crate::gp::Lin2d {
-        unsafe { &*(crate::ffi::Hatch_Hatcher_line(self as *const Self, I)) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_line(self as *const Self, I) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:130 - `Hatch_Hatcher::LineForm()`
     /// Returns  the type of the  line   of  index <I>.
     pub fn line_form(&self, I: i32) -> crate::hatch::LineForm {
-        unsafe {
-            crate::hatch::LineForm::try_from(crate::ffi::Hatch_Hatcher_line_form(
-                self as *const Self,
-                I,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_line_form(self as *const Self, I) };
+            crate::check_exception();
+            crate::hatch::LineForm::try_from(__result).unwrap()
         }
     }
 
@@ -203,55 +251,88 @@ impl Hatcher {
     /// Returns  True if the  line   of  index <I>  has  a
     /// constant X value.
     pub fn is_x_line(&self, I: i32) -> bool {
-        unsafe { crate::ffi::Hatch_Hatcher_is_x_line(self as *const Self, I) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_is_x_line(self as *const Self, I) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:138 - `Hatch_Hatcher::IsYLine()`
     /// Returns  True if the  line   of  index <I>  has  a
     /// constant Y value.
     pub fn is_y_line(&self, I: i32) -> bool {
-        unsafe { crate::ffi::Hatch_Hatcher_is_y_line(self as *const Self, I) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_is_y_line(self as *const Self, I) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:142 - `Hatch_Hatcher::Coordinate()`
     /// Returns the X or Y coordinate of the line of index
     /// <I> if it is a X or a Y line.
     pub fn coordinate(&self, I: i32) -> f64 {
-        unsafe { crate::ffi::Hatch_Hatcher_coordinate(self as *const Self, I) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_coordinate(self as *const Self, I) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:145 - `Hatch_Hatcher::NbIntervals()`
     /// Returns the number of intervals on line of index <I>.
     pub fn nb_intervals_int(&self, I: i32) -> i32 {
-        unsafe { crate::ffi::Hatch_Hatcher_nb_intervals_int(self as *const Self, I) }
+        {
+            let __result =
+                unsafe { crate::ffi::Hatch_Hatcher_nb_intervals_int(self as *const Self, I) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:149 - `Hatch_Hatcher::Start()`
     /// Returns the first   parameter of  interval <J>  on
     /// line  <I>.
     pub fn start(&self, I: i32, J: i32) -> f64 {
-        unsafe { crate::ffi::Hatch_Hatcher_start(self as *const Self, I, J) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_start(self as *const Self, I, J) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:153 - `Hatch_Hatcher::StartIndex()`
     /// Returns the first Index and Par2 of  interval <J>  on
     /// line  <I>.
     pub fn start_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64) {
-        unsafe { crate::ffi::Hatch_Hatcher_start_index(self as *const Self, I, J, Index, Par2) }
+        {
+            unsafe {
+                crate::ffi::Hatch_Hatcher_start_index(self as *const Self, I, J, Index, Par2)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:160 - `Hatch_Hatcher::End()`
     /// Returns the last   parameter of  interval <J>  on
     /// line  <I>.
     pub fn end(&self, I: i32, J: i32) -> f64 {
-        unsafe { crate::ffi::Hatch_Hatcher_end(self as *const Self, I, J) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Hatcher_end(self as *const Self, I, J) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:164 - `Hatch_Hatcher::EndIndex()`
     /// Returns the last Index and Par2 of  interval <J>  on
     /// line  <I>.
     pub fn end_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64) {
-        unsafe { crate::ffi::Hatch_Hatcher_end_index(self as *const Self, I, J, Index, Par2) }
+        {
+            unsafe { crate::ffi::Hatch_Hatcher_end_index(self as *const Self, I, J, Index, Par2) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -279,7 +360,11 @@ unsafe impl crate::CppDeletable for Line {
 impl Line {
     /// **Source:** `Hatch_Line.hxx`:41 - `Hatch_Line::Hatch_Line()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Hatch_Line_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Line_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Hatch_Line.hxx`:43 - `Hatch_Line::Hatch_Line()`
@@ -287,8 +372,10 @@ impl Line {
         L: &crate::gp::Lin2d,
         T: crate::hatch::LineForm,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Hatch_Line_ctor_lin2d_lineform(L, T.into()))
+        {
+            let __result = unsafe { crate::ffi::Hatch_Line_ctor_lin2d_lineform(L, T.into()) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -302,15 +389,18 @@ impl Line {
         Par2: f64,
         theToler: f64,
     ) {
-        unsafe {
-            crate::ffi::Hatch_Line_add_intersection(
-                self as *mut Self,
-                Par1,
-                Start,
-                Index,
-                Par2,
-                theToler,
-            )
+        {
+            unsafe {
+                crate::ffi::Hatch_Line_add_intersection(
+                    self as *mut Self,
+                    Par1,
+                    Start,
+                    Index,
+                    Par2,
+                    theToler,
+                )
+            };
+            crate::check_exception();
         }
     }
 }
@@ -336,7 +426,11 @@ unsafe impl crate::CppDeletable for Parameter {
 impl Parameter {
     /// **Source:** `Hatch_Parameter.hxx`:35 - `Hatch_Parameter::Hatch_Parameter()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Hatch_Parameter_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Hatch_Parameter_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Hatch_Parameter.hxx`:37 - `Hatch_Parameter::Hatch_Parameter()`
@@ -346,10 +440,12 @@ impl Parameter {
         Index: i32,
         Par2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Hatch_Parameter_ctor_real_bool_int_real(
-                Par1, Start, Index, Par2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Hatch_Parameter_ctor_real_bool_int_real(Par1, Start, Index, Par2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 

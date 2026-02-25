@@ -97,13 +97,23 @@ impl AppFunction {
     /// **Source:** `Blend_AppFunction.hxx`:50 - `Blend_AppFunction::NbVariables()`
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_AppFunction_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:53 - `Blend_AppFunction::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_AppFunction_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value()`
@@ -112,7 +122,11 @@ impl AppFunction {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_AppFunction_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe { crate::ffi::Blend_AppFunction_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
@@ -125,7 +139,12 @@ impl AppFunction {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_AppFunction_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:71 - `Blend_AppFunction::Values()`
@@ -139,7 +158,12 @@ impl AppFunction {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_AppFunction_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
@@ -147,7 +171,10 @@ impl AppFunction {
     /// This determines the plane in which the solution has
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
-        unsafe { crate::ffi::Blend_AppFunction_set_real(self as *mut Self, Param) }
+        {
+            unsafe { crate::ffi::Blend_AppFunction_set_real(self as *mut Self, Param) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:84 - `Blend_AppFunction::Set()`
@@ -156,7 +183,10 @@ impl AppFunction {
     /// This determines the derivatives in these values if the
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
-        unsafe { crate::ffi::Blend_AppFunction_set_real2(self as *mut Self, First, Last) }
+        {
+            unsafe { crate::ffi::Blend_AppFunction_set_real2(self as *mut Self, First, Last) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
@@ -164,12 +194,15 @@ impl AppFunction {
     /// for each of the 4 variables;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_AppFunction_get_tolerance_vector_real(
-                self as *const Self,
-                Tolerance,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_get_tolerance_vector_real(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -183,7 +216,12 @@ impl AppFunction {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe { crate::ffi::Blend_AppFunction_get_bounds(self as *const Self, InfBound, SupBound) }
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
@@ -192,52 +230,91 @@ impl AppFunction {
     /// The computation is made at the current value of
     /// the parameter on the guide line.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_AppFunction_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_is_solution(self as *mut Self, Sol, Tol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
     /// Returns   the    minimal  Distance  between   two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
-        unsafe { crate::ffi::Blend_AppFunction_get_minimal_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_get_minimal_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:110 - `Blend_AppFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_AppFunction_pnt1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_AppFunction_pnt1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:113 - `Blend_AppFunction::Pnt2()`
     /// Returns the point on the first support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_AppFunction_pnt2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_AppFunction_pnt2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::Blend_AppFunction_is_rational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_is_rational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
-        unsafe { crate::ffi::Blend_AppFunction_get_section_size(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_get_section_size(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_AppFunction_get_minimal_weight(self as *const Self, Weigths) }
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_get_minimal_weight(self as *const Self, Weigths)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Blend_AppFunction_nb_intervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_AppFunction_nb_intervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
@@ -249,7 +326,10 @@ impl AppFunction {
     /// raises
     /// OutOfRange from Standard
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe { crate::ffi::Blend_AppFunction_intervals(self as *const Self, T, S.into()) }
+        {
+            unsafe { crate::ffi::Blend_AppFunction_intervals(self as *const Self, T, S.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:138 - `Blend_AppFunction::GetShape()`
@@ -260,14 +340,17 @@ impl AppFunction {
         Degree: &mut i32,
         NbPoles2d: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::Blend_AppFunction_get_shape(
-                self as *mut Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_get_shape(
+                    self as *mut Self,
+                    NbPoles,
+                    NbKnots,
+                    Degree,
+                    NbPoles2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -285,26 +368,35 @@ impl AppFunction {
         Tol3d: &mut crate::ffi::math_Vector,
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_AppFunction_get_tolerance_real3_vector2(
-                self as *const Self,
-                BoundTol,
-                SurfTol,
-                AngleTol,
-                Tol3d,
-                Tol1D,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_get_tolerance_real3_vector2(
+                    self as *const Self,
+                    BoundTol,
+                    SurfTol,
+                    AngleTol,
+                    Tol3d,
+                    Tol1D,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_AppFunction_knots(self as *mut Self, TKnots) }
+        {
+            unsafe { crate::ffi::Blend_AppFunction_knots(self as *mut Self, TKnots) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
-        unsafe { crate::ffi::Blend_AppFunction_mults(self as *mut Self, TMults) }
+        {
+            unsafe { crate::ffi::Blend_AppFunction_mults(self as *mut Self, TMults) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:161 - `Blend_AppFunction::Section()`
@@ -321,8 +413,12 @@ impl AppFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -334,14 +430,17 @@ impl AppFunction {
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        unsafe {
-            crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+                    self as *mut Self,
+                    P,
+                    Poles,
+                    Poles2d,
+                    Weigths,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -362,15 +461,22 @@ impl AppFunction {
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
         D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
-        unsafe {
-            crate::ffi::Blend_AppFunction_resolution(self as *const Self, IC2d, Tol, TolU, TolV)
+        {
+            unsafe {
+                crate::ffi::Blend_AppFunction_resolution(self as *const Self, IC2d, Tol, TolU, TolV)
+            };
+            crate::check_exception();
         }
     }
 
@@ -378,17 +484,26 @@ impl AppFunction {
     /// Returns  the parameter  of  the point  P. Used  to
     /// impose the parameters in the approximation.
     pub fn parameter(&self, P: &Point) -> f64 {
-        unsafe { crate::ffi::Blend_AppFunction_parameter(self as *const Self, P) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_parameter(self as *const Self, P) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -396,26 +511,46 @@ impl AppFunction {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_AppFunction_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Blend_AppFunction_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_AppFunction_as_math_FunctionSet_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_AppFunction_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_AppFunction_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -442,13 +577,23 @@ impl CSFunction {
     /// **Source:** `Blend_CSFunction.hxx`:52 - `Blend_CSFunction::NbVariables()`
     /// Returns 3 (default value). Can be redefined.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_CSFunction_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:55 - `Blend_CSFunction::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_CSFunction_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:61 - `Blend_CSFunction::Value()`
@@ -457,7 +602,11 @@ impl CSFunction {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_CSFunction_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:68 - `Blend_CSFunction::Derivatives()`
@@ -470,7 +619,12 @@ impl CSFunction {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_CSFunction_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:75 - `Blend_CSFunction::Values()`
@@ -484,7 +638,12 @@ impl CSFunction {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_CSFunction_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:82 - `Blend_CSFunction::Set()`
@@ -492,7 +651,10 @@ impl CSFunction {
     /// This determines the plane in which the solution has
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
-        unsafe { crate::ffi::Blend_CSFunction_set_real(self as *mut Self, Param) }
+        {
+            unsafe { crate::ffi::Blend_CSFunction_set_real(self as *mut Self, Param) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:88 - `Blend_CSFunction::Set()`
@@ -501,7 +663,10 @@ impl CSFunction {
     /// This determines the derivatives in these values if the
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
-        unsafe { crate::ffi::Blend_CSFunction_set_real2(self as *mut Self, First, Last) }
+        {
+            unsafe { crate::ffi::Blend_CSFunction_set_real2(self as *mut Self, First, Last) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:94 - `Blend_CSFunction::GetTolerance()`
@@ -509,12 +674,15 @@ impl CSFunction {
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_get_tolerance_vector_real(
-                self as *const Self,
-                Tolerance,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_get_tolerance_vector_real(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -528,7 +696,12 @@ impl CSFunction {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe { crate::ffi::Blend_CSFunction_get_bounds(self as *const Self, InfBound, SupBound) }
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::IsSolution()`
@@ -537,76 +710,130 @@ impl CSFunction {
     /// The computation is made at the current value of
     /// the parameter on the guide line.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_CSFunction_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_is_solution(self as *mut Self, Sol, Tol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::GetMinimalDistance()`
     /// Returns   the    minimal  Distance  between   two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
-        unsafe { crate::ffi::Blend_CSFunction_get_minimal_distance(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_get_minimal_distance(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_CSFunction_pnt1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_pnt1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2()`
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_CSFunction_pnt2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_pnt2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:123 - `Blend_CSFunction::PointOnS()`
     /// Returns the point on the surface.
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_CSFunction_point_on_s(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_point_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:126 - `Blend_CSFunction::PointOnC()`
     /// Returns the point on the curve.
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_CSFunction_point_on_c(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_point_on_c(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:129 - `Blend_CSFunction::Pnt2d()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Blend_CSFunction_pnt2d(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_pnt2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:132 - `Blend_CSFunction::ParameterOnC()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_c(&self) -> f64 {
-        unsafe { crate::ffi::Blend_CSFunction_parameter_on_c(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_parameter_on_c(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:136 - `Blend_CSFunction::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS and/or PointOnC.
     pub fn is_tangency_point(&self) -> bool {
-        unsafe { crate::ffi::Blend_CSFunction_is_tangency_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_is_tangency_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:139 - `Blend_CSFunction::TangentOnS()`
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_CSFunction_tangent_on_s(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_tangent_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:143 - `Blend_CSFunction::Tangent2d()`
     /// Returns the tangent vector at PointOnS, in the
     /// parametric space of the first surface.
     pub fn tangent2d(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_CSFunction_tangent2d(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_CSFunction_tangent2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:146 - `Blend_CSFunction::TangentOnC()`
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_c(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_CSFunction_tangent_on_c(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_tangent_on_c(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:152 - `Blend_CSFunction::Tangent()`
@@ -615,7 +842,10 @@ impl CSFunction {
     /// returns the normal (of the surfaces) at
     /// these points.
     pub fn tangent(&self, U: f64, V: f64, TgS: &mut crate::gp::Vec, NormS: &mut crate::gp::Vec) {
-        unsafe { crate::ffi::Blend_CSFunction_tangent(self as *const Self, U, V, TgS, NormS) }
+        {
+            unsafe { crate::ffi::Blend_CSFunction_tangent(self as *const Self, U, V, TgS, NormS) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:157 - `Blend_CSFunction::GetShape()`
@@ -626,14 +856,17 @@ impl CSFunction {
         Degree: &mut i32,
         NbPoles2d: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_get_shape(
-                self as *mut Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_get_shape(
+                    self as *mut Self,
+                    NbPoles,
+                    NbKnots,
+                    Degree,
+                    NbPoles2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -651,26 +884,35 @@ impl CSFunction {
         Tol3d: &mut crate::ffi::math_Vector,
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_get_tolerance_real3_vector2(
-                self as *const Self,
-                BoundTol,
-                SurfTol,
-                AngleTol,
-                Tol3d,
-                Tol1D,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_get_tolerance_real3_vector2(
+                    self as *const Self,
+                    BoundTol,
+                    SurfTol,
+                    AngleTol,
+                    Tol3d,
+                    Tol1D,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:173 - `Blend_CSFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_CSFunction_knots(self as *mut Self, TKnots) }
+        {
+            unsafe { crate::ffi::Blend_CSFunction_knots(self as *mut Self, TKnots) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:175 - `Blend_CSFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
-        unsafe { crate::ffi::Blend_CSFunction_mults(self as *mut Self, TMults) }
+        {
+            unsafe { crate::ffi::Blend_CSFunction_mults(self as *mut Self, TMults) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:180 - `Blend_CSFunction::Section()`
@@ -687,8 +929,12 @@ impl CSFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -700,14 +946,17 @@ impl CSFunction {
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+                    self as *mut Self,
+                    P,
+                    Poles,
+                    Poles2d,
+                    Weigths,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -728,27 +977,45 @@ impl CSFunction {
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
         D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        unsafe { &*(crate::ffi::Blend_CSFunction_as_Blend_AppFunction(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_as_Blend_AppFunction(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        unsafe { &mut *(crate::ffi::Blend_CSFunction_as_Blend_AppFunction_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_as_Blend_AppFunction_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -756,73 +1023,126 @@ impl CSFunction {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_CSFunction_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Blend_CSFunction_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_as_math_FunctionSet_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::Blend_CSFunction_inherited_IsRational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_inherited_IsRational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
-        unsafe { crate::ffi::Blend_CSFunction_inherited_GetSectionSize(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CSFunction_inherited_GetSectionSize(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_inherited_GetMinimalWeight(self as *const Self, Weigths)
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_inherited_GetMinimalWeight(
+                    self as *const Self,
+                    Weigths,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Blend_CSFunction_inherited_NbIntervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CSFunction_inherited_NbIntervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_inherited_Intervals(self as *const Self, T, S.into())
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_inherited_Intervals(self as *const Self, T, S.into())
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
-        unsafe {
-            crate::ffi::Blend_CSFunction_inherited_Resolution(
-                self as *const Self,
-                IC2d,
-                Tol,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_CSFunction_inherited_Resolution(
+                    self as *const Self,
+                    IC2d,
+                    Tol,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
-        unsafe { crate::ffi::Blend_CSFunction_inherited_Parameter(self as *const Self, P) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_inherited_Parameter(self as *const Self, P) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_CSFunction_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CSFunction_inherited_GetStateNumber(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -852,13 +1172,23 @@ impl CurvPointFuncInv {
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:45 - `Blend_CurvPointFuncInv::NbVariables()`
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:48 - `Blend_CurvPointFuncInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:54 - `Blend_CurvPointFuncInv::Value()`
@@ -867,7 +1197,12 @@ impl CurvPointFuncInv {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CurvPointFuncInv_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:60 - `Blend_CurvPointFuncInv::Derivatives()`
@@ -880,7 +1215,12 @@ impl CurvPointFuncInv {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CurvPointFuncInv_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:66 - `Blend_CurvPointFuncInv::Values()`
@@ -894,13 +1234,21 @@ impl CurvPointFuncInv {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_CurvPointFuncInv_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:71 - `Blend_CurvPointFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_set(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Blend_CurvPointFuncInv_set(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:76 - `Blend_CurvPointFuncInv::GetTolerance()`
@@ -908,8 +1256,15 @@ impl CurvPointFuncInv {
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        {
+            unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_get_tolerance(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -923,8 +1278,15 @@ impl CurvPointFuncInv {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+        {
+            unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_get_bounds(
+                    self as *const Self,
+                    InfBound,
+                    SupBound,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -932,17 +1294,27 @@ impl CurvPointFuncInv {
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_is_solution(self as *mut Self, Sol, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -950,28 +1322,48 @@ impl CurvPointFuncInv {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_CurvPointFuncInv_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_CurvPointFuncInv_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1002,13 +1394,21 @@ impl FuncInv {
     /// **Source:** `Blend_FuncInv.hxx`:48 - `Blend_FuncInv::NbVariables()`
     /// Returns 4.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_FuncInv_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_FuncInv_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:51 - `Blend_FuncInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_FuncInv_nb_equations(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_FuncInv_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:57 - `Blend_FuncInv::Value()`
@@ -1017,7 +1417,11 @@ impl FuncInv {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_FuncInv_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe { crate::ffi::Blend_FuncInv_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:63 - `Blend_FuncInv::Derivatives()`
@@ -1030,7 +1434,12 @@ impl FuncInv {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_FuncInv_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_FuncInv_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:69 - `Blend_FuncInv::Values()`
@@ -1044,7 +1453,11 @@ impl FuncInv {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_FuncInv_values(self as *mut Self, X, F, D) }
+        {
+            let __result = unsafe { crate::ffi::Blend_FuncInv_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:77 - `Blend_FuncInv::Set()`
@@ -1053,7 +1466,10 @@ impl FuncInv {
     /// the curve will be on the first surface, otherwise the
     /// curve is on the second one.
     pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi::HandleAdaptor2dCurve2d) {
-        unsafe { crate::ffi::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf) }
+        {
+            unsafe { crate::ffi::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:83 - `Blend_FuncInv::GetTolerance()`
@@ -1061,7 +1477,10 @@ impl FuncInv {
     /// for each of the 4 variables;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe { crate::ffi::Blend_FuncInv_get_tolerance(self as *const Self, Tolerance, Tol) }
+        {
+            unsafe { crate::ffi::Blend_FuncInv_get_tolerance(self as *const Self, Tolerance, Tol) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:90 - `Blend_FuncInv::GetBounds()`
@@ -1074,22 +1493,36 @@ impl FuncInv {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe { crate::ffi::Blend_FuncInv_get_bounds(self as *const Self, InfBound, SupBound) }
+        {
+            unsafe {
+                crate::ffi::Blend_FuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_FuncInv_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_FuncInv_is_solution(self as *mut Self, Sol, Tol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -1097,26 +1530,43 @@ impl FuncInv {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_FuncInv_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_FuncInv_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Blend_FuncInv_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_FuncInv_as_math_FunctionSet_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_FuncInv_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_FuncInv_inherited_GetStateNumber(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1143,19 +1593,31 @@ impl Function {
     /// **Source:** `Blend_Function.hxx`:48 - `Blend_Function::NbVariables()`
     /// Returns 4.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_Function_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:51 - `Blend_Function::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Function_pnt1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_pnt1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:54 - `Blend_Function::Pnt2()`
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Function_pnt2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_pnt2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:59 - `Blend_Function::PointOnS1()`
@@ -1163,7 +1625,11 @@ impl Function {
     /// Sol(1),Sol(2) (Sol is the vector used in the call of
     /// IsSolution.
     pub fn point_on_s1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Function_point_on_s1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_point_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:64 - `Blend_Function::PointOnS2()`
@@ -1171,40 +1637,67 @@ impl Function {
     /// Sol(3),Sol(4) (Sol is the vector used in the call of
     /// IsSolution.
     pub fn point_on_s2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Function_point_on_s2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_point_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:68 - `Blend_Function::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS1 and/or PointOnS2.
     pub fn is_tangency_point(&self) -> bool {
-        unsafe { crate::ffi::Blend_Function_is_tangency_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_is_tangency_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:71 - `Blend_Function::TangentOnS1()`
     /// Returns the tangent vector at PointOnS1, in 3d space.
     pub fn tangent_on_s1(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Function_tangent_on_s1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_tangent_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:75 - `Blend_Function::Tangent2dOnS1()`
     /// Returns the tangent vector at PointOnS1, in the
     /// parametric space of the first surface.
     pub fn tangent2d_on_s1(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_Function_tangent2d_on_s1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_tangent2d_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:78 - `Blend_Function::TangentOnS2()`
     /// Returns the tangent vector at PointOnS2, in 3d space.
     pub fn tangent_on_s2(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Function_tangent_on_s2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_tangent_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:82 - `Blend_Function::Tangent2dOnS2()`
     /// Returns the tangent vector at PointOnS2, in the
     /// parametric space of the second surface.
     pub fn tangent2d_on_s2(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_Function_tangent2d_on_s2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_tangent2d_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:88 - `Blend_Function::Tangent()`
@@ -1223,29 +1716,40 @@ impl Function {
         NormFirst: &mut crate::gp::Vec,
         NormLast: &mut crate::gp::Vec,
     ) {
-        unsafe {
-            crate::ffi::Blend_Function_tangent(
-                self as *const Self,
-                U1,
-                V1,
-                U2,
-                V2,
-                TgFirst,
-                TgLast,
-                NormFirst,
-                NormLast,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Function_tangent(
+                    self as *const Self,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    TgFirst,
+                    TgLast,
+                    NormFirst,
+                    NormLast,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Blend_Function.hxx`:97 - `Blend_Function::TwistOnS1()`
     pub fn twist_on_s1(&self) -> bool {
-        unsafe { crate::ffi::Blend_Function_twist_on_s1(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_twist_on_s1(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:99 - `Blend_Function::TwistOnS2()`
     pub fn twist_on_s2(&self) -> bool {
-        unsafe { crate::ffi::Blend_Function_twist_on_s2(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Function_twist_on_s2(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:101 - `Blend_Function::Section()`
@@ -1256,14 +1760,17 @@ impl Function {
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        unsafe {
-            crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+                    self as *mut Self,
+                    P,
+                    Poles,
+                    Poles2d,
+                    Weigths,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1284,27 +1791,45 @@ impl Function {
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
         D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        unsafe { &*(crate::ffi::Blend_Function_as_Blend_AppFunction(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_as_Blend_AppFunction(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        unsafe { &mut *(crate::ffi::Blend_Function_as_Blend_AppFunction_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_as_Blend_AppFunction_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives(self as *const Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -1312,31 +1837,53 @@ impl Function {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_Function_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_as_math_FunctionSet(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::Blend_Function_as_math_FunctionSet_mut(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_as_math_FunctionSet_mut(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *__result }
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:53 - `Blend_AppFunction::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_Function_inherited_NbEquations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_NbEquations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value()`
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_Function_inherited_Value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_Value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
@@ -1345,7 +1892,13 @@ impl Function {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_Function_inherited_Derivatives(self as *mut Self, X, D) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_inherited_Derivatives(self as *mut Self, X, D)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:71 - `Blend_AppFunction::Values()`
@@ -1355,18 +1908,33 @@ impl Function {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_Function_inherited_Values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_Values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
     pub fn set(&mut self, Param: f64) {
-        unsafe { crate::ffi::Blend_Function_inherited_Set(self as *mut Self, Param) }
+        {
+            unsafe { crate::ffi::Blend_Function_inherited_Set(self as *mut Self, Param) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_Function_inherited_GetTolerance(self as *const Self, Tolerance, Tol)
+        {
+            unsafe {
+                crate::ffi::Blend_Function_inherited_GetTolerance(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1376,46 +1944,89 @@ impl Function {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_Function_inherited_GetBounds(self as *const Self, InfBound, SupBound)
+        {
+            unsafe {
+                crate::ffi::Blend_Function_inherited_GetBounds(
+                    self as *const Self,
+                    InfBound,
+                    SupBound,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_Function_inherited_IsSolution(self as *mut Self, Sol, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_inherited_IsSolution(self as *mut Self, Sol, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
     pub fn get_minimal_distance(&self) -> f64 {
-        unsafe { crate::ffi::Blend_Function_inherited_GetMinimalDistance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_inherited_GetMinimalDistance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::Blend_Function_inherited_IsRational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_IsRational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
-        unsafe { crate::ffi::Blend_Function_inherited_GetSectionSize(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_GetSectionSize(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::Blend_Function_inherited_GetMinimalWeight(self as *const Self, Weigths)
+        {
+            unsafe {
+                crate::ffi::Blend_Function_inherited_GetMinimalWeight(self as *const Self, Weigths)
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Blend_Function_inherited_NbIntervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Function_inherited_NbIntervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe { crate::ffi::Blend_Function_inherited_Intervals(self as *const Self, T, S.into()) }
+        {
+            unsafe {
+                crate::ffi::Blend_Function_inherited_Intervals(self as *const Self, T, S.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:138 - `Blend_AppFunction::GetShape()`
@@ -1426,48 +2037,70 @@ impl Function {
         Degree: &mut i32,
         NbPoles2d: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::Blend_Function_inherited_GetShape(
-                self as *mut Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Function_inherited_GetShape(
+                    self as *mut Self,
+                    NbPoles,
+                    NbKnots,
+                    Degree,
+                    NbPoles2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_Function_inherited_Knots(self as *mut Self, TKnots) }
+        {
+            unsafe { crate::ffi::Blend_Function_inherited_Knots(self as *mut Self, TKnots) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
-        unsafe { crate::ffi::Blend_Function_inherited_Mults(self as *mut Self, TMults) }
+        {
+            unsafe { crate::ffi::Blend_Function_inherited_Mults(self as *mut Self, TMults) };
+            crate::check_exception();
+        }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
-        unsafe {
-            crate::ffi::Blend_Function_inherited_Resolution(
-                self as *const Self,
-                IC2d,
-                Tol,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Function_inherited_Resolution(
+                    self as *const Self,
+                    IC2d,
+                    Tol,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
-        unsafe { crate::ffi::Blend_Function_inherited_Parameter(self as *const Self, P) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_Parameter(self as *const Self, P) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_Function_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Function_inherited_GetStateNumber(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -1487,7 +2120,11 @@ unsafe impl crate::CppDeletable for Point {
 impl Point {
     /// **Source:** `Blend_Point.hxx`:35 - `Blend_Point::Blend_Point()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:38 - `Blend_Point::Blend_Point()`
@@ -1505,10 +2142,14 @@ impl Point {
         Tg12d: &crate::gp::Vec2d,
         Tg22d: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real5_vec2_vec2d2(
-                Pt1, Pt2, Param, U1, V1, U2, V2, Tg1, Tg2, Tg12d, Tg22d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Point_ctor_pnt2_real5_vec2_vec2d2(
+                    Pt1, Pt2, Param, U1, V1, U2, V2, Tg1, Tg2, Tg12d, Tg22d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1523,10 +2164,11 @@ impl Point {
         U2: f64,
         V2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real5(
-                Pt1, Pt2, Param, U1, V1, U2, V2,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Point_ctor_pnt2_real5(Pt1, Pt2, Param, U1, V1, U2, V2) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1543,10 +2185,14 @@ impl Point {
         Tgc: &crate::gp::Vec,
         Tg2d: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real4_vec2_vec2d(
-                Pts, Ptc, Param, U, V, W, Tgs, Tgc, Tg2d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Point_ctor_pnt2_real4_vec2_vec2d(
+                    Pts, Ptc, Param, U, V, W, Tgs, Tgc, Tg2d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1560,10 +2206,11 @@ impl Point {
         V: f64,
         W: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real4(
-                Pts, Ptc, Param, U, V, W,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Point_ctor_pnt2_real4(Pts, Ptc, Param, U, V, W) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1584,10 +2231,14 @@ impl Point {
         Tg12d: &crate::gp::Vec2d,
         Tg22d: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real6_vec2_vec2d2(
-                Pt1, Pt2, Param, U1, V1, U2, V2, PC, Tg1, Tg2, Tg12d, Tg22d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Point_ctor_pnt2_real6_vec2_vec2d2(
+                    Pt1, Pt2, Param, U1, V1, U2, V2, PC, Tg1, Tg2, Tg12d, Tg22d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1604,10 +2255,12 @@ impl Point {
         V2: f64,
         PC: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real6(
-                Pt1, Pt2, Param, U1, V1, U2, V2, PC,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Point_ctor_pnt2_real6(Pt1, Pt2, Param, U1, V1, U2, V2, PC)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1628,10 +2281,14 @@ impl Point {
         Tg12d: &crate::gp::Vec2d,
         Tg22d: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real7_vec2_vec2d2(
-                Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2, Tg1, Tg2, Tg12d, Tg22d,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Point_ctor_pnt2_real7_vec2_vec2d2(
+                    Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2, Tg1, Tg2, Tg12d, Tg22d,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1648,10 +2305,12 @@ impl Point {
         PC1: f64,
         PC2: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_ctor_pnt2_real7(
-                Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_Point_ctor_pnt2_real7(Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1671,21 +2330,24 @@ impl Point {
         Tg12d: &crate::gp::Vec2d,
         Tg22d: &crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real5_vec2_vec2d2(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                U1,
-                V1,
-                U2,
-                V2,
-                Tg1,
-                Tg2,
-                Tg12d,
-                Tg22d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real5_vec2_vec2d2(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    Tg1,
+                    Tg2,
+                    Tg12d,
+                    Tg22d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1701,17 +2363,20 @@ impl Point {
         U2: f64,
         V2: f64,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real5(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                U1,
-                V1,
-                U2,
-                V2,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real5(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1730,19 +2395,22 @@ impl Point {
         Tgc: &crate::gp::Vec,
         Tg2d: &crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real4_vec2_vec2d(
-                self as *mut Self,
-                Pts,
-                Ptc,
-                Param,
-                U,
-                V,
-                W,
-                Tgs,
-                Tgc,
-                Tg2d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real4_vec2_vec2d(
+                    self as *mut Self,
+                    Pts,
+                    Ptc,
+                    Param,
+                    U,
+                    V,
+                    W,
+                    Tgs,
+                    Tgc,
+                    Tg2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1758,16 +2426,19 @@ impl Point {
         V: f64,
         W: f64,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real4(
-                self as *mut Self,
-                Pts,
-                Ptc,
-                Param,
-                U,
-                V,
-                W,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real4(
+                    self as *mut Self,
+                    Pts,
+                    Ptc,
+                    Param,
+                    U,
+                    V,
+                    W,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1789,22 +2460,25 @@ impl Point {
         Tg12d: &crate::gp::Vec2d,
         Tg22d: &crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real6_vec2_vec2d2(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                U1,
-                V1,
-                U2,
-                V2,
-                PC,
-                Tg1,
-                Tg2,
-                Tg12d,
-                Tg22d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real6_vec2_vec2d2(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    PC,
+                    Tg1,
+                    Tg2,
+                    Tg12d,
+                    Tg22d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1822,18 +2496,21 @@ impl Point {
         V2: f64,
         PC: f64,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real6(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                U1,
-                V1,
-                U2,
-                V2,
-                PC,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real6(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    PC,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1855,23 +2532,26 @@ impl Point {
         Tg12d: &crate::gp::Vec2d,
         Tg22d: &crate::gp::Vec2d,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real7_vec2_vec2d2(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                U1,
-                V1,
-                U2,
-                V2,
-                PC1,
-                PC2,
-                Tg1,
-                Tg2,
-                Tg12d,
-                Tg22d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real7_vec2_vec2d2(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    PC1,
+                    PC2,
+                    Tg1,
+                    Tg2,
+                    Tg12d,
+                    Tg22d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1889,19 +2569,22 @@ impl Point {
         PC1: f64,
         PC2: f64,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real7(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                U1,
-                V1,
-                U2,
-                V2,
-                PC1,
-                PC2,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real7(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    U1,
+                    V1,
+                    U2,
+                    V2,
+                    PC1,
+                    PC2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1915,143 +2598,235 @@ impl Point {
         PC1: f64,
         PC2: f64,
     ) {
-        unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real3(
-                self as *mut Self,
-                Pt1,
-                Pt2,
-                Param,
-                PC1,
-                PC2,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_Point_set_value_pnt2_real3(
+                    self as *mut Self,
+                    Pt1,
+                    Pt2,
+                    Param,
+                    PC1,
+                    PC2,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:233 - `Blend_Point::SetParameter()`
     /// Changes parameter on existing point
     pub fn set_parameter(&mut self, Param: f64) {
-        unsafe { crate::ffi::Blend_Point_set_parameter(self as *mut Self, Param) }
+        {
+            unsafe { crate::ffi::Blend_Point_set_parameter(self as *mut Self, Param) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:235 - `Blend_Point::Parameter()`
     pub fn parameter(&self) -> f64 {
-        unsafe { crate::ffi::Blend_Point_parameter(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_parameter(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:239 - `Blend_Point::IsTangencyPoint()`
     /// Returns Standard_True if it was not possible to compute
     /// the tangent vectors at PointOnS1 and/or PointOnS2.
     pub fn is_tangency_point(&self) -> bool {
-        unsafe { crate::ffi::Blend_Point_is_tangency_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_Point_is_tangency_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:241 - `Blend_Point::PointOnS1()`
     pub fn point_on_s1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Point_point_on_s1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_point_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:243 - `Blend_Point::PointOnS2()`
     pub fn point_on_s2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Point_point_on_s2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_point_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:245 - `Blend_Point::ParametersOnS1()`
     pub fn parameters_on_s1(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::Blend_Point_parameters_on_s1(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::Blend_Point_parameters_on_s1(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:247 - `Blend_Point::ParametersOnS2()`
     pub fn parameters_on_s2(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::Blend_Point_parameters_on_s2(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::Blend_Point_parameters_on_s2(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:249 - `Blend_Point::TangentOnS1()`
     pub fn tangent_on_s1(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Point_tangent_on_s1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:251 - `Blend_Point::TangentOnS2()`
     pub fn tangent_on_s2(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Point_tangent_on_s2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:253 - `Blend_Point::Tangent2dOnS1()`
     pub fn tangent2d_on_s1(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_tangent2d_on_s1(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent2d_on_s1(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:255 - `Blend_Point::Tangent2dOnS2()`
     pub fn tangent2d_on_s2(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_tangent2d_on_s2(self as *const Self))
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent2d_on_s2(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:257 - `Blend_Point::PointOnS()`
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Point_point_on_s(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_point_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:259 - `Blend_Point::PointOnC()`
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Point_point_on_c(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_point_on_c(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:261 - `Blend_Point::ParametersOnS()`
     pub fn parameters_on_s(&self, U: &mut f64, V: &mut f64) {
-        unsafe { crate::ffi::Blend_Point_parameters_on_s(self as *const Self, U, V) }
+        {
+            unsafe { crate::ffi::Blend_Point_parameters_on_s(self as *const Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:263 - `Blend_Point::ParameterOnC()`
     pub fn parameter_on_c(&self) -> f64 {
-        unsafe { crate::ffi::Blend_Point_parameter_on_c(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_parameter_on_c(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:265 - `Blend_Point::TangentOnS()`
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Point_tangent_on_s(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:267 - `Blend_Point::TangentOnC()`
     pub fn tangent_on_c(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Point_tangent_on_c(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent_on_c(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:269 - `Blend_Point::Tangent2d()`
     pub fn tangent2d(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Blend_Point_tangent2d(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent2d(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:271 - `Blend_Point::PointOnC1()`
     pub fn point_on_c1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Point_point_on_c1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_point_on_c1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:273 - `Blend_Point::PointOnC2()`
     pub fn point_on_c2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_Point_point_on_c2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_point_on_c2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:275 - `Blend_Point::ParameterOnC1()`
     pub fn parameter_on_c1(&self) -> f64 {
-        unsafe { crate::ffi::Blend_Point_parameter_on_c1(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_parameter_on_c1(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:277 - `Blend_Point::ParameterOnC2()`
     pub fn parameter_on_c2(&self) -> f64 {
-        unsafe { crate::ffi::Blend_Point_parameter_on_c2(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_parameter_on_c2(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:279 - `Blend_Point::TangentOnC1()`
     pub fn tangent_on_c1(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Point_tangent_on_c1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent_on_c1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:281 - `Blend_Point::TangentOnC2()`
     pub fn tangent_on_c2(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_Point_tangent_on_c2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_Point_tangent_on_c2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -2079,13 +2854,23 @@ impl RstRstFunction {
     /// **Source:** `Blend_RstRstFunction.hxx`:52 - `Blend_RstRstFunction::NbVariables()`
     /// Returns 2 (default value). Can be redefined.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_RstRstFunction_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:55 - `Blend_RstRstFunction::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_RstRstFunction_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:61 - `Blend_RstRstFunction::Value()`
@@ -2094,7 +2879,12 @@ impl RstRstFunction {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_RstRstFunction_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:67 - `Blend_RstRstFunction::Derivatives()`
@@ -2107,7 +2897,12 @@ impl RstRstFunction {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_RstRstFunction_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:73 - `Blend_RstRstFunction::Values()`
@@ -2121,7 +2916,12 @@ impl RstRstFunction {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_RstRstFunction_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:80 - `Blend_RstRstFunction::Set()`
@@ -2129,7 +2929,10 @@ impl RstRstFunction {
     /// This determines the plane in which the solution has
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
-        unsafe { crate::ffi::Blend_RstRstFunction_set_real(self as *mut Self, Param) }
+        {
+            unsafe { crate::ffi::Blend_RstRstFunction_set_real(self as *mut Self, Param) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:86 - `Blend_RstRstFunction::Set()`
@@ -2138,7 +2941,10 @@ impl RstRstFunction {
     /// This determines the derivatives in these values if the
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
-        unsafe { crate::ffi::Blend_RstRstFunction_set_real2(self as *mut Self, First, Last) }
+        {
+            unsafe { crate::ffi::Blend_RstRstFunction_set_real2(self as *mut Self, First, Last) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:91 - `Blend_RstRstFunction::GetTolerance()`
@@ -2146,12 +2952,15 @@ impl RstRstFunction {
     /// for each variable;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_get_tolerance_vector_real(
-                self as *const Self,
-                Tolerance,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_get_tolerance_vector_real(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2165,8 +2974,11 @@ impl RstRstFunction {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2176,96 +2988,171 @@ impl RstRstFunction {
     /// The computation is made at the current value of
     /// the parameter on the guide line.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_RstRstFunction_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_is_solution(self as *mut Self, Sol, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:109 - `Blend_RstRstFunction::GetMinimalDistance()`
     /// Returns   the    minimal  Distance  between   two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
-        unsafe { crate::ffi::Blend_RstRstFunction_get_minimal_distance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_get_minimal_distance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_pnt1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_RstRstFunction_pnt1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_pnt2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_RstRstFunction_pnt2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:118 - `Blend_RstRstFunction::PointOnRst1()`
     /// Returns the point on the surface.
     pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_point_on_rst1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_point_on_rst1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:121 - `Blend_RstRstFunction::PointOnRst2()`
     /// Returns the point on the curve.
     pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_point_on_rst2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_point_on_rst2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:124 - `Blend_RstRstFunction::Pnt2dOnRst1()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_pnt2d_on_rst1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_pnt2d_on_rst1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:128 - `Blend_RstRstFunction::Pnt2dOnRst2()`
     /// Returns  U,V coordinates of the point  on the curve on
     /// surface.
     pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_pnt2d_on_rst2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_pnt2d_on_rst2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:131 - `Blend_RstRstFunction::ParameterOnRst1()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst1(&self) -> f64 {
-        unsafe { crate::ffi::Blend_RstRstFunction_parameter_on_rst1(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_parameter_on_rst1(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:134 - `Blend_RstRstFunction::ParameterOnRst2()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst2(&self) -> f64 {
-        unsafe { crate::ffi::Blend_RstRstFunction_parameter_on_rst2(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_parameter_on_rst2(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:138 - `Blend_RstRstFunction::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS and/or PointOnRst.
     pub fn is_tangency_point(&self) -> bool {
-        unsafe { crate::ffi::Blend_RstRstFunction_is_tangency_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_is_tangency_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:141 - `Blend_RstRstFunction::TangentOnRst1()`
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_tangent_on_rst1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_tangent_on_rst1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:145 - `Blend_RstRstFunction::Tangent2dOnRst1()`
     /// Returns the tangent vector at PointOnS, in the
     /// parametric space of the first surface.
     pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_tangent2d_on_rst1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_tangent2d_on_rst1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:148 - `Blend_RstRstFunction::TangentOnRst2()`
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_tangent_on_rst2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_tangent_on_rst2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:152 - `Blend_RstRstFunction::Tangent2dOnRst2()`
     /// Returns the tangent vector at PointOnRst, in the
     /// parametric space of the second surface.
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_tangent2d_on_rst2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_tangent2d_on_rst2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:158 - `Blend_RstRstFunction::Decroch()`
@@ -2281,43 +3168,67 @@ impl RstRstFunction {
         NRst2: &mut crate::gp::Vec,
         TgRst2: &mut crate::gp::Vec,
     ) -> crate::blend::DecrochStatus {
-        unsafe {
-            crate::blend::DecrochStatus::try_from(crate::ffi::Blend_RstRstFunction_decroch(
-                self as *const Self,
-                Sol,
-                NRst1,
-                TgRst1,
-                NRst2,
-                TgRst2,
-            ))
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_decroch(
+                    self as *const Self,
+                    Sol,
+                    NRst1,
+                    TgRst1,
+                    NRst2,
+                    TgRst2,
+                )
+            };
+            crate::check_exception();
+            crate::blend::DecrochStatus::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:165 - `Blend_RstRstFunction::IsRational()`
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::Blend_RstRstFunction_is_rational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_is_rational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:168 - `Blend_RstRstFunction::GetSectionSize()`
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
-        unsafe { crate::ffi::Blend_RstRstFunction_get_section_size(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_RstRstFunction_get_section_size(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:172 - `Blend_RstRstFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_RstRstFunction_get_minimal_weight(self as *const Self, Weigths) }
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_get_minimal_weight(self as *const Self, Weigths)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:176 - `Blend_RstRstFunction::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Blend_RstRstFunction_nb_intervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_nb_intervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:183 - `Blend_RstRstFunction::Intervals()`
@@ -2327,7 +3238,10 @@ impl RstRstFunction {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe { crate::ffi::Blend_RstRstFunction_intervals(self as *const Self, T, S.into()) }
+        {
+            unsafe { crate::ffi::Blend_RstRstFunction_intervals(self as *const Self, T, S.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:185 - `Blend_RstRstFunction::GetShape()`
@@ -2338,14 +3252,17 @@ impl RstRstFunction {
         Degree: &mut i32,
         NbPoles2d: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_get_shape(
-                self as *mut Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_get_shape(
+                    self as *mut Self,
+                    NbPoles,
+                    NbKnots,
+                    Degree,
+                    NbPoles2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2363,26 +3280,35 @@ impl RstRstFunction {
         Tol3d: &mut crate::ffi::math_Vector,
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_get_tolerance_real3_vector2(
-                self as *const Self,
-                BoundTol,
-                SurfTol,
-                AngleTol,
-                Tol3d,
-                Tol1D,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_get_tolerance_real3_vector2(
+                    self as *const Self,
+                    BoundTol,
+                    SurfTol,
+                    AngleTol,
+                    Tol3d,
+                    Tol1D,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:201 - `Blend_RstRstFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_RstRstFunction_knots(self as *mut Self, TKnots) }
+        {
+            unsafe { crate::ffi::Blend_RstRstFunction_knots(self as *mut Self, TKnots) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:203 - `Blend_RstRstFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
-        unsafe { crate::ffi::Blend_RstRstFunction_mults(self as *mut Self, TMults) }
+        {
+            unsafe { crate::ffi::Blend_RstRstFunction_mults(self as *mut Self, TMults) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:205 - `Blend_RstRstFunction::Section()`
@@ -2393,14 +3319,11 @@ impl RstRstFunction {
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2418,8 +3341,12 @@ impl RstRstFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -2440,20 +3367,34 @@ impl RstRstFunction {
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
         D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        unsafe {
-            &mut *(crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -2461,10 +3402,14 @@ impl RstRstFunction {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -2472,46 +3417,75 @@ impl RstRstFunction {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_RstRstFunction_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Blend_RstRstFunction_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
-        unsafe {
-            crate::ffi::Blend_RstRstFunction_inherited_Resolution(
-                self as *const Self,
-                IC2d,
-                Tol,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_RstRstFunction_inherited_Resolution(
+                    self as *const Self,
+                    IC2d,
+                    Tol,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
-        unsafe { crate::ffi::Blend_RstRstFunction_inherited_Parameter(self as *const Self, P) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_inherited_Parameter(self as *const Self, P)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_RstRstFunction_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_RstRstFunction_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2543,13 +3517,23 @@ impl SurfCurvFuncInv {
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:49 - `Blend_SurfCurvFuncInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:55 - `Blend_SurfCurvFuncInv::Value()`
@@ -2558,7 +3542,12 @@ impl SurfCurvFuncInv {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfCurvFuncInv_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:61 - `Blend_SurfCurvFuncInv::Derivatives()`
@@ -2571,7 +3560,12 @@ impl SurfCurvFuncInv {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfCurvFuncInv_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:67 - `Blend_SurfCurvFuncInv::Values()`
@@ -2585,13 +3579,21 @@ impl SurfCurvFuncInv {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfCurvFuncInv_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:72 - `Blend_SurfCurvFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst) }
+        {
+            unsafe { crate::ffi::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:77 - `Blend_SurfCurvFuncInv::GetTolerance()`
@@ -2599,8 +3601,11 @@ impl SurfCurvFuncInv {
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        {
+            unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            };
+            crate::check_exception();
         }
     }
 
@@ -2614,8 +3619,15 @@ impl SurfCurvFuncInv {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+        {
+            unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_get_bounds(
+                    self as *const Self,
+                    InfBound,
+                    SupBound,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2623,17 +3635,27 @@ impl SurfCurvFuncInv {
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_is_solution(self as *mut Self, Sol, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -2641,28 +3663,48 @@ impl SurfCurvFuncInv {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfCurvFuncInv_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfCurvFuncInv_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2693,13 +3735,23 @@ impl SurfPointFuncInv {
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:49 - `Blend_SurfPointFuncInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:55 - `Blend_SurfPointFuncInv::Value()`
@@ -2708,7 +3760,12 @@ impl SurfPointFuncInv {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfPointFuncInv_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:61 - `Blend_SurfPointFuncInv::Derivatives()`
@@ -2721,7 +3778,12 @@ impl SurfPointFuncInv {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfPointFuncInv_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:67 - `Blend_SurfPointFuncInv::Values()`
@@ -2735,13 +3797,21 @@ impl SurfPointFuncInv {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfPointFuncInv_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:72 - `Blend_SurfPointFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_set(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::Blend_SurfPointFuncInv_set(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:77 - `Blend_SurfPointFuncInv::GetTolerance()`
@@ -2749,8 +3819,15 @@ impl SurfPointFuncInv {
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+        {
+            unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_get_tolerance(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2764,8 +3841,15 @@ impl SurfPointFuncInv {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+        {
+            unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_get_bounds(
+                    self as *const Self,
+                    InfBound,
+                    SupBound,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2773,17 +3857,27 @@ impl SurfPointFuncInv {
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_is_solution(self as *mut Self, Sol, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -2791,28 +3885,48 @@ impl SurfPointFuncInv {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfPointFuncInv_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfPointFuncInv_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2840,13 +3954,23 @@ impl SurfRstFunction {
     /// **Source:** `Blend_SurfRstFunction.hxx`:51 - `Blend_SurfRstFunction::NbVariables()`
     /// Returns 3 (default value). Can be redefined.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:54 - `Blend_SurfRstFunction::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_nb_equations(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_nb_equations(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:60 - `Blend_SurfRstFunction::Value()`
@@ -2855,7 +3979,12 @@ impl SurfRstFunction {
     /// Returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:66 - `Blend_SurfRstFunction::Derivatives()`
@@ -2868,7 +3997,12 @@ impl SurfRstFunction {
         X: &crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_derivatives(self as *mut Self, X, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_derivatives(self as *mut Self, X, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:72 - `Blend_SurfRstFunction::Values()`
@@ -2882,7 +4016,12 @@ impl SurfRstFunction {
         F: &mut crate::ffi::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_values(self as *mut Self, X, F, D) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_values(self as *mut Self, X, F, D) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:79 - `Blend_SurfRstFunction::Set()`
@@ -2890,7 +4029,10 @@ impl SurfRstFunction {
     /// This determines the plane in which the solution has
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
-        unsafe { crate::ffi::Blend_SurfRstFunction_set_real(self as *mut Self, Param) }
+        {
+            unsafe { crate::ffi::Blend_SurfRstFunction_set_real(self as *mut Self, Param) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:85 - `Blend_SurfRstFunction::Set()`
@@ -2899,7 +4041,10 @@ impl SurfRstFunction {
     /// This determines the derivatives in these values if the
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
-        unsafe { crate::ffi::Blend_SurfRstFunction_set_real2(self as *mut Self, First, Last) }
+        {
+            unsafe { crate::ffi::Blend_SurfRstFunction_set_real2(self as *mut Self, First, Last) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:90 - `Blend_SurfRstFunction::GetTolerance()`
@@ -2907,12 +4052,15 @@ impl SurfRstFunction {
     /// for each variable;
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_tolerance_vector_real(
-                self as *const Self,
-                Tolerance,
-                Tol,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_get_tolerance_vector_real(
+                    self as *const Self,
+                    Tolerance,
+                    Tol,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2926,8 +4074,15 @@ impl SurfRstFunction {
         InfBound: &mut crate::ffi::math_Vector,
         SupBound: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_get_bounds(
+                    self as *const Self,
+                    InfBound,
+                    SupBound,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2937,90 +4092,160 @@ impl SurfRstFunction {
     /// The computation is made at the current value of
     /// the parameter on the guide line.
     pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_is_solution(self as *mut Self, Sol, Tol) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_is_solution(self as *mut Self, Sol, Tol)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:108 - `Blend_SurfRstFunction::GetMinimalDistance()`
     /// Returns   the    minimal  Distance  between   two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_get_minimal_distance(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_get_minimal_distance(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_pnt1(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_SurfRstFunction_pnt1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_pnt2(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::Blend_SurfRstFunction_pnt2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:117 - `Blend_SurfRstFunction::PointOnS()`
     /// Returns the point on the surface.
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_point_on_s(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_point_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:120 - `Blend_SurfRstFunction::PointOnRst()`
     /// Returns the point on the curve.
     pub fn point_on_rst(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_point_on_rst(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_point_on_rst(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:123 - `Blend_SurfRstFunction::Pnt2dOnS()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_pnt2d_on_s(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_pnt2d_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:127 - `Blend_SurfRstFunction::Pnt2dOnRst()`
     /// Returns  U,V coordinates of the point  on the curve on
     /// surface.
     pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_pnt2d_on_rst(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_pnt2d_on_rst(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:130 - `Blend_SurfRstFunction::ParameterOnRst()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst(&self) -> f64 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_parameter_on_rst(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_parameter_on_rst(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:134 - `Blend_SurfRstFunction::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS and/or PointOnRst.
     pub fn is_tangency_point(&self) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_is_tangency_point(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_is_tangency_point(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:137 - `Blend_SurfRstFunction::TangentOnS()`
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_tangent_on_s(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_tangent_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:141 - `Blend_SurfRstFunction::Tangent2dOnS()`
     /// Returns the tangent vector at PointOnS, in the
     /// parametric space of the first surface.
     pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_tangent2d_on_s(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_tangent2d_on_s(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:144 - `Blend_SurfRstFunction::TangentOnRst()`
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_tangent_on_rst(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_tangent_on_rst(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:148 - `Blend_SurfRstFunction::Tangent2dOnRst()`
     /// Returns the tangent vector at PointOnRst, in the
     /// parametric space of the second surface.
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_tangent2d_on_rst(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_tangent2d_on_rst(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:152 - `Blend_SurfRstFunction::Decroch()`
@@ -3032,27 +4257,46 @@ impl SurfRstFunction {
         NS: &mut crate::gp::Vec,
         TgS: &mut crate::gp::Vec,
     ) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_decroch(self as *const Self, Sol, NS, TgS) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_decroch(self as *const Self, Sol, NS, TgS)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:157 - `Blend_SurfRstFunction::IsRational()`
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::Blend_SurfRstFunction_is_rational(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_is_rational(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:160 - `Blend_SurfRstFunction::GetSectionSize()`
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_get_section_size(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::Blend_SurfRstFunction_get_section_size(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:164 - `Blend_SurfRstFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_minimal_weight(self as *const Self, Weigths)
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_get_minimal_weight(self as *const Self, Weigths)
+            };
+            crate::check_exception();
         }
     }
 
@@ -3060,7 +4304,13 @@ impl SurfRstFunction {
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_nb_intervals(self as *const Self, S.into()) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_nb_intervals(self as *const Self, S.into())
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:175 - `Blend_SurfRstFunction::Intervals()`
@@ -3070,7 +4320,12 @@ impl SurfRstFunction {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
-        unsafe { crate::ffi::Blend_SurfRstFunction_intervals(self as *const Self, T, S.into()) }
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_intervals(self as *const Self, T, S.into())
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:177 - `Blend_SurfRstFunction::GetShape()`
@@ -3081,14 +4336,17 @@ impl SurfRstFunction {
         Degree: &mut i32,
         NbPoles2d: &mut i32,
     ) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_shape(
-                self as *mut Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_get_shape(
+                    self as *mut Self,
+                    NbPoles,
+                    NbKnots,
+                    Degree,
+                    NbPoles2d,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -3106,26 +4364,35 @@ impl SurfRstFunction {
         Tol3d: &mut crate::ffi::math_Vector,
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_tolerance_real3_vector2(
-                self as *const Self,
-                BoundTol,
-                SurfTol,
-                AngleTol,
-                Tol3d,
-                Tol1D,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_get_tolerance_real3_vector2(
+                    self as *const Self,
+                    BoundTol,
+                    SurfTol,
+                    AngleTol,
+                    Tol3d,
+                    Tol1D,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:193 - `Blend_SurfRstFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe { crate::ffi::Blend_SurfRstFunction_knots(self as *mut Self, TKnots) }
+        {
+            unsafe { crate::ffi::Blend_SurfRstFunction_knots(self as *mut Self, TKnots) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
-        unsafe { crate::ffi::Blend_SurfRstFunction_mults(self as *mut Self, TMults) }
+        {
+            unsafe { crate::ffi::Blend_SurfRstFunction_mults(self as *mut Self, TMults) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:200 - `Blend_SurfRstFunction::Section()`
@@ -3142,8 +4409,12 @@ impl SurfRstFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3164,8 +4435,12 @@ impl SurfRstFunction {
         DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
         D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) -> bool {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -3177,26 +4452,33 @@ impl SurfRstFunction {
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            };
+            crate::check_exception();
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
@@ -3204,10 +4486,14 @@ impl SurfRstFunction {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*(crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -3215,45 +4501,74 @@ impl SurfRstFunction {
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet(self as *const Self)) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { &*__result }
+        }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
-        unsafe {
-            crate::ffi::Blend_SurfRstFunction_inherited_Resolution(
-                self as *const Self,
-                IC2d,
-                Tol,
-                TolU,
-                TolV,
-            )
+        {
+            unsafe {
+                crate::ffi::Blend_SurfRstFunction_inherited_Resolution(
+                    self as *const Self,
+                    IC2d,
+                    Tol,
+                    TolU,
+                    TolV,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_inherited_Parameter(self as *const Self, P) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_inherited_Parameter(self as *const Self, P)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe { crate::ffi::Blend_SurfRstFunction_inherited_GetStateNumber(self as *mut Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::Blend_SurfRstFunction_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }

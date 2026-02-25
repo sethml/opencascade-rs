@@ -29,15 +29,17 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_int2_bool(
     ToK2: i32,
     SameOrientation: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomConvert_split_b_spline_curve_handlegeombsplinecurve_int2_bool(
                 C,
                 FromK1,
                 ToK2,
                 SameOrientation,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:104 - `GeomConvert::SplitBSplineCurve`
@@ -63,16 +65,18 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_real3_bool(
     ParametricTolerance: f64,
     SameOrientation: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomConvert_split_b_spline_curve_handlegeombsplinecurve_real3_bool(
                 C,
                 FromU1,
                 ToU2,
                 ParametricTolerance,
                 SameOrientation,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:125 - `GeomConvert::SplitBSplineSurface`
@@ -99,8 +103,8 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int4_bool2(
     SameUOrientation: bool,
     SameVOrientation: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_int4_bool2(
                 S,
                 FromUK1,
@@ -109,8 +113,10 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int4_bool2(
                 ToVK2,
                 SameUOrientation,
                 SameVOrientation,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:146 - `GeomConvert::SplitBSplineSurface`
@@ -133,16 +139,18 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int2_bool2(
     USplit: bool,
     SameOrientation: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_int2_bool2(
                 S,
                 FromK1,
                 ToK2,
                 USplit,
                 SameOrientation,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:171 - `GeomConvert::SplitBSplineSurface`
@@ -174,8 +182,8 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
     SameUOrientation: bool,
     SameVOrientation: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
                 S,
                 FromU1,
@@ -185,8 +193,10 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
                 ParametricTolerance,
                 SameUOrientation,
                 SameVOrientation,
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:198 - `GeomConvert::SplitBSplineSurface`
@@ -215,8 +225,12 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(
     ParametricTolerance: f64,
     SameOrientation: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(S, FromParam1, ToParam2, USplit, ParametricTolerance, SameOrientation))
+    {
+        let __result = unsafe {
+            crate::ffi::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(S, FromParam1, ToParam2, USplit, ParametricTolerance, SameOrientation)
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:271 - `GeomConvert::CurveToBSplineCurve`
@@ -289,13 +303,15 @@ pub fn curve_to_b_spline_curve_handlegeomcurve_parameterisationtype(
     C: &crate::ffi::HandleGeomCurve,
     Parameterisation: crate::convert::ParameterisationType,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-    unsafe {
-        crate::OwnedPtr::from_raw(
+    {
+        let __result = unsafe {
             crate::ffi::GeomConvert_curve_to_b_spline_curve_handlegeomcurve_parameterisationtype(
                 C,
                 Parameterisation.into(),
-            ),
-        )
+            )
+        };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:283 - `GeomConvert::SurfaceToBSplineSurface`
@@ -310,7 +326,11 @@ pub fn curve_to_b_spline_curve_handlegeomcurve_parameterisationtype(
 pub fn surface_to_b_spline_surface(
     S: &crate::ffi::HandleGeomSurface,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_surface_to_b_spline_surface(S)) }
+    {
+        let __result = unsafe { crate::ffi::GeomConvert_surface_to_b_spline_surface(S) };
+        crate::check_exception();
+        unsafe { crate::OwnedPtr::from_raw(__result) }
+    }
 }
 /// **Source:** `GeomConvert.hxx`:350 - `GeomConvert::C0BSplineToC1BSplineCurve`
 /// This  Method reduces as far as   it is possible the
@@ -325,12 +345,15 @@ pub fn c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
     tolerance: f64,
     AngularTolerance: f64,
 ) {
-    unsafe {
-        crate::ffi::GeomConvert_c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
-            BS,
-            tolerance,
-            AngularTolerance,
-        )
+    {
+        unsafe {
+            crate::ffi::GeomConvert_c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
+                BS,
+                tolerance,
+                AngularTolerance,
+            )
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `GeomConvert.hxx`:358 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
@@ -342,8 +365,11 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcol
     tabBS: &mut crate::ffi::HandleTColGeomHArray1OfBSplineCurve,
     tolerance: f64,
 ) {
-    unsafe {
-        crate::ffi::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real(BS, tabBS, tolerance)
+    {
+        unsafe {
+            crate::ffi::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real(BS, tabBS, tolerance)
+        };
+        crate::check_exception();
     }
 }
 /// **Source:** `GeomConvert.hxx`:370 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
@@ -360,8 +386,11 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcol
     AngularTolerance: f64,
     tolerance: f64,
 ) {
-    unsafe {
-        crate::ffi::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
+    {
+        unsafe {
+            crate::ffi::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
+        };
+        crate::check_exception();
     }
 }
 
@@ -425,16 +454,18 @@ impl ApproxCurve {
         MaxSegments: i32,
         MaxDegree: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_ApproxCurve_ctor_handlegeomcurve_real_shape_int2(
                     Curve,
                     Tol3d,
                     Order.into(),
                     MaxSegments,
                     MaxDegree,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -454,26 +485,29 @@ impl ApproxCurve {
         MaxSegments: i32,
         MaxDegree: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_ApproxCurve_ctor_handleadaptor3dcurve_real_shape_int2(
                     Curve,
                     Tol3d,
                     Order.into(),
                     MaxSegments,
                     MaxDegree,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:63 - `GeomConvert_ApproxCurve::Curve()`
     /// Returns the BSpline curve resulting from the approximation algorithm.
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_ApproxCurve_curve(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxCurve_curve(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -481,14 +515,24 @@ impl ApproxCurve {
     /// returns  Standard_True  if  the  approximation  has
     /// been  done  within  required tolerance
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::GeomConvert_ApproxCurve_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxCurve_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:71 - `GeomConvert_ApproxCurve::HasResult()`
     /// Returns  Standard_True if the approximation did come out
     /// with a result that  is not NECESSARELY within the required tolerance
     pub fn has_result(&self) -> bool {
-        unsafe { crate::ffi::GeomConvert_ApproxCurve_has_result(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxCurve_has_result(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:77 - `GeomConvert_ApproxCurve::MaxError()`
@@ -497,13 +541,21 @@ impl ApproxCurve {
     /// approximation. (>0 when an approximation
     /// has  been  done, 0  if  no  approximation)
     pub fn max_error(&self) -> f64 {
-        unsafe { crate::ffi::GeomConvert_ApproxCurve_max_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxCurve_max_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:80 - `GeomConvert_ApproxCurve::Dump()`
     /// Print on the stream  o  information about the object
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::GeomConvert_ApproxCurve_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::GeomConvert_ApproxCurve_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -546,8 +598,8 @@ impl ApproxSurface {
         MaxSegments: i32,
         PrecisCode: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_ApproxSurface_ctor_handlegeomsurface_real_shape2_int4(
                     Surf,
                     Tol3d,
@@ -557,8 +609,10 @@ impl ApproxSurface {
                     MaxDegV,
                     MaxSegments,
                     PrecisCode,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -584,8 +638,8 @@ impl ApproxSurface {
         MaxSegments: i32,
         PrecisCode: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_ApproxSurface_ctor_handleadaptor3dsurface_real_shape2_int4(
                     Surf,
                     Tol3d,
@@ -595,25 +649,33 @@ impl ApproxSurface {
                     MaxDegV,
                     MaxSegments,
                     PrecisCode,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:76 - `GeomConvert_ApproxSurface::Surface()`
     /// Returns the BSpline surface resulting from the approximation algorithm.
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_ApproxSurface_surface(
-                self as *const Self,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxSurface_surface(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:79 - `GeomConvert_ApproxSurface::IsDone()`
     /// Returns Standard_True if the approximation has be done
     pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::GeomConvert_ApproxSurface_is_done(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxSurface_is_done(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:84 - `GeomConvert_ApproxSurface::HasResult()`
@@ -621,7 +683,12 @@ impl ApproxSurface {
     /// is not NECESSARILY within the required tolerance or a result
     /// that is not recognized with the wished continuities.
     pub fn has_result(&self) -> bool {
-        unsafe { crate::ffi::GeomConvert_ApproxSurface_has_result(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxSurface_has_result(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:90 - `GeomConvert_ApproxSurface::MaxError()`
@@ -630,13 +697,21 @@ impl ApproxSurface {
     /// resulting from the approximation (>0 when an approximation
     /// has been done, 0 if no  approximation )
     pub fn max_error(&self) -> f64 {
-        unsafe { crate::ffi::GeomConvert_ApproxSurface_max_error(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_ApproxSurface_max_error(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:93 - `GeomConvert_ApproxSurface::Dump()`
     /// Prints on the stream o information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        unsafe { crate::ffi::GeomConvert_ApproxSurface_dump(self as *const Self, o) }
+        {
+            unsafe { crate::ffi::GeomConvert_ApproxSurface_dump(self as *const Self, o) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -689,13 +764,15 @@ impl BSplineCurveKnotSplitting {
         BasisCurve: &crate::ffi::HandleGeomBSplineCurve,
         ContinuityRange: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveKnotSplitting_ctor_handlegeombsplinecurve_int(
                     BasisCurve,
                     ContinuityRange,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -707,7 +784,13 @@ impl BSplineCurveKnotSplitting {
     /// the first and last points of the curve, which bound the
     /// first and last arcs, are counted among these splitting points.
     pub fn nb_splits(&self) -> i32 {
-        unsafe { crate::ffi::GeomConvert_BSplineCurveKnotSplitting_nb_splits(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineCurveKnotSplitting_nb_splits(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:90 - `GeomConvert_BSplineCurveKnotSplitting::Splitting()`
@@ -728,11 +811,14 @@ impl BSplineCurveKnotSplitting {
     /// -   the number of split points computed in this
     /// framework (as given by the function NbSplits).
     pub fn splitting(&self, SplitValues: &mut crate::ffi::TColStd_Array1OfInteger) {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineCurveKnotSplitting_splitting(
-                self as *const Self,
-                SplitValues,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineCurveKnotSplitting_splitting(
+                    self as *const Self,
+                    SplitValues,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -751,11 +837,15 @@ impl BSplineCurveKnotSplitting {
     /// Standard_RangeError if Index is less than 1 or
     /// greater than the number of split knots computed in this framework.
     pub fn split_value(&self, Index: i32) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineCurveKnotSplitting_split_value(
-                self as *const Self,
-                Index,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineCurveKnotSplitting_split_value(
+                    self as *const Self,
+                    Index,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -789,12 +879,14 @@ impl BSplineCurveToBezierCurve {
     pub fn new_handlegeombsplinecurve(
         BasisCurve: &crate::ffi::HandleGeomBSplineCurve,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveToBezierCurve_ctor_handlegeombsplinecurve(
                     BasisCurve,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -818,15 +910,17 @@ impl BSplineCurveToBezierCurve {
         U2: f64,
         ParametricTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveToBezierCurve_ctor_handlegeombsplinecurve_real3(
                     BasisCurve,
                     U1,
                     U2,
                     ParametricTolerance,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -841,11 +935,12 @@ impl BSplineCurveToBezierCurve {
     /// greater than the number of adjacent Bezier arcs
     /// computed by this algorithm.
     pub fn arc(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_BSplineCurveToBezierCurve_arc(
-                self as *mut Self,
-                Index,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineCurveToBezierCurve_arc(self as *mut Self, Index)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -861,7 +956,12 @@ impl BSplineCurveToBezierCurve {
     /// -   the number of adjacent Bezier arcs computed by
     /// this algorithm (as given by the function NbArcs).
     pub fn arcs(&mut self, Curves: &mut crate::ffi::TColGeom_Array1OfBezierCurve) {
-        unsafe { crate::ffi::GeomConvert_BSplineCurveToBezierCurve_arcs(self as *mut Self, Curves) }
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineCurveToBezierCurve_arcs(self as *mut Self, Curves)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:94 - `GeomConvert_BSplineCurveToBezierCurve::Knots()`
@@ -870,8 +970,11 @@ impl BSplineCurveToBezierCurve {
     /// Raised  if the length  of Curves is not equal to
     /// NbArcs +  1.
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineCurveToBezierCurve_knots(self as *const Self, TKnots)
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineCurveToBezierCurve_knots(self as *const Self, TKnots)
+            };
+            crate::check_exception();
         }
     }
 
@@ -885,7 +988,13 @@ impl BSplineCurveToBezierCurve {
     /// of BezierCurve arcs NbArcs is equal to the number of knots less
     /// one.
     pub fn nb_arcs(&self) -> i32 {
-        unsafe { crate::ffi::GeomConvert_BSplineCurveToBezierCurve_nb_arcs(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineCurveToBezierCurve_nb_arcs(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -949,8 +1058,12 @@ impl BSplineSurfaceKnotSplitting {
         UContinuityRange: i32,
         VContinuityRange: i32,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_ctor_handlegeombsplinesurface_int2(BasisSurface, UContinuityRange, VContinuityRange))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_ctor_handlegeombsplinesurface_int2(BasisSurface, UContinuityRange, VContinuityRange)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -964,8 +1077,12 @@ impl BSplineSurfaceKnotSplitting {
     /// Note that the four curves which bound the surface are
     /// counted among these splitting curves.
     pub fn nb_u_splits(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_nb_u_splits(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_nb_u_splits(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -979,8 +1096,12 @@ impl BSplineSurfaceKnotSplitting {
     /// Note that the four curves which bound the surface are
     /// counted among these splitting curves.
     pub fn nb_v_splits(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_nb_v_splits(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_nb_v_splits(self as *const Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1016,12 +1137,15 @@ impl BSplineSurfaceKnotSplitting {
         USplit: &mut crate::ffi::TColStd_Array1OfInteger,
         VSplit: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_splitting(
-                self as *const Self,
-                USplit,
-                VSplit,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_splitting(
+                    self as *const Self,
+                    USplit,
+                    VSplit,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1039,11 +1163,15 @@ impl BSplineSurfaceKnotSplitting {
     /// Standard_RangeError if UIndex  is less than 1 or greater than the number
     /// of split knots for the u parametric direction computed in this framework.
     pub fn u_split_value(&self, UIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_u_split_value(
-                self as *const Self,
-                UIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_u_split_value(
+                    self as *const Self,
+                    UIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1061,11 +1189,15 @@ impl BSplineSurfaceKnotSplitting {
     /// Standard_RangeError if VIndex  is less than 1 or greater than the number
     /// of split knots for the v parametric direction computed in this framework.
     pub fn v_split_value(&self, VIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_v_split_value(
-                self as *const Self,
-                VIndex,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_v_split_value(
+                    self as *const Self,
+                    VIndex,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1111,12 +1243,14 @@ impl BSplineSurfaceToBezierSurface {
     pub fn new_handlegeombsplinesurface(
         BasisSurface: &crate::ffi::HandleGeomBSplineSurface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_ctor_handlegeombsplinesurface(
                     BasisSurface,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1153,8 +1287,12 @@ impl BSplineSurfaceToBezierSurface {
         V2: f64,
         ParametricTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_ctor_handlegeombsplinesurface_real5(BasisSurface, U1, U2, V1, V2, ParametricTolerance))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_ctor_handlegeombsplinesurface_real5(BasisSurface, U1, U2, V1, V2, ParametricTolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1187,12 +1325,16 @@ impl BSplineSurfaceToBezierSurface {
         UIndex: i32,
         VIndex: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_patch(
-                self as *mut Self,
-                UIndex,
-                VIndex,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_patch(
+                    self as *mut Self,
+                    UIndex,
+                    VIndex,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1221,11 +1363,14 @@ impl BSplineSurfaceToBezierSurface {
     /// on the BSpline surface, analyzed by this algorithm
     /// (as given by the function NbVPatches) as column bounds.
     pub fn patches(&mut self, Surfaces: &mut crate::ffi::TColGeom_Array2OfBezierSurface) {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_patches(
-                self as *mut Self,
-                Surfaces,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_patches(
+                    self as *mut Self,
+                    Surfaces,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1235,11 +1380,14 @@ impl BSplineSurfaceToBezierSurface {
     /// Raised  if the length  of Curves is not equal to
     /// NbUPatches +  1.
     pub fn u_knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_u_knots(
-                self as *const Self,
-                TKnots,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_u_knots(
+                    self as *const Self,
+                    TKnots,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1249,11 +1397,14 @@ impl BSplineSurfaceToBezierSurface {
     /// Raised  if the length  of Curves is not equal to
     /// NbVPatches +  1.
     pub fn v_knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_v_knots(
-                self as *const Self,
-                TKnots,
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_v_knots(
+                    self as *const Self,
+                    TKnots,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1267,8 +1418,14 @@ impl BSplineSurfaceToBezierSurface {
     /// number of Bezier surfaces NbUPatches is equal to the number of
     /// UKnots less one.
     pub fn nb_u_patches(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_nb_u_patches(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_nb_u_patches(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1282,8 +1439,14 @@ impl BSplineSurfaceToBezierSurface {
     /// number of Bezier surfaces NbVPatches is equal to the number of
     /// VKnots less one.
     pub fn nb_v_patches(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_nb_v_patches(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_nb_v_patches(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1383,8 +1546,12 @@ impl CompBezierSurfacesToBSplineSurface {
     pub fn new_array2ofbeziersurface(
         Beziers: &crate::ffi::TColGeom_Array2OfBezierSurface,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface(Beziers))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface(Beziers)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1398,8 +1565,12 @@ impl CompBezierSurfacesToBSplineSurface {
         Tolerance: f64,
         RemoveKnots: bool,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_real_bool(Beziers, Tolerance, RemoveKnots))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_real_bool(Beziers, Tolerance, RemoveKnots)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1498,8 +1669,12 @@ impl CompBezierSurfacesToBSplineSurface {
         VContinuity: crate::geom_abs::Shape,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_array1ofreal2_shape2_real(Beziers, UKnots, VKnots, UContinuity.into(), VContinuity.into(), Tolerance))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_array1ofreal2_shape2_real(Beziers, UKnots, VKnots, UContinuity.into(), VContinuity.into(), Tolerance)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1623,10 +1798,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the number of knots in the U direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_u_knots(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_u_knots(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_u_knots(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1634,10 +1813,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns number of poles in the U direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_u_poles(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_u_poles(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_u_poles(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1645,10 +1828,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the number of knots in the V direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_v_knots(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_v_knots(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_v_knots(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1656,10 +1843,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the number of poles in the V direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_v_poles(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_v_poles(
-                self as *const Self,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_nb_v_poles(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1667,10 +1858,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the table of poles of the BSpline surface
     /// whose data is computed in this framework.
     pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray2OfPnt {
-        unsafe {
-            &*(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_poles(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_poles(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1678,10 +1873,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the knots table for the u parametric
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn u_knots(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
-        unsafe {
-            &*(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_u_knots(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_u_knots(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1689,8 +1888,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the degree for the u  parametric
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn u_degree(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_u_degree(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_u_degree(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1698,10 +1903,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the knots table for the v parametric
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn v_knots(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
-        unsafe {
-            &*(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_v_knots(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_v_knots(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1709,8 +1918,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// Returns the degree for the v  parametric
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn v_degree(&self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_v_degree(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_v_degree(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1719,10 +1934,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// parametric direction of the knots of the BSpline
     /// surface whose data is computed in this framework.
     pub fn u_multiplicities(&self) -> &crate::ffi::HandleTColStdHArray1OfInteger {
-        unsafe {
-            &*(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_u_multiplicities(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_u_multiplicities(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1731,10 +1950,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// parametric direction of the knots of the BSpline
     /// surface whose data is computed in this framework.
     pub fn v_multiplicities(&self) -> &crate::ffi::HandleTColStdHArray1OfInteger {
-        unsafe {
-            &*(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_v_multiplicities(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_v_multiplicities(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*(__result) }
         }
     }
 
@@ -1751,8 +1974,14 @@ impl CompBezierSurfacesToBSplineSurface {
     /// of the surface. In such a case the computed data
     /// does not satisfy all the initial constraints.
     pub fn is_done(&self) -> bool {
-        unsafe {
-            crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_is_done(self as *const Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_is_done(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1778,12 +2007,14 @@ impl CompCurveToBSplineCurve {
     pub fn new_parameterisationtype(
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_CompCurveToBSplineCurve_ctor_parameterisationtype(
                     Parameterisation.into(),
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1794,8 +2025,12 @@ impl CompCurveToBSplineCurve {
         BasisCurve: &crate::ffi::HandleGeomBoundedCurve,
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CompCurveToBSplineCurve_ctor_handlegeomboundedcurve_parameterisationtype(BasisCurve, Parameterisation.into()))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompCurveToBSplineCurve_ctor_handlegeomboundedcurve_parameterisationtype(BasisCurve, Parameterisation.into())
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1818,31 +2053,40 @@ impl CompCurveToBSplineCurve {
         WithRatio: bool,
         MinM: i32,
     ) -> bool {
-        unsafe {
-            crate::ffi::GeomConvert_CompCurveToBSplineCurve_add(
-                self as *mut Self,
-                NewCurve,
-                Tolerance,
-                After,
-                WithRatio,
-                MinM,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompCurveToBSplineCurve_add(
+                    self as *mut Self,
+                    NewCurve,
+                    Tolerance,
+                    After,
+                    WithRatio,
+                    MinM,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
     /// **Source:** `GeomConvert_CompCurveToBSplineCurve.hxx`:62 - `GeomConvert_CompCurveToBSplineCurve::BSplineCurve()`
     pub fn b_spline_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomConvert_CompCurveToBSplineCurve_b_spline_curve(self as *const Self),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CompCurveToBSplineCurve_b_spline_curve(self as *const Self)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_CompCurveToBSplineCurve.hxx`:65 - `GeomConvert_CompCurveToBSplineCurve::Clear()`
     /// Clear a result curve
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::GeomConvert_CompCurveToBSplineCurve_clear(self as *mut Self) }
+        {
+            unsafe { crate::ffi::GeomConvert_CompCurveToBSplineCurve_clear(self as *mut Self) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -1862,21 +2106,29 @@ unsafe impl crate::CppDeletable for CurveToAnaCurve {
 impl CurveToAnaCurve {
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:40 - `GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:42 - `GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve()`
     pub fn new_handlegeomcurve(C: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_ctor_handlegeomcurve(
-                C,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_ctor_handlegeomcurve(C) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:44 - `GeomConvert_CurveToAnaCurve::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
-        unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_init(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_init(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:49 - `GeomConvert_CurveToAnaCurve::ConvertToAnalytical()`
@@ -1892,16 +2144,20 @@ impl CurveToAnaCurve {
         newF: &mut f64,
         newL: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::GeomConvert_CurveToAnaCurve_convert_to_analytical(
-                self as *mut Self,
-                theTol,
-                theResultCurve,
-                F,
-                L,
-                newF,
-                newL,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_convert_to_analytical(
+                    self as *mut Self,
+                    theTol,
+                    theResultCurve,
+                    F,
+                    L,
+                    newF,
+                    newL,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1909,47 +2165,62 @@ impl CurveToAnaCurve {
     /// Returns maximal deviation of converted surface from the original
     /// one computed by last call to ConvertToAnalytical
     pub fn gap(&self) -> f64 {
-        unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_gap(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_gap(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:124 - `GeomConvert_CurveToAnaCurve::GetConvType()`
     /// Returns conversion type
     pub fn get_conv_type(&self) -> crate::geom_convert::ConvType {
-        unsafe {
-            crate::geom_convert::ConvType::try_from(
-                crate::ffi::GeomConvert_CurveToAnaCurve_get_conv_type(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_get_conv_type(self as *const Self)
+            };
+            crate::check_exception();
+            crate::geom_convert::ConvType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:127 - `GeomConvert_CurveToAnaCurve::SetConvType()`
     /// Sets type of conversion
     pub fn set_conv_type(&mut self, theConvType: crate::geom_convert::ConvType) {
-        unsafe {
-            crate::ffi::GeomConvert_CurveToAnaCurve_set_conv_type(
-                self as *mut Self,
-                theConvType.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_set_conv_type(
+                    self as *mut Self,
+                    theConvType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:130 - `GeomConvert_CurveToAnaCurve::GetTarget()`
     /// Returns target curve type
     pub fn get_target(&self) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(
-                crate::ffi::GeomConvert_CurveToAnaCurve_get_target(self as *const Self),
-            )
-            .unwrap()
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_target(self as *const Self) };
+            crate::check_exception();
+            crate::geom_abs::CurveType::try_from(__result).unwrap()
         }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:133 - `GeomConvert_CurveToAnaCurve::SetTarget()`
     /// Sets target curve type
     pub fn set_target(&mut self, theTarget: crate::geom_abs::CurveType) {
-        unsafe {
-            crate::ffi::GeomConvert_CurveToAnaCurve_set_target(self as *mut Self, theTarget.into())
+        {
+            unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_set_target(
+                    self as *mut Self,
+                    theTarget.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1965,18 +2236,22 @@ impl CurveToAnaCurve {
         theCurvType: crate::geom_convert::ConvType,
         theTarget: crate::geom_abs::CurveType,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_compute_curve(
-                curve,
-                tolerance,
-                c1,
-                c2,
-                cf,
-                cl,
-                theGap,
-                theCurvType.into(),
-                theTarget.into(),
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_compute_curve(
+                    curve,
+                    tolerance,
+                    c1,
+                    c2,
+                    cf,
+                    cl,
+                    theGap,
+                    theCurvType.into(),
+                    theTarget.into(),
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1993,10 +2268,14 @@ impl CurveToAnaCurve {
         cl: &mut f64,
         Deviation: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_compute_circle(
-                curve, tolerance, c1, c2, cf, cl, Deviation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_compute_circle(
+                    curve, tolerance, c1, c2, cf, cl, Deviation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2013,10 +2292,14 @@ impl CurveToAnaCurve {
         cl: &mut f64,
         Deviation: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_compute_ellipse(
-                curve, tolerance, c1, c2, cf, cl, Deviation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_compute_ellipse(
+                    curve, tolerance, c1, c2, cf, cl, Deviation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2033,10 +2316,14 @@ impl CurveToAnaCurve {
         cl: &mut f64,
         Deviation: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomLine> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_compute_line(
-                curve, tolerance, c1, c2, cf, cl, Deviation,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_compute_line(
+                    curve, tolerance, c1, c2, cf, cl, Deviation,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2048,7 +2335,13 @@ impl CurveToAnaCurve {
         tolerance: f64,
         Deviation: &mut f64,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_is_linear(aPoints, tolerance, Deviation) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_CurveToAnaCurve_is_linear(aPoints, tolerance, Deviation)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:108 - `GeomConvert_CurveToAnaCurve::GetLine()`
@@ -2060,10 +2353,11 @@ impl CurveToAnaCurve {
         cf: &mut f64,
         cl: &mut f64,
     ) -> crate::OwnedPtr<crate::gp::Lin> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_get_line(
-                P1, P2, cf, cl,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_line(P1, P2, cf, cl) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2075,7 +2369,12 @@ impl CurveToAnaCurve {
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_circle(Circ, P0, P1, P2) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_circle(Circ, P0, P1, P2) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2100,7 +2399,11 @@ impl FuncConeLSDist {
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:37 - `GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_FuncConeLSDist_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_FuncConeLSDist_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:39 - `GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist()`
@@ -2108,59 +2411,91 @@ impl FuncConeLSDist {
         thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
         theDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_FuncConeLSDist_ctor_handletcolgpharray1ofxyz_dir(
                     thePoints, theDir,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:42 - `GeomConvert_FuncConeLSDist::SetPoints()`
     pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
-        unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_points(self as *mut Self, thePoints) }
+        {
+            unsafe {
+                crate::ffi::GeomConvert_FuncConeLSDist_set_points(self as *mut Self, thePoints)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:44 - `GeomConvert_FuncConeLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
-        unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_dir(self as *mut Self, theDir) }
+        {
+            unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_dir(self as *mut Self, theDir) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:47 - `GeomConvert_FuncConeLSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::GeomConvert_FuncConeLSDist_nb_variables(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_FuncConeLSDist_nb_variables(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:50 - `GeomConvert_FuncConeLSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncConeLSDist_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_FuncConeLSDist_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_FuncConeLSDist_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncConeLSDist_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -2213,7 +2548,11 @@ impl FuncCylinderLSDist {
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:63 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_FuncCylinderLSDist_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:65 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
@@ -2221,37 +2560,59 @@ impl FuncCylinderLSDist {
         thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
         theDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_ctor_handletcolgpharray1ofxyz_dir(
                     thePoints, theDir,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:68 - `GeomConvert_FuncCylinderLSDist::SetPoints()`
     pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
-        unsafe {
-            crate::ffi::GeomConvert_FuncCylinderLSDist_set_points(self as *mut Self, thePoints)
+        {
+            unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_set_points(self as *mut Self, thePoints)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:70 - `GeomConvert_FuncCylinderLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
-        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_set_dir(self as *mut Self, theDir) }
+        {
+            unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_set_dir(self as *mut Self, theDir)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:73 - `GeomConvert_FuncCylinderLSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_nb_variables(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:76 - `GeomConvert_FuncCylinderLSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_value(self as *mut Self, X, F) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_value(self as *mut Self, X, F)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:79 - `GeomConvert_FuncCylinderLSDist::Gradient()`
@@ -2261,7 +2622,13 @@ impl FuncCylinderLSDist {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_gradient(self as *mut Self, X, G) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_gradient(self as *mut Self, X, G)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:82 - `GeomConvert_FuncCylinderLSDist::Values()`
@@ -2272,17 +2639,27 @@ impl FuncCylinderLSDist {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_values(self as *mut Self, X, F, G) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_values(self as *mut Self, X, F, G)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -2290,33 +2667,51 @@ impl FuncCylinderLSDist {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_FuncCylinderLSDist_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncCylinderLSDist_inherited_GetStateNumber(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -2355,35 +2750,57 @@ impl FuncSphereLSDist {
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:50 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_FuncSphereLSDist_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:52 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
     pub fn new_handletcolgpharray1ofxyz(
         thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomConvert_FuncSphereLSDist_ctor_handletcolgpharray1ofxyz(thePoints),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_ctor_handletcolgpharray1ofxyz(thePoints)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:54 - `GeomConvert_FuncSphereLSDist::SetPoints()`
     pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
-        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_set_points(self as *mut Self, thePoints) }
+        {
+            unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_set_points(self as *mut Self, thePoints)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:57 - `GeomConvert_FuncSphereLSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
-        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_nb_variables(self as *const Self) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_nb_variables(self as *const Self)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:60 - `GeomConvert_FuncSphereLSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_value(self as *mut Self, X, F) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_value(self as *mut Self, X, F) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:63 - `GeomConvert_FuncSphereLSDist::Gradient()`
@@ -2393,7 +2810,13 @@ impl FuncSphereLSDist {
         X: &crate::ffi::math_Vector,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_gradient(self as *mut Self, X, G) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_gradient(self as *mut Self, X, G)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:66 - `GeomConvert_FuncSphereLSDist::Values()`
@@ -2404,17 +2827,27 @@ impl FuncSphereLSDist {
         F: &mut f64,
         G: &mut crate::ffi::math_Vector,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_values(self as *mut Self, X, F, G) }
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_values(self as *mut Self, X, F, G)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
@@ -2422,33 +2855,51 @@ impl FuncSphereLSDist {
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction(
+                    self as *const Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &*__result }
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                )
+            };
+            crate::check_exception();
+            unsafe { &mut *__result }
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
-        unsafe {
-            crate::ffi::GeomConvert_FuncSphereLSDist_inherited_GetStateNumber(self as *mut Self)
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_FuncSphereLSDist_inherited_GetStateNumber(self as *mut Self)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -2473,37 +2924,54 @@ unsafe impl crate::CppDeletable for SurfToAnaSurf {
 impl SurfToAnaSurf {
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:42 - `GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_SurfToAnaSurf_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:44 - `GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf()`
     pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_SurfToAnaSurf_ctor_handlegeomsurface(
-                S,
-            ))
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_ctor_handlegeomsurface(S) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:46 - `GeomConvert_SurfToAnaSurf::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
-        unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_init(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_init(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:48 - `GeomConvert_SurfToAnaSurf::SetConvType()`
     pub fn set_conv_type(&mut self, theConvType: crate::geom_convert::ConvType) {
-        unsafe {
-            crate::ffi::GeomConvert_SurfToAnaSurf_set_conv_type(
-                self as *mut Self,
-                theConvType.into(),
-            )
+        {
+            unsafe {
+                crate::ffi::GeomConvert_SurfToAnaSurf_set_conv_type(
+                    self as *mut Self,
+                    theConvType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:53 - `GeomConvert_SurfToAnaSurf::SetTarget()`
     pub fn set_target(&mut self, theSurfType: crate::geom_abs::SurfaceType) {
-        unsafe {
-            crate::ffi::GeomConvert_SurfToAnaSurf_set_target(self as *mut Self, theSurfType.into())
+        {
+            unsafe {
+                crate::ffi::GeomConvert_SurfToAnaSurf_set_target(
+                    self as *mut Self,
+                    theSurfType.into(),
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -2511,7 +2979,12 @@ impl SurfToAnaSurf {
     /// Returns maximal deviation of converted surface from the original
     /// one computed by last call to ConvertToAnalytical
     pub fn gap(&self) -> f64 {
-        unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_gap(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_gap(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:63 - `GeomConvert_SurfToAnaSurf::ConvertToAnalytical()`
@@ -2522,13 +2995,15 @@ impl SurfToAnaSurf {
         &mut self,
         InitialToler: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_SurfToAnaSurf_convert_to_analytical_real(
                     self as *mut Self,
                     InitialToler,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2541,8 +3016,8 @@ impl SurfToAnaSurf {
         Vmin: f64,
         Vmax: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomConvert_SurfToAnaSurf_convert_to_analytical_real5(
                     self as *mut Self,
                     InitialToler,
@@ -2550,8 +3025,10 @@ impl SurfToAnaSurf {
                     Umax,
                     Vmin,
                     Vmax,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2562,13 +3039,21 @@ impl SurfToAnaSurf {
         S2: &crate::ffi::HandleGeomSurface,
         tol: f64,
     ) -> bool {
-        unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_is_same(S1, S2, tol) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_is_same(S1, S2, tol) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:76 - `GeomConvert_SurfToAnaSurf::IsCanonical()`
     /// Returns true, if surface is canonical
     pub fn is_canonical(S: &crate::ffi::HandleGeomSurface) -> bool {
-        unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_is_canonical(S) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_is_canonical(S) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -2590,7 +3075,11 @@ impl Units {
     /// **Source:** `GeomConvert_Units.hxx` - `GeomConvert_Units::GeomConvert_Units()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_Units_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_Units_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomConvert_Units.hxx`:28 - `GeomConvert_Units::RadianToDegree()`
@@ -2601,13 +3090,17 @@ impl Units {
         theLengthFactor: f64,
         theFactorRadianDegree: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_Units_radian_to_degree(
-                theCurve,
-                theSurface,
-                theLengthFactor,
-                theFactorRadianDegree,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_Units_radian_to_degree(
+                    theCurve,
+                    theSurface,
+                    theLengthFactor,
+                    theFactorRadianDegree,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2619,13 +3112,17 @@ impl Units {
         theLengthFactor: f64,
         theFactorRadianDegree: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_Units_degree_to_radian(
-                theCurve,
-                theSurface,
-                theLengthFactor,
-                theFactorRadianDegree,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomConvert_Units_degree_to_radian(
+                    theCurve,
+                    theSurface,
+                    theLengthFactor,
+                    theFactorRadianDegree,
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -2634,6 +3131,10 @@ impl Units {
     pub fn mirror_p_curve(
         theCurve: &crate::ffi::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_Units_mirror_p_curve(theCurve)) }
+        {
+            let __result = unsafe { crate::ffi::GeomConvert_Units_mirror_p_curve(theCurve) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }

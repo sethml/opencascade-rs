@@ -23,13 +23,14 @@ pub fn continuity_handlegeomcurve2_real2_bool2_real2(
     tl: f64,
     ta: f64,
 ) -> crate::geom_abs::Shape {
-    unsafe {
-        crate::geom_abs::Shape::try_from(
+    {
+        let __result = unsafe {
             crate::ffi::GeomLProp_continuity_handlegeomcurve2_real2_bool2_real2(
                 C1, C2, u1, u2, r1, r2, tl, ta,
-            ),
-        )
-        .unwrap()
+            )
+        };
+        crate::check_exception();
+        crate::geom_abs::Shape::try_from(__result).unwrap()
     }
 }
 /// **Source:** `GeomLProp.hxx`:52 - `GeomLProp::Continuity`
@@ -43,11 +44,12 @@ pub fn continuity_handlegeomcurve2_real2_bool2(
     r1: bool,
     r2: bool,
 ) -> crate::geom_abs::Shape {
-    unsafe {
-        crate::geom_abs::Shape::try_from(
-            crate::ffi::GeomLProp_continuity_handlegeomcurve2_real2_bool2(C1, C2, u1, u2, r1, r2),
-        )
-        .unwrap()
+    {
+        let __result = unsafe {
+            crate::ffi::GeomLProp_continuity_handlegeomcurve2_real2_bool2(C1, C2, u1, u2, r1, r2)
+        };
+        crate::check_exception();
+        crate::geom_abs::Shape::try_from(__result).unwrap()
     }
 }
 
@@ -80,10 +82,12 @@ impl CLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_CLProps_ctor_handlegeomcurve_int_real(
-                C, N, Resolution,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::GeomLProp_CLProps_ctor_handlegeomcurve_int_real(C, N, Resolution)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -97,12 +101,14 @@ impl CLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomLProp_CLProps_ctor_handlegeomcurve_real_int_real(
                     C, U, N, Resolution,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -114,8 +120,10 @@ impl CLProps {
     /// All the computations done will be related to <C> and <U>
     /// when the functions "set" will be done.
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_CLProps_ctor_int_real(N, Resolution))
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CLProps_ctor_int_real(N, Resolution) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -123,41 +131,63 @@ impl CLProps {
     /// Initializes the local properties of the curve
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
-        unsafe { crate::ffi::GeomLProp_CLProps_set_parameter(self as *mut Self, U) }
+        {
+            unsafe { crate::ffi::GeomLProp_CLProps_set_parameter(self as *mut Self, U) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:81 - `GeomLProp_CLProps::SetCurve()`
     /// Initializes the local properties of the curve
     /// for the new curve.
     pub fn set_curve(&mut self, C: &crate::ffi::HandleGeomCurve) {
-        unsafe { crate::ffi::GeomLProp_CLProps_set_curve(self as *mut Self, C) }
+        {
+            unsafe { crate::ffi::GeomLProp_CLProps_set_curve(self as *mut Self, C) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:84 - `GeomLProp_CLProps::Value()`
     /// Returns the Point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::GeomLProp_CLProps_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CLProps_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:88 - `GeomLProp_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_CLProps_d1(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CLProps_d1(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:92 - `GeomLProp_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_CLProps_d2(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CLProps_d2(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:96 - `GeomLProp_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d3(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_CLProps_d3(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CLProps_d3(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:101 - `GeomLProp_CLProps::IsTangentDefined()`
@@ -165,31 +195,49 @@ impl CLProps {
     /// For example, the tangent is not defined if the
     /// three first derivatives are all null.
     pub fn is_tangent_defined(&mut self) -> bool {
-        unsafe { crate::ffi::GeomLProp_CLProps_is_tangent_defined(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_CLProps_is_tangent_defined(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:104 - `GeomLProp_CLProps::Tangent()`
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir) {
-        unsafe { crate::ffi::GeomLProp_CLProps_tangent(self as *mut Self, D) }
+        {
+            unsafe { crate::ffi::GeomLProp_CLProps_tangent(self as *mut Self, D) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:107 - `GeomLProp_CLProps::Curvature()`
     /// Returns the curvature.
     pub fn curvature(&mut self) -> f64 {
-        unsafe { crate::ffi::GeomLProp_CLProps_curvature(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CLProps_curvature(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:110 - `GeomLProp_CLProps::Normal()`
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir) {
-        unsafe { crate::ffi::GeomLProp_CLProps_normal(self as *mut Self, N) }
+        {
+            unsafe { crate::ffi::GeomLProp_CLProps_normal(self as *mut Self, N) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:113 - `GeomLProp_CLProps::CentreOfCurvature()`
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::GeomLProp_CLProps_centre_of_curvature(self as *mut Self, P) }
+        {
+            unsafe { crate::ffi::GeomLProp_CLProps_centre_of_curvature(self as *mut Self, P) };
+            crate::check_exception();
+        }
     }
 }
 
@@ -210,13 +258,20 @@ impl CurveTool {
     /// **Source:** `GeomLProp_CurveTool.hxx` - `GeomLProp_CurveTool::GeomLProp_CurveTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_CurveTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CurveTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:35 - `GeomLProp_CurveTool::Value()`
     /// Computes the point <P> of parameter <U> on the curve <C>.
     pub fn value(C: &crate::ffi::HandleGeomCurve, U: f64, P: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::GeomLProp_CurveTool_value(C, U, P) }
+        {
+            unsafe { crate::ffi::GeomLProp_CurveTool_value(C, U, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:39 - `GeomLProp_CurveTool::D1()`
@@ -228,7 +283,10 @@ impl CurveTool {
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::GeomLProp_CurveTool_d1(C, U, P, V1) }
+        {
+            unsafe { crate::ffi::GeomLProp_CurveTool_d1(C, U, P, V1) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:46 - `GeomLProp_CurveTool::D2()`
@@ -241,7 +299,10 @@ impl CurveTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::GeomLProp_CurveTool_d2(C, U, P, V1, V2) }
+        {
+            unsafe { crate::ffi::GeomLProp_CurveTool_d2(C, U, P, V1, V2) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:55 - `GeomLProp_CurveTool::D3()`
@@ -256,7 +317,10 @@ impl CurveTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::GeomLProp_CurveTool_d3(C, U, P, V1, V2, V3) }
+        {
+            unsafe { crate::ffi::GeomLProp_CurveTool_d3(C, U, P, V1, V2, V3) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:66 - `GeomLProp_CurveTool::Continuity()`
@@ -265,20 +329,32 @@ impl CurveTool {
     /// returns 2 : first and second derivative only are computable.
     /// returns 3 : first, second and third are computable.
     pub fn continuity(C: &crate::ffi::HandleGeomCurve) -> i32 {
-        unsafe { crate::ffi::GeomLProp_CurveTool_continuity(C) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CurveTool_continuity(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:69 - `GeomLProp_CurveTool::FirstParameter()`
     /// returns the first parameter bound of the curve.
     pub fn first_parameter(C: &crate::ffi::HandleGeomCurve) -> f64 {
-        unsafe { crate::ffi::GeomLProp_CurveTool_first_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CurveTool_first_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:73 - `GeomLProp_CurveTool::LastParameter()`
     /// returns the last parameter bound of the curve.
     /// FirstParameter must be less than LastParamenter.
     pub fn last_parameter(C: &crate::ffi::HandleGeomCurve) -> f64 {
-        unsafe { crate::ffi::GeomLProp_CurveTool_last_parameter(C) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_CurveTool_last_parameter(C) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -314,12 +390,14 @@ impl SLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::GeomLProp_SLProps_ctor_handlegeomsurface_real2_int_real(
                     S, U, V, N, Resolution,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -331,10 +409,12 @@ impl SLProps {
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomLProp_SLProps_ctor_handlegeomsurface_int_real(S, N, Resolution),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::GeomLProp_SLProps_ctor_handlegeomsurface_int_real(S, N, Resolution)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -343,8 +423,10 @@ impl SLProps {
     /// of parameters <U> and <V> and the surface.
     /// the surface can have an empty constructor.
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_SLProps_ctor_int_real(N, Resolution))
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_ctor_int_real(N, Resolution) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -352,55 +434,85 @@ impl SLProps {
     /// Initializes the local properties of the surface S
     /// for the new surface.
     pub fn set_surface(&mut self, S: &crate::ffi::HandleGeomSurface) {
-        unsafe { crate::ffi::GeomLProp_SLProps_set_surface(self as *mut Self, S) }
+        {
+            unsafe { crate::ffi::GeomLProp_SLProps_set_surface(self as *mut Self, S) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:77 - `GeomLProp_SLProps::SetParameters()`
     /// Initializes the local properties of the surface S
     /// for the new parameter values (<U>, <V>).
     pub fn set_parameters(&mut self, U: f64, V: f64) {
-        unsafe { crate::ffi::GeomLProp_SLProps_set_parameters(self as *mut Self, U, V) }
+        {
+            unsafe { crate::ffi::GeomLProp_SLProps_set_parameters(self as *mut Self, U, V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:80 - `GeomLProp_SLProps::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_value(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_value(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:84 - `GeomLProp_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_d1u(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_d1u(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:88 - `GeomLProp_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_d1v(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_d1v(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:92 - `GeomLProp_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
     pub fn d2u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_d2u(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_d2u(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:96 - `GeomLProp_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_d2v(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_d2v(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:100 - `GeomLProp_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
     pub fn duv(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_duv(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_duv(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:105 - `GeomLProp_SLProps::IsTangentUDefined()`
@@ -408,13 +520,21 @@ impl SLProps {
     /// For example, the tangent is not defined if the
     /// two first U derivatives are null.
     pub fn is_tangent_u_defined(&mut self) -> bool {
-        unsafe { crate::ffi::GeomLProp_SLProps_is_tangent_u_defined(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_is_tangent_u_defined(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:108 - `GeomLProp_SLProps::TangentU()`
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
-        unsafe { crate::ffi::GeomLProp_SLProps_tangent_u(self as *mut Self, D) }
+        {
+            unsafe { crate::ffi::GeomLProp_SLProps_tangent_u(self as *mut Self, D) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:113 - `GeomLProp_SLProps::IsTangentVDefined()`
@@ -422,69 +542,120 @@ impl SLProps {
     /// For example, the tangent is not defined if the
     /// two first V derivatives are null.
     pub fn is_tangent_v_defined(&mut self) -> bool {
-        unsafe { crate::ffi::GeomLProp_SLProps_is_tangent_v_defined(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_is_tangent_v_defined(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:116 - `GeomLProp_SLProps::TangentV()`
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
-        unsafe { crate::ffi::GeomLProp_SLProps_tangent_v(self as *mut Self, D) }
+        {
+            unsafe { crate::ffi::GeomLProp_SLProps_tangent_v(self as *mut Self, D) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:119 - `GeomLProp_SLProps::IsNormalDefined()`
     /// Tells if the normal is defined.
     pub fn is_normal_defined(&mut self) -> bool {
-        unsafe { crate::ffi::GeomLProp_SLProps_is_normal_defined(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_is_normal_defined(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:122 - `GeomLProp_SLProps::Normal()`
     /// Returns the normal direction.
     pub fn normal(&mut self) -> &crate::gp::Dir {
-        unsafe { &*(crate::ffi::GeomLProp_SLProps_normal(self as *mut Self)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_normal(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:125 - `GeomLProp_SLProps::IsCurvatureDefined()`
     /// returns True if the curvature is defined.
     pub fn is_curvature_defined(&mut self) -> bool {
-        unsafe { crate::ffi::GeomLProp_SLProps_is_curvature_defined(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_is_curvature_defined(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:129 - `GeomLProp_SLProps::IsUmbilic()`
     /// returns True if the point is umbilic (i.e. if the
     /// curvature is constant).
     pub fn is_umbilic(&mut self) -> bool {
-        unsafe { crate::ffi::GeomLProp_SLProps_is_umbilic(self as *mut Self) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SLProps_is_umbilic(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:132 - `GeomLProp_SLProps::MaxCurvature()`
     /// Returns the maximum curvature
     pub fn max_curvature(&mut self) -> f64 {
-        unsafe { crate::ffi::GeomLProp_SLProps_max_curvature(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_max_curvature(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:135 - `GeomLProp_SLProps::MinCurvature()`
     /// Returns the minimum curvature
     pub fn min_curvature(&mut self) -> f64 {
-        unsafe { crate::ffi::GeomLProp_SLProps_min_curvature(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_min_curvature(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:139 - `GeomLProp_SLProps::CurvatureDirections()`
     /// Returns the direction of the maximum and minimum curvature
     /// <MaxD> and <MinD>
     pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
-        unsafe { crate::ffi::GeomLProp_SLProps_curvature_directions(self as *mut Self, MaxD, MinD) }
+        {
+            unsafe {
+                crate::ffi::GeomLProp_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:142 - `GeomLProp_SLProps::MeanCurvature()`
     /// Returns the mean curvature.
     pub fn mean_curvature(&mut self) -> f64 {
-        unsafe { crate::ffi::GeomLProp_SLProps_mean_curvature(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_mean_curvature(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:145 - `GeomLProp_SLProps::GaussianCurvature()`
     /// Returns the Gaussian curvature
     pub fn gaussian_curvature(&mut self) -> f64 {
-        unsafe { crate::ffi::GeomLProp_SLProps_gaussian_curvature(self as *mut Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::GeomLProp_SLProps_gaussian_curvature(self as *mut Self) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -505,14 +676,21 @@ impl SurfaceTool {
     /// **Source:** `GeomLProp_SurfaceTool.hxx` - `GeomLProp_SurfaceTool::GeomLProp_SurfaceTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_SurfaceTool_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SurfaceTool_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:36 - `GeomLProp_SurfaceTool::Value()`
     /// Computes the point <P> of parameter <U> and <V> on the
     /// Surface <S>.
     pub fn value(S: &crate::ffi::HandleGeomSurface, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::GeomLProp_SurfaceTool_value(S, U, V, P) }
+        {
+            unsafe { crate::ffi::GeomLProp_SurfaceTool_value(S, U, V, P) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:43 - `GeomLProp_SurfaceTool::D1()`
@@ -526,7 +704,10 @@ impl SurfaceTool {
         D1U: &mut crate::gp::Vec,
         D1V: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::GeomLProp_SurfaceTool_d1(S, U, V, P, D1U, D1V) }
+        {
+            unsafe { crate::ffi::GeomLProp_SurfaceTool_d1(S, U, V, P, D1U, D1V) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:52 - `GeomLProp_SurfaceTool::D2()`
@@ -543,7 +724,10 @@ impl SurfaceTool {
         D2V: &mut crate::gp::Vec,
         DUV: &mut crate::gp::Vec,
     ) {
-        unsafe { crate::ffi::GeomLProp_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV) }
+        {
+            unsafe { crate::ffi::GeomLProp_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:62 - `GeomLProp_SurfaceTool::DN()`
@@ -554,7 +738,11 @@ impl SurfaceTool {
         IU: i32,
         IV: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_SurfaceTool_dn(S, U, V, IU, IV)) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SurfaceTool_dn(S, U, V, IU, IV) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:71 - `GeomLProp_SurfaceTool::Continuity()`
@@ -562,7 +750,11 @@ impl SurfaceTool {
     /// returns 1 : first derivative only is computable
     /// returns 2 : first and second derivative only are computable.
     pub fn continuity(S: &crate::ffi::HandleGeomSurface) -> i32 {
-        unsafe { crate::ffi::GeomLProp_SurfaceTool_continuity(S) }
+        {
+            let __result = unsafe { crate::ffi::GeomLProp_SurfaceTool_continuity(S) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:74 - `GeomLProp_SurfaceTool::Bounds()`
@@ -574,6 +766,9 @@ impl SurfaceTool {
         U2: &mut f64,
         V2: &mut f64,
     ) {
-        unsafe { crate::ffi::GeomLProp_SurfaceTool_bounds(S, U1, V1, U2, V2) }
+        {
+            unsafe { crate::ffi::GeomLProp_SurfaceTool_bounds(S, U1, V1, U2, V2) };
+            crate::check_exception();
+        }
     }
 }

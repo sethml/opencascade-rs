@@ -29,7 +29,10 @@ pub fn add_shape_box_bool(
     B: &mut crate::bnd::Box,
     useTriangulation: bool,
 ) {
-    unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) }
+    {
+        unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose`
 /// Adds the shape S to the bounding box B.
@@ -44,7 +47,10 @@ pub fn add_shape_box_bool(
 /// Add function. So the added part of the resulting bounding
 /// box is closer to the shape S.
 pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
-    unsafe { crate::ffi::BRepBndLib_add_close(S, B) }
+    {
+        unsafe { crate::ffi::BRepBndLib_add_close(S, B) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
 /// Adds the shape S to the bounding box B.
@@ -62,7 +68,10 @@ pub fn add_optimal(
     useTriangulation: bool,
     useShapeTolerance: bool,
 ) {
-    unsafe { crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance) }
+    {
+        unsafe { crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance) };
+        crate::check_exception();
+    }
 }
 /// **Source:** `BRepBndLib.hxx`:95 - `BRepBndLib::AddOBB`
 /// Computes the Oriented Bounding box for the shape <theS>.
@@ -84,13 +93,16 @@ pub fn add_obb(
     theIsOptimal: bool,
     theIsShapeToleranceUsed: bool,
 ) {
-    unsafe {
-        crate::ffi::BRepBndLib_add_obb(
-            theS,
-            theOBB,
-            theIsTriangulationUsed,
-            theIsOptimal,
-            theIsShapeToleranceUsed,
-        )
+    {
+        unsafe {
+            crate::ffi::BRepBndLib_add_obb(
+                theS,
+                theOBB,
+                theIsTriangulationUsed,
+                theIsOptimal,
+                theIsShapeToleranceUsed,
+            )
+        };
+        crate::check_exception();
     }
 }

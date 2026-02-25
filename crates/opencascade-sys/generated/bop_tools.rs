@@ -30,7 +30,11 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx` - `BOPTools_AlgoTools::BOPTools_AlgoTools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_AlgoTools_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:69 - `BOPTools_AlgoTools::DTolerance()`
@@ -41,7 +45,11 @@ impl AlgoTools {
     /// distances to these shapes. It helps to avoid numerical instability
     /// which may occur when comparing distances and tolerances.
     pub fn d_tolerance() -> f64 {
-        unsafe { crate::ffi::BOPTools_AlgoTools_d_tolerance() }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_d_tolerance() };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:76 - `BOPTools_AlgoTools::ComputeVV()`
@@ -55,7 +63,13 @@ impl AlgoTools {
         theP: &crate::gp::Pnt,
         theTolP: f64,
     ) -> i32 {
-        unsafe { crate::ffi::BOPTools_AlgoTools_compute_vv_vertex_pnt_real(theV, theP, theTolP) }
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_compute_vv_vertex_pnt_real(theV, theP, theTolP)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:84 - `BOPTools_AlgoTools::ComputeVV()`
@@ -68,7 +82,13 @@ impl AlgoTools {
         theV2: &crate::topo_ds::Vertex,
         theFuzz: f64,
     ) -> i32 {
-        unsafe { crate::ffi::BOPTools_AlgoTools_compute_vv_vertex2_real(theV1, theV2, theFuzz) }
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_compute_vv_vertex2_real(theV1, theV2, theFuzz)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:92 - `BOPTools_AlgoTools::MakeVertex()`
@@ -79,7 +99,10 @@ impl AlgoTools {
         theLV: &crate::ffi::TopTools_ListOfShape,
         theV: &mut crate::topo_ds::Vertex,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_make_vertex(theLV, theV) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_make_vertex(theLV, theV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:95 - `BOPTools_AlgoTools::MakeNewVertex()`
@@ -89,8 +112,13 @@ impl AlgoTools {
         aTol: f64,
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_pnt_real_vertex(aP1, aTol, aNewVertex)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_new_vertex_pnt_real_vertex(
+                    aP1, aTol, aNewVertex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -101,7 +129,10 @@ impl AlgoTools {
         aV2: &crate::topo_ds::Vertex,
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_make_new_vertex_vertex3(aV1, aV2, aNewVertex) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_make_new_vertex_vertex3(aV1, aV2, aNewVertex) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:106 - `BOPTools_AlgoTools::MakeNewVertex()`
@@ -114,10 +145,13 @@ impl AlgoTools {
         aP2: f64,
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_edge_real_vertex(
-                aE1, aP1, aE2, aP2, aNewVertex,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_edge_real_vertex(
+                    aE1, aP1, aE2, aP2, aNewVertex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -130,10 +164,13 @@ impl AlgoTools {
         aF2: &crate::topo_ds::Face,
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_face_vertex(
-                aE1, aP1, aF2, aNewVertex,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_face_vertex(
+                    aE1, aP1, aF2, aNewVertex,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -147,7 +184,10 @@ impl AlgoTools {
         aT: f64,
         aV: &crate::topo_ds::Vertex,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_curve_real_vertex(aIC, aT, aV) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_curve_real_vertex(aIC, aT, aV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:130 - `BOPTools_AlgoTools::UpdateVertex()`
@@ -159,7 +199,10 @@ impl AlgoTools {
         aT: f64,
         aV: &crate::topo_ds::Vertex,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_edge_real_vertex(aE, aT, aV) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_edge_real_vertex(aE, aT, aV) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:137 - `BOPTools_AlgoTools::UpdateVertex()`
@@ -167,7 +210,10 @@ impl AlgoTools {
     /// taking into account the fact that <aVN> should
     /// cover tolerance zone of <aVF>
     pub fn update_vertex_vertex2(aVF: &crate::topo_ds::Vertex, aVN: &crate::topo_ds::Vertex) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_vertex2(aVF, aVN) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_vertex2(aVF, aVN) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:141 - `BOPTools_AlgoTools::MakeEdge()`
@@ -182,17 +228,24 @@ impl AlgoTools {
         theTolR3D: f64,
         theE: &mut crate::topo_ds::Edge,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_edge(
-                theCurve, theV1, theT1, theV2, theT2, theTolR3D, theE,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_edge(
+                    theCurve, theV1, theT1, theV2, theT2, theTolR3D, theE,
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:150 - `BOPTools_AlgoTools::CopyEdge()`
     /// Makes a copy of <theEdge> with vertices.
     pub fn copy_edge(theEdge: &crate::topo_ds::Edge) -> crate::OwnedPtr<crate::topo_ds::Edge> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_AlgoTools_copy_edge(theEdge)) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_copy_edge(theEdge) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:154 - `BOPTools_AlgoTools::MakeSplitEdge()`
@@ -206,7 +259,12 @@ impl AlgoTools {
         aP2: f64,
         aNewEdge: &mut crate::topo_ds::Edge,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_make_split_edge(aE1, aV1, aP1, aV2, aP2, aNewEdge) }
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_split_edge(aE1, aV1, aP1, aV2, aP2, aNewEdge)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:163 - `BOPTools_AlgoTools::MakeSectEdge()`
@@ -220,7 +278,12 @@ impl AlgoTools {
         aP2: f64,
         aNewEdge: &mut crate::topo_ds::Edge,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_make_sect_edge(aIC, aV1, aP1, aV2, aP2, aNewEdge) }
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_sect_edge(aIC, aV1, aP1, aV2, aP2, aNewEdge)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:176 - `BOPTools_AlgoTools::ComputeState()`
@@ -236,13 +299,14 @@ impl AlgoTools {
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::BOPTools_AlgoTools_compute_state_pnt_solid_real_handleinttoolscontext(
                     thePoint, theSolid, theTol, theContext,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -258,8 +322,14 @@ impl AlgoTools {
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BOPTools_AlgoTools_compute_state_vertex_solid_real_handleinttoolscontext(theVertex, theSolid, theTol, theContext)).unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_compute_state_vertex_solid_real_handleinttoolscontext(
+                    theVertex, theSolid, theTol, theContext,
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -275,13 +345,14 @@ impl AlgoTools {
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::BOPTools_AlgoTools_compute_state_edge_solid_real_handleinttoolscontext(
                     theEdge, theSolid, theTol, theContext,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -299,8 +370,12 @@ impl AlgoTools {
         theBounds: &crate::ffi::TopTools_IndexedMapOfShape,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::BOPTools_AlgoTools_compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(theFace, theSolid, theTol, theBounds, theContext)).unwrap()
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(theFace, theSolid, theTol, theBounds, theContext)
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -316,13 +391,14 @@ impl AlgoTools {
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(
+        {
+            let __result = unsafe {
                 crate::ffi::BOPTools_AlgoTools_compute_state_by_one_point(
                     theShape, theSolid, theTol, theContext,
-                ),
-            )
-            .unwrap()
+                )
+            };
+            crate::check_exception();
+            crate::top_abs::State::try_from(__result).unwrap()
         }
     }
 
@@ -339,10 +415,14 @@ impl AlgoTools {
         theFaceOff: &mut crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_get_face_off(
-                theEdge, theFace, theLCEF, theFaceOff, theContext,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_get_face_off(
+                    theEdge, theFace, theLCEF, theFaceOff, theContext,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -362,10 +442,12 @@ impl AlgoTools {
         theFace2: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_internal_face_face_edge_face2_handleinttoolscontext(
-                theFace, theEdge, theFace1, theFace2, theContext,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_internal_face_face_edge_face2_handleinttoolscontext(theFace, theEdge, theFace1, theFace2, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -383,8 +465,12 @@ impl AlgoTools {
         theLF: &mut crate::ffi::TopTools_ListOfShape,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_internal_face_face_edge_listofshape_handleinttoolscontext(theFace, theEdge, theLF, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_internal_face_face_edge_listofshape_handleinttoolscontext(theFace, theEdge, theLF, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -401,8 +487,12 @@ impl AlgoTools {
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(theFace, theSolid, theMEF, theTol, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(theFace, theSolid, theMEF, theTol, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -419,10 +509,13 @@ impl AlgoTools {
         thePC2: bool,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_p_curve(
-                theE, theF1, theF2, theCurve, thePC1, thePC2, theContext,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_p_curve(
+                    theE, theF1, theF2, theCurve, thePC1, thePC2, theContext,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -430,7 +523,11 @@ impl AlgoTools {
     /// @name Wire classification relatively face
     /// Checks if the wire is a hole for the face.
     pub fn is_hole(theW: &crate::topo_ds::Shape, theF: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools_is_hole(theW, theF) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_is_hole(theW, theF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:314 - `BOPTools_AlgoTools::IsSplitToReverse()`
@@ -462,13 +559,12 @@ impl AlgoTools {
         theContext: &crate::ffi::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_shape2_handleinttoolscontext_intptr(
-                theSplit,
-                theShape,
-                theContext,
-                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_shape2_handleinttoolscontext_intptr(theSplit, theShape, theContext, theError.map_or(std::ptr::null_mut(), |r| r as *mut _))
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -482,10 +578,14 @@ impl AlgoTools {
         theContext: &crate::ffi::HandleIntToolsContext,
         theReport: &crate::ffi::HandleMessageReport,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_with_warn(
-                theSplit, theShape, theContext, theReport,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_with_warn(
+                    theSplit, theShape, theContext, theReport,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -516,13 +616,12 @@ impl AlgoTools {
         theContext: &crate::ffi::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_face2_handleinttoolscontext_intptr(
-                theSplit,
-                theShape,
-                theContext,
-                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_face2_handleinttoolscontext_intptr(theSplit, theShape, theContext, theError.map_or(std::ptr::null_mut(), |r| r as *mut _))
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -553,13 +652,12 @@ impl AlgoTools {
         theContext: &crate::ffi::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_edge2_handleinttoolscontext_intptr(
-                theSplit,
-                theShape,
-                theContext,
-                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_edge2_handleinttoolscontext_intptr(theSplit, theShape, theContext, theError.map_or(std::ptr::null_mut(), |r| r as *mut _))
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -575,7 +673,12 @@ impl AlgoTools {
         theF2: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe { crate::ffi::BOPTools_AlgoTools_sense(theF1, theF2, theContext) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_AlgoTools_sense(theF1, theF2, theContext) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:396 - `BOPTools_AlgoTools::MakeConnexityBlock()`
@@ -590,13 +693,16 @@ impl AlgoTools {
         theLSCB: &mut crate::ffi::TopTools_ListOfShape,
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_block(
-                theLS,
-                theMapAvoid,
-                theLSCB,
-                theAllocator,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_connexity_block(
+                    theLS,
+                    theMapAvoid,
+                    theLSCB,
+                    theAllocator,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -611,13 +717,16 @@ impl AlgoTools {
         theElementType: crate::top_abs::ShapeEnum,
         theLCB: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(
-                theS,
-                theConnectionType.into(),
-                theElementType.into(),
-                theLCB,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(
+                    theS,
+                    theConnectionType.into(),
+                    theElementType.into(),
+                    theLCB,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -634,8 +743,11 @@ impl AlgoTools {
         theLCB: &mut crate::ffi::TopTools_ListOfListOfShape,
         theConnectionMap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(theS, theConnectionType.into(), theElementType.into(), theLCB, theConnectionMap)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(theS, theConnectionType.into(), theElementType.into(), theLCB, theConnectionMap)
+            };
+            crate::check_exception();
         }
     }
 
@@ -649,8 +761,11 @@ impl AlgoTools {
         theElementType: crate::top_abs::ShapeEnum,
         theLCB: &mut crate::ffi::BOPTools_ListOfConnexityBlock,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(theLS, theConnectionType.into(), theElementType.into(), theLCB)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(theLS, theConnectionType.into(), theElementType.into(), theLCB)
+            };
+            crate::check_exception();
         }
     }
 
@@ -658,13 +773,19 @@ impl AlgoTools {
     /// @name Orienting elements in container
     /// Correctly orients edges on the wire
     pub fn orient_edges_on_wire(theWire: &mut crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_orient_edges_on_wire(theWire) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_orient_edges_on_wire(theWire) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:436 - `BOPTools_AlgoTools::OrientFacesOnShell()`
     /// Correctly orients faces on the shell
     pub fn orient_faces_on_shell(theShell: &mut crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_orient_faces_on_shell(theShell) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_orient_faces_on_shell(theShell) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:444 - `BOPTools_AlgoTools::CorrectTolerances()`
@@ -680,13 +801,16 @@ impl AlgoTools {
         theTolMax: f64,
         theRunParallel: bool,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_tolerances(
-                theS,
-                theMapToAvoid,
-                theTolMax,
-                theRunParallel,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_correct_tolerances(
+                    theS,
+                    theMapToAvoid,
+                    theTolMax,
+                    theRunParallel,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -699,13 +823,16 @@ impl AlgoTools {
         theTolMax: f64,
         theRunParallel: bool,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_curve_on_surface(
-                theS,
-                theMapToAvoid,
-                theTolMax,
-                theRunParallel,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_correct_curve_on_surface(
+                    theS,
+                    theMapToAvoid,
+                    theTolMax,
+                    theRunParallel,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -718,13 +845,16 @@ impl AlgoTools {
         theTolMax: f64,
         theRunParallel: bool,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_point_on_curve(
-                theS,
-                theMapToAvoid,
-                theTolMax,
-                theRunParallel,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_correct_point_on_curve(
+                    theS,
+                    theMapToAvoid,
+                    theTolMax,
+                    theRunParallel,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -735,12 +865,15 @@ impl AlgoTools {
         theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
         theRunParallel: bool,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_shape_tolerances(
-                theS,
-                theMapToAvoid,
-                theRunParallel,
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_correct_shape_tolerances(
+                    theS,
+                    theMapToAvoid,
+                    theRunParallel,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -753,8 +886,14 @@ impl AlgoTools {
         theContext: &crate::ffi::HandleIntToolsContext,
         theFuzz: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_are_faces_same_domain(theF1, theF2, theContext, theFuzz)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_are_faces_same_domain(
+                    theF1, theF2, theContext, theFuzz,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -769,7 +908,13 @@ impl AlgoTools {
         theFace: &crate::topo_ds::Face,
         theEdgeOff: &mut crate::topo_ds::Edge,
     ) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools_get_edge_off(theEdge, theFace, theEdgeOff) }
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_get_edge_off(theEdge, theFace, theEdgeOff)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:493 - `BOPTools_AlgoTools::GetEdgeOnFace()`
@@ -782,7 +927,13 @@ impl AlgoTools {
         theFace: &crate::topo_ds::Face,
         theEdgeOnF: &mut crate::topo_ds::Edge,
     ) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools_get_edge_on_face(theEdge, theFace, theEdgeOnF) }
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_get_edge_on_face(theEdge, theFace, theEdgeOnF)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:500 - `BOPTools_AlgoTools::CorrectRange()`
@@ -795,7 +946,12 @@ impl AlgoTools {
         aSR: &crate::int_tools::Range,
         aNewSR: &mut crate::int_tools::Range,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_correct_range_edge2_range2(aE1, aE2, aSR, aNewSR) }
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_correct_range_edge2_range2(aE1, aE2, aSR, aNewSR)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:507 - `BOPTools_AlgoTools::CorrectRange()`
@@ -807,8 +963,11 @@ impl AlgoTools {
         aSR: &crate::int_tools::Range,
         aNewSR: &mut crate::int_tools::Range,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_range_edge_face_range2(aE, aF, aSR, aNewSR)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_correct_range_edge_face_range2(aE, aF, aSR, aNewSR)
+            };
+            crate::check_exception();
         }
     }
 
@@ -822,8 +981,16 @@ impl AlgoTools {
         theContext: &crate::ffi::HandleIntToolsContext,
         theCheckSplittable: bool,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_micro_edge(theEdge, theContext, theCheckSplittable)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_micro_edge(
+                    theEdge,
+                    theContext,
+                    theCheckSplittable,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -831,7 +998,11 @@ impl AlgoTools {
     /// @name Solid classification
     /// Returns true if the solid <theSolid> is inverted
     pub fn is_inverted_solid(theSolid: &crate::topo_ds::Solid) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools_is_inverted_solid(theSolid) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_is_inverted_solid(theSolid) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:527 - `BOPTools_AlgoTools::ComputeTolerance()`
@@ -843,10 +1014,14 @@ impl AlgoTools {
         theMaxDist: &mut f64,
         theMaxPar: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_tolerance(
-                theFace, theEdge, theMaxDist, theMaxPar,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_compute_tolerance(
+                    theFace, theEdge, theMaxDist, theMaxPar,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -857,13 +1032,19 @@ impl AlgoTools {
         theType: crate::top_abs::ShapeEnum,
         theShape: &mut crate::topo_ds::Shape,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_make_container(theType.into(), theShape) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_make_container(theType.into(), theShape) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:537 - `BOPTools_AlgoTools::PointOnEdge()`
     /// Compute a 3D-point on the edge <aEdge> at parameter <aPrm>
     pub fn point_on_edge(aEdge: &crate::topo_ds::Edge, aPrm: f64, aP: &mut crate::gp::Pnt) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_point_on_edge(aEdge, aPrm, aP) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_point_on_edge(aEdge, aPrm, aP) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:543 - `BOPTools_AlgoTools::IsBlockInOnFace()`
@@ -875,20 +1056,33 @@ impl AlgoTools {
         aE: &crate::topo_ds::Edge,
         aContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext) }
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:549 - `BOPTools_AlgoTools::Dimensions()`
     /// Returns the min and max dimensions of the shape <theS>.
     pub fn dimensions(theS: &crate::topo_ds::Shape, theDMin: &mut i32, theDMax: &mut i32) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_dimensions(theS, theDMin, theDMax) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools_dimensions(theS, theDMin, theDMax) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:555 - `BOPTools_AlgoTools::Dimension()`
     /// Returns dimension of the shape <theS>.
     /// If the shape contains elements of different dimension, -1 is returned.
     pub fn dimension(theS: &crate::topo_ds::Shape) -> i32 {
-        unsafe { crate::ffi::BOPTools_AlgoTools_dimension(theS) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_dimension(theS) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:560 - `BOPTools_AlgoTools::TreatCompound()`
@@ -900,19 +1094,26 @@ impl AlgoTools {
         theList: &mut crate::ffi::TopTools_ListOfShape,
         theMap: Option<&mut crate::ffi::TopTools_MapOfShape>,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools_treat_compound(
-                theS,
-                theList,
-                theMap.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools_treat_compound(
+                    theS,
+                    theList,
+                    theMap.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                )
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:565 - `BOPTools_AlgoTools::IsOpenShell()`
     /// Returns true if the  shell <theShell> is open
     pub fn is_open_shell(theShell: &crate::topo_ds::Shell) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools_is_open_shell(theShell) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools_is_open_shell(theShell) };
+            crate::check_exception();
+            __result
+        }
     }
 }
 
@@ -936,7 +1137,11 @@ impl AlgoTools2D {
     /// **Source:** `BOPTools_AlgoTools2D.hxx` - `BOPTools_AlgoTools2D::BOPTools_AlgoTools2D()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_AlgoTools2D_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools2D_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:44 - `BOPTools_AlgoTools2D::BuildPCurveForEdgeOnFace()`
@@ -948,15 +1153,22 @@ impl AlgoTools2D {
         aF: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_build_p_curve_for_edge_on_face(aE, aF, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_build_p_curve_for_edge_on_face(aE, aF, theContext)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:50 - `BOPTools_AlgoTools2D::EdgeTangent()`
     /// Compute tangent for the edge  <aE> [in 3D]  at parameter <aT>
     pub fn edge_tangent(anE: &crate::topo_ds::Edge, aT: f64, Tau: &mut crate::gp::Vec) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools2D_edge_tangent(anE, aT, Tau) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools2D_edge_tangent(anE, aT, Tau) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:60 - `BOPTools_AlgoTools2D::PointOnSurface()`
@@ -974,7 +1186,12 @@ impl AlgoTools2D {
         V: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools2D_point_on_surface(aE, aF, aT, U, V, theContext) }
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_point_on_surface(aE, aF, aT, U, V, theContext)
+            };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:73 - `BOPTools_AlgoTools2D::CurveOnSurface()`
@@ -990,8 +1207,11 @@ impl AlgoTools2D {
         aToler: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(aE, aF, aC, aToler, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(aE, aF, aC, aToler, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1011,8 +1231,11 @@ impl AlgoTools2D {
         aToler: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(aE, aF, aC, aFirst, aLast, aToler, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(aE, aF, aC, aFirst, aLast, aToler, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1030,10 +1253,12 @@ impl AlgoTools2D {
         aLast: &mut f64,
         aToler: &mut f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face_handlegeom2dcurve_real3(
-                aE, aF, aC, aFirst, aLast, aToler,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face_handlegeom2dcurve_real3(aE, aF, aC, aFirst, aLast, aToler)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1045,7 +1270,12 @@ impl AlgoTools2D {
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
     ) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face(aE, aF) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face(aE, aF) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:115 - `BOPTools_AlgoTools2D::AdjustPCurveOnFace()`
@@ -1058,8 +1288,11 @@ impl AlgoTools2D {
         theC2DA: &mut crate::ffi::HandleGeom2dCurve,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(theF, theC3D, theC2D, theC2DA, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(theF, theC3D, theC2D, theC2DA, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1075,8 +1308,11 @@ impl AlgoTools2D {
         theC2DA: &mut crate::ffi::HandleGeom2dCurve,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_real2_handlegeom2dcurve2_handleinttoolscontext(theF, theFirst, theLast, theC2D, theC2DA, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_real2_handlegeom2dcurve2_handleinttoolscontext(theF, theFirst, theLast, theC2D, theC2DA, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1090,21 +1326,33 @@ impl AlgoTools2D {
         aC2D: &crate::ffi::HandleGeom2dCurve,
         aC2DA: &mut crate::ffi::HandleGeom2dCurve,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_surf(aF, aT1, aT2, aC2D, aC2DA)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_surf(aF, aT1, aT2, aC2D, aC2DA)
+            };
+            crate::check_exception();
         }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:142 - `BOPTools_AlgoTools2D::IntermediatePoint()`
     /// Compute intermediate  value in  between [aFirst, aLast] .
     pub fn intermediate_point_real2(aFirst: f64, aLast: f64) -> f64 {
-        unsafe { crate::ffi::BOPTools_AlgoTools2D_intermediate_point_real2(aFirst, aLast) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_AlgoTools2D_intermediate_point_real2(aFirst, aLast) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:146 - `BOPTools_AlgoTools2D::IntermediatePoint()`
     /// Compute intermediate value of parameter for the edge <anE>.
     pub fn intermediate_point_edge(anE: &crate::topo_ds::Edge) -> f64 {
-        unsafe { crate::ffi::BOPTools_AlgoTools2D_intermediate_point_edge(anE) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools2D_intermediate_point_edge(anE) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:153 - `BOPTools_AlgoTools2D::Make2D()`
@@ -1122,8 +1370,13 @@ impl AlgoTools2D {
         aToler: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_make2_d(aE, aF, aC, aFirst, aLast, aToler, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_make2_d(
+                    aE, aF, aC, aFirst, aLast, aToler, theContext,
+                )
+            };
+            crate::check_exception();
         }
     }
 
@@ -1139,8 +1392,11 @@ impl AlgoTools2D {
         aToler: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aC, aToler, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aC, aToler, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1159,8 +1415,11 @@ impl AlgoTools2D {
         aToler: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aT1, aT2, aC, aToler, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aT1, aT2, aC, aToler, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1174,7 +1433,13 @@ impl AlgoTools2D {
         aF: &crate::topo_ds::Face,
         aCtx: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe { crate::ffi::BOPTools_AlgoTools2D_attach_existing_p_curve(aEold, aEnew, aF, aCtx) }
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_attach_existing_p_curve(aEold, aEnew, aF, aCtx)
+            };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:207 - `BOPTools_AlgoTools2D::IsEdgeIsoline()`
@@ -1195,8 +1460,11 @@ impl AlgoTools2D {
         isTheUIso: &mut bool,
         isTheVIso: &mut bool,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_is_edge_isoline(theE, theF, isTheUIso, isTheVIso)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools2D_is_edge_isoline(theE, theF, isTheUIso, isTheVIso)
+            };
+            crate::check_exception();
         }
     }
 }
@@ -1221,7 +1489,11 @@ impl AlgoTools3D {
     /// **Source:** `BOPTools_AlgoTools3D.hxx` - `BOPTools_AlgoTools3D::BOPTools_AlgoTools3D()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_AlgoTools3D_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools3D_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:43 - `BOPTools_AlgoTools3D::DoSplitSEAMOnFace()`
@@ -1231,8 +1503,12 @@ impl AlgoTools3D {
         theESplit: &crate::topo_ds::Edge,
         theFace: &crate::topo_ds::Face,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge_face(theESplit, theFace)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge_face(theESplit, theFace)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1244,10 +1520,14 @@ impl AlgoTools3D {
         theESplit: &crate::topo_ds::Edge,
         theFace: &crate::topo_ds::Face,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge2_face(
-                theEOrigin, theESplit, theFace,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge2_face(
+                    theEOrigin, theESplit, theFace,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1262,8 +1542,11 @@ impl AlgoTools3D {
         aD: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_real_dir_handleinttoolscontext(aE, aF, aT, aD, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_real_dir_handleinttoolscontext(aE, aF, aT, aD, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1277,8 +1560,11 @@ impl AlgoTools3D {
         aD: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_dir_handleinttoolscontext(aE, aF, aD, theContext)
+        {
+            unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_dir_handleinttoolscontext(aE, aF, aD, theContext)
+            };
+            crate::check_exception();
         }
     }
 
@@ -1287,7 +1573,11 @@ impl AlgoTools3D {
     /// Returns 0  if directions aNF1 aNF2 coincide<br>
     /// Returns -1 if scalar product aNF1* aNF2<0.
     pub fn sense_flag(aNF1: &crate::gp::Dir, aNF2: &crate::gp::Dir) -> i32 {
-        unsafe { crate::ffi::BOPTools_AlgoTools3D_sense_flag(aNF1, aNF2) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools3D_sense_flag(aNF1, aNF2) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:78 - `BOPTools_AlgoTools3D::GetNormalToSurface()`
@@ -1299,7 +1589,12 @@ impl AlgoTools3D {
         V: f64,
         aD: &mut crate::gp::Dir,
     ) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools3D_get_normal_to_surface(aS, U, V, aD) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_AlgoTools3D_get_normal_to_surface(aS, U, V, aD) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:97 - `BOPTools_AlgoTools3D::GetApproxNormalToFaceOnEdge()`
@@ -1325,8 +1620,12 @@ impl AlgoTools3D {
         aD: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_handleinttoolscontext(aE, aF, aT, aPx, aD, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_handleinttoolscontext(aE, aF, aT, aPx, aD, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1352,8 +1651,12 @@ impl AlgoTools3D {
         aDNF: &mut crate::gp::Dir,
         aDt2D: f64,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_real(theE, theF, aT, aP, aDNF, aDt2D)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_real(theE, theF, aT, aP, aDNF, aDt2D)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1381,8 +1684,12 @@ impl AlgoTools3D {
         aDNF: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real2_pnt_dir_handleinttoolscontext(theE, theF, aT, aDt2D, aP, aDNF, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real2_pnt_dir_handleinttoolscontext(theE, theF, aT, aDt2D, aP, aDNF, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1406,8 +1713,12 @@ impl AlgoTools3D {
         aPx: &mut crate::gp::Pnt,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aDt2D, aP2D, aPx, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aDt2D, aP2D, aPx, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1427,10 +1738,14 @@ impl AlgoTools3D {
         aP2D: &mut crate::gp::Pnt2d,
         aPx: &mut crate::gp::Pnt,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt(
-                aE, aF, aT, aDt2D, aP2D, aPx,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt(
+                    aE, aF, aT, aDt2D, aP2D, aPx,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1453,8 +1768,12 @@ impl AlgoTools3D {
         aPx: &mut crate::gp::Pnt,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aP2D, aPx, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aP2D, aPx, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1476,8 +1795,12 @@ impl AlgoTools3D {
         aPx: &mut crate::gp::Pnt,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_pnt2d_pnt_handleinttoolscontext(aE, aF, aP2D, aPx, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_pnt2d_pnt_handleinttoolscontext(aE, aF, aP2D, aPx, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1485,14 +1808,22 @@ impl AlgoTools3D {
     /// Returns simple step value that is used in 2D-computations
     /// = 1.e-5
     pub fn min_step_in2d() -> f64 {
-        unsafe { crate::ffi::BOPTools_AlgoTools3D_min_step_in2d() }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools3D_min_step_in2d() };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:219 - `BOPTools_AlgoTools3D::IsEmptyShape()`
     /// Returns TRUE if the shape <aS> does not contain
     /// geometry information  (e.g. empty compound)
     pub fn is_empty_shape(aS: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::BOPTools_AlgoTools3D_is_empty_shape(aS) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_AlgoTools3D_is_empty_shape(aS) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:223 - `BOPTools_AlgoTools3D::OrientEdgeOnFace()`
@@ -1503,7 +1834,10 @@ impl AlgoTools3D {
         aF: &crate::topo_ds::Face,
         aER: &mut crate::topo_ds::Edge,
     ) {
-        unsafe { crate::ffi::BOPTools_AlgoTools3D_orient_edge_on_face(aE, aF, aER) }
+        {
+            unsafe { crate::ffi::BOPTools_AlgoTools3D_orient_edge_on_face(aE, aF, aER) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:231 - `BOPTools_AlgoTools3D::PointInFace()`
@@ -1517,10 +1851,14 @@ impl AlgoTools3D {
         theP2D: &mut crate::gp::Pnt2d,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_pnt_pnt2d_handleinttoolscontext(
-                theF, theP, theP2D, theContext,
-            )
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_pnt_pnt2d_handleinttoolscontext(
+                    theF, theP, theP2D, theContext,
+                )
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1543,8 +1881,12 @@ impl AlgoTools3D {
         theP2D: &mut crate::gp::Pnt2d,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_edge_real2_pnt_pnt2d_handleinttoolscontext(theF, theE, theT, theDt2D, theP, theP2D, theContext)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_edge_real2_pnt_pnt2d_handleinttoolscontext(theF, theE, theT, theDt2D, theP, theP2D, theContext)
+            };
+            crate::check_exception();
+            __result
         }
     }
 
@@ -1562,8 +1904,12 @@ impl AlgoTools3D {
         theContext: &crate::ffi::HandleIntToolsContext,
         theDt2D: f64,
     ) -> i32 {
-        unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(theF, theL, theP, theP2D, theContext, theDt2D)
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(theF, theL, theP, theP2D, theContext, theDt2D)
+            };
+            crate::check_exception();
+            __result
         }
     }
 }
@@ -1584,50 +1930,84 @@ unsafe impl crate::CppDeletable for ConnexityBlock {
 impl ConnexityBlock {
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:28 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_ConnexityBlock_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_ConnexityBlock_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:34 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
+        {
+            let __result = unsafe {
                 crate::ffi::BOPTools_ConnexityBlock_ctor_handlencollectionbaseallocator(
                     theAllocator,
-                ),
-            )
+                )
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:41 - `BOPTools_ConnexityBlock::Shapes()`
     pub fn shapes(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPTools_ConnexityBlock_shapes(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_ConnexityBlock_shapes(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:44 - `BOPTools_ConnexityBlock::ChangeShapes()`
     pub fn change_shapes(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe { &mut *(crate::ffi::BOPTools_ConnexityBlock_change_shapes(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_ConnexityBlock_change_shapes(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:47 - `BOPTools_ConnexityBlock::SetRegular()`
     pub fn set_regular(&mut self, theFlag: bool) {
-        unsafe { crate::ffi::BOPTools_ConnexityBlock_set_regular(self as *mut Self, theFlag) }
+        {
+            unsafe { crate::ffi::BOPTools_ConnexityBlock_set_regular(self as *mut Self, theFlag) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:50 - `BOPTools_ConnexityBlock::IsRegular()`
     pub fn is_regular(&self) -> bool {
-        unsafe { crate::ffi::BOPTools_ConnexityBlock_is_regular(self as *const Self) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_ConnexityBlock_is_regular(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:53 - `BOPTools_ConnexityBlock::Loops()`
     pub fn loops(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BOPTools_ConnexityBlock_loops(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_ConnexityBlock_loops(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:56 - `BOPTools_ConnexityBlock::ChangeLoops()`
     pub fn change_loops(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
-        unsafe { &mut *(crate::ffi::BOPTools_ConnexityBlock_change_loops(self as *mut Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_ConnexityBlock_change_loops(self as *mut Self) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 }
 
@@ -1647,27 +2027,47 @@ unsafe impl crate::CppDeletable for CoupleOfShape {
 impl CoupleOfShape {
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:27 - `BOPTools_CoupleOfShape::BOPTools_CoupleOfShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_CoupleOfShape_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_CoupleOfShape_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:32 - `BOPTools_CoupleOfShape::SetShape1()`
     pub fn set_shape1(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BOPTools_CoupleOfShape_set_shape1(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::BOPTools_CoupleOfShape_set_shape1(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:35 - `BOPTools_CoupleOfShape::Shape1()`
     pub fn shape1(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BOPTools_CoupleOfShape_shape1(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_CoupleOfShape_shape1(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:38 - `BOPTools_CoupleOfShape::SetShape2()`
     pub fn set_shape2(&mut self, theShape: &crate::topo_ds::Shape) {
-        unsafe { crate::ffi::BOPTools_CoupleOfShape_set_shape2(self as *mut Self, theShape) }
+        {
+            unsafe { crate::ffi::BOPTools_CoupleOfShape_set_shape2(self as *mut Self, theShape) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:41 - `BOPTools_CoupleOfShape::Shape2()`
     pub fn shape2(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BOPTools_CoupleOfShape_shape2(self as *const Self)) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_CoupleOfShape_shape2(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 }
 
@@ -1687,17 +2087,23 @@ unsafe impl crate::CppDeletable for Set {
 impl Set {
     /// **Source:** `BOPTools_Set.hxx`:32 - `BOPTools_Set::BOPTools_Set()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_ctor()) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_Set_ctor() };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:35 - `BOPTools_Set::BOPTools_Set()`
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_ctor_handlencollectionbaseallocator(
-                theAllocator,
-            ))
+        {
+            let __result = unsafe {
+                crate::ffi::BOPTools_Set_ctor_handlencollectionbaseallocator(theAllocator)
+            };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
         }
     }
 
@@ -1709,37 +2115,65 @@ impl Set {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &Set) -> &mut Set {
-        unsafe { &mut *(crate::ffi::BOPTools_Set_assign(self as *mut Self, Other)) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_Set_assign(self as *mut Self, Other) };
+            crate::check_exception();
+            unsafe { &mut *(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:44 - `BOPTools_Set::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::ffi::BOPTools_Set_shape(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_Set_shape(self as *const Self) };
+            crate::check_exception();
+            unsafe { &*(__result) }
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:46 - `BOPTools_Set::Add()`
     pub fn add(&mut self, theS: &crate::topo_ds::Shape, theType: crate::top_abs::ShapeEnum) {
-        unsafe { crate::ffi::BOPTools_Set_add(self as *mut Self, theS, theType.into()) }
+        {
+            unsafe { crate::ffi::BOPTools_Set_add(self as *mut Self, theS, theType.into()) };
+            crate::check_exception();
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:48 - `BOPTools_Set::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        unsafe { crate::ffi::BOPTools_Set_nb_shapes(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_Set_nb_shapes(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:50 - `BOPTools_Set::IsEqual()`
     pub fn is_equal(&self, aOther: &Set) -> bool {
-        unsafe { crate::ffi::BOPTools_Set_is_equal(self as *const Self, aOther) }
+        {
+            let __result =
+                unsafe { crate::ffi::BOPTools_Set_is_equal(self as *const Self, aOther) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:54 - `BOPTools_Set::GetSum()`
     pub fn get_sum(&self) -> usize {
-        unsafe { crate::ffi::BOPTools_Set_get_sum(self as *const Self) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_Set_get_sum(self as *const Self) };
+            crate::check_exception();
+            __result
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_to_owned(self as *const Self)) }
+        {
+            let __result = unsafe { crate::ffi::BOPTools_Set_to_owned(self as *const Self) };
+            crate::check_exception();
+            unsafe { crate::OwnedPtr::from_raw(__result) }
+        }
     }
 }
 
