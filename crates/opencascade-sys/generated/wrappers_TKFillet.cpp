@@ -43,6 +43,7 @@
 #include <BRepFilletAPI_MakeChamfer.hxx>
 #include <BRepFilletAPI_MakeFillet.hxx>
 #include <BRepFilletAPI_MakeFillet2d.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <BlendFunc.hxx>
 #include <BlendFunc_CSCircular.hxx>
 #include <BlendFunc_CSConstRad.hxx>
@@ -110,6 +111,7 @@
 #include <ChFiDS_Spine.hxx>
 #include <ChFiDS_State.hxx>
 #include <ChFiDS_Stripe.hxx>
+#include <ChFiDS_StripeArray1.hxx>
 #include <ChFiDS_StripeMap.hxx>
 #include <ChFiDS_SurfData.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
@@ -137,6 +139,7 @@
 #include <Law_Function.hxx>
 #include <Law_Laws.hxx>
 #include <Message_ProgressRange.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
@@ -146,12 +149,11 @@
 #include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array1OfBezierCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TColgp_Array1OfVec.hxx>
@@ -168,7 +170,6 @@
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

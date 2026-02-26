@@ -25,12 +25,14 @@
 #include <Approx_Status.hxx>
 #include <Approx_SweepFunction.hxx>
 #include <BRepFill_CurveConstraint.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Bnd_HArray1OfBox.hxx>
 #include <ChFiKPart_RstMap.hxx>
 #include <Convert_ParameterisationType.hxx>
+#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Extrema_ExtAlgo.hxx>
 #include <Extrema_ExtCC.hxx>
 #include <Extrema_ExtCC2d.hxx>
@@ -41,7 +43,6 @@
 #include <Extrema_ExtPS.hxx>
 #include <Extrema_ExtSS.hxx>
 #include <Extrema_POnCurv2d.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <FairCurve_AnalysisCode.hxx>
 #include <FairCurve_Batten.hxx>
 #include <FairCurve_BattenLaw.hxx>
@@ -431,7 +432,6 @@
 #include <LocalAnalysis_CurveContinuity.hxx>
 #include <LocalAnalysis_StatusErrorType.hxx>
 #include <LocalAnalysis_SurfaceContinuity.hxx>
-#include <MeshVS_SensitivePolyhedron.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseSequence.hxx>
@@ -465,7 +465,6 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -476,10 +475,9 @@
 #include <TColGeom2d_HArray1OfCurve.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array1OfBezierCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>
@@ -502,12 +500,12 @@
 #include <TColgp_SequenceOfVec.hxx>
 #include <TColgp_SequenceOfXY.hxx>
 #include <TColgp_SequenceOfXYZ.hxx>
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
 #include <TopTrans_CurveTransition.hxx>
 #include <TopTrans_SurfaceTransition.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax22d.hxx>
 #include <gp_Circ.hxx>

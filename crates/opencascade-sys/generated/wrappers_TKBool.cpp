@@ -53,6 +53,7 @@
 #include <BRepMAT2d_BisectingLocus.hxx>
 #include <BRepMAT2d_LinkTopoBilo.hxx>
 #include <BRepProj_Projection.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -94,14 +95,13 @@
 #include <Law_Function.hxx>
 #include <Law_Laws.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom2d_SequenceOfGeometry.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
 #include <TColStd_ListOfInteger.hxx>
@@ -173,7 +173,7 @@
 #include <TopOpeBRepDS_CurveExplorer.hxx>
 #include <TopOpeBRepDS_CurveIterator.hxx>
 #include <TopOpeBRepDS_CurvePointInterference.hxx>
-#include <TopOpeBRepDS_DataMapOfInterferenceShape.hxx>
+#include <TopOpeBRepDS_DataMapOfInterferenceListOfInterference.hxx>
 #include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
 #include <TopOpeBRepDS_DataMapOfShapeState.hxx>
 #include <TopOpeBRepDS_DataStructure.hxx>
@@ -302,7 +302,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_Dir.hxx>

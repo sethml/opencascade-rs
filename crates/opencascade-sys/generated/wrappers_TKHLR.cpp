@@ -11,6 +11,7 @@
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRepTopAdaptor_MapOfShapeTool.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -165,10 +166,10 @@
 #include <Intrv_Interval.hxx>
 #include <Intrv_Intervals.hxx>
 #include <Intrv_Position.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseSequence.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColGeom2d_Array1OfBSplineCurve.hxx>
@@ -178,7 +179,6 @@
 #include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
@@ -194,7 +194,6 @@
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Circ.hxx>

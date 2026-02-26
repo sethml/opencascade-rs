@@ -14,6 +14,7 @@
 #include <BVH_BuildThread.hxx>
 #include <BVH_Object.hxx>
 #include <BVH_Properties.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Array1OfBox.hxx>
 #include <Bnd_Array1OfBox2d.hxx>
 #include <Bnd_Array1OfSphere.hxx>
@@ -46,13 +47,12 @@
 #include <Convert_HyperbolaToBSplineCurve.hxx>
 #include <Convert_ParabolaToBSplineCurve.hxx>
 #include <Convert_ParameterisationType.hxx>
+#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Convert_SphereToBSplineSurface.hxx>
 #include <Convert_TorusToBSplineSurface.hxx>
 #include <ElCLib.hxx>
 #include <ElSLib.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <MeshVS_SensitivePolyhedron.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseSequence.hxx>
@@ -88,7 +88,6 @@
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -158,6 +157,7 @@
 #include <TColgp_SequenceOfVec2d.hxx>
 #include <TColgp_SequenceOfXY.hxx>
 #include <TColgp_SequenceOfXYZ.hxx>
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TShort_HArray1OfShortReal.hxx>
 #include <TopLoc_Datum3D.hxx>
@@ -165,7 +165,6 @@
 #include <TopLoc_Location.hxx>
 #include <TopLoc_SListNodeOfItemLocation.hxx>
 #include <TopLoc_SListOfItemLocation.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>

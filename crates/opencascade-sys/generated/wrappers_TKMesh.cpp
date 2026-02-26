@@ -55,6 +55,7 @@
 #include <BRepMesh_UVParamRangeSplitter.hxx>
 #include <BRepMesh_UndefinedRangeSplitter.hxx>
 #include <BRepMesh_VertexTool.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAbs_IsoType.hxx>
@@ -96,7 +97,7 @@
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
 #include <TColStd_MapOfAsciiString.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TopAbs_Orientation.hxx>
@@ -105,7 +106,6 @@
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Dir.hxx>
 #include <gp_XY.hxx>

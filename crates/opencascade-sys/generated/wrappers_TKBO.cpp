@@ -41,7 +41,6 @@
 #include <BOPDS_CoupleOfPaveBlocks.hxx>
 #include <BOPDS_Curve.hxx>
 #include <BOPDS_DS.hxx>
-#include <BOPDS_DataMapOfPaveBlockCommonBlock.hxx>
 #include <BOPDS_FaceInfo.hxx>
 #include <BOPDS_IndexRange.hxx>
 #include <BOPDS_IndexedDataMapOfPaveBlockListOfInteger.hxx>
@@ -52,6 +51,7 @@
 #include <BOPDS_IteratorSI.hxx>
 #include <BOPDS_ListOfPave.hxx>
 #include <BOPDS_ListOfPaveBlock.hxx>
+#include <BOPDS_MapOfCommonBlock.hxx>
 #include <BOPDS_MapOfPair.hxx>
 #include <BOPDS_MapOfPaveBlock.hxx>
 #include <BOPDS_PDS.hxx>
@@ -99,6 +99,7 @@
 #include <BRepAlgoAPI_Splitter.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
 #include <BRepTools_History.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <ChFiKPart_RstMap.hxx>
@@ -155,8 +156,8 @@
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_DataMapOfIntegerInteger.hxx>
 #include <TColStd_ListOfInteger.hxx>
@@ -180,7 +181,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Lin.hxx>
 #include <gp_Pln.hxx>

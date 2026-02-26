@@ -3,13 +3,13 @@
 
 #include "occt_preamble.hxx"
 
+#include <BinMDF_TypeIdMap.hxx>
 #include <DEPLY_ConfigurationNode.hxx>
 #include <DEPLY_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
 #include <DE_Wrapper.hxx>
-#include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <Graphic3d_Vec4.hxx>
@@ -29,7 +29,6 @@
 #include <TDocStd_SequenceOfDocument.hxx>
 #include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<DEPLY_ConfigurationNode> HandleDEPLYConfigurationNode;

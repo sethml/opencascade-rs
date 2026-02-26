@@ -26,9 +26,9 @@
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BiTgte_CurveOnEdge.hxx>
 #include <BiTgte_CurveOnVertex.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <ChFiDS_ElSpine.hxx>
 #include <ChFiKPart_RstMap.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <GProp.hxx>
 #include <GProp_CelGProps.hxx>
 #include <GProp_GProps.hxx>
@@ -115,7 +115,6 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -136,6 +135,7 @@
 #include <TColGeom_HSequenceOfCurve.hxx>
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>
@@ -147,12 +147,12 @@
 #include <TColgp_Array2OfPnt.hxx>
 #include <TColgp_HArray2OfPnt.hxx>
 #include <TColgp_HArray2OfPnt2d.hxx>
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopAbs_State.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>

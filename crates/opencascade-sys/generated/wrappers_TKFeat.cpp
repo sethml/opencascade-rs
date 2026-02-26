@@ -21,6 +21,7 @@
 #include <BRepFeat_Status.hxx>
 #include <BRepFeat_StatusError.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Plane.hxx>
@@ -57,7 +58,6 @@
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
 #include <TopAbs_Orientation.hxx>
@@ -72,7 +72,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Dir.hxx>

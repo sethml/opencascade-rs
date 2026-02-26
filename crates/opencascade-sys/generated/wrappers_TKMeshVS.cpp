@@ -4,9 +4,12 @@
 #include "occt_preamble.hxx"
 
 #include <AIS_InteractiveContext.hxx>
+#include <AIS_NListOfEntityOwner.hxx>
 #include <Aspect_SequenceOfColor.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
+#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Graphic3d_ArrayOfPrimitives.hxx>
 #include <Graphic3d_AspectFillArea3d.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
@@ -16,7 +19,7 @@
 #include <Graphic3d_MapOfObject.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
-#include <Graphic3d_ShaderVariable.hxx>
+#include <Graphic3d_Vec2.hxx>
 #include <MeshVS_Array1OfSequenceOfInteger.hxx>
 #include <MeshVS_Buffer.hxx>
 #include <MeshVS_CommonSensitiveEntity.hxx>
@@ -52,6 +55,7 @@
 #include <MeshVS_TwoColors.hxx>
 #include <MeshVS_TwoNodes.hxx>
 #include <MeshVS_VectorPrsBuilder.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <Prs3d_Drawer.hxx>
 #include <PrsMgr_ListOfPresentableObjects.hxx>
 #include <PrsMgr_PresentableObject.hxx>
@@ -59,7 +63,7 @@
 #include <PrsMgr_Presentations.hxx>
 #include <Quantity_Color.hxx>
 #include <Select3D_BndBox3d.hxx>
-#include <Select3D_IndexedMapOfEntity.hxx>
+#include <Select3D_EntitySequence.hxx>
 #include <Select3D_SensitiveFace.hxx>
 #include <Select3D_SensitiveSegment.hxx>
 #include <Select3D_SensitiveSet.hxx>
@@ -67,20 +71,17 @@
 #include <SelectBasics_PickResult.hxx>
 #include <SelectBasics_SelectingVolumeManager.hxx>
 #include <SelectMgr_EntityOwner.hxx>
-#include <SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
 #include <SelectMgr_SelectableObject.hxx>
 #include <SelectMgr_SelectableObjectSet.hxx>
 #include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <SelectMgr_SequenceOfSelection.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_DataMapOfIntegerReal.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
 #include <TColgp_Array1OfPnt.hxx>
@@ -88,7 +89,6 @@
 #include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopLoc_Location.hxx>
 #include <V3d_ListOfView.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_GTrsf.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>

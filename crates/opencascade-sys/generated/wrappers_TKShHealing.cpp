@@ -9,6 +9,7 @@
 #include <BRepTools_Modifier.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <BRepTools_TrsfModification.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Geom2d_BSplineCurve.hxx>
@@ -28,6 +29,7 @@
 #include <Message_Messenger.hxx>
 #include <Message_Msg.hxx>
 #include <Message_ProgressRange.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <Poly_ListOfTriangulation.hxx>
 #include <Resource_Manager.hxx>
 #include <ShapeAlgo.hxx>
@@ -159,14 +161,12 @@
 #include <TColGeom2d_HSequenceOfBoundedCurve.hxx>
 #include <TColGeom2d_SequenceOfCurve.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
 #include <TColGeom_HArray1OfCurve.hxx>
 #include <TColGeom_HArray2OfSurface.hxx>
 #include <TColGeom_HSequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HArray2OfReal.hxx>
 #include <TColStd_HSequenceOfReal.hxx>
@@ -194,7 +194,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Cone.hxx>

@@ -178,6 +178,7 @@
 #include <BinMDF_DerivedDriver.hxx>
 #include <BinMDF_ReferenceDriver.hxx>
 #include <BinMDF_TagSourceDriver.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <BinMDataStd_AsciiStringDriver.hxx>
 #include <BinMDataStd_BooleanArrayDriver.hxx>
 #include <BinMDataStd_BooleanListDriver.hxx>
@@ -990,6 +991,7 @@
 #include <Message_Status.hxx>
 #include <Message_StatusType.hxx>
 #include <MoniTool_CaseData.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <MoniTool_HSequenceOfElement.hxx>
 #include <MoniTool_IntVal.hxx>
 #include <MoniTool_RealVal.hxx>
@@ -997,7 +999,7 @@
 #include <MoniTool_Timer.hxx>
 #include <MoniTool_TransientElem.hxx>
 #include <MoniTool_TypedValue.hxx>
-#include <MoniTool_ValueSatisfies.hxx>
+#include <MoniTool_ValueInterpret.hxx>
 #include <NCollection_AccAllocator.hxx>
 #include <NCollection_AlignedAllocator.hxx>
 #include <NCollection_BaseAllocator.hxx>
@@ -2256,7 +2258,6 @@
 #include <Storage_HSeqOfRoot.hxx>
 #include <Storage_HeaderData.hxx>
 #include <Storage_InternalData.hxx>
-#include <Storage_MapOfPers.hxx>
 #include <Storage_OpenMode.hxx>
 #include <Storage_PArray.hxx>
 #include <Storage_PType.hxx>
@@ -2464,7 +2465,6 @@
 #include <TNaming_UsedShapes.hxx>
 #include <TObj_Application.hxx>
 #include <TObj_CheckModel.hxx>
-#include <TObj_Container.hxx>
 #include <TObj_HiddenPartition.hxx>
 #include <TObj_ModelIterator.hxx>
 #include <TObj_Object.hxx>
@@ -2698,7 +2698,6 @@
 #include <XmlMDF_DerivedDriver.hxx>
 #include <XmlMDF_ReferenceDriver.hxx>
 #include <XmlMDF_TagSourceDriver.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <XmlMDataStd_AsciiStringDriver.hxx>
 #include <XmlMDataStd_BooleanArrayDriver.hxx>
 #include <XmlMDataStd_BooleanListDriver.hxx>

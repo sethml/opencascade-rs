@@ -154,7 +154,6 @@
 #include <BRepLib_ValidateEdge.hxx>
 #include <BRepLib_WireError.hxx>
 #include <BRepMAT2d_BisectingLocus.hxx>
-#include <BRepMAT2d_DataMapOfBasicEltShape.hxx>
 #include <BRepMAT2d_Explorer.hxx>
 #include <BRepMAT2d_LinkTopoBilo.hxx>
 #include <BRepTools_ReShape.hxx>
@@ -164,6 +163,7 @@
 #include <BRepTopAdaptor_Tool.hxx>
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BVH_Types.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bisector.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bisector_BisecAna.hxx>
@@ -178,6 +178,7 @@
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <ChFiKPart_RstMap.hxx>
+#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Extrema_ExtAlgo.hxx>
 #include <Extrema_ExtFlag.hxx>
 #include <GProp_GProps.hxx>
@@ -213,7 +214,6 @@
 #include <IntSurf_LineOn2S.hxx>
 #include <IntSurf_PntOn2S.hxx>
 #include <IntSurf_Quadric.hxx>
-#include <MAT2d_Array2OfConnexion.hxx>
 #include <MAT2d_BiInt.hxx>
 #include <MAT2d_Circuit.hxx>
 #include <MAT2d_Connexion.hxx>
@@ -226,7 +226,6 @@
 #include <MAT_Arc.hxx>
 #include <MAT_BasicElt.hxx>
 #include <MAT_Bisector.hxx>
-#include <MAT_DataMapOfIntegerArc.hxx>
 #include <MAT_DataMapOfIntegerBasicElt.hxx>
 #include <MAT_DataMapOfIntegerBisector.hxx>
 #include <MAT_DataMapOfIntegerNode.hxx>
@@ -241,7 +240,6 @@
 #include <MAT_TListNodeOfListOfBisector.hxx>
 #include <MAT_TListNodeOfListOfEdge.hxx>
 #include <MAT_Zone.hxx>
-#include <MeshVS_SensitivePolyhedron.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Poly_Connect.hxx>
 #include <Poly_ListOfTriangulation.hxx>
@@ -250,7 +248,6 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
@@ -260,9 +257,9 @@
 #include <TColGeom2d_SequenceOfCurve.hxx>
 #include <TColGeom2d_SequenceOfGeometry.hxx>
 #include <TColGeom_Array1OfBSplineCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfReal.hxx>
@@ -292,7 +289,6 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>

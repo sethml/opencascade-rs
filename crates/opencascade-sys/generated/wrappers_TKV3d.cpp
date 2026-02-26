@@ -95,8 +95,10 @@
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRep_Builder.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
+#include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <DsgPrs.hxx>
 #include <DsgPrs_AnglePresentation.hxx>
 #include <DsgPrs_ArrowSide.hxx>
@@ -123,7 +125,6 @@
 #include <DsgPrs_TangentPresentation.hxx>
 #include <DsgPrs_XYZAxisPresentation.hxx>
 #include <DsgPrs_XYZPlanePresentation.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <Font_FTFont.hxx>
 #include <Font_FontAspect.hxx>
 #include <Font_StrictLevel.hxx>
@@ -173,16 +174,15 @@
 #include <Graphic3d_SequenceOfGroup.hxx>
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #include <Graphic3d_ShaderProgram.hxx>
-#include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_StructureManager.hxx>
 #include <Graphic3d_Text.hxx>
 #include <Graphic3d_TextPath.hxx>
 #include <Graphic3d_Texture2D.hxx>
 #include <Graphic3d_TextureEnv.hxx>
 #include <Graphic3d_TransformPers.hxx>
-#include <Graphic3d_TransformUtils.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Graphic3d_TypeOfShadingModel.hxx>
+#include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <Graphic3d_Vec4.hxx>
 #include <Graphic3d_Vertex.hxx>
@@ -203,6 +203,7 @@
 #include <MeshVS_SensitivePolyhedron.hxx>
 #include <MeshVS_SensitiveQuad.hxx>
 #include <MeshVS_SensitiveSegment.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseSequence.hxx>
 #include <NCollection_Buffer.hxx>
@@ -326,7 +327,6 @@
 #include <SelectMgr_Filter.hxx>
 #include <SelectMgr_FilterType.hxx>
 #include <SelectMgr_FrustumBuilder.hxx>
-#include <SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
 #include <SelectMgr_ListOfFilter.hxx>
 #include <SelectMgr_OrFilter.hxx>
 #include <SelectMgr_PickingStrategy.hxx>
@@ -356,7 +356,6 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -400,9 +399,8 @@
 #include <StdSelect_TypeOfEdge.hxx>
 #include <StdSelect_TypeOfFace.hxx>
 #include <StdSelect_TypeOfSelectionImage.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
@@ -417,6 +415,7 @@
 #include <TColgp_HArray1OfPnt.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
 #include <TCollection_ExtendedString.hxx>
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Datum3D.hxx>
@@ -452,7 +451,6 @@
 #include <V3d_ViewerPointer.hxx>
 #include <WNT_HIDSpaceMouse.hxx>
 #include <XCAFPrs_AISObject.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>

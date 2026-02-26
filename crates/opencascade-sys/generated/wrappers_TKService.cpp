@@ -57,6 +57,7 @@
 #include <Aspect_XRSession.hxx>
 #include <Aspect_XRTrackedDeviceRole.hxx>
 #include <BVH_Types.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Font_FTFont.hxx>
 #include <Font_FTLibrary.hxx>
@@ -167,7 +168,6 @@
 #include <Graphic3d_TransModeFlags.hxx>
 #include <Graphic3d_TransformPers.hxx>
 #include <Graphic3d_TransformPersScaledAbove.hxx>
-#include <Graphic3d_TransformUtils.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Graphic3d_TypeOfBackground.hxx>
 #include <Graphic3d_TypeOfConnection.hxx>
@@ -210,7 +210,8 @@
 #include <Media_PlayerContext.hxx>
 #include <Media_Scaler.hxx>
 #include <Media_Timer.hxx>
-#include <MoniTool_ValueSatisfies.hxx>
+#include <MoniTool_DataMapOfShapeTransient.hxx>
+#include <MoniTool_ValueInterpret.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseSequence.hxx>
 #include <NCollection_Buffer.hxx>
@@ -229,7 +230,6 @@
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -239,7 +239,6 @@
 #include <Standard_TypeDef.hxx>
 #include <TColStd_Array1OfAsciiString.hxx>
 #include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_IndexedDataMapOfStringString.hxx>
 #include <TColStd_SequenceOfHAsciiString.hxx>
@@ -256,7 +255,6 @@
 #include <V3d_SpotLight.hxx>
 #include <WNT_HIDSpaceMouse.hxx>
 #include <XCAFPrs_Texture.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Dir.hxx>

@@ -7,6 +7,7 @@
 #include <Adaptor2d_Line2d.hxx>
 #include <Adaptor2d_OffsetCurve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <Bisector_BisecAna.hxx>
 #include <Bisector_BisecCC.hxx>
 #include <Bisector_BisecPC.hxx>
@@ -75,7 +76,6 @@
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax22d.hxx>
 #include <gp_Ax2d.hxx>
 #include <gp_Circ2d.hxx>

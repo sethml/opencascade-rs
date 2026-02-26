@@ -4,9 +4,9 @@
 #include "occt_preamble.hxx"
 
 #include <APIHeaderSection_EditHeader.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ShapeFixParameters.hxx>
-#include <FEmTool_AssemblyTable.hxx>
 #include <Geom2d_Curve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
@@ -304,8 +304,8 @@
 #include <StepVisual_TessellatedCurveSet.hxx>
 #include <Storage_PType.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
 #include <TColStd_DataMapOfTransientTransient.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
@@ -317,10 +317,11 @@
 #include <TColStd_HSequenceOfReal.hxx>
 #include <TColStd_HSequenceOfTransient.hxx>
 #include <TColStd_IndexedMapOfTransient.hxx>
+#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
-#include <TObj_Container.hxx>
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
@@ -397,7 +398,6 @@
 #include <XSControl_Vars.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <XSControl_Writer.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_XY.hxx>
 
 // Handle type aliases

@@ -141,6 +141,8 @@ void_pointer_types = ["Aspect_RenderingContext"]
 [split]
 # Strategy for C++ wrapper splitting: "toolkit" splits into one file per OCCT toolkit.
 cpp_split = "toolkit"
+# Strategy for Rust ffi.rs splitting: "toolkit" splits extern blocks into per-toolkit files.
+ffi_split = "toolkit"
 # Path to OCCT source directory containing TK*/PACKAGES files (relative to this file).
 occt_source_dir = "../occt-sys/OCCT/src"
 "NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }

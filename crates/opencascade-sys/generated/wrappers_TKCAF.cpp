@@ -4,6 +4,7 @@
 #include "occt_preamble.hxx"
 
 #include <AppStd_Application.hxx>
+#include <BinMDF_TypeIdMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_ListOfDocument.hxx>
@@ -25,7 +26,6 @@
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_AttributeMap.hxx>
-#include <TDF_AttributeSequence.hxx>
 #include <TDF_DataSet.hxx>
 #include <TDF_DeltaOnAddition.hxx>
 #include <TDF_DeltaOnModification.hxx>
@@ -98,7 +98,6 @@
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Wire.hxx>
-#include <XmlMDF_TypeADriverMap.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Cylinder.hxx>

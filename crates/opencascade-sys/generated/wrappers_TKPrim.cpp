@@ -42,14 +42,13 @@
 #include <Geom_Surface.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_MMgrOpt.hxx>
 #include <Standard_TypeDef.hxx>
 #include <Sweep_NumShape.hxx>
 #include <Sweep_NumShapeIterator.hxx>
 #include <Sweep_NumShapeTool.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom_Array1OfCurve.hxx>
-#include <TColGeom_Array2OfSurface.hxx>
+#include <TColGeom_SequenceOfCurve.hxx>
+#include <TColGeom_SequenceOfSurface.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Location.hxx>
